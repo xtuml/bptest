@@ -7,7 +7,7 @@
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
 		<version>5.8.6</version>
-		<relativePath>../../releng/org.xtuml.bp.releng.parent.tests/</relativePath>
+		<relativePath>${mcj_path}/../../releng/org.xtuml.bp.releng.parent.tests/</relativePath>
 	</parent>
 	<groupId>org.xtuml.bp</groupId>
 	<artifactId>org.xtuml.bp.ui.properties.test</artifactId>
