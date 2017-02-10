@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="testsuite" default="run" basedir=".">
-  <import file="../MC-Java/common.xml"/>
+  <import file="${mcj_path}/common.xml"/>
 		
   <!-- sets the properties plugin-name, and library-file -->
   <property name="plugin-name" value="org.xtuml.bp.welcome.test"/>

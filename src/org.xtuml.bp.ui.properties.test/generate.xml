@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.ui.properties.test" default="all" basedir=".">
-	
-  <import file="../MC-Java/common.xml"/>
-  	
+   
+  <import file="${mcj_path}/common.xml"/>
+   
   <target name="all"
           description="Generate UI Properties Test classes"
           depends="java,readonly_test,test_data,format_java">
@@ -17,8 +17,8 @@
 
   <property environment="env"/>
 
-  <property name="core_sql_dir" value="../org.xtuml.bp.core/sql" />
-  <property name="chain_util_path" value="../org.xtuml.bp.core"/>
+  <property name="core_sql_dir" value="${mcj_path}/../org.xtuml.bp.core/sql" />
+  <property name="chain_util_path" value="${mcj_path}/../org.xtuml.bp.core"/>
 
   <property name="ooaofooa_schema.output" value="ooaofooa_schema.sql" />
 
@@ -35,7 +35,7 @@
           unless="ooaofooa_schema.buildNotNeeded" >
     <echo >Generating ${ooaofooa_schema.output} ...</echo>
   <ant antfile="${mcj_path}/build.xml" target="generate.schema" >
-    <property name="param1" value="../${core_sql_dir}/ooaofooa.sql" />
+    <property name="param1" value="${core_sql_dir}/ooaofooa.sql" />
     <property name="param2" value="${mcj_path}" />
     <property name="param3" value="FALSE" />
     <property name="param4" value="ooaofooa" />
@@ -45,7 +45,7 @@
   <touch file="sql/${ooaofooa_schema.output}" />
   </target>
 
-  <property name="canvas_sql_dir" value="../org.xtuml.bp.ui.canvas/sql" />
+  <property name="canvas_sql_dir" value="${mcj_path}/../org.xtuml.bp.ui.canvas/sql" />
   <property name="ooaofgraphics_schema.output" value="ooaofgraphics_schema.sql" />
 
   <target name="ooaofgraphics_schema.depends" >
@@ -61,7 +61,7 @@
           unless="ooaofgraphics_schema.buildNotNeeded" >
     <echo >Generating ${ooaofgraphics_schema.output} ...</echo>
   <ant antfile="${mcj_path}/build.xml" target="generate.schema" >
-    <property name="param1" value="../${canvas_sql_dir}/ooaofgraphics.sql" />
+    <property name="param1" value="${canvas_sql_dir}/ooaofgraphics.sql" />
     <property name="param2" value="${mcj_path}" />
     <property name="param3" value="FALSE" />
     <property name="param4" value="ooaofgraphics" />
@@ -77,7 +77,7 @@
        <srcfiles dir = "${canvas_sql_dir}" includes = "ooaofgraphics.sql" />
        <srcfiles dir = "arc"        includes = "create_view_test.arc" />
        <srcfiles dir = "sql"        includes = "proxy_schema.sql,${ooaofooa_schema.output}" />
-       <srcfiles dir = "sql"   		includes = "${ooaofgraphics_schema.output}" />
+       <srcfiles dir = "sql"        includes = "${ooaofgraphics_schema.output}" />
        <srcfiles dir = "${mcj_path}" includes = "arch_utils.inc"/>
     </uptodate>
   </target>
@@ -94,7 +94,7 @@
       -import sql/${ooaofooa_schema.output}
       -import sql/${ooaofgraphics_schema.output}
       -import ${core_sql_dir}/ooaofooa_hierarchy_schema.sql
-            -import sql/proxy_schema.sql
+      -import sql/proxy_schema.sql
       -import ${core_sql_dir}/ooaofooa.sql
       -import ${core_sql_dir}/ooaofooa_hierarchy.pei.sql
       -arch arc/create_view_test.arc" />
@@ -112,7 +112,7 @@
          <srcfiles dir = "${canvas_sql_dir}" includes = "ooaofgraphics.sql" />
          <srcfiles dir = "arc"        includes = "create_readonly_view_test.arc" />
          <srcfiles dir = "sql"        includes = "${ooaofooa_schema.output}" />
-         <srcfiles dir = "sql"   		includes = "${ooaofgraphics_schema.output}" />
+         <srcfiles dir = "sql"         includes = "${ooaofgraphics_schema.output}" />
          <srcfiles dir = "${mcj_path}" includes = "arch_utils.inc"/>
       </uptodate>
     </target>
@@ -156,7 +156,7 @@
             unless="sql.buildNotNeeded" >
       <echo >Generating ${sql.output} ...</echo>
     <copy todir="models/org.xtuml.bp.ui.properties.test/Datatypes/">
-    	<fileset dir="../org.xtuml.bp.pkg/globals"><filename name="Globals.xtuml"/></fileset>   	
+      <fileset dir="${mcj_path}/../org.xtuml.bp.pkg/globals"><filename name="Globals.xtuml"/></fileset>     
     </copy>
     <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <arg line="xtumlmc_cleanse_for_BridgePoint
@@ -184,7 +184,7 @@
         <env key="CHAIN_UTIL_DIR" value="${chain_util_path}"/>
         <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
     <arg line="xtumlmc_gen_erate -nopersist
-            -import sql/proxy_schema.sql
+      -import sql/proxy_schema.sql
       -import sql/ooaofooa_schema.sql
       -import sql/ooaofgraphics_schema.sql
       -import sql/${sql.output}
@@ -195,20 +195,20 @@
     <delete file="rel_chain.txt" />
     <delete file="rel_num.txt" />
     <delete file="remainder.txt" />
-  	<delete file="models/org.xtuml.bp.ui.properties.test/Datatypes/Globals.xtuml" />
+   <delete file="models/org.xtuml.bp.ui.properties.test/Datatypes/Globals.xtuml" />
   </target>
 
   <property name="cvs_java_files" value="EnumRangeTest.java,IsAllowedTypeTest.java,
       NumberRangeTest.java,PropertiesTest.java, PropertiesGlobalTest.java,
       PropertiesTestPlugin.java,DeleteUDTWithPropertyShowing.java,
       PropertiesViewTest2.java, PropertiesUtil.java, RefreshTestProp.java,
-  	  PropertiesGlobalsTest.java, PropertiesRenameTests.java,ElementOrderingTest.java" />
+     PropertiesGlobalsTest.java, PropertiesRenameTests.java,ElementOrderingTest.java" />
 
   <target name="format_java"
         description="Format the generated java source" >
     <taskdef name="PTCodeFormat" classname="PTCodeFormatterTask" >
         <classpath>
-            <pathelement path="../org.xtuml.bp.core/tools/" />
+            <pathelement path="${mcj_path}/../org.xtuml.bp.core/tools/" />
             <fileset dir="${plugins-home}/plugins" casesensitive="yes">
                 <include name="**/org.eclipse.text_*.jar" />
                 <include name="**/org.eclipse.ui_*.jar" />
@@ -254,8 +254,8 @@
   </target>
 
   <target name="clean_arcs">
-  	<echo>Removing generated archetypes...</echo>
-  	<delete verbose="true" file="arc/create_view_test_data.arc" />
+   <echo>Removing generated archetypes...</echo>
+   <delete verbose="true" file="arc/create_view_test_data.arc" />
   </target>
   
   <target name="clean_sqls"

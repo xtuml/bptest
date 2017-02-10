@@ -19,7 +19,14 @@
 .// License for the specific language governing permissions and limitations under
 .// the License.
 .//=======================================================================
-.include "../org.xtuml.bp.core/arc/generate_RGO_resolution_methods.inc"
+.invoke arc_env = GET_ENV_VAR( "PTC_MC_ARC_DIR" )
+.assign mc_archetypes = arc_env.result
+.if ( mc_archetypes == "" )
+  .print "\nERROR: Environment variable PTC_MC_ARC_DIR not set."
+  .exit 100
+.end if
+.//
+.include "${mc_archetypes}/../org.xtuml.bp.core/arc/generate_RGO_resolution_methods.inc"
 .function get_cells
   .param Inst_Ref rto
   .param Inst_Ref_Set test_rtos
