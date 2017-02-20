@@ -13,13 +13,11 @@ This note describes changes required to achieve better unit testing results for 
 
 2. Document References
 ----------------------
-<a id="2.1"></a>2.1 [BridgePoint DEI #9147](https://support.onefact.net/issues/9147) TODO: Improve unit tests for 6.0  
-<a id="2.2"></a>2.2 [BridgePoint DEI #9147](https://support.onefact.net/issues/9147) Address performance issues found profiling v5.2.2 and v6.0.0  
+<a id="2.1"></a>2.1 [BridgePoint DEI #9147](https://support.onefact.net/issues/9147) Improve unit tests for 6.0 release  
 
 3. Background
 -------------
-The unit tests have not been maintained and have thus slowly deteriorated to a almost useless state.   
-Profiling was performed against v5.2 and v6.0 of the tool and the results need to be considered.   
+The unit tests have not been maintained and have thus slowly deteriorated to an almost useless state.   
 
 4. Requirements
 ---------------
@@ -40,11 +38,6 @@ The first set of tests in ErrorPathsTest are failing due to a timing issue.  Som
 5.5 Remove Globals from expected result testing in IOMdlTestGenerics   
 
 While updating the expected results for 5.2 it was noticed that some actual results and expected results had different naming schemes.  Expected results included a Global postfix.  This is removed and now all expected results match the actual results.   
-
-5.6 Fix performance issue when drawing a canvas   
-
-During profiling for [2.2] is was noted that the only performance difference was the fact that we now force load.   Another area was uncovered that greatly reduces performance when a graphical element has a compartment with many entries.  The reason is that the text extent for all entries was being calculated.  This a heavy operation and should be minimized.  In Shape.draw() the logic to prevent painting data which extends the visible bounds is extended to also prevent calculating the text extent.   
-
 6. Implementation Comments
 --------------------------
 
@@ -279,9 +272,6 @@ org.xtuml.bp.io.mdl.test/expected_results/linux/
 org.xtuml.bp.io.mdl.test/src/IOMdlTestGenerics.java
 
 org.xtuml.bp.test/src/org/xtuml/bp/test/common/BaseTest.java
-
-org.xtuml.bp.ui.canvas/models/org.xtuml.bp.ui.canvas/ooaofgraphics/
-    Graphical Data/Shape/Shape.xtuml
 
 org.xtuml.bp.ui.canvas.test/expected_results/linux/
     CanvasCreationtest_14Generics/CanvasCreationtest_14-112
