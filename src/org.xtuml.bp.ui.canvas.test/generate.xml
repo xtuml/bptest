@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.ui.canvas.test" default="all" basedir=".">
 	
-	<import file="../MC-Java/common.xml"/>
+	<import file="../../../bridgepoint/src/MC-Java/common.xml"/>
 	
 	<property name="plugins-home" value="${ant.home}/../.."/>
 
