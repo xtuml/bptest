@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.ui.canvas.test" default="all" basedir=".">
 	
-    <property environment="env"/>
-	<property name="development_repository" value="${env.XTUML_DEVELOPMENT_REPOSITORY}" />
-	<property name="mcj_path" value = "${development_repository}/src/MC-Java" />
-	<import file="${development_repository}/src/MC-Java/common.xml"/>
+	<property name="development_repository" value= "${XTUML_DEVELOPMENT_REPOSITORY}" />
+	<property name="development_source" value= "${development_repository}/src" />
+	<property name="mcj_path" value="${development_source}/MC-Java" />
+	<import file="${mcj_path}/common.xml"/>
 	
 	<property name="plugins-home" value="${ant.home}/../.."/>
 

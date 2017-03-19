@@ -413,6 +413,9 @@ public class BaseTest extends TestCase {
 					// happened yet.  Another plugin doing this is org.eclipse.cdt.core.
 					String stack = entry.getStack();
 					String pluginID = entry.getPluginId();		
+					if(pluginID.equals("org.eclipse.ui.intro")) {
+						continue;
+					}
 					if ((pluginID.equals("org.antlr.eclipse.ui") || pluginID
 							.equals("org.eclipse.cdt.core"))
 							&& stack.contains("ResourceException")
@@ -1137,10 +1140,10 @@ public class BaseTest extends TestCase {
 	
 	public static boolean doCreateResults = false;
 
-	public static String DEFAULT_XTUML_TEST_MODEL_REPOSITORY = "c:/repositories/git/xtuml/models/test";
-	public static final String DEFAULT_PRIVATE_MODEL_REPOSITORY = "c:/repositories/git/xtuml/modelsmg/test";
+	public static String DEFAULT_XTUML_TEST_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/models/test";
+	public static final String DEFAULT_PRIVATE_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/modelsmg/test";
 	
-	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = "c:/workspace";
+	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = System.getProperty("user.home") + "/workspace";
 	
 	public static void compareAndOutputResults(String fileName) throws Exception{
 		if (doCreateResults){

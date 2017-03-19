@@ -1,8 +1,12 @@
 package org.xtuml.bp.search.test;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.search.ui.ISearchPageContainer;
 import org.eclipse.ui.IWorkingSet;
@@ -20,6 +24,7 @@ import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.ExplorerUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -164,8 +169,11 @@ public class SearchTests extends BaseTest {
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchOperation"));
 		ExplorerUtil.getView().setFocus();
+		Selection.getInstance().clear();
 		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
 				new StructuredSelection(new Object[] { otherSystem }));
+		Selection.getInstance().setSelection(new StructuredSelection(otherSystem));
+		BaseTest.dispatchEvents(250);
 		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
 				true, ISearchPageContainer.SELECTION_SCOPE, "");	
 		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
@@ -193,6 +201,8 @@ public class SearchTests extends BaseTest {
 		ExplorerUtil.getView().setFocus();
 		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
 				new StructuredSelection(new Object[] { otherSystem }));
+		Selection.getInstance().setSelection(new StructuredSelection(otherSystem));
+		BaseTest.dispatchEvents(250);
 		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
 				true, ISearchPageContainer.SELECTED_PROJECTS_SCOPE, "");	
 		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));

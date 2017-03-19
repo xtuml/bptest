@@ -35,6 +35,8 @@ import java.io.Reader;
 import java.lang.Thread.State;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Vector;
 
 import junit.framework.Assert;
@@ -828,7 +830,7 @@ public class TestingUtilities {
 			testProjectPath = repository_location + "/../applications/gps/" + testProject;				
 		} else {
 			testProjectPath = repository_location + "/" + testProject;
-		}
+		} 
 		File file = new File(testProjectPath);
 		if(!file.exists()) {
 			// check the private repository
