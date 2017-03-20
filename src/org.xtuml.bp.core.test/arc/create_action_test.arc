@@ -295,11 +295,20 @@
         assertNotNull(t1);
   .assign oldName = "Old_Name";
   .assign newName = "New Name";
-  .if (((action.Key_Lett == "S_UDT") or (action.Key_Lett == "S_EDT")) or (action.Key_Lett == "S_SDT"))
+  .if (((action.Key_Lett == "S_EDT")) or (action.Key_Lett == "S_SDT"))
         DataType_c t2 = DataType_c.getOneS_DTOnR17(t1);
         t2.setName("${oldName}");
+        TestUtil.dismissDialog(500);
         updateTreeItem( t1, "${newName}", ${useFocus} );
-        assertEquals("${newName}", t2.getName() );
+        assertEquals("${oldName}", t2.getName() );
+  .elif(action.Key_Lett == "S_UDT")
+        t1.setName("${oldName}");
+
+        TestUtil.dismissDialog(500);
+
+        updateTreeItem( t1, "${newName}", ${useFocus} );
+        
+        assertEquals("${newName}", t1.getName() );
   .elif((action.Key_Lett == "CNST_LSC"))
         SymbolicConstant_c t2 = SymbolicConstant_c.getOneCNST_SYCOnR1502(
             LeafSymbolicConstant_c.getOneCNST_LFSCOnR1503(t1));

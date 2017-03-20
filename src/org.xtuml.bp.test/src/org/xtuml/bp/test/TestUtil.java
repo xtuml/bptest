@@ -767,8 +767,7 @@ public class TestUtil
             
             return contents.toString();
         } catch (IOException e) {
-            String message = "Could not load text file contents";
-            TestCase.fail(message);
+            TestCase.fail(e.getLocalizedMessage());
             return null;
         }
     }
