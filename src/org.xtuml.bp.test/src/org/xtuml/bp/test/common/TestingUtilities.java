@@ -129,7 +129,7 @@ public class TestingUtilities {
 	public static boolean deleteProject(String name) throws CoreException {
 		IProject projectHandle = ResourcesPlugin.getWorkspace().getRoot()
 				.getProject(name);
-
+		BaseTest.dispatchEvents(0);
 		return deleteProject(projectHandle);
 	}
 
@@ -849,6 +849,7 @@ public class TestingUtilities {
 				return;
 			}
 		}
+		BaseTest.dispatchEvents(0);
 		ProjectUtilities.importExistingProject(testProjectPath, true);
 		BaseTest.dispatchEvents(0);
 	}

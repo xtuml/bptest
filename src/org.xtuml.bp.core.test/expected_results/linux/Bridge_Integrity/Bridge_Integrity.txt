@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ERROR: Found another bridge under the same external entity with a matching signature.
 
 Signature: BridgeSameSig(integer)
@@ -15,6 +14,3 @@ Element Name: BridgeSameSig
 Element Path: ModelIntegrityTests::Bridge Tests::External Entity::BridgeSameSig
 
 
-=======
-No issues found.
->>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

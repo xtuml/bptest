@@ -52,6 +52,7 @@ import org.xtuml.bp.core.ui.RemoveFromIdentifierOnO_ATTRWizardPage1;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.SetAsBaseAttributeOnO_ATTRAction;
 import org.xtuml.bp.core.ui.SetAsDerivedAttributeOnO_ATTRAction;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Cl_c;
@@ -421,6 +422,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 		RemoveFromIdentifierOnO_ATTRWizardPage1 page = (RemoveFromIdentifierOnO_ATTRWizardPage1) wd
 				.getCurrentPage();
 		page.IdentifierCombo.select(0);
+		BaseTest.dispatchEvents(0);
 		String[] items = page.IdentifierCombo.getItems();
 		assertEquals(possible_ids.length, items.length);
 		for (int i = 0; i < possible_ids.length; ++i) {

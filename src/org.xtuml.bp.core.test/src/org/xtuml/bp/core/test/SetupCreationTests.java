@@ -496,15 +496,3 @@ public class SetupCreationTests extends CanvasTest {
 	}
 
 }
-		} catch (Exception e) {
-			fail("Problem during call to CreateNewMarker()" + e.toString()); //$NON-NLS-1$
-		}
-
-		IMarker marker = null;
-		if (ret instanceof IMarker) {
-			marker = (IMarker) ret;
-		}
-		return marker;
-	}
-
-}
