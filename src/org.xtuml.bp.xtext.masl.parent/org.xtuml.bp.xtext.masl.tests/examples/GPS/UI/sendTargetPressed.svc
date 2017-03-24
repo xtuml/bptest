@@ -1,4 +1,0 @@
-private service UI::sendTargetPressed () is
-begin
-  null;
-end service;

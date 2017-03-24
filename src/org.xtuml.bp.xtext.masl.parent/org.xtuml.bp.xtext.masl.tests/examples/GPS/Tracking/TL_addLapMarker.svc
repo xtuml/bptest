@@ -1,4 +1,0 @@
-public instance service Tracking::TrackLog.addLapMarker () is
-begin
-  null;
-end service;

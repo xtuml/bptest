@@ -1,4 +1,0 @@
-public instance service Tracking::WorkoutSession.reset () is
-begin
-  null;
-end service;

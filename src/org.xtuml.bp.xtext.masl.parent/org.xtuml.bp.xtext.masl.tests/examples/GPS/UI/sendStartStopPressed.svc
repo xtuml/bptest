@@ -1,4 +1,0 @@
-private service UI::sendStartStopPressed () is
-begin
-  null;
-end service;

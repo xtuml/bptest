@@ -1,4 +1,0 @@
-public service Tracking::heartRateChanged (        heartRate : in integer) is
-begin
-  null;
-end service;

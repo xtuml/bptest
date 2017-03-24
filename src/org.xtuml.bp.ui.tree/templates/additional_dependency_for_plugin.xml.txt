@@ -1,2 +1,0 @@
-import plugin="**ADDITIONAL_PLUGIN_DEPENDENCY**"/>
-    </requires>

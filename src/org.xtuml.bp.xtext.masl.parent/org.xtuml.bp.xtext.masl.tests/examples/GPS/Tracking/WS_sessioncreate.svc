@@ -1,4 +1,0 @@
-public  service Tracking::WorkoutSession.sessioncreate () is
-begin
-  null;
-end service;

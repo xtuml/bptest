@@ -1,4 +1,0 @@
-public service Location::unregisterListener () is
-begin
-  null;
-end service;

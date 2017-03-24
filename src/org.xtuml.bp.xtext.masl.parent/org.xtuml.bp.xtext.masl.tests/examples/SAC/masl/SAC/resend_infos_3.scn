@@ -1,6 +1,0 @@
-private service SAC::resend_infos_3 () is 
-begin
-   
-   SAC::resend_infos();
-   
-end service;

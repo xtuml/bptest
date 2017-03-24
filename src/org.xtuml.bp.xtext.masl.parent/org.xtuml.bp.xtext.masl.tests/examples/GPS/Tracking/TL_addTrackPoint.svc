@@ -1,4 +1,0 @@
-public instance service Tracking::TrackLog.addTrackPoint () is
-begin
-  null;
-end service;

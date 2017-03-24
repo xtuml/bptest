@@ -1,4 +1,0 @@
-private service UI::sendLightPressed () is
-begin
-  null;
-end service;

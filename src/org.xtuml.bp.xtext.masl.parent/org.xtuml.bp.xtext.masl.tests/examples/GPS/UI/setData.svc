@@ -1,4 +1,0 @@
-public service UI::setData (        unit : in Unit,        value : in real) is
-begin
-  null;
-end service;

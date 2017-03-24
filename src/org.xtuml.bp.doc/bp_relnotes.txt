@@ -1,6 +1,0 @@
-=================================================
-BridgePoint UML Suite:  Release Notes
-
-=================================================
-
-The release notes are now found under .\ReleaseNotes\HTML\ReleaseNotes.html

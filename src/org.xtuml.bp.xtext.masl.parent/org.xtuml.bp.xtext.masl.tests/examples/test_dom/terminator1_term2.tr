@@ -1,4 +1,0 @@
-private service X::terminator1~>term2() return integer is
-begin
-  null;
-end service;

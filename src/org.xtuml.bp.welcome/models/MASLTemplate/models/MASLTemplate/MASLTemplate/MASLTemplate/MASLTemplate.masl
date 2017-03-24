@@ -1,5 +1,0 @@
-private service MASLTemplate::TermA~>terminator_svc_1 () is
-begin
-  null;
-end service;
-

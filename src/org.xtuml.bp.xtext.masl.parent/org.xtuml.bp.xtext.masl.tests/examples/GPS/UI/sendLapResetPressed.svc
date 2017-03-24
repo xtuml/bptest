@@ -1,4 +1,0 @@
-private service UI::sendLapResetPressed () is
-begin
-  null;
-end service;

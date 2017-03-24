@@ -1,4 +1,0 @@
-public  service Location::GPS.activate () is
-begin
-  null;
-end service;

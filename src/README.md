@@ -1,1 +1,0 @@
-The BridgePoint source code.

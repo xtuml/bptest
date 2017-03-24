@@ -1,8 +1,0 @@
-bin
-timer.log
-build.xml
-org.xtuml.bp.als.oal*.zip
-oal.jar
-oalsrc.zip
-temp.folder
-.antlr-eclipse
