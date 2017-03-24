@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ERROR: Found another event under the same state machine with a matching signature.
 
 Signature: EventSameSig(integer)
@@ -40,5 +41,17 @@ Signature: EventSameSig(integer)
 
 Element Name: EventSameSig
 Element Path: KEY_A4::Class Based State Machine::ModelIntegrityTests::State Machine Event Tests::Class::Class
+=======
+ERROR: Found another event under the same state machine with a matching number.
+
+Element Name: EventSameSig
+Element Path: KEY1::Instance Based State Machine::ModelIntegrityTests::State Machine Event Tests::Class::Class
+
+
+ERROR: Found another event under the same state machine with a matching number.
+
+Element Name: EventSameSig
+Element Path: KEY1::Instance Based State Machine::ModelIntegrityTests::State Machine Event Tests::Class::Class
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
 
 

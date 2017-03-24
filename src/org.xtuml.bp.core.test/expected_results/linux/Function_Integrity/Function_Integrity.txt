@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ERROR: Found another function under the same package with a matching signature.
 
 Signature: FunctionSameSig(integer)
@@ -14,3 +15,6 @@ Element Name: FunctionSameSig
 Element Path: ModelIntegrityTests::Function Tests::FunctionSameSig
 
 
+=======
+No issues found.
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

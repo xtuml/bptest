@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bp.io.core" default="all" basedir=".">
+
+  <import file="../MC-Java/common.xml"/>
+
+  <target name="all"
+          description="Generate all code for this project"
+          depends="sql,schema,compile_grammar,compile_action_grammar,format_java">
+  </target>
+
+  <target name="nb_all"
+          description="Generate all code for this project"
+          depends="sql,schema,compile_grammar,compile_action_grammar">
+  </target>
+
+  <property name="plugins-home" value="${ant.home}/../.."/>
+
+  <property name="sql.input" value="models/org.xtuml.bp.io.core/file_io" />
+  <property name="sql.output" value="file_io.sql" />
+  <property name="subsystems_to_remove" value="ACT_ V_ E_ GD_ CT_ TS_ DIM_ STY_" />
+
+  <target name="sql.depends" >
+    <uptodate property="sql.buildNotNeeded"  targetfile="sql/${sql.output}">
+      <srcfiles dir= "${sql.input}" includes="**/*.xtuml" />
+    </uptodate>
+  </target>
+
+  <target name="sql" depends="sql.depends"
+          description="Generate the sql version of the File IO model"
+          unless="sql.buildNotNeeded" >
+    <echo >Generating ${sql.output} ...</echo>
+  	<copy file="../org.xtuml.bp.pkg/globals/Globals.xtuml" tofile="${sql.input}/Globals.xtuml" />
+  	<exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
+      <arg line="xtumlmc_cleanse_for_BridgePoint ${sql.input} sql/${sql.output} ${subsystems_to_remove}"/>
+  	</exec>
+    <delete file="${sql.input}/Globals.xtuml" />
+  </target>
+
+  <property name="sg.dep" value="ooa_schema.sql,schema_gen.arc" />
+  <property name="schema.output" value="file_io_schema.sql" />
+
+  <target name="schema.depends" depends="sql">
+    <uptodate property="schema.buildNotNeeded" targetfile="sql/${schema.output}">
+       <srcfiles dir = "sql"        includes = "${sql.output}"/>
+       <srcfiles dir = "${mcj_path}" includes = "${sg.dep}"/>
+    </uptodate>
+  </target>
+
+  <target name="schema"
+          depends="schema.depends"
+          description="Generate the File IO schema file"
+          unless="schema.buildNotNeeded" >
+    <echo >Generating ${schema.output} ...</echo>
+  <ant antfile="${mcj_path}/build.xml" target="generate.schema" useNativeBasedir="false">
+    <property name="param1" value="${sql.output}" />
+    <property name="param2" value="${mcj_path}" />
+  	<property name="param4" value="file_io" />
+  </ant>
+  <!-- Need to touch the output file for the case where the input data
+       changed, but the output didn't -->
+  <touch file="sql/${schema.output}" />
+  </target>
+
+   <target name="format_java"
+        description="Format the generated java source" >
+
+    <taskdef name="PTCodeFormat" classname="PTCodeFormatterTask" >
+        <classpath>
+            <pathelement path="../org.xtuml.bp.core/tools/" />
+            <fileset dir="${plugins-home}/plugins" casesensitive="yes">
+                <include name="**/org.eclipse.text_*.jar" />
+                <include name="**/org.eclipse.ui_*.jar" />
+                <include name="**/org.eclipse.jdt.core_*.jar" />
+                <include name="**/org.eclipse.core.runtime_*.jar" />
+                <include name="**/org.eclipse.osgi_*.jar" />
+                <include name="**/org.eclipse.core.resources_*.jar" />
+                <include name="**/org.eclipse.equinox.common_*.jar" />
+            </fileset>
+        </classpath>
+    </taskdef>
+        <PTCodeFormat>
+          <fileset dir="../org.xtuml.bp.io.core/src/org/xtuml/bp/io/core/" excludes="CoreExport.java, CoreExportPage.java, CoreExportWizard.java, CoreImport.java
+            CoreImportPage.java, CoreImportWizard.java, CorePlugin.java, IIOCoreHelpContextIds.java, ImportHelper.java, ImportInteger.java"
+            includes="*.java" />
+        </PTCodeFormat>
+  </target>
+
+  <property name="grammar-folder" value="./src/org/xtuml/bp/io/core"/>
+  <property name="antlr-output" value="SqlLexer.java"/>
+  <property name="antlr-action-output1" value="SignatureLexer.java"/>
+  <property name="antlr-action-output2" value="BodyLexer.java"/>
+
+  <target name="compile_grammar.depends" >
+    <uptodate property="compile_grammar.NotNeeded"
+      srcfile="${grammar-folder}/sql_insert.g"
+      targetfile="${grammar-folder}/${antlr-output}"/>
+  </target>
+
+  <target name="compile_grammar"
+     depends="compile_grammar.depends"
+     description="Compile bp.io.core antlr grammar"
+    unless="compile_grammar.NotNeeded" >
+
+    <echo >Eclipse home: ${eclipse.home}</echo>
+    <echo >Plugins home: ${plugins-home}</echo>
+  	
+    <antlr target="${grammar-folder}/sql_insert.g" >
+      <classpath>
+  	    <fileset dir="${plugins-home}/plugins" casesensitive="yes">
+  	      <include name="**/antlr.jar" />
+  	    </fileset>
+  	  </classpath>
+    </antlr>
+
+  </target>
+
+  <target name="compile_action_grammar.depends" >
+    <uptodate property="compile_action_grammar.NotNeeded"
+      srcfile="${grammar-folder}/actions.g"
+      targetfile="${grammar-folder}/${antlr-action-output1}"/>
+    <uptodate property="compile_action_grammar.NotNeeded"
+      srcfile="${grammar-folder}/body.g"
+      targetfile="${grammar-folder}/${antlr-action-output2}"/>
+  </target>
+
+  <target name="compile_action_grammar"
+     depends="compile_action_grammar.depends"
+     description="Compile bp.io.core antlr grammar"
+    unless="compile_action_grammar.NotNeeded" >
+
+    <echo >Eclipse home: ${eclipse.home}</echo>
+    <echo >Plugins home: ${plugins-home}</echo>
+  	
+    <antlr target="${grammar-folder}/actions.g" >
+      <classpath>
+  	    <fileset dir="${plugins-home}/plugins" casesensitive="yes">
+  	      <include name="**/antlr.jar" />
+  	    </fileset>
+  	  </classpath>
+    </antlr>
+    <antlr target="${grammar-folder}/body.g" >
+      <classpath>
+  	    <fileset dir="${plugins-home}/plugins" casesensitive="yes">
+  	      <include name="**/antlr.jar" />
+  	    </fileset>
+  	  </classpath>
+    </antlr>
+
+  </target>
+
+
+  <!-- CLEAN TARGETS -->
+
+  <target name="clean_all"
+        description="Clean entire project"
+        depends="clean_classes,clean_sql,clean_schema,clean_antlr_files" >
+
+    <echo>Done cleaning for ${ant.project.name}</echo>
+
+  </target>
+
+  <target name="clean_sql"
+        description="Remove the sql version of the File IO model" >
+
+  <echo>Removing the generated file: ${sql.output} ...</echo>
+  <delete file="sql/${sql.output}" />
+
+  </target>
+
+  <target name="clean_schema"
+          description="Remove the File IO schema file" >
+
+  <echo>Removing the generated file: ${schema.output}</echo>
+  <delete file="sql/${schema.output}" />
+
+  </target>
+
+  <target name="clean_classes"
+        description="Remove compiled class files" >
+
+  <echo>Removing compiled classes ...</echo>
+  <delete verbose="true" dir="bin" />
+
+  </target>
+
+  <target name="clean_antlr_files"
+        description="Remove the files generated by the sql_insert.g and actions.g antlr grammar files" >
+
+   <echo>Removing the files generated by the sql_insert.g and actions.g antlr grammar files ...</echo>
+   <delete verbose="true" >
+     <fileset dir="${grammar-folder}" includes="SqlLexer.java, SqlParser.java,
+     SqlTokenTypes.java, SqlTokenTypes.txt, ActionLexer.java, SignatureLexer.java, ActionParser.java,
+     ActionTokenTypes.java, ActionTokenTypes.txt, BodyLexer.java, BodyParser.java, BodyParserTokenTypes.java,
+     BodyParserTokenTypes.txt" />
+   </delete>
+
+  </target>
+
+
+</project>

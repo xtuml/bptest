@@ -19,6 +19,7 @@ the License.
 
 <project name="model.compare.test" default="all" basedir=".">
 
+<<<<<<< HEAD
 	<property name="development_repository" value= "${XTUML_DEVELOPMENT_REPOSITORY}" />
 	<property name="development_source" value= "${development_repository}/src" />
 	<property name="mcj_path" value="${development_source}/MC-Java" />
@@ -54,6 +55,40 @@ the License.
 				-import ${development_repository}/src/org.xtuml.bp.io.core/sql/file_io_schema.sql
 				-import ${development_repository}/src/org.xtuml.bp.io.mdl/sql/file_io.pei.sql
 				-import ${development_repository}/src/org.xtuml.bp.core/sql/ooaofooa_hierarchy.pei.sql
+=======
+	<import file="../MC-Java/common.xml"/>
+	
+	<property name="chain_util_path" value="../org.xtuml.bp.core" />
+	<property name="sql.output" value="ooaofooa_hierarchy.sql" />
+
+	<target name="all" description="all" depends="create_compare_tests">
+	</target>
+
+	<target name="create_compare_tests.depends">
+		<uptodate property="create_compare_tests.buildNotRequired" targetfile="src/org/xtuml/bp/model/compare/test/ModelComparisonTests.java">
+			<srcfiles dir="../org.xtuml.bp.core/sql/" includes="ooaofooa_hierarchy_schema.sql,ooaofooa_hierarchy.pei.sql" />
+			<srcfiles dir="../org.xtuml.bp.core/sql" includes="ooaofooa.sql" />
+			<srcfiles dir="../org.xtuml.bp.ui.canvas/sql/" includes="ooaofgraphics_hierarchy_schema.sql,ooaofgraphics_hierarchy.pei.sql" />
+			<srcfiles dir="../org.xtuml.bp.ui.canvas/sql" includes="ooaofgraphics.sql" />
+			<srcfiles dir="arc" includes="generate_metamodel_compare_test.arc" />
+		</uptodate>
+	</target>
+
+	<target name="create_compare_tests" description="Generate tests for comparison" depends="create_compare_tests.depends" unless="create_compare_tests.buildNotRequired">
+
+		<exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}">
+			<env key="OS_CACHE_SIZE" value="64000000" />
+			<env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
+			<env key="CHAIN_UTIL_DIR" value="${chain_util_path}" />
+			<env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
+			<arg line="xtumlmc_gen_erate -nopersist
+				-import ${mcj_path}/ooa_schema.sql
+				-import ../org.xtuml.bp.core/sql/ooaofooa_hierarchy_schema.sql
+				-import ../org.xtuml.bp.core/sql/ooaofooa.sql
+				-import ../org.xtuml.bp.io.core/sql/file_io_schema.sql
+				-import ../org.xtuml.bp.io.mdl/sql/file_io.pei.sql
+				-import ../org.xtuml.bp.core/sql/ooaofooa_hierarchy.pei.sql
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
 				-arch arc/generate_metamodel_compare_test.arc" />
 		</exec>
 		<delete file="____file.txt"/>

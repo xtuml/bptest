@@ -2,6 +2,7 @@ drawText(" 1. Wide State", ...)
 drawline(...)
 drawText(" 2. ...", ...)
 drawline(...)
+<<<<<<< HEAD
 drawText(" 3. Final State", ...)
 drawline(...)
 drawText(" 4. Initial State", ...)
@@ -36,3 +37,10 @@ drawText("CDTS_TSC3:", ...)
 drawText("Event", ...)
 drawText("3(EDI 1)", ...)
 drawPolyline(6 omitted points)
+=======
+drawText(" 7. State with Action", ...)
+drawline(...)
+drawText("entry/select many ones related by self->CDTS_...select many BoolIds related by ones->C...for each BoolId in BoolIds  select one assoc related by BoolId->CD...", ...)
+drawPolyline(6 omitted points)
+drawPolyline(4 omitted points)
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

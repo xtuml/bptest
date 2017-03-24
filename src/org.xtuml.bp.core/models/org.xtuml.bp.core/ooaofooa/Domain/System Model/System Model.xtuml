@@ -1,0 +1,582 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("5735d0f8-e286-4832-975e-04887e18a036",
+	'System Model',
+	18,
+	'S_SYS',
+	'A system is described by one or more models, each drawn from different subject matters. Each subject matter model is called a domain.
+-----------
+PEI:true',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("ad61a63e-afc7-4e27-8ca6-119c7c6e7350",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Note that since R28 crosses a model root boundary, this
+// select will return the empty set with the current MC-Java implementation
+
+select many packages related by self->EP_PKG[R1401];
+for each package in packages 
+ unrelate self from package across R1401;
+ package.dispose();
+end for;
+
+select many packages related by self->EP_PKG[R1405];
+for each package in packages 
+ unrelate self from package across R1405;
+ package.dispose();
+end for;
+
+select many globalElements related by self->G_EIS[R9100];
+for each globalElement in globalElements
+  select one pe related by globalElement->PE_PE[R9100];
+  unrelate self from pe across R9100 using globalElement;
+end for;
+
+delete object instance self;
+',
+	1,
+	'',
+	"802d3dd1-b7d0-455a-8bd0-e2e2c988eb42",
+	0);
+INSERT INTO O_TFR
+	VALUES ("802d3dd1-b7d0-455a-8bd0-e2e2c988eb42",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+
+Translate: native',
+	"bc3722c8-5188-4529-8519-cf9eb9816b17",
+	1,
+	'return this;',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO S_DT_PROXY
+	VALUES ("bc3722c8-5188-4529-8519-cf9eb9816b17",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("deaf82a1-9fd7-4833-aeb5-489e1f30c247",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Sys_ID;',
+	1,
+	'',
+	"ad61a63e-afc7-4e27-8ca6-119c7c6e7350",
+	0);
+INSERT INTO O_TFR
+	VALUES ("473f938e-4109-4818-b6ae-4e7213f0fc38",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'newPackage',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'create object instance package of EP_PKG;
+create object instance pe of PE_PE;
+relate pe to package across R8001;
+relate package to self across R1401;
+relate package to self across R1405;
+pe.type = ElementTypeConstants::PACKAGE;
+pe.initialize();
+package.initialize();',
+	1,
+	'',
+	"deaf82a1-9fd7-4833-aeb5-489e1f30c247",
+	0);
+INSERT INTO O_TFR
+	VALUES ("17fcd3bd-c02c-45df-bef3-b5b5a8487e15",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'pastePackage',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any pkg from instances of EP_PKG where (selected.Package_ID == param.id);
+if(not_empty pkg)
+  select one directSystem related by pkg->S_SYS[R1401];
+  if(not_empty directSystem)
+    unrelate pkg from directSystem across R1401;
+  end if;
+  select one system related by pkg->S_SYS[R1405];
+  if(not_empty system)
+    unrelate pkg from system across R1405;
+  end if;
+  relate self to pkg across R1401;
+  relate self to pkg across R1405;
+  // guarantee a unique name for the pasted dt package
+  pkg.Name = ::getUniqueInitialNameInParent(instance:pkg.convertToInstance(),
+  						name:pkg.Name, parent:self.convertToInstance());
+  // association all children with this
+  // system
+  pkg.associateWithSystem(sysID:self.Sys_ID);
+  // for any non local event below this package
+  // remove incomplete ones (those that are not
+  // resolvable)
+  pkg.removeIncompleteSignalEvents();
+end if;',
+	1,
+	'',
+	"473f938e-4109-4818-b6ae-4e7213f0fc38",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("0b0e43be-7b0e-4507-a732-76cbd17492f2",
+	"17fcd3bd-c02c-45df-bef3-b5b5a8487e15",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("982e157c-e0f7-4714-975e-104cf2bc957b",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'getPckgCount',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select many pckgs related by self->EP_PKG[R1401];
+return cardinality pckgs;',
+	1,
+	'',
+	"17fcd3bd-c02c-45df-bef3-b5b5a8487e15",
+	0);
+INSERT INTO O_TFR
+	VALUES ("93374f2a-807c-4d2a-8291-5aa7bba5d203",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'getPckgId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'id = GD::NULL_UNIQUE_ID();
+select many pckgs related by self->EP_PKG[R1401];
+// We''re preincrementing the index
+count = -1;
+for each pckg in pckgs
+  if (not_empty pckg)
+      count = count+1;
+  end if;
+  if (count == param.index)
+      return pckg.Package_ID;  
+  end if;
+end for;
+return id;',
+	1,
+	'',
+	"982e157c-e0f7-4714-975e-104cf2bc957b",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("9b87df72-0e57-49d3-841c-b0035f18d1d5",
+	"93374f2a-807c-4d2a-8291-5aa7bba5d203",
+	'index',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'collectVisibleElementsForName',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// System Model.collectVisibleElementsForName()
+select any originatingPE from instances of PE_PE where
+                            selected.Element_ID == param.originatingContainerID;
+select one originatingComp related by originatingPE->C_C[R8001];
+select one originatingPackage related by originatingPE->EP_PKG[R8001];
+select many pkgs related by self->EP_PKG[R1401];
+for each pkg in pkgs
+  // Don''t revisit a child package that delegated the search upwards
+  if pkg.Package_ID != param.delegatingContainerID
+    select one pe related by pkg->PE_PE[R8001];
+    // Don''t visit pacakges that are private
+    if (pe.Visibility == Visibility::Public or
+	     (param.descending == false and pe.Visibility == Visibility::Protected))
+      pkg.collectVisibleElementsForName(name:param.name, type:param.type,
+                    descending: true,
+                        originatingContainerID: param.originatingContainerID,
+                                          delegatingPkgID:GD::NULL_UNIQUE_ID(),
+                                                         collectGlobally:false);
+    end if;
+  end if;
+end for;
+select any resultSet related by originatingPackage->PE_SRS[R8005] where
+                    selected.Name == param.name and selected.Type == param.type;
+select any compResSet related by originatingComp->PE_CRS[R8007] where
+                    selected.Name == param.name and selected.Type == param.type;
+if not param.descending and self.useGlobals
+  select many globals related by self->G_EIS[R9100]->PE_PE[R9100];
+  for each global in globals
+    global.collectVisibleElementsForName(name:param.name, type:param.type,
+                                             descending: param.descending,
+                        originatingContainerID:param.originatingContainerID,
+                                  delegatingPkgID:param.delegatingContainerID,
+                                                         collectGlobally:false);
+  end for;
+end if;
+if param.type == ElementTypeConstants::PACKAGE
+  select many packages related by self->EP_PKG[R1401];
+  for each package in packages
+    if param.name == "" or package.Name == param.name
+      select one pe related by package->PE_PE[R8001];
+      if(not_empty pe)
+        if(not_empty originatingPackage)
+          create object instance visibility of PE_VIS;
+          relate pe to originatingPackage across R8002 using visibility;
+          relate visibility to resultSet across R8006;
+        elif not_empty originatingComp
+          create object instance visibility of PE_CVS;
+          relate pe to originatingComp across R8004 using visibility;
+          relate visibility to compResSet across R8008;            
+        end if;
+      end if;
+    end if;
+  end for;      
+end if;
+// Continue to search all models?
+if param.descending == false and param.collectGlobally and
+    PREF::getSystemBoolean(systemName:self.Name,
+                     name:"com.mentor.nucleus.bp.ui.project.references") == true
+  select many systems from instances of S_SYS;
+  for each system in systems
+    if system != self and system.useGlobals
+      system.collectVisibleElementsForName(name:param.name, descending: true,
+        type:param.type, originatingContainerID: param.originatingContainerID,
+                                    delegatingContainerID:GD::NULL_UNIQUE_ID(),
+                                                         collectGlobally:false);
+    end if;
+  end for;
+end if;
+',
+	1,
+	'',
+	"93374f2a-807c-4d2a-8291-5aa7bba5d203",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("c5c79983-fde9-4903-8c14-100da7c996e0",
+	"e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("25bf6e7f-2dce-4f8d-a2ca-bb9cf7305255",
+	"e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	'type',
+	"9a52ac80-0dbf-4444-99ce-efd27902d8db",
+	0,
+	'',
+	"c5c79983-fde9-4903-8c14-100da7c996e0",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("9a52ac80-0dbf-4444-99ce-efd27902d8db",
+	"00000000-0000-0000-0000-000000000000",
+	'ElementTypeConstants',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("737e7b91-d730-467d-9b3b-ab3ec562cb8a",
+	"e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	'originatingContainerID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"25bf6e7f-2dce-4f8d-a2ca-bb9cf7305255",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("fd0f52f0-b6e6-4e93-9ce9-13bfc4e522c9",
+	"e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	'delegatingContainerID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"737e7b91-d730-467d-9b3b-ab3ec562cb8a",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("ecaafb4d-1480-455a-9eaf-1b41de913c35",
+	"e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	'descending',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"fd0f52f0-b6e6-4e93-9ce9-13bfc4e522c9",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("ad2f6349-b2c6-454d-a605-168b9339a757",
+	"e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	'collectGlobally',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"ecaafb4d-1480-455a-9eaf-1b41de913c35",
+	'');
+INSERT INTO O_TFR
+	VALUES ("8a249d0d-64d8-4b03-bd4b-92d4e39587b4",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'actionFilter',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'result = false;
+if(param.name == "can")
+  if(param.value == "upgradeToGlobals")
+    result = not self.useGlobals;
+  end if;
+end if;
+return result;',
+	1,
+	'',
+	"e2c6428d-7d15-43f9-b824-8f3cb4606493",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("69f5b6f6-b512-4c67-8d8e-5abd2e4e9264",
+	"8a249d0d-64d8-4b03-bd4b-92d4e39587b4",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("0cda999f-bca6-4e7a-89e0-68117f717df6",
+	"8a249d0d-64d8-4b03-bd4b-92d4e39587b4",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"69f5b6f6-b512-4c67-8d8e-5abd2e4e9264",
+	'');
+INSERT INTO O_TFR
+	VALUES ("bff3e6c9-8f5d-4d7d-9520-ceb5b111569d",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'getCoreTypeId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// System.getCoreTypeId()
+if self.useGlobals
+  select any coreDt related by self->G_EIS[R9100]->PE_PE[R9100]->S_DT[R8001]
+                                              where selected.Name == param.name;
+  if not_empty coreDt
+    return coreDt.DT_ID;
+  end if;
+end if;
+return GD::NULL_UNIQUE_ID();
+',
+	1,
+	'',
+	"8a249d0d-64d8-4b03-bd4b-92d4e39587b4",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("d9113039-dee2-458e-b36a-9754ac8ce150",
+	"bff3e6c9-8f5d-4d7d-9520-ceb5b111569d",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f806d992-50d4-4c47-b377-67f0dd6ff70d",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'collectReferencesForSynchronization',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ *  Call on each root package to collect references
+ */
+select many pkgs related by self->EP_PKG[R1405];
+for each pkg in pkgs
+  pkg.collectReferencesForSynchronization(referenceList:param.referenceList,
+                                                       syncType:param.syncType);
+end for;
+
+',
+	1,
+	'',
+	"bff3e6c9-8f5d-4d7d-9520-ceb5b111569d",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("e1a9bfa1-40ab-491e-adbc-6fb2c4527f61",
+	"f806d992-50d4-4c47-b377-67f0dd6ff70d",
+	'referenceList',
+	"bc3722c8-5188-4529-8519-cf9eb9816b17",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("51e64b8c-b095-40a0-9ef9-fda323434d3b",
+	"f806d992-50d4-4c47-b377-67f0dd6ff70d",
+	'syncType',
+	"f4e80333-d340-4a40-8bc6-49b5e3561daf",
+	0,
+	'',
+	"e1a9bfa1-40ab-491e-adbc-6fb2c4527f61",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f4e80333-d340-4a40-8bc6-49b5e3561daf",
+	"00000000-0000-0000-0000-000000000000",
+	'SynchronizationType',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("840582e7-bd31-466e-aa90-6e9902468c64",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'getGraphicalRootCount',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'//
+// This gets a count of the ooaofooa elements that need GD_MD
+// instances. This works together with S_SYS.getGraphicalRoot() to 
+// recursively get all roots.
+//
+count = 1; // This SystemModel is a graphical root
+select many pkgs related by self->EP_PKG[R1401];
+for each pkg in pkgs
+  count = count + pkg.getGraphicalRootCount();
+end for;
+return count;
+',
+	1,
+	'',
+	"f806d992-50d4-4c47-b377-67f0dd6ff70d",
+	0);
+INSERT INTO O_TFR
+	VALUES ("db03a722-9abe-43e5-ad13-bb2796cf75a9",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	'getGraphicalRoot',
+	'',
+	"bc3722c8-5188-4529-8519-cf9eb9816b17",
+	1,
+	'// This Systemodel is a graphical root. 
+// It is index 0
+i = 0; 
+if (i==param.index)
+  return self.convertToInstance();
+end if;
+select many pkgs related by self->EP_PKG[R1401];
+for each pkg in pkgs
+  id = pkg.getGraphicalRoot(indexToFind:param.index, currentPosition:i);
+  if (id != GD::NULL_INSTANCE()) 
+    return id;
+  end if; 
+  i = i + pkg.getGraphicalRootCount();
+end for;
+return GD::NULL_INSTANCE();
+',
+	1,
+	'',
+	"840582e7-bd31-466e-aa90-6e9902468c64",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("46695358-f4a2-4393-8067-ebcf833c4459",
+	"db03a722-9abe-43e5-ad13-bb2796cf75a9",
+	'index',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("9a4da692-4fa6-494b-80c1-90dc7da16bd7",
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_BATTR
+	VALUES ("9a4da692-4fa6-494b-80c1-90dc7da16bd7",
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_ATTR
+	VALUES ("9a4da692-4fa6-494b-80c1-90dc7da16bd7",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	"00000000-0000-0000-0000-000000000000",
+	'Sys_ID',
+	'',
+	'',
+	'Sys_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a25c1127-0506-4af6-875e-5618dcfd18f1",
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_BATTR
+	VALUES ("a25c1127-0506-4af6-875e-5618dcfd18f1",
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_ATTR
+	VALUES ("a25c1127-0506-4af6-875e-5618dcfd18f1",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	"9a4da692-4fa6-494b-80c1-90dc7da16bd7",
+	'Name',
+	'Full Name: System Name
+The name of the System under analysis.',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("b85d855e-db03-42a8-bafe-e3549ad69758",
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_BATTR
+	VALUES ("b85d855e-db03-42a8-bafe-e3549ad69758",
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_ATTR
+	VALUES ("b85d855e-db03-42a8-bafe-e3549ad69758",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	"a25c1127-0506-4af6-875e-5618dcfd18f1",
+	'useGlobals',
+	'User_Visible:false',
+	'',
+	'useGlobals',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_OIDA
+	VALUES ("9a4da692-4fa6-494b-80c1-90dc7da16bd7",
+	"5735d0f8-e286-4832-975e-04887e18a036",
+	0,
+	'Sys_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO O_ID
+	VALUES (2,
+	"5735d0f8-e286-4832-975e-04887e18a036");
+INSERT INTO PE_PE
+	VALUES ("5735d0f8-e286-4832-975e-04887e18a036",
+	1,
+	"703df30a-ee7e-44ec-a7cf-22d2171bb270",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("703df30a-ee7e-44ec-a7cf-22d2171bb270",
+	"00000000-0000-0000-0000-000000000000",
+	"d9bc5487-4193-4817-be1c-6c3f3339aebf",
+	'Domain',
+	'A domain (S_DOM) consists of one or more subsystems (S_SS) that each contain an information model that abstracts a portion of the data for the domain: classes (O_OBJ), associations (R_REL), etc.  Breaking a domain into subsystems allows the complexity of the domain to be more easily managed: 1) subsystems are components and can be checked out individually allowing parallelism in development of the models and 2) breaking up a domain into smaller units is easier to understand.  A subsystem is composed of classes that tend to cluster, i.e., they have few associations that span subsystem boundaries.  Inter-subsystem associations, communications, and accesses are captured in the Subsystem Relationship Model (SRM), Subsystem Communication Model (SCM), and Subsystem Access Model (SAM) respectively.',
+	1,
+	'../Domain.xtuml');

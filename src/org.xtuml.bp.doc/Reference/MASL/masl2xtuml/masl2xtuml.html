@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../github-pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="masl2xtuml">masl2xtuml</h1>
+<p>This command line tool converts a MASL domain or MASL project into an equivalent xtuml project<br />
+based on parameter settings.</p>
+<h2 id="syntax">Syntax</h2>
+<h3 id="domain-conversion">Domain Conversion</h3>
+<pre><code>masl2xtuml -d &lt;domain source directory(s) ...&gt; [-o &lt;output directory&gt;]</code></pre>
+<h3 id="package-conversion">Package Conversion</h3>
+<pre><code>masl2xtuml -p &lt;project source directory(s) ...&gt; [-o &lt;output directory&gt;]</code></pre>
+<table style="width:88%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-d &lt;domain source directory&gt;</td>
+<td>Specify any relative or absolute directory path to a MASL domain</td>
+</tr>
+<tr class="even">
+<td>-p &lt;project source directory&gt;</td>
+<td>Specify any relative or absolute directory path to a MASL project</td>
+</tr>
+<tr class="odd">
+<td>-o &lt;output directory&gt;</td>
+<td>Optionally specify the target folder to write to</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>The tool is located in the subdirectory <code>&lt;BridgePoint Home&gt;/tools/mc/bin</code></li>
+<li>Output defaults to the current directory</li>
+<li>Progress and error messages are reported to stderr</li>
+<li>A directory is produced containing a single xtUML model file and MASL activity files</li>
+<li>Invoking the tool with missing parameters or syntax errors produces a message indicating proper usage</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<pre><code>./masl2xtuml -d GPS_watch_MASL_files/ -o xtUML_output</code></pre>
+</body>
+</html>

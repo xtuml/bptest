@@ -19,6 +19,7 @@
 .// License for the specific language governing permissions and limitations under
 .// the License.
 .//=======================================================================
+<<<<<<< HEAD
 .invoke xtuml_repo = GET_ENV_VAR( "XTUML_DEVELOPMENT_REPOSITORY" )
 .assign xtuml_repository = xtuml_repo.result
 .if ( xtuml_repository == "" )
@@ -26,6 +27,9 @@
   .exit 100
 .end if
 .include "${xtuml_repository}/src/org.xtuml.bp.core/arc/generate_RGO_resolution_methods.inc"
+=======
+.include "../org.xtuml.bp.core/arc/generate_RGO_resolution_methods.inc"
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
 .function get_cells
   .param Inst_Ref rto
   .param Inst_Ref_Set test_rtos

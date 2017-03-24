@@ -27,6 +27,13 @@ drawRectangle(...)
 drawText("«package»", ...)
 drawText("+SSInSS12", ...)
 drawRectangle(...)
+<<<<<<< HEAD
+=======
+drawRectangle(...)
+drawText("«package»", ...)
+drawText("+Unnamed Package", ...)
+drawRectangle(...)
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
 drawText("+Unnamed Class", ...)
 drawText("{3,UnnamedClass}", ...)
 drawline(...)

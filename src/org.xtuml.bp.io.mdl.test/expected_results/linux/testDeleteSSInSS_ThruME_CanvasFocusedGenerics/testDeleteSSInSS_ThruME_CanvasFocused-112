@@ -5,6 +5,10 @@ drawline(...)
 drawText("key:integer", ...)
 drawText("{I}", ...)
 drawText("name:integer", ...)
+<<<<<<< HEAD
+=======
+drawText("current_state:state<State_...", ...)
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
 drawline(...)
 drawText("testOperation():void", ...)
 drawRectangle(...)

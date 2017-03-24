@@ -8,4 +8,9 @@ drawText("«include»", ...)
 drawPolyline(6 omitted points)
 drawPolyline(10 omitted points)
 drawText("«extend»", ...)
+<<<<<<< HEAD
 drawPolyline(6 omitted points)
+=======
+drawPolyline(6 omitted points)
+drawPolyline(12 omitted points)
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

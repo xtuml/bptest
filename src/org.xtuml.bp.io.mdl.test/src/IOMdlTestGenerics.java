@@ -128,7 +128,7 @@ public class IOMdlTestGenerics extends TestCase {
 	}
 
 	public void doTest() {
-		importModel(TestingUtilities.getExpectedResultsPath() + Ooaofooa.MODELS_DIRNAME + "/");
+		importModel("expected_results/" + Ooaofooa.MODELS_DIRNAME + "/");
 		exportModel(TestingUtilities.getExpectedResultsPath() + Ooaofooa.MODELS_DIRNAME + "/");
 	}
   

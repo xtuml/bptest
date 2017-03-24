@@ -413,9 +413,6 @@ public class BaseTest extends TestCase {
 					// happened yet.  Another plugin doing this is org.eclipse.cdt.core.
 					String stack = entry.getStack();
 					String pluginID = entry.getPluginId();		
-					if(pluginID.equals("org.eclipse.ui.intro")) {
-						continue;
-					}
 					if ((pluginID.equals("org.antlr.eclipse.ui") || pluginID
 							.equals("org.eclipse.cdt.core"))
 							&& stack.contains("ResourceException")
@@ -426,6 +423,12 @@ public class BaseTest extends TestCase {
 					// ignore all warnings, we only care about errors
 					if (entry.getSeverity() == IStatus.WARNING) {
 					    continue;
+					}
+					
+					if(entry.getMessage().contains("Could not load SWT style")) {
+						// ignore as it provides no benefit to our testing
+						// this it ouside of our code and related to OS configuration
+						continue;
 					}
 					
 					msg = prepend + ".log file is not empty";
@@ -512,7 +515,7 @@ public class BaseTest extends TestCase {
 			TestingUtilities.importTestingProjectIntoWorkspace(projectName);
 			project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 					projectName);
-			TestingUtilities.allowJobCompletion();
+			dispatchEvents(0);
 			m_sys = getSystemModel(projectName);
 		}
 		String modelRootId = Ooaofooa.createModelRootId(project, projectName, true);

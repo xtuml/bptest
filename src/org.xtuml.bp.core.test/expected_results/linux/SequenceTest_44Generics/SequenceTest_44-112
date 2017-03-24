@@ -23,5 +23,8 @@ drawText("Unnamed Actor", ...)
 drawPolyline(12 omitted points)
 drawPolyline(12 omitted points)
 drawPolyline(12 omitted points)
+<<<<<<< HEAD
 drawPolyline(12 omitted points)
+=======
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
 drawPolyline(12 omitted points)

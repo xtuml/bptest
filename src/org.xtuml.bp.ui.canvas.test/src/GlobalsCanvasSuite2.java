@@ -61,6 +61,7 @@ import junit.framework.TestSuite;
 	GlobalTestSetupClass.class,
 	GraphicalAnchorTests_0.class,
 	TestReflexiveConnectorCreation.class,
+<<<<<<< HEAD
     GraphicalToolCreationTests.class,
 	GlobalsCanvasTestSuite2.class,
     ConnectorPolicyTests.class,
@@ -81,6 +82,15 @@ import junit.framework.TestSuite;
     InterfaceDrawingTests.class,
 	
 	
+=======
+    ConnectorPolicyTests.class,
+    ConnectorMoveTests_0.class,
+    RectilinearRoutingTests_0.class,
+    RectilinearRoutingTests.class,
+    RectilinearRoutingTests2.class,
+    RectilinearRoutingTests3.class,
+    RectilinearRoutingTests4.class
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
 })
 public class GlobalsCanvasSuite2 extends TestSuite {
 

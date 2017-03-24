@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ERROR: Found another signal under the same interface with a matching signature.
 
 Signature: InterfaceSignalSameSig(integer)
@@ -14,3 +15,6 @@ Element Name: InterfaceSignalSameSig
 Element Path: ModelIntegrityTests::Interface Signal Tests
 
 
+=======
+No issues found.
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

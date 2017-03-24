@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ERROR: Found another operation under the same interface with a matching signature.
 
 Signature: InterfaceOperationSameSig(integer)
@@ -14,3 +15,6 @@ Element Name: InterfaceOperationSameSig
 Element Path: ModelIntegrityTests::Interface Operation Tests
 
 
+=======
+No issues found.
+>>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0
