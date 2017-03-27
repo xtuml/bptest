@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ERROR: Found another operation under the same class with a matching signature.
 
 Signature: OperationSameSig(integer)
@@ -14,7 +13,3 @@ Signature: OperationSameSig(integer)
 Element Name: OperationSameSig
 Element Path: ModelIntegrityTests::Operation Tests::Class::OperationSameSig
 
-
-=======
-No issues found.
->>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

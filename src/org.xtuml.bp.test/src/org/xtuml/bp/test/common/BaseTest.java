@@ -287,7 +287,10 @@ public class BaseTest extends TestCase {
 		 */
 		if (m_workspace_path == null || m_workspace_path.equals(""))
 		{
-			m_workspace_path = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
+			m_workspace_path = System.getenv("WORKSPACE_PATH"); //$NON-NLS-1$
+			if(m_workspace_path == null || m_workspace_path.equals("")) {
+				m_workspace_path = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
+			}
 		}
 		if (m_logfile_path == null || m_logfile_path.equals(""))
 		{
@@ -686,7 +689,18 @@ public class BaseTest extends TestCase {
 			if(!componentFolder.exists()) {
 				componentFolder = findComponentFolder(projectPath.toFile(), systemName, componentName);
 				if(componentFolder == null) {
-					fail("Unable to locate given model: " + componentName);
+					// try locating a project outside of the test location
+					sourceProjectPath = new Path(System.getProperty("XTUML_DEVELOPMENT_REPOSITORY") + "/src"); //$NON-NLS-1$
+					File directory = sourceProjectPath.toFile();
+					// if we are still null check the system environment
+					if (!directory.exists()) {
+						sourceProjectPath = new Path(System.getenv("XTUML_DEVELOPMENT_REPOSITORY") + "/src");
+					}
+					componentFolder = new File(directory, systemName + "/" + Ooaofooa.MODELS_DIRNAME
+							+ "/" + systemName + "/" + componentName);
+					if(!componentFolder.exists()) {
+						fail("Unable to locate given model: " + componentName);
+					}
 				}
 			}
 			

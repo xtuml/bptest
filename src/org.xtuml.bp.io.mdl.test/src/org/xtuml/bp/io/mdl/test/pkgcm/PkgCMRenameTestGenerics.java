@@ -30,6 +30,7 @@ import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Ooaofooa;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 
@@ -73,8 +74,8 @@ public class PkgCMRenameTestGenerics extends RenameTest {
 	protected void setupProjectAndTestModel() throws CoreException {
 		m_sys = getSystemModel(projectName);
 		if (firstTime) {
-			// ensureAvailableAndLoaded(domainName, false,false);
 			loadProject(projectName);
+			BaseTest.dispatchEvents(0);
 			firstTime = false;
 		}
 		project = getProjectHandle(projectName);
@@ -104,6 +105,7 @@ public class PkgCMRenameTestGenerics extends RenameTest {
      */
     @Test
 	public void testRenameDomain_ThruME_CanvasFocused() throws Exception{
+    	BaseTest.dispatchEvents(0);
         performRenameComponentThruMEGenerics("Package",null, EditorTestUtilities.EDITOR_TYPE_CANVAS, false, 2);
     }
     /**

@@ -980,6 +980,7 @@ public class TestUtil
             @Override
             public void run() {
                 sleep(sleep);
+                BaseTest.dispatchEvents(0);
                 waitForRunnable(waitRunnable);
                 FailableRunnable innerRunnable = new FailableRunnable() {
                     @Override

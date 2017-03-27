@@ -26,7 +26,6 @@ Transaction started: shape creation
  Creation of instance of type: ui.canvas.Diagram
   instance of [ui.canvas.Model] RelatedAcross R18 To:  instance of [ui.canvas.Diagram]
   instance of [ui.canvas.Model] RelatedAcross R9 To:  instance of [ui.canvas.ModelSpecification]
-<<<<<<< HEAD
  Attribute 'Ooa_id' of ui.canvas.Model changed ( '00000000-0000-0000-0000-000000000000' -> '69179751-ca94-e2ed-7a3e-0d0b716419ec')
  Attribute 'Printrows' of ui.canvas.Model changed ( '0' -> '1')
  Attribute 'Printcols' of ui.canvas.Model changed ( '0' -> '1')
@@ -45,19 +44,3 @@ Transaction started: shape creation
  Attribute 'Width' of ui.canvas.Graphnode changed ( '0.0' -> '84.0')
  Attribute 'Height' of ui.canvas.Graphnode changed ( '0.0' -> '84.0')
 Transaction Ended: shape creation with delta size: 44
-=======
- Attribute 'Ooa_id' of ui.canvas.Model changed ( '00000000-0000-0000-0000-000000000000' -> '4aef1abd-c838-8183-c53d-6cd0e2fb06f4')
- Attribute 'Printrows' of ui.canvas.Model changed ( '0' -> '1')
- Attribute 'Printcols' of ui.canvas.Model changed ( '0' -> '1')
- Attribute 'Islandscape' of ui.canvas.Model changed ( 'false' -> 'true')
- Attribute 'Zoomfontsize' of ui.canvas.Model changed ( '0' -> '12')
- Attribute 'Zoom' of ui.canvas.Diagram changed ( '0.0' -> '1.0')
- Attribute 'Gridon' of ui.canvas.Model changed ( 'false' -> 'true')
- Attribute 'Represents' of ui.canvas.Model changed ( 'null' -> ' instance of [core.Package]')
- Attribute 'Represents' of ui.canvas.GraphicalElement changed ( 'null' -> ' instance of [core.Package]')
- Attribute 'Ooa_id' of ui.canvas.GraphicalElement changed ( '00000000-0000-0000-0000-000000000000' -> '4aef1abd-c838-8183-c53d-6cd0e2fb06f4')
-  instance of [ui.canvas.ElementSpecification] UN-RelatedAcross R16 To:  instance of [ui.canvas.GraphicalElement]
- Attribute 'Width' of ui.canvas.Graphnode changed ( '0.0' -> '85.0')
- Attribute 'Height' of ui.canvas.Graphnode changed ( '0.0' -> '84.0')
-Transaction Ended: shape creation with delta size: 40
->>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

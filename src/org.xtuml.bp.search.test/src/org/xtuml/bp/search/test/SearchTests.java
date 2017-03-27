@@ -23,8 +23,11 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.SystemModel_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesModel;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.core.ui.preferences.BridgePointPreferences;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.ExplorerUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -63,6 +66,8 @@ public class SearchTests extends BaseTest {
 		});
 
 		CorePlugin.enableParseAllOnResourceChange();
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 
 		TestingUtilities.allowJobCompletion();
 
@@ -164,6 +169,7 @@ public class SearchTests extends BaseTest {
 		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
 				new StructuredSelection(new Object[] { searchClass,
 						searchOperation }));
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
 				true, ISearchPageContainer.SELECTION_SCOPE, "");
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
@@ -205,6 +211,7 @@ public class SearchTests extends BaseTest {
 		BaseTest.dispatchEvents(250);
 		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
 				true, ISearchPageContainer.SELECTED_PROJECTS_SCOPE, "");	
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
 		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchOperation"));
 		ExplorerUtil.getView().setFocus();

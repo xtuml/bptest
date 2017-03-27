@@ -1,12 +1,4 @@
 drawRectangle(...)
-<<<<<<< HEAD
-drawText("+motor", ...)
-drawText("{1,MOT}", ...)
-drawline(...)
-drawText("Unnamed Attribute:Orphaned", ...)
-drawline(...)
-drawText("simulate(start:Orphaned):Or...", ...)
-=======
 drawText("+Engine", ...)
 drawRectangle(...)
 drawRectangle(...)
@@ -63,4 +55,3 @@ drawPolyline(4 omitted points)
 drawText("Transmission", ...)
 drawPolyline(4 omitted points)
 drawText("Brake", ...)
->>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

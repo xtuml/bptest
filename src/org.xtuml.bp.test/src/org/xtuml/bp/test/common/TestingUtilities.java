@@ -81,23 +81,20 @@ import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
 public class TestingUtilities {
 
-	private static IPath sourceDirectory = null;
 	private static boolean archiveFileOptionSet = false; 
 
 	public static IPath getSourceDirectory() {
-		if (sourceDirectory == null) {
-			String sourceDirectoryPath = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
-			if (sourceDirectoryPath == null) {
-				throw new IllegalStateException(
-						"environment variable WORKSPACE_PATH not set"); //$NON-NLS-1$
-			}
-			File directory = new File(sourceDirectoryPath);
-			if (!directory.exists() || !directory.isDirectory()) {
-				throw new IllegalStateException(
-						"Invalid source directory given as WORKSPACE_PATH=" + sourceDirectoryPath); //$NON-NLS-1$
-			}
-			sourceDirectory = new Path(sourceDirectoryPath);
+		IPath sourceDirectory = null;
+		String sourceDirectoryPath = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
+		if (sourceDirectoryPath == null) {
+			throw new IllegalStateException("environment variable WORKSPACE_PATH not set"); //$NON-NLS-1$
 		}
+		File directory = new File(sourceDirectoryPath);
+		if (!directory.exists() || !directory.isDirectory()) {
+			throw new IllegalStateException("Invalid source directory given as WORKSPACE_PATH=" + sourceDirectoryPath); //$NON-NLS-1$
+		}
+		sourceDirectory = new Path(sourceDirectoryPath);
+
 		return sourceDirectory;
 	}
 

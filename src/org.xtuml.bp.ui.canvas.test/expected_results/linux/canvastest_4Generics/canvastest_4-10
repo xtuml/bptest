@@ -1,10 +1,2 @@
-<<<<<<< HEAD
-drawText(" 1. State", ...)
-drawline(...)
 drawPolyline(8 omitted points)
 drawText("No Event Assigned", ...)
-drawPolyline(6 omitted points)
-=======
-drawPolyline(8 omitted points)
-drawText("No Event Assigned", ...)
->>>>>>> refs/remotes/xtuml/9147_Import_unit_tests_for_6.0

@@ -16,6 +16,7 @@ public class GlobalTestSetupClass {
 	public void setUpGlobalSetting() throws CoreException {
 
 		WorkspaceUtil.setAutobuilding(false); // throws CoreException
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION,
 				true);
 

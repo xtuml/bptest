@@ -249,4 +249,5 @@ public class CanvasEditorReloadContentsTest extends CanvasTest
         assertTrue("Drag had no effect", !draggedCenter.equals(oldCenter));
         return oldCenter;
 	}
+ 
 }
