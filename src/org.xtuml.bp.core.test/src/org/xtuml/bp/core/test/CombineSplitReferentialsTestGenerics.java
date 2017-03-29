@@ -136,7 +136,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testNonRefAttr"));
 		Attribute_c uut = Attribute_c.getOneO_ATTROnR102(mc);
 		assertFalse(uut.Actionfilter("can", "combine"));
-		assertFalse(uut.Actionfilter("can", "split"));
+		assertFalse(uut.Actionfilter("can", "split ref"));
 	}
 
 	@Test
@@ -150,7 +150,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c ref_attr = Attribute_c.getOneO_ATTROnR102(mc,
 				new Attribute_by_name_c("attr1"));
 		assertFalse(ref_attr.Actionfilter("can", "combine"));
-		assertFalse(ref_attr.Actionfilter("can", "split"));
+		assertFalse(ref_attr.Actionfilter("can", "split ref"));
 	}
 
 	@Test
@@ -163,7 +163,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c ref_attr = Attribute_c.getOneO_ATTROnR102(mc,
 				new Attribute_by_name_c("attr1"));
 		assertFalse(ref_attr.Actionfilter("can", "combine"));
-		assertFalse(ref_attr.Actionfilter("can", "split"));
+		assertFalse(ref_attr.Actionfilter("can", "split ref"));
 	}
 
 	@Test
@@ -174,7 +174,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr1 = ref_attrs[0];
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertFalse(ref_attr1.Actionfilter("can", "split"));
+		assertFalse(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -191,7 +191,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 				.getCurrentPage();
 		String[] items = page.Combine_withCombo.getItems();
 		assertEquals(1, items.length);
-		assertEquals("attr1 (R9)", items[0]);
+		assertEquals("attr1", items[0]);
 		page.Combine_withCombo.select(0);
 		IWizard w = page.getWizard();
 		w.performFinish();
@@ -208,7 +208,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr1 = ref_attrs[0];
 		assertFalse(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split"));
+		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -244,7 +244,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr1 = ref_attrs[1];
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertFalse(ref_attr1.Actionfilter("can", "split"));
+		assertFalse(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -261,7 +261,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 				.getCurrentPage();
 		String[] items = page.Combine_withCombo.getItems();
 		assertEquals(1, items.length);
-		assertEquals("attr1 (R11)", items[0]);
+		assertEquals("attr1", items[0]);
 		page.Combine_withCombo.select(0);
 		IWizard w = page.getWizard();
 		w.performCancel();
@@ -277,7 +277,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr1 = ref_attrs[0];
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split"));
+		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -312,7 +312,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr1 = ref_attrs[0];
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertFalse(ref_attr1.Actionfilter("can", "split"));
+		assertFalse(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -329,8 +329,8 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 				.getCurrentPage();
 		String[] items = page.Combine_withCombo.getItems();
 		assertEquals(2, items.length);
-		assertEquals("attr1 (R5)", items[0]);
-		assertEquals("attr1 (R20)", items[1]);
+		assertEquals("attr1", items[0]);
+		assertEquals("attr1", items[1]);
 		page.Combine_withCombo.select(0);
 		IWizard w = page.getWizard();
 		w.performFinish();
@@ -338,7 +338,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		performTest("8");
 
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split"));
+		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -353,7 +353,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		page = (CombineWithOnO_ATTRWizardPage1) wd.getCurrentPage();
 		items = page.Combine_withCombo.getItems();
 		assertEquals(1, items.length);
-		assertEquals("attr1 (R20)", items[0]);
+		assertEquals("attr1", items[0]);
 		page.Combine_withCombo.select(0);
 		w = page.getWizard();
 		w.performFinish();
@@ -361,7 +361,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		performTest("9");
 
 		assertFalse(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split"));
+		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -387,7 +387,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		performTest("10");
 
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split"));
+		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -420,7 +420,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr1 = ref_attrs[0];
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split"));
+		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -437,7 +437,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 				.getCurrentPage();
 		String[] items = page.Combine_withCombo.getItems();
 		assertEquals(1, items.length);
-		assertEquals("attr2 (R25) (R26)", items[0]);
+		assertEquals("attr2", items[0]);
 		page.Combine_withCombo.select(0);
 		IWizard w = page.getWizard();
 		w.performFinish();
@@ -454,7 +454,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr2 = ref_attrs[1];
 		assertTrue(ref_attr2.Actionfilter("can", "combine"));
-		assertFalse(ref_attr2.Actionfilter("can", "split"));
+		assertFalse(ref_attr2.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr2);
@@ -471,7 +471,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 				.getCurrentPage();
 		String[] items = page.Combine_withCombo.getItems();
 		assertEquals(1, items.length);
-		assertEquals("attr2 (R27)", items[0]);
+		assertEquals("attr2", items[0]);
 		page.Combine_withCombo.select(0);
 		IWizard w = page.getWizard();
 		w.performFinish();
@@ -513,7 +513,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
 		Attribute_c ref_attr2 = ref_attrs[0];
 		assertFalse(ref_attr2.Actionfilter("can", "combine"));
-		assertTrue(ref_attr2.Actionfilter("can", "split"));
+		assertTrue(ref_attr2.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr2);
@@ -548,6 +548,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
+		generateResults = true;
 		validateOrGenerateResults(ce, generateResults);
 	}
 }

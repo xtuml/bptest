@@ -275,10 +275,14 @@ public class BaseTest extends TestCase {
         
         // Unit tests expect parse errors to show during edit
 		store.setValue(BridgePointPreferencesStore.ENABLE_PARSE_ON_ACTIVITY_EDITS, true);
+		
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.DEFAULT_ACTION_LANGUAGE_DIALECT, 0);
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 	}
 	public void setUp() throws Exception {
 		super.setUp();
-		
 		Ooaofooa.setInUnitTest(true);
 		/*
 		 *	If the workspace path has not been
@@ -416,7 +420,7 @@ public class BaseTest extends TestCase {
 					// happened yet.  Another plugin doing this is org.eclipse.cdt.core.
 					String stack = entry.getStack();
 					String pluginID = entry.getPluginId();		
-					if (!pluginID.contains("org.xtuml") || entry.getSeverity() == IStatus.WARNING) {
+					if (!pluginID.contains("org.xtuml") || entry.getSeverity() == IStatus.WARNING || entry == null) {
 						continue;
 					}
 					
