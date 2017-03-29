@@ -675,15 +675,17 @@ public class GraphicalAnchorTests extends CanvasTest {
 	 */
 	boolean checkResult_dropPointUnchanged(NonRootModelElement source,
 			NonRootModelElement destination) {
+		getActiveEditor().refresh();
+		BaseTest.dispatchEvents(0);
 		ConnectorEditPart testPart = getTestPart(source);
 		PointList points = testPart.getConnectionFigure().getPoints();
 		assertTrue("Expected result point was not present.",
 				resultStartPoint != null);
-		if(!resultStartPoint.equals(points.getFirstPoint())) {
+		if(resultStartPoint.x - points.getFirstPoint().x > 5 && resultStartPoint.y - points.getFirstPoint().y > 5) {
 			return false;
 		}
 		if (resultEndPoint != null) {
-			if (!resultEndPoint.equals(points.getLastPoint())) {
+			if (resultEndPoint.x - points.getLastPoint().x > 5 && resultEndPoint.y - points.getLastPoint().y > 5) {
 				return false;
 			}
 		}

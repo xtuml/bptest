@@ -122,8 +122,6 @@ public class RectilinearRoutingTests extends CanvasTest {
 						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 								.getActivePage().getActivePartReference());
 		fActiveEditor.getSite().getShell().setSize(1280, 1024);
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
 	}
 
 	@After
@@ -242,7 +240,7 @@ public class RectilinearRoutingTests extends CanvasTest {
 						start.y = ((PolylineConnection) testElement
 								.getConnectionFigure().getTargetAnchor()
 								.getOwner()).getPoints().getBounds().y;
-						end.y = start.y - 100;
+						end.y = start.y - 50;
 					}			
 				}
 			}
@@ -330,11 +328,11 @@ public class RectilinearRoutingTests extends CanvasTest {
 					aPoint = ((ConnectorEditPart) otherTerminal)
 							.getConnectionFigure().getPoints().getFirstPoint()
 							.getCopy();
-					aPoint.y = aPoint.y - 200;
+					aPoint.y = aPoint.y - 100;
 				} else {
 					aPoint = ((AbstractGraphicalEditPart) otherTerminal)
 							.getFigure().getBounds().getTop();
-					aPoint.y = aPoint.y - 200;
+					aPoint.y = aPoint.y - 100;
 				}
 			} else if (getName().contains("D5")) {
 				// from the south
@@ -342,11 +340,11 @@ public class RectilinearRoutingTests extends CanvasTest {
 					aPoint = ((ConnectorEditPart) otherTerminal)
 							.getConnectionFigure().getPoints().getLastPoint()
 							.getCopy();
-					aPoint.y = aPoint.y + 150;
+					aPoint.y = aPoint.y + 100;
 				} else {
 					aPoint = ((AbstractGraphicalEditPart) otherTerminal)
 							.getFigure().getBounds().getBottom();
-					aPoint.y = aPoint.y + 200;
+					aPoint.y = aPoint.y + 100;
 				}
 			}
 		}
@@ -366,11 +364,11 @@ public class RectilinearRoutingTests extends CanvasTest {
 					bPoint = ((ConnectorEditPart) aTerminal)
 							.getConnectionFigure().getPoints().getFirstPoint()
 							.getCopy();
-					bPoint.y = bPoint.y - 200;
+					bPoint.y = bPoint.y - 100;
 				} else {
 					bPoint = ((AbstractGraphicalEditPart) aTerminal)
 							.getFigure().getBounds().getTop();
-					bPoint.y = bPoint.y - 200;
+					bPoint.y = bPoint.y - 100;
 				}
 			} else if (getName().contains("D5")) {
 				// from the south
@@ -378,11 +376,11 @@ public class RectilinearRoutingTests extends CanvasTest {
 					bPoint = ((ConnectorEditPart) aTerminal)
 							.getConnectionFigure().getPoints().getLastPoint()
 							.getCopy();
-					bPoint.y = bPoint.y + 150;
+					bPoint.y = bPoint.y + 100;
 				} else {
 					bPoint = ((AbstractGraphicalEditPart) aTerminal)
 							.getFigure().getBounds().getBottom();
-					bPoint.y = bPoint.y + 200;
+					bPoint.y = bPoint.y + 100;
 				}
 			}
 		}
@@ -541,6 +539,10 @@ public class RectilinearRoutingTests extends CanvasTest {
 			terminal = (AbstractGraphicalEditPart) terminals.get(1);
 		}
 		org.eclipse.draw2d.geometry.Rectangle terminalBounds = terminal.getFigure().getBounds().getCopy();
+		if(terminal.getFigure() instanceof Connection) {
+			terminalBounds = ((Connection) terminal.getFigure()).getPoints().getBounds().getCopy();
+		}
+		
 		testElement.getConnectionFigure().translateToAbsolute(terminalBounds);
 		// for C1D1, connectors will have been created
 		// already

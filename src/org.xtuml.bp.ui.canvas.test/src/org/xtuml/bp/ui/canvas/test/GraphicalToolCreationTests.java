@@ -117,6 +117,7 @@ public class GraphicalToolCreationTests extends BaseTest {
 			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		}
 		checkDialogComplete = false;
+		BaseTest.dispatchEvents(0);
 		Association_c[] associations = Association_c
 				.getManyR_RELsOnR8001(PackageableElement_c
 						.getManyPE_PEsOnR8000(testPackage));

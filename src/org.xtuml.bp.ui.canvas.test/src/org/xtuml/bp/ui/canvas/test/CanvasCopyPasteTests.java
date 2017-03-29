@@ -181,6 +181,8 @@ public class CanvasCopyPasteTests extends CanvasTest {
 		CanvasTestUtilities.doMousePress(600, 600);
 		CanvasTestUtilities.doMouseRelease(600, 600);
 		pasteClipboardElements(ce);
+		BaseTest.dispatchEvents(0);
+		BaseTest.dispatchEvents(0);
 		validateOrGenerateResults(ce,generateResults);		
 	}
 	
