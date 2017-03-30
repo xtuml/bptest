@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.ui.properties.test" default="all" basedir=".">
 	
-  <property name="development_repository" value= "${XTUML_DEVELOPMENT_REPOSITORY}" />
-  <property name="development_source" value= "${development_repository}/src" />
-  <property name="mcj_path" value="${development_source}/MC-Java" />
   <import file="${mcj_path}/common.xml"/>
 
   	
@@ -21,8 +18,8 @@
 
   <property environment="env"/>
 
-  <property name="core_sql_dir" value="${development_repository}/src/org.xtuml.bp.core/sql" />
-  <property name="chain_util_path" value="${development_repository}/src/org.xtuml.bp.core"/>
+  <property name="core_sql_dir" value="${mcj_path}/../org.xtuml.bp.core/sql" />
+  <property name="chain_util_path" value="${mcj_path}/../org.xtuml.bp.core"/>
 
   <property name="ooaofooa_schema.output" value="ooaofooa_schema.sql" />
 
@@ -49,7 +46,7 @@
   <touch file="sql/${ooaofooa_schema.output}" />
   </target>
 
-  <property name="canvas_sql_dir" value="${development_repository}/src/org.xtuml.bp.ui.canvas/sql" />
+  <property name="canvas_sql_dir" value="${mcj_path}/../org.xtuml.bp.ui.canvas/sql" />
   <property name="ooaofgraphics_schema.output" value="ooaofgraphics_schema.sql" />
 
   <target name="ooaofgraphics_schema.depends" >
@@ -160,7 +157,7 @@
             unless="sql.buildNotNeeded" >
       <echo >Generating ${sql.output} ...</echo>
     <copy todir="models/org.xtuml.bp.ui.properties.test/Datatypes/">
-    	<fileset dir="${development_repository}/src/org.xtuml.bp.pkg/globals"><filename name="Globals.xtuml"/></fileset>   	
+    	<fileset dir="${mcj_path}/../org.xtuml.bp.pkg/globals"><filename name="Globals.xtuml"/></fileset>   	
     </copy>
     <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <arg line="xtumlmc_cleanse_for_BridgePoint
@@ -212,7 +209,7 @@
         description="Format the generated java source" >
     <taskdef name="PTCodeFormat" classname="PTCodeFormatterTask" >
         <classpath>
-            <pathelement path="${development_repository}/src/org.xtuml.bp.core/tools/" />
+            <pathelement path="${mcj_path}/../org.xtuml.bp.core/tools/" />
             <fileset dir="${plugins-home}/plugins" casesensitive="yes">
                 <include name="**/org.eclipse.text_*.jar" />
                 <include name="**/org.eclipse.ui_*.jar" />

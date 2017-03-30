@@ -18,17 +18,16 @@
   .print "\nERROR: Environment variable PTC_MC_ARC_DIR not set."
   .exit 100
 .end if
-.invoke xtuml_repo = GET_ENV_VAR( "XTUML_DEVELOPMENT_REPOSITORY" )
-.assign xtuml_repository = xtuml_repo.result
-.if ( xtuml_repository == "" )
-  .print "\nERROR: Environment variable XTUML_DEVELOPMENT_REPOSITORY not set."
+.invoke arc_mcj = GET_ENV_VAR( "mcj_path" )
+.assign mcj_path = arc_mcj.result
+.if ( mcj_path == "" )
+  .print "\nERROR: Environment variable mcj_path not set."
   .exit 100
 .end if
-
 .//
 .include "${mc_archetypes}/arch_utils.inc"
-.include "${xtuml_repository}/src/org.xtuml.bp.core/arc/cme_names.inc"
-.include "${xtuml_repository}/src/org.xtuml.bp.core/arc/parse_chain.inc"
+.include "${mcj_path}/../org.xtuml.bp.core/arc/cme_names.inc"
+.include "${mcj_path}/../org.xtuml.bp.core/arc/parse_chain.inc"
 .//
 .//=====================================================================
 .//
