@@ -38,8 +38,6 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.ui.CombineWithOnO_ATTRAction;
 import org.xtuml.bp.core.ui.CombineWithOnO_ATTRWizardPage1;
 import org.xtuml.bp.core.ui.Selection;
-import org.xtuml.bp.core.ui.SplitOnO_ATTRAction;
-import org.xtuml.bp.core.ui.SplitOnO_ATTRWizardPage1;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Cl_c;
@@ -86,16 +84,10 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 			testClassWithOneReferentialAttribute();
 			testReferentialAttributesWithDiffBaseTypes();
 			testTwoReferentialAttributesWithSameBaseTypes();
-			testSelectCombinedReferentialAttributes();
 			testTwoReferentialAttributesSameBaseTypesOneDifferent();
-			testTwoCombinedReferentials();
 			testThreeReferentials();
 			testCombineTwoCombinedRefs();
 			testCombineRefWithIDRef();
-			testSplitNameLoopGood();
-			testSplitNameLoopBad();
-			testSplitPrefixLoopGood();
-			testSplitPrefixLoopBad();
 		} catch (Exception e) {
 			System.out.println("Exception encountered by test result creator: "
 					+ e);
@@ -201,41 +193,6 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 	}
 
 	@Test
-	public void testSelectCombinedReferentialAttributes() {
-		openTestPKGDiagram("TestCombineSplitReferentials");
-		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
-				new ModelClass_by_name_c("testTwoRefAttr"));
-		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
-		Attribute_c ref_attr1 = ref_attrs[0];
-		assertFalse(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
-
-		Cl_c.Clearselection();
-		selection.addToSelection(ref_attr1);
-
-		Action a = new Action() {
-		};
-		SplitOnO_ATTRAction sooa = new SplitOnO_ATTRAction();
-		sooa.setActivePart(a, PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		IStructuredSelection structuredSelection = (IStructuredSelection) selection
-				.getSelection();
-		WizardDialog wd = sooa.O_ATTR_Split(structuredSelection);
-		SplitOnO_ATTRWizardPage1 page = (SplitOnO_ATTRWizardPage1) wd
-				.getCurrentPage();
-		String[] items = page.Split_fromCombo.getItems();
-		assertEquals(2, items.length);
-		assertEquals("e.attr1(R8)", items[0]);
-		assertEquals("testOneRefAttr.attr1(R9)", items[1]);
-		page.Split_fromCombo.select(0);
-		IWizard w = page.getWizard();
-		w.performFinish();
-		wd.close();
-		performTest("5");
-
-	}
-
-	@Test
 	public void testTwoReferentialAttributesSameBaseTypesOneDifferent() {
 		openTestPKGDiagram("TestCombineSplitReferentials");
 		ModelClass_c mc = ModelClass_c
@@ -267,41 +224,6 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		w.performCancel();
 		wd.close();
 		performTest("6");
-	}
-
-	@Test
-	public void testTwoCombinedReferentials() {
-		openTestPKGDiagram("TestCombineSplitReferentials");
-		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
-				new ModelClass_by_name_c("testTwoCombinedRefAttrs"));
-		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
-		Attribute_c ref_attr1 = ref_attrs[0];
-		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
-
-		Cl_c.Clearselection();
-		selection.addToSelection(ref_attr1);
-
-		Action a = new Action() {
-		};
-		SplitOnO_ATTRAction sooa = new SplitOnO_ATTRAction();
-		sooa.setActivePart(a, PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		IStructuredSelection structuredSelection = (IStructuredSelection) selection
-				.getSelection();
-		WizardDialog wd = sooa.O_ATTR_Split(structuredSelection);
-		SplitOnO_ATTRWizardPage1 page = (SplitOnO_ATTRWizardPage1) wd
-				.getCurrentPage();
-		String[] items = page.Split_fromCombo.getItems();
-		assertEquals(2, items.length);
-		assertEquals("f.attr2(R18)", items[0]);
-		assertEquals("testNonRefAttr.attr2(R19)", items[1]);
-		page.Split_fromCombo.select(0);
-		IWizard w = page.getWizard();
-		w.performCancel();
-		wd.close();
-		performTest("7");
-
 	}
 
 	@Test
@@ -338,7 +260,6 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		performTest("8");
 
 		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
 
 		Cl_c.Clearselection();
 		selection.addToSelection(ref_attr1);
@@ -361,54 +282,6 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		performTest("9");
 
 		assertFalse(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
-
-		Cl_c.Clearselection();
-		selection.addToSelection(ref_attr1);
-
-		a = new Action() {
-		};
-		SplitOnO_ATTRAction sooa = new SplitOnO_ATTRAction();
-		sooa.setActivePart(a, PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		structuredSelection = (IStructuredSelection) selection.getSelection();
-		wd = sooa.O_ATTR_Split(structuredSelection);
-		SplitOnO_ATTRWizardPage1 pg = (SplitOnO_ATTRWizardPage1) wd
-				.getCurrentPage();
-		items = pg.Split_fromCombo.getItems();
-		assertEquals(3, items.length);
-		assertEquals("e.attr1(R7)", items[0]);
-		assertEquals("testOneRefAttr.attr1(R5)", items[1]);
-		assertEquals("a.attr1(R20)", items[2]);
-		pg.Split_fromCombo.select(0);
-		w = pg.getWizard();
-		w.performFinish();
-
-		performTest("10");
-
-		assertTrue(ref_attr1.Actionfilter("can", "combine"));
-		assertTrue(ref_attr1.Actionfilter("can", "split ref"));
-
-		Cl_c.Clearselection();
-		selection.addToSelection(ref_attr1);
-
-		a = new Action() {
-		};
-		sooa = new SplitOnO_ATTRAction();
-		sooa.setActivePart(a, PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		structuredSelection = (IStructuredSelection) selection.getSelection();
-		wd = sooa.O_ATTR_Split(structuredSelection);
-		pg = (SplitOnO_ATTRWizardPage1) wd.getCurrentPage();
-		items = pg.Split_fromCombo.getItems();
-		assertEquals(2, items.length);
-		assertEquals("testOneRefAttr.attr1(R5)", items[0]);
-		assertEquals("a.attr1(R20)", items[1]);
-		pg.Split_fromCombo.select(0);
-		w = pg.getWizard();
-		w.performFinish();
-
-		performTest("11");
 
 	}
 
@@ -477,70 +350,6 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		w.performFinish();
 		wd.close();
 		performTest("13");
-	}
-
-	@Test
-	public void testSplitNameLoopGood() {
-		testSplitLoop("testSplitNameLoopGood", new String[]{
-				"i1051-name.id(R29)", "testSplitNameLoopGood.id(R30)"}, 1, "14");
-	}
-
-	@Test
-	public void testSplitNameLoopBad() {
-		testSplitLoop("testSplitNameLoopBad", new String[]{
-				"i1051-name.id(R31)", "testSplitNameLoopBad.id(R32)"}, 0, "15");
-	}
-
-	@Test
-	public void testSplitPrefixLoopGood() {
-		testSplitLoop("testSplitPrefixLoopGood", new String[]{
-				"i1051-prefix.prefix_root(R33)",
-				"testSplitPrefixLoopGood.prefix_local(R34)"}, 1, "16");
-	}
-
-	@Test
-	public void testSplitPrefixLoopBad() {
-		testSplitLoop("testSplitPrefixLoopBad", new String[]{
-				"i1051-prefix.prefix_root(R35)",
-				"testSplitPrefixLoopBad.prefix_local(R36)"}, 0, "17");
-	}
-
-	public void testSplitLoop(String className, String[] itemValues,
-			int testItem, String testNum) {
-		openTestPKGDiagram("TestCombineSplitReferentials");
-		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
-				new ModelClass_by_name_c(className));
-		Attribute_c[] ref_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
-		Attribute_c ref_attr2 = ref_attrs[0];
-		assertFalse(ref_attr2.Actionfilter("can", "combine"));
-		assertTrue(ref_attr2.Actionfilter("can", "split ref"));
-
-		Cl_c.Clearselection();
-		selection.addToSelection(ref_attr2);
-
-		Action a = new Action() {
-		};
-		SplitOnO_ATTRAction sooa = new SplitOnO_ATTRAction();
-		sooa.setActivePart(a, PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		IStructuredSelection structuredSelection = (IStructuredSelection) selection
-				.getSelection();
-		WizardDialog wd = sooa.O_ATTR_Split(structuredSelection);
-		SplitOnO_ATTRWizardPage1 pg = (SplitOnO_ATTRWizardPage1) wd
-				.getCurrentPage();
-		String[] items = pg.Split_fromCombo.getItems();
-		assertEquals(2, items.length);
-		assertEquals(itemValues[0], items[0]);
-		assertEquals(itemValues[1], items[1]);
-		pg.Split_fromCombo.select(testItem);
-		pg.updateSelectedSplit_from();
-		IWizard w = pg.getWizard();
-		w.performFinish();
-		wd.close();
-		Attribute_c[] post_attrs = Attribute_c.getManyO_ATTRsOnR102(mc);
-		assertEquals(2, post_attrs.length);
-
-		performTest(testNum);
 	}
 
 	private void performTest(String test_num) {
