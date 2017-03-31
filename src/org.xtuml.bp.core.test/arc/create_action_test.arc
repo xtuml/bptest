@@ -294,13 +294,7 @@
         assertNotNull(t1);
   .assign oldName = "Old_Name";
   .assign newName = "New Name";
-  .if (((action.Key_Lett == "S_EDT")) or (action.Key_Lett == "S_SDT"))
-        DataType_c t2 = DataType_c.getOneS_DTOnR17(t1);
-        t2.setName("${oldName}");
-        TestUtil.dismissDialog(500);
-        updateTreeItem( t1, "${newName}", ${useFocus} );
-        assertEquals("${oldName}", t2.getName() );
-  .elif(action.Key_Lett == "S_UDT")
+  .if ((((action.Key_Lett == "S_EDT")) or (action.Key_Lett == "S_SDT")) or (action.Key_Lett == "S_UDT"))
         t1.setName("${oldName}");
 
         TestUtil.dismissDialog(500);

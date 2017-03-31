@@ -455,7 +455,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdToRefForm"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new"));
-		UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		UUID expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -498,7 +498,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdToLink"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_one_id"));
-		UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		UUID expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -533,7 +533,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 		assertTrue(oth_attr.Actionfilter("id", "some"));
 		new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_oth_id"));
-		expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -575,7 +575,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdSub"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_id"));
-		UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		UUID expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
