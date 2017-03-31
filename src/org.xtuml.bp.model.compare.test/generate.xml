@@ -19,7 +19,7 @@ the License.
 
 <project name="model.compare.test" default="all" basedir=".">
 
-	<import file="../MC-Java/common.xml"/>
+	<import file="../../../bridgepoint/src/MC-Java/common.xml"/>
 	
 	<property name="chain_util_path" value="../org.xtuml.bp.core" />
 	<property name="sql.output" value="ooaofooa_hierarchy.sql" />

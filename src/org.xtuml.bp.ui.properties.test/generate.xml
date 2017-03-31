@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.ui.properties.test" default="all" basedir=".">
 	
-  <import file="../MC-Java/common.xml"/>
+  <import file="../../../bridgepoint/src/MC-Java/common.xml"/>
   	
   <target name="all"
           description="Generate UI Properties Test classes"
