@@ -59,6 +59,15 @@
 
 					<executions>
 						<execution>
+							<id>WorkspaceSetupTestSuite</id>
+							<configuration>
+								<testSuite>org.xtuml.bp.core.test</testSuite>
+								<testClass>WorkspaceSetupTestSuite</testClass>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+							</configuration>
+						</execution>
+
+						<execution>
 							<id>ExistingProjectsTestSuite</id>
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
@@ -84,16 +93,7 @@
 								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
-						
-						<execution>
-							<id>WorkspaceSetupTestSuite</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.core.test</testSuite>
-								<testClass>WorkspaceSetupTestSuite</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-						
+												
 						<execution>
 							<id>CoreGlobalsTestSuite2Generics</id>
 							<configuration>

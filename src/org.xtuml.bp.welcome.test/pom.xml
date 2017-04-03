@@ -15,6 +15,7 @@
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>
+<!-- disabled Disabled for now as it requires user interaction
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -27,5 +28,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+end disabled -->
 	</build>
 </project>
