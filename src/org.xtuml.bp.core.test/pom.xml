@@ -55,7 +55,7 @@
 				<configuration>
 					<testSuite>org.xtuml.bp.core.test</testSuite>
 					<testClass>CoreGlobalsTestSuiteGenerics</testClass>
-					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 
 					<executions>
 						<execution>
@@ -63,7 +63,7 @@
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
 								<testClass>WorkspaceSetupTestSuite</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 
@@ -72,7 +72,7 @@
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
 								<testClass>ExistingProjectsTestSuite</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 						
@@ -81,7 +81,7 @@
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
 								<testClass>org.xtuml.bp.core.test.rtomove.RTOMoveTestsTestSuite</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 						
@@ -90,7 +90,7 @@
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
 								<testClass>SystemLevelGlobalsTestSuite</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 												
@@ -99,7 +99,7 @@
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
 								<testClass>CoreGlobalsTestSuite2Generics</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 						
@@ -108,7 +108,7 @@
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
 								<testClass>org.xtuml.bp.core.test.ConsistencyTest</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 						
@@ -117,7 +117,7 @@
 							<configuration>
 								<testSuite>org.xtuml.bp.core.test</testSuite>
 								<testClass>TestVisibilityInElementChooserSuite</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 					</executions>

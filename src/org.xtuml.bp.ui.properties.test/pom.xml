@@ -53,7 +53,7 @@
 				<configuration>
 					<testSuite>org.xtuml.bp.ui.properties.test</testSuite>
 					<testClass>PropertiesGlobalsTestSuite</testClass>
-					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/properties/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/properties/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 				</configuration>
 			</plugin>
 		</plugins>

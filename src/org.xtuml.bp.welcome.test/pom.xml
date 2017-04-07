@@ -24,7 +24,7 @@
 				<configuration>
 					<testSuite>org.xtuml.bp.welcome.test</testSuite>
 					<testClass>org.xtuml.bp.welcome.test.WelcomeTestSuite</testClass>
-					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/welcome/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/welcome/.metadata/.log -Dfile.encoding=UTF-8</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
