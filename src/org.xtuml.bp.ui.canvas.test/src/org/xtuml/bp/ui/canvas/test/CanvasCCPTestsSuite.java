@@ -25,6 +25,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.xtuml.bp.core.CorePlugin;
+import org.xtuml.bp.core.common.BridgePointPreferencesModel;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
@@ -47,6 +50,8 @@ public class CanvasCCPTestsSuite extends BaseTest {
 
 	@Test
 	public void testCanvasCCPTestSuite() {
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 		assert(true);
 	}
 

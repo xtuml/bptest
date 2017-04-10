@@ -31,6 +31,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,6 +42,7 @@ import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionManager;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
@@ -150,6 +152,7 @@ public class RenameInvolvingResourceTestGenerics extends CoreTest {
 				modelRoot, new Package_by_name_c("odmsy"))
 
 		);
+		BaseTest.dispatchEvents(0);
 		GraphicalEditor reOpenedEditor = CanvasTestUtils
 				.getCanvasEditor(testModelName);
 
@@ -244,8 +247,7 @@ public class RenameInvolvingResourceTestGenerics extends CoreTest {
 		}
 
 		// wait for the changes to finish
-		Display d = Display.getCurrent();
-		while (d.readAndDispatch());
+		BaseTest.dispatchEvents(0);
 
 		verifyProjectFiles(systemName);
 

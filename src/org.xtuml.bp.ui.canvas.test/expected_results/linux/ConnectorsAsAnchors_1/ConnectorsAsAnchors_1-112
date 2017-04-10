@@ -1,5 +1,5 @@
 drawRectangle(...)
-drawText("testInst : Informal ...", ...)
+drawText("testInst : Infor...", ...)
 drawline(...)
 drawRectangle(...)
 drawText("Informal Class", ...)

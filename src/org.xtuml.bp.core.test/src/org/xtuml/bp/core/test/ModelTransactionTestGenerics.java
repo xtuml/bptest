@@ -94,7 +94,7 @@ public class ModelTransactionTestGenerics extends BaseTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-
+		BaseTest.dispatchEvents(0);
 		if (!initialized) {
 			loadProject("testTransaction");
 			initialized = true;

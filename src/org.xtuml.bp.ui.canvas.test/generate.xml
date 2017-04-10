@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.ui.canvas.test" default="all" basedir=".">
 	
-	<import file="../MC-Java/common.xml"/>
+	<import file="${mcj_path}/common.xml"/>
 	
 	<property name="plugins-home" value="${ant.home}/../.."/>
 
@@ -13,15 +13,15 @@
 	</target>
 	<target name="instrument_for_jcoverage" description="Instrument the classes to produce JCoverage data">
 		<taskdef classpath="jcoverage.jar" resource="tasks.properties"/>
-		<instrument todir="../org.xtuml.bp.ui.canvas/coverage">
-			<fileset dir="../org.xtuml.bp.ui.canvas/bin">
+		<instrument todir="${mcj_path}/../org.xtuml.bp.ui.canvas/coverage">
+			<fileset dir="${mcj_path}/../org.xtuml.bp.ui.canvas/bin">
 				<include name="**/*.class"/>
 			</fileset>
 		</instrument>
 	</target>
 
 	<target name="coverage">
-		<report srcdir="../org.xtuml.bp.ui.canvas/src" destdir="coverage"/>
+		<report srcdir="${mcj_path}/../org.xtuml.bp.ui.canvas/src" destdir="coverage"/>
 	</target>
 
 	<target name="test_gen"
@@ -31,7 +31,7 @@
 	        <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
 			<arg line="xtumlmc_gen_erate -nopersist
               	-import ../${mcj_path}/ooa_schema.sql
-              	-import ../../org.xtuml.bp.ui.canvas/sql/ooaofgraphics.sql
+              	-import ../${mcj_path}/../org.xtuml.bp.ui.canvas/sql/ooaofgraphics.sql
               	-arch ../arc/gen_test_matrix.arc"/>
 		</exec>
 		<delete file="sql/____file.txt" />
@@ -44,12 +44,12 @@
 			<env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
 			<arg line="xtumlmc_gen_erate -nopersist
 			    -import ../${mcj_path}/ooa_schema.sql
-			    -import ../../org.xtuml.bp.ui.canvas/sql/ooaofgraphics.sql
+			    -import ../${mcj_path}/../org.xtuml.bp.ui.canvas/sql/ooaofgraphics.sql
 			    -arch ../arc/gen_test_skel.arc"/>
 		</exec>
 		<delete file="sql/____file.txt" />
 	</target>
-	<property name="sql.input" value="../org.xtuml.bp.ui.canvas/models/org.xtuml.bp.ui.canvas/ooaofgraphics" />
+	<property name="sql.input" value="${mcj_path}/../org.xtuml.bp.ui.canvas/models/org.xtuml.bp.ui.canvas/ooaofgraphics" />
 	<property name="sql.output" value="ooaofgraphics.sql" />
 
 	<property name="subsystems_to_remove" value="ACT_ V_ E_ GD_ CT_ TS_ DIM_ STY_" />
@@ -118,7 +118,7 @@
 	<target name="format_java" description="Format the generated java source">
 		<taskdef name="PTCodeFormat" classname="PTCodeFormatterTask">
 			<classpath>
-				<pathelement path="../org.xtuml.bp.core/tools/" />
+				<pathelement path="${mcj_path}/../org.xtuml.bp.core/tools/" />
 				<fileset dir="${plugins-home}/plugins" casesensitive="yes">
 					<include name="**/org.eclipse.text_*.jar" />
 					<include name="**/org.eclipse.ui_*.jar" />

@@ -1,7 +1,7 @@
 drawRectangle(...)
 drawRectangle(...)
 drawText("«package»", ...)
-drawText("-CopyPasteTestModel", ...)
+drawText("-CopyPasteTestMo...", ...)
 drawRectangle(...)
 drawRectangle(...)
 drawRectangle(...)

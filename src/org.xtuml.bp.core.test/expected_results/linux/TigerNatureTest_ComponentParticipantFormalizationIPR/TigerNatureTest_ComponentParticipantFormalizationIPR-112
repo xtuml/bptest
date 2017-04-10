@@ -1,5 +1,5 @@
 drawRectangle(...)
-drawText("...ackage-1::referenced", ...)
+drawText("...Package-1::re...", ...)
 drawRectangle(...)
 drawRectangle(...)
 drawRectangle(...)

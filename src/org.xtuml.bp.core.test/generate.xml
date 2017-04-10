@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.core.test" default="all" basedir=".">
 
-  <import file="../MC-Java/common.xml"/>
+  <import file="${mcj_path}/common.xml"/>
 
   <target name="all" description="Generate all code for this project" depends="dispose_test,action_test,delete_test,formalize_test,context_menu_tests,copy_paste_tests, rto_move_tests, consistency_all">
   </target>
@@ -21,7 +21,7 @@
 
   <target name="dispose_test.depends">
     <uptodate property="dispose_test.buildNotNeeded" targetfile="${dispose_test.output}">
-      <srcfiles dir="../org.xtuml.bp.core/sql" includes="ooaofooa.sql" />
+      <srcfiles dir="${mcj_path}/../org.xtuml.bp.core/sql" includes="ooaofooa.sql" />
       <srcfiles dir="arc" includes="create_dispose_test.arc" />
       <srcfiles dir="${mcj_path}" includes="ooa_schema.sql,arch_utils.inc" />
     </uptodate>
@@ -34,7 +34,7 @@
       <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
       <arg line="xtumlmc_gen_erate -nopersist
         -import ${mcj_path}/ooa_schema.sql
-        -import ../org.xtuml.bp.core/sql/ooaofooa.sql
+        -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
         -arch arc/create_dispose_test.arc" />
     </exec>
     <delete file="____file.txt" />
@@ -48,9 +48,9 @@
 
   <target name="action_test.depends">
     <uptodate property="action_test.buildNotNeeded" targetfile="${action_test.output}">
-      <srcfiles dir="../org.xtuml.bp.core/sql" includes="ooaofooa.sql" />
-      <srcfiles dir="../org.xtuml.bp.core/sql" includes="${action_test.input},context_menu_schema.sql" />
-      <srcfiles dir="../org.xtuml.bp.core/arc" includes="cmd_names.inc" />
+      <srcfiles dir="${mcj_path}/../org.xtuml.bp.core/sql" includes="ooaofooa.sql" />
+      <srcfiles dir="${mcj_path}/../org.xtuml.bp.core/sql" includes="${action_test.input},context_menu_schema.sql" />
+      <srcfiles dir="${mcj_path}/../org.xtuml.bp.core/arc" includes="cmd_names.inc" />
       <srcfiles dir="arc" includes="create_action_test.arc" />
       <srcfiles dir="${mcj_path}" includes="ooa_schema.sql,arch_utils.inc" />
     </uptodate>
@@ -60,13 +60,14 @@
     <echo>Generating ${action_test.output} ...</echo>
 
       <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
+      <env key="mcj_path" value="${mcj_path}" />
       <env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
       <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
       <arg line="xtumlmc_gen_erate -nopersist
         -import ${mcj_path}/ooa_schema.sql
-        -d 0 -import ../org.xtuml.bp.core/sql/ooaofooa.sql
-        -import ../org.xtuml.bp.core/sql/context_menu_schema.sql
-        -import ../org.xtuml.bp.core/sql/${action_test.input}
+        -d 0 -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
+        -import ${mcj_path}/../org.xtuml.bp.core/sql/context_menu_schema.sql
+        -import ${mcj_path}/../org.xtuml.bp.core/sql/${action_test.input}
         -arch arc/create_action_test.arc" />
     </exec>
 
@@ -146,9 +147,9 @@
 
   <target name="copy_paste_tests.depends" >
     <uptodate property="copy_paste_tests.buildNotNeeded" targetfile="${copy_paste_test_location}/CopyPasteSourceDestinationTests_0.java">
-       <srcfiles dir = "../org.xtuml.bp.ui.explorer/sql" includes = "UITree.pei.sql" />
-       <srcfiles dir = "../org.xtuml.bp.core/sql" includes = "ooaofooa.sql" />
-       <srcfiles dir = "../org.xtuml.bp.core/sql" includes = "ooaofooa_hierarchy.pei.sql" />
+       <srcfiles dir = "${mcj_path}/../org.xtuml.bp.ui.explorer/sql" includes = "UITree.pei.sql" />
+       <srcfiles dir = "${mcj_path}/../org.xtuml.bp.core/sql" includes = "ooaofooa.sql" />
+       <srcfiles dir = "${mcj_path}/../org.xtuml.bp.core/sql" includes = "ooaofooa_hierarchy.pei.sql" />
        <srcfiles dir = "arc"        includes = "generate_test_matrix_for_copy_paste.arc" />
        <srcfiles dir = "matrices/generated"        includes = "CopyPasteSourceDestinationTestMatrix.txt" />
         <srcfiles dir = "matrices/generated"        includes = "CopyPasteSourceDestinationTestMatrixFull.txt" />
@@ -169,9 +170,9 @@
     	<env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
     <arg line="xtumlmc_gen_erate -nopersist
       -import ${mcj_path}/ooa_schema.sql
-        -import ../org.xtuml.bp.ui.tree/sql/UITree_schema.sql
-        -import ../org.xtuml.bp.core/sql/ooaofooa.sql
-        -import ../org.xtuml.bp.ui.explorer/sql/UITree.pei.sql
+        -import ${mcj_path}/../org.xtuml.bp.ui.tree/sql/UITree_schema.sql
+        -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
+        -import ${mcj_path}/../org.xtuml.bp.ui.explorer/sql/UITree.pei.sql
         -arch arc/generate_test_matrix_for_copy_paste.arc" />
     </exec>
     <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
@@ -181,9 +182,9 @@
           <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
       <arg line="xtumlmc_gen_erate -nopersist
         -import ${mcj_path}/ooa_schema.sql
-        -import ../org.xtuml.bp.ui.tree/sql/UITree_schema.sql
-      -import ../org.xtuml.bp.core/sql/ooaofooa.sql
-        -import ../org.xtuml.bp.ui.explorer/sql/UITree.pei.sql
+        -import ${mcj_path}/../org.xtuml.bp.ui.tree/sql/UITree_schema.sql
+      -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
+        -import ${mcj_path}/../org.xtuml.bp.ui.explorer/sql/UITree.pei.sql
       -arch arc/generate_test_matrix_for_copy_paste.arc" />
   </exec>
     <delete file="____file.txt" />
@@ -205,8 +206,8 @@
     <uptodate property="rto_move_tests.buildNotNeeded" targetfile="${rto_move_test_location}/RTOMoveTests_0.java">
        <srcfiles dir = "arc" includes = "generate_rto_move_matrix.arc" />
         <srcfiles dir = "." includes = "generate.xml" />
-       <srcfiles dir = "../org.xtuml.bp.core/arc" includes = "generate_RGO_resolution_methods.inc" />
-       <srcfiles dir = "../org.xtuml.bp.core/sql" includes = "ooaofooa.sql" />
+       <srcfiles dir = "${mcj_path}/../org.xtuml.bp.core/arc" includes = "generate_RGO_resolution_methods.inc" />
+       <srcfiles dir = "${mcj_path}/../org.xtuml.bp.core/sql" includes = "ooaofooa.sql" />
        <srcfiles dir = "matrices/generated"        includes = "RTOMoveMatrix.txt" />
        <srcfiles dir = "../org.xtuml.bp.test" includes = "UnitTestGenerator.pl" />
        <srcfiles dir = "${mcj_path}" includes = "ooa_schema.sql,arch_utils.inc"/>
@@ -216,13 +217,14 @@
   <property name="rto_move_test_location" value="src/org/xtuml/bp/core/test/rtomove" />
   <target name="rto_move_tests" depends="rto_move_tests.depends" unless="rto_move_tests.buildNotNeeded">
     <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
-          <env key="PTC_MC_ARC_DIR" value="${mcj_path}"/>
-          <env key="CHAIN_UTIL_DIR" value="${chain_util_path}"/>
-        	<env key="GEN_FULL_TESTS" value=""/>
-          <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
+    	<env key="mcj_path" value="${mcj_path}" />
+        <env key="PTC_MC_ARC_DIR" value="${mcj_path}"/>
+        <env key="CHAIN_UTIL_DIR" value="${chain_util_path}"/>
+        <env key="GEN_FULL_TESTS" value=""/>
+        <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
       <arg line="xtumlmc_gen_erate -nopersist
           -import ${mcj_path}/ooa_schema.sql
-          -import ../org.xtuml.bp.core/sql/ooaofooa.sql
+          -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
           -arch arc/generate_rto_move_matrix.arc" />
     </exec>
     <!-- generate the tests -->
@@ -232,7 +234,7 @@
     </exec>
   </target>
 	
-  <property name="core_sql_dir" value="../org.xtuml.bp.core/sql"/>
+  <property name="core_sql_dir" value="${mcj_path}/../org.xtuml.bp.core/sql"/>
   <property name="context_menu_test.output" value="src/org/xtuml/bp/core/test/ui/ContextMenuTestsGenerics.java"/>
 
   <target name="context_menu_tests.depends" >
@@ -370,7 +372,7 @@
 
     <taskdef name="PTCodeFormat" classname="PTCodeFormatterTask" >
         <classpath>
-            <pathelement path="../org.xtuml.bp.core/tools/" />
+            <pathelement path="${mcj_path}/../org.xtuml.bp.core/tools/" />
             <fileset dir="${plugins-home}/plugins" casesensitive="yes">
                 <include name="**/org.eclipse.text_*.jar" />
                 <include name="**/org.eclipse.ui_*.jar" />
@@ -407,7 +409,7 @@
 
   <target name="sql" depends="sql.depends" description="Generate the sql version of the Consistency test model" unless="sql.buildNotNeeded">
     <echo>Generating ${sql.output} ...</echo>
-    <copy file="../org.xtuml.bp.pkg/globals/Globals.xtuml" tofile="models/org.xtuml.bp.core.test/consistencyTest/${sql.input}/Globals.xtuml" />
+    <copy file="${mcj_path}/../org.xtuml.bp.pkg/globals/Globals.xtuml" tofile="models/org.xtuml.bp.core.test/consistencyTest/${sql.input}/Globals.xtuml" />
     <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <arg line="xtumlmc_cleanse_for_BridgePoint models/org.xtuml.bp.core.test/${sql.input} sql/${sql.output} ${subsystems_to_remove}" />
     </exec>
@@ -436,14 +438,14 @@
 
   <target name="java.depends">
     <uptodate property="java.buildNotNeeded" targetfile="${java.output}">
-      <srcfiles dir="../org.xtuml.bp.core/sql" includes="ooaofooa.sql" />
+      <srcfiles dir="${mcj_path}/../org.xtuml.bp.core/sql" includes="ooaofooa.sql" />
       <srcfiles dir="sql" includes="consistencyTest.sql" />
       <srcfiles dir="color" includes="${java.color.dep}" />
       <srcfiles dir="${mcj_path}" includes="${java.tj.dep}" />
     </uptodate>
   </target>
 
-  <target name="java" depends="java.depends" description="Generate the Consistency test outline file" unless="java.buildNotNeeded">
+  <target name="java" depends="java.depends" description="Generate the Consistency test outline file" unless="java.buildNotNeeded" >
     <echo>Generating java files ...</echo>
     <ant antfile="${mcj_path}/build.xml" target="generate.java">
       <property name="param1" value="consistencyTest" />

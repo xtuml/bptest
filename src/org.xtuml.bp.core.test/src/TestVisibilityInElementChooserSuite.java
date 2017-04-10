@@ -53,6 +53,7 @@ public class TestVisibilityInElementChooserSuite extends TestSuite {
 		// turn off autobuild to stop MC-3020 builders from running
 		WorkspaceUtil.setAutobuilding(false);   // throws CoreException
 		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION, true);
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
         addTest(new TestSuite(TestVisibilityInElementChooser.class));
 	}
 }

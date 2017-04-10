@@ -193,7 +193,7 @@ public abstract class DeleteTest extends PkgCMBaseTest {
         }
         doDeleteThruMExplorer();        
         try{
-            while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+            dispatchEvents(0);
         }catch(ConcurrentModificationException e){}
     	performDeleteChecksGenerics(openEditors, baseEditor, oldFile, meBeingTested);
     }

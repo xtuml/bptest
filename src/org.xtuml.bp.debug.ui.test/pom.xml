@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
-		<version>6.2.4</version>
+		<version>6.2.5</version>
 		<relativePath>../../releng/org.xtuml.bp.releng.parent.tests/</relativePath>
 	</parent>
 	<groupId>org.xtuml.bp</groupId>
@@ -23,15 +23,24 @@
 				<configuration>
 					<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
 					<testClass>VerifierTestSuite</testClass>
-					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -Dfile.encoding=UTF-8</argLine>
+					<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -Dfile.encoding=UTF-8</argLine>
 			
 					<executions>
 						<execution>
-							<id>ExistingProjectsTestSuite</id>
+							<id>Verifier 1</id>
+							<configuration>
+								<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
+								<testClass>VerifierTestSuite1</testClass>
+								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -Dfile.encoding=UTF-8</argLine>
+							</configuration>
+						</execution>
+
+						<execution>
+							<id>Verifier 2</id>
 							<configuration>
 								<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
 								<testClass>VerifierTestSuite2</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -Dfile.encoding=UTF-8</argLine>
+								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -Dfile.encoding=UTF-8</argLine>
 							</configuration>
 						</execution>
 					</executions>

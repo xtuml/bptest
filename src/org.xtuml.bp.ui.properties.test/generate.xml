@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.ui.properties.test" default="all" basedir=".">
 	
-  <import file="../MC-Java/common.xml"/>
+  <import file="${mcj_path}/common.xml"/>
+
   	
   <target name="all"
           description="Generate UI Properties Test classes"
@@ -17,8 +18,9 @@
 
   <property environment="env"/>
 
-  <property name="core_sql_dir" value="../org.xtuml.bp.core/sql" />
-  <property name="chain_util_path" value="../org.xtuml.bp.core"/>
+  <property name="root_dir" value="${basedir}" />
+  <property name="core_sql_dir" value="${mcj_path}/../org.xtuml.bp.core/sql" />
+  <property name="chain_util_path" value="${mcj_path}/../org.xtuml.bp.core"/>
 
   <property name="ooaofooa_schema.output" value="ooaofooa_schema.sql" />
 
@@ -33,8 +35,34 @@
           depends="ooaofooa_schema.depends"
           description="Generate the OOA of OOA Entry schema file"
           unless="ooaofooa_schema.buildNotNeeded" >
+  	<ant dir="sql" antfile="${ant.file}" target="mcj_path_type_ooa" />
+  </target>
+	
+  <target name="mcj_path_type_ooa">
+   	<available file="${mcj_path}" property="absolute.present"/>
+   	<available file="../${mcj_path}" property="relative.present"/>
+   	<antcall target="ooaofooa_schema.absolute"/>
+   	<antcall target="ooaofooa_schema.relative"/>   		  
+  </target>
+  
+  <target name="ooaofooa_schema.absolute" if="absolute.present" >
     <echo >Generating ${ooaofooa_schema.output} ...</echo>
-  <ant antfile="${mcj_path}/build.xml" target="generate.schema" >
+	<echo>Ooaofooa schema location: ${core_sql_dir}/ooaofooa.sql</echo>
+  <ant dir="${root_dir}" antfile="${mcj_path}/build.xml" target="generate.schema" >
+    <property name="param1" value="${core_sql_dir}/ooaofooa.sql" />
+    <property name="param2" value="${mcj_path}" />
+    <property name="param3" value="FALSE" />
+    <property name="param4" value="ooaofooa" />
+  </ant>
+  <!-- Need to touch the output file for the case where the input data
+       changed, but the output didn't -->
+  <touch file="${ooaofooa_schema.output}" />
+  </target>
+
+  <target name="ooaofooa_schema.relative" if="relative.present" >
+    <echo >Generating ${ooaofooa_schema.output} ...</echo>
+	<echo>Ooaofooa schema location: ${core_sql_dir}/ooaofooa.sql</echo>
+  <ant dir="${root_dir}" antfile="${mcj_path}/build.xml" target="generate.schema" >
     <property name="param1" value="../${core_sql_dir}/ooaofooa.sql" />
     <property name="param2" value="${mcj_path}" />
     <property name="param3" value="FALSE" />
@@ -42,10 +70,10 @@
   </ant>
   <!-- Need to touch the output file for the case where the input data
        changed, but the output didn't -->
-  <touch file="sql/${ooaofooa_schema.output}" />
+  <touch file="${ooaofooa_schema.output}" />
   </target>
 
-  <property name="canvas_sql_dir" value="../org.xtuml.bp.ui.canvas/sql" />
+  <property name="canvas_sql_dir" value="${mcj_path}/../org.xtuml.bp.ui.canvas/sql" />
   <property name="ooaofgraphics_schema.output" value="ooaofgraphics_schema.sql" />
 
   <target name="ooaofgraphics_schema.depends" >
@@ -59,16 +87,39 @@
           depends="ooaofgraphics_schema.depends"
           description="Generate the OOA of OOA Entry schema file"
           unless="ooaofgraphics_schema.buildNotNeeded" >
+  	<ant dir="sql" antfile="${ant.file}" target="mcj_path_type_ooagraphics" />
+  </target>
+
+  <target name="mcj_path_type_ooagraphics">
+   	<available file="${mcj_path}" property="absolute.present"/>
+   	<available file="../${mcj_path}" property="relative.present"/>
+   	<antcall target="ooaofgraphics_schema.absolute"/>
+   	<antcall target="ooaofgraphics_schema.relative"/>   		  
+  </target>
+
+  <target name="ooaofgraphics_schema.absolute" if="absolute.present" >
     <echo >Generating ${ooaofgraphics_schema.output} ...</echo>
-  <ant antfile="${mcj_path}/build.xml" target="generate.schema" >
-    <property name="param1" value="../${canvas_sql_dir}/ooaofgraphics.sql" />
+  <ant dir="${root_dir}" antfile="${mcj_path}/build.xml" target="generate.schema" >
+    <property name="param1" value="${canvas_sql_dir}/ooaofgraphics.sql" />
     <property name="param2" value="${mcj_path}" />
     <property name="param3" value="FALSE" />
     <property name="param4" value="ooaofgraphics" />
   </ant>
   <!-- Need to touch the output file for the case where the input data
        changed, but the output didn't -->
-  <touch file="sql/${ooaofgraphics_schema.output}" />
+  <touch file="${ooaofgraphics_schema.output}" />  	
+  </target>
+
+  <target name="ooaofgraphics_schema.relative" if="relative.present" >
+    <ant dir="${root_dir}" antfile="${mcj_path}/build.xml" target="generate.schema" >
+      <property name="param1" value="../${canvas_sql_dir}/ooaofgraphics.sql" />
+      <property name="param2" value="${mcj_path}" />
+      <property name="param3" value="FALSE" />
+      <property name="param4" value="ooaofgraphics" />
+    </ant>
+    <!-- Need to touch the output file for the case where the input data
+         changed, but the output didn't -->
+    <touch file="${ooaofgraphics_schema.output}" />  	
   </target>
 
   <target name="java.depends" >
@@ -156,7 +207,7 @@
             unless="sql.buildNotNeeded" >
       <echo >Generating ${sql.output} ...</echo>
     <copy todir="models/org.xtuml.bp.ui.properties.test/Datatypes/">
-    	<fileset dir="../org.xtuml.bp.pkg/globals"><filename name="Globals.xtuml"/></fileset>   	
+    	<fileset dir="${mcj_path}/../org.xtuml.bp.pkg/globals"><filename name="Globals.xtuml"/></fileset>   	
     </copy>
     <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <arg line="xtumlmc_cleanse_for_BridgePoint
@@ -208,7 +259,7 @@
         description="Format the generated java source" >
     <taskdef name="PTCodeFormat" classname="PTCodeFormatterTask" >
         <classpath>
-            <pathelement path="../org.xtuml.bp.core/tools/" />
+            <pathelement path="${mcj_path}//../org.xtuml.bp.core/tools/" />
             <fileset dir="${plugins-home}/plugins" casesensitive="yes">
                 <include name="**/org.eclipse.text_*.jar" />
                 <include name="**/org.eclipse.ui_*.jar" />

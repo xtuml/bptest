@@ -39,6 +39,7 @@ import org.xtuml.bp.core.AttributeReferenceInClass_c;
 import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.ClassAsLink_c;
 import org.xtuml.bp.core.ClassAsSimpleFormalizer_c;
+import org.xtuml.bp.core.ClassIdentifier_c;
 import org.xtuml.bp.core.ClassInAssociation_c;
 import org.xtuml.bp.core.ImportedClass_c;
 import org.xtuml.bp.core.LinkedAssociation_c;
@@ -47,6 +48,7 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.ReferentialAttribute_c;
+import org.xtuml.bp.core.ReferredToClassInAssoc_c;
 import org.xtuml.bp.core.ReferringClassInAssoc_c;
 import org.xtuml.bp.core.SimpleAssociation_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
@@ -225,28 +227,35 @@ public class FormalizeUnformalizeWithPrefixTestGenerics extends CanvasTest {
 	private void verifyRefAttrDatatype(GraphicalElement_c ge2) {
 		if (ge2.getRepresents() instanceof Association_c) {
 			Association_c assoc = (Association_c) ge2.getRepresents();
-			Attribute_c[] attr_set = Attribute_c
-					.getManyO_ATTRsOnR106(ReferentialAttribute_c.getManyO_RATTRsOnR108(AttributeReferenceInClass_c
-							.getManyO_REFsOnR111(ReferringClassInAssoc_c
-									.getManyR_RGOsOnR203(ClassInAssociation_c
-											.getManyR_OIRsOnR201(assoc)))));
-			UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa
-					.getDefaultInstance());
-			for (int i = 0; i < attr_set.length; ++i) {
-				// 524296 is the old id for same_as<Base_Attribute>
-				assertEquals(expectedId, attr_set[i].getDt_id());
+			Attribute_c[] referredToAttributes = Attribute_c
+					.getManyO_ATTRsOnR102(ModelClass_c.getManyO_OBJsOnR201(assoc));
+			for(int i = 0; i < referredToAttributes.length; i++) {
+				// select the referring attributes and assure the
+				// types are the same
+				Attribute_c[] referringAttributes = Attribute_c
+						.getManyO_ATTRsOnR106(ReferentialAttribute_c.getManyO_RATTRsOnR108(AttributeReferenceInClass_c
+								.getManyO_REFsOnR111(ReferringClassInAssoc_c
+										.getManyR_RGOsOnR203(ClassInAssociation_c
+												.getManyR_OIRsOnR201(assoc)))));
+				for(int j = 0; j < referringAttributes.length; j++) {
+					assertEquals(referredToAttributes[i].getDt_id(), referringAttributes[j].getDt_id());
+				}
 			}
 		} else if (ge2.getRepresents() instanceof ClassAsLink_c) {
 			ClassAsLink_c cal = (ClassAsLink_c) ge2.getRepresents();
-			Attribute_c[] attr_set = Attribute_c
+			Association_c assoc = Association_c.getOneR_RELOnR206(LinkedAssociation_c.getOneR_ASSOCOnR211(cal));
+			Attribute_c[] referredToAttributes = Attribute_c
+					.getManyO_ATTRsOnR102(ModelClass_c.getManyO_OBJsOnR201(assoc));
+			for(int i = 0; i < referredToAttributes.length; i++) {
+				// select the referring attributes and assure the
+				// types are the same
+				Attribute_c[] referringAttributes = Attribute_c
 					.getManyO_ATTRsOnR106(ReferentialAttribute_c.getManyO_RATTRsOnR108(AttributeReferenceInClass_c
 							.getManyO_REFsOnR111(ReferringClassInAssoc_c
 									.getOneR_RGOOnR205(cal))));
-			UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa
-					.getDefaultInstance());
-			for (int i = 0; i < attr_set.length; ++i) {
-				// 524296 is the old id for same_as<Base_Attribute>
-				assertEquals(expectedId, attr_set[i].getDt_id());
+				for(int j = 0; j < referringAttributes.length; j++) {
+					assertEquals(referredToAttributes[i].getDt_id(), referringAttributes[j].getDt_id());
+				}
 			}
 		}
 	}
