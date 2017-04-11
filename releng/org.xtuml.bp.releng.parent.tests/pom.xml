@@ -7,19 +7,33 @@
 	<parent>
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests.super</artifactId>
-		<version>6.2.1</version>
-		<relativePath>../../../bridgepoint-fork-main/releng/org.xtuml.bp.releng.parent.tests</relativePath>
+		<version>6.2.5</version>
+		<relativePath>../../../bridgepoint/releng/org.xtuml.bp.releng.parent.tests</relativePath>
 	</parent>
 
 	<groupId>org.xtuml.bp</groupId>
 	<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
-	<version>6.2.1</version>
+	<version>6.2.5</version>
 	<packaging>pom</packaging>
 
 	<properties>
                 <xtumlmc_build>/build/buildmt/BridgePoint/tools/mc/bin/xtumlmc_build</xtumlmc_build>
-		<mcj_path>../../../bridgepoint-fork-main/src/MC-Java</mcj_path>
+		<mcj_path>../../../bridgepoint/src/MC-Java</mcj_path>
 	</properties>
+
+	<profiles>
+        <profile>
+    	<id>osXProperties</id>
+    	<activation>
+      <os>
+        <family>mac</family>
+      </os>    	
+      </activation>
+			<properties>
+				<jvmArgs>-XstartOnFirstThread</jvmArgs>
+			</properties>
+	    </profile>
+	</profiles>
 	
 	<modules>
 		<module>../../src/org.xtuml.bp.als.oal.test</module>
@@ -97,4 +111,3 @@
 	</build>
 
 </project>
-
