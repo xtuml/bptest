@@ -49,6 +49,7 @@ import org.xtuml.bp.core.ComponentInstance_c;
 import org.xtuml.bp.core.Component_c;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Function_c;
+import org.xtuml.bp.core.Instance_c;
 import org.xtuml.bp.core.InterfaceReference_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
@@ -63,6 +64,7 @@ import org.xtuml.bp.core.RequiredExecutableProperty_c;
 import org.xtuml.bp.core.RequiredOperation_c;
 import org.xtuml.bp.core.RequiredSignal_c;
 import org.xtuml.bp.core.Requirement_c;
+import org.xtuml.bp.core.StackFrame_c;
 import org.xtuml.bp.core.StateMachineState_c;
 import org.xtuml.bp.core.StateMachine_c;
 import org.xtuml.bp.core.SystemModel_c;
@@ -138,7 +140,6 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 
 			CorePlugin.enableParseAllOnResourceChange();
 
-			TestingUtilities.allowJobCompletion();
 			while (!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(
 					IProject.DEPTH_INFINITE)) {
 				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(
@@ -147,6 +148,8 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 					;
 			}
 
+			BaseTest.dispatchEvents(0);
+			
 			Ooaofooa.setPersistEnabled(true);
             delayGlobalUpgrade = false;
 
@@ -2252,9 +2255,7 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 		ActivityEditor editor = DebugUITestUtilities.openActivityEditorForSelectedElement();
 		DebugUITestUtilities.setBreakpointAtLine(editor, 1);
 		
-		BPDebugUtils.executeElement(testFunc);
-		
-		DebugUITestUtilities.waitForExecution();
+		BPDebugUtils.executeElement(testFunc);		
 
 		ComponentInstance_c engine = ComponentInstance_c
 				.getOneI_EXEOnR2955(component);
@@ -2263,6 +2264,8 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 		// wait for the execution to complete
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 
+		DebugUITestUtilities.waitForExecution();
+		
 		// check that execution was suspended
 		IProcess process = DebugUITestUtilities.getProcessForEngine(engine);
 		assertNotNull(process);
@@ -2270,7 +2273,7 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 		IDebugTarget target = process.getLaunch().getDebugTarget();
 		assertTrue("Process was not suspended by breakpoint in provided operation.", target
 				.isSuspended());
-		
+		StackFrame_c[] sfs = StackFrame_c.StackFrameInstances(component.getModelRoot());
 		// This used to use stepOver(engine, 5), but I found this to not always do 5 steps.
 		// Sometimes it did 3, which then caused the check to fail.  If I step one at a time
 		// it always worked for me.
@@ -2290,12 +2293,10 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
         DebugUITestUtilities.waitForExecution();
         DebugUITestUtilities.waitForBPThreads(m_sys);
 		
-		String expectedConsoleText = "User invoked function: test\r\nLogInfo:  Test Pass\r\n";	
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
-		org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().readAndDispatch();
-		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
+		String expectedConsoleText = "User invoked function: test" + System.getProperty("line.separator") + "LogInfo:  Test Pass" + System.getProperty("line.separator");	
+
+		BaseTest.dispatchEvents(0);
+		String actualConsoleText = DebugUITestUtilities.getConsoleText(expectedConsoleText);
 		
 		assertEquals(expectedConsoleText, actualConsoleText);
 	}

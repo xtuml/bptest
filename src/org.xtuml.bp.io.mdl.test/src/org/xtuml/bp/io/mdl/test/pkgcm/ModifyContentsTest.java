@@ -217,7 +217,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
             if(openEditors[i] instanceof ITextEditor){
                 testEditorContents((ITextEditor)openEditors[i],oldEditorContents[i]);
             }else if(openEditors[i] instanceof GraphicalEditor){
-                validateOrGenerateResultsGenerics((GraphicalEditor)openEditors[i], generateResult,true);
+                validateOrGenerateResults((GraphicalEditor)openEditors[i], generateResult,true);
         }
         } // end for   
         

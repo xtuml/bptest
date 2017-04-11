@@ -75,7 +75,7 @@ public class RecursionExecutionTest extends BaseTest {
 
 			CorePlugin.enableParseAllOnResourceChange();
 
-			TestingUtilities.allowJobCompletion();
+			BaseTest.dispatchEvents(0);
 			initialized = true;
 		}
 	}
@@ -123,10 +123,7 @@ public class RecursionExecutionTest extends BaseTest {
 		}
 
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
-		String expectedConsoleText = "User invoked function: testDeleteInRecursion\r\nLogReal:  6.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  5.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  4.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  3.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  2.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\n";	
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  6.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  5.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  4.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  3.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  2.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator");	
 
 		assertEquals(expectedConsoleText , actualConsoleText);
 		

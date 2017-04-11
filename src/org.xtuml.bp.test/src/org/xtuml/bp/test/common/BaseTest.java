@@ -126,6 +126,7 @@ import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.io.mdl.ImportModel;
+import org.xtuml.bp.io.mdl.upgrade.UpgradeUtil;
 import org.xtuml.bp.test.GlobalsTestEnabler;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
@@ -350,6 +351,8 @@ public class BaseTest extends TestCase {
 	
 	@After
 	public void tearDown() throws Exception {
+		// clear any left over events
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		BaseTest.staticTearDown();
 	}
 	
@@ -511,7 +514,7 @@ public class BaseTest extends TestCase {
 	public void loadProject(String projectName) throws CoreException {
     	TestUtil.showBridgePointPerspective();
         
-    	ProjectUtilities.allowJobCompletion();
+    	BaseTest.dispatchEvents(0);
 		project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 				projectName);
 		if (project.exists()) {
@@ -1094,7 +1097,7 @@ public class BaseTest extends TestCase {
 				return Status.OK_STATUS;
 			}
 		};
-		job.setPriority(Job.DECORATE);
+		job.setPriority(Job.INTERACTIVE);
 		job.setRule(ResourcesPlugin.getWorkspace().getRoot());
 		job.schedule();
 		try {
@@ -1102,7 +1105,22 @@ public class BaseTest extends TestCase {
 		} catch (InterruptedException e) {
 		}
 		
+		// join any upgrade jobs
+		Job[] jobs = Job.getJobManager().find(CorePlugin.UPGRADE_FAMILY);
+		for(Job upgrade: jobs) {
+			try {
+				upgrade.join();
+			} catch (InterruptedException e) {
+				fail(e.getMessage());
+			}
+		}
+		
+		while(ResourcesPlugin.getWorkspace().isTreeLocked()) {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		}
+		
 		delay(delay);
+		
 		waitForTransaction();
 		waitForPlaceHolderThread();
 		waitForJobs(); 		
@@ -1164,7 +1182,7 @@ public class BaseTest extends TestCase {
 	public static String DEFAULT_XTUML_TEST_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/models/test";
 	public static final String DEFAULT_PRIVATE_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/modelsmg/test";
 	
-	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = System.getProperty("user.home") + "/workspace";
+	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = System.getProperty("user.home") + "/git/bridgepoint";
 	
 	public static void compareAndOutputResults(String fileName) throws Exception{
 		if (doCreateResults){

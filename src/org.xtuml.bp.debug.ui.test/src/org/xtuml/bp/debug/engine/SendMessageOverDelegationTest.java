@@ -199,11 +199,9 @@ public class SendMessageOverDelegationTest extends BaseTest {
 		DebugUITestUtilities.waitForExecution();
 		
 		String expectedConsoleText = "User invoked function: longdelegationWithReturn" +
-				"\r\nLogSuccess:  FourOfFourDelegation has consumed the messsage as expected" +
-				"\r\nLogSuccess:  Correct return value from delegated message\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+				System.getProperty("line.separator") + "LogSuccess:  FourOfFourDelegation has consumed the messsage as expected" +
+				System.getProperty("line.separator") + "Success:  Correct return value from delegated message\r\n";
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 		
@@ -272,11 +270,9 @@ public class SendMessageOverDelegationTest extends BaseTest {
 		DebugUITestUtilities.waitForExecution();
 		
 		String expectedConsoleText = "User invoked function: LongDelegation" +
-				"\r\nLogSuccess:  TestDriverComponent has consumed the messsage as expected" +
-				"\r\nLogSuccess:  Correct return value from delegated message\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+				System.getProperty("line.separator") + "LogSuccess:  TestDriverComponent has consumed the messsage as expected" +
+				System.getProperty("line.separator") + "LogSuccess:  Correct return value from delegated message\r\n";
+		
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 		
@@ -301,10 +297,8 @@ public class SendMessageOverDelegationTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution();
 		
-		String expectedConsoleText = "User invoked function: sendSignal\r\nLogSuccess:  LevelOneDelegationComponent has consumed the messsage as expected\r\nLogSuccess:  LevelTwoDelegationComponent has consumed the messsage as expected\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "User invoked function: sendSignal" + System.getProperty("line.separator") + "LogSuccess:  LevelOneDelegationComponent has consumed the messsage as expected\r\nLogSuccess:  LevelTwoDelegationComponent has consumed the messsage as expected\r\n";
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 		

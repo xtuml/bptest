@@ -1278,10 +1278,8 @@ public class TestVerifierRunTimeErrorMsgs extends BaseTest {
     boolean checkResult_Sys_Pkg_ModelClass_StateMachine_CTEvent() {
     	boolean Sys_Pkg_ModelClass_StateMachine_CTEvent = false;
     	String actual_results = DebugUITestUtilities.getConsoleText("null");
-    	String expected_results = "User invoked function: ExecuteA1CT\r\n";
-    	if (!Platform.getOS().contains("win")) {
-    		expected_results = expected_results.replace("\r", "");
-    	}
+    	String expected_results = "User invoked function: ExecuteA1CT" + System.getProperty("line.separator");
+
     	if (actual_results.contains(expected_results))
     	{
     		Sys_Pkg_ModelClass_StateMachine_CTEvent= true;

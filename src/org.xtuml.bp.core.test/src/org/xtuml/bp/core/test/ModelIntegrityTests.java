@@ -67,6 +67,12 @@ public class ModelIntegrityTests extends BaseTest {
 	}
 	
 	@Override
+	@Before
+	public void setUp() throws Exception {
+		super.setUp();
+	}
+	
+	@Override
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
@@ -364,6 +370,7 @@ public class ModelIntegrityTests extends BaseTest {
 		char[] chars = new char[(int) file.length()];
 		FileReader reader = new FileReader(new File(path));
 		reader.read(chars);
+		reader.close();
 		return new String(chars);
 	}
 

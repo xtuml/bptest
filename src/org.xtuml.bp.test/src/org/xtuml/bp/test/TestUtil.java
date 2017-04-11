@@ -221,7 +221,8 @@ public class TestUtil
                 
                     @Override
                     public void run() {
-                        Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+                        Shell shell = findShell();
+                        
                         if (shell != null && shell.getData() instanceof Dialog) {
                             // close the dialog
                             if (!(shell.getData() instanceof ProgressMonitorDialog)
@@ -276,33 +277,39 @@ public class TestUtil
                         // may be made, with each one allowing the UI-thread to take
                         // back control for awhile to get the dialog shown
                         else if (currentRecursionDepth <= maxRecursionDepth) {
-                            Shell[] shells = PlatformUI.getWorkbench().getDisplay().getShells();
-                            for (int i = 0; i < shells.length; i++) {
-                                if (shells[i].getData() instanceof LaunchConfigurationsDialog) {
-                                    shells[i].forceActive();
-                                }
-                                else if (shells[i].getData() instanceof MessageDialog) {
-                                    if (((MessageDialog)shells[i].getData()).getShell().getText().equals("Upgrade model to global data types")) {
-                                        shells[i].forceActive();
-                                    }
-                                }
-                            }
                             dismissDialog(inHowManyMillis, currentRecursionDepth + 1, shouldDismiss, button, treeItem, throwException);
                         }
-                        else {
-                        	if(throwException) {
-	                            Throwable t = new Throwable();
-	                            t.setStackTrace(Thread.currentThread().getStackTrace());
-	                            CorePlugin.logError("Failed to dismiss dialog", t);
-                        	}
-                        }
                     }
+
                 });
             }
         });
         dismissThread.start();
     }
 
+    public static Shell findShell() {
+    	Shell[] others = PlatformUI.getWorkbench().getDisplay().getShells();
+    	for(int i = others.length - 1; i >= 0; i--) {
+    		if(isExpectedDialog(others[i])) {
+				return others[i];
+    		}
+    	}
+    	return null;
+    }
+    public static boolean isExpectedDialog(Shell other) {
+		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+			;
+		if(other.isDisposed()) {
+			return false;
+		}
+		if (other.getData() instanceof Dialog && !(other.getText().contains("Eclipse Updater"))
+						&& !(other.getText().equals("")) && !(other.getData() instanceof ProgressMonitorDialog)
+						&& !(other.getData() instanceof BlockedJobsDialog)) {
+			return true;
+		}
+		return false;
+    }
+    
 	//
     public static void checkTableItems(final long inHowManyMillis, 
             final int currentRecursionDepth, final boolean shouldDismiss, final String actualResultFilePath )
@@ -324,7 +331,7 @@ public class TestUtil
                 
                     @Override
                     public void run() {
-                        Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+                        Shell shell = findShell();
                         if (shell != null && shell.getData() instanceof Dialog) {
                             // close the dialog
                             if (!(shell.getData() instanceof ProgressMonitorDialog)) {
@@ -419,7 +426,7 @@ public class TestUtil
             {
                 Button cc = (Button) child_set[i];
                 String l = cc.getText();
-                if ( l.equals(buttonName))
+                if ( l.equals(buttonName) || l.equals(buttonName.replaceAll("&", "")))
                 {
                  return cc;   
                 }

@@ -145,12 +145,6 @@ public class WelcomePageTestGPS extends TestCase {
 		if (projectExists)
 			containsProjectMembers();
 	}
-
-	public void raiseWorkbench() {
-		Shell s = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-		s.forceActive();
-		s.forceFocus();
-	}
 	
 	@Test
 	public void testProjectCreation() {
@@ -163,8 +157,6 @@ public class WelcomePageTestGPS extends TestCase {
 		TestUtil.sleepWithDispatchOfEvents(7000);
 
 		verifyProjectCreated();
-
-		raiseWorkbench();
 	}
 	@Test
 	public void testNoProjectOverwrite() {
@@ -214,8 +206,6 @@ public class WelcomePageTestGPS extends TestCase {
 			runGPSGettingStartedAction();
 			TestingUtilities.allowJobCompletion();
 			
-			raiseWorkbench();
-			
 			verifyProjectCreated();
 	
 			final IProject project = getProject(ProjectName);
@@ -243,8 +233,6 @@ public class WelcomePageTestGPS extends TestCase {
         TestUtil.selectButtonInDialog(1000, "Yes");
         runGPSGettingStartedAction();
         TestingUtilities.allowJobCompletion();
-
-        raiseWorkbench();
 
         verifyProjectCreated();
 

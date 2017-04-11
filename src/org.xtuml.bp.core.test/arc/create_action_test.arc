@@ -297,8 +297,6 @@
   .if ((((action.Key_Lett == "S_EDT")) or (action.Key_Lett == "S_SDT")) or (action.Key_Lett == "S_UDT"))
         t1.setName("${oldName}");
 
-        TestUtil.dismissDialog(500);
-
         updateTreeItem( t1, "${newName}", ${useFocus} );
         
         assertEquals("${newName}", t1.getName() );

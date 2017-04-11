@@ -1715,9 +1715,7 @@ public class SequenceTestsGenerics extends CanvasTest {
 		assertNotNull("Sequence could not be created under the system.", seq);
 		graphicsModelRoot = (Ooaofgraphics) activeEditor.getModel()
 				.getModelRoot();
-		if (!BaseTest.testGlobals){
-			validateOrGenerateResultsGenerics(activeEditor, generateResults, false);
-		}
+
 		// create lifespans and component part
 		test_id = "44";
 		CanvasUtilities.openCanvasEditor(seq);
@@ -1726,7 +1724,7 @@ public class SequenceTestsGenerics extends CanvasTest {
 		createLifespansAndComponentParticipant(activeEditor);
 		graphicsModelRoot = (Ooaofgraphics) activeEditor.getModel()
 				.getModelRoot();
-		validateOrGenerateResultsGenerics(activeEditor, generateResults, false);
+		validateOrGenerateResults(activeEditor, generateResults, false);
 	}
 
 	/**
@@ -1798,7 +1796,7 @@ public class SequenceTestsGenerics extends CanvasTest {
 		assertNotNull("Package could not be created under component.", pkg);
 		graphicsModelRoot = (Ooaofgraphics) activeEditor.getModel()
 				.getModelRoot();
-		validateOrGenerateResultsGenerics(activeEditor, generateResults, false);
+		validateOrGenerateResults(activeEditor, generateResults, false);
 	}
 
 	@Test

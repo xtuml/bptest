@@ -101,7 +101,7 @@ public class ImportPasteElementsWithIPRTest extends BaseTest {
 
 	@Test
 	public void testCopyPasteElementWithIPR() {
-		
+		BaseTest.dispatchEvents(0);
 		// create new package to paste Component reference in
 		m_sys.Newpackage();
 		setIPRPreference(projectName, false);
@@ -143,7 +143,7 @@ public class ImportPasteElementsWithIPRTest extends BaseTest {
 		ce = ((ModelEditor) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
-		TestUtil.yesToDialog(5000);
+		TestUtil.yesToDialog(200);
 		
 		// paste element
 		UITestingUtilities.pasteClipboardContents(new Point(700, 100), ce);

@@ -203,7 +203,7 @@ public class SetTypeTestGenerics extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActivePart());
 		IStructuredSelection structuredSelection = (IStructuredSelection) Selection
 				.getInstance().getSelection();
-		TestUtil.okToDialog(2000);
+		TestUtil.okToDialog(200);
 		SetTypeOnO_ATTRAction.O_ATTR_SetType(structuredSelection);
 
 	}
@@ -226,7 +226,7 @@ public class SetTypeTestGenerics extends CanvasTest {
 		IStructuredSelection structuredSelection = (IStructuredSelection) Selection
 				.getInstance().getSelection();
 
-		TestUtil.checkTableItems(2000, 0, false, actualResultFilePath);
+		TestUtil.checkTableItems(200, 0, false, actualResultFilePath);
 		SetTypeOnO_ATTRAction.O_ATTR_SetType(structuredSelection);
 		TestingUtilities.fileContentsCompare(m_workspace_path
 				+ "expected_results/SetTypeTestGenerics/TableContent1.txt",

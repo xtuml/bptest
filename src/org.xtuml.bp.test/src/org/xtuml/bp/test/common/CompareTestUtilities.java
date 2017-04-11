@@ -689,6 +689,7 @@ public class CompareTestUtilities {
 	}
 
 	public static void openElementInSyncronizeView(String elementName) {
+		TestUtil.yesToDialog(200);
 		IViewPart gitRepositoryView = showTeamSyncView();
 		SynchronizeView view = (SynchronizeView) gitRepositoryView;
 		ModelSynchronizePage page = (ModelSynchronizePage) view.getPage(view.getParticipant());
@@ -697,10 +698,12 @@ public class CompareTestUtilities {
 		Composite composite = (Composite) control;
 		DiffTreeChangesSection diffTree = (DiffTreeChangesSection) composite.getChildren()[0];
 		NavigableCommonViewer viewer = (NavigableCommonViewer) diffTree.getChangesViewer();
+		showTeamSyncView();
 		Tree tree = viewer.getTree();
 		viewer.expandAll();
-
-		BaseTest.dispatchEvents(0);
+		viewer.refresh();
+		
+		BaseTest.dispatchEvents(200);
 		
 		TreeItem localItem = UITestingUtilities.findItemInTree(tree,
 				elementName);

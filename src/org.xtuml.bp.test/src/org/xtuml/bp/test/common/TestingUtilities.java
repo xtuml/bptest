@@ -852,12 +852,7 @@ public class TestingUtilities {
 	}
 
 	public static String getExpectedResultsPath() {
-		String result = "expected_results/";
-		String os = Platform.getOS(); 
-		if (!os.contains("win")) {
-			result = result + os + "/";
-		}
-		return result;
+		return "expected_results/";
 	}
 
 }

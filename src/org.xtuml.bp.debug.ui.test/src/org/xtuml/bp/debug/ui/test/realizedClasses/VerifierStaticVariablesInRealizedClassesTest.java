@@ -245,7 +245,7 @@ public class VerifierStaticVariablesInRealizedClassesTest extends BaseTest {
 		// wait for the execution to complete
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution();
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+		BaseTest.dispatchEvents(0);
 			;
 		// compare the trace
 		File expectedResults = new File(

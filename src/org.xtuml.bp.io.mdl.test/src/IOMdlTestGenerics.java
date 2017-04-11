@@ -43,12 +43,14 @@ import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.GeneralPurposeLogger;
 import org.xtuml.bp.core.common.IdAssigner;
+import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.io.mdl.ExportModel;
 import org.xtuml.bp.io.mdl.ImportModel;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
+import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
@@ -129,10 +131,62 @@ public class IOMdlTestGenerics extends TestCase {
 
 	public void doTest() {
 		importModel("expected_results/" + Ooaofooa.MODELS_DIRNAME + "/");
-		exportModel(TestingUtilities.getExpectedResultsPath() + Ooaofooa.MODELS_DIRNAME + "/");
+		exportModel(TestingUtilities.getExpectedResultsPath() + "export_results/" + Ooaofooa.MODELS_DIRNAME + "/");
 	}
   
-	
+    @Test
+    public void testExportOdmsWithGraphics()
+    {
+        m_domain_name = "odmsGenerics";
+        importModel( Ooaofooa.MODELS_DIRNAME + "/");
+        
+        // add the system and top-level packages to the selection
+        m_system = SystemModel_c.SystemModelInstance(
+                Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
+                    public boolean evaluate(Object candidate) {
+                        return ((SystemModel_c) candidate).getName().equals(
+                                m_system_name);
+                    }
+                });
+        
+        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        
+		Package_c pkg = Package_c.getOneEP_PKGOnR1405(m_system);
+		assertNotNull(pkg);
+		
+		PersistableModelComponent pmc = pkg.getPersistableComponent();
+		pmc.deleteSelfAndChildren();
+		pmc.loadComponentAndChildren(new NullProgressMonitor());
+
+		BaseTest.dispatchEvents(0);
+		
+		m_system = (SystemModel_c) pmc.getRootModelElement().getRoot();
+		pkg = (Package_c) pmc.getRootModelElement();
+		
+        Package_c[] pkgs = Package_c.getManyEP_PKGsOnR1401(m_system);
+        Selection.getInstance().clear();
+        Selection.getInstance().addToSelection(m_system);
+        Selection.getInstance().addToSelection(pkgs);
+
+        String resultFile = m_workspace_path;
+        if (generateResults) {
+        	resultFile += TestingUtilities.getExpectedResultsPath();
+        } else {
+        	resultFile += "actual_results/";
+        }
+        resultFile += "odmsGenerics";
+        resultFile += "." + Ooaofooa.MODELS_EXT;        	
+
+        TestingUtilities.exportModelUsingWizard(resultFile, true);
+		    
+		if (!generateResults) {
+			TestingUtilities.fileContentsCompare(
+					m_workspace_path + TestingUtilities.getExpectedResultsPath() + "odmsGenerics." + Ooaofooa.MODELS_EXT,
+					m_workspace_path + "actual_results/odmsGenerics." + Ooaofooa.MODELS_EXT );
+		 }
+		
+    }
+
 	@Test
 	public void test_InteractionDiagramUpgradeTestsGenerics() { doTest(); }	
 	@Test
@@ -335,12 +389,7 @@ public class IOMdlTestGenerics extends TestCase {
 		} catch (InvocationTargetException f) {
 			fail( f.toString() );
 		} catch (FileNotFoundException f) {
-			String systemError;
-			if (Platform.getOS().contains("win")) {
-				systemError = "The system cannot find the path specified";
-			} else {
-				systemError = "No such file or directory";
-			}
+			String systemError = "No such file or directory";
 			assertEquals(
 					"java.io.FileNotFoundException: bad_dir" //$NON-NLS-1$
 							+ java.io.File.separator
@@ -360,13 +409,8 @@ public class IOMdlTestGenerics extends TestCase {
 		} catch (InvocationTargetException f) {
 			fail( f.toString() );
 		} catch (FileNotFoundException f) {
-			String systemError;
-			if (Platform.getOS().contains("win")) {
-				systemError = "Access is denied"; 
-			}
-			else {
-				systemError = "Is a directory";
-			}
+			String systemError = "Is a directory";
+
 			String osPath = new Path(directoryPath).toOSString();
 			assertEquals( "java.io.FileNotFoundException: " + osPath + " (" + systemError + ")", f.toString() ); //$NON-NLS-1$//$NON-NLS-2$
 			accessError = true;
@@ -374,42 +418,6 @@ public class IOMdlTestGenerics extends TestCase {
 		assertTrue("access error did not occur", accessError);//$NON-NLS-1$
 	}
 	
-    @Test
-    public void testExportOdmsWithGraphics()
-    {
-        m_domain_name = "odmsGenerics";
-        importModel( Ooaofooa.MODELS_DIRNAME + "/");
-        // add the system and top-level packages to the selection
-        m_system = SystemModel_c.SystemModelInstance(
-                Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
-                    public boolean evaluate(Object candidate) {
-                        return ((SystemModel_c) candidate).getName().equals(
-                                m_system_name);
-                    }
-                });
-        Package_c[] pkgs = Package_c.getManyEP_PKGsOnR1401(m_system);
-        Selection.getInstance().clear();
-        Selection.getInstance().addToSelection(m_system);
-        Selection.getInstance().addToSelection(pkgs);
-
-        String resultFile = m_workspace_path;
-        if (generateResults) {
-        	resultFile += TestingUtilities.getExpectedResultsPath();
-        } else {
-        	resultFile += "actual_results/";
-        }
-        resultFile += "odmsGenerics";
-        resultFile += "." + Ooaofooa.MODELS_EXT;        	
-
-        TestingUtilities.exportModelUsingWizard(resultFile, true);
-		    
-		if (!generateResults) {
-			TestingUtilities.fileContentsCompare(
-					m_workspace_path + TestingUtilities.getExpectedResultsPath() +"odmsGenerics." + Ooaofooa.MODELS_EXT,
-					m_workspace_path + "actual_results/odmsGenerics." + Ooaofooa.MODELS_EXT );
-		 }
-		
-    }
 
    private void importModel(String path)
    {

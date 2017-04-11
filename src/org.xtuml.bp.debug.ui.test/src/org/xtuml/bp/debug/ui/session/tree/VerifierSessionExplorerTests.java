@@ -114,7 +114,7 @@ public class VerifierSessionExplorerTests extends BaseTest {
 
 			CorePlugin.enableParseAllOnResourceChange();
 
-			TestingUtilities.allowJobCompletion();
+			BaseTest.dispatchEvents(0);
 			while (!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(
 					IProject.DEPTH_INFINITE)) {
 				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(

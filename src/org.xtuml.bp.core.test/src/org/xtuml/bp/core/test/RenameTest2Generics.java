@@ -22,6 +22,7 @@
 
 package org.xtuml.bp.core.test;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +32,7 @@ import org.xtuml.bp.core.OperationParameter_c;
 import org.xtuml.bp.core.common.ModelElement;
 import org.xtuml.bp.core.ui.RenameAction;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
 /**
@@ -52,7 +54,7 @@ public class RenameTest2Generics extends CoreTest {
 
 		}
 	}
-
+	
 	/**
 	 * Tests that the renaming of a model element to include a space in its 
 	 * name does not succeed for element types which don't support spaces.
@@ -114,7 +116,7 @@ public class RenameTest2Generics extends CoreTest {
 		// spaces does not succeed, and dismiss the error dialog that appears
 		oldName = newName;
 		newName = newName + " ";
-		TestUtil.dismissDialog(500);
+		TestUtil.dismissDialog(200);
 		RenameAction.getRenameQuery(element, newName, oldName, true).run();
 		assertEquals("Adding space to element name succeeded.", oldName,
 				nameProvider.getName());

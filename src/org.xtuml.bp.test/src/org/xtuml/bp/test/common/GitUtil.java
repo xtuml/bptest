@@ -68,6 +68,7 @@ public class GitUtil {
 	public static void loadRepository(String location, String branch) {
 		BaseTest.dispatchEvents(0);
 		IViewPart gitRepositoryView = showGitRepositoriesView();
+		BaseTest.dispatchEvents(0);
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		Control control = view.getCommonViewer().getControl();
 		CorePlugin.getSystemClipboard().setContents(

@@ -8,7 +8,7 @@
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests.super</artifactId>
 		<version>6.2.1</version>
-		<relativePath>../../../bridgepoint/releng/org.xtuml.bp.releng.parent.tests</relativePath>
+		<relativePath>../../../bridgepoint-fork-main/releng/org.xtuml.bp.releng.parent.tests</relativePath>
 	</parent>
 
 	<groupId>org.xtuml.bp</groupId>
@@ -18,7 +18,7 @@
 
 	<properties>
                 <xtumlmc_build>/build/buildmt/BridgePoint/tools/mc/bin/xtumlmc_build</xtumlmc_build>
-		<mcj_path>../../../bridgepoint/src/MC-Java</mcj_path>
+		<mcj_path>../../../bridgepoint-fork-main/src/MC-Java</mcj_path>
 	</properties>
 	
 	<modules>
@@ -32,7 +32,7 @@
 		<module>../../src/org.xtuml.bp.ui.canvas.test</module>
 		<module>../../src/org.xtuml.bp.ui.explorer.test</module>
 		<module>../../src/org.xtuml.bp.ui.properties.test</module>
-		<!--module>../../src/org.xtuml.bp.welcome.test</module Disabled as it requires heavy user interaction -->
+		<module>../../src/org.xtuml.bp.welcome.test</module>
 		<module>../../src/org.xtuml.internal.test</module>
 	</modules>
 

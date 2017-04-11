@@ -71,7 +71,7 @@ public class TestVisibilityInElementChooser extends BaseTest {
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(testInstance);
 		List<FailableRunnable> runnables = new ArrayList<FailableRunnable>();
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(100, "Another Nested Package", true);
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(300, "Another Nested Package", true);
 		runnables.add(runnable);
 		runnable = TestUtil.chooseItemInDialog(runnable, "Nested Package", true);
 		runnables.add(runnable);

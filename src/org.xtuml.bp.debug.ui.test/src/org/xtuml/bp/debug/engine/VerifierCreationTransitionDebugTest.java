@@ -183,10 +183,8 @@ public class VerifierCreationTransitionDebugTest extends BaseTest {
 		File expectedResults = new File(
 				m_workspace_path
 						+ "expected_results/verifier/" + result_txt);
-		String expected_results = TestUtil.getTextFileContents(expectedResults)+"\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expected_results = expected_results.replace("\r", "");
-		}
+		String expected_results = TestUtil.getTextFileContents(expectedResults)+System.getProperty("line.separator");
+
 		// get the text representation of the debug tree
 		String actual_results = DebugUITestUtilities
 				.getConsoleText(expected_results);

@@ -126,6 +126,6 @@ public class IOMdlUnicodeTestGenerics extends CanvasTest {
         //
         CanvasTestUtils.openCanvasEditor(uut);
         GraphicalEditor ce = CanvasTestUtils.getCanvasEditor("Odms");
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
     }
 }

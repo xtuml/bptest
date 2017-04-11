@@ -37,6 +37,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IViewReference;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.junit.Test;
@@ -425,7 +426,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
     }
     
 	@Test
-	public void testMultipleOccurrenceInTreeInterfaceOperationParameter() {
+	public void testMultipleOccurrenceInTreeInterfaceOperationParameter() throws PartInitException {
 		// create the interface project
 		IProject referredTo = null;
 		IProject referring = null;
@@ -533,6 +534,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				UITestingUtilities.checkItemStatusInContextMenu(menu, "Rename",
 						"", false));
 		// rename the occurrence
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(ele);
 		ExplorerUtil.selectItem(findItem);
@@ -551,6 +553,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 					"MutlipleOccurrenceElement did not have its name properly updated.",
 					labelProvider.getText(element).equals("new_name"));
 		}
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		ExplorerUtil.selectItem(findItem);
 		ExplorerUtil.deleteItem();
 		BaseTest.dispatchEvents(0);
@@ -563,7 +566,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 	}
 
 	@Test
-	public void testMultipleOccurrenceInTreeInterfaceSignalParameter() {
+	public void testMultipleOccurrenceInTreeInterfaceSignalParameter() throws PartInitException {
 		// create the interface project
 		IProject referredTo = null;
 		IProject referring = null;
@@ -669,6 +672,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				"Unable to find Rename menu item for MultipleOccurrenceElement.",
 				UITestingUtilities.checkItemStatusInContextMenu(menu, "Rename",
 						"", false));
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		// rename the occurrence
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(ele);
@@ -688,6 +692,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 					"MutlipleOccurrenceElement did not have its name properly updated.",
 					labelProvider.getText(element).equals("new_name"));
 		}
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		ExplorerUtil.selectItem(findItem);
 		ExplorerUtil.deleteItem();
 		BaseTest.dispatchEvents(0);

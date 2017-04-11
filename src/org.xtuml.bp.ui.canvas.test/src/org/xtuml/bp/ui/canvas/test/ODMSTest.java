@@ -90,7 +90,7 @@ public class ODMSTest extends CanvasTest {
 		UITestingUtilities.addElementToGraphicalSelection(objs[3]);
 		UITestingUtilities.addElementToGraphicalSelection(objs[5]);
 		UITestingUtilities.addElementToGraphicalSelection(objs[7]);
-		validateOrGenerateResultsGenerics(editor, generateResults);
+		validateOrGenerateResults(editor, generateResults);
 		UITestingUtilities.clearGraphicalSelection();
 	}
 
@@ -115,7 +115,7 @@ public class ODMSTest extends CanvasTest {
 		UITestingUtilities.addElementToGraphicalSelection(elems[0]);
 		UITestingUtilities.addElementToGraphicalSelection(elems[1]);
 		UITestingUtilities.addElementToGraphicalSelection(elems[2]);
-		validateOrGenerateResultsGenerics(editor, generateResults);
+		validateOrGenerateResults(editor, generateResults);
 		UITestingUtilities.clearGraphicalSelection();
 	}
 

@@ -112,6 +112,24 @@ public class DebugUITestUtilities {
 		}
 	}
 
+	public static void waitForExecutionThread() {
+		IProcess[] processes = DebugPlugin.getDefault().getLaunchManager()
+				.getProcesses();
+		for (int i = 0; i < processes.length; i++) {
+			if (processes[i] instanceof BPProcess) {
+				BPProcess process = (BPProcess) processes[i];
+				IDebugTarget debugTarget = process.getDebugTarget();
+				if (debugTarget instanceof BPDebugTarget) {
+					SystemModel_c system = ((BPDebugTarget) debugTarget).getSystem();
+//					synchronized(system) { system.notify(); }
+					while(((BPDebugTarget) debugTarget).deterministicExecutionInProgress()) {
+						BaseTest.dispatchEvents(0);
+					}
+				}
+			}
+		}
+	}
+
 	public static String getDebugTextTree() {
 		// now compare the expected results with the actual results
 		IProcess[] processes = DebugPlugin.getDefault().getLaunchManager()
@@ -506,6 +524,7 @@ public class DebugUITestUtilities {
 							}
 						}
 					}
+					BaseTest.dispatchEvents(0);
 					processDebugEvents();
 				}
 			}
@@ -837,6 +856,7 @@ public class DebugUITestUtilities {
 		}
 		}
 		processDebugEvents();
+		waitForExecutionThread();
 	}
 
 	private static boolean displayEventProcessed = false;

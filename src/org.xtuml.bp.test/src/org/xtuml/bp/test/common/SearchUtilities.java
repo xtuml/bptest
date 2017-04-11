@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.search.internal.ui.SearchDialog;
 import org.eclipse.search.ui.IQueryListener;
 import org.eclipse.search.ui.ISearchPageContainer;
@@ -20,12 +21,14 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PlatformUI;
-
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.search.results.ModelSearchResult;
+import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.ui.explorer.ExplorerView;
 
+@SuppressWarnings("restriction")
 public class SearchUtilities {
 
 	private static boolean complete = false;
@@ -59,72 +62,73 @@ public class SearchUtilities {
 
 			@Override
 			public void run() {
-				Shell activeShell = PlatformUI.getWorkbench().getDisplay()
-						.getActiveShell();
-				Object data = activeShell.getData();
-				if (data instanceof Dialog) {
-					Control[] children = ((Dialog) data).getShell()
-							.getChildren();
-					Combo combo = getPatternField((Composite) children[0]);
-					Button[] buttons = getConfigurationButtons((Composite) children[0]);
-					Button[] scopeButtons = getScopeButtons((Composite) children[0]);
-					Button search = getButton((Composite) children[0], "&Search");
-					combo.setText(pattern);
-					for (int i = 0; i < buttons.length; i++) {
-						if (buttons[i].getText().equals("Regular expression")) {
-							buttons[i].setSelection(regEx);
-							buttons[i].notifyListeners(SWT.Selection, new Event());
-						} else if (buttons[i].getText()
-								.equals("Case sensitive")) {
-							buttons[i].setSelection(caseSensitive);
-							buttons[i].notifyListeners(SWT.Selection, new Event());
-						} else if (buttons[i].getText().equals(
-								"Action Language")) {
-							buttons[i].setSelection(oal);
-							buttons[i].notifyListeners(SWT.Selection, new Event());
-						} else if (buttons[i].getText().equals("Descriptions")) {
-							buttons[i].setSelection(descriptions);
-							buttons[i].notifyListeners(SWT.Selection, new Event());
+				Shell activeShell = TestUtil.findShell();
+				if(activeShell != null) {
+					Object data = activeShell.getData();
+					if (data instanceof Dialog) {
+						Control[] children = ((Dialog) data).getShell()
+								.getChildren();
+						Combo combo = getPatternField((Composite) children[0]);
+						Button[] buttons = getConfigurationButtons((Composite) children[0]);
+						Button[] scopeButtons = getScopeButtons((Composite) children[0]);
+						Button search = getButton((Composite) children[0], "&Search");
+						combo.setText(pattern);
+						for (int i = 0; i < buttons.length; i++) {
+							if (buttons[i].getText().equals("Regular expression")) {
+								buttons[i].setSelection(regEx);
+								buttons[i].notifyListeners(SWT.Selection, new Event());
+							} else if (buttons[i].getText()
+									.equals("Case sensitive")) {
+								buttons[i].setSelection(caseSensitive);
+								buttons[i].notifyListeners(SWT.Selection, new Event());
+							} else if (buttons[i].getText().equals(
+									"Action Language")) {
+								buttons[i].setSelection(oal);
+								buttons[i].notifyListeners(SWT.Selection, new Event());
+							} else if (buttons[i].getText().equals("Descriptions")) {
+								buttons[i].setSelection(descriptions);
+								buttons[i].notifyListeners(SWT.Selection, new Event());
+							}
 						}
+						for (int i = 0; i < scopeButtons.length; i++) {
+							if (scopeButtons[i].getText().equals("&Workspace")
+									&& scope == ISearchPageContainer.WORKSPACE_SCOPE) {
+								scopeButtons[i].setSelection(true);
+								scopeButtons[i].notifyListeners(SWT.Selection, new Event());
+								break;
+							}
+							if (scopeButtons[i].getText().equals(
+									"Selecte&d resources")
+									&& scope == ISearchPageContainer.SELECTION_SCOPE) {
+								scopeButtons[i].setSelection(true);
+								scopeButtons[i].notifyListeners(SWT.Selection, new Event());
+								while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+								break;
+							}
+							if (scopeButtons[i].getText().equals(
+									"Enclosing pro&jects")
+									&& scope == ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
+								scopeButtons[i].setSelection(true);
+								scopeButtons[i].notifyListeners(SWT.Selection, new Event());
+								while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+								break;
+							}
+							if (scopeButtons[i].getText().equals("Wor&king set:")
+									&& scope == ISearchPageContainer.WORKING_SET_SCOPE) {
+								scopeButtons[i].setSelection(true);
+								scopeButtons[i].notifyListeners(SWT.Selection, new Event());
+								((SearchDialog) data)
+										.setSelectedWorkingSets(new IWorkingSet[] { PlatformUI
+												.getWorkbench()
+												.getWorkingSetManager()
+												.getWorkingSet(workingSet) });
+								while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+								break;
+							}
+						}
+						search.notifyListeners(SWT.Selection, new Event());
+						while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 					}
-					for (int i = 0; i < scopeButtons.length; i++) {
-						if (scopeButtons[i].getText().equals("&Workspace")
-								&& scope == ISearchPageContainer.WORKSPACE_SCOPE) {
-							scopeButtons[i].setSelection(true);
-							scopeButtons[i].notifyListeners(SWT.Selection, new Event());
-							break;
-						}
-						if (scopeButtons[i].getText().equals(
-								"Selecte&d resources")
-								&& scope == ISearchPageContainer.SELECTION_SCOPE) {
-							scopeButtons[i].setSelection(true);
-							scopeButtons[i].notifyListeners(SWT.Selection, new Event());
-							while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-							break;
-						}
-						if (scopeButtons[i].getText().equals(
-								"Enclosing pro&jects")
-								&& scope == ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
-							scopeButtons[i].setSelection(true);
-							scopeButtons[i].notifyListeners(SWT.Selection, new Event());
-							while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-							break;
-						}
-						if (scopeButtons[i].getText().equals("Wor&king set:")
-								&& scope == ISearchPageContainer.WORKING_SET_SCOPE) {
-							scopeButtons[i].setSelection(true);
-							scopeButtons[i].notifyListeners(SWT.Selection, new Event());
-							((SearchDialog) data)
-									.setSelectedWorkingSets(new IWorkingSet[] { PlatformUI
-											.getWorkbench()
-											.getWorkingSetManager()
-											.getWorkingSet(workingSet) });
-							while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-							break;
-						}
-					}
-					search.notifyListeners(SWT.Selection, new Event());
-					while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 				}
 			}
 		});
@@ -152,7 +156,7 @@ public class SearchUtilities {
 					return button;
 				}
 			} else if (children[i] instanceof Button) {
-				if (((Button) children[i]).getText().equals(name)) {
+				if (((Button) children[i]).getText().equals(name) || ((Button) children[i]).getText().equals(name.replaceAll("&", ""))) {
 					return (Button) children[i];
 				}
 			}
@@ -252,106 +256,121 @@ public class SearchUtilities {
 
 			@Override
 			public void run() {
-				Shell activeShell = PlatformUI.getWorkbench().getDisplay()
-						.getActiveShell();
-				Object data = activeShell.getData();
-				if (data instanceof Dialog) {
-					Control[] children = ((Dialog) data).getShell()
-							.getChildren();
-					Combo combo = getPatternField((Composite) children[0]);
-					Button[] buttons = getConfigurationButtons((Composite) children[0]);
-					Button[] scopeButtons = getScopeButtons((Composite) children[0]);
-					Button cancel = getButton((Composite) children[0], "Cancel");
-					if(!combo.getText().equals(pattern)) {
-						return;
-					}
-					for (int i = 0; i < buttons.length; i++) {
-						if (buttons[i].getText().equals("Regular expression")) {
-							if(buttons[i].getSelection() != regEx) {
-								return;
-							}
-						} else if (buttons[i].getText()
-								.equals("Case sensitive")) {
-							if(buttons[i].getSelection() != caseSensitive) {
-								return;
-							}
-						} else if (buttons[i].getText().equals(
-								"Action Language")) {
-							if(buttons[i].getSelection() != oal) {
-								return;
-							}
-						} else if (buttons[i].getText().equals("Descriptions")) {
-							if(buttons[i].getSelection() != descriptions) {
-								return;
-							}
+				Shell activeShell = TestUtil.findShell();
+				if(activeShell != null) {
+					Object data = activeShell.getData();
+					if (data instanceof Dialog) {
+						Control[] children = ((Dialog) data).getShell()
+								.getChildren();
+						Combo combo = getPatternField((Composite) children[0]);
+						Button[] buttons = getConfigurationButtons((Composite) children[0]);
+						Button[] scopeButtons = getScopeButtons((Composite) children[0]);
+						Button cancel = getButton((Composite) children[0], "Cancel");
+						if(!combo.getText().equals(pattern)) {
+							cancel.notifyListeners(SWT.Selection, new Event());
+							return;
 						}
-					}
-					for (int i = 0; i < scopeButtons.length; i++) {
-						if (scopeButtons[i].getText().equals("&Workspace")
-								&& scope == ISearchPageContainer.WORKSPACE_SCOPE) {
-							if(scopeButtons[i].getSelection() != true) {
-								return;
-							}
-						} else if(scopeButtons[i].getText().equals("&Workspace")
-								&& scope != ISearchPageContainer.WORKSPACE_SCOPE) {
-							// button should not be checked
-							if(scopeButtons[i].getSelection() != false) {
-								return;
-							}
-						}
-						if (scopeButtons[i].getText().equals(
-								"Selecte&d resources")
-								&& scope == ISearchPageContainer.SELECTION_SCOPE) {
-							if(scopeButtons[i].getSelection() != true) {
-								return;
-							}
-						} else if (scopeButtons[i].getText().equals(
-								"Selecte&d resources")
-								&& scope != ISearchPageContainer.SELECTION_SCOPE) {
-							if(scopeButtons[i].getSelection() != false) {
-								return;
-							}
-						}
-						if (scopeButtons[i].getText().equals(
-								"Enclosing pro&jects")
-								&& scope == ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
-							if(scopeButtons[i].getSelection() != true) {
-								return;
-							}
-						} else if(scopeButtons[i].getText().equals(
-								"Enclosing pro&jects")
-								&& scope != ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
-							if(scopeButtons[i].getSelection() != false) {
-								return;
-							}
-						}
-						if (scopeButtons[i].getText().equals("Wor&king set:")
-								&& scope == ISearchPageContainer.WORKING_SET_SCOPE) {
-							if(scopeButtons[i].getSelection() != true) {
-								return;
-							}
-							IWorkingSet[] selectedWorkingSets = ((SearchDialog) data)
-									.getSelectedWorkingSets();
-							boolean found = false;
-							for(int j = 0; j < selectedWorkingSets.length; j++) {
-								IWorkingSet set = selectedWorkingSets[j];
-								if(set.getName().equals(workingSet)) {
-									found = true;
-									break;
+						for (int i = 0; i < buttons.length; i++) {
+							if (buttons[i].getText().equals("Regular expression")) {
+								if(buttons[i].getSelection() != regEx) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							} else if (buttons[i].getText()
+									.equals("Case sensitive")) {
+								if(buttons[i].getSelection() != caseSensitive) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							} else if (buttons[i].getText().equals(
+									"Action Language")) {
+								if(buttons[i].getSelection() != oal) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							} else if (buttons[i].getText().equals("Descriptions")) {
+								if(buttons[i].getSelection() != descriptions) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
 								}
 							}
-							if(!found) {
-								return;
+						}
+						for (int i = 0; i < scopeButtons.length; i++) {
+							if (scopeButtons[i].getText().equals("&Workspace")
+									&& scope == ISearchPageContainer.WORKSPACE_SCOPE) {
+								if(scopeButtons[i].getSelection() != true) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							} else if(scopeButtons[i].getText().equals("&Workspace")
+									&& scope != ISearchPageContainer.WORKSPACE_SCOPE) {
+								// button should not be checked
+								if(scopeButtons[i].getSelection() != false) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
 							}
-						} else if(scopeButtons[i].getText().equals("Wor&king set:")
-								&& scope != ISearchPageContainer.WORKING_SET_SCOPE) {
-							if(scopeButtons[i].getSelection() != false) {
-								return;
+							if (scopeButtons[i].getText().equals(
+									"Selecte&d resources")
+									&& scope == ISearchPageContainer.SELECTION_SCOPE) {
+								if(scopeButtons[i].getSelection() != true) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							} else if (scopeButtons[i].getText().equals(
+									"Selecte&d resources")
+									&& scope != ISearchPageContainer.SELECTION_SCOPE) {
+								if(scopeButtons[i].getSelection() != false) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							}
+							if (scopeButtons[i].getText().equals(
+									"Enclosing pro&jects")
+									&& scope == ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
+								if(scopeButtons[i].getSelection() != true) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							} else if(scopeButtons[i].getText().equals(
+									"Enclosing pro&jects")
+									&& scope != ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
+								if(scopeButtons[i].getSelection() != false) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							}
+							if (scopeButtons[i].getText().equals("Wor&king set:")
+									&& scope == ISearchPageContainer.WORKING_SET_SCOPE) {
+								if(scopeButtons[i].getSelection() != true) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+								IWorkingSet[] selectedWorkingSets = ((SearchDialog) data)
+										.getSelectedWorkingSets();
+								boolean found = false;
+								for(int j = 0; j < selectedWorkingSets.length; j++) {
+									IWorkingSet set = selectedWorkingSets[j];
+									if(set.getName().equals(workingSet)) {
+										found = true;
+										break;
+									}
+								}
+								if(!found) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
+							} else if(scopeButtons[i].getText().equals("Wor&king set:")
+									&& scope != ISearchPageContainer.WORKING_SET_SCOPE) {
+								if(scopeButtons[i].getSelection() != false) {
+									cancel.notifyListeners(SWT.Selection, new Event());
+									return;
+								}
 							}
 						}
+						dialogSettingsResult = true;
+						cancel.notifyListeners(SWT.Selection, new Event());
 					}
-					dialogSettingsResult = true;
-					cancel.notifyListeners(SWT.Selection, new Event());
 				}
 			}
 		});

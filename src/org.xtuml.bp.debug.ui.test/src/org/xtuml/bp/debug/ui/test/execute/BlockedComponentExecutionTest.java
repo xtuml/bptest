@@ -121,10 +121,7 @@ public class BlockedComponentExecutionTest extends BaseTest {
 		DebugUITestUtilities.waitForExecution();
 
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
-		String expectedConsoleText = "User invoked function: run\r\nLogInfo:  Signal 1 Begin.\r\nLogInfo:  Signal 1 End.\r\nLogInfo:  Beginning test.\r\nLogInfo:  Signal 2 Begin.\r\nLogInfo:  Signal 2 End.\r\nLogSuccess:  Blocking test PASSED.\r\n";	
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "User invoked function: run" + System.getProperty("line.separator") + "LogInfo:  Signal 1 Begin." + System.getProperty("line.separator") + "LogInfo:  Signal 1 End." + System.getProperty("line.separator") + "LogInfo:  Beginning test." + System.getProperty("line.separator") + "LogInfo:  Signal 2 Begin." + System.getProperty("line.separator") + "LogInfo:  Signal 2 End." + System.getProperty("line.separator") + "LogSuccess:  Blocking test PASSED." + System.getProperty("line.separator");	
 
 		assertEquals(expectedConsoleText , actualConsoleText);
 		

@@ -14,7 +14,6 @@
 	<version>1.0.0</version>
 	<packaging>eclipse-test-plugin</packaging>
 
-<!-- disabled Disabled for now as it requires user interaction
 	<build>
 		<plugins>
 			<plugin>
@@ -29,5 +28,4 @@
 			</plugin>
 		</plugins>
 	</build>
-end disabled -->
 </project>
