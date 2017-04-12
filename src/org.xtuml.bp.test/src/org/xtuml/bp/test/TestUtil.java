@@ -42,6 +42,7 @@ import org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationsDi
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -306,6 +307,16 @@ public class TestUtil
 						&& !(other.getText().equals("")) && !(other.getData() instanceof ProgressMonitorDialog)
 						&& !(other.getData() instanceof BlockedJobsDialog)) {
 			return true;
+		}
+		if (other.getData() instanceof WizardDialog) {
+			// some of our wizards have no text, so check the page for data
+			WizardDialog dialog = (WizardDialog) other.getData();
+			IWizardPage currentPage = dialog.getCurrentPage();
+			Class<? extends IWizardPage> class1 = currentPage.getClass();
+			Package package1 = class1.getPackage();
+			if (package1.getName().contains("org.xtuml")) {
+				return true;
+			}
 		}
 		return false;
     }

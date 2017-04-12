@@ -1,5 +1,5 @@
 drawRectangle(...)
-drawText("Unassigned Compo...", ...)
+drawText("...omponent Refe...", ...)
 drawRectangle(...)
 drawRectangle(...)
 drawRectangle(...)
