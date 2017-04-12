@@ -430,6 +430,13 @@ public class BaseTest extends TestCase {
 						continue;
 					}
 					
+					// during command line runs mylyn does not behave well
+					// on mac, we just ignore any SWT exceptions from mylyn
+					// here as it has no affect on our tests
+					if(pluginID.equals("org.eclipse.mylyn.tasks.ui") && stack.contains("SWTException")) {
+						continue;
+					}
+					
 					// ignore all warnings, we only care about errors
 					if (entry.getSeverity() == IStatus.WARNING) {
 					    continue;

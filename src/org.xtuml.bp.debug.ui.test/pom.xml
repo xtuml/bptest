@@ -21,29 +21,10 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
-					<testClass>VerifierTestSuite</testClass>
-					<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -Dfile.encoding=UTF-8</argLine>
-			
-					<executions>
-						<execution>
-							<id>Verifier 1</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
-								<testClass>VerifierTestSuite1</testClass>
-								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-
-						<execution>
-							<id>Verifier 2</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
-								<testClass>VerifierTestSuite2</testClass>
-								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-					</executions>
+					<includes>
+						<include>**/VerifierSuite.java</include>
+						<include>**/VerifierSuite2.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

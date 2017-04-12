@@ -21,29 +21,15 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<testSuite>org.xtuml.bp.io.mdl.test</testSuite>
-					<testClass>PkgCMGlobalsTestSuiteGenerics</testClass>
-					<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/io_mdl/.metadata/.log -Dfile.encoding=UTF-8</argLine>			
-					
-					<executions>
-						<execution>
-							<id>IOMdlGlobalsTestSuiteGenerics</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.io.mdl.test</testSuite>
-								<testClass>IOMdlGlobalsTestSuiteGenerics</testClass>
-								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/io_mdl/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-						
-						<execution>
-							<id>IOMdlGlobalsTestSuite2Generics</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.io.mdl.test</testSuite>
-								<testClass>IOMdlGlobalsTestSuite2Generics</testClass>
-								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/io_mdl/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-					</executions>
+					<includes>
+						<include>**/IOMdlGlobalsTestSuiteGenerics.java</include>
+					</includes>
+					<includes>
+						<include>**/IOMdlGlobalsTestSuite2Generics.java</include>
+					</includes>
+					<includes>
+						<include>**/PkgCMGlobalsTestSuiteGenerics.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -21,9 +21,9 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<testSuite>org.xtuml.bp.welcome.test</testSuite>
-					<testClass>org.xtuml.bp.welcome.test.WelcomeTestSuite</testClass>
-					<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/welcome/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+					<includes>
+						<include>**/WelcomeTestSuite.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

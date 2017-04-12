@@ -36,6 +36,7 @@ import java.util.Vector;
 import junit.framework.Assert;
 
 import org.eclipse.compare.internal.CompareEditor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
@@ -469,7 +470,11 @@ public class UITestingUtilities {
 				.getGraphicalEditor();
 		Event me = new Event();
 		if(ctrlDown) {
-			me.stateMask = SWT.CTRL;
+			if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+				me.stateMask = SWT.COMMAND;
+			} else {
+				me.stateMask = SWT.CTRL;
+			}
 		}
 
 		if (eventType.equals("MouseMove")) {
