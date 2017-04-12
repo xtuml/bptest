@@ -44,7 +44,11 @@ Require-Bundle: org.eclipse.compare,
  org.xtuml.bp.ui.search,
  org.xtuml.bp.utilities,
  org.xtuml.bp.compare,
- org.xtuml.bp.model.compare
+ org.xtuml.bp.model.compare,
+ org.eclipse.egit,
+ org.eclipse.egit.core;bundle-version="4.1.1",
+ org.eclipse.egit.ui;bundle-version="4.1.1",
+ org.eclipse.jgit;bundle-version="4.1.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-BundleShape: dir

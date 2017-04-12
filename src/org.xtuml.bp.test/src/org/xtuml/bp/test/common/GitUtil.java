@@ -20,17 +20,16 @@
 
 package org.xtuml.bp.test.common;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.egit.core.RepositoryUtil;
+import org.eclipse.egit.ui.Activator;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.dnd.TextTransfer;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Tree;
@@ -39,10 +38,11 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
-
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.model.compare.contentmergeviewer.ModelContentMergeViewer;
 import org.xtuml.bp.test.TestUtil;
+
+import junit.framework.Assert;
 
 public class GitUtil {
 	public static final java.lang.String VIEW_ID = "org.eclipse.egit.ui.RepositoriesView";
@@ -65,17 +65,10 @@ public class GitUtil {
 		return null;
 	}
 
+	@SuppressWarnings("restriction")
 	public static void loadRepository(String location, String branch) {
-		BaseTest.dispatchEvents(0);
-		IViewPart gitRepositoryView = showGitRepositoriesView();
-		BaseTest.dispatchEvents(0);
-		CommonNavigator view = (CommonNavigator) gitRepositoryView;
-		Control control = view.getCommonViewer().getControl();
-		CorePlugin.getSystemClipboard().setContents(
-				new Object[] { location },
-				new Transfer[] { TextTransfer.getInstance() });
-		UITestingUtilities.activateMenuItem(control.getMenu(),
-				"Paste R&epository Path or URI	Ctrl+V");
+		RepositoryUtil util = Activator.getDefault().getRepositoryUtil();
+		util.addConfiguredRepository(new File(location + "/" + ".git"));
 		BaseTest.dispatchEvents(0);
 		// if the repository is not in a clean
 		// state reset it here

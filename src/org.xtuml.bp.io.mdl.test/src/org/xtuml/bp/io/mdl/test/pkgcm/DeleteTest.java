@@ -189,7 +189,7 @@ public abstract class DeleteTest extends PkgCMBaseTest {
         meBeingTested = pmcBeingTested.getRootModelElement();
         dispatchEvents(0);
         if (compType.equals("SystemModel")){        	
-            TestUtil.okToDialog(2000);
+            TestUtil.okToDialog(200);
         }
         doDeleteThruMExplorer();        
         try{
