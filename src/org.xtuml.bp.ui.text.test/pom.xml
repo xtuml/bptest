@@ -21,9 +21,9 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<testSuite>org.xtuml.bp.ui.text.test</testSuite>
-					<testClass>UITextGlobalsSuite</testClass>
-					<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/text/.metadata/.log -Dfile.encoding=UTF-8</argLine>
+					<includes>
+						<include>**/UITextGlobalsSuite.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -21,12 +21,9 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<testSuite>org.xtuml.bp.ui.explorer.test</testSuite>
-					<testClass>org.xtuml.bp.ui.explorer.test.ExplorerGlobalsTestSuite</testClass>
-					<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/ui_explorer/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-					<explodedBundles>
-						<explodedBundle>org.xtuml.bp.pkg</explodedBundle>
-					</explodedBundles>
+					<includes>
+						<include>**/ExplorerGlobalsTestSuite.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

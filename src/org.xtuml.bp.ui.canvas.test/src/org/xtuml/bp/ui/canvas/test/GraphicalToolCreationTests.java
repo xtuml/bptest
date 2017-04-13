@@ -22,6 +22,7 @@
 //
 package org.xtuml.bp.ui.canvas.test;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.Tool;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.jface.dialogs.Dialog;
@@ -75,6 +76,15 @@ public class GraphicalToolCreationTests extends BaseTest {
 
 	@Test
 	public void testShapeCreationStickyModeUseDefaultNamesDisabled() {
+		/**
+		 * Not fully supported in OSX yet, this issue will address this and
+		 * this short circuit shall be removed:
+		 * 
+		 * https://support.onefact.net/issues/9407
+		 */
+		if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+			return;
+		}
 		CorePlugin.getDefault().getPreferenceStore().setValue(
 				BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION, false);
 		AbstractTool tool = UITestingUtilities.getTool("Classes", "Class");
@@ -144,6 +154,15 @@ public class GraphicalToolCreationTests extends BaseTest {
 
 	@Test
 	public void testShapeCreationStickyModeUseDefaultNamesEnabled() {
+		/**
+		 * Not fully supported in OSX yet, this issue will address this and
+		 * this short circuit shall be removed:
+		 * 
+		 * https://support.onefact.net/issues/9407
+		 */
+		if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+			return;
+		}
 		testPackage.Dispose();
 		m_sys.Newpackage();
 		Package_c[] pkgs = Package_c.getManyEP_PKGsOnR1405(m_sys);
