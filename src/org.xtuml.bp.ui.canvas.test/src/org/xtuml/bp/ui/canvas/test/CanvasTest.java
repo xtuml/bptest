@@ -35,6 +35,7 @@ import java.io.ObjectInputStream;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTGraphics;
@@ -395,12 +396,19 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
             String text = "HHHHHHHHHHHHHHHHH";
             Point textExtent = gc.textExtent(text);
             if(textExtent.x < desired) {
+            	// do to a slight variation between cocoa and x
+            	// we adjust font size by one here
+            	if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+            		font.dispose();
+            		prefFontData = new FontData("Courier", currentSize, SWT.DEFAULT);
+            		font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
+            	}
             	return font;
             }
             currentSize -= 1;
         }
         if(font == null) {
-        	FontData prefFontData = new FontData("Verdana", 8, SWT.DEFAULT);
+        	FontData prefFontData = new FontData("Courier", 8, SWT.DEFAULT);
             font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
         }
         return font;
@@ -555,7 +563,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
     public void validateOrGenerateResults(GraphicalEditor editor, boolean generate,
         boolean preserveDiagramValues)
     {
-    	generate = true;
+    	//generate = true;
  		// remember the diagram zoom and viewport location values, 
 		// as they will be changed during the calls below
 		Diagram_c diagram = Diagram_c.getOneDIM_DIAOnR18(editor.getModel());
