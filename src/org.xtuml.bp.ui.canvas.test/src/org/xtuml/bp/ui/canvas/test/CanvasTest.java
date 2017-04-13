@@ -35,9 +35,14 @@ import java.io.ObjectInputStream;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTGraphics;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gef.LayerConstants;
+import org.eclipse.gef.editparts.LayerManager;
+import org.eclipse.gef.editparts.ScalableFreeformRootEditPart;
+import org.eclipse.gef.ui.parts.ScrollingGraphicalViewer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.JFacePreferences;
 import org.eclipse.swt.SWT;
@@ -49,6 +54,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.xtuml.bp.core.CorePlugin;
@@ -68,6 +74,10 @@ import org.xtuml.bp.ui.canvas.Diagram_c;
 import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
+import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
+import org.xtuml.bp.ui.graphics.parts.GraphicsEditPartFactory;
+import org.xtuml.bp.ui.graphics.parts.GraphicsScalableFreeformEditPart;
+import org.xtuml.bp.ui.graphics.print.PrintDiagramOperation;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
 
 import junit.framework.AssertionFailedError;
@@ -334,28 +344,48 @@ public abstract class CanvasTest extends BaseTest {
     }
   }
 
-  public CanvasTestResult drawDiagram(final GraphicalEditor editor, boolean zoomGroup, boolean zoomSelected, boolean isHardCopy, Rectangle size) {
-	  String fontName = "Verdana";
-	  FontData prefFontData = new FontData(fontName, 8, SWT.DEFAULT); //$NON-NLS-1$
-	  Font displayFont = new Font(Display.getDefault(), prefFontData);
-	  CanvasPlugin.setGraphicalRepresents(editor.getModel());
-	  Image img = new Image(Display.getDefault(), size);
-	  final TestGC tester = new TestGC(new SWTGraphics(new GC(img)));
-	  tester.setFont(displayFont);
-	  FigureCanvas canvas = (FigureCanvas) editor.getCanvas();
-	  canvas.setBounds(size);
-	  canvas.getViewport().setBounds(new org.eclipse.draw2d.geometry.Rectangle(size));
-	  editor.zoomAll();
-	  while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-	  paint(tester, editor);
-	  CanvasTestResult result = new CanvasTestResult();
-	  result.transcript = tester.getResults();
-	  result.image = img.getImageData();
-	  tester.dispose();
-	  img.dispose();
-	  displayFont.dispose();
-	  return result;
-  }
+	public CanvasTestResult drawDiagram(final GraphicalEditor editor, boolean zoomGroup, boolean zoomSelected,
+			boolean isHardCopy, Rectangle size) {
+		Shell shell = new Shell();
+		String fontName = "Verdana";
+		FontData prefFontData = new FontData(fontName, 8, SWT.DEFAULT); // $NON-NLS-1$
+		Font displayFont = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
+		Font originalFont = GraphicalEditor.getFont();
+		GraphicalEditor.setFont(displayFont);
+		FigureCanvas figureCanvas = new FigureCanvas(shell);
+		GraphicalViewer viewer = new ScrollingGraphicalViewer();
+		viewer.createControl(figureCanvas);
+		viewer.setEditPartFactory(new GraphicsEditPartFactory());
+		ScalableFreeformRootEditPart rootEditPart = new GraphicsScalableFreeformEditPart();
+		viewer.setRootEditPart(rootEditPart);
+		viewer.setContents(editor.getModel());
+		rootEditPart.getFigure().validate();
+		IFigure cLayer = rootEditPart.getLayer(LayerConstants.CONNECTION_LAYER);
+		cLayer.validate();
+		figureCanvas.getViewport().getUpdateManager().performValidation();
+		org.eclipse.draw2d.geometry.Rectangle extentRectangle = GraphicalZoomManager
+				.getExtentRectangle(GraphicalEditor.getAllSymbols(viewer, editor.getModel().Hascontainersymbol()));
+		Image img = new Image(Display.getDefault(),
+				new Rectangle(extentRectangle.x, extentRectangle.y, extentRectangle.width, extentRectangle.height));
+		GC gc = new GC(img);
+		SWTGraphics swtGraphics = new SWTGraphics(gc);
+		swtGraphics.setFont(displayFont);
+		TestGC tester = new TestGC(swtGraphics);
+		LayerManager lm = (LayerManager) viewer.getEditPartRegistry().get(
+				LayerManager.ID);
+		IFigure figure = lm.getLayer(LayerConstants.PRINTABLE_LAYERS);
+		figure.setFont(displayFont);
+		PrintDiagramOperation.printImage(img, viewer, extentRectangle, editor.getModel().Hascontainersymbol(),
+				PrintDiagramOperation.FIT_PAGE, gc, tester);
+		CanvasTestResult result = new CanvasTestResult();
+		result.transcript = tester.getResults();
+		result.image = img.getImageData();
+		tester.dispose();
+		img.dispose();
+		GraphicalEditor.setFont(originalFont);
+		displayFont.dispose();
+		return result;
+	}
   
   	protected void paint(TestGC tester, GraphicalEditor editor) {
   		((FigureCanvas) editor.getCanvas()).getLightweightSystem()
