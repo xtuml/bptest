@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="bp.core.test" default="all" basedir=".">
 
-  <import file="../MC-Java/common.xml"/>
+  <import file="../../../bridgepoint/src/MC-Java/common.xml"/>
 
   <target name="all" description="Generate all code for this project" depends="dispose_test,action_test,delete_test,formalize_test,context_menu_tests,copy_paste_tests, rto_move_tests, consistency_all">
   </target>

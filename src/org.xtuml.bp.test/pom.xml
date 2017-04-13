@@ -4,9 +4,15 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.xtuml.bp</groupId>
+<<<<<<< HEAD
+    <artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
+    <version>6.2.1</version>
+    <relativePath>../../releng/org.xtuml.bp.releng.parent.tests/</relativePath>
+=======
     <artifactId>org.xtuml.bp.releng.parent</artifactId>
     <version>6.2.4</version>
     <relativePath>../../releng/org.xtuml.bp.releng.parent/</relativePath>
+>>>>>>> e87208dd4af517a1272a7891c1840720a379606a
   </parent>
   <groupId>org.xtuml.bp</groupId>
   <artifactId>org.xtuml.bp.test</artifactId>
