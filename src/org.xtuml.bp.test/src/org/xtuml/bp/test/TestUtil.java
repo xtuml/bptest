@@ -30,6 +30,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -216,25 +218,26 @@ public class TestUtil
 						
 						@Override
 						public void run() {
-				            Shell[] previousShells = shellsBeforeAction;
+							HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(shellsBeforeAction));
 							Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
-							// compare the last shell from each, as well as length
-							// in some cases a shell is temporarily created then
-							// replaced by the shell we need so length alone is not
-							// enough
-							boolean sameLengthTest = previousShells.length == currentShells.length
-									&& previousShells[previousShells.length - 1] != currentShells[currentShells.length
-											- 1];
-							if(previousShells.length < currentShells.length || sameLengthTest) {
-								Shell shell = currentShells[currentShells.length - 1];
-								// we have our new shell, process as we did before
-								if (!(shell.getData() instanceof ProgressMonitorDialog)
-										&& !(shell.getData() instanceof BlockedJobsDialog)
-										&& (!shell.getText().equals("") || (shell.getText().equals("")
-												&& shell.getData() instanceof WizardDialog))) {
-			                    	dismisser.dismissShell(shell);
-			                    	dismissed = true;
-			                    } 
+							// locate a unique shell in the latest
+							for (Shell shell : currentShells) {
+								boolean added = uniqueSet.add(shell);
+								if (added) {
+									// unique shell, test to make sure it is
+									// not a temporary shell during setup of
+									// the one we expect
+									if (!(shell.getData() instanceof ProgressMonitorDialog)
+											&& !(shell.getData() instanceof BlockedJobsDialog)
+											&& (!shell.getText().equals("") || (shell.getText().equals("")
+													&& shell.getData() instanceof WizardDialog))) {
+										// we have our new shell, process as we
+										// did before
+										dismisser.dismissShell(shell);
+										dismissed = true;
+										break;
+									}
+								}
 							}
 						}
 					});
