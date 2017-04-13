@@ -246,6 +246,7 @@ public class TestUtil
                                     if(foundButton != null) {
 	                                    foundButton.setSelection(true);
 	                                    foundButton.notifyListeners(SWT.Selection, null);
+	                                    while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
                                     }
                                 }
                                 else if ( treeItem != null ) {
@@ -303,6 +304,19 @@ public class TestUtil
 		if(other.isDisposed()) {
 			return false;
 		}
+		// always return a modal dialog
+		if (other.getData() instanceof Dialog) {
+			if((other.getStyle() & SWT.APPLICATION_MODAL) == SWT.APPLICATION_MODAL) {
+				return true;
+			}
+			if((other.getStyle() & SWT.SYSTEM_MODAL) == SWT.SYSTEM_MODAL) {
+				return true;
+			}
+			if((other.getStyle() & SWT.PRIMARY_MODAL) == SWT.PRIMARY_MODAL) {
+				return true;
+			}
+		}
+		
 		if (other.getData() instanceof Dialog && !(other.getText().contains("Eclipse Updater"))
 						&& !(other.getText().equals("")) && !(other.getData() instanceof ProgressMonitorDialog)
 						&& !(other.getData() instanceof BlockedJobsDialog)) {
@@ -311,11 +325,13 @@ public class TestUtil
 		if (other.getData() instanceof WizardDialog) {
 			// some of our wizards have no text, so check the page for data
 			WizardDialog dialog = (WizardDialog) other.getData();
-			IWizardPage currentPage = dialog.getCurrentPage();
-			Class<? extends IWizardPage> class1 = currentPage.getClass();
-			Package package1 = class1.getPackage();
-			if (package1.getName().contains("org.xtuml")) {
-				return true;
+			if (!dialog.getShell().isDisposed() && dialog.getShell().isEnabled() && dialog.getShell().isVisible()) {
+				IWizardPage currentPage = dialog.getCurrentPage();
+				Class<? extends IWizardPage> class1 = currentPage.getClass();
+				Package package1 = class1.getPackage();
+				if (package1.getName().contains("org.xtuml")) {
+					return true;
+				}
 			}
 		}
 		return false;

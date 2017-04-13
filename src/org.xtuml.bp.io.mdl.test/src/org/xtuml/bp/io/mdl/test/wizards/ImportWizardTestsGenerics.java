@@ -77,9 +77,7 @@ public class ImportWizardTestsGenerics extends BaseTest {
 				systemModel);
 
 		UITestingUtilities.getGraphicalEditorFor(systemModel, true);
-		
-		Ooaofgraphics sysGraphicsRoot = Ooaofgraphics.getInstance(systemModel
-				.getModelRoot().getId());
+
 		AbstractTool tool = UITestingUtilities.getTool("Package");
 		UITestingUtilities.activateTool(tool);
 		// now create mouse events to create a new user data type
@@ -100,8 +98,7 @@ public class ImportWizardTestsGenerics extends BaseTest {
 
 				});		
 		UITestingUtilities.getGraphicalEditorFor(dtPackage, true);
-		Ooaofgraphics dtGraphicsRoot = Ooaofgraphics.getInstance(dtPackage
-				.getModelRoot().getId());		
+		
 		tool = UITestingUtilities.getTool("User Data Type");
 		UITestingUtilities.activateTool(tool);
 		// now create mouse events to create a new user data type

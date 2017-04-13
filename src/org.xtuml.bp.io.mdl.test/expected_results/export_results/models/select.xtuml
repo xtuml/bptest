@@ -332,25 +332,25 @@ INSERT INTO O_ID
 	VALUES (2,
 	"6b63c676-072a-afc3-f0e3-f51fe2c62ad5");
 INSERT INTO SM_ISM
-	VALUES ("9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	VALUES ("f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"6b63c676-072a-afc3-f0e3-f51fe2c62ad5");
 INSERT INTO SM_SM
-	VALUES ("9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	VALUES ("f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	'',
 	3);
 INSERT INTO SM_MOORE
-	VALUES ("9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	VALUES ("f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_LEVT
 	VALUES ("79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEVT
 	VALUES ("79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EVT
 	VALUES ("79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	2,
 	'next test',
@@ -360,15 +360,15 @@ INSERT INTO SM_EVT
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEVT
 	VALUES ("baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EVT
 	VALUES ("baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	1,
 	'start test',
@@ -378,7 +378,7 @@ INSERT INTO SM_EVT
 	'');
 INSERT INTO SM_STATE
 	VALUES ("b6b678a7-4d51-c5b6-1483-1c3804dbf13a",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'Simple Expression',
 	1,
@@ -386,29 +386,29 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("b6b678a7-4d51-c5b6-1483-1c3804dbf13a",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EIGN
 	VALUES ("b6b678a7-4d51-c5b6-1483-1c3804dbf13a",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("b6b678a7-4d51-c5b6-1483-1c3804dbf13a",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("e3a841b7-0781-a638-5f80-020f74702b51",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"b6b678a7-4d51-c5b6-1483-1c3804dbf13a");
 INSERT INTO SM_AH
 	VALUES ("e3a841b7-0781-a638-5f80-020f74702b51",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("e3a841b7-0781-a638-5f80-020f74702b51",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	1,
 	'//============================================================
 // Instance creation and configuration
@@ -601,7 +601,7 @@ generate DR2:''next test'' () to self;
 	0);
 INSERT INTO SM_STATE
 	VALUES ("e81e38be-6be0-2640-7c1b-d03833e6b4b5",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'Parenthesis',
 	2,
@@ -609,29 +609,29 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("e81e38be-6be0-2640-7c1b-d03833e6b4b5",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EIGN
 	VALUES ("e81e38be-6be0-2640-7c1b-d03833e6b4b5",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("e81e38be-6be0-2640-7c1b-d03833e6b4b5",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("d87c9fac-842e-7a1b-a9fc-565afb2bdf5e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"e81e38be-6be0-2640-7c1b-d03833e6b4b5");
 INSERT INTO SM_AH
 	VALUES ("d87c9fac-842e-7a1b-a9fc-565afb2bdf5e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("d87c9fac-842e-7a1b-a9fc-565afb2bdf5e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	1,
 	'//============================================================
 // Instance creation and configuration
@@ -756,7 +756,7 @@ generate DR2:''next test'' () to self;
 	0);
 INSERT INTO SM_STATE
 	VALUES ("92b91fc2-45af-80bf-e843-2b98cbf679a2",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'Compound Expression',
 	3,
@@ -764,29 +764,29 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("92b91fc2-45af-80bf-e843-2b98cbf679a2",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EIGN
 	VALUES ("92b91fc2-45af-80bf-e843-2b98cbf679a2",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("92b91fc2-45af-80bf-e843-2b98cbf679a2",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("672913d5-608f-d6b3-6add-48f4c0e80cb4",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"92b91fc2-45af-80bf-e843-2b98cbf679a2");
 INSERT INTO SM_AH
 	VALUES ("672913d5-608f-d6b3-6add-48f4c0e80cb4",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("672913d5-608f-d6b3-6add-48f4c0e80cb4",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	1,
 	'
 //============================================================
@@ -1004,7 +1004,7 @@ generate DR2:''next test'' () to self;
 	0);
 INSERT INTO SM_STATE
 	VALUES ("6dd3cbe1-9474-e901-9855-8baae7788b97",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'Multiple Use of Selected',
 	6,
@@ -1012,29 +1012,29 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("6dd3cbe1-9474-e901-9855-8baae7788b97",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EIGN
 	VALUES ("6dd3cbe1-9474-e901-9855-8baae7788b97",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("6dd3cbe1-9474-e901-9855-8baae7788b97",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("b2711ee3-0fc4-4daa-129d-48b9195a9c11",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"6dd3cbe1-9474-e901-9855-8baae7788b97");
 INSERT INTO SM_AH
 	VALUES ("b2711ee3-0fc4-4daa-129d-48b9195a9c11",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("b2711ee3-0fc4-4daa-129d-48b9195a9c11",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	1,
 	'
 //============================================================
@@ -1124,7 +1124,7 @@ generate DR2:''next test'' () to self;
 	0);
 INSERT INTO SM_STATE
 	VALUES ("3bf81f6c-35a5-0d7f-5d63-622b08c448ed",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'Selected Alone',
 	7,
@@ -1132,35 +1132,35 @@ INSERT INTO SM_STATE
 INSERT INTO SM_EIGN
 	VALUES ("3bf81f6c-35a5-0d7f-5d63-622b08c448ed",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("3bf81f6c-35a5-0d7f-5d63-622b08c448ed",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EIGN
 	VALUES ("3bf81f6c-35a5-0d7f-5d63-622b08c448ed",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("3bf81f6c-35a5-0d7f-5d63-622b08c448ed",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("6ca0f798-4131-b7b9-e56f-c3a80a03fa73",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"3bf81f6c-35a5-0d7f-5d63-622b08c448ed");
 INSERT INTO SM_AH
 	VALUES ("6ca0f798-4131-b7b9-e56f-c3a80a03fa73",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("6ca0f798-4131-b7b9-e56f-c3a80a03fa73",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	1,
 	'
 //============================================================
@@ -1229,132 +1229,132 @@ bridge ARCH::shutdown();',
 	0);
 INSERT INTO SM_NSTXN
 	VALUES ("51601b15-de34-4892-0342-ad3a27b6dd3b",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"b6b678a7-4d51-c5b6-1483-1c3804dbf13a",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("b35892e4-bb1a-9ece-4626-075e97931c06",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"51601b15-de34-4892-0342-ad3a27b6dd3b");
 INSERT INTO SM_AH
 	VALUES ("b35892e4-bb1a-9ece-4626-075e97931c06",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("b35892e4-bb1a-9ece-4626-075e97931c06",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("51601b15-de34-4892-0342-ad3a27b6dd3b",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"e81e38be-6be0-2640-7c1b-d03833e6b4b5",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_NSTXN
 	VALUES ("5a9241c7-682a-3106-9390-6c1bcb8115c2",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"6dd3cbe1-9474-e901-9855-8baae7788b97",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("9bbafa74-0dfd-8995-0cc8-585090b1c8fe",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"5a9241c7-682a-3106-9390-6c1bcb8115c2");
 INSERT INTO SM_AH
 	VALUES ("9bbafa74-0dfd-8995-0cc8-585090b1c8fe",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("9bbafa74-0dfd-8995-0cc8-585090b1c8fe",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("5a9241c7-682a-3106-9390-6c1bcb8115c2",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"3bf81f6c-35a5-0d7f-5d63-622b08c448ed",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_NSTXN
 	VALUES ("72c62324-6257-a950-938d-78ddc79a01c8",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"92b91fc2-45af-80bf-e843-2b98cbf679a2",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("b8ffe1f5-5c8d-2086-2576-97408faa8eeb",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"72c62324-6257-a950-938d-78ddc79a01c8");
 INSERT INTO SM_AH
 	VALUES ("b8ffe1f5-5c8d-2086-2576-97408faa8eeb",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("b8ffe1f5-5c8d-2086-2576-97408faa8eeb",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("72c62324-6257-a950-938d-78ddc79a01c8",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"6dd3cbe1-9474-e901-9855-8baae7788b97",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_CRTXN
 	VALUES ("08912725-10ed-f09c-6d8d-1894dad0a839",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"baee92c7-3a8c-d1bb-135b-2b320e41dd4e",
 	"00000000-0000-0000-0000-000000180001");
 INSERT INTO SM_TAH
 	VALUES ("d6df9d76-4ec8-d225-1ace-bad8c4f6c7bf",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"08912725-10ed-f09c-6d8d-1894dad0a839");
 INSERT INTO SM_AH
 	VALUES ("d6df9d76-4ec8-d225-1ace-bad8c4f6c7bf",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("d6df9d76-4ec8-d225-1ace-bad8c4f6c7bf",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("08912725-10ed-f09c-6d8d-1894dad0a839",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"b6b678a7-4d51-c5b6-1483-1c3804dbf13a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_NSTXN
 	VALUES ("515b3de9-b7d7-482d-d6c1-444b9e861437",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"e81e38be-6be0-2640-7c1b-d03833e6b4b5",
 	"79b0b0a5-fb8c-721e-037a-957968b93012",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("690238e7-3f65-44de-9e1f-b5f4e684f583",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"515b3de9-b7d7-482d-d6c1-444b9e861437");
 INSERT INTO SM_AH
 	VALUES ("690238e7-3f65-44de-9e1f-b5f4e684f583",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b");
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9");
 INSERT INTO SM_ACT
 	VALUES ("690238e7-3f65-44de-9e1f-b5f4e684f583",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("515b3de9-b7d7-482d-d6c1-444b9e861437",
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	"92b91fc2-45af-80bf-e843-2b98cbf679a2",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO GD_MD
 	VALUES ("5eceeb58-01ce-544c-efea-b4daece4a24f",
 	8,
-	"9bbb0780-be3e-63e1-9a8c-3cbfe60eeb3b",
+	"f5108cbf-6d3c-322e-383a-846140aeb0a9",
 	40,
 	1,
 	0,
@@ -2370,25 +2370,25 @@ INSERT INTO O_ID
 	VALUES (2,
 	"a2d13cdf-3f5d-217d-d00d-2aa6fcdbb310");
 INSERT INTO SM_ISM
-	VALUES ("43c5fe70-589a-e059-d532-7b6d03526481",
+	VALUES ("c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"a2d13cdf-3f5d-217d-d00d-2aa6fcdbb310");
 INSERT INTO SM_SM
-	VALUES ("43c5fe70-589a-e059-d532-7b6d03526481",
+	VALUES ("c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	'',
 	2);
 INSERT INTO SM_MOORE
-	VALUES ("43c5fe70-589a-e059-d532-7b6d03526481");
+	VALUES ("c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a");
 INSERT INTO SM_LEVT
 	VALUES ("418d1a06-a3e0-d1ac-855e-a9e08c9546f5",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEVT
 	VALUES ("418d1a06-a3e0-d1ac-855e-a9e08c9546f5",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EVT
 	VALUES ("418d1a06-a3e0-d1ac-855e-a9e08c9546f5",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"00000000-0000-0000-0000-000000000000",
 	1,
 	'dummy event',
@@ -2398,7 +2398,7 @@ INSERT INTO SM_EVT
 	'');
 INSERT INTO SM_STATE
 	VALUES ("a6e5ebeb-23ce-6ebe-636f-deccb61e8e75",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"00000000-0000-0000-0000-000000000000",
 	'Exists',
 	1,
@@ -2406,51 +2406,51 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("a6e5ebeb-23ce-6ebe-636f-deccb61e8e75",
 	"418d1a06-a3e0-d1ac-855e-a9e08c9546f5",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("b31ce371-6fa4-7e9c-9fa4-353bad01346a",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"a6e5ebeb-23ce-6ebe-636f-deccb61e8e75");
 INSERT INTO SM_AH
 	VALUES ("b31ce371-6fa4-7e9c-9fa4-353bad01346a",
-	"43c5fe70-589a-e059-d532-7b6d03526481");
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a");
 INSERT INTO SM_ACT
 	VALUES ("b31ce371-6fa4-7e9c-9fa4-353bad01346a",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	1,
 	'',
 	'',
 	0);
 INSERT INTO SM_NSTXN
 	VALUES ("92e2951f-edfd-9723-0c8d-15fb45d6a2bd",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"a6e5ebeb-23ce-6ebe-636f-deccb61e8e75",
 	"418d1a06-a3e0-d1ac-855e-a9e08c9546f5",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("0a808b89-69b4-1343-247d-70e80009876e",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"92e2951f-edfd-9723-0c8d-15fb45d6a2bd");
 INSERT INTO SM_AH
 	VALUES ("0a808b89-69b4-1343-247d-70e80009876e",
-	"43c5fe70-589a-e059-d532-7b6d03526481");
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a");
 INSERT INTO SM_ACT
 	VALUES ("0a808b89-69b4-1343-247d-70e80009876e",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("92e2951f-edfd-9723-0c8d-15fb45d6a2bd",
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	"a6e5ebeb-23ce-6ebe-636f-deccb61e8e75",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO GD_MD
 	VALUES ("98a591fd-351a-9d89-4b4c-12e85cd30d0f",
 	8,
-	"43c5fe70-589a-e059-d532-7b6d03526481",
+	"c200b6a4-556c-df5e-cc6a-e4db8bcb2a3a",
 	40,
 	1,
 	0,
@@ -2710,25 +2710,25 @@ INSERT INTO O_ID
 	VALUES (2,
 	"c7dae98a-ae84-400d-3c37-df2ed668e653");
 INSERT INTO SM_ISM
-	VALUES ("a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	VALUES ("931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"c7dae98a-ae84-400d-3c37-df2ed668e653");
 INSERT INTO SM_SM
-	VALUES ("a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	VALUES ("931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	'',
 	4);
 INSERT INTO SM_MOORE
-	VALUES ("a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59");
+	VALUES ("931be52d-fb4a-abc1-a8bf-f36e5811c561");
 INSERT INTO SM_LEVT
 	VALUES ("ce70bdf3-faec-263e-bb03-b4fb043337bd",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEVT
 	VALUES ("ce70bdf3-faec-263e-bb03-b4fb043337bd",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EVT
 	VALUES ("ce70bdf3-faec-263e-bb03-b4fb043337bd",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"00000000-0000-0000-0000-000000000000",
 	1,
 	'init',
@@ -2738,7 +2738,7 @@ INSERT INTO SM_EVT
 	'');
 INSERT INTO SM_STATE
 	VALUES ("55dc1e4f-1022-b499-43f0-b22a8cef995f",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"00000000-0000-0000-0000-000000000000",
 	'Initialize System',
 	1,
@@ -2746,51 +2746,51 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("55dc1e4f-1022-b499-43f0-b22a8cef995f",
 	"ce70bdf3-faec-263e-bb03-b4fb043337bd",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("a9ca0986-7bba-8a86-6ccb-2467be52d757",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"55dc1e4f-1022-b499-43f0-b22a8cef995f");
 INSERT INTO SM_AH
 	VALUES ("a9ca0986-7bba-8a86-6ccb-2467be52d757",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59");
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561");
 INSERT INTO SM_ACT
 	VALUES ("a9ca0986-7bba-8a86-6ccb-2467be52d757",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	1,
 	'generate DR1:''start test'' to DR creator;',
 	'',
 	0);
 INSERT INTO SM_NSTXN
 	VALUES ("6b009ae0-8f22-1386-cf0b-4c426b8c5630",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"55dc1e4f-1022-b499-43f0-b22a8cef995f",
 	"ce70bdf3-faec-263e-bb03-b4fb043337bd",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("fdd78dcf-487d-b630-a3b5-b57cd896f1b2",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"6b009ae0-8f22-1386-cf0b-4c426b8c5630");
 INSERT INTO SM_AH
 	VALUES ("fdd78dcf-487d-b630-a3b5-b57cd896f1b2",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59");
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561");
 INSERT INTO SM_ACT
 	VALUES ("fdd78dcf-487d-b630-a3b5-b57cd896f1b2",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("6b009ae0-8f22-1386-cf0b-4c426b8c5630",
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	"55dc1e4f-1022-b499-43f0-b22a8cef995f",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO GD_MD
 	VALUES ("82f4a8fd-1fdf-4a4c-2f51-c66efca85088",
 	8,
-	"a1e817cf-e7f2-b5ec-c9d9-4c44fab09a59",
+	"931be52d-fb4a-abc1-a8bf-f36e5811c561",
 	40,
 	1,
 	0,

@@ -400,25 +400,25 @@ INSERT INTO O_ID
 	VALUES (2,
 	"ef331538-d74a-0627-263d-629761d309df");
 INSERT INTO SM_ISM
-	VALUES ("8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	VALUES ("6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"ef331538-d74a-0627-263d-629761d309df");
 INSERT INTO SM_SM
-	VALUES ("8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	VALUES ("6908bc86-2815-fff1-92c6-742fe86c71ea",
 	'',
 	7);
 INSERT INTO SM_MOORE
-	VALUES ("8238cbdd-5a0d-3cbd-2909-0e08ec0180fe");
+	VALUES ("6908bc86-2815-fff1-92c6-742fe86c71ea");
 INSERT INTO SM_LEVT
 	VALUES ("e4887e1d-7631-04b9-62b5-7853bc4ad11b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEVT
 	VALUES ("e4887e1d-7631-04b9-62b5-7853bc4ad11b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EVT
 	VALUES ("e4887e1d-7631-04b9-62b5-7853bc4ad11b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000",
 	1,
 	'one',
@@ -428,15 +428,15 @@ INSERT INTO SM_EVT
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("f9676ad7-4093-3541-212c-3cafd871db2b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEVT
 	VALUES ("f9676ad7-4093-3541-212c-3cafd871db2b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EVT
 	VALUES ("f9676ad7-4093-3541-212c-3cafd871db2b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000",
 	2,
 	'two',
@@ -446,7 +446,7 @@ INSERT INTO SM_EVT
 	'');
 INSERT INTO SM_STATE
 	VALUES ("de7e55ed-1086-0626-ac69-2076f443bf08",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000",
 	'state one',
 	1,
@@ -454,30 +454,30 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("de7e55ed-1086-0626-ac69-2076f443bf08",
 	"e4887e1d-7631-04b9-62b5-7853bc4ad11b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEME
 	VALUES ("de7e55ed-1086-0626-ac69-2076f443bf08",
 	"f9676ad7-4093-3541-212c-3cafd871db2b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("c2650ba3-333e-8eaa-41a5-33834e72f715",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"de7e55ed-1086-0626-ac69-2076f443bf08");
 INSERT INTO SM_AH
 	VALUES ("c2650ba3-333e-8eaa-41a5-33834e72f715",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe");
+	"6908bc86-2815-fff1-92c6-742fe86c71ea");
 INSERT INTO SM_ACT
 	VALUES ("c2650ba3-333e-8eaa-41a5-33834e72f715",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	1,
 	'LOG::LogInfo(message:"Object B - state one");',
 	'',
 	0);
 INSERT INTO SM_STATE
 	VALUES ("dce17b4c-8e7b-ae9b-d076-c3bd09b984de",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000",
 	'state two',
 	2,
@@ -485,35 +485,35 @@ INSERT INTO SM_STATE
 INSERT INTO SM_CH
 	VALUES ("dce17b4c-8e7b-ae9b-d076-c3bd09b984de",
 	"e4887e1d-7631-04b9-62b5-7853bc4ad11b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("dce17b4c-8e7b-ae9b-d076-c3bd09b984de",
 	"e4887e1d-7631-04b9-62b5-7853bc4ad11b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_CH
 	VALUES ("dce17b4c-8e7b-ae9b-d076-c3bd09b984de",
 	"f9676ad7-4093-3541-212c-3cafd871db2b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO SM_SEME
 	VALUES ("dce17b4c-8e7b-ae9b-d076-c3bd09b984de",
 	"f9676ad7-4093-3541-212c-3cafd871db2b",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("e7d57fd0-462f-e5c3-6354-25fa18227dc8",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"dce17b4c-8e7b-ae9b-d076-c3bd09b984de");
 INSERT INTO SM_AH
 	VALUES ("e7d57fd0-462f-e5c3-6354-25fa18227dc8",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe");
+	"6908bc86-2815-fff1-92c6-742fe86c71ea");
 INSERT INTO SM_ACT
 	VALUES ("e7d57fd0-462f-e5c3-6354-25fa18227dc8",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	1,
 	'LOG::LogInfo(message:"Object B - state two");
 LOG::LogInfo(message:"Shutting down.....");
@@ -522,58 +522,58 @@ ARCH::shutdown();',
 	0);
 INSERT INTO SM_NSTXN
 	VALUES ("24007397-cf2c-ed56-a8c8-6c4d938b8ef4",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"de7e55ed-1086-0626-ac69-2076f443bf08",
 	"e4887e1d-7631-04b9-62b5-7853bc4ad11b",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("66c2c533-de2d-1d25-5e71-4c4c5492c7b2",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"24007397-cf2c-ed56-a8c8-6c4d938b8ef4");
 INSERT INTO SM_AH
 	VALUES ("66c2c533-de2d-1d25-5e71-4c4c5492c7b2",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe");
+	"6908bc86-2815-fff1-92c6-742fe86c71ea");
 INSERT INTO SM_ACT
 	VALUES ("66c2c533-de2d-1d25-5e71-4c4c5492c7b2",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("24007397-cf2c-ed56-a8c8-6c4d938b8ef4",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"de7e55ed-1086-0626-ac69-2076f443bf08",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_NSTXN
 	VALUES ("526c7b71-ad78-ace6-b103-fc6967e66df8",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"de7e55ed-1086-0626-ac69-2076f443bf08",
 	"f9676ad7-4093-3541-212c-3cafd871db2b",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("64851f4a-5594-b159-735b-59f76ec35bf0",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"526c7b71-ad78-ace6-b103-fc6967e66df8");
 INSERT INTO SM_AH
 	VALUES ("64851f4a-5594-b159-735b-59f76ec35bf0",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe");
+	"6908bc86-2815-fff1-92c6-742fe86c71ea");
 INSERT INTO SM_ACT
 	VALUES ("64851f4a-5594-b159-735b-59f76ec35bf0",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("526c7b71-ad78-ace6-b103-fc6967e66df8",
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	"dce17b4c-8e7b-ae9b-d076-c3bd09b984de",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO GD_MD
 	VALUES ("67b21725-dc35-a4e0-018e-98894c712b7b",
 	8,
-	"8238cbdd-5a0d-3cbd-2909-0e08ec0180fe",
+	"6908bc86-2815-fff1-92c6-742fe86c71ea",
 	40,
 	1,
 	0,
@@ -891,25 +891,25 @@ INSERT INTO DIM_DIA
 	1179.000000,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_ASM
-	VALUES ("0ffd31a1-292a-5271-412d-7db303ad88f3",
+	VALUES ("29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"ef331538-d74a-0627-263d-629761d309df");
 INSERT INTO SM_SM
-	VALUES ("0ffd31a1-292a-5271-412d-7db303ad88f3",
+	VALUES ("29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	'',
 	8);
 INSERT INTO SM_MOORE
-	VALUES ("0ffd31a1-292a-5271-412d-7db303ad88f3");
+	VALUES ("29a88c90-353b-b10e-0b6b-e6dadce3e1c2");
 INSERT INTO SM_LEVT
 	VALUES ("42c48b1d-3801-0d59-3962-dc634b7a38ed",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_SEVT
 	VALUES ("42c48b1d-3801-0d59-3962-dc634b7a38ed",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_EVT
 	VALUES ("42c48b1d-3801-0d59-3962-dc634b7a38ed",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"00000000-0000-0000-0000-000000000000",
 	1,
 	'one',
@@ -919,7 +919,7 @@ INSERT INTO SM_EVT
 	'');
 INSERT INTO SM_STATE
 	VALUES ("c96eb8e6-80f6-8d3f-6fbd-db1a1d697ccf",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"00000000-0000-0000-0000-000000000000",
 	'state one',
 	1,
@@ -927,18 +927,18 @@ INSERT INTO SM_STATE
 INSERT INTO SM_SEME
 	VALUES ("c96eb8e6-80f6-8d3f-6fbd-db1a1d697ccf",
 	"42c48b1d-3801-0d59-3962-dc634b7a38ed",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_MOAH
 	VALUES ("e0dec9cc-6594-efa3-9737-558f6acc660e",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"c96eb8e6-80f6-8d3f-6fbd-db1a1d697ccf");
 INSERT INTO SM_AH
 	VALUES ("e0dec9cc-6594-efa3-9737-558f6acc660e",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3");
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2");
 INSERT INTO SM_ACT
 	VALUES ("e0dec9cc-6594-efa3-9737-558f6acc660e",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	1,
 	'LOG::LogInfo(message:"Object B Assigner - state one");
 select any b from instances of OB;
@@ -948,33 +948,33 @@ generate OB2:''two''() to b;
 	0);
 INSERT INTO SM_NSTXN
 	VALUES ("e6e0cc55-2d22-9f02-5299-966cf9b5daa7",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"c96eb8e6-80f6-8d3f-6fbd-db1a1d697ccf",
 	"42c48b1d-3801-0d59-3962-dc634b7a38ed",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_TAH
 	VALUES ("0cebdfc5-3de8-6fa4-f38b-55b8f8fd4b18",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"e6e0cc55-2d22-9f02-5299-966cf9b5daa7");
 INSERT INTO SM_AH
 	VALUES ("0cebdfc5-3de8-6fa4-f38b-55b8f8fd4b18",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3");
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2");
 INSERT INTO SM_ACT
 	VALUES ("0cebdfc5-3de8-6fa4-f38b-55b8f8fd4b18",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	3,
 	'',
 	'',
 	0);
 INSERT INTO SM_TXN
 	VALUES ("e6e0cc55-2d22-9f02-5299-966cf9b5daa7",
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	"c96eb8e6-80f6-8d3f-6fbd-db1a1d697ccf",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO GD_MD
 	VALUES ("4dc575b3-9570-082a-a929-77f1796fa37a",
 	10,
-	"0ffd31a1-292a-5271-412d-7db303ad88f3",
+	"29a88c90-353b-b10e-0b6b-e6dadce3e1c2",
 	40,
 	1,
 	0,
@@ -1341,31 +1341,31 @@ INSERT INTO O_ID
 	VALUES (2,
 	"4d3ed976-94b1-84bc-6f23-33caf688090e");
 INSERT INTO SM_ISM
-	VALUES ("715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	VALUES ("f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	"4d3ed976-94b1-84bc-6f23-33caf688090e");
 INSERT INTO SM_SM
-	VALUES ("715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	VALUES ("f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	'',
 	3);
 INSERT INTO SM_MOORE
-	VALUES ("715b23d2-fea8-6693-eddb-d22574c5ea8a");
+	VALUES ("f7be7b37-8784-9ace-fd69-8cfc9dc689eb");
 INSERT INTO SM_STATE
 	VALUES ("ef917166-ea56-c3a9-241f-efd2ef9f0737",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	"00000000-0000-0000-0000-000000000000",
 	'init state one',
 	1,
 	0);
 INSERT INTO SM_MOAH
 	VALUES ("0568d5d8-aa09-e1f6-66ba-f267f900fb62",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	"ef917166-ea56-c3a9-241f-efd2ef9f0737");
 INSERT INTO SM_AH
 	VALUES ("0568d5d8-aa09-e1f6-66ba-f267f900fb62",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a");
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb");
 INSERT INTO SM_ACT
 	VALUES ("0568d5d8-aa09-e1f6-66ba-f267f900fb62",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	1,
 	'LOG::LogInfo(message:"Domain init1 - init state one");
 create object instance a1 of OA;
@@ -1421,21 +1421,21 @@ end if;
 	0);
 INSERT INTO SM_STATE
 	VALUES ("c0ea8ed6-fa61-9bbd-e407-1d430f30e890",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	"00000000-0000-0000-0000-000000000000",
 	'init state two',
 	3,
 	0);
 INSERT INTO SM_MOAH
 	VALUES ("bfa10099-3f2e-f089-27cc-d24595d9fe2f",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	"c0ea8ed6-fa61-9bbd-e407-1d430f30e890");
 INSERT INTO SM_AH
 	VALUES ("bfa10099-3f2e-f089-27cc-d24595d9fe2f",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a");
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb");
 INSERT INTO SM_ACT
 	VALUES ("bfa10099-3f2e-f089-27cc-d24595d9fe2f",
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	1,
 	'LOG::LogInfo(message:"Domain init1 - Starting in init state two");
 
@@ -1451,7 +1451,7 @@ end if;
 INSERT INTO GD_MD
 	VALUES ("7fd7852b-37c9-9705-96c4-4088c0ab7add",
 	8,
-	"715b23d2-fea8-6693-eddb-d22574c5ea8a",
+	"f7be7b37-8784-9ace-fd69-8cfc9dc689eb",
 	40,
 	1,
 	0,
@@ -1649,31 +1649,31 @@ INSERT INTO O_ID
 	VALUES (2,
 	"269700f2-7ad1-c8ea-bf86-d6bd6041f07f");
 INSERT INTO SM_ISM
-	VALUES ("c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	VALUES ("674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	"269700f2-7ad1-c8ea-bf86-d6bd6041f07f");
 INSERT INTO SM_SM
-	VALUES ("c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	VALUES ("674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	'',
 	5);
 INSERT INTO SM_MOORE
-	VALUES ("c6de1da4-9e1c-fee7-b010-e17afd1509ff");
+	VALUES ("674c7b42-7a82-ab72-e2f1-953250b79e6f");
 INSERT INTO SM_STATE
 	VALUES ("7a7ef3f1-fd09-cc70-d6d7-f0dce6bcb941",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	"00000000-0000-0000-0000-000000000000",
 	'init state five',
 	3,
 	0);
 INSERT INTO SM_MOAH
 	VALUES ("3350ff7d-2f2e-d6c9-bd1c-4b3fc86e3953",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	"7a7ef3f1-fd09-cc70-d6d7-f0dce6bcb941");
 INSERT INTO SM_AH
 	VALUES ("3350ff7d-2f2e-d6c9-bd1c-4b3fc86e3953",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff");
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f");
 INSERT INTO SM_ACT
 	VALUES ("3350ff7d-2f2e-d6c9-bd1c-4b3fc86e3953",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	1,
 	'LOG::LogInfo(message:"Domain init1 - Starting in init state five");
 
@@ -1688,21 +1688,21 @@ end if;
 	0);
 INSERT INTO SM_STATE
 	VALUES ("0e7cad05-93d8-7da2-a218-7cc90b33bb76",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	"00000000-0000-0000-0000-000000000000",
 	'init state six',
 	4,
 	0);
 INSERT INTO SM_MOAH
 	VALUES ("6e779609-dc24-a951-fad7-21cbe0b7e9be",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	"0e7cad05-93d8-7da2-a218-7cc90b33bb76");
 INSERT INTO SM_AH
 	VALUES ("6e779609-dc24-a951-fad7-21cbe0b7e9be",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff");
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f");
 INSERT INTO SM_ACT
 	VALUES ("6e779609-dc24-a951-fad7-21cbe0b7e9be",
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	1,
 	'LOG::LogInfo(message:"Domain init1 - Starting in init state six");
 
@@ -1718,7 +1718,7 @@ end if;
 INSERT INTO GD_MD
 	VALUES ("2af5ee9f-1cbc-1050-9a38-f2236b1ab1f2",
 	8,
-	"c6de1da4-9e1c-fee7-b010-e17afd1509ff",
+	"674c7b42-7a82-ab72-e2f1-953250b79e6f",
 	40,
 	1,
 	0,
