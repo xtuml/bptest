@@ -35,10 +35,12 @@ import java.io.ObjectInputStream;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.JFacePreferences;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.GC;
@@ -333,11 +335,9 @@ public abstract class CanvasTest extends BaseTest {
   }
 
   public CanvasTestResult drawDiagram(final GraphicalEditor editor, boolean zoomGroup, boolean zoomSelected, boolean isHardCopy, Rectangle size) {
-	  FontData prefFontData = new FontData("1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma"); //$NON-NLS-1$
+	  String fontName = "Verdana";
+	  FontData prefFontData = new FontData(fontName, 8, SWT.DEFAULT); //$NON-NLS-1$
 	  Font displayFont = new Font(Display.getDefault(), prefFontData);
-	  store.setValue("org.eclipse.jface.dialogfont", "1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma");
-	  store.setValue("org.eclipse.ui.workbench.TAB_TEXT_FONT", "1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma");
-	  store.setValue("org.eclipse.ui.workbench.VIEW_MESSAGE_TEXT_FONT", "1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma");
 	  CanvasPlugin.setGraphicalRepresents(editor.getModel());
 	  Image img = new Image(Display.getDefault(), size);
 	  final TestGC tester = new TestGC(new SWTGraphics(new GC(img)));

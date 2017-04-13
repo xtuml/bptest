@@ -31,18 +31,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationsDialog;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -59,17 +54,12 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.progress.BlockedJobsDialog;
-
-import org.xtuml.bp.core.CoreDataType_c;
 import org.xtuml.bp.core.CorePlugin;
-import org.xtuml.bp.core.DataType_c;
 import org.xtuml.bp.core.Ooaofooa;
-import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ModelElement;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionManager;
-import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.dialogs.ElementSelectionDialog;
 import org.xtuml.bp.core.ui.dialogs.ElementSelectionFlatView;
 import org.xtuml.bp.test.common.BaseTest;
@@ -79,9 +69,12 @@ import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
 
+import junit.framework.TestCase;
+
 /**
  * Contains utility methods related to automated testing of BridgePoint.
  */
+@SuppressWarnings("restriction")
 public class TestUtil
 {
     /**
@@ -195,229 +188,162 @@ public class TestUtil
         dismissDialog(inHowManyMillis, currentRecursionDepth, shouldDismiss, null, null, true);
     }
     
+    public interface ShellDismisser {
+    	public void dismissShell(Shell shell);
+    }
+    
     /**
      * See shorter signature method.
      */
+    static boolean dismissed = false;
+    public static void dismissShell(ShellDismisser dismisser)
+    {
+    	// cache the current shells, we will use the knowledge that a new one is imminent
+    	// to determine when and which shell to close
+    	Shell[] shellsBeforeAction = PlatformUI.getWorkbench().getDisplay().getShells();
+    	// run a new thread which expires after 15 seconds (the longest wait time used with
+    	// the old version of this method
+    	long maxRunTime = 100000;
+    	long startTime = System.currentTimeMillis();
+    	Thread dismissThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				long runTime = System.currentTimeMillis() - startTime;
+				dismissed = false;
+				while(runTime < maxRunTime) {
+					PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+						
+						@Override
+						public void run() {
+				            Shell[] previousShells = shellsBeforeAction;
+							Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
+							// compare the last shell from each, as well as length
+							// in some cases a shell is temporarily created then
+							// replaced by the shell we need so length alone is not
+							// enough
+							boolean sameLengthTest = previousShells.length == currentShells.length
+									&& previousShells[previousShells.length - 1] != currentShells[currentShells.length
+											- 1];
+							if(previousShells.length < currentShells.length || sameLengthTest) {
+								Shell shell = currentShells[currentShells.length - 1];
+								// we have our new shell, process as we did before
+								if (!(shell.getData() instanceof ProgressMonitorDialog)
+										&& !(shell.getData() instanceof BlockedJobsDialog)
+										&& (!shell.getText().equals("") || (shell.getText().equals("")
+												&& shell.getData() instanceof WizardDialog))) {
+			                    	dismisser.dismissShell(shell);
+			                    	dismissed = true;
+			                    } 
+							}
+						}
+					});
+					if(dismissed) {
+						return;
+					}
+					sleep(50);
+				}
+			}
+    		
+    	});
+    	dismissThread.start();
+    }
+
     public static void dismissDialog(final long inHowManyMillis, 
             final int currentRecursionDepth, final boolean shouldDismiss, final String button, final String treeItem, final boolean throwException)
     {
-        // run this on a separate thread, so that the dialog invocation to be performed
-        // by the caller may occur
-        final int maxRecursionDepth = 10;
-        Thread dismissThread = new Thread(new Runnable() {
-        
-            @Override
-            public void run() {
+		dismissShell(shell -> {
+            dialogText = "";
+			// close the dialog
+			Control[] ctrls = ((Dialog) shell.getData()).getShell().getChildren();
+			for (int i = 0; i < ctrls.length; i++) {
+				Control ctrl = ctrls[i];
 
-                // wait to give the expected modal dialog time to get displayed 
-                sleep(inHowManyMillis);
-                dialogText = "";
-                
-                // if the currently active shell is a dialog
-                if(PlatformUI.getWorkbench().getDisplay().isDisposed()) {
-                	return;
-                }
-                
-                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-                
-                    @Override
-                    public void run() {
-                        Shell shell = findShell();
-                        
-                        if (shell != null && shell.getData() instanceof Dialog) {
-                            // close the dialog
-                            if (!(shell.getData() instanceof ProgressMonitorDialog)
-                                    && !(shell.getData() instanceof BlockedJobsDialog)) {
-                                Control[] ctrls = ((Dialog)shell.getData()).getShell().getChildren();
-                                for (int i = 0; i< ctrls.length; i++) {
-                                    Control ctrl = ctrls[i];
-                                    
-                                    if (ctrl instanceof Label) {
-                                        dialogText = dialogText + ((Label)ctrl).getText();
-                                    }
-                                }
-                                if ( shouldDismiss )
-                                {
-                                    ((Dialog)shell.getData()).close();
-                                }
-                                else if ( button != null )
-                                {
-                                    Button foundButton = findButton(shell, button);
-                                    if(foundButton != null) {
-	                                    foundButton.setSelection(true);
-	                                    foundButton.notifyListeners(SWT.Selection, null);
-	                                    while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-                                    }
-                                }
-                                else if ( treeItem != null ) {
-									Tree tree = UITestingUtilities.findTree(shell);
-									if(tree != null) {
-										TreeItem item = UITestingUtilities
-												.findItemInTree(tree, treeItem);
-										if(item != null) {
-											tree.select(item);
-										} else {
-											CorePlugin.logError(
-													"Unable to locate tree item in tree: "
-															+ treeItem, null);
-										}
-									} else {
-										CorePlugin
-												.logError(
-														"Unable to locate a tree in the dialog.",
-														null);
-									}
-                            	} else {
-                                   cancelDialog( (Dialog)shell.getData() );   
-                                }
-                            } else {
-                                dismissDialog(inHowManyMillis, currentRecursionDepth + 1, shouldDismiss, button, treeItem, throwException);
-                            }
-                            
-                        }
-                        // otherwise, call this recursively, so that further attempts 
-                        // may be made, with each one allowing the UI-thread to take
-                        // back control for awhile to get the dialog shown
-                        else if (currentRecursionDepth <= maxRecursionDepth) {
-                            dismissDialog(inHowManyMillis, currentRecursionDepth + 1, shouldDismiss, button, treeItem, throwException);
-                        }
-                    }
-
-                });
-            }
-        });
-        dismissThread.start();
-    }
-
-    public static Shell findShell() {
-    	Shell[] others = PlatformUI.getWorkbench().getDisplay().getShells();
-    	for(int i = others.length - 1; i >= 0; i--) {
-    		if(isExpectedDialog(others[i])) {
-				return others[i];
-    		}
-    	}
-    	return null;
-    }
-    public static boolean isExpectedDialog(Shell other) {
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
-		if(other.isDisposed()) {
-			return false;
-		}
-		// always return a modal dialog
-		if (other.getData() instanceof Dialog) {
-			if((other.getStyle() & SWT.APPLICATION_MODAL) == SWT.APPLICATION_MODAL) {
-				return true;
-			}
-			if((other.getStyle() & SWT.SYSTEM_MODAL) == SWT.SYSTEM_MODAL) {
-				return true;
-			}
-			if((other.getStyle() & SWT.PRIMARY_MODAL) == SWT.PRIMARY_MODAL) {
-				return true;
-			}
-		}
-		
-		if (other.getData() instanceof Dialog && !(other.getText().contains("Eclipse Updater"))
-						&& !(other.getText().equals("")) && !(other.getData() instanceof ProgressMonitorDialog)
-						&& !(other.getData() instanceof BlockedJobsDialog)) {
-			return true;
-		}
-		if (other.getData() instanceof WizardDialog) {
-			// some of our wizards have no text, so check the page for data
-			WizardDialog dialog = (WizardDialog) other.getData();
-			if (!dialog.getShell().isDisposed() && dialog.getShell().isEnabled() && dialog.getShell().isVisible()) {
-				IWizardPage currentPage = dialog.getCurrentPage();
-				Class<? extends IWizardPage> class1 = currentPage.getClass();
-				Package package1 = class1.getPackage();
-				if (package1.getName().contains("org.xtuml")) {
-					return true;
+				if (ctrl instanceof Label) {
+					dialogText = dialogText + ((Label) ctrl).getText();
 				}
 			}
-		}
-		return false;
-    }
+			if (shouldDismiss) {
+				((Dialog) shell.getData()).close();
+			} else if (button != null) {
+				Button foundButton = findButton(shell, button);
+				if (foundButton != null) {
+					foundButton.setSelection(true);
+					foundButton.notifyListeners(SWT.Selection, null);
+					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+						;
+				}
+			} else if (treeItem != null) {
+				Tree tree = UITestingUtilities.findTree(shell);
+				if (tree != null) {
+					TreeItem item = UITestingUtilities.findItemInTree(tree, treeItem);
+					if (item != null) {
+						tree.select(item);
+					} else {
+						CorePlugin.logError("Unable to locate tree item in tree: " + treeItem, null);
+					}
+				} else {
+					CorePlugin.logError("Unable to locate a tree in the dialog.", null);
+				}
+			} else {
+				cancelDialog((Dialog) shell.getData());
+			}
+		});
+	}
     
 	//
     public static void checkTableItems(final long inHowManyMillis, 
             final int currentRecursionDepth, final boolean shouldDismiss, final String actualResultFilePath )
     {
-        // run this on a separate thread, so that the dialog invocation to be performed
-        // by the caller may occur
-        final int maxRecursionDepth = 10;
-        Thread dismissThread = new Thread(new Runnable() {
-        
-            @Override
-            public void run() {
+		dismissShell(shell -> {
+			if (shell != null && shell.getData() instanceof Dialog) {
+				// close the dialog
+				if (!(shell.getData() instanceof ProgressMonitorDialog)) {
+					Control[] ctrls = ((Dialog) shell.getData()).getShell().getChildren();
+					for (int i = 0; i < ctrls.length; i++) {
+						Control ctrl = ctrls[i];
 
-                // wait to give the expected modal dialog time to get displayed 
-                sleep(inHowManyMillis);
-                dialogText = "";
-                
-                // if the currently active shell is a dialog 
-                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-                
-                    @Override
-                    public void run() {
-                        Shell shell = findShell();
-                        if (shell != null && shell.getData() instanceof Dialog) {
-                            // close the dialog
-                            if (!(shell.getData() instanceof ProgressMonitorDialog)) {
-                                Control[] ctrls = ((Dialog) shell.getData())
-                                        .getShell().getChildren();
-                                for (int i = 0; i < ctrls.length; i++) {
-                                    Control ctrl = ctrls[i];
+						if (ctrl instanceof Label) {
+							dialogText = dialogText + ((Label) ctrl).getText();
+						}
+					}
+					if (shouldDismiss) {
+						((Dialog) shell.getData()).close();
+					} else {
+						TableItem[] items = getTableItems(shell);
+						if (items.length > 0) {
+							String[] actualFirstColumn = new String[items.length];
+							String[] actualSecondColumn = new String[items.length];
 
-                                    if (ctrl instanceof Label) {
-                                        dialogText = dialogText + ((Label) ctrl).getText();
-                                    }
-                                }
-                                if (shouldDismiss) {
-                                    ((Dialog) shell.getData()).close();
-                                } else {
-                                    TableItem[] items = getTableItems(shell);
-                                    if (items.length > 0) {
-                                        String[] actualFirstColumn = new String[items.length];
-                                        String[] actualSecondColumn = new String[items.length];
+							for (int i = 0; i < items.length; i++) {
+								actualFirstColumn[i] = items[i].getText(0);
+								actualSecondColumn[i] = items[i].getText(1);
+							}
+							String output = createTable(actualFirstColumn, actualSecondColumn);
+							try {
+								FileWriter writer = new FileWriter(actualResultFilePath);
+								writer.write(output);
+								writer.flush();
+								writer.close();
+							} catch (IOException e) {
 
-                                        for (int i = 0; i < items.length; i++) {
-                                            actualFirstColumn[i] = items[i].getText(0);
-                                            actualSecondColumn[i] = items[i].getText(1);
-//                                          Assert.assertEquals(firstColumn[i], actualFirstColumn[i]);
-//                                          Assert.assertEquals(secondColumn[i], actualSecondColumn[i]);
-                                        }
-                                        String output = createTable(actualFirstColumn, actualSecondColumn);
-                                         try {
-                                            FileWriter writer = new FileWriter(actualResultFilePath);
-                                            writer.write(output);
-                                            writer.flush();
-                                        } catch (IOException e) {
-                                            
-                                            e.printStackTrace();
-                                        }
-                                        
-                                        
-                                    }
-                                    okToDialog(0);
-                                }
-                            } else {
-                                checkTableItems(inHowManyMillis, currentRecursionDepth + 1, shouldDismiss, actualResultFilePath);
-                            }
-                            
-                        }
-                        // otherwise, call this recursively, so that further attempts 
-                        // may be made, with each one allowing the UI-thread to take
-                        // back control for awhile to get the dialog shown
-                        else if (currentRecursionDepth <= maxRecursionDepth) {
-                            checkTableItems(inHowManyMillis, currentRecursionDepth + 1, shouldDismiss, actualResultFilePath);
-                        }
-                    }
+								e.printStackTrace();
+							}
 
-                    
-                });
-            }
-        });
-        dismissThread.start();
-    }
+						}
+						Button foundButton = findButton(shell, "OK");
+						if (foundButton != null) {
+							foundButton.setSelection(true);
+							foundButton.notifyListeners(SWT.Selection, null);
+							while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+								;
+						}
+					}
+				}	
+			}
+		});
+
+	}
 
     private static String createTable(String[] firstColumn,
             String[] secondColumn) {
@@ -669,39 +595,7 @@ public class TestUtil
         public IProject project;
         public IFile file;
     }
-    
-    /**
-     * Creates (and returns) a test project of the name of the given test class,
-     * copies into it the model of the given name found in the project of the 
-     * given name, and (also) returns the root of the model imported from
-     * that copy. 
-     */
-//    public static Result1 createTestProjectAndImportModel(
-//        Class testClass, String testModelName, String testModelProjectName) 
-//    {
-//        Result1 result = new Result1();
-//        
-//        // create the test project
-//        String className = testClass.getName();
-//        IProject project = null;
-//        try {
-//            project = result.project = TestingUtilities.createProject(
-//            className.substring(className.lastIndexOf(".") + 1));
-//        } catch (CoreException e) {
-//            CorePlugin.logError("Core Exception", e);
-//        }
-//
-//        // copy the test domain into our test project
-//        IFile file = copyTestDomainIntoProject(testModelName, 
-//            testModelProjectName, project);
-//        result.file = file;
-//        
-//        // import the test domain from the copy in the test project
-//        result.modelRoot = Ooaofooa.getInstance(
-//            Ooaofooa.createModelRootId(project, testModelName, true), true);
-//        return result;
-//    }
-    
+        
     /**
      * Changes the given file's readonly status
      * 
@@ -866,6 +760,7 @@ public class TestUtil
             }
             
             writer.flush();
+            writer.close();
         } 
         catch (Exception e) {
             CorePlugin.logError("Could not write strings to text file", e);

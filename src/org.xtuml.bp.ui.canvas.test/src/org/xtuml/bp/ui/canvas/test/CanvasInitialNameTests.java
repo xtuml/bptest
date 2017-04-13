@@ -634,29 +634,18 @@ public class CanvasInitialNameTests extends BaseTest {
 
 	static String errorTxt = "";
 
-	private void validateErrorMessage(final String expectedResult,
-			final String value) {
-		PlatformUI.getWorkbench().getDisplay().timerExec(200, new Runnable() {
-
-			@Override
-			public void run() {
-				Shell activeShell = TestUtil.findShell();
-				if (activeShell != null
-						&& activeShell.getData() instanceof InputDialog) {
-					if (!value.equals("empty")) {
-						Text text = UITestingUtilities
-								.findInputDialogTextField((InputDialog) activeShell
-										.getData());
-						text.setText(value);
-						text.notifyListeners(SWT.Traverse, new Event());
-					}
-					errorTxt = UITestingUtilities
-							.findInputDialogErrorText((InputDialog) activeShell
-									.getData());
-					((InputDialog) activeShell.getData()).close();
-				} else {
-					errorTxt = "";
+	private void validateErrorMessage(final String expectedResult, final String value) {
+		TestUtil.dismissShell(activeShell -> {
+			if (activeShell != null && activeShell.getData() instanceof InputDialog) {
+				if (!value.equals("empty")) {
+					Text text = UITestingUtilities.findInputDialogTextField((InputDialog) activeShell.getData());
+					text.setText(value);
+					text.notifyListeners(SWT.Traverse, new Event());
 				}
+				errorTxt = UITestingUtilities.findInputDialogErrorText((InputDialog) activeShell.getData());
+				((InputDialog) activeShell.getData()).close();
+			} else {
+				errorTxt = "";
 			}
 		});
 	}
