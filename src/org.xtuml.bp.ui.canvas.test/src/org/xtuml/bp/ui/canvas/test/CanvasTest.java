@@ -389,7 +389,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
         	if(font != null) {
         		font.dispose();
         	}
-        	FontData prefFontData = new FontData("Verdana", currentSize, SWT.DEFAULT);
+        	FontData prefFontData = new FontData("Courier", currentSize, SWT.DEFAULT);
             font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
             gc.setFont(font);
             String text = "HHHHHHHHHHHHHHHHH";
