@@ -22,6 +22,17 @@
 	</properties>
 
 	<profiles>
+	<profile>
+		<id>osProperties</id>
+		<activation>
+			<os>
+				<family>!mac</family>
+			</os>
+		</activation>
+		<properties>
+			<jvmArgs> </jvmArgs>
+		</properties>
+	</profile>
         <profile>
     	<id>osXProperties</id>
     	<activation>
@@ -33,8 +44,7 @@
 				<jvmArgs>-XstartOnFirstThread</jvmArgs>
 			</properties>
 	    </profile>
-	</profiles>
-	
+	</profiles>	
 	<modules>
 		<module>../../src/org.xtuml.bp.als.oal.test</module>
 		<module>../../src/org.xtuml.bp.core.test</module>
