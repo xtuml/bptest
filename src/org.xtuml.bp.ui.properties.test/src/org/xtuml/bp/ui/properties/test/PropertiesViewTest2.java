@@ -268,6 +268,8 @@ public class PropertiesViewTest2 extends BaseTest
     	ClassInstanceParticipant_c parent = new ClassInstanceParticipant_c(modelRoot);
     	InstanceAttributeValue_c AtrValue = new InstanceAttributeValue_c(modelRoot);
     	FormalAttributeValue_c FmAtr = new FormalAttributeValue_c(modelRoot);
+    	Attribute_c attr = new Attribute_c(modelRoot);
+    	AtrValue.relateAcrossR938To(attr);
     	AtrValue.relateAcrossR937To(parent);
 		FmAtr.relateAcrossR948To(AtrValue);
 		FormalInstanceAttributeValuesSQ_AVPropertySource ps = new FormalInstanceAttributeValuesSQ_AVPropertySource(AtrValue);

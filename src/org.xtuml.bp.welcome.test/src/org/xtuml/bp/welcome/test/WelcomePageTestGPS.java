@@ -54,6 +54,7 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.ui.explorer.ExplorerView;
@@ -199,6 +200,12 @@ public class WelcomePageTestGPS extends TestCase {
 	}
 	@Test
 	public void testImportLoadPersistAndBuild()  throws Exception {
+		// This test is disabled for command line runs
+		// See https://support.onefact.net/issues/9414
+		String isCLIRun = System.getProperty(BaseTest.CLI_TEST_RUN_KEY);
+		if(isCLIRun != null && isCLIRun.equals("true")) {
+			return;
+		}
 		int numImports = 3;
 		for (int i = 0; i < numImports; i++) {
 			System.out.println("Import number: " + String.valueOf(i+1));
@@ -227,6 +234,12 @@ public class WelcomePageTestGPS extends TestCase {
 	}
 	@Test
     public void testSmartPreBuild() throws Exception {
+		// This test is disabled for command line runs
+		// See https://support.onefact.net/issues/9414
+		String isCLIRun = System.getProperty(BaseTest.CLI_TEST_RUN_KEY);
+		if(isCLIRun != null && isCLIRun.equals("true")) {
+			return;
+		}
         // This test builds the project several times, testing that the exported
         // <project>.sql file from pre-builder is updated when needed and left
         // unmodified by the build (re-export skipped) when an update is not needed.

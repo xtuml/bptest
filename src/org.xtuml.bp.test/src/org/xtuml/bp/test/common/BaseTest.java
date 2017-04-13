@@ -1190,6 +1190,8 @@ public class BaseTest extends TestCase {
 	public static final String DEFAULT_PRIVATE_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/modelsmg/test";
 	
 	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = System.getProperty("user.home") + "/git/bridgepoint";
+
+	public static final String CLI_TEST_RUN_KEY = "CLI_TEST_RUN";
 	
 	public static void compareAndOutputResults(String fileName) throws Exception{
 		if (doCreateResults){
