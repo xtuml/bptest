@@ -50,6 +50,7 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -343,11 +344,6 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 	public CanvasTestResult drawDiagram(final GraphicalEditor editor, boolean zoomGroup, boolean zoomSelected,
 			boolean isHardCopy, Rectangle size) {
 		Shell shell = new Shell();
-		String fontName = "Verdana";
-		FontData prefFontData = new FontData(fontName, 8, SWT.DEFAULT); // $NON-NLS-1$
-		Font displayFont = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
-		Font originalFont = GraphicalEditor.getFont();
-		GraphicalEditor.setFont(displayFont);
 		FigureCanvas figureCanvas = new FigureCanvas(shell);
 		GraphicalViewer viewer = new ScrollingGraphicalViewer();
 		viewer.createControl(figureCanvas);
@@ -365,6 +361,9 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 				new Rectangle(extentRectangle.x, extentRectangle.y, extentRectangle.width, extentRectangle.height));
 		GC gc = new GC(img);
 		SWTGraphics swtGraphics = new SWTGraphics(gc);
+		Font displayFont = getOptimalFont(gc, 100);
+		Font originalFont = GraphicalEditor.getFont();
+		GraphicalEditor.setFont(displayFont);
 		swtGraphics.setFont(displayFont);
 		TestGC tester = new TestGC(swtGraphics);
 		LayerManager lm = (LayerManager) viewer.getEditPartRegistry().get(
@@ -383,7 +382,32 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 		return result;
 	}
   
-  	protected void paint(TestGC tester, GraphicalEditor editor) {
+    private Font getOptimalFont(GC gc, int desired) {
+        int currentSize = 20;
+        Font font = null;
+        while(currentSize > 1) {
+        	if(font != null) {
+        		font.dispose();
+        	}
+        	FontData prefFontData = new FontData("Verdana", currentSize, SWT.DEFAULT);
+            font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
+            gc.setFont(font);
+            String text = "HHHHHHHHHHHHHHHHH";
+            Point textExtent = gc.textExtent(text);
+            if(textExtent.x < desired) {
+            	return font;
+            }
+            currentSize -= 1;
+        }
+        if(font == null) {
+        	FontData prefFontData = new FontData("Verdana", 8, SWT.DEFAULT);
+            font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
+        }
+        return font;
+    }
+
+
+	protected void paint(TestGC tester, GraphicalEditor editor) {
   		((FigureCanvas) editor.getCanvas()).getLightweightSystem()
 				.getUpdateManager().performValidation();
 		((FigureCanvas) editor.getCanvas())
@@ -531,7 +555,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
     public void validateOrGenerateResults(GraphicalEditor editor, boolean generate,
         boolean preserveDiagramValues)
     {
-    	//generate = true;
+    	generate = true;
  		// remember the diagram zoom and viewport location values, 
 		// as they will be changed during the calls below
 		Diagram_c diagram = Diagram_c.getOneDIM_DIAOnR18(editor.getModel());
