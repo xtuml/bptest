@@ -363,7 +363,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 		GC gc = new GC(img);
 		SWTGraphics swtGraphics = new SWTGraphics(gc);
 //		Font displayFont = getOptimalFont(gc, 100);
-    	FontData prefFontData = new FontData("Courier", 10, SWT.DEFAULT);
+    	FontData prefFontData = new FontData("Courier", 1, SWT.DEFAULT);
     	Font displayFont = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
 		Font originalFont = GraphicalEditor.getFont();
 		GraphicalEditor.setFont(displayFont);
