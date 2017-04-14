@@ -1,8 +1,0 @@
-drawRectangle(...)
-drawRectangle(...)
-drawText("«package»", ...)
-drawText("+CreatePackageIn...", ...)
-drawRectangle(...)
-drawRectangle(...)
-drawText("«pack...", ...)
-drawText("+Seq...", ...)

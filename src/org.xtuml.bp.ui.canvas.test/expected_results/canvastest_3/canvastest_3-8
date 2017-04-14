@@ -1,6 +1,6 @@
 drawText(" 1. Wide State", ...)
 drawline(...)
-drawText(" 2. ...", ...)
+drawText(" 2. Tal...", ...)
 drawline(...)
 drawText(" 3. Final State", ...)
 drawline(...)
