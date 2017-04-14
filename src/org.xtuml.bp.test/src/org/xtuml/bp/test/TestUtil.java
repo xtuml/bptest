@@ -205,7 +205,7 @@ public class TestUtil
     	Shell[] shellsBeforeAction = PlatformUI.getWorkbench().getDisplay().getShells();
     	// run a new thread which expires after 15 seconds (the longest wait time used with
     	// the old version of this method
-    	long maxRunTime = 100000;
+    	long maxRunTime = 15000;
     	long startTime = System.currentTimeMillis();
     	Thread dismissThread = new Thread(new Runnable() {
 
@@ -227,7 +227,7 @@ public class TestUtil
 									// unique shell, test to make sure it is
 									// not a temporary shell during setup of
 									// the one we expect
-									if (!(shell.getData() instanceof ProgressMonitorDialog)
+									if (!(shell.getData() instanceof Object[]) && !(shell.getData() instanceof ProgressMonitorDialog)
 											&& !(shell.getData() instanceof BlockedJobsDialog)
 											&& (!shell.getText().equals("") || (shell.getText().equals("")
 													&& shell.getData() instanceof WizardDialog))) {

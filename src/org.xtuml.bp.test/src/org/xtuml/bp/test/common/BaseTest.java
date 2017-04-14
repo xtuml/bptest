@@ -126,14 +126,12 @@ import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.io.mdl.ImportModel;
-import org.xtuml.bp.io.mdl.upgrade.UpgradeUtil;
 import org.xtuml.bp.test.GlobalsTestEnabler;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.ui.explorer.decorators.SynchronizationDecorator;
 import org.xtuml.bp.ui.text.placeholder.PlaceHolderManager;
-import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
 import junit.framework.TestCase;
 
@@ -718,12 +716,8 @@ public class BaseTest extends TestCase {
 				componentFolder = findComponentFolder(projectPath.toFile(), systemName, componentName);
 				if(componentFolder == null) {
 					// try locating a project outside of the test location
-					sourceProjectPath = new Path(System.getProperty("XTUML_DEVELOPMENT_REPOSITORY") + "/src"); //$NON-NLS-1$
+					sourceProjectPath = new Path(getDevelopmentWorkspaceLocation() + "/src"); //$NON-NLS-1$
 					File directory = sourceProjectPath.toFile();
-					// if we are still null check the system environment
-					if (!directory.exists()) {
-						sourceProjectPath = new Path(System.getenv("XTUML_DEVELOPMENT_REPOSITORY") + "/src");
-					}
 					componentFolder = new File(directory, systemName + "/" + Ooaofooa.MODELS_DIRNAME
 							+ "/" + systemName + "/" + componentName);
 					if(!componentFolder.exists()) {
@@ -1546,5 +1540,26 @@ public class BaseTest extends TestCase {
 	
 	public void endTransaction(Transaction transaction) {
 		TransactionManager.getSingleton().endTransaction(transaction);
+	}
+	public static String getDevelopmentWorkspaceLocation() {
+		String workspace_location = System.getenv("XTUML_DEVELOPMENT_REPOSITORY");
+		if(workspace_location == null || workspace_location.equals("")) {
+			workspace_location = System.getProperty("XTUML_DEVELOPMENT_REPOSITORY");
+			if(workspace_location == null || workspace_location.equals("")) {
+				workspace_location = BaseTest.DEFAULT_XTUML_DEVELOPMENT_REPOSITORY;				
+			}
+		}
+		return workspace_location != null ? workspace_location : "";
+	}
+	public static String getTestModelRespositoryLocation() {
+		String repository_location = System.getenv("XTUML_TEST_MODEL_REPOSITORY");
+		if (repository_location == null || repository_location.equals("")) {
+			repository_location = System.getProperty("XTUML_TEST_MODEL_REPOSITORY");
+			if(repository_location == null || repository_location.equals("")) {
+				// use the default location
+				repository_location = BaseTest.DEFAULT_XTUML_TEST_MODEL_REPOSITORY;				
+			}
+		}
+		return repository_location != null ? repository_location : "";
 	}
 }

@@ -124,13 +124,7 @@ public class ModelMergeTests extends BaseTest {
 				.setValue(
 						BridgePointPreferencesStore.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE,
 						false);
-		String test_repository_location = System
-				.getenv("XTUML_TEST_MODEL_REPOSITORY");
-		if (test_repository_location == null
-				|| test_repository_location.equals("")) {
-			// use the default location
-			test_repository_location = BaseTest.DEFAULT_XTUML_TEST_MODEL_REPOSITORY;
-		}
+		String test_repository_location = BaseTest.getTestModelRespositoryLocation();
 		test_repository_location = new Path(test_repository_location)
 				.removeLastSegments(1).toString();
 		ZipUtil.unzipFileContents(
