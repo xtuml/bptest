@@ -397,10 +397,10 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
             Point textExtent = gc.textExtent(text);
             if(textExtent.x < desired) {
             	// do to a slight variation between cocoa and x
-            	// we adjust font size by one here
+            	// we adjust font size
             	if(Platform.getOS().equals(Platform.OS_MACOSX)) {
             		font.dispose();
-            		prefFontData = new FontData("Courier", currentSize, SWT.DEFAULT);
+            		prefFontData = new FontData("Courier", currentSize - 2, SWT.DEFAULT);
             		font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
             	}
             	return font;
