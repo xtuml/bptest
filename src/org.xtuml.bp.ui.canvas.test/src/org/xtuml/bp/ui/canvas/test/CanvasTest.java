@@ -380,6 +380,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 		img.dispose();
 		GraphicalEditor.setFont(originalFont);
 		displayFont.dispose();
+		img.dispose();
 		return result;
 	}
   
