@@ -38,23 +38,13 @@ public class TestGC extends ScaledGraphics {
 
 	public void drawText(String str, int i, int j) {
 		super.drawText(str, i, j);
-		String substring = str;
-		if (str.length() > 17) {
-			substring = str.substring(0, 16);
-			substring += "...";
-		}
-		testRecord.add("drawText(\"" + substring + "\", ...)");
+		testRecord.add("drawText(\"" + str + "\", ...)");
 	}
 
 	@Override
 	public void drawString(String s, int x, int y) {
 		super.drawString(s, x, y);
-		String substring = s;
-		if (s.length() > 17) {
-			substring = s.substring(0, 16);
-			substring += "...";
-		}
-		testRecord.add("drawString(\"" + substring + "\", ...)");
+		testRecord.add("drawString(\"" + s + "\", ...)");
 	}
 
 	@Override
