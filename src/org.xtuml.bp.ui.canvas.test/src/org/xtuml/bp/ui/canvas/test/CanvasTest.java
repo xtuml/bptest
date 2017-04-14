@@ -362,7 +362,9 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 				new Rectangle(extentRectangle.x, extentRectangle.y, extentRectangle.width, extentRectangle.height));
 		GC gc = new GC(img);
 		SWTGraphics swtGraphics = new SWTGraphics(gc);
-		Font displayFont = getOptimalFont(gc, 100);
+//		Font displayFont = getOptimalFont(gc, 100);
+    	FontData prefFontData = new FontData("Courier", 10, SWT.DEFAULT);
+       Font displayFont = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
 		Font originalFont = GraphicalEditor.getFont();
 		GraphicalEditor.setFont(displayFont);
 		swtGraphics.setFont(displayFont);
@@ -391,7 +393,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
         	if(font != null) {
         		font.dispose();
         	}
-        	FontData prefFontData = new FontData("Courier", currentSize, SWT.DEFAULT);
+        	FontData prefFontData = new FontData("Courier", currentSize - 2, SWT.DEFAULT);
             font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
             gc.setFont(font);
             String text = "HHHHHHHHHHHHHHH";
