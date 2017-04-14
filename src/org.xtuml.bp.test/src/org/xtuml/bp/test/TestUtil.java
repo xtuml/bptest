@@ -194,15 +194,18 @@ public class TestUtil
     	public void dismissShell(Shell shell);
     }
     
-    /**
-     * See shorter signature method.
-     */
     static boolean dismissed = false;
-    public static void dismissShell(ShellDismisser dismisser)
+    public static void dismissShell(ShellDismisser dismisser) {
+    	dismissShell(null, dismisser);
+    }
+    public static void dismissShell(Shell[] shellsBeforeAction, ShellDismisser dismisser)
     {
-    	// cache the current shells, we will use the knowledge that a new one is imminent
-    	// to determine when and which shell to close
-    	Shell[] shellsBeforeAction = PlatformUI.getWorkbench().getDisplay().getShells();
+    	if(shellsBeforeAction == null) { 
+	    	// cache the current shells, we will use the knowledge that a new one is imminent
+	    	// to determine when and which shell to close
+	    	shellsBeforeAction = PlatformUI.getWorkbench().getDisplay().getShells();
+    	}
+    	final Shell[] finalShellsBeforeAction = shellsBeforeAction;
     	// run a new thread which expires after 15 seconds (the longest wait time used with
     	// the old version of this method
     	long maxRunTime = 15000;
@@ -218,7 +221,7 @@ public class TestUtil
 						
 						@Override
 						public void run() {
-							HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(shellsBeforeAction));
+							HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(finalShellsBeforeAction));
 							Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
 							// locate a unique shell in the latest
 							for (Shell shell : currentShells) {
@@ -790,51 +793,45 @@ public class TestUtil
         return true;
     }
 
-    public static FailableRunnable chooseItemInDialog(final int sleep, final String item) {
-        return chooseItemInDialog(sleep, item, false);
+    public static FailableRunnable chooseItemInDialog(final int sleep, final String item, Shell[] existingShells) {
+        return chooseItemInDialog(sleep, item, false, existingShells);
     }
 
-    public static FailableRunnable chooseItemInDialog(final int sleep, final String item, final boolean locateOnly) {
-        return chooseItemInDialog(sleep, item, locateOnly, false);
+    public static FailableRunnable chooseItemInDialog(final int sleep, final String item, final boolean locateOnly, Shell[] existingShells) {
+        return chooseItemInDialog(sleep, item, locateOnly, false, existingShells);
     }
             
-    public static FailableRunnable chooseItemInDialog(final int sleep, final String item, final boolean locateOnly, final boolean testNonExistence) {
-        return chooseItemInDialog(sleep, null, item, locateOnly, testNonExistence);
+    public static FailableRunnable chooseItemInDialog(final int sleep, final String item, final boolean locateOnly, final boolean testNonExistence, Shell[] existingShells) {
+        return chooseItemInDialog(sleep, null, item, locateOnly, testNonExistence, existingShells);
     }
 
-    public static FailableRunnable toggleButtonInElementSelectionDialog(final int sleep, final String buttonName) {
-        return toggleButtonInElementSelectionDialog(sleep, null, buttonName);
+    public static FailableRunnable toggleButtonInElementSelectionDialog(final int sleep, final String buttonName, Shell[] existingShells) {
+        return toggleButtonInElementSelectionDialog(sleep, null, buttonName, existingShells);
     }
     
-    public static void cancelElementSelectionDialog(final int sleep) {
-        cancelElementSelectionDialog(sleep, null);
+    public static void cancelElementSelectionDialog(final int sleep, Shell[] existingShells) {
+        cancelElementSelectionDialog(sleep, null, existingShells);
     }
-    public static void cancelElementSelectionDialog(final int sleep, final FailableRunnable waitRunnable) {
+    public static void cancelElementSelectionDialog(final int sleep, final FailableRunnable waitRunnable, Shell[] existingShells) {
         Thread cancelThread = new Thread(new Runnable() {
             
             @Override
             public void run() {
-                sleep(sleep);
-                waitForRunnable(waitRunnable);
-                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-                    
-                    @Override
-                    public void run() {
-                        // locate the dialog
-                        Shell[] shells = PlatformUI.getWorkbench().getDisplay()
-                                .getShells();
-                        Shell shell = null;
-                        for(int i = 0; i < shells.length; i++) {
-                            if(shells[i].getData() instanceof ElementSelectionDialog) {
-                                shell = shells[i];
-                            }
-                        }
-                        if (shell != null) {
-                            ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
-                            dialog.close();
-                        }
-                    }
-                });
+            	if(waitRunnable != null) {
+            		waitRunnable.join();
+            	}
+				PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+
+					@Override
+					public void run() {
+						dismissShell(existingShells, shell -> {
+							if (shell != null) {
+								ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
+								dialog.close();
+							}
+						});
+					}
+				});
             }
         });
         cancelThread.start();
@@ -856,160 +853,118 @@ public class TestUtil
         }
     }
 
-    public static void okElementSelectionDialog(final FailableRunnable runnable) {
+    public static void okElementSelectionDialog(final FailableRunnable runnable, Shell[] existingShells) {
         Thread cancelThread = new Thread(new Runnable() {
             
             @Override
             public void run() {
-                waitForRunnable(runnable);
-                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-                    
-                    @Override
-                    public void run() {
-                        int iterations = 10;
-                        int count = 0;
-                        while (count <= iterations) {
-                            // locate the dialog
-                            Shell[] shells = PlatformUI.getWorkbench()
-                                    .getDisplay().getShells();
-                            Shell shell = null;
-                            for (int i = 0; i < shells.length; i++) {
-                                if (shells[i].getData() instanceof ElementSelectionDialog) {
-                                    shell = shells[i];
-                                }
-                            }
-                            if (shell != null) {
-                                ElementSelectionDialog dialog = (ElementSelectionDialog) shell
-                                        .getData();
-                                if (dialog.getOkButton().isEnabled()) {
-                                    dialog.getOkButton().notifyListeners(
-                                            SWT.Selection, new Event());
-                                    break;
-                                } else {
-                                    sleep(300);
-                                    count++;
-                                }
-                            } else {
-                                sleep(300);
-                                count++;
-                            }
-                        }
-                    }
-                });
-            }
-        });
+				waitForRunnable(runnable);
+				dismissShell(existingShells, shell -> {
+					if (shell != null) {
+						ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
+						if (dialog.getOkButton().isEnabled()) {
+							dialog.getOkButton().notifyListeners(SWT.Selection, new Event());
+							return;
+						} else {
+							sleep(300);
+						}
+					}
+				});
+			}
+		});
         cancelThread.start();
     }
 
     public static FailableRunnable chooseItemInDialog(
-            FailableRunnable runnable, String item, boolean locateOnly) {
-        return chooseItemInDialog(0, runnable, item, locateOnly, false);
+            FailableRunnable runnable, String item, boolean locateOnly, Shell[] existingShells) {
+        return chooseItemInDialog(0, runnable, item, locateOnly, false, existingShells);
     }
 
+    static boolean foundItemInDialog = false;
     public static FailableRunnable chooseItemInDialog(final int sleep, final FailableRunnable waitRunnable,
-            final String item, final boolean locateOnly, final boolean testNonExistence) {
+            final String item, final boolean locateOnly, final boolean testNonExistence, Shell[] existingShells) {
         FailableRunnable runnable = new FailableRunnable() {    
             @Override
-            public void run() {
-                sleep(sleep);
-                waitForRunnable(waitRunnable);
-                FailableRunnable innerRunnable = new FailableRunnable() {
-                    @Override
-                    public void run() {
-                    	for (int i=0; i < 100; i++) {
-                      	  while (Display.getCurrent().readAndDispatch()) {
-                      		  i = 0;  // Reset outer loop
-                      	  }
-                      	}
-                        boolean found = false;
-                        // locate the dialog
-                        Shell[] shells = PlatformUI.getWorkbench().getDisplay()
-                                .getShells();
-                        Shell shell = null;
-                        for(int i = 0; i < shells.length; i++) {
-                            if(shells[i].getData() instanceof ElementSelectionDialog) {
-                                shell = shells[i];
-                                break;
-                            } else if(shells[i].getText().contains("Import Projects from Git Repository")) {
-                            	shell = shells[i];
-                            	break;
-                            }
-                        }
-                        if (shell != null) {
-                            Dialog dialog = (Dialog) shell
-                                    .getData();
-                            Control[] children = dialog.getShell().getChildren();
-							for (int i = 0; i < children.length; i++) {
-								Table table = findTable(children);
-								if(table != null) {
-									// if a deselect all button is present
-									// press it before selecting the desired
-									// item
-									Button deselect = findButton(shell, "&Deselect All");
-									if(deselect != null) {
-										deselect.notifyListeners(SWT.Selection, new Event());
-										while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-									}
-									TableItem[] items = table.getItems();
-									for (int j = 0; j < items.length; j++) {
-										if (items[j].getText().equals(item)) {
-											// do not select if locateOnly is
-											// true
-											if (!locateOnly) {
-												table.setSelection(items[j]);
-												Event event = new Event();
-												event.item = items[j];
-												table.notifyListeners(
-														SWT.Selection, event);
-												while (PlatformUI.getWorkbench()
-														.getDisplay()
-														.readAndDispatch())
-													;
-											}
-											found = true;
-											break;
+			public void run() {
+            	sleep(sleep);
+            	waitForRunnable(waitRunnable);
+				FailableRunnable innerRunnable = new FailableRunnable() {
+					@Override
+					public void run() {
+						dismissShell(existingShells, shell -> {
+							if (shell != null) {
+								Dialog dialog = (Dialog) shell.getData();
+								Control[] children = dialog.getShell().getChildren();
+								for (int i = 0; i < children.length; i++) {
+									Table table = findTable(children);
+									if (table != null) {
+										// if a deselect all button is present
+										// press it before selecting the desired
+										// item
+										Button deselect = findButton(shell, "&Deselect All");
+										if (deselect != null) {
+											deselect.notifyListeners(SWT.Selection, new Event());
+											while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+												;
 										}
+										TableItem[] items = table.getItems();
+										for (int j = 0; j < items.length; j++) {
+											if (items[j].getText().equals(item)) {
+												// do not select if locateOnly
+												// is
+												// true
+												if (!locateOnly) {
+													table.setSelection(items[j]);
+													Event event = new Event();
+													event.item = items[j];
+													table.notifyListeners(SWT.Selection, event);
+													while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+														;
+												}
+												foundItemInDialog = true;
+												break;
+											}
+										}
+										break;
 									}
-									break;
 								}
 							}
-						}
-                        if (testNonExistence) {
-                            if(found) {
-                                setFailure("Found the unexpected item in the selection dialog ("
-                                        + item + ").");
-                            }
-                        } else {
-                            if(!found) {
-                                setFailure("Could not locate the expected item in the selection dialog ("
-                                        + item + ").");
-                            }
-                        }                       
-                        setComplete();
-                    }
+							if (testNonExistence) {
+								if (foundItemInDialog) {
+									setFailure("Found the unexpected item in the selection dialog (" + item + ").");
+								}
+							} else {
+								if (!foundItemInDialog) {
+									setFailure("Could not locate the expected item in the selection dialog (" + item
+											+ ").");
+								}
+							}
+							foundItemInDialog = false;
+							setComplete();
+						});
+					}
 
 					private Table findTable(Control[] children) {
 						for (Control child : children) {
 							if (child instanceof Table) {
 								return (Table) child;
 							} else if (child instanceof Composite) {
-								Table result = findTable(((Composite) child)
-										.getChildren());
-								if(result != null) {
+								Table result = findTable(((Composite) child).getChildren());
+								if (result != null) {
 									return result;
 								}
 							}
 						}
 						return null;
 					}
-                };
+				};
                 // must be run in the UI thread
                 PlatformUI.getWorkbench().getDisplay().syncExec(innerRunnable);
                 if(!innerRunnable.getFailure().equals("")) {
                     setFailure(innerRunnable.getFailure());
                 }
                 setComplete();
-            }
+			}
         };
         Thread chooserThread = new Thread(runnable);
         chooserThread.start();      
@@ -1017,7 +972,7 @@ public class TestUtil
     }
 
     public static FailableRunnable toggleButtonInElementSelectionDialog(final int sleep,
-            final FailableRunnable waitRunnable, final String buttonName) {
+            final FailableRunnable waitRunnable, final String buttonName, Shell[] existingShells) {
         FailableRunnable runnable = new FailableRunnable() {
             
             @Override
@@ -1028,40 +983,33 @@ public class TestUtil
                     
                     @Override
                     public void run() {
-                        // locate the dialog
-                        Shell[] shells = PlatformUI.getWorkbench().getDisplay()
-                                .getShells();
-                        Shell shell = null;
-                        for(int i = 0; i < shells.length; i++) {
-                            if(shells[i].getData() instanceof ElementSelectionDialog) {
-                                shell = shells[i];
-                            }
-                        }
-                        if (shell != null) {
-                            ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
-                            ElementSelectionFlatView view = dialog.getFlatView();
-                            Control[] children = view.getChildren();
-                            for(int i = 0; i < children.length; i++) {
-                                if(children[i] instanceof Button) {
-                                    Button button = (Button) children[i];
-                                    if(button.getText().equals(buttonName)) {
-                                        button.setSelection((button.getSelection()) ? false:true);
-                                        button.notifyListeners(SWT.Selection, new Event());
-                                        view.redraw();
-                                        view.update();
-                                        setComplete();
-                                        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-                                        return;
-                                    }
-                                }
-                            }
-                            // if we get here add an error to the thread, as
-                            // the button could not be found
-                            setFailure("Unable to locate button in selection dialog: "
-                                            + buttonName);
-                            setComplete();
-                        }
-                    }
+						dismissShell(existingShells, shell -> {
+							if (shell != null) {
+								ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
+								ElementSelectionFlatView view = dialog.getFlatView();
+								Control[] children = view.getChildren();
+								for (int i = 0; i < children.length; i++) {
+									if (children[i] instanceof Button) {
+										Button button = (Button) children[i];
+										if (button.getText().equals(buttonName)) {
+											button.setSelection((button.getSelection()) ? false : true);
+											button.notifyListeners(SWT.Selection, new Event());
+											view.redraw();
+											view.update();
+											setComplete();
+											while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+												;
+											return;
+										}
+									}
+								}
+								// if we get here add an error to the thread, as
+								// the button could not be found
+								setFailure("Unable to locate button in selection dialog: " + buttonName);
+								setComplete();
+							}
+						});
+					}
                 };
                 // must be run in the UI thread
                 PlatformUI.getWorkbench().getDisplay().syncExec(innerRunnable);

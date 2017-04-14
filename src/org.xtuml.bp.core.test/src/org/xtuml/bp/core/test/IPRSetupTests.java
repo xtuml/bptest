@@ -20,6 +20,8 @@ import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -170,14 +172,16 @@ public class IPRSetupTests extends CanvasTest {
 		Selection.getInstance().addToSelection(part);
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced", true, true);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced", true, true, existingShells);
 		TestUtil.cancelDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// enable IPRs
 		IScopeContext projectScope = new ProjectScope(projectOne);
 		Preferences projectNode = projectScope.getNode(BridgePointProjectPreferences.BP_PROJECT_PREFERENCES_ID);
 		projectNode.putBoolean(BridgePointProjectReferencesPreferences.BP_PROJECT_REFERENCES_ID, true);
-		TestUtil.chooseItemInDialog(500, "referenced");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// assert participant is associated with IPR element
@@ -225,8 +229,9 @@ public class IPRSetupTests extends CanvasTest {
 		Selection.getInstance().addToSelection(part);
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced", true, true);
-		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced", true, true, existingShells);
+		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false, existingShells);
 		TestUtil.cancelDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// delete local possibility
@@ -234,9 +239,10 @@ public class IPRSetupTests extends CanvasTest {
 		TestUtil.executeInTransaction(comp, "Dispose", new Object[0]);
 		// enable IPRs
 		projectNode.putBoolean(BridgePointProjectReferencesPreferences.BP_PROJECT_REFERENCES_ID, true);
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced");
+		TestUtil.chooseItemInDialog(500, "referenced", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// assert participant is associated with IPR element
@@ -283,8 +289,9 @@ public class IPRSetupTests extends CanvasTest {
 		containerPkg.Newexternalentity();
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced", true, true);
-		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced", true, true, existingShells);
+		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false, existingShells);
 		TestUtil.cancelDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// delete local possibility
@@ -295,7 +302,8 @@ public class IPRSetupTests extends CanvasTest {
 		projectNode.putBoolean(BridgePointProjectReferencesPreferences.BP_PROJECT_REFERENCES_ID, true);
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// assert participant is associated with IPR element
@@ -342,8 +350,9 @@ public class IPRSetupTests extends CanvasTest {
 		TestUtil.executeInTransaction(containerPkg, "Newclass", new Object[0]);
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced1", true, true);
-		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced1", true, true, existingShells);
+		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false, existingShells);
 		TestUtil.cancelDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// delete local possibility
@@ -353,7 +362,8 @@ public class IPRSetupTests extends CanvasTest {
 		projectNode.putBoolean(BridgePointProjectReferencesPreferences.BP_PROJECT_REFERENCES_ID, true);
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced1");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced1", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// assert participant is associated with IPR element
@@ -400,8 +410,9 @@ public class IPRSetupTests extends CanvasTest {
 		TestUtil.executeInTransaction(containerPkg, "Newclass", new Object[0]);
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced2", true, true);
-		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced2", true, true, existingShells);
+		TestUtil.chooseItemInDialog(500, "Unnamed Component", true, false, existingShells);
 		TestUtil.cancelDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// delete local possibility
@@ -411,7 +422,8 @@ public class IPRSetupTests extends CanvasTest {
 		projectNode.putBoolean(BridgePointProjectReferencesPreferences.BP_PROJECT_REFERENCES_ID, true);
 		assertTrue("Formalize menu item was not present when accessible elements were.", UITestingUtilities
 				.menuItemExists(getExplorerView().getTreeViewer().getTree().getMenu(), "", "Formalize..."));
-		TestUtil.chooseItemInDialog(500, "referenced2");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "referenced2", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(getExplorerView().getTreeViewer().getTree().getMenu(), "Formalize...");
 		// assert participant is associated with IPR element

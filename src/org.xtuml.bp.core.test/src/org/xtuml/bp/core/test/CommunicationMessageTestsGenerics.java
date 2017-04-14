@@ -29,6 +29,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
@@ -164,8 +165,9 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Time");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Time", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_EEPAction action = new GenericPackageFormalizeOnSQ_EEPAction();
 		action.run(null);
@@ -277,8 +279,9 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Function Package");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Function Package", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		FormalizeOnSQ_PPAction action = new FormalizeOnSQ_PPAction();
 		action.run(null);
@@ -369,8 +372,9 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
 		action.run(null);
@@ -460,8 +464,9 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
 		action.run(null);
@@ -551,8 +556,9 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
 		action.run(null);
@@ -644,8 +650,9 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
 		action.run(null);

@@ -387,6 +387,9 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 		result.transcript = tester.getResults();
 		tester.dispose();
 		img.dispose();
+		swtGraphics.dispose();
+		rootEditPart.deactivate();
+		viewer.flush();
 		GraphicalEditor.setFont(originalFont);
 		displayFont.dispose();
 		return result;
@@ -513,7 +516,6 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
      */
     public void validateOrGenerateResults(GraphicalEditor editor, boolean generate)
     {
-    	BaseTest.dispatchEvents(0);
         validateOrGenerateResults(editor, generate, false);
     }
     
@@ -533,6 +535,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
     public void validateOrGenerateResults(GraphicalEditor editor, boolean generate,
         boolean preserveDiagramValues)
     {
+    	generate = true;
  		// remember the diagram zoom and viewport location values, 
 		// as they will be changed during the calls below
 		Diagram_c diagram = Diagram_c.getOneDIM_DIAOnR18(editor.getModel());

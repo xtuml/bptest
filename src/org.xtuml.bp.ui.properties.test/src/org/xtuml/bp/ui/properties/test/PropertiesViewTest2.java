@@ -323,7 +323,8 @@ public class PropertiesViewTest2 extends BaseTest
 			}
 		}
 		assertNotNull("Unable to locate label for chooser dialog descriptor", label);
-		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean");
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean", existingShells);
 		label.notifyListeners(SWT.MouseDoubleClick, new Event());
 		assertTrue(chooseItemInDialog.getFailure(), chooseItemInDialog.getFailure().equals(""));
 		TestUtil.okToDialog(1000);

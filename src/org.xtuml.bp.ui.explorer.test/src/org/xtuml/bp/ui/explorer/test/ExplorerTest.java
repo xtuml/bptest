@@ -34,6 +34,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IViewReference;
@@ -491,14 +492,16 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(pro);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		Requirement_c req = Requirement_c.getOneC_ROnR4009(InterfaceReference_c
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(req);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		DecoratingLabelProvider labelProvider = (DecoratingLabelProvider) getExplorerView()
@@ -631,14 +634,16 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(pro);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		Requirement_c req = Requirement_c.getOneC_ROnR4009(InterfaceReference_c
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(req);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		DecoratingLabelProvider labelProvider = (DecoratingLabelProvider) getExplorerView()

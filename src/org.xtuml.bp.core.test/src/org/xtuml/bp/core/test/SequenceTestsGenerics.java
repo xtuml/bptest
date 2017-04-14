@@ -35,6 +35,7 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
@@ -259,8 +260,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(instance);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Class A");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Class A", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
 		action.run(null);
@@ -297,8 +299,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(instance);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Subclass");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Subclass", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
 		action.run(null);
@@ -368,8 +371,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(importedClass);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Class A");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Class A", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
 		action.run(null);
@@ -406,8 +410,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(importedClass);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Class A");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Class A", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
 		action.run(null);
@@ -478,8 +483,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(fpkg);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Function PKG");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Function PKG", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		FormalizeOnSQ_PPAction action = new FormalizeOnSQ_PPAction();
 		action.run(null);
@@ -517,8 +523,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(fpkg);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Function PKG");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Function PKG", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		FormalizeOnSQ_PPAction action = new FormalizeOnSQ_PPAction();
 		action.run(null);
@@ -555,8 +562,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(ee);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested EE A");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested EE A", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_EEPAction action = new GenericPackageFormalizeOnSQ_EEPAction();
 		action.run(null);
@@ -593,8 +601,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(ee);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "EE A");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "EE A", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_EEPAction action = new GenericPackageFormalizeOnSQ_EEPAction();
 		action.run(null);
@@ -1692,8 +1701,9 @@ public class SequenceTestsGenerics extends CanvasTest {
 		Selection.getInstance().addToSelection(cip);
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Class A");
-		TestUtil.okElementSelectionDialog(runnable);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Nested Class A", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
 		// get the action and execute it
 		GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
 		action.run(null);

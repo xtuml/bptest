@@ -27,6 +27,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
@@ -244,8 +245,9 @@ public class SetTypeTestGenerics extends CanvasTest {
 		Action a = new Action(){};
 		action.setActivePart(a, PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean");
-		TestUtil.okElementSelectionDialog(chooseItemInDialog);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean", existingShells);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		action.run(a);
 		assertEquals(chooseItemInDialog.getFailure(), "");
 		DataType_c assignedDt = DataType_c.getOneS_DTOnR18(testUDT);
@@ -267,8 +269,9 @@ public class SetTypeTestGenerics extends CanvasTest {
 		Action a = new Action(){};
 		action.setActivePart(a, PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "otherUDT");
-		TestUtil.okElementSelectionDialog(chooseItemInDialog);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "otherUDT", existingShells);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		action.run(a);
 		assertEquals(chooseItemInDialog.getFailure(), "");
 		PackageableElement_c assignedPE = PackageableElement_c
@@ -291,8 +294,9 @@ public class SetTypeTestGenerics extends CanvasTest {
 		Action a = new Action(){};
 		action.setActivePart(a, PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "EDT");
-		TestUtil.okElementSelectionDialog(chooseItemInDialog);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "EDT", existingShells);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		action.run(a);
 		assertEquals(chooseItemInDialog.getFailure(), "");
 		PackageableElement_c assignedPE = PackageableElement_c
@@ -315,8 +319,9 @@ public class SetTypeTestGenerics extends CanvasTest {
 		Action a = new Action(){};
 		action.setActivePart(a, PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "SDT");
-		TestUtil.okElementSelectionDialog(chooseItemInDialog);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "SDT", existingShells);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		action.run(a);
 		assertEquals(chooseItemInDialog.getFailure(), "");
 		PackageableElement_c assignedPE = PackageableElement_c
@@ -339,8 +344,9 @@ public class SetTypeTestGenerics extends CanvasTest {
 		Action a = new Action(){};
 		action.setActivePart(a, PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "inst_ref<IRDT>");
-		TestUtil.okElementSelectionDialog(chooseItemInDialog);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "inst_ref<IRDT>", existingShells);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		action.run(a);
 		assertEquals(chooseItemInDialog.getFailure(), "");
 		PackageableElement_c assignedPE = PackageableElement_c
