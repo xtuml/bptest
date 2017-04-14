@@ -35,7 +35,6 @@ import java.io.ObjectInputStream;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTGraphics;
@@ -51,7 +50,6 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -362,8 +360,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 				new Rectangle(extentRectangle.x, extentRectangle.y, extentRectangle.width, extentRectangle.height));
 		GC gc = new GC(img);
 		SWTGraphics swtGraphics = new SWTGraphics(gc);
-//		Font displayFont = getOptimalFont(gc, 100);
-    	FontData prefFontData = new FontData("Courier", 1, SWT.DEFAULT);
+    	FontData prefFontData = new FontData("Courier", 10, SWT.DEFAULT);
     	Font displayFont = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
 		Font originalFont = GraphicalEditor.getFont();
 		GraphicalEditor.setFont(displayFont);
@@ -373,57 +370,27 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 				LayerManager.ID);
 		IFigure figure = lm.getLayer(LayerConstants.PRINTABLE_LAYERS);
 		figure.setFont(displayFont);
+		// draw once with cropping enabled, this will allow
+		// an image that is legible 
 		PrintDiagramOperation.printImage(img, viewer, extentRectangle, editor.getModel().Hascontainersymbol(),
 				PrintDiagramOperation.FIT_PAGE, gc, tester);
 		CanvasTestResult result = new CanvasTestResult();
-		result.transcript = tester.getResults();
 		result.image = img.getImageData();
+		gc = new GC(img);
+		swtGraphics = new SWTGraphics(gc);
+		swtGraphics.setFont(displayFont);
+		tester = new TestGC(swtGraphics);
+		CanvasPlugin.disableCropping = true;
+		PrintDiagramOperation.printImage(img, viewer, extentRectangle, editor.getModel().Hascontainersymbol(),
+				PrintDiagramOperation.FIT_PAGE, gc, tester);
+		CanvasPlugin.disableCropping = false;
+		result.transcript = tester.getResults();
 		tester.dispose();
 		img.dispose();
 		GraphicalEditor.setFont(originalFont);
 		displayFont.dispose();
-		img.dispose();
 		return result;
 	}
-  
-    private Font getOptimalFont(GC gc, int desired) {
-        int currentSize = 20;
-        Font font = null;
-        while(currentSize > 1) {
-        	if(font != null) {
-        		font.dispose();
-        	}
-        	FontData prefFontData = new FontData("Courier", currentSize, SWT.DEFAULT);
-            font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
-            gc.setFont(font);
-            String text = "HHHHHHHHHHHHHHH";
-            Point textExtent = gc.textExtent(text);
-            if(textExtent.x < desired) {
-            	// do to a slight variation between cocoa and x
-            	// we adjust font size
-            	if(Platform.getOS().equals(Platform.OS_LINUX)) {
-            		font.dispose();
-            		prefFontData = new FontData("Courier", currentSize - 6, SWT.DEFAULT);
-            		font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
-            	}
-            	return font;
-            }
-            currentSize -= 1;
-        }
-        if(font == null) {
-        	FontData prefFontData = new FontData("Courier", 8, SWT.DEFAULT);
-            font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
-        }
-        return font;
-    }
-
-
-	protected void paint(TestGC tester, GraphicalEditor editor) {
-  		((FigureCanvas) editor.getCanvas()).getLightweightSystem()
-				.getUpdateManager().performValidation();
-		((FigureCanvas) editor.getCanvas())
-				.getLightweightSystem().getRootFigure().paint(tester);
-  	}
 
 	/**
   	 * Writes the given array of expected results out to one text file, 
