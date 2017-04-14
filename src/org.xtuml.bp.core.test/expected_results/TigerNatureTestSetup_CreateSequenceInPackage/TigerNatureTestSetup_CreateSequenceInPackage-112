@@ -1,0 +1,8 @@
+drawRectangle(...)
+drawRectangle(...)
+drawText("«package»", ...)
+drawText("+CreatePackageInPackage", ...)
+drawRectangle(...)
+drawRectangle(...)
+drawText("«package»", ...)
+drawText("+Sequence Diagram", ...)

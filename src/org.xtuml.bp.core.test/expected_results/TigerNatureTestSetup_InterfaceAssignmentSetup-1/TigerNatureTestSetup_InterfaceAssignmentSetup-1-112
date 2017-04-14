@@ -1,0 +1,4 @@
+drawRectangle(...)
+drawText("«interface»", ...)
+drawText("InterfaceAssignmentSetup-1", ...)
+drawline(...)
