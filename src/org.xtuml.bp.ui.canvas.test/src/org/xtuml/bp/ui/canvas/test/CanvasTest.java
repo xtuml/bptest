@@ -363,7 +363,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 		GC gc = new GC(img);
 		SWTGraphics swtGraphics = new SWTGraphics(gc);
 //		Font displayFont = getOptimalFont(gc, 100);
-    	FontData prefFontData = new FontData("Courier", 10, SWT.DEFAULT);
+    	FontData prefFontData = new FontData("Courier", 1, SWT.DEFAULT);
     	Font displayFont = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
 		Font originalFont = GraphicalEditor.getFont();
 		GraphicalEditor.setFont(displayFont);
@@ -401,9 +401,9 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
             if(textExtent.x < desired) {
             	// do to a slight variation between cocoa and x
             	// we adjust font size
-            	if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+            	if(Platform.getOS().equals(Platform.OS_LINUX)) {
             		font.dispose();
-            		prefFontData = new FontData("Courier", currentSize + 3, SWT.DEFAULT);
+            		prefFontData = new FontData("Courier", currentSize - 6, SWT.DEFAULT);
             		font = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
             	}
             	return font;
@@ -566,7 +566,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
     public void validateOrGenerateResults(GraphicalEditor editor, boolean generate,
         boolean preserveDiagramValues)
     {
-    	generate = true;
+    	//generate = true;
  		// remember the diagram zoom and viewport location values, 
 		// as they will be changed during the calls below
 		Diagram_c diagram = Diagram_c.getOneDIM_DIAOnR18(editor.getModel());
