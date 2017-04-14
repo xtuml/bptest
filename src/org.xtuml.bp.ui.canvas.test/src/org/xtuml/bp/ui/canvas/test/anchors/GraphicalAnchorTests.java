@@ -61,6 +61,8 @@ import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
+import org.xtuml.bp.ui.canvas.CanvasModelListener;
+import org.xtuml.bp.ui.canvas.CanvasTransactionListener;
 import org.xtuml.bp.ui.canvas.Connector_c;
 import org.xtuml.bp.ui.canvas.GraphicalElement_c;
 import org.xtuml.bp.ui.canvas.Model_c;
@@ -122,6 +124,7 @@ public class GraphicalAnchorTests extends CanvasTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
+		CanvasTransactionListener.disableReconciler();
 		testPart = null;
 		// import the test model for the first
 		// setUp
@@ -154,6 +157,7 @@ public class GraphicalAnchorTests extends CanvasTest {
 		super.tearDown();
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.closeAllEditors(false);
+		CanvasTransactionListener.enableReconciler();
 	}
 
 	/**
@@ -671,15 +675,17 @@ public class GraphicalAnchorTests extends CanvasTest {
 	 */
 	boolean checkResult_dropPointUnchanged(NonRootModelElement source,
 			NonRootModelElement destination) {
+		getActiveEditor().refresh();
+		BaseTest.dispatchEvents(0);
 		ConnectorEditPart testPart = getTestPart(source);
 		PointList points = testPart.getConnectionFigure().getPoints();
 		assertTrue("Expected result point was not present.",
 				resultStartPoint != null);
-		if(!resultStartPoint.equals(points.getFirstPoint())) {
+		if(resultStartPoint.x - points.getFirstPoint().x > 5 && resultStartPoint.y - points.getFirstPoint().y > 5) {
 			return false;
 		}
 		if (resultEndPoint != null) {
-			if (!resultEndPoint.equals(points.getLastPoint())) {
+			if (resultEndPoint.x - points.getLastPoint().x > 5 && resultEndPoint.y - points.getLastPoint().y > 5) {
 				return false;
 			}
 		}

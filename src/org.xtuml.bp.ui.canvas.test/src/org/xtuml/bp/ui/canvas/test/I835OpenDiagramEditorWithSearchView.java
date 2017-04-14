@@ -37,6 +37,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
+import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
@@ -65,6 +66,7 @@ public class I835OpenDiagramEditorWithSearchView extends BaseTest {
 	public void testOpenDiagramEditorWithSearchView() throws CoreException{
 		
 		BaseTest.dispatchEvents(0);
+		TestingUtilities.importDevelopmentProjectIntoWorkspace("org.xtuml.bp.core");
 		ResourcesPlugin.getWorkspace().getRoot().refreshLocal(
 				IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		
@@ -85,7 +87,9 @@ public class I835OpenDiagramEditorWithSearchView extends BaseTest {
 			}
 			
 		}
-		Package_c uut = Package_c.PackageInstance(modelRoot, new Subsystem_by_Name());
+		BaseTest.dispatchEvents(0);
+		SystemModel_c systemModel = TestingUtilities.getSystemModel("org.xtuml.bp.core");
+		Package_c uut = Package_c.getOneEP_PKGOnR1405(systemModel, new Subsystem_by_Name());
 		CanvasTestUtils.openDiagramEditor(uut);
 		
 		Display d = Display.getCurrent();

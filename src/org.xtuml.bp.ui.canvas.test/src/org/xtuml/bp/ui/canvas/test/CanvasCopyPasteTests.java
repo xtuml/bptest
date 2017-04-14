@@ -42,6 +42,7 @@ import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionException;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.GraphicalElement_c;
@@ -180,6 +181,8 @@ public class CanvasCopyPasteTests extends CanvasTest {
 		CanvasTestUtilities.doMousePress(600, 600);
 		CanvasTestUtilities.doMouseRelease(600, 600);
 		pasteClipboardElements(ce);
+		BaseTest.dispatchEvents(0);
+		BaseTest.dispatchEvents(0);
 		validateOrGenerateResults(ce,generateResults);		
 	}
 	
@@ -301,8 +304,7 @@ public class CanvasCopyPasteTests extends CanvasTest {
 	private void pasteClipboardElements(GraphicalEditor ce) {
 		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
 		canvaspasteaction.run();
-		waitForTransaction();
-		waitForDecorator();
+		BaseTest.dispatchEvents(0);
 	}
 
 	private void copySelection(GraphicalEditor ce) {

@@ -16,12 +16,12 @@ public class GlobalTestSetupClass {
 	public void setUpGlobalSetting() throws CoreException {
 
 		// turn off autobuild
-//				try {
-//					WorkspaceUtil.setAutobuilding(false);
-//				} catch (CoreException e) {
-//					CorePlugin.logError(e.toString(), e);
-//				}
-//				CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION,true);
+				try {
+					WorkspaceUtil.setAutobuilding(false);
+				} catch (CoreException e) {
+					CorePlugin.logError(e.toString(), e);
+				}
+				CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS,false);
 				CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION,true);
 
 	}

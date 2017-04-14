@@ -35,6 +35,8 @@ import java.io.Reader;
 import java.lang.Thread.State;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Vector;
 
 import junit.framework.Assert;
@@ -79,23 +81,20 @@ import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
 public class TestingUtilities {
 
-	private static IPath sourceDirectory = null;
 	private static boolean archiveFileOptionSet = false; 
 
 	public static IPath getSourceDirectory() {
-		if (sourceDirectory == null) {
-			String sourceDirectoryPath = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
-			if (sourceDirectoryPath == null) {
-				throw new IllegalStateException(
-						"environment variable WORKSPACE_PATH not set"); //$NON-NLS-1$
-			}
-			File directory = new File(sourceDirectoryPath);
-			if (!directory.exists() || !directory.isDirectory()) {
-				throw new IllegalStateException(
-						"Invalid source directory given as WORKSPACE_PATH=" + sourceDirectoryPath); //$NON-NLS-1$
-			}
-			sourceDirectory = new Path(sourceDirectoryPath);
+		IPath sourceDirectory = null;
+		String sourceDirectoryPath = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
+		if (sourceDirectoryPath == null) {
+			throw new IllegalStateException("environment variable WORKSPACE_PATH not set"); //$NON-NLS-1$
 		}
+		File directory = new File(sourceDirectoryPath);
+		if (!directory.exists() || !directory.isDirectory()) {
+			throw new IllegalStateException("Invalid source directory given as WORKSPACE_PATH=" + sourceDirectoryPath); //$NON-NLS-1$
+		}
+		sourceDirectory = new Path(sourceDirectoryPath);
+
 		return sourceDirectory;
 	}
 
@@ -127,7 +126,7 @@ public class TestingUtilities {
 	public static boolean deleteProject(String name) throws CoreException {
 		IProject projectHandle = ResourcesPlugin.getWorkspace().getRoot()
 				.getProject(name);
-
+		BaseTest.dispatchEvents(0);
 		return deleteProject(projectHandle);
 	}
 
@@ -748,7 +747,9 @@ public class TestingUtilities {
 	
 	public static boolean importModelUsingWizard(SystemModel_c systemModel,
 			String fullyQualifiedSingleFileModel, boolean parseOnImport) {
-	    return ProjectUtilities.importModelUsingWizard(systemModel, fullyQualifiedSingleFileModel, parseOnImport);
+	     boolean result = ProjectUtilities.importModelUsingWizard(systemModel, fullyQualifiedSingleFileModel, parseOnImport);
+	     BaseTest.dispatchEvents(0);
+	     return result;
 	}
 	
 	public static boolean importModelUsingWizard(SystemModel_c systemModel,
@@ -828,7 +829,7 @@ public class TestingUtilities {
 			testProjectPath = repository_location + "/../applications/gps/" + testProject;				
 		} else {
 			testProjectPath = repository_location + "/" + testProject;
-		}
+		} 
 		File file = new File(testProjectPath);
 		if(!file.exists()) {
 			// check the private repository
@@ -845,6 +846,7 @@ public class TestingUtilities {
 				return;
 			}
 		}
+		BaseTest.dispatchEvents(0);
 		ProjectUtilities.importExistingProject(testProjectPath, true);
 		BaseTest.dispatchEvents(0);
 	}

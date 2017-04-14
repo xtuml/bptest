@@ -19,7 +19,13 @@
 .// License for the specific language governing permissions and limitations under
 .// the License.
 .//=======================================================================
-.include "../org.xtuml.bp.core/arc/generate_RGO_resolution_methods.inc"
+.invoke arc_mcj = GET_ENV_VAR( "mcj_path" )
+.assign mcj_path = arc_mcj.result
+.if ( mcj_path == "" )
+  .print "\nERROR: Environment variable mcj_path not set."
+  .exit 100
+.end if
+.include "${mcj_path}/../org.xtuml.bp.core/arc/generate_RGO_resolution_methods.inc"
 .function get_cells
   .param Inst_Ref rto
   .param Inst_Ref_Set test_rtos

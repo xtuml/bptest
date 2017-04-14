@@ -59,6 +59,7 @@ public class ModelIntegrityTests extends BaseTest {
 	@Override
 	@Before
 	public void initialSetup() throws Exception {
+		BaseTest.dispatchEvents(0);
 		if (!isFirstTime)
 			return;
 		isFirstTime = false;
