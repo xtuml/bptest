@@ -357,7 +357,7 @@ public class CanvasInitialMASLNameTests extends BaseTest {
 
 	private void validateErrorMessage(final String expectedResult,
 			final String value) {
-		TestUtil.dismissShell(activeShell -> {
+		TestUtil.processShell(null, activeShell -> {
 			if (activeShell != null && activeShell.getData() instanceof InputDialog) {
 				if (!value.equals("empty")) {
 					Text text = UITestingUtilities.findInputDialogTextField((InputDialog) activeShell.getData());
@@ -369,6 +369,7 @@ public class CanvasInitialMASLNameTests extends BaseTest {
 			} else {
 				errorTxt = "";
 			}
+			return true;
 		});
 	}
 

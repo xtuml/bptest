@@ -55,7 +55,7 @@ public class SearchUtilities {
 		for (int i = 0; i < results.length; i++) {
 			results[i].Dispose();
 		}
-		TestUtil.dismissShell(shell -> {
+		TestUtil.processShell(null, shell -> {
 			Object data = shell.getData();
 			Control[] children = shell.getChildren();
 			Combo combo = getPatternField((Composite) children[0]);
@@ -114,6 +114,7 @@ public class SearchUtilities {
 			search.notifyListeners(SWT.Selection, new Event());
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 				;
+			return true;
 		});
 		NewSearchUI.openSearchDialog(PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow(),
@@ -244,28 +245,28 @@ public class SearchUtilities {
 				Button cancel = getButton((Composite) children[0], "Cancel");
 				if (!combo.getText().equals(pattern)) {
 					cancel.notifyListeners(SWT.Selection, new Event());
-					return;
+					return true;
 				}
 				for (int i = 0; i < buttons.length; i++) {
 					if (buttons[i].getText().equals("Regular expression")) {
 						if (buttons[i].getSelection() != regEx) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					} else if (buttons[i].getText().equals("Case sensitive")) {
 						if (buttons[i].getSelection() != caseSensitive) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					} else if (buttons[i].getText().equals("Action Language")) {
 						if (buttons[i].getSelection() != oal) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					} else if (buttons[i].getText().equals("Descriptions")) {
 						if (buttons[i].getSelection() != descriptions) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					}
 				}
@@ -274,47 +275,47 @@ public class SearchUtilities {
 							&& scope == ISearchPageContainer.WORKSPACE_SCOPE) {
 						if (scopeButtons[i].getSelection() != true) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					} else if (scopeButtons[i].getText().equals("&Workspace")
 							&& scope != ISearchPageContainer.WORKSPACE_SCOPE) {
 						// button should not be checked
 						if (scopeButtons[i].getSelection() != false) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					}
 					if (scopeButtons[i].getText().equals("Selecte&d resources")
 							&& scope == ISearchPageContainer.SELECTION_SCOPE) {
 						if (scopeButtons[i].getSelection() != true) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					} else if (scopeButtons[i].getText().equals("Selecte&d resources")
 							&& scope != ISearchPageContainer.SELECTION_SCOPE) {
 						if (scopeButtons[i].getSelection() != false) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					}
 					if (scopeButtons[i].getText().equals("Enclosing pro&jects")
 							&& scope == ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
 						if (scopeButtons[i].getSelection() != true) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					} else if (scopeButtons[i].getText().equals("Enclosing pro&jects")
 							&& scope != ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
 						if (scopeButtons[i].getSelection() != false) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					}
 					if (scopeButtons[i].getText().equals("Wor&king set:")
 							&& scope == ISearchPageContainer.WORKING_SET_SCOPE) {
 						if (scopeButtons[i].getSelection() != true) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 						IWorkingSet[] selectedWorkingSets = ((SearchDialog) data).getSelectedWorkingSets();
 						boolean found = false;
@@ -327,19 +328,20 @@ public class SearchUtilities {
 						}
 						if (!found) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					} else if (scopeButtons[i].getText().equals("Wor&king set:")
 							&& scope != ISearchPageContainer.WORKING_SET_SCOPE) {
 						if (scopeButtons[i].getSelection() != false) {
 							cancel.notifyListeners(SWT.Selection, new Event());
-							return;
+							return true;
 						}
 					}
 				}
 				dialogSettingsResult = true;
 				cancel.notifyListeners(SWT.Selection, new Event());
 			}
+			return true;
 		});
 		NewSearchUI.openSearchDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow(),
 				"org.xtuml.bp.ui.search.xtumlSearchPage");

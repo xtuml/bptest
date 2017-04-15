@@ -190,38 +190,41 @@ public class TestUtil
         dismissDialog(inHowManyMillis, currentRecursionDepth, shouldDismiss, null, null, true);
     }
     
-    public interface ShellDismisser {
-    	public void dismissShell(Shell shell);
+    public interface ShellProcessor {
+    	public boolean processShell(Shell shell);
     }
     
-    static boolean dismissed = false;
-    public static void dismissShell(ShellDismisser dismisser) {
-    	dismissShell(null, dismisser);
+    static boolean processed = false;
+    static Shell[] shellsBeforeAction = new Shell[0];
+    public static void dismissShell(ShellProcessor processor) {
+    	processShell(null, processor);
     }
-    public static void dismissShell(Shell[] shellsBeforeAction, ShellDismisser dismisser)
-    {
-    	if(shellsBeforeAction == null) { 
-	    	// cache the current shells, we will use the knowledge that a new one is imminent
-	    	// to determine when and which shell to close
-	    	shellsBeforeAction = PlatformUI.getWorkbench().getDisplay().getShells();
-    	}
-    	final Shell[] finalShellsBeforeAction = shellsBeforeAction;
-    	// run a new thread which expires after 15 seconds (the longest wait time used with
-    	// the old version of this method
-    	long maxRunTime = 15000;
-    	long startTime = System.currentTimeMillis();
-    	Thread dismissThread = new Thread(new Runnable() {
-
+    public static void processShell(Shell[] shellsBeforeAction, ShellProcessor processor)
+	{
+		if (shellsBeforeAction == null) {
+			// cache the current shells, we will use the knowledge that a new
+			// one is imminent
+			// to determine when and which shell to close
+			TestUtil.shellsBeforeAction = PlatformUI.getWorkbench().getDisplay().getShells();
+		} else {
+			TestUtil.shellsBeforeAction = shellsBeforeAction;
+		}
+		// run a new thread which expires after 15 seconds (the longest wait
+		// time used with
+		// the old version of this method
+		long maxRunTime = 15000;
+		long startTime = System.currentTimeMillis();
+		Thread dismissThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				long runTime = System.currentTimeMillis() - startTime;
-				dismissed = false;
-				while(runTime < maxRunTime) {
+				processed = false;
+				while (runTime < maxRunTime) {
 					PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-						
+
 						@Override
 						public void run() {
-							HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(finalShellsBeforeAction));
+							HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(TestUtil.shellsBeforeAction));
 							Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
 							// locate a unique shell in the latest
 							for (Shell shell : currentShells) {
@@ -230,30 +233,34 @@ public class TestUtil
 									// unique shell, test to make sure it is
 									// not a temporary shell during setup of
 									// the one we expect
-									if (!(shell.getData() instanceof Object[]) && !(shell.getData() instanceof ProgressMonitorDialog)
+									if (!(shell.getData() instanceof Object[])
+											&& !(shell.getData() instanceof ProgressMonitorDialog)
 											&& !(shell.getData() instanceof BlockedJobsDialog)
 											&& (!shell.getText().equals("") || (shell.getText().equals("")
 													&& shell.getData() instanceof WizardDialog))) {
 										// we have our new shell, process as we
 										// did before
-										dismisser.dismissShell(shell);
-										dismissed = true;
-										break;
+										processed = processor.processShell(shell);
+										if (processed) {
+											break;
+										}
 									}
 								}
 							}
+							if(!processed) {
+								TestUtil.shellsBeforeAction = currentShells;
+							}
 						}
 					});
-					if(dismissed) {
+					if (processed) {
 						return;
 					}
 					sleep(50);
 				}
 			}
-    		
-    	});
-    	dismissThread.start();
-    }
+		});
+		dismissThread.start();
+	}
 
     public static void dismissDialog(final long inHowManyMillis, 
             final int currentRecursionDepth, final boolean shouldDismiss, final String button, final String treeItem, final boolean throwException)
@@ -278,6 +285,7 @@ public class TestUtil
 					foundButton.notifyListeners(SWT.Selection, null);
 					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 						;
+					return true;
 				}
 			} else if (treeItem != null) {
 				Tree tree = UITestingUtilities.findTree(shell);
@@ -285,6 +293,7 @@ public class TestUtil
 					TreeItem item = UITestingUtilities.findItemInTree(tree, treeItem);
 					if (item != null) {
 						tree.select(item);
+						return true;
 					} else {
 						CorePlugin.logError("Unable to locate tree item in tree: " + treeItem, null);
 					}
@@ -294,6 +303,7 @@ public class TestUtil
 			} else {
 				cancelDialog((Dialog) shell.getData());
 			}
+			return false;
 		});
 	}
     
@@ -315,6 +325,7 @@ public class TestUtil
 					}
 					if (shouldDismiss) {
 						((Dialog) shell.getData()).close();
+						return true;
 					} else {
 						TableItem[] items = getTableItems(shell);
 						if (items.length > 0) {
@@ -343,10 +354,12 @@ public class TestUtil
 							foundButton.notifyListeners(SWT.Selection, null);
 							while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 								;
+							return true;
 						}
 					}
 				}	
 			}
+			return false;
 		});
 
 	}
@@ -824,11 +837,12 @@ public class TestUtil
 
 					@Override
 					public void run() {
-						dismissShell(existingShells, shell -> {
-							if (shell != null) {
+						processShell(existingShells, shell -> {
+							if (shell != null && shell.getData() instanceof ElementSelectionDialog) {
 								ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
 								dialog.close();
 							}
+							return true;
 						});
 					}
 				});
@@ -859,16 +873,15 @@ public class TestUtil
             @Override
             public void run() {
 				waitForRunnable(runnable);
-				dismissShell(existingShells, shell -> {
+				processShell(existingShells, shell -> {
 					if (shell != null) {
 						ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
 						if (dialog.getOkButton().isEnabled()) {
 							dialog.getOkButton().notifyListeners(SWT.Selection, new Event());
-							return;
-						} else {
-							sleep(300);
+
 						}
 					}
+					return true;
 				});
 			}
 		});
@@ -891,7 +904,7 @@ public class TestUtil
 				FailableRunnable innerRunnable = new FailableRunnable() {
 					@Override
 					public void run() {
-						dismissShell(existingShells, shell -> {
+						processShell(existingShells, shell -> {
 							if (shell != null) {
 								Dialog dialog = (Dialog) shell.getData();
 								Control[] children = dialog.getShell().getChildren();
@@ -941,6 +954,7 @@ public class TestUtil
 							}
 							foundItemInDialog = false;
 							setComplete();
+							return true;
 						});
 					}
 
@@ -960,6 +974,7 @@ public class TestUtil
 				};
                 // must be run in the UI thread
                 PlatformUI.getWorkbench().getDisplay().syncExec(innerRunnable);
+                waitForRunnable(innerRunnable);
                 if(!innerRunnable.getFailure().equals("")) {
                     setFailure(innerRunnable.getFailure());
                 }
@@ -983,7 +998,7 @@ public class TestUtil
                     
                     @Override
                     public void run() {
-						dismissShell(existingShells, shell -> {
+						processShell(existingShells, shell -> {
 							if (shell != null) {
 								ElementSelectionDialog dialog = (ElementSelectionDialog) shell.getData();
 								ElementSelectionFlatView view = dialog.getFlatView();
@@ -999,7 +1014,7 @@ public class TestUtil
 											setComplete();
 											while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 												;
-											return;
+											return true;
 										}
 									}
 								}
@@ -1008,6 +1023,7 @@ public class TestUtil
 								setFailure("Unable to locate button in selection dialog: " + buttonName);
 								setComplete();
 							}
+							return true;
 						});
 					}
                 };
