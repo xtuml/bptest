@@ -30,8 +30,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -199,6 +201,56 @@ public class TestUtil
     public static void dismissShell(ShellProcessor processor) {
     	processShell(null, processor);
     }
+    
+    static class ShellProcessorThread extends Thread {
+
+    	List<Thread> threads = new ArrayList<Thread>();
+    	
+    	public ShellProcessorThread(String name) {
+    		super(name);
+    	}
+
+		public void addThread(Thread thread) {
+			threads.add(thread);
+		}
+		
+		public void removeThread(Thread thread) {
+			threads.remove(thread);
+		}
+		
+		@Override
+		public void run() {
+			while(true) {
+				while(threads.size() > 0) {
+					Thread next = threads.remove(0);
+					next.start();
+					try {
+						next.join();
+					} catch (InterruptedException e) {
+						TestCase.fail(e.getMessage());
+					}
+					if(!PlatformUI.getWorkbench().getDisplay().isDisposed()) {
+						PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+							while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+								;
+						});
+					}
+				}
+				try {
+					sleep(100);
+				} catch (InterruptedException e) {
+					TestCase.fail(e.getMessage());
+				}
+			}
+		}
+	}
+    
+    static ShellProcessorThread shellProcessorThread = new ShellProcessorThread("Shell Processing");
+    static {
+    	shellProcessorThread.start();
+    }
+	static long maxRunTime = 2000;
+	
     public static void processShell(Shell[] shellsBeforeAction, ShellProcessor processor)
 	{
 		if (shellsBeforeAction == null) {
@@ -209,60 +261,60 @@ public class TestUtil
 		} else {
 			TestUtil.shellsBeforeAction = shellsBeforeAction;
 		}
-		// run a new thread which expires after 15 seconds (the longest wait
-		// time used with
-		// the old version of this method
-		long maxRunTime = 15000;
-		long startTime = System.currentTimeMillis();
-		Thread dismissThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				long runTime = System.currentTimeMillis() - startTime;
-				processed = false;
-				while (runTime < maxRunTime) {
-					PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-
-						@Override
-						public void run() {
-							HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(TestUtil.shellsBeforeAction));
-							Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
-							// locate a unique shell in the latest
-							for (Shell shell : currentShells) {
-								boolean added = uniqueSet.add(shell);
-								if (added) {
-									// unique shell, test to make sure it is
-									// not a temporary shell during setup of
-									// the one we expect
-									if (!(shell.getData() instanceof Object[])
-											&& !(shell.getData() instanceof ProgressMonitorDialog)
-											&& !(shell.getData() instanceof BlockedJobsDialog)
-											&& (!shell.getText().equals("") || (shell.getText().equals("")
-													&& shell.getData() instanceof WizardDialog))) {
-										// we have our new shell, process as we
-										// did before
-										processed = processor.processShell(shell);
-										if (processed) {
-											break;
-										}
-									}
+		// run a new thread which expires after 2 seconds
+		// this can be increased if anything takes longer than
+		// that to display (otherwise it is used for the case
+		// where 
+		Thread processThread = new Thread(() -> {
+			long startTime = System.currentTimeMillis();
+			long runTime = System.currentTimeMillis() - startTime;
+			processed = false;
+			while (runTime < maxRunTime) {
+				if (PlatformUI.getWorkbench().getDisplay().isDisposed()) {
+					return;
+				}
+				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+					Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
+					HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(TestUtil.shellsBeforeAction));
+					// locate a unique shell in the latest
+					for (Shell shell : currentShells) {
+						boolean added = uniqueSet.add(shell);
+						if (added) {
+							// unique shell, test to make sure it is
+							// not a temporary shell during setup of
+							// the one we expect
+							if (!(shell.getData() instanceof Object[])
+									&& !(shell.getData() instanceof ProgressMonitorDialog)
+									&& !(shell.getData() instanceof BlockedJobsDialog)
+									&& (!shell.getText().equals("") || (shell.getText().equals("")
+											&& shell.getData() instanceof WizardDialog))) {
+								// we have our new shell, process as we
+								// did before
+								processed = processor.processShell(shell);
+								if (processed) {
+									break;
 								}
 							}
-							if(!processed) {
-								TestUtil.shellsBeforeAction = currentShells;
-							}
 						}
-					});
-					if (processed) {
-						return;
 					}
-					sleep(50);
+					if (!processed) {
+						TestUtil.shellsBeforeAction = currentShells;
+					}
+				});
+				if (processed) {
+					return;
 				}
+				sleep(50);
+				runTime = System.currentTimeMillis() - startTime;
 			}
 		});
-		dismissThread.start();
+		// add thread to processor
+		shellProcessorThread.addThread(processThread);
 	}
 
-    public static void dismissDialog(final long inHowManyMillis, 
+	static Shell[] currentShells = null;
+
+	public static void dismissDialog(final long inHowManyMillis, 
             final int currentRecursionDepth, final boolean shouldDismiss, final String button, final String treeItem, final boolean throwException)
     {
 		dismissShell(shell -> {
@@ -283,8 +335,6 @@ public class TestUtil
 				if (foundButton != null) {
 					foundButton.setSelection(true);
 					foundButton.notifyListeners(SWT.Selection, null);
-					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-						;
 					return true;
 				}
 			} else if (treeItem != null) {

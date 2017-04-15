@@ -527,11 +527,18 @@ public class BaseTest extends TestCase {
 			dispatchEvents(0);
 		}
 		if (!project.exists()) {
+			SystemModel_c[] systemsBefore = SystemModel_c.SystemModelInstances(Ooaofooa.getDefaultInstance());
 			TestingUtilities.importTestingProjectIntoWorkspace(projectName);
-			dispatchEvents(0);
+			BaseTest.dispatchEvents(0);
 			project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 					projectName);
-			BaseTest.dispatchEvents(0);
+			SystemModel_c[] systems = SystemModel_c.SystemModelInstances(Ooaofooa.getDefaultInstance());
+			if(systemsBefore.length == systems.length) {
+				PersistableModelComponent pmc = PersistenceManager.createRootComponent(project);
+				if(!pmc.isLoaded()) {
+					pmc.load(new NullProgressMonitor());
+				}
+			}
 			m_sys = getSystemModel(projectName);
 		}
 		String modelRootId = Ooaofooa.createModelRootId(project, projectName, true);
@@ -603,15 +610,10 @@ public class BaseTest extends TestCase {
 	 * @return SystemModel_c
 	 */
 	private SystemModel_c getSystemModelInternal(final String projectName) {
-		// Query used to find the SystemModel associated with the
-		// given project name
-		ClassQueryInterface_c query = new ClassQueryInterface_c() {
-			public boolean evaluate(Object candidate) {
-				return ((SystemModel_c)candidate).getName().equals(projectName);
-			}
-		};
 		// get the associated instance
-		return SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), query);
+		return SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), candidate -> {
+			return ((SystemModel_c) candidate).getName().equals(projectName);
+		});
 	}	
 	protected void putSharedResult(String key, Object result){
 		sharedResults.put(key, result);

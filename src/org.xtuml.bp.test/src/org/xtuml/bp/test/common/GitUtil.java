@@ -42,8 +42,9 @@ import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.model.compare.contentmergeviewer.ModelContentMergeViewer;
 import org.xtuml.bp.test.TestUtil;
 
-import junit.framework.Assert;
+import junit.framework.TestCase;
 
+@SuppressWarnings("restriction")
 public class GitUtil {
 	public static final java.lang.String VIEW_ID = "org.eclipse.egit.ui.RepositoriesView";
 	
@@ -57,7 +58,7 @@ public class GitUtil {
 			IViewPart viewPart = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage()
 					.showView(VIEW_ID);
-			Assert.assertNotNull("", viewPart);
+			TestCase.assertNotNull("", viewPart);
 			return viewPart;
 		} catch (PartInitException e) {
 			CorePlugin.logError("Unable to open git repositories view.", e);
@@ -65,7 +66,6 @@ public class GitUtil {
 		return null;
 	}
 
-	@SuppressWarnings("restriction")
 	public static void loadRepository(String location, String branch) {
 		RepositoryUtil util = Activator.getDefault().getRepositoryUtil();
 		util.addConfiguredRepository(new File(location + "/" + ".git"));
@@ -100,7 +100,7 @@ public class GitUtil {
 		String treeItem = repositoryName + " [" + branchName;
 		TreeItem item = UITestingUtilities.findItemInTree(gitRepositoryTree,
 				treeItem);
-		Assert.assertNotNull(
+		TestCase.assertNotNull(
 				"Could not locate repository in the git repository view ("
 						+ treeItem + ").", item);
 		view.getCommonViewer().setSelection(
@@ -112,7 +112,7 @@ public class GitUtil {
 				"&Import Projects...");
 		BaseTest.dispatchEvents(100);
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-		Assert.assertTrue("Unable to load project from git repository: "
+		TestCase.assertTrue("Unable to load project from git repository: "
 				+ repositoryName, project.exists());
 		return project;
 	}
@@ -174,7 +174,7 @@ public class GitUtil {
 		TreeViewer treeViewer = ExplorerUtil.getTreeViewer();
 		TreeItem item = UITestingUtilities.findItemInTree(treeViewer.getTree(), projectName);
 		treeViewer.setSelection(new StructuredSelection(item.getData()));
-		TestUtil.okToDialog(400);
+		//TestUtil.okToDialog(400);
 		UITestingUtilities.activateMenuItem(treeViewer.getTree().getMenu(), "Team::Merge Tool");
 	}
 

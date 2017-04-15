@@ -800,10 +800,10 @@ public class TestingUtilities {
 		String pathToProject = workspace_location + "/src/" + developmentWorkspaceProject;
 		File file = new File(pathToProject);
 		if(!file.exists()) {
-			Assert.fail("Could not locate test model at: " + pathToProject);
+			TestCase.fail("Could not locate test model at: " + pathToProject);
 			return;
 		}
-		ProjectUtilities.importExistingProject(pathToProject, true);
+		ProjectUtilities.importExistingProjectCLI(pathToProject, true);
 		BaseTest.dispatchEvents(0);
 	}
 
@@ -826,7 +826,7 @@ public class TestingUtilities {
 			}
 		}
 		BaseTest.dispatchEvents(0);
-		ProjectUtilities.importExistingProject(testProjectPath, true);
+		ProjectUtilities.importExistingProjectCLI(testProjectPath, true);
 		BaseTest.dispatchEvents(0);
 	}
 
