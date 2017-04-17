@@ -138,7 +138,7 @@ public class ShapeResizeTest extends BaseTest
         // make sure the total drag had some effect, to help validate this test
         CanvasTestUtils.doMouseRelease(mouse.x + dx, mouse.y + dy);
 
-        BaseTest.dispatchEvents(0);
+        BaseTest.dispatchEvents(200);
         
         Point draggedCorner = CanvasTestUtils.getShapeSECorner(shape);
         assertTrue("Drag had no effect", !draggedCorner.equals(corner));

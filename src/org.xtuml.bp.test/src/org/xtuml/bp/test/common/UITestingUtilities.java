@@ -702,6 +702,7 @@ public class UITestingUtilities {
 	 */
 	public static GraphicalEditor addElementToGraphicalSelection(Object obj) {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
+
 		GraphicalEditor originalEditor = editor;
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		if(obj instanceof GraphicalEditPart) {

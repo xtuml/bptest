@@ -1,4 +1,9 @@
 Transaction started: Delete model element instance(s)
+  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R112 To:  instance of [core.AttributeReferenceInClass]
+  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R108 To:  instance of [core.ReferentialAttribute]
+  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R111 To:  instance of [core.ReferredToIdentifierAttribute]
+  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R111 To:  instance of [core.ReferringClassInAssoc]
+ Deletion of instance of type: core.AttributeReferenceInClass
   instance of [core.ReferentialAttribute] UN-RelatedAcross R106 To:  instance of [core.Attribute]
   instance of [core.ReferentialAttribute] UN-RelatedAcross R113 To:  instance of [core.BaseAttribute]
   instance of [core.Attribute] UN-RelatedAcross R114 To:  instance of [core.DataType]
@@ -14,11 +19,6 @@ Transaction started: Delete model element instance(s)
   instance of [core.AttributeReferenceInClass] UN-RelatedAcross R111 To:  instance of [core.ReferringClassInAssoc]
  Deletion of instance of type: core.AttributeReferenceInClass
  Deletion of instance of type: core.ReferentialAttribute
-  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R112 To:  instance of [core.AttributeReferenceInClass]
-  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R108 To:  instance of [core.ReferentialAttribute]
-  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R111 To:  instance of [core.ReferredToIdentifierAttribute]
-  instance of [core.AttributeReferenceInClass] UN-RelatedAcross R111 To:  instance of [core.ReferringClassInAssoc]
- Deletion of instance of type: core.AttributeReferenceInClass
   instance of [core.ReferredToIdentifierAttribute] UN-RelatedAcross R110 To:  instance of [core.ClassIdentifierAttribute]
   instance of [core.ReferredToIdentifierAttribute] UN-RelatedAcross R110 To:  instance of [core.ReferredToClassInAssoc]
  Deletion of instance of type: core.ReferredToIdentifierAttribute

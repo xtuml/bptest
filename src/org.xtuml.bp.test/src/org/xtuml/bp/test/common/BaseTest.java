@@ -524,6 +524,7 @@ public class BaseTest extends TestCase {
 				projectName);
 		if (project.exists()) {
 			TestingUtilities.deleteProject(projectName);
+			BaseTest.dispatchEvents(0);
 		}
 		if (!project.exists()) {
 			SystemModel_c[] systemsBefore = SystemModel_c.SystemModelInstances(Ooaofooa.getDefaultInstance());
