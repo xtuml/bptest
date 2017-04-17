@@ -519,27 +519,25 @@ public class BaseTest extends TestCase {
 	public void loadProject(String projectName) throws CoreException {
     	TestUtil.showBridgePointPerspective();
         
-    	BaseTest.dispatchEvents(0);
+    	BaseTest.dispatchEvents(300);
 		project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 				projectName);
 		if (project.exists()) {
 			TestingUtilities.deleteProject(projectName);
-			dispatchEvents(0);
 		}
 		if (!project.exists()) {
 			SystemModel_c[] systemsBefore = SystemModel_c.SystemModelInstances(Ooaofooa.getDefaultInstance());
 			TestingUtilities.importTestingProjectIntoWorkspace(projectName);
-			BaseTest.dispatchEvents(0);
 			project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 					projectName);
 			SystemModel_c[] systems = SystemModel_c.SystemModelInstances(Ooaofooa.getDefaultInstance());
 			if(systemsBefore.length == systems.length) {
 				PersistableModelComponent pmc = PersistenceManager.createRootComponent(project);
-				if(!pmc.isLoaded()) {
-					pmc.load(new NullProgressMonitor());
-				}
+				pmc.loadComponentAndChildren(new NullProgressMonitor());
+				m_sys = (SystemModel_c) pmc.getRootModelElement();
+			} else {
+				m_sys = getSystemModel(projectName);
 			}
-			m_sys = getSystemModel(projectName);
 		}
 		String modelRootId = Ooaofooa.createModelRootId(project, projectName, true);
 		modelRoot = Ooaofooa.getInstance(modelRootId, true);
@@ -1563,5 +1561,12 @@ public class BaseTest extends TestCase {
 			}
 		}
 		return repository_location != null ? repository_location : "";
+	}
+	public static boolean isCLITestRun() {
+		String isCLIRun = System.getProperty(BaseTest.CLI_TEST_RUN_KEY);
+		if(isCLIRun != null && isCLIRun.equals("true")) {
+			return true;
+		}
+		return false;
 	}
 }

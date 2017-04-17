@@ -19,7 +19,6 @@ import java.lang.Thread.State;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
@@ -46,7 +45,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
@@ -95,8 +93,9 @@ import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.ui.text.activity.ActivityEditor;
 
-import junit.framework.Assert;
+import junit.framework.TestCase;
 
+@SuppressWarnings("restriction")
 public class DebugUITestUtilities {
 
 	public static void joinLaunchJob() {
@@ -107,24 +106,6 @@ public class DebugUITestUtilities {
 					jobs[i].join();
 					TestingUtilities.processDisplayEvents();
 				} catch (InterruptedException e) {
-				}
-			}
-		}
-	}
-
-	public static void waitForExecutionThread() {
-		IProcess[] processes = DebugPlugin.getDefault().getLaunchManager()
-				.getProcesses();
-		for (int i = 0; i < processes.length; i++) {
-			if (processes[i] instanceof BPProcess) {
-				BPProcess process = (BPProcess) processes[i];
-				IDebugTarget debugTarget = process.getDebugTarget();
-				if (debugTarget instanceof BPDebugTarget) {
-					SystemModel_c system = ((BPDebugTarget) debugTarget).getSystem();
-//					synchronized(system) { system.notify(); }
-					while(((BPDebugTarget) debugTarget).deterministicExecutionInProgress()) {
-						BaseTest.dispatchEvents(0);
-					}
 				}
 			}
 		}
@@ -172,7 +153,7 @@ public class DebugUITestUtilities {
 							}
 						}
 					} catch (DebugException e) {
-						Assert.fail(e.toString());
+						TestCase.fail(e.toString());
 					}
 					break;
 				}
@@ -237,7 +218,7 @@ public class DebugUITestUtilities {
 	}
 	public static ActivityEditor openActivityEditorForSelectedElement() {
 		IEditorPart activeEditor = ExplorerUtil.openEditor();
-		Assert.assertTrue(
+		TestCase.assertTrue(
 				"Unable to open activity editor for selected element.",
 				activeEditor instanceof ActivityEditor);
 		return (ActivityEditor) activeEditor;
@@ -580,8 +561,6 @@ public class DebugUITestUtilities {
 	}
 
 	public static String getConsoleText(String expected) {
-		// wait for all outstanding events to complete
-		BaseTest.dispatchEvents(0);
 		IConsole[] consoles = ConsolePlugin.getDefault().getConsoleManager()
 				.getConsoles();
 		for (int i = 0; i < consoles.length; i++) {
@@ -633,7 +612,7 @@ public class DebugUITestUtilities {
 	}
 
 	private static Job getJob(String name) {
-		Job[] jobs = Platform.getJobManager().find(null);
+		Job[] jobs = Job.getJobManager().find(null);
 		for (int i = 0; i < jobs.length; i++) {
 			if (jobs[i].getName().equals(name)) {
 				return jobs[i];
@@ -652,10 +631,7 @@ public class DebugUITestUtilities {
 						"org.eclipse.debug.ui.ProcessConsoleType")) {
 					waitForConsoleUpdate(console, "");
 					console.getDocument().set("");
-					BaseTest.waitForDecorator();
-					BaseTest.waitForPlaceHolderThread();
-					BaseTest.waitForTransaction();
-					while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+					BaseTest.dispatchEvents(0);
 				}
 			}
 		}
@@ -764,8 +740,6 @@ public class DebugUITestUtilities {
 	 * @param VariableName is the variable name
 	 * @return Variable children tree items ( if found )
 	 */
-	
-	@SuppressWarnings("restriction")
 	public static TreeItem[] expandValueinVariablesView(String VariableName) {
 		try{
 			boolean clicked = false;
@@ -849,14 +823,14 @@ public class DebugUITestUtilities {
 	public static void waitForExecution() {
 		TestingUtilities.processPlatformJobs();
 		// join the execute thread
-	  Thread thread = ExecuteAction.getRunner();
+		Thread thread = ExecuteAction.getRunner();
 		if (thread != null) {
-		  while (thread.isAlive()) {
-		    BaseTest.dispatchEvents(0);
-		}
+			while (thread.isAlive()) {
+				while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+					;
+			}
 		}
 		processDebugEvents();
-		waitForExecutionThread();
 	}
 
 	private static boolean displayEventProcessed = false;
@@ -904,12 +878,17 @@ public class DebugUITestUtilities {
 	}
 
 	public static void stepOver(ComponentInstance_c engine, int stepCount) {
+		
 		showDebugView();
 		IProcess processForEngine = getProcessForEngine(engine);
 		for (int i = 0; i < stepCount; i++) {
 			try {
-				processForEngine.getLaunch().getDebugTarget().getThreads()[0]
-						.stepOver();
+				IThread[] threads = processForEngine.getLaunch().getDebugTarget().getThreads();
+				for(IThread thread : threads) {
+					if(((BPThread) thread).getEngine() == engine) {
+						thread.stepOver();
+					}
+				}
 			} catch (DebugException e) {
 			}
 		}
@@ -1089,7 +1068,7 @@ public class DebugUITestUtilities {
           tm.endTransaction(tr);
           TestingUtilities.allowJobCompletion();
           TestingUtilities.processPlatformJobs();
-          Assert.assertNotNull(
+          TestCase.assertNotNull(
             "Domain container package not found and cannot be created.",
             domContainer);
           for (final String domName : domNames) {
@@ -1099,15 +1078,15 @@ public class DebugUITestUtilities {
                   return ((Package_c) candidate).getName().equals(domName);
                 }
               });
-            Assert.assertNotNull(domPkg);
+            TestCase.assertNotNull(domPkg);
             ExplorerView ev = BaseTest.getExplorerView();
             Selection.getInstance().setSelection(new StructuredSelection(domPkg));
-            Assert.assertNotNull("Error opening Explorer View.", ev);
+            TestCase.assertNotNull("Error opening Explorer View.", ev);
             Menu mnu = ev.getTreeViewer().getTree().getMenu();
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
               "Error opening Menu in Explorer View on domain package.", mnu);
             MenuItem itm = UITestingUtilities.getMenuItem(mnu, "Cut");
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
               "Cut not available in Explorer View on domain package.", itm);
             UITestingUtilities.activateMenuItem(itm); // Cut the domain
             TestingUtilities.allowJobCompletion();
@@ -1122,7 +1101,7 @@ public class DebugUITestUtilities {
                   "Unnamed Component");
               }
             });
-            Assert.assertNotNull("Component cant be created for domain", comp);
+            TestCase.assertNotNull("Component cant be created for domain", comp);
             TransactionUtil.endTransactions(tg);
             TestingUtilities.allowJobCompletion();
             TestingUtilities.processPlatformJobs();
@@ -1134,11 +1113,11 @@ public class DebugUITestUtilities {
             TestingUtilities.processPlatformJobs();
             Selection.getInstance().setSelection(new StructuredSelection(comp));
             mnu = ev.getTreeViewer().getTree().getMenu();
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
                   "Error opening Menu in Explorer View on component created for domain.",
                   mnu);
             itm = UITestingUtilities.getMenuItem(mnu, "Paste");
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
                   "Paste not available in Explorer View on component created for domain.",
                   itm);
             UITestingUtilities.activateMenuItem(itm); // Paste the domain
@@ -1147,7 +1126,7 @@ public class DebugUITestUtilities {
           }
         }
         catch (TransactionException te) {
-          Assert.fail("Transaction Exception making domains executable" + te);
+          TestCase.fail("Transaction Exception making domains executable" + te);
         }
       }
     }
@@ -1167,9 +1146,8 @@ public class DebugUITestUtilities {
 		  }
 		}
 		catch (DebugException de){
-			Assert.fail("Unexpected exception waiting for threads to start " + de.toString());
+			TestCase.fail("Unexpected exception waiting for threads to start " + de.toString());
 		}
 		return result;
 	}
-
 }

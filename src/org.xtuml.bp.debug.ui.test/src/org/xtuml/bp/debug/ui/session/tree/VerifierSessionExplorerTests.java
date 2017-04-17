@@ -26,13 +26,12 @@ import java.io.File;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.debug.internal.ui.DebugUIPlugin;
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +45,6 @@ import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.core.util.UIUtil;
@@ -79,23 +77,18 @@ public class VerifierSessionExplorerTests extends BaseTest {
 			CorePlugin.disableParseAllOnResourceChange();
 
 			// set perspective switch dialog on launch
-			DebugUIPlugin.getDefault().getPluginPreferences().setValue(
+			IEclipsePreferences debug = DefaultScope.INSTANCE.getNode(IDebugUIConstants.PLUGIN_ID);
+			debug.put(
 					IDebugUIConstants.PLUGIN_ID + ".switch_to_perspective",
 					"always");
 
-			CorePlugin
-					.getDefault()
-					.getPluginPreferences()
-					.setDefault(
-							BridgePointPreferencesStore.ALLOW_IMPLICIT_COMPONENT_ADDRESSING,
-							true);
+			IEclipsePreferences core = DefaultScope.INSTANCE.getNode(IDebugUIConstants.PLUGIN_ID);
+
+			core.put(BridgePointPreferencesStore.ALLOW_IMPLICIT_COMPONENT_ADDRESSING, "true");
 
 			// initialize test model
 			final IProject project = ResourcesPlugin.getWorkspace().getRoot()
 					.getProject(projectName);
-
-			File sourceProject = new File(m_workspace_path + "../"
-					+ projectName);
 
 			loadProject(projectName);
 			m_sys = SystemModel_c.SystemModelInstance(Ooaofooa
@@ -108,20 +101,7 @@ public class VerifierSessionExplorerTests extends BaseTest {
 
 			});
 
-			PersistableModelComponent sys_comp = m_sys
-					.getPersistableComponent();
-			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
-
 			CorePlugin.enableParseAllOnResourceChange();
-
-			BaseTest.dispatchEvents(0);
-			while (!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(
-					IProject.DEPTH_INFINITE)) {
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(
-						IProject.DEPTH_INFINITE, new NullProgressMonitor());
-				while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-					;
-			}
 
 			Ooaofooa.setPersistEnabled(true);
 

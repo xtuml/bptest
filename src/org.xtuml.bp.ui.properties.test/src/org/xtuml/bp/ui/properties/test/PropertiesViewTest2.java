@@ -327,7 +327,7 @@ public class PropertiesViewTest2 extends BaseTest
 		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean", existingShells);
 		label.notifyListeners(SWT.MouseDoubleClick, new Event());
 		assertTrue(chooseItemInDialog.getFailure(), chooseItemInDialog.getFailure().equals(""));
-		TestUtil.okToDialog(1000);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		DataType_c dt = DataType_c.getOneS_DTOnR114(attr);
 		assertTrue("boolean data type was not set as type for attribute.", dt.getName().equals("boolean"));

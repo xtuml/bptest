@@ -803,10 +803,14 @@ public class TestingUtilities {
 			TestCase.fail("Could not locate test model at: " + pathToProject);
 			return;
 		}
-		ProjectUtilities.importExistingProjectCLI(pathToProject, true);
-		BaseTest.dispatchEvents(0);
+		importProjectIntoWorkspace(pathToProject);
 	}
 
+	public static void importProjectIntoWorkspace(String rootProjectFolder) {
+		ProjectUtilities.importExistingProjectCLI(rootProjectFolder, true);
+		BaseTest.dispatchEvents(0);
+	}
+	
 	public static void importTestingProjectIntoWorkspace(String testProject) {
 		String testProjectPath = "";
 		String repository_location = BaseTest.getTestModelRespositoryLocation();
@@ -825,9 +829,7 @@ public class TestingUtilities {
 				return;
 			}
 		}
-		BaseTest.dispatchEvents(0);
-		ProjectUtilities.importExistingProjectCLI(testProjectPath, true);
-		BaseTest.dispatchEvents(0);
+		importProjectIntoWorkspace(testProjectPath);
 	}
 
 	public static String getExpectedResultsPath() {

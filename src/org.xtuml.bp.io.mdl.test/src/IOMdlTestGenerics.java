@@ -164,20 +164,25 @@ public class IOMdlTestGenerics extends TestCase {
 		pkg = (Package_c) pmc.getRootModelElement();
 		
         Package_c[] pkgs = Package_c.getManyEP_PKGsOnR1401(m_system);
-        Selection.getInstance().clear();
-        Selection.getInstance().addToSelection(m_system);
-        Selection.getInstance().addToSelection(pkgs);
-
-        String resultFile = m_workspace_path;
-        if (generateResults) {
-        	resultFile += TestingUtilities.getExpectedResultsPath();
-        } else {
-        	resultFile += "actual_results/";
+        try {
+	        Selection.ignoreSelectionChanges = true;
+	        Selection.getInstance().clear();
+	        Selection.getInstance().addToSelection(m_system);
+	        Selection.getInstance().addToSelection(pkgs);
+	
+	        String resultFile = m_workspace_path;
+	        if (generateResults) {
+	        	resultFile += TestingUtilities.getExpectedResultsPath();
+	        } else {
+	        	resultFile += "actual_results/";
+	        }
+	        resultFile += "odmsGenerics";
+	        resultFile += "." + Ooaofooa.MODELS_EXT;        	
+	
+	        TestingUtilities.exportModelUsingWizard(resultFile, true);
+        } finally {
+        	Selection.ignoreSelectionChanges = false;
         }
-        resultFile += "odmsGenerics";
-        resultFile += "." + Ooaofooa.MODELS_EXT;        	
-
-        TestingUtilities.exportModelUsingWizard(resultFile, true);
 		    
 		if (!generateResults) {
 			TestingUtilities.fileContentsCompare(

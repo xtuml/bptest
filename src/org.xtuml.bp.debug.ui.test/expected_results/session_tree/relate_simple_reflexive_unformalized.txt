@@ -10,7 +10,6 @@ AssociationPhraseTestModel : SystemModel_c
           unrelate_linked_association : Function_c
           unrelate_reflexive_simple_formalized : Function_c
           unrelate_reflexive_simple_unformalized : Function_c
-          ClassAsLink : ClassInEngine_c
           LinkedAssociation : ClassInEngine_c
           ReflexiveSimpleFormalized : ClassInEngine_c
           ReflexiveSimpleUnformalized : ClassInEngine_c
@@ -20,3 +19,4 @@ AssociationPhraseTestModel : SystemModel_c
             2:ReflexiveSimpleUnformalized : Instance_c
               R1.'start' : LinkParticipation_c
                 1:ReflexiveSimpleUnformalized : Instance_c
+          ClassAsLink : ClassInEngine_c

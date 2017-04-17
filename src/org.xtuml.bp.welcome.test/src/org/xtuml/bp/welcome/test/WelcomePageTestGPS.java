@@ -35,10 +35,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -202,8 +200,7 @@ public class WelcomePageTestGPS extends TestCase {
 	public void testImportLoadPersistAndBuild()  throws Exception {
 		// This test is disabled for command line runs
 		// See https://support.onefact.net/issues/9414
-		String isCLIRun = System.getProperty(BaseTest.CLI_TEST_RUN_KEY);
-		if(isCLIRun != null && isCLIRun.equals("true")) {
+		if(BaseTest.isCLITestRun()) {
 			return;
 		}
 		int numImports = 3;
@@ -236,8 +233,7 @@ public class WelcomePageTestGPS extends TestCase {
     public void testSmartPreBuild() throws Exception {
 		// This test is disabled for command line runs
 		// See https://support.onefact.net/issues/9414
-		String isCLIRun = System.getProperty(BaseTest.CLI_TEST_RUN_KEY);
-		if(isCLIRun != null && isCLIRun.equals("true")) {
+		if(BaseTest.isCLITestRun()) {
 			return;
 		}
         // This test builds the project several times, testing that the exported
@@ -318,7 +314,6 @@ public class WelcomePageTestGPS extends TestCase {
 	private void checkForErrors() {
 		// Check the problems view
         g_view = selectView(project, "org.eclipse.ui.views.ProblemView");
-        IViewSite site = g_view.getViewSite();
 
         // Check the explorer view for orphaned elements
         ExplorerView view = null;

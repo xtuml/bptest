@@ -199,8 +199,8 @@ public class SendMessageOverDelegationTest extends BaseTest {
 		DebugUITestUtilities.waitForExecution();
 		
 		String expectedConsoleText = "User invoked function: longdelegationWithReturn" +
-				System.getProperty("line.separator") + "LogSuccess:  FourOfFourDelegation has consumed the messsage as expected" +
-				System.getProperty("line.separator") + "Success:  Correct return value from delegated message\r\n";
+				"\n" + "LogSuccess:  FourOfFourDelegation has consumed the messsage as expected" +
+				"\n" + "LogSuccess:  Correct return value from delegated message" + "\n";
 
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
@@ -270,8 +270,8 @@ public class SendMessageOverDelegationTest extends BaseTest {
 		DebugUITestUtilities.waitForExecution();
 		
 		String expectedConsoleText = "User invoked function: LongDelegation" +
-				System.getProperty("line.separator") + "LogSuccess:  TestDriverComponent has consumed the messsage as expected" +
-				System.getProperty("line.separator") + "LogSuccess:  Correct return value from delegated message\r\n";
+				"\n" + "LogSuccess:  TestDriverComponent has consumed the messsage as expected" +
+				"\n" + "LogSuccess:  Correct return value from delegated message" + "\n";
 		
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
@@ -297,7 +297,7 @@ public class SendMessageOverDelegationTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution();
 		
-		String expectedConsoleText = "User invoked function: sendSignal" + System.getProperty("line.separator") + "LogSuccess:  LevelOneDelegationComponent has consumed the messsage as expected\r\nLogSuccess:  LevelTwoDelegationComponent has consumed the messsage as expected\r\n";
+		String expectedConsoleText = "User invoked function: sendSignal" + "\n" + "LogSuccess:  LevelOneDelegationComponent has consumed the messsage as expected\nLogSuccess:  LevelTwoDelegationComponent has consumed the messsage as expected\n";
 
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
