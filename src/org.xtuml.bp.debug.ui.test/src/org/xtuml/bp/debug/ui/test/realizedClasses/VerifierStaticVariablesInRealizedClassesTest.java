@@ -259,8 +259,8 @@ public class VerifierStaticVariablesInRealizedClassesTest extends BaseTest {
 		// User invoke statement, it is a testing artifact that
 		// could not be pin pointed.  It is not useful therefore
 		// just ignore it here in either case
-		expected_results.replaceAll("User invoked function: .*\n", "");
-		actual_results.replaceAll("User invoked function: .*\n", "");
+		expected_results.replaceAll("User invoked function: run\n", "");
+		actual_results.replaceAll("User invoked function: run\n", "");
 		assertEquals(expected_results, actual_results);
 
 		// TerminateAndRelaunch
@@ -304,8 +304,8 @@ public class VerifierStaticVariablesInRealizedClassesTest extends BaseTest {
 		// User invoke statement, it is a testing artifact that
 		// could not be pin pointed.  It is not useful therefore
 		// just ignore it here in either case
-		expected_results.replaceAll("User invoked function: .*\n", "");
-		actual_results.replaceAll("User invoked function: .*\n", "");
+		expected_results.replaceAll("User invoked function: run\n", "");
+		actual_results.replaceAll("User invoked function: run\n", "");
 		assertEquals(expected_results, actual_results);
 
 	}
