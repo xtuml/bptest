@@ -1092,18 +1092,20 @@ public class BaseTest extends TestCase {
 		TestingUtilities.waitForThread(PlaceHolderManager.PLACEHOLDER_REWRITER_THREAD_NAME);
 	}
 	
+	static Thread dispatchThread = new Thread(() -> {
+		PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			complete = true;
+		});
+	}, "Test Thread Event Dispatcher");
+	
 	static boolean complete = false;
 	public static void dispatchEvents(long delay) {
+		complete = false;
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		
 		// Perform this with an asyncExec, allowing for further
 		// processing to occur before we assume events are complete
-		Thread dispatchThread = new Thread(() -> {
-			PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-				while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-				complete = true;
-			});
-		});
 		dispatchThread.start();
 		while(!complete) {
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
