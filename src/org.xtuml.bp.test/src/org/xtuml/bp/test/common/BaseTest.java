@@ -1098,51 +1098,35 @@ public class BaseTest extends TestCase {
 		
 		// Perform this with an asyncExec, allowing for further
 		// processing to occur before we assume events are complete
-		
 		Thread dispatchThread = new Thread(() -> {
 			PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-				WorkspaceJob job = new WorkspaceJob("test job") {
-					public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
-						return Status.OK_STATUS;
-					}
-				};
-				job.setPriority(Job.INTERACTIVE);
-				job.setRule(ResourcesPlugin.getWorkspace().getRoot());
-				job.schedule();
-				try {
-					job.join();
-				} catch (InterruptedException e) {
-				}
-				
-				// join any upgrade jobs
-				Job[] jobs = Job.getJobManager().find(CorePlugin.UPGRADE_FAMILY);
-				for(Job upgrade: jobs) {
-					try {
-						upgrade.join();
-					} catch (InterruptedException e) {
-						fail(e.getMessage());
-					}
-				}
-				
-				while(ResourcesPlugin.getWorkspace().isTreeLocked()) {
-					while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-				}
-				
-				delay(delay);
-				
-				waitForTransaction();
-				waitForPlaceHolderThread();		
-
-				waitForDecorator();
-				
+				while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 				complete = true;
 			});
 		});
 		dispatchThread.start();
 		while(!complete) {
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-			waitForJobs(); 
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+				;
+		};
+		// Create a workspace job with the lowest priority
+		// join this job as once its processed all other jobs
+		// will have been completed
+		WorkspaceJob job = new WorkspaceJob("TestJob") {
+
+			@Override
+			public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
+				return Status.OK_STATUS;
+			}
+			
+		};
+		job.setPriority(50);
+		job.setRule(ResourcesPlugin.getWorkspace().getRoot());
+		job.schedule();
+		try {
+			job.join();
+		} catch (InterruptedException e) {
+			TestCase.fail(e.getMessage());
 		}
 	}
 	/**
