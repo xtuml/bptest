@@ -87,6 +87,8 @@ public class FreeFloatingConnectorTest extends CanvasTest {
 
 		AbstractTool tool = UITestingUtilities.getTool("Synchronous Message");
 		
+		GraphicalEditor canvasEditor = CanvasTestUtilities.getCanvasEditor(diagramName);
+		canvasEditor.getCanvas().getShell().forceActive();
 		UITestingUtilities.activateTool(tool);
 
 		// create the connector

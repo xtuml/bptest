@@ -35,6 +35,7 @@ import org.junit.runner.RunWith;
 import org.xtuml.bp.core.InstanceStateMachine_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Package_c;
+import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.NewInstanceStateMachineOnO_OBJAction;
 import org.xtuml.bp.core.ui.Selection;
@@ -131,6 +132,11 @@ public class ClassToStateDiagramNavigationTest extends BaseTest
         // instance state machine marker-icon
         String className = "Disk";
         ModelClass_c clazz = OoaofooaUtil.getClass(subsystem, className);
+        long waitTime = 2000;
+        long startTIme = System.currentTimeMillis();
+        while(clazz == null && System.currentTimeMillis() - startTIme < waitTime) {
+        	clazz = OoaofooaUtil.getClass(subsystem, className);
+        }
         UITestingUtilities.clearGraphicalSelection();
         UITestingUtilities.addElementToGraphicalSelection(clazz);
         
@@ -213,6 +219,11 @@ public class ClassToStateDiagramNavigationTest extends BaseTest
         // instance state machine marker-icon
         String className = "Disk";
         ModelClass_c clazz = OoaofooaUtil.getClass(subsystem, className);
+        long waitTime = 2000;
+        long startTIme = System.currentTimeMillis();
+        while(clazz == null && System.currentTimeMillis() - startTIme < waitTime) {
+        	clazz = OoaofooaUtil.getClass(subsystem, className);
+        }
         
         // double-click the marker-icon
         Graphnode_c node = GraphNodeUtil.getNode(graphicsModelRoot, clazz);

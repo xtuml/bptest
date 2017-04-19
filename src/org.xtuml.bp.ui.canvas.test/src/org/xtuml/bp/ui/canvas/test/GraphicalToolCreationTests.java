@@ -82,7 +82,7 @@ public class GraphicalToolCreationTests extends BaseTest {
 		 * 
 		 * https://support.onefact.net/issues/9407
 		 */
-		if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+		if(Platform.getOS().equals(Platform.OS_MACOSX) || BaseTest.isCLITestRun()) {
 			return;
 		}
 		CorePlugin.getDefault().getPreferenceStore().setValue(
@@ -160,7 +160,7 @@ public class GraphicalToolCreationTests extends BaseTest {
 		 * 
 		 * https://support.onefact.net/issues/9407
 		 */
-		if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+		if(Platform.getOS().equals(Platform.OS_MACOSX) || BaseTest.isCLITestRun()) {
 			return;
 		}
 		testPackage.Dispose();
