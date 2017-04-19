@@ -322,7 +322,7 @@ public class VerifierSessionExplorerTests extends BaseTest {
 		SessionExplorerView sev = BPDebugUtils.openSessionExplorerView(true);
 		sev.getTreeViewer().expandToLevel(9);
 		sev.getTreeViewer().refresh();
-		UIUtil.dispatchAll();
+		BaseTest.dispatchEvents();
 		TestingUtilities.processDisplayEvents();
 		Tree tree = sev.getTreeViewer().getTree();
 		String result = DebugUITestUtilities.getTreeTextRepresentation(tree);
@@ -335,6 +335,9 @@ public class VerifierSessionExplorerTests extends BaseTest {
 	private void executeFunction(Function_c function) {
 		BPDebugUtils.executeElement(function);
 		DebugUITestUtilities.waitForExecution();
+		DebugUITestUtilities.waitForBPThreads(m_sys);
+		BaseTest.dispatchEvents();
+		BaseTest.waitFor(100);
 	}
 	
 	/* This test stopped working with the promotion of 

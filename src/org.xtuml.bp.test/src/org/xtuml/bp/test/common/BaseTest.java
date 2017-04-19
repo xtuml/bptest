@@ -548,6 +548,7 @@ public class BaseTest extends TestCase {
 				m_sys = getSystemModel(projectName);
 			}
 		}
+		BaseTest.waitFor(300);
 		String modelRootId = Ooaofooa.createModelRootId(project, projectName, true);
 		modelRoot = Ooaofooa.getInstance(modelRootId, true);
 		graphicsModelRoot = Ooaofgraphics.getInstance(modelRoot.getId());
