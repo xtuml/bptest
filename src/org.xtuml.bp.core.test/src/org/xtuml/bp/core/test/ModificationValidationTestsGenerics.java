@@ -61,6 +61,7 @@ public class ModificationValidationTestsGenerics extends BaseTest {
 			//switchPerspective("org.xtuml.bp.core.perspective");
 			if (!initialized) {
 				loadProject("ModificationValidationTests");
+				BaseTest.waitFor(300);
 				initialized = true;
 			}
 			firstTime = false;
@@ -103,7 +104,7 @@ public class ModificationValidationTestsGenerics extends BaseTest {
 		CanvasTestUtilities.doMouseMove(center.x + 50, center.y);
 		CanvasTestUtilities.doMouseRelease(center.x + 50, center.y);
 
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 
 		Point new_center = CanvasUtilities.getShapeCenter(shape);
 		new_center = CanvasTestUtilities.convertToMouseCoor(new_center, ce
@@ -120,7 +121,7 @@ public class ModificationValidationTestsGenerics extends BaseTest {
 		CanvasTestUtilities.doMouseMove(center.x + 20, center.y);
 		CanvasTestUtilities.doMouseRelease(center.x + 20, center.y);
 
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 
 		new_center = CanvasUtilities.getShapeCenter(shape);
 		new_center = CanvasTestUtilities.convertToMouseCoor(new_center, ce

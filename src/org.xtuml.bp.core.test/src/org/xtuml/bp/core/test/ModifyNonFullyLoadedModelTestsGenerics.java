@@ -40,6 +40,7 @@ import org.xtuml.bp.test.common.ExplorerUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.test.common.TransactionListener;
+import org.xtuml.bp.ui.canvas.CanvasTransactionListener;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.editor.ModelEditor;
@@ -137,6 +138,8 @@ public class ModifyNonFullyLoadedModelTestsGenerics extends CanvasTest
     {
         test_id = "1";
 
+        CanvasTransactionListener.disableReconciler();
+        
         // create a transaction listener for transaction verification
         TransactionListener listener = new TransactionListener();
         domainComp.getRootModelElement().getTransactionManager().addTransactionListener(listener);
@@ -203,6 +206,7 @@ public class ModifyNonFullyLoadedModelTestsGenerics extends CanvasTest
 
         BaseTest.compareAndOutputResults(resultFolder + getResultName() + "/" + getResultName() +
           "-shape_deletion_transaction_generics.exp");
+        CanvasTransactionListener.enableReconciler();
     }
 
     public String getResultName()

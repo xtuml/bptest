@@ -459,6 +459,11 @@ public class ModelTransactionTestGenerics extends BaseTest {
 
 	@Test
 	public void testMenuItemUserAction() throws Exception {
+		// This test is disabled for CLI runs
+		// See https://support.onefact.net/issues/9453
+		if(BaseTest.isCLITestRun()) {
+			return;
+		}
 		AttributeMenuItemTestGenerics attrMenuItemTest = new AttributeMenuItemTestGenerics(); //$NON-NLS-1$
 		attrMenuItemTest.setReloadModel(true);
 		attrMenuItemTest.setUp();

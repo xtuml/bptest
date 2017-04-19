@@ -28,6 +28,7 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.Provision_c;
 import org.xtuml.bp.core.Requirement_c;
+import org.xtuml.bp.core.Satisfaction_c;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
@@ -120,7 +121,10 @@ public class ComponentContextMenuTests extends BaseTest {
 	    }
 	    @Test
 	public void testContextMenuDisconnectActionOnC_P() {
-			Provision_c obj = Provision_c.ProvisionInstance(modelRoot);
+			Provision_c obj = Provision_c.ProvisionInstance(modelRoot, candidate -> {
+				Provision_c provision = (Provision_c) candidate;
+				return Satisfaction_c.getOneC_SFOnR4002(provision) != null;
+			});
 
 				IFile file = obj.getFile();
 				TestUtil.changeFileReadonlyStatus(m_readonly, file);

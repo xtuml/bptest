@@ -683,6 +683,7 @@ public class TestUtil
                 CorePlugin.logError("Core Exception", e);
             }
         }
+        BaseTest.dispatchEvents();
     }
     
     /**
