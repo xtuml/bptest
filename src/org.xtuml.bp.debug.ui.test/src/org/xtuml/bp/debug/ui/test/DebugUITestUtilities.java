@@ -36,6 +36,8 @@ import org.eclipse.debug.ui.AbstractDebugView;
 import org.eclipse.debug.ui.DebugUITools;
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.debug.ui.IDebugView;
+import org.eclipse.jface.text.DocumentEvent;
+import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
@@ -235,6 +237,7 @@ public class DebugUITestUtilities {
 		event.y = y;
 		event.button = 1;
 		column.notifyListeners(SWT.MouseDoubleClick, event);
+		BaseTest.dispatchEvents();
 	}
 
 	private static Composite getAnnotationRulerColumn(ActivityEditor editor) {
@@ -578,14 +581,29 @@ public class DebugUITestUtilities {
 	}
 
 	static long maxWaitTime = 2000;
-
+	static boolean consoleUpdated = true;
 	private static void waitForConsoleUpdate(TextConsole console,
 			String expected) {
+		IDocumentListener testListener = (new IDocumentListener() {		
+			@Override
+			public void documentChanged(DocumentEvent event) {
+				consoleUpdated = true;
+			}
+			
+			@Override
+			public void documentAboutToBeChanged(DocumentEvent event) {
+				consoleUpdated = false;
+			}
+		});
+		while(!consoleUpdated);
+		console.getDocument().addDocumentListener(testListener);
+		BaseTest.dispatchEvents();
+		console.getDocument().removeDocumentListener(testListener);
 		ConsolePlugin.getDefault().getConsoleManager().refresh(console);
 		String consoleText = console.getDocument().get();
 		long start = System.currentTimeMillis();
 		if (expected.equals("")) {
-			while (!consoleText.equals(expected)) {
+			while (consoleText.equals(expected)) {
 				BaseTest.dispatchEvents(0);
 				processDebugEvents();
 				consoleText = console.getDocument().get();

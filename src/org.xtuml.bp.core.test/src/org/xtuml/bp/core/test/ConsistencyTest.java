@@ -48,6 +48,7 @@ import org.xtuml.bp.core.test.consistency.Subtypeleft_c;
 import org.xtuml.bp.core.test.consistency.Subtyperight_c;
 import org.xtuml.bp.core.test.consistency.Supertypetest_c;
 import org.xtuml.bp.core.util.OoaofgraphicsUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 
@@ -391,14 +392,13 @@ public class ConsistencyTest extends CoreTest {
 	    }
 	    modelRoot.checkDomainConsistency();
 	    OoaofgraphicsUtil.checkGraphicsConsistency(modelRoot.getId());
-	    	    
+
 	    read_error_log("!MESSAGE Consistency: Object: linkTest: Association: 2: Cardinality of other side of link is not equal to 1. Actual Value: 0",1); //$NON-NLS-1$
 	    read_error_log("!MESSAGE Consistency:",1); //$NON-NLS-1$
 		clear_log();						
 	}
 
-	protected void read_error_log(String consistencyMessage, int consistencyCount) throws Exception {
-
+	protected void read_error_log(String consistencyMessage, int consistencyCount) throws Exception {	  
       IPath in_path = new Path(m_logfile_path);
       File in_fh = in_path.toFile();
       if ( !in_fh.exists() )

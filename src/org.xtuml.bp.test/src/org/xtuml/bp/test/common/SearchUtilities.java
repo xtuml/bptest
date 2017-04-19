@@ -49,6 +49,7 @@ public class SearchUtilities {
 			public void queryAdded(ISearchQuery query) {
 			}
 		});
+		BaseTest.dispatchEvents();
 		// clear previous results
 		SearchResult_c[] results = SearchResult_c.SearchResultInstances(
 				Ooaofooa.getDefaultInstance(), null, false);

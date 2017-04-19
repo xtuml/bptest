@@ -45,6 +45,8 @@ import java.util.UUID;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
@@ -220,6 +222,10 @@ public class BaseTest extends TestCase {
 		// much test time
 		try {
 			PlatformUI.getWorkbench().getDecoratorManager().setEnabled(SynchronizationDecorator.ID, false);
+			// also disable integrity checker, will be enabled for the integrity checker
+			// tests
+			IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
+			store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, false);
 		} catch (CoreException e) {
 			fail("Unable to disable synchronization decorator.");
 		}
@@ -536,6 +542,7 @@ public class BaseTest extends TestCase {
 				PersistableModelComponent pmc = PersistenceManager.createRootComponent(project);
 				pmc.loadComponentAndChildren(new NullProgressMonitor());
 				m_sys = (SystemModel_c) pmc.getRootModelElement();
+				BaseTest.dispatchEvents();
 			} else {
 				m_sys = getSystemModel(projectName);
 			}
@@ -1092,45 +1099,88 @@ public class BaseTest extends TestCase {
 		TestingUtilities.waitForThread(PlaceHolderManager.PLACEHOLDER_REWRITER_THREAD_NAME);
 	}
 	
-	static Thread dispatchThread = new Thread(() -> {
-		PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-			complete = true;
-		});
-	}, "Test Thread Event Dispatcher");
-	
-	static boolean complete = false;
-	public static void dispatchEvents(long delay) {
-		complete = false;
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	static class TestResourceChangeListener implements IResourceChangeListener {
 		
-		// Perform this with an asyncExec, allowing for further
-		// processing to occur before we assume events are complete
+		long lastCall = Long.MAX_VALUE;
+		public boolean handledEvents = true;
+		
+		@Override
+		public void resourceChanged(IResourceChangeEvent event) {
+			handledEvents = false;
+			if(System.currentTimeMillis() - lastCall < 100) {
+				lastCall = System.currentTimeMillis();
+			} else {
+				handledEvents = true;
+				lastCall = 0;
+			}
+		}
+		
+	}
+	
+	public static boolean complete = true;
+	private static boolean innerComplete = false;
+	static Thread dispatchThread = new Thread(() -> {
+		while(true) {
+			while(!complete) {
+				PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+					innerComplete = true;
+				});
+					
+				WorkspaceJob job = new WorkspaceJob("test job") {
+					public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
+						return Status.OK_STATUS;
+					}
+				};
+				job.setPriority(Job.DECORATE);
+				job.setRule(ResourcesPlugin.getWorkspace().getRoot());
+				job.schedule();
+				try {
+					job.join();
+				} catch (InterruptedException e) {
+				}
+				
+				while(!BaseTest.testResourceListener.handledEvents) {
+					try {
+						Thread.sleep(20);
+					} catch (Exception e) {
+						TestCase.fail(e.getMessage());
+					}
+				}
+				
+				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+					PlatformUI.getWorkbench().getDisplay().readAndDispatch();
+				});
+				
+				complete = innerComplete;
+			}
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				TestCase.fail(e.getMessage());
+			}
+		}
+	}, "Test Thread Event Dispatcher");
+	static TestResourceChangeListener testResourceListener = null;
+	static {
+		testResourceListener = new TestResourceChangeListener();
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(testResourceListener);
 		dispatchThread.start();
+	}
+	
+	public static void dispatchEvents(long delay) {
+		dispatchEvents();
+	}
+	public static void dispatchEvents() {
+		complete = false;
 		while(!complete) {
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 				;
 		};
-		// Create a workspace job with the lowest priority
-		// join this job as once its processed all other jobs
-		// will have been completed
-		WorkspaceJob job = new WorkspaceJob("TestJob") {
-
-			@Override
-			public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
-				return Status.OK_STATUS;
-			}
-			
-		};
-		job.setPriority(50);
-		job.setRule(ResourcesPlugin.getWorkspace().getRoot());
-		job.schedule();
-		try {
-			job.join();
-		} catch (InterruptedException e) {
-			TestCase.fail(e.getMessage());
-		}
+		waitForTransaction();
+		waitForPlaceHolderThread();
+		waitForDecorator();
 	}
+	
 	/**
 	 * Creates the folder passed in if it doesn't exist.  This only creates 
 	 * the folder at the last segment of the path.  If there is a file with 
@@ -1270,13 +1320,7 @@ public class BaseTest extends TestCase {
 		
 		return null;
 	}
-
-
 	
-	public static void waitForJobs() {
-		while (Job.getJobManager().currentJob() != null);
-		TestingUtilities.allowJobCompletion();
-	}
 	public static void delay(long waitTimeMilli) {
 		Display display = Display.getCurrent();
 		display.timerExec((int) waitTimeMilli, new Runnable() {
@@ -1568,5 +1612,21 @@ public class BaseTest extends TestCase {
 			return true;
 		}
 		return false;
+	}
+	static boolean wait = false;
+	public static void waitFor(final long waitTime) {
+		wait = true;
+		Thread waitThread = new Thread(() -> {
+			try {
+				Thread.sleep(waitTime);
+				wait = false;
+			} catch (Exception e) {
+				TestCase.fail(e.getMessage());
+			}
+		});
+		waitThread.run();
+		while(wait) {
+			PlatformUI.getWorkbench().getDisplay().readAndDispatch();
+		}
 	}
 }

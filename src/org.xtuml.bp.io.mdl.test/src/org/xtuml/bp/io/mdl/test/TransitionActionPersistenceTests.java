@@ -55,7 +55,7 @@ public class TransitionActionPersistenceTests extends CanvasTest {
       } catch (CoreException e) {
 	    fail(e.toString());
       }
-      BaseTest.waitForJobs();
+      BaseTest.dispatchEvents();
 	}
     @Test
 	public void testISMTransitionActionPersistence() {

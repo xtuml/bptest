@@ -588,6 +588,13 @@ public class PkgCMBaseTest extends CanvasTest {
     }
     protected void checkFileDeletion(IFile oldFile) {
         BaseTest.dispatchEvents(0);
+        long startTime = System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis();
+        while(currentTime - startTime < 2000) {
+        	while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+				;
+        	currentTime = System.currentTimeMillis();
+        }
         assertFalse("File still exists after deletion: "
                 + oldFile.getFullPath(), oldFile.exists());
         if(! throughRN){
@@ -605,7 +612,7 @@ public class PkgCMBaseTest extends CanvasTest {
     protected void performRenameChecks(Object[] openEditors,
             GraphicalEditor baseEditor, PersistableModelComponent component,
             String newName) {        
-        waitForJobs();
+        BaseTest.dispatchEvents();
         if (!generateResult) {
           EditorTestUtilities.checkAllEditorTitles(openEditors, newName);
           checkFileRename(component, newName);

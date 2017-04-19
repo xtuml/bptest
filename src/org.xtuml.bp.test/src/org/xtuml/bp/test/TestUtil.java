@@ -1022,13 +1022,15 @@ public class TestUtil
 						return null;
 					}
 				};
-                // must be run in the UI thread
-                PlatformUI.getWorkbench().getDisplay().syncExec(innerRunnable);
-                waitForRunnable(innerRunnable);
-                if(!innerRunnable.getFailure().equals("")) {
-                    setFailure(innerRunnable.getFailure());
-                }
-                setComplete();
+				if(!PlatformUI.getWorkbench().getDisplay().isDisposed()) {
+	                // must be run in the UI thread
+	                PlatformUI.getWorkbench().getDisplay().syncExec(innerRunnable);
+	                waitForRunnable(innerRunnable);
+	                if(!innerRunnable.getFailure().equals("")) {
+	                    setFailure(innerRunnable.getFailure());
+	                }
+				}
+	            setComplete();
 			}
         };
         Thread chooserThread = new Thread(runnable);

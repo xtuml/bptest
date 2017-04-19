@@ -271,9 +271,7 @@ public class ModelRecreationTests extends CanvasTest {
 		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
 		if(ce != null && canvaspasteaction.isEnabled()) {
 			canvaspasteaction.run();
-			waitForTransaction();
-			waitForJobs();
-			waitForDecorator();
+			BaseTest.dispatchEvents();
 		}
 	}
 

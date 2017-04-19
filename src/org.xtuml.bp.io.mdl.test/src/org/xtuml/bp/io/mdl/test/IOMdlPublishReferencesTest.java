@@ -51,7 +51,7 @@ public class IOMdlPublishReferencesTest extends BaseTest {
 	public void testUpgradeModelWithPublishReference() throws Exception{
 		// Load from git
 		this.loadProject("InstanceReferenceTestMatrixModel");
-			
+		BaseTest.waitFor(300);
 		SystemModel_c sys = getSystemModel("InstanceReferenceTestMatrixModel");
 		Package_c[] pkgs = Package_c.getManyEP_PKGsOnR1405(sys);
 		Package_c pkg = null;

@@ -75,7 +75,6 @@ public class RecursionExecutionTest extends BaseTest {
 
 			CorePlugin.enableParseAllOnResourceChange();
 
-			BaseTest.dispatchEvents(0);
 			initialized = true;
 		}
 	}

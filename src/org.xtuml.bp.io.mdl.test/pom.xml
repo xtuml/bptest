@@ -23,11 +23,7 @@
 				<configuration>
 					<includes>
 						<include>**/IOMdlGlobalsTestSuiteGenerics.java</include>
-					</includes>
-					<includes>
 						<include>**/IOMdlGlobalsTestSuite2Generics.java</include>
-					</includes>
-					<includes>
 						<include>**/PkgCMGlobalsTestSuiteGenerics.java</include>
 					</includes>
 				</configuration>

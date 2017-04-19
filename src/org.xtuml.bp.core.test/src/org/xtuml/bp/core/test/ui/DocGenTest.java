@@ -205,8 +205,7 @@ public class DocGenTest extends BaseTest {
                         "Create documentation", "", false));
         UITestingUtilities.activateMenuItem(menu, "Create documentation");
 
-        BaseTest.waitForJobs();
-        BaseTest.waitForTransaction();
+        BaseTest.dispatchEvents();
 
         // Spot check existence of a few files that are output from various
         // pieces of the doc gen flow

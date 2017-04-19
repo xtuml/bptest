@@ -74,7 +74,7 @@ public abstract class DeleteTest extends PkgCMBaseTest {
                 
         if (focusedEditor != EditorTestUtilities.EDITOR_TYPE_NONE) {            
             while (d.readAndDispatch());
-            BaseTest.waitForJobs();
+            BaseTest.dispatchEvents();
             openEditors = openEditors(pmcBeingTested);
             meBeingTested = pmcBeingTested.getRootModelElement();
             assertEquals("Not all required editors opened",expectedEditorCount,openEditors.length);

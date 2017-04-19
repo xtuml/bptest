@@ -70,6 +70,7 @@ public class ImportWizardTestsGenerics extends BaseTest {
 			throws CoreException {
 		IProject testProject = TestingUtilities
 				.createProject("TestImportCoreDTPackage");
+		BaseTest.dispatchEvents();
 		// get the system model associated with the project
 		// created above
 		SystemModel_c systemModel = getSystemModel(testProject.getName());

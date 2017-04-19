@@ -116,6 +116,7 @@ public class VerifierSessionExplorerTests extends BaseTest {
 	
 	@Test
 	public void testComponentsInSessionExplorerTree() {
+		BaseTest.waitFor(300);
 		Component_c component = Component_c.getOneC_COnR8001(PackageableElement_c.getManyPE_PEsOnR8000(Package_c.getManyEP_PKGsOnR1405(m_sys)), new ClassQueryInterface_c() {
 
 			public boolean evaluate(Object candidate) {

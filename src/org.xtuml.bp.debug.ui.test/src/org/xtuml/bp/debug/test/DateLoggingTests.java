@@ -60,11 +60,14 @@ public class DateLoggingTests extends BaseTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		loadProject("LogDateFormat");
-	
+		BaseTest.waitFor(300);
 	}
 	
 	@After
 	public void tearDown() throws Exception {
+		DebugUITestUtilities.stopSession(m_sys, "LogDateFormat");
+		DebugUITestUtilities.clearConsoleOutput();
+		DebugUITestUtilities.clearDebugView();
 	}
 
 	@Test

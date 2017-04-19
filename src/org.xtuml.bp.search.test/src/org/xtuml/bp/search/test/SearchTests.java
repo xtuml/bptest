@@ -49,6 +49,7 @@ public class SearchTests extends BaseTest {
 		if (!firstTime)
 			return;
 		loadProject(projectName);
+		BaseTest.waitFor(300);
 		m_sys = getSystemModel(projectName);
 		m_sys = SystemModel_c.SystemModelInstance(Ooaofooa
 				.getDefaultInstance(), new ClassQueryInterface_c() {
@@ -63,7 +64,7 @@ public class SearchTests extends BaseTest {
 		CorePlugin.getDefault().getPreferenceStore()
 				.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 
-		TestingUtilities.allowJobCompletion();
+		BaseTest.dispatchEvents();
 
 		IProject otherProject = TestingUtilities.createProject("TestSearchNoResults");
 		otherSystem = TestingUtilities.getSystemModel(otherProject.getName());

@@ -179,7 +179,8 @@ public class VerifierStaticVariablesInRealizedClassesTest extends BaseTest {
 		// remove all breakpoints
 		DebugUITestUtilities.removeAllBreakpoints();
 		// wait for display events to complete
-		TestingUtilities.processDisplayEvents();		
+		TestingUtilities.processDisplayEvents();
+		BaseTest.dispatchEvents();
     }
 
 	 private void runVerifier(NonRootModelElement[] preSelectedElements) {
