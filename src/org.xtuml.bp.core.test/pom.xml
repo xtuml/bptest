@@ -55,8 +55,6 @@
 					<configuration>
 					<includes>
 						<include>**/CoreGlobalsTestSuiteGenerics.java</include>
-						<include>**/WorkspaceSetupTestSuite.java</include>
-						<include>**/ExistingProjectsTestSuite.java</include>
 						<include>**/RTOMoveTestsTestSuite.java</include>
 						<include>**/SystemLevelGlobalsTestSuite.java</include>
 						<include>**/CoreGlobalsTestSuite2Generics.java</include>

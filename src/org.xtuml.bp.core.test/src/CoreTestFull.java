@@ -10,8 +10,7 @@ import junit.framework.TestSuite;
  */
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ CoreGlobalsTestSuiteGenerics.class, WorkspaceSetupTestSuite.class,
-		ExistingProjectsTestSuite.class, RTOMoveTestsTestSuite.class, SystemLevelGlobalsTestSuite.class,
+@Suite.SuiteClasses({ CoreGlobalsTestSuiteGenerics.class, RTOMoveTestsTestSuite.class, SystemLevelGlobalsTestSuite.class,
 		CoreGlobalsTestSuite2Generics.class, ConsistencyTest.class, TestVisibilityInElementChooserSuite.class, })
 
 public class CoreTestFull extends TestSuite {

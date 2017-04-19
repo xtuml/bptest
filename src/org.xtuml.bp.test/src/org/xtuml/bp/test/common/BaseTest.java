@@ -1139,7 +1139,10 @@ public class BaseTest extends TestCase {
 				} catch (InterruptedException e) {
 				}
 				
-				while(!BaseTest.testResourceListener.handledEvents) {
+				long waitForResourceChanges = 300;
+				long waitStartTime = System.currentTimeMillis();
+				while (!BaseTest.testResourceListener.handledEvents
+						&& System.currentTimeMillis() - waitStartTime < waitForResourceChanges) {
 					try {
 						Thread.sleep(20);
 					} catch (Exception e) {
