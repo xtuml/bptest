@@ -8,8 +8,8 @@ import junit.framework.TestSuite;
  */
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ CanvasCCPGlobalsTestSuite.class, GlobalsCanvasSuite1.class, GlobalsCanvasSuite2.class,
-		GlobalsCanvasSuite3.class, })
+@Suite.SuiteClasses({ GlobalsCanvasSuite3.class, CanvasCCPGlobalsTestSuite.class, GlobalsCanvasSuite1.class, GlobalsCanvasSuite2.class,
+		})
 
 public class CanvasTestFull extends TestSuite {
 }
