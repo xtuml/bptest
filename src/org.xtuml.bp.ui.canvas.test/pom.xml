@@ -52,10 +52,10 @@
 				<version>${tycho-version}</version>
 				<configuration>		
 					<includes>
+						<include>**/GlobalsCanvasSuite3.java</include>
 						<include>**/CanvasCCPGlobalsTestSuite.java</include>
 						<include>**/GlobalsCanvasSuite1.java</include>
 						<include>**/GlobalsCanvasSuite2.java</include>
-						<include>**/GlobalsCanvasSuite3.java</include>
 					</includes>
 				</configuration>
 			</plugin>
