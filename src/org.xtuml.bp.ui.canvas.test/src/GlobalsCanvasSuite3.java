@@ -58,14 +58,14 @@ import junit.framework.TestSuite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+    ConnectorsAsAnchorsTest.class,
+    FreeFloatingConnectorTest.class,
 	GlobalTestSetupClass.class,
     GraphicalToolCreationTests.class,
     I686ClearDatabaseTest.class,
     I835OpenDiagramEditorWithSearchView.class,
     MultipleSupertypeTest.class,
     ClassToStateDiagramNavigationTest.class,
-    ConnectorsAsAnchorsTest.class,
-    FreeFloatingConnectorTest.class,
     I2053F2RenameTest.class,
     AutoReconciliationTests.class,
     InterfaceDrawingTests.class

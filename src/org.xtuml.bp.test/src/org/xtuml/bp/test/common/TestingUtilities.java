@@ -807,8 +807,10 @@ public class TestingUtilities {
 	}
 
 	public static void importProjectIntoWorkspace(String rootProjectFolder) {
-		ProjectUtilities.importExistingProjectCLI(rootProjectFolder, true);
-		BaseTest.dispatchEvents(0);
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			ProjectUtilities.importExistingProjectCLI(rootProjectFolder, true);
+			BaseTest.dispatchEvents(0);
+		});
 	}
 	
 	public static void importTestingProjectIntoWorkspace(String testProject) {

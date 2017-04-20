@@ -303,10 +303,12 @@ public class UITestingUtilities {
 		BaseTest.waitForTransaction();
 	}
 	public static void pasteClipboardContents(Point location, GraphicalEditor ce) {
-		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
-		CanvasTestUtils.doMouseMove(location.x, location.y);
-		CanvasTestUtils.doMouseContextPress(location.x, location.y);
-		canvaspasteaction.run();
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
+			CanvasTestUtils.doMouseMove(location.x, location.y);
+			CanvasTestUtils.doMouseContextPress(location.x, location.y);
+			canvaspasteaction.run();
+		});
 		BaseTest.dispatchEvents(0);
 	}
 
@@ -465,123 +467,128 @@ public class UITestingUtilities {
 	
 	public static boolean ctrlDown = false;
 	public static void createMouseEvent(int x, int y, String eventType) {
-		GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
-				.getGraphicalEditor();
-		Event me = new Event();
-		if(ctrlDown) {
-			if(Platform.getOS().equals(Platform.OS_MACOSX)) {
-				me.stateMask = SWT.COMMAND;
-			} else {
-				me.stateMask = SWT.CTRL;
-			}
-		}
-
-		if (eventType.equals("MouseMove")) {
-			me.x = x;
-			me.y = y;
-			if(fDownLocation != null) {
-				me.stateMask |= SWT.BUTTON1;
-				// GEF has a drag event, which we need
-				// to imitate.
-				// we will move the mouse 10 times, to reach
-				// the final destination
-				int xDownLocation = fDownLocation.x;
-				int yDownLocation = fDownLocation.y;
-				int xDelta = x - xDownLocation;
-				int yDelta = y - yDownLocation;
-				int xIncrement = xDelta / 10;
-				int yIncrement = yDelta / 10;
-				boolean crossedThreshold = false;
-				int xIncrementRealValue = xIncrement;
-				if(xIncrementRealValue < 0)
-					xIncrementRealValue = xIncrementRealValue * -1;
-				int yIncrementRealValue = yIncrement;
-				if(yIncrementRealValue < 0)
-					yIncrementRealValue = yIncrementRealValue * -1;
-				boolean reverse = x < xDownLocation;
-				if(yIncrementRealValue >= xIncrementRealValue)
-					reverse = y < yDownLocation;
-				while(!crossedThreshold) {
-					xDownLocation = xDownLocation + xIncrement;
-					yDownLocation = yDownLocation + yIncrement;
-					me.x = xDownLocation;
-					me.y = yDownLocation;
-					if(xIncrementRealValue > yIncrementRealValue) {
-						if(reverse) {
-							// check that the current x < expected x
-							if(xDownLocation < x)
-								crossedThreshold = true;
-						} else {
-							if(xDownLocation > x)
-								crossedThreshold = true;
-						}
-					} else {
-						if(reverse) {
-							// check that the current x < expected x
-							if(yDownLocation < y)
-								crossedThreshold = true;
-						} else {
-							if(yDownLocation > y)
-								crossedThreshold = true;
-						}
-					}
-					if(crossedThreshold) {
-						// If we crossed the expected location, do not
-						// send this location. Instead send the expected
-						// location
-						me.x = x;
-						me.y = y;
-					}
-					ce.getCanvas().notifyListeners(SWT.MouseMove, me);
+		// While this code will be run in the UI thread, we
+		// want to make the execution synchronous.  This will
+		// allow other threads that have been started by the
+		// code to run before any listeners are notified
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
+					.getGraphicalEditor();
+			Event me = new Event();
+			if(ctrlDown) {
+				if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+					me.stateMask = SWT.COMMAND;
+				} else {
+					me.stateMask = SWT.CTRL;
 				}
-			} else
-				ce.getCanvas().notifyListeners(SWT.MouseMove, me);
-		} else if (eventType.equals("MouseDown")) {
-			// with GEF we must create a mouse move first,
-			// this will set the proper source edit part
-			// for any creation request
-			createMouseEvent(x, y, "MouseMove"); // $NON-NLS-1$
-			me.x = x;
-			me.y = y;
-			me.button = 1;
-			fDownLocation = new Point(x, y);
-			ce.getCanvas().notifyListeners(SWT.MouseDown, me);
-		} else if (eventType.equals("MouseDownRetainSelection")) {
-			me.x = x;
-			me.y = y;
-			me.button = 1;
-			me.stateMask |= SWT.CTRL;
-			ce.getCanvas().notifyListeners(SWT.MouseDown, me);
-		} else if (eventType.equals("MouseContextDown")) {
-			me.x = x;
-			me.y = y;
-			me.button = 3;
-			ce.getCanvas().notifyListeners(SWT.MouseDown, me);
-		} else if (eventType.equals("MouseUp")) {
-			me.x = x;
-			me.y = y;
-			me.button = 1;
-			fDownLocation = null;
-			ce.getCanvas().notifyListeners(SWT.MouseUp, me);
-			// allow any transaction to complete if started
-			// this will allow graphical symbols to be fully
-			// configured before a test proceeds
-			BaseTest.waitForTransaction();
-		} else if (eventType.equals("MouseDoubleClick")) {
-			// with GEF we must create a mouse move first,
-			// this will set the proper source edit part
-			// for any creation request
-			createMouseEvent(x, y, "MouseMove"); // $NON-NLS-1$
-			createMouseEvent(x, y, "MouseDown"); // $NON-NLS-1$
-			fDownLocation = null;
-			me.x = x;
-			me.y = y;
-			me.button = 1;
-			ce.getCanvas().notifyListeners(SWT.MouseDoubleClick, me);
-		}
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+			}
+
+			if (eventType.equals("MouseMove")) {
+				me.x = x;
+				me.y = y;
+				if(fDownLocation != null) {
+					me.stateMask |= SWT.BUTTON1;
+					// GEF has a drag event, which we need
+					// to imitate.
+					// we will move the mouse 10 times, to reach
+					// the final destination
+					int xDownLocation = fDownLocation.x;
+					int yDownLocation = fDownLocation.y;
+					int xDelta = x - xDownLocation;
+					int yDelta = y - yDownLocation;
+					int xIncrement = xDelta / 10;
+					int yIncrement = yDelta / 10;
+					boolean crossedThreshold = false;
+					int xIncrementRealValue = xIncrement;
+					if(xIncrementRealValue < 0)
+						xIncrementRealValue = xIncrementRealValue * -1;
+					int yIncrementRealValue = yIncrement;
+					if(yIncrementRealValue < 0)
+						yIncrementRealValue = yIncrementRealValue * -1;
+					boolean reverse = x < xDownLocation;
+					if(yIncrementRealValue >= xIncrementRealValue)
+						reverse = y < yDownLocation;
+					while(!crossedThreshold) {
+						xDownLocation = xDownLocation + xIncrement;
+						yDownLocation = yDownLocation + yIncrement;
+						me.x = xDownLocation;
+						me.y = yDownLocation;
+						if(xIncrementRealValue > yIncrementRealValue) {
+							if(reverse) {
+								// check that the current x < expected x
+								if(xDownLocation < x)
+									crossedThreshold = true;
+							} else {
+								if(xDownLocation > x)
+									crossedThreshold = true;
+							}
+						} else {
+							if(reverse) {
+								// check that the current x < expected x
+								if(yDownLocation < y)
+									crossedThreshold = true;
+							} else {
+								if(yDownLocation > y)
+									crossedThreshold = true;
+							}
+						}
+						if(crossedThreshold) {
+							// If we crossed the expected location, do not
+							// send this location. Instead send the expected
+							// location
+							me.x = x;
+							me.y = y;
+						}
+						ce.getCanvas().notifyListeners(SWT.MouseMove, me);
+					}
+				} else
+					ce.getCanvas().notifyListeners(SWT.MouseMove, me);
+			} else if (eventType.equals("MouseDown")) {
+				// with GEF we must create a mouse move first,
+				// this will set the proper source edit part
+				// for any creation request
+				createMouseEvent(x, y, "MouseMove"); // $NON-NLS-1$
+				me.x = x;
+				me.y = y;
+				me.button = 1;
+				fDownLocation = new Point(x, y);
+				ce.getCanvas().notifyListeners(SWT.MouseDown, me);
+			} else if (eventType.equals("MouseDownRetainSelection")) {
+				me.x = x;
+				me.y = y;
+				me.button = 1;
+				me.stateMask |= SWT.CTRL;
+				ce.getCanvas().notifyListeners(SWT.MouseDown, me);
+			} else if (eventType.equals("MouseContextDown")) {
+				me.x = x;
+				me.y = y;
+				me.button = 3;
+				ce.getCanvas().notifyListeners(SWT.MouseDown, me);
+			} else if (eventType.equals("MouseUp")) {
+				me.x = x;
+				me.y = y;
+				me.button = 1;
+				fDownLocation = null;
+				ce.getCanvas().notifyListeners(SWT.MouseUp, me);
+				// allow any transaction to complete if started
+				// this will allow graphical symbols to be fully
+				// configured before a test proceeds
+				BaseTest.waitForTransaction();
+			} else if (eventType.equals("MouseDoubleClick")) {
+				// with GEF we must create a mouse move first,
+				// this will set the proper source edit part
+				// for any creation request
+				createMouseEvent(x, y, "MouseMove"); // $NON-NLS-1$
+				createMouseEvent(x, y, "MouseDown"); // $NON-NLS-1$
+				fDownLocation = null;
+				me.x = x;
+				me.y = y;
+				me.button = 1;
+				ce.getCanvas().notifyListeners(SWT.MouseDoubleClick, me);
+			}
+		});
+		BaseTest.dispatchEvents();
 	}	
 
     /**

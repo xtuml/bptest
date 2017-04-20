@@ -523,32 +523,42 @@ public class BaseTest extends TestCase {
 	}
 	 
 	public void loadProject(String projectName) throws CoreException {
-    	TestUtil.showBridgePointPerspective();
-        
-    	BaseTest.dispatchEvents(300);
-		project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-				projectName);
+		TestUtil.showBridgePointPerspective();
+
+		BaseTest.dispatchEvents(300);
+		project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 		if (project.exists()) {
-			TestingUtilities.deleteProject(projectName);
+			PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+				try {
+					TestingUtilities.deleteProject(projectName);
+				} catch (Exception e) {
+					TestCase.fail(e.getMessage());
+				}
+			});
 			BaseTest.dispatchEvents(0);
-			BaseTest.waitFor(300);
 		}
 		if (!project.exists()) {
-			SystemModel_c[] systemsBefore = SystemModel_c.SystemModelInstances(Ooaofooa.getDefaultInstance());
 			TestingUtilities.importTestingProjectIntoWorkspace(projectName);
-			project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-					projectName);
-			SystemModel_c[] systems = SystemModel_c.SystemModelInstances(Ooaofooa.getDefaultInstance());
-			if(systemsBefore.length == systems.length) {
-				PersistableModelComponent pmc = PersistenceManager.createRootComponent(project);
-				pmc.loadComponentAndChildren(new NullProgressMonitor());
-				m_sys = (SystemModel_c) pmc.getRootModelElement();
-				BaseTest.dispatchEvents();
-			} else {
-				m_sys = getSystemModel(projectName);
+			project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+			// sometimes during test runs we do not fully wait
+			// for all threads to complete, this leads to null access
+			// to expected test data.  In these cases we will use a
+			// forced wait, look for a SystemModel instance then a Package
+			// most test models will have at least these two and at this
+			// point access should be available
+			long startTime = System.currentTimeMillis();
+			long waitTime = 2000;
+			m_sys = SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), candidate -> {
+				return ((SystemModel_c) candidate).getName().equals(projectName);
+			});
+			Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+			while(m_sys == null && pkg == null && System.currentTimeMillis() - startTime < waitTime) {
+				m_sys = SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), candidate -> {
+					return ((SystemModel_c) candidate).getName().equals(projectName);
+				});
+				pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
 			}
 		}
-		BaseTest.waitFor(300);
 		String modelRootId = Ooaofooa.createModelRootId(project, projectName, true);
 		modelRoot = Ooaofooa.getInstance(modelRootId, true);
 		graphicsModelRoot = Ooaofgraphics.getInstance(modelRoot.getId());
@@ -1109,11 +1119,11 @@ public class BaseTest extends TestCase {
 		@Override
 		public void resourceChanged(IResourceChangeEvent event) {
 			handledEvents = false;
-			if(System.currentTimeMillis() - lastCall < 100) {
+			if(System.currentTimeMillis() - lastCall < 1000) {
 				lastCall = System.currentTimeMillis();
 			} else {
 				handledEvents = true;
-				lastCall = 0;
+				lastCall = Long.MAX_VALUE;
 			}
 		}
 		
@@ -1123,7 +1133,7 @@ public class BaseTest extends TestCase {
 	private static boolean innerComplete = false;
 	static Thread dispatchThread = new Thread(() -> {
 		while(true) {
-			while(!complete) {
+			while(!complete) {				
 				PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
 					innerComplete = true;
 				});
@@ -1176,14 +1186,13 @@ public class BaseTest extends TestCase {
 		dispatchEvents();
 	}
 	public static void dispatchEvents() {
+		waitForTransaction();
+		waitForPlaceHolderThread();
 		complete = false;
 		while(!complete) {
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 				;
 		};
-		waitForTransaction();
-		waitForPlaceHolderThread();
-		waitForDecorator();
 	}
 	
 	/**

@@ -196,6 +196,8 @@ public class ClassToStateDiagramNavigationTest extends BaseTest
         NewInstanceStateMachineOnO_OBJAction action = new NewInstanceStateMachineOnO_OBJAction();
         action.run(null);
         
+        BaseTest.dispatchEvents();
+        
         // undo the creation of the state machine above
         // and verify that the state machine is removed
         clazz.getTransactionManager().getUndoAction().run();

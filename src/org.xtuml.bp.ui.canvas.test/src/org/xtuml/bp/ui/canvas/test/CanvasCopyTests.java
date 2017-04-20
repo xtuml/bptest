@@ -63,7 +63,6 @@ public class CanvasCopyTests extends CanvasTest {
 			Ooaofooa.setPersistEnabled(true);
 			CorePlugin.disableParseAllOnResourceChange();
 			loadProject("MicrowaveOven");
-			BaseTest.waitFor(300);
 			initialized = true;
 		}
 	}
