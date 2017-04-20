@@ -46,6 +46,7 @@ import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.preferences.BridgePointProjectPreferences;
 import org.xtuml.bp.core.ui.preferences.BridgePointProjectReferencesPreferences;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.test.common.UITestingUtilities;
@@ -73,6 +74,7 @@ public class IPRSetupTests extends CanvasTest {
 	@Override
 	@Before
 	public void initialSetup() throws Exception {
+		BaseTest.dispatchEvents(0);
 		if (!isFirstTime)
 			return;
 		isFirstTime = false;

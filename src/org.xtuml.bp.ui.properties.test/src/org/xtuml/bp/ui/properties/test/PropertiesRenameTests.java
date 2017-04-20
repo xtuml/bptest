@@ -44,6 +44,7 @@ import org.xtuml.bp.core.Operation_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.StateMachineEventDataItem_c;
 import org.xtuml.bp.core.StructureMember_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
@@ -69,6 +70,8 @@ public class PropertiesRenameTests extends BaseTest {
 		// load test model
 		TestingUtilities
 				.importTestingProjectIntoWorkspace("PropertiesRenameTests");
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 		BaseTest.dispatchEvents(0);
 		m_sys = getSystemModel("PropertiesRenameTests");
 		modelRoot = (Ooaofooa) Package_c.getOneEP_PKGOnR1401(m_sys,

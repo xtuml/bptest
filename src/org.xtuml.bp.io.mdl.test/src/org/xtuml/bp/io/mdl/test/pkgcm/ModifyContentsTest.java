@@ -131,7 +131,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
         while(display.readAndDispatch());
     }
     protected void performModifyComponentContentsGenerics(String compType,String compName, int focusedEditor,int expectedEditorCount) throws Exception {
-
+    	BaseTest.dispatchEvents(0);
         initTest(compType, compName, focusedEditor, expectedEditorCount);
         // this pass is for setup workspace next pass will execute actual test
         if (!toRunTests())
@@ -145,6 +145,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
 
         // restore from local history
         try {
+        	BaseTest.dispatchEvents(0);
             IFileState[] history = oldFile.getHistory(null);
             oldFile.setContents(history[history.length-1],IFile.NONE,null);         
             

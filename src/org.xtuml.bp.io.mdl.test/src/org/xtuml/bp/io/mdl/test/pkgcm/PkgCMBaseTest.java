@@ -621,7 +621,7 @@ public class PkgCMBaseTest extends CanvasTest {
     protected void performRenameChecksGenerics(Object[] openEditors,
             GraphicalEditor baseEditor, PersistableModelComponent component,
             String newName) {        
-        waitForJobs();
+        BaseTest.dispatchEvents(0);
         if (!generateResult) {
           EditorTestUtilities.checkAllEditorTitles(openEditors, newName);
           checkFileRename(component, newName);

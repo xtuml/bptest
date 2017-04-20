@@ -275,10 +275,14 @@ public class BaseTest extends TestCase {
         
         // Unit tests expect parse errors to show during edit
 		store.setValue(BridgePointPreferencesStore.ENABLE_PARSE_ON_ACTIVITY_EDITS, true);
+		
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.DEFAULT_ACTION_LANGUAGE_DIALECT, 0);
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 	}
 	public void setUp() throws Exception {
 		super.setUp();
-		
 		Ooaofooa.setInUnitTest(true);
 		/*
 		 *	If the workspace path has not been
@@ -287,7 +291,10 @@ public class BaseTest extends TestCase {
 		 */
 		if (m_workspace_path == null || m_workspace_path.equals(""))
 		{
-			m_workspace_path = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
+			m_workspace_path = System.getenv("WORKSPACE_PATH"); //$NON-NLS-1$
+			if(m_workspace_path == null || m_workspace_path.equals("")) {
+				m_workspace_path = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
+			}
 		}
 		if (m_logfile_path == null || m_logfile_path.equals(""))
 		{
@@ -425,6 +432,12 @@ public class BaseTest extends TestCase {
 					    continue;
 					}
 					
+					if(entry.getMessage().contains("Could not load SWT style")) {
+						// ignore as it provides no benefit to our testing
+						// this it ouside of our code and related to OS configuration
+						continue;
+					}
+					
 					msg = prepend + ".log file is not empty";
 				}
 			}			
@@ -507,9 +520,10 @@ public class BaseTest extends TestCase {
 		}
 		if (!project.exists()) {
 			TestingUtilities.importTestingProjectIntoWorkspace(projectName);
+			dispatchEvents(0);
 			project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 					projectName);
-			TestingUtilities.allowJobCompletion();
+			BaseTest.dispatchEvents(0);
 			m_sys = getSystemModel(projectName);
 		}
 		String modelRootId = Ooaofooa.createModelRootId(project, projectName, true);
@@ -693,7 +707,18 @@ public class BaseTest extends TestCase {
 			if(!componentFolder.exists()) {
 				componentFolder = findComponentFolder(projectPath.toFile(), systemName, componentName);
 				if(componentFolder == null) {
-					fail("Unable to locate given model: " + componentName);
+					// try locating a project outside of the test location
+					sourceProjectPath = new Path(System.getProperty("XTUML_DEVELOPMENT_REPOSITORY") + "/src"); //$NON-NLS-1$
+					File directory = sourceProjectPath.toFile();
+					// if we are still null check the system environment
+					if (!directory.exists()) {
+						sourceProjectPath = new Path(System.getenv("XTUML_DEVELOPMENT_REPOSITORY") + "/src");
+					}
+					componentFolder = new File(directory, systemName + "/" + Ooaofooa.MODELS_DIRNAME
+							+ "/" + systemName + "/" + componentName);
+					if(!componentFolder.exists()) {
+						fail("Unable to locate given model: " + componentName);
+					}
 				}
 			}
 			
@@ -1080,8 +1105,7 @@ public class BaseTest extends TestCase {
 		delay(delay);
 		waitForTransaction();
 		waitForPlaceHolderThread();
-		//waitForJobs(); 		// TODO : some junit tests hang here specially in getConsoleText invocation. 
-								// I could not figure out the unfinished job, and need to be investigated more.
+		waitForJobs(); 		
 
 		waitForDecorator();
 		
@@ -1137,10 +1161,10 @@ public class BaseTest extends TestCase {
 	
 	public static boolean doCreateResults = false;
 
-	public static String DEFAULT_XTUML_TEST_MODEL_REPOSITORY = "c:/repositories/git/xtuml/models/test";
-	public static final String DEFAULT_PRIVATE_MODEL_REPOSITORY = "c:/repositories/git/xtuml/modelsmg/test";
+	public static String DEFAULT_XTUML_TEST_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/models/test";
+	public static final String DEFAULT_PRIVATE_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/modelsmg/test";
 	
-	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = "c:/workspace";
+	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = System.getProperty("user.home") + "/workspace";
 	
 	public static void compareAndOutputResults(String fileName) throws Exception{
 		if (doCreateResults){

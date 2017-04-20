@@ -59,7 +59,12 @@ public class TestGC extends ScaledGraphics {
 				+ true + ")");
 		}
 		else {
-          testRecord.add("drawText(\"" + str + "\", ...)");
+		  String substring = str;
+	      if(str.length() > 17) {
+			substring = str.substring(0,  16);
+			substring += "...";
+		  }
+          testRecord.add("drawText(\"" + substring + "\", ...)");
    		}
 	}
 
@@ -71,7 +76,12 @@ public class TestGC extends ScaledGraphics {
 				+ true + ")");
 		}
 		else {
-          testRecord.add("drawString(\"" + s + "\", ...)");
+	      String substring = s;
+		  if(s.length() > 17) {
+			substring = s.substring(0,  16);
+			substring += "...";
+		  }
+          testRecord.add("drawString(\"" + substring + "\", ...)");
 		}
 	}
 
