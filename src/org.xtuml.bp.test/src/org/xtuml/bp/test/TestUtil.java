@@ -277,7 +277,8 @@ public class TestUtil
 					Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
 					HashSet<Shell> uniqueSet = new HashSet<>(Arrays.asList(TestUtil.shellsBeforeAction));
 					// locate a unique shell in the latest
-					for (Shell shell : currentShells) {
+					for (int i = currentShells.length; --i >= 0;) {
+						Shell shell = currentShells[i];
 						boolean added = uniqueSet.add(shell);
 						if (added) {
 							// unique shell, test to make sure it is
@@ -295,7 +296,7 @@ public class TestUtil
 									break;
 								}
 							}
-						}
+						}			
 					}
 					if (!processed) {
 						TestUtil.shellsBeforeAction = currentShells;
