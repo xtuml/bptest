@@ -342,8 +342,7 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 
 	public CanvasTestResult drawDiagram(final GraphicalEditor editor, boolean zoomGroup, boolean zoomSelected,
 			boolean isHardCopy, Rectangle size) {
-		Display display = new Display();
-		Shell shell = new Shell(display);
+		Shell shell = new Shell();
 		FigureCanvas figureCanvas = new FigureCanvas(shell);
 		GraphicalViewer viewer = new ScrollingGraphicalViewer();
 		viewer.createControl(figureCanvas);
@@ -394,7 +393,6 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 		GraphicalEditor.setFont(originalFont);
 		displayFont.dispose();
 		shell.dispose();
-		display.dispose();
 		BaseTest.dispatchEvents();
 		return result;
 	}

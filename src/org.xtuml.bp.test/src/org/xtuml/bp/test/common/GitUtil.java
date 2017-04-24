@@ -194,6 +194,7 @@ public class GitUtil {
 					repositoryName);
 			if(UITestingUtilities.getMenuItem(gitRepositoryTree.getMenu(), "&Reset") != null) {
 				TestUtil.selectButtonInDialog(500, "&Hard (index and working directory updated)");
+				BaseTest.dispatchEvents();
 				TestUtil.finishToDialog(700);
 				// say Yes to overwriting the local contents
 				TestUtil.yesToDialog(900);
@@ -208,6 +209,7 @@ public class GitUtil {
 		if(UITestingUtilities.getMenuItem(gitRepositoryTree.getMenu(), "&Reset") != null) {
 			TestUtil.selectButtonInDialog(500, "&Hard (index and working directory updated)");
 			TestUtil.finishToDialog(700);
+			BaseTest.dispatchEvents();
 			// say Yes to overwriting the local contents
 			TestUtil.yesToDialog(900);
 			UITestingUtilities.activateMenuItem(gitRepositoryTree.getMenu(), "&Reset");
