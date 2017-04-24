@@ -441,6 +441,12 @@ public class BaseTest extends TestCase {
 						continue;
 					}
 					
+					// Ignore workspace session errors on test shutdown
+					if (pluginID.equals("org.eclipse.core.resources") && entry.getMessage()
+							.contains("The workspace will exit with unsaved changes in this session")) {
+						continue;
+					}
+					
 					// ignore all warnings, we only care about errors
 					if (entry.getSeverity() == IStatus.WARNING) {
 					    continue;
@@ -1188,10 +1194,6 @@ public class BaseTest extends TestCase {
 	public static void dispatchEvents() {
 		waitForTransaction();
 		waitForPlaceHolderThread();
-		// wait for any pre-existing dialog handling
-		while(!TestUtil.shellProcessorThread.isEmpty()) {
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		}
 		complete = false;
 		while(!complete) {
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())

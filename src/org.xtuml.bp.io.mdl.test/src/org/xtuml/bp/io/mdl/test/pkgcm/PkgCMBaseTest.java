@@ -589,8 +589,7 @@ public class PkgCMBaseTest extends CanvasTest {
     protected void checkFileDeletion(IFile oldFile) {
         BaseTest.dispatchEvents(0);
         long startTime = System.currentTimeMillis();
-        long currentTime = System.currentTimeMillis();
-        while(currentTime - startTime < 2000) {
+        while(System.currentTimeMillis() - startTime < 2000) {
         	BaseTest.dispatchEvents();
         }
         assertFalse("File still exists after deletion: "

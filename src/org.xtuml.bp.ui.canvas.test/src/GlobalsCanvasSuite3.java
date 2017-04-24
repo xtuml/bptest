@@ -46,7 +46,6 @@ import junit.framework.TestSuite;
 	GlobalTestSetupClass.class,
     ConnectorsAsAnchorsTest.class,
     FreeFloatingConnectorTest.class,
-	GlobalTestSetupClass.class,
     GraphicalToolCreationTests.class,
     I686ClearDatabaseTest.class,
     I835OpenDiagramEditorWithSearchView.class,

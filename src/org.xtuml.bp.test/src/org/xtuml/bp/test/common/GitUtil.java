@@ -248,7 +248,7 @@ public class GitUtil {
 
 	public static void switchToBranch(String branch, String repositoryName) {
 		IViewPart gitRepositoryView = showGitRepositoriesView();
-		BaseTest.dispatchEvents();
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		Control control = view.getCommonViewer().getControl();
 		Tree gitRepositoryTree = (Tree) control;
@@ -256,9 +256,9 @@ public class GitUtil {
 				repositoryName);
 		view.getCommonViewer().setSelection(
 				new StructuredSelection(item.getData()));
-		// set the max wait time lower, the reason for the
-		// potential dialog was not found so it will not always
-		// occur but waiting 2 seconds is not necessary
+		// set the max wait time lower, the dialog will
+		// not always be there and in those cases waiting
+		// 2 seconds is not necessary
 		try {
 			TestUtil.maxRunTime = 300;
 			TestUtil.okToDialog(0);
@@ -267,6 +267,11 @@ public class GitUtil {
 		}
 		UITestingUtilities.activateMenuItem(gitRepositoryTree.getMenu(),
 				"Switch To::" + branch);	
+		// assure that there are no left over threads
+		// waiting to close a dialog
+		while(!TestUtil.shellProcessorThread.isEmpty()) {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		}
 		BaseTest.dispatchEvents();
 	}
 

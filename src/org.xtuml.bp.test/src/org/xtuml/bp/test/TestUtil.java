@@ -233,12 +233,6 @@ public class TestUtil
 					} finally {
 						processing = false;
 					}
-					if(!PlatformUI.getWorkbench().getDisplay().isDisposed()) {
-						PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-							while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-								;
-						});
-					}
 				}
 				try {
 					sleep(100);
@@ -316,25 +310,6 @@ public class TestUtil
 				sleep(50);
 				runTime = System.currentTimeMillis() - startTime;
 			}
-			// if we get here try to close all dialogs, if it can be found
-			// for some reason this is happening on the build server only but
-			// either way we do not want to leave any dialog open so we can prevent
-			// UI lock ups during build testing
-			PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-				Shell[] currentShells = PlatformUI.getWorkbench().getDisplay().getShells();
-				for (int i = currentShells.length; --i >= 0;) {
-					Shell shell = currentShells[i];
-					if(!shell.isDisposed() && shell != PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()) {
-						if (!(shell.getData() instanceof Object[])
-								&& !(shell.getData() instanceof ProgressMonitorDialog)
-								&& !(shell.getData() instanceof BlockedJobsDialog)
-								&& (!shell.getText().equals("") || (shell.getText().equals("")
-										&& shell.getData() instanceof WizardDialog))) {
-							shell.close();
-						}
-					}
-				}
-			});
 		});
 		// add thread to processor
 		shellProcessorThread.addThread(processThread);
