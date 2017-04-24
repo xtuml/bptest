@@ -588,6 +588,9 @@ public class UITestingUtilities {
 				ce.getCanvas().notifyListeners(SWT.MouseDoubleClick, me);
 			}
 		});
+		// wait a bit for GEF listeners to receive and process the 
+		// events
+		BaseTest.waitFor(300);
 		BaseTest.dispatchEvents();
 	}	
 

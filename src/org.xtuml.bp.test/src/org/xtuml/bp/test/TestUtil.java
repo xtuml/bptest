@@ -202,9 +202,10 @@ public class TestUtil
     	processShell(null, processor);
     }
     
-    static class ShellProcessorThread extends Thread {
+    public static class ShellProcessorThread extends Thread {
 
     	List<Thread> threads = new ArrayList<Thread>();
+    	boolean processing = false;
     	
     	public ShellProcessorThread(String name) {
     		super(name);
@@ -223,11 +224,14 @@ public class TestUtil
 			while(true) {
 				while(threads.size() > 0) {
 					Thread next = threads.remove(0);
+					processing = true;
 					next.start();
 					try {
 						next.join();
 					} catch (InterruptedException e) {
 						TestCase.fail(e.getMessage());
+					} finally {
+						processing = false;
 					}
 					if(!PlatformUI.getWorkbench().getDisplay().isDisposed()) {
 						PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
@@ -243,13 +247,17 @@ public class TestUtil
 				}
 			}
 		}
+
+		public boolean isEmpty() {
+			return threads.isEmpty() && processing == false;
+		}
 	}
     
-    static ShellProcessorThread shellProcessorThread = new ShellProcessorThread("Shell Processing");
+    public static ShellProcessorThread shellProcessorThread = new ShellProcessorThread("Shell Processing");
     static {
     	shellProcessorThread.start();
     }
-	static long maxRunTime = 2000;
+	public static long maxRunTime = 2000;
 	
     public static void processShell(Shell[] shellsBeforeAction, ShellProcessor processor)
 	{

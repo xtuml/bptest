@@ -22,9 +22,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<includes>
-						<include>**/IOMdlGlobalsTestSuiteGenerics.java</include>
-						<include>**/IOMdlGlobalsTestSuite2Generics.java</include>
-						<include>**/PkgCMGlobalsTestSuiteGenerics.java</include>
+						<include>**/IOTestFull.java</include>
 					</includes>
 				</configuration>
 			</plugin>

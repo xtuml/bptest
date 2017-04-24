@@ -471,7 +471,6 @@ public class ModelMergeTests2  extends BaseTest {
 	@Test
 	public void testContainerChangeMerging() throws Exception {
 		loadProject("MicrowaveOven");
-		BaseTest.dispatchEvents(0);
 		m_sys = getSystemModel("MicrowaveOven");
 		assertNotNull(m_sys);
 		Package_c moPkg = Package_c.getOneEP_PKGOnR1405(m_sys,

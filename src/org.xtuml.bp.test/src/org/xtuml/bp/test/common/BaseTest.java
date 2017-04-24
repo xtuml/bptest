@@ -1163,7 +1163,7 @@ public class BaseTest extends TestCase {
 				}
 				
 				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-					PlatformUI.getWorkbench().getDisplay().readAndDispatch();
+					while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 				});
 				
 				complete = innerComplete;
@@ -1181,13 +1181,17 @@ public class BaseTest extends TestCase {
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(testResourceListener);
 		dispatchThread.start();
 	}
-	
+		
 	public static void dispatchEvents(long delay) {
 		dispatchEvents();
 	}
 	public static void dispatchEvents() {
 		waitForTransaction();
 		waitForPlaceHolderThread();
+		// wait for any pre-existing dialog handling
+		while(!TestUtil.shellProcessorThread.isEmpty()) {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		}
 		complete = false;
 		while(!complete) {
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
