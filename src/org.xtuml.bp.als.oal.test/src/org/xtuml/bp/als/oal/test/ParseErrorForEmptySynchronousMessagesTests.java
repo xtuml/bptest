@@ -33,6 +33,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IScopeContext;
+import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -166,12 +167,11 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 	
 	private void setProjectPreference(String key, boolean value)
 			throws BackingStoreException {
-		BaseTest.dispatchEvents(0);
 		IScopeContext projectScope = new ProjectScope(project);
 		Preferences projectNode = projectScope
 				.getNode(BridgePointProjectPreferences.BP_PROJECT_PREFERENCES_ID);
 		projectNode.putBoolean(key, value);
-		BaseTest.dispatchEvents(0);
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 
 	private IMarker[] parseModel(NonRootModelElement testElement) throws CoreException {

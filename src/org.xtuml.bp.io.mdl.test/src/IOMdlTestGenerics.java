@@ -96,6 +96,8 @@ public class IOMdlTestGenerics extends TestCase {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
+		String directoryPath = m_workspace_path + "/" + "actual_results";  //$NON-NLS-1$
+		BaseTest.ensureFolderExists(directoryPath);
 		String methodName = name.getMethodName();
 		m_domain_name = methodName.substring(5, methodName.length());
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeAllEditors(false);
