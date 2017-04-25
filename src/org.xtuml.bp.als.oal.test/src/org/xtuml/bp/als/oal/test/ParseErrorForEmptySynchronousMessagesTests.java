@@ -98,6 +98,7 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 						.getManyPE_PEsOnR8000(testPkg));
 		ee.setIsrealized(true);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 4,
 				errors.length);
 		setProjectPreference(
@@ -113,6 +114,7 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE,
 				false);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 0,
 				errors.length);
 	}
@@ -136,6 +138,7 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE_REALIZED,
 				false);
 		IMarker[] errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 0,
 				errors.length);
 		ExternalEntity_c ee = ExternalEntity_c
@@ -146,12 +149,14 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 		Bridge_c bridge = Bridge_c.getOneS_BRGOnR19(ee);
 		bridge.setAction_semantics_internal("// test comment");
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 1,
 				errors.length);
 		setProjectPreference(
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE_REALIZED,
 				true);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 5,
 				errors.length);
 		setProjectPreference(
@@ -161,6 +166,7 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE,
 				false);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 1,
 				errors.length);
 	}
