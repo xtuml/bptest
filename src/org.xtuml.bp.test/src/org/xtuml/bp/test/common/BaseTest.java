@@ -296,8 +296,9 @@ public class BaseTest extends TestCase {
 		 */
 		if (m_workspace_path == null || m_workspace_path.equals(""))
 		{
+			m_workspace_path = System.getenv("WORKSPACE_PATH"); //$NON-NLS-1$
 			if(m_workspace_path == null || m_workspace_path.equals("")) {
-				m_workspace_path = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
+				m_workspace_path = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
 			}
 		}
 		if (m_logfile_path == null || m_logfile_path.equals(""))
