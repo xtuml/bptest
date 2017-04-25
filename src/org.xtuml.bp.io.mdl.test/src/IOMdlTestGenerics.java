@@ -171,6 +171,7 @@ public class IOMdlTestGenerics extends TestCase {
 	        resultFile += "." + Ooaofooa.MODELS_EXT;        	
 	
 	        TestingUtilities.exportModelUsingWizard(resultFile, true);
+	        BaseTest.dispatchEvents();
         } finally {
         	Selection.ignoreSelectionChanges = false;
         }
@@ -464,6 +465,7 @@ public class IOMdlTestGenerics extends TestCase {
         TestingUtilities.exportModelUsingWizard(
                 generateResults ? expectedResultsCompletePath
                         : actualResultsCompletePath, true);
+        BaseTest.dispatchEvents();
 
         if (!generateResults) {
             String expected_path_start = m_workspace_path
