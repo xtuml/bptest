@@ -144,9 +144,12 @@ public class GraphicalAnchorTests extends CanvasTest {
 			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
 			initialized = true;
 		} else {
+			BaseTest.dispatchEvents();
 			// undo the last change
 			if (m_sys.getTransactionManager().getUndoAction().isEnabled()) {
-				m_sys.getTransactionManager().getUndoAction().run();
+				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+					m_sys.getTransactionManager().getUndoAction().run();
+				});
 			}
 		}
 		BaseTest.dispatchEvents(0);
