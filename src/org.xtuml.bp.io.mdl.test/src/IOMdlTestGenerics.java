@@ -19,6 +19,7 @@
 // the License.
 //=====================================================================
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 
@@ -94,11 +95,11 @@ public class IOMdlTestGenerics extends TestCase {
 	}
 	@Before
 	public void setUp() throws Exception {
+		super.setUp();
 		String methodName = name.getMethodName();
 		m_domain_name = methodName.substring(5, methodName.length());
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeAllEditors(false);
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		super.setUp();
         IdAssigner.setSeedOfAllInstances(methodName.hashCode(), true);
 		if ( log1 == null )
 			log1 = new GeneralPurposeLogger();
