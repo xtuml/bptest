@@ -100,16 +100,6 @@ public class IOMdlTestGenerics extends TestCase {
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		super.setUp();
         IdAssigner.setSeedOfAllInstances(methodName.hashCode(), true);
-        if (m_workspace_path == null || m_workspace_path.equals(""))
-        {
-            m_workspace_path = System.getProperty("WORKSPACE_PATH");
-        }
-        if (m_logfile_path == null || m_logfile_path.equals(""))
-        {
-            m_logfile_path = System.getProperty("LOGFILE_PATH"); //$NON-NLS-1$
-        }
-        assertNotNull( m_workspace_path );
-        assertNotNull( m_logfile_path );
 		if ( log1 == null )
 			log1 = new GeneralPurposeLogger();
 		else
