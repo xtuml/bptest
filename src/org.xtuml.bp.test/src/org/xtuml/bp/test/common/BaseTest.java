@@ -296,14 +296,13 @@ public class BaseTest extends TestCase {
 		 */
 		if (m_workspace_path == null || m_workspace_path.equals(""))
 		{
-			m_workspace_path = System.getenv("WORKSPACE_PATH"); //$NON-NLS-1$
 			if(m_workspace_path == null || m_workspace_path.equals("")) {
-				m_workspace_path = System.getProperty("WORKSPACE_PATH"); //$NON-NLS-1$
+				m_workspace_path = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 			}
 		}
 		if (m_logfile_path == null || m_logfile_path.equals(""))
 		{
-			m_logfile_path = System.getProperty("LOGFILE_PATH"); //$NON-NLS-1$
+			m_logfile_path = Platform.getLogFileLocation().makeAbsolute().toString();
 		}
 		assertNotNull( m_workspace_path );
 		assertNotNull( m_logfile_path );
