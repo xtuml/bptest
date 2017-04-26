@@ -31,7 +31,10 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFileState;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
@@ -89,6 +92,7 @@ import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.FailableRunnable;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
+import org.xtuml.bp.ui.explorer.ExplorerView;
 
 @RunWith(OrderedRunner.class)
 public class MultipleSelectionAssignmentTests extends BaseTest {
@@ -158,10 +162,12 @@ public class MultipleSelectionAssignmentTests extends BaseTest {
 			for (int j = 0; j < testElements.length; j++) {
 				Selection.getInstance().addToSelection(testElements[j]);
 			}
+			TreeViewer explorerTreeViewer = ExplorerView.getExplorerTreeViewer();
+			Tree tree = explorerTreeViewer.getTree();
+			Menu menu = tree.getMenu();
 			assertTrue("Unable to locate " + menuItem + " for class type: "
 					+ testClasses[i].getSimpleName(), UITestingUtilities
-					.checkItemStatusInContextMenu(getExplorerView()
-							.getTreeViewer().getTree().getMenu(), menuItem, "",
+					.checkItemStatusInContextMenu(menu, menuItem, "",
 							false));
 			Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
 			if (testClasses[i] != ComponentReference_c.class) {

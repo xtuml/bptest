@@ -173,6 +173,10 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 	
 	private void setProjectPreference(String key, boolean value)
 			throws BackingStoreException {
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+				;
+		});
 		IScopeContext projectScope = new ProjectScope(project);
 		Preferences projectNode = projectScope
 				.getNode(BridgePointProjectPreferences.BP_PROJECT_PREFERENCES_ID);
