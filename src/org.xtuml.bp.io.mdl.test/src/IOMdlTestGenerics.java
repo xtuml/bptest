@@ -58,7 +58,7 @@ import org.xtuml.bp.utilities.ui.ProjectUtilities;
 import junit.framework.TestCase;
 
 @RunWith(OrderedRunner.class)
-public class IOMdlTestGenerics extends TestCase {
+public class IOMdlTestGenerics extends BaseTest {
 
 	@Rule public TestName name = new TestName();
 
@@ -86,7 +86,7 @@ public class IOMdlTestGenerics extends TestCase {
     private static boolean generateResults = false;
 
 	public IOMdlTestGenerics() {
-		super(null);
+		super();
 		
 		// Change default for the parse on resource change preference to
 		// "always"
