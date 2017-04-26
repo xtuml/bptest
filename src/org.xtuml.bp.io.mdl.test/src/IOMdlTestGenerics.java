@@ -70,8 +70,7 @@ public class IOMdlTestGenerics extends BaseTest {
 
 	private static String m_system_name = "org.xtuml.bp.io.mdl.test";
 	private String m_domain_name = "";
-    private static String m_workspace_path = "";
-    private static String m_logfile_path = "";
+
     static SystemModel_c m_system = SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance() , new ClassQueryInterface_c() {
 			public boolean evaluate(Object candidate) {
 				return ((SystemModel_c)candidate).getName().equals(m_system_name);
