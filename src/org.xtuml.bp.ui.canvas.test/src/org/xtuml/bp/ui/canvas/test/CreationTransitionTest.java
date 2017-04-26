@@ -97,7 +97,7 @@ public class CreationTransitionTest extends CanvasTest {
   		CanvasTestUtils.createMouseEvent(mouse.x, mouse.y, "MouseMove");
   		CanvasTestUtils.createMouseEvent(mouse.x, mouse.y, "MouseUp");
   		
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
   	   	UITestingUtilities.deactivateTool(tool);
   	
   	}

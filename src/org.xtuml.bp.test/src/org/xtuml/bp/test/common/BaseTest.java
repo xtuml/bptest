@@ -45,6 +45,8 @@ import java.util.UUID;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
@@ -132,7 +134,6 @@ import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.ui.explorer.decorators.SynchronizationDecorator;
 import org.xtuml.bp.ui.text.placeholder.PlaceHolderManager;
-import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
 import junit.framework.TestCase;
 
@@ -221,6 +222,10 @@ public class BaseTest extends TestCase {
 		// much test time
 		try {
 			PlatformUI.getWorkbench().getDecoratorManager().setEnabled(SynchronizationDecorator.ID, false);
+			// also disable integrity checker, will be enabled for the integrity checker
+			// tests
+			IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
+			store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, false);
 		} catch (CoreException e) {
 			fail("Unable to disable synchronization decorator.");
 		}
@@ -298,7 +303,7 @@ public class BaseTest extends TestCase {
 		}
 		if (m_logfile_path == null || m_logfile_path.equals(""))
 		{
-			m_logfile_path = System.getProperty("LOGFILE_PATH"); //$NON-NLS-1$
+			m_logfile_path = Platform.getLogFileLocation().makeAbsolute().toString();
 		}
 		assertNotNull( m_workspace_path );
 		assertNotNull( m_logfile_path );
@@ -350,6 +355,8 @@ public class BaseTest extends TestCase {
 	
 	@After
 	public void tearDown() throws Exception {
+		// clear any left over events
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		BaseTest.staticTearDown();
 	}
 	
@@ -424,6 +431,19 @@ public class BaseTest extends TestCase {
 							.equals("org.eclipse.cdt.core"))
 							&& stack.contains("ResourceException")
 							&& stack.contains(".xtuml")) {
+						continue;
+					}
+					
+					// during command line runs mylyn does not behave well
+					// on mac, we just ignore any SWT exceptions from mylyn
+					// here as it has no affect on our tests
+					if(pluginID.equals("org.eclipse.mylyn.tasks.ui") && stack.contains("SWTException")) {
+						continue;
+					}
+					
+					// Ignore workspace session errors on test shutdown
+					if (pluginID.equals("org.eclipse.core.resources") && entry.getMessage()
+							.contains("The workspace will exit with unsaved changes in this session")) {
 						continue;
 					}
 					
@@ -509,22 +529,41 @@ public class BaseTest extends TestCase {
 	}
 	 
 	public void loadProject(String projectName) throws CoreException {
-    	TestUtil.showBridgePointPerspective();
-        
-    	ProjectUtilities.allowJobCompletion();
-		project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-				projectName);
+		TestUtil.showBridgePointPerspective();
+
+		BaseTest.dispatchEvents(300);
+		project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 		if (project.exists()) {
-			TestingUtilities.deleteProject(projectName);
-			dispatchEvents(0);
+			PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+				try {
+					TestingUtilities.deleteProject(projectName);
+				} catch (Exception e) {
+					TestCase.fail(e.getMessage());
+				}
+			});
+			BaseTest.dispatchEvents(0);
 		}
 		if (!project.exists()) {
 			TestingUtilities.importTestingProjectIntoWorkspace(projectName);
-			dispatchEvents(0);
-			project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-					projectName);
-			BaseTest.dispatchEvents(0);
-			m_sys = getSystemModel(projectName);
+			project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+			// sometimes during test runs we do not fully wait
+			// for all threads to complete, this leads to null access
+			// to expected test data.  In these cases we will use a
+			// forced wait, look for a SystemModel instance then a Package
+			// most test models will have at least these two and at this
+			// point access should be available
+			long startTime = System.currentTimeMillis();
+			long waitTime = 2000;
+			m_sys = SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), candidate -> {
+				return ((SystemModel_c) candidate).getName().equals(projectName);
+			});
+			Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+			while(m_sys == null && pkg == null && System.currentTimeMillis() - startTime < waitTime) {
+				m_sys = SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), candidate -> {
+					return ((SystemModel_c) candidate).getName().equals(projectName);
+				});
+				pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+			}
 		}
 		String modelRootId = Ooaofooa.createModelRootId(project, projectName, true);
 		modelRoot = Ooaofooa.getInstance(modelRootId, true);
@@ -595,15 +634,10 @@ public class BaseTest extends TestCase {
 	 * @return SystemModel_c
 	 */
 	private SystemModel_c getSystemModelInternal(final String projectName) {
-		// Query used to find the SystemModel associated with the
-		// given project name
-		ClassQueryInterface_c query = new ClassQueryInterface_c() {
-			public boolean evaluate(Object candidate) {
-				return ((SystemModel_c)candidate).getName().equals(projectName);
-			}
-		};
 		// get the associated instance
-		return SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), query);
+		return SystemModel_c.SystemModelInstance(Ooaofooa.getDefaultInstance(), candidate -> {
+			return ((SystemModel_c) candidate).getName().equals(projectName);
+		});
 	}	
 	protected void putSharedResult(String key, Object result){
 		sharedResults.put(key, result);
@@ -708,12 +742,8 @@ public class BaseTest extends TestCase {
 				componentFolder = findComponentFolder(projectPath.toFile(), systemName, componentName);
 				if(componentFolder == null) {
 					// try locating a project outside of the test location
-					sourceProjectPath = new Path(System.getProperty("XTUML_DEVELOPMENT_REPOSITORY") + "/src"); //$NON-NLS-1$
+					sourceProjectPath = new Path(getDevelopmentWorkspaceLocation() + "/src"); //$NON-NLS-1$
 					File directory = sourceProjectPath.toFile();
-					// if we are still null check the system environment
-					if (!directory.exists()) {
-						sourceProjectPath = new Path(System.getenv("XTUML_DEVELOPMENT_REPOSITORY") + "/src");
-					}
 					componentFolder = new File(directory, systemName + "/" + Ooaofooa.MODELS_DIRNAME
 							+ "/" + systemName + "/" + componentName);
 					if(!componentFolder.exists()) {
@@ -1086,32 +1116,91 @@ public class BaseTest extends TestCase {
 	public static void waitForPlaceHolderThread() {
 		TestingUtilities.waitForThread(PlaceHolderManager.PLACEHOLDER_REWRITER_THREAD_NAME);
 	}
-	public static void dispatchEvents(long delay) {
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	
+	static class TestResourceChangeListener implements IResourceChangeListener {
 		
-		WorkspaceJob job = new WorkspaceJob("test job") {
-			public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
-				return Status.OK_STATUS;
+		long lastCall = Long.MAX_VALUE;
+		public boolean handledEvents = true;
+		
+		@Override
+		public void resourceChanged(IResourceChangeEvent event) {
+			handledEvents = false;
+			if(System.currentTimeMillis() - lastCall < 1000) {
+				lastCall = System.currentTimeMillis();
+			} else {
+				handledEvents = true;
+				lastCall = Long.MAX_VALUE;
 			}
-		};
-		job.setPriority(Job.DECORATE);
-		job.setRule(ResourcesPlugin.getWorkspace().getRoot());
-		job.schedule();
-		try {
-			job.join();
-		} catch (InterruptedException e) {
 		}
 		
-		delay(delay);
+	}
+	
+	public static boolean complete = true;
+	private static boolean innerComplete = false;
+	static Thread dispatchThread = new Thread(() -> {
+		while(true) {
+			while(!complete) {				
+				PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+					innerComplete = true;
+				});
+					
+				WorkspaceJob job = new WorkspaceJob("test job") {
+					public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
+						return Status.OK_STATUS;
+					}
+				};
+				job.setPriority(Job.DECORATE);
+				job.setRule(ResourcesPlugin.getWorkspace().getRoot());
+				job.schedule();
+				try {
+					job.join();
+				} catch (InterruptedException e) {
+				}
+				
+				long waitForResourceChanges = 300;
+				long waitStartTime = System.currentTimeMillis();
+				while (!BaseTest.testResourceListener.handledEvents
+						&& System.currentTimeMillis() - waitStartTime < waitForResourceChanges) {
+					try {
+						Thread.sleep(20);
+					} catch (Exception e) {
+						TestCase.fail(e.getMessage());
+					}
+				}
+				
+				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+					while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+				});
+				
+				complete = innerComplete;
+			}
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				TestCase.fail(e.getMessage());
+			}
+		}
+	}, "Test Thread Event Dispatcher");
+	static TestResourceChangeListener testResourceListener = null;
+	static {
+		testResourceListener = new TestResourceChangeListener();
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(testResourceListener);
+		dispatchThread.start();
+	}
+		
+	public static void dispatchEvents(long delay) {
+		dispatchEvents();
+	}
+	public static void dispatchEvents() {
 		waitForTransaction();
 		waitForPlaceHolderThread();
-		waitForJobs(); 		
-
-		waitForDecorator();
-		
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		
+		complete = false;
+		while(!complete) {
+			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+				;
+		};
 	}
+	
 	/**
 	 * Creates the folder passed in if it doesn't exist.  This only creates 
 	 * the folder at the last segment of the path.  If there is a file with 
@@ -1164,7 +1253,9 @@ public class BaseTest extends TestCase {
 	public static String DEFAULT_XTUML_TEST_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/models/test";
 	public static final String DEFAULT_PRIVATE_MODEL_REPOSITORY = System.getProperty("user.home") + "/git/modelsmg/test";
 	
-	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = System.getProperty("user.home") + "/workspace";
+	public static final String DEFAULT_XTUML_DEVELOPMENT_REPOSITORY = System.getProperty("user.home") + "/git/bridgepoint";
+
+	public static final String CLI_TEST_RUN_KEY = "CLI_TEST_RUN";
 	
 	public static void compareAndOutputResults(String fileName) throws Exception{
 		if (doCreateResults){
@@ -1249,13 +1340,7 @@ public class BaseTest extends TestCase {
 		
 		return null;
 	}
-
-
 	
-	public static void waitForJobs() {
-		while (Job.getJobManager().currentJob() != null);
-		TestingUtilities.allowJobCompletion();
-	}
 	public static void delay(long waitTimeMilli) {
 		Display display = Display.getCurrent();
 		display.timerExec((int) waitTimeMilli, new Runnable() {
@@ -1519,5 +1604,49 @@ public class BaseTest extends TestCase {
 	
 	public void endTransaction(Transaction transaction) {
 		TransactionManager.getSingleton().endTransaction(transaction);
+	}
+	public static String getDevelopmentWorkspaceLocation() {
+		String workspace_location = System.getenv("XTUML_DEVELOPMENT_REPOSITORY");
+		if(workspace_location == null || workspace_location.equals("")) {
+			workspace_location = System.getProperty("XTUML_DEVELOPMENT_REPOSITORY");
+			if(workspace_location == null || workspace_location.equals("")) {
+				workspace_location = BaseTest.DEFAULT_XTUML_DEVELOPMENT_REPOSITORY;				
+			}
+		}
+		return workspace_location != null ? workspace_location : "";
+	}
+	public static String getTestModelRespositoryLocation() {
+		String repository_location = System.getenv("XTUML_TEST_MODEL_REPOSITORY");
+		if (repository_location == null || repository_location.equals("")) {
+			repository_location = System.getProperty("XTUML_TEST_MODEL_REPOSITORY");
+			if(repository_location == null || repository_location.equals("")) {
+				// use the default location
+				repository_location = BaseTest.DEFAULT_XTUML_TEST_MODEL_REPOSITORY;				
+			}
+		}
+		return repository_location != null ? repository_location : "";
+	}
+	public static boolean isCLITestRun() {
+		String isCLIRun = System.getProperty(BaseTest.CLI_TEST_RUN_KEY);
+		if(isCLIRun != null && isCLIRun.equals("true")) {
+			return true;
+		}
+		return false;
+	}
+	static boolean wait = false;
+	public static void waitFor(final long waitTime) {
+		wait = true;
+		Thread waitThread = new Thread(() -> {
+			try {
+				Thread.sleep(waitTime);
+				wait = false;
+			} catch (Exception e) {
+				TestCase.fail(e.getMessage());
+			}
+		});
+		waitThread.run();
+		while(wait) {
+			PlatformUI.getWorkbench().getDisplay().readAndDispatch();
+		}
 	}
 }

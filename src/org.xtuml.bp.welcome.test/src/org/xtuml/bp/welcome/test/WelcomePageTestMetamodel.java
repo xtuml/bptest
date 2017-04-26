@@ -120,7 +120,6 @@ public class WelcomePageTestMetamodel extends TestCase {
 
 	public void raiseWorkbench() {
 		Shell s = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-		s.forceActive();
 		s.forceFocus();
 	}
 	@Test

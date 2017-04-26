@@ -14,7 +14,6 @@
 	<version>1.0.0</version>
 	<packaging>eclipse-test-plugin</packaging>
 
-
 	<build>
 		<plugins>
 			<plugin>
@@ -51,30 +50,10 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
-				<configuration>
-					<testSuite>org.xtuml.bp.ui.canvas.test</testSuite>
-					<testClass>CanvasCCPGlobalsTestSuite</testClass>
-					<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/ui_explorer/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							
-					<executions>
-						<execution>
-							<id>GlobalsCanvasSuite1</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.ui.canvas.test</testSuite>
-								<testClass>GlobalsCanvasSuite1</testClass>
-								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/ui_explorer/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-						
-						<execution>
-							<id>GlobalsCanvasSuite2</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.ui.canvas.test</testSuite>
-								<testClass>GlobalsCanvasSuite2</testClass>
-								<argLine>${jvmArgs} -Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/ui_explorer/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-					</executions>
+				<configuration>		
+					<includes>
+						<include>**/CanvasTestFull.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

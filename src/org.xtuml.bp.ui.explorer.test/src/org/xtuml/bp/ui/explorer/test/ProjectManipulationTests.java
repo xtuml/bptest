@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -268,6 +269,11 @@ import org.xtuml.bp.ui.graphics.editor.ModelEditor;
     {
         selectProjectItemInModelExplorer();
 
+        BaseTest.dispatchEvents(0);
+        
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
+        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        
         TestUtil.okToDialog(2000);
         
         ExplorerUtil.deleteItem();

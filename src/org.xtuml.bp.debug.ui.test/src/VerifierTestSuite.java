@@ -63,7 +63,6 @@ import junit.framework.TestSuite;
 	GlobalTestSetupClass.class,
 	VerifierTestSuiteI.class,
 	VerifierSessionExplorerTests.class,
-	VerifierStaticVariablesInRealizedClassesTest.class,
 	VerifierLaunchTestSuite.class,
 	VerifierExecuteFragmentTest.class,		
 	VerifierExecuteActionTests.class,
@@ -88,7 +87,6 @@ import junit.framework.TestSuite;
 	VerifierBindingAuditTest.class,
 	VerifierRealizedUDTTest.class,
 	VerifierUDTAsUDTInitializationTests.class,
-	DateLoggingTests.class,
 })
 public class VerifierTestSuite extends TestSuite {
 

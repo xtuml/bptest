@@ -95,7 +95,7 @@ public class TransitionActionTestGenerics extends CanvasTest {
       } catch (CoreException e) {
 	    fail(e.toString());
       }
-      BaseTest.waitForJobs();
+	  BaseTest.dispatchEvents();
 	}
 
 	@Override

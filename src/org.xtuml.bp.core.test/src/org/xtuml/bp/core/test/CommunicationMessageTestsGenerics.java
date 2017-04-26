@@ -29,6 +29,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
@@ -164,58 +165,60 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Time");
-		TestUtil.okElementSelectionDialog(runnable);
-		// get the action and execute it
-		GenericPackageFormalizeOnSQ_EEPAction action = new GenericPackageFormalizeOnSQ_EEPAction();
-		action.run(null);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Time", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
+		try {
+			// get the action and execute it
+			GenericPackageFormalizeOnSQ_EEPAction action = new GenericPackageFormalizeOnSQ_EEPAction();
+			action.run(null);
+	
+			validateOrGenerateResults(ce, generateResults);
+	
+			test_id = "2";
+	
+			// test formalizing the message against one of the operations
+			SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
+	
+			assertNotNull(synchronousMessage);
+	
+			selection.clear();
+			selection.addToSelection(synchronousMessage);
+			selection.addToSelection(eep);
+	
+			IStructuredSelection sel = Selection.getInstance().getStructuredSelection();
+	
+			// create and initialize the wizard
+			CommunicationBridgeOperationFormalizeOnMSG_SMWizard wizard2 = new CommunicationBridgeOperationFormalizeOnMSG_SMWizard();
+			wizard2.init(workbench, sel, null);
+			WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
+					.getShell(), wizard2);
+			dialog.create();
+	
+			// Select the association in the wizard
+			CommunicationBridgeOperationFormalizeOnMSG_SMWizardPage4 page3 = (CommunicationBridgeOperationFormalizeOnMSG_SMWizardPage4) wizard2
+					.getStartingPage();
+			page3.createControl(workbench.getActiveWorkbenchWindow().getShell());
+			Combo combo = page3.MessageCombo;
+			selectItemInList("current_date", combo);
+			assertTrue("Bridge Operation: " + "current_date, "
+					+ "was not selected in the wizard.", wizard2.performFinish());
+	
+			validateOrGenerateResults(ce, generateResults);
+		} finally {
+			// test unformalizing and external entity and the message
+			// through the external entity
+			test_id = "3";
+	
+			selection.clear();
+			selection.addToSelection(eep);
 
-		validateOrGenerateResults(ce, generateResults);
-
-		test_id = "2";
-
-		// test formalizing the message against one of the operations
-		SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
-
-		assertNotNull(synchronousMessage);
-
-		selection.clear();
-		selection.addToSelection(synchronousMessage);
-		selection.addToSelection(eep);
-
-		IStructuredSelection sel = Selection.getInstance().getStructuredSelection();
-
-		// create and initialize the wizard
-		CommunicationBridgeOperationFormalizeOnMSG_SMWizard wizard2 = new CommunicationBridgeOperationFormalizeOnMSG_SMWizard();
-		wizard2.init(workbench, sel, null);
-		WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
-				.getShell(), wizard2);
-		dialog.create();
-
-		// Select the association in the wizard
-		CommunicationBridgeOperationFormalizeOnMSG_SMWizardPage4 page3 = (CommunicationBridgeOperationFormalizeOnMSG_SMWizardPage4) wizard2
-				.getStartingPage();
-		page3.createControl(workbench.getActiveWorkbenchWindow().getShell());
-		Combo combo = page3.MessageCombo;
-		selectItemInList("current_date", combo);
-		assertTrue("Bridge Operation: " + "current_date, "
-				+ "was not selected in the wizard.", wizard2.performFinish());
-
-		validateOrGenerateResults(ce, generateResults);
-
-		// test unformalizing and external entity and the message
-		// through the external entity
-		test_id = "3";
-
-		selection.clear();
-		selection.addToSelection(eep);
-
-		ExternalEntityUnformalizeOnSQ_EEPAction unformalizeAction = new ExternalEntityUnformalizeOnSQ_EEPAction();
-		unformalizeAction.run(new Action() {
-		});
-
-		validateOrGenerateResults(ce, generateResults);
-
+			ExternalEntityUnformalizeOnSQ_EEPAction unformalizeAction = new ExternalEntityUnformalizeOnSQ_EEPAction();
+			unformalizeAction.run(new Action() {
+			});
+	
+			validateOrGenerateResults(ce, generateResults);
+		}
 	}
 	
 //	@Test
@@ -277,57 +280,59 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		// before calling the action setup a thread that will
 		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Function Package");
-		TestUtil.okElementSelectionDialog(runnable);
-		// get the action and execute it
-		FormalizeOnSQ_PPAction action = new FormalizeOnSQ_PPAction();
-		action.run(null);
-		validateOrGenerateResults(ce, generateResults);
-
-		test_id = "5";
-
-		// test formalizing the message against one of the operations
-		SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
-
-		assertNotNull(synchronousMessage);
-
-		selection.clear();
-		selection.addToSelection(synchronousMessage);
-		selection.addToSelection(fpp);
-
-		sel = Selection.getInstance().getStructuredSelection();
-
-		// create and initialize the wizard
-		CommunicationPackageFunctionFormalizeOnMSG_SMWizard wizard2 = new CommunicationPackageFunctionFormalizeOnMSG_SMWizard();
-		wizard2.init(workbench, sel, null);
-		WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
-				.getShell(), wizard2);
-		dialog.create();
-
-		// Select the association in the wizard
-		CommunicationPackageFunctionFormalizeOnMSG_SMWizardPage3 page2 = (CommunicationPackageFunctionFormalizeOnMSG_SMWizardPage3) wizard2
-				.getStartingPage();
-		page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
-		Combo combo = page2.MessageCombo;
-		selectItemInList("function", combo);
-		assertTrue("Package: " + "function, "
-				+ "was not selected in the wizard.", wizard2.performFinish());
-
-		validateOrGenerateResults(ce, generateResults);
-
-		// test unformalizing and external entity and the message
-		// through the external entity
-		test_id = "6";
-
-		selection.clear();
-		selection.addToSelection(fpp);
-
-		PackageParticipantUnformalizeOnSQ_PPAction unformalizeAction = new PackageParticipantUnformalizeOnSQ_PPAction();
-		unformalizeAction.run(new Action() {
-		});
-
-		validateOrGenerateResults(ce, generateResults);
-
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Function Package", existingShells);
+		TestUtil.okElementSelectionDialog(runnable, existingShells);
+		try {
+			// get the action and execute it
+			FormalizeOnSQ_PPAction action = new FormalizeOnSQ_PPAction();
+			action.run(null);
+			validateOrGenerateResults(ce, generateResults);
+	
+			test_id = "5";
+	
+			// test formalizing the message against one of the operations
+			SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
+	
+			assertNotNull(synchronousMessage);
+	
+			selection.clear();
+			selection.addToSelection(synchronousMessage);
+			selection.addToSelection(fpp);
+	
+			sel = Selection.getInstance().getStructuredSelection();
+	
+			// create and initialize the wizard
+			CommunicationPackageFunctionFormalizeOnMSG_SMWizard wizard2 = new CommunicationPackageFunctionFormalizeOnMSG_SMWizard();
+			wizard2.init(workbench, sel, null);
+			WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
+					.getShell(), wizard2);
+			dialog.create();
+	
+			// Select the association in the wizard
+			CommunicationPackageFunctionFormalizeOnMSG_SMWizardPage3 page2 = (CommunicationPackageFunctionFormalizeOnMSG_SMWizardPage3) wizard2
+					.getStartingPage();
+			page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
+			Combo combo = page2.MessageCombo;
+			selectItemInList("function", combo);
+			assertTrue("Package: " + "function, "
+					+ "was not selected in the wizard.", wizard2.performFinish());
+	
+			validateOrGenerateResults(ce, generateResults);
+		} finally {
+			// test unformalizing and external entity and the message
+			// through the external entity
+			test_id = "6";
+	
+			selection.clear();
+			selection.addToSelection(fpp);
+	
+			PackageParticipantUnformalizeOnSQ_PPAction unformalizeAction = new PackageParticipantUnformalizeOnSQ_PPAction();
+			unformalizeAction.run(new Action() {
+			});
+	
+			validateOrGenerateResults(ce, generateResults);
+		}
 	}
 
 	/**
@@ -367,59 +372,62 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 		IStructuredSelection sel = Selection.getInstance()
 				.getStructuredSelection();
 
-		// before calling the action setup a thread that will
-		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
-		// get the action and execute it
-		GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
-		action.run(null);
-		validateOrGenerateResults(ce, generateResults);
+		try {
+			// before calling the action setup a thread that will
+			// configure the necessary values
+			Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+			FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+			TestUtil.okElementSelectionDialog(runnable, existingShells);
+	
+			// get the action and execute it
+			GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
+			action.run(null);
+			validateOrGenerateResults(ce, generateResults);
+	
+			test_id = "8";
+	
+			// test formalizing the message against one of the operations
+			SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
+	
+			assertNotNull(synchronousMessage);
+	
+			selection.clear();
+			selection.addToSelection(synchronousMessage);
+			selection.addToSelection(cip);
+	
+			sel = Selection.getInstance().getStructuredSelection();
+	
+			// create and initialize the wizard
+			CommunicationInstanceOperationFormalizeOnMSG_SMWizard wizard2 = new CommunicationInstanceOperationFormalizeOnMSG_SMWizard();
+			wizard2.init(workbench, sel, null);
+			WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
+					.getShell(), wizard2);
+			dialog.create();
+	
+			// Select the association in the wizard
+			CommunicationInstanceOperationFormalizeOnMSG_SMWizardPage4 page2 = (CommunicationInstanceOperationFormalizeOnMSG_SMWizardPage4) wizard2
+					.getStartingPage();
+			page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
+			Combo combo = page2.MessageCombo;
+			selectItemInList("IBOperation", combo);
+			assertTrue("Instance Based Operation: " + "IBOperation, "
+					+ "was not selected in the wizard.", wizard2.performFinish());
+	
+			validateOrGenerateResults(ce, generateResults);
+		} finally {
+			// test unformalizing and external entity and the message
+			// through the external entity
+			test_id = "9";
+	
+			selection.clear();
+			selection.addToSelection(cip);
 
-		test_id = "8";
-
-		// test formalizing the message against one of the operations
-		SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
-
-		assertNotNull(synchronousMessage);
-
-		selection.clear();
-		selection.addToSelection(synchronousMessage);
-		selection.addToSelection(cip);
-
-		sel = Selection.getInstance().getStructuredSelection();
-
-		// create and initialize the wizard
-		CommunicationInstanceOperationFormalizeOnMSG_SMWizard wizard2 = new CommunicationInstanceOperationFormalizeOnMSG_SMWizard();
-		wizard2.init(workbench, sel, null);
-		WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
-				.getShell(), wizard2);
-		dialog.create();
-
-		// Select the association in the wizard
-		CommunicationInstanceOperationFormalizeOnMSG_SMWizardPage4 page2 = (CommunicationInstanceOperationFormalizeOnMSG_SMWizardPage4) wizard2
-				.getStartingPage();
-		page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
-		Combo combo = page2.MessageCombo;
-		selectItemInList("IBOperation", combo);
-		assertTrue("Instance Based Operation: " + "IBOperation, "
-				+ "was not selected in the wizard.", wizard2.performFinish());
-
-		validateOrGenerateResults(ce, generateResults);
-
-		// test unformalizing and external entity and the message
-		// through the external entity
-		test_id = "9";
-
-		selection.clear();
-		selection.addToSelection(cip);
-
-		InstanceUnformalizeOnSQ_CIPAction unformalizeAction = new InstanceUnformalizeOnSQ_CIPAction();
-		unformalizeAction.run(new Action() {
-		});
-
-		validateOrGenerateResults(ce, generateResults);
-
+			InstanceUnformalizeOnSQ_CIPAction unformalizeAction = new InstanceUnformalizeOnSQ_CIPAction();
+			unformalizeAction.run(new Action() {
+			});
+	
+			validateOrGenerateResults(ce, generateResults);
+		}
 	}
 
 	/**
@@ -458,59 +466,61 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 		IStructuredSelection sel = Selection.getInstance()
 				.getStructuredSelection();
 
-		// before calling the action setup a thread that will
-		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
-		// get the action and execute it
-		GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
-		action.run(null);
-		validateOrGenerateResults(ce, generateResults);
-
-		test_id = "11";
-
-		// test formalizing the message against one of the operations
-		SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
-
-		assertNotNull(synchronousMessage);
-
-		selection.clear();
-		selection.addToSelection(synchronousMessage);
-		selection.addToSelection(cp);
-
-		sel = Selection.getInstance().getStructuredSelection();
-
-		// create and initialize the wizard
-		CommunicationClassOperationFormalizeOnMSG_SMWizard wizard2 = new CommunicationClassOperationFormalizeOnMSG_SMWizard();
-		wizard2.init(workbench, sel, null);
-		WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
-				.getShell(), wizard2);
-		dialog.create();
-
-		// Select the association in the wizard
-		CommunicationClassOperationFormalizeOnMSG_SMWizardPage4 page2 = (CommunicationClassOperationFormalizeOnMSG_SMWizardPage4) wizard2
-				.getStartingPage();
-		page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
-		Combo combo = page2.MessageCombo;
-		selectItemInList("CBOperation", combo);
-		assertTrue("Operation: " + "CBOperation, "
-				+ "was not selected in the wizard.", wizard2.performFinish());
-
-		validateOrGenerateResults(ce, generateResults);
-
-		// test unformalizing and external entity and the message
-		// through the external entity
-		test_id = "12";
-
-		selection.clear();
-		selection.addToSelection(cp);
-
-		ClassUnformalizeOnSQ_CPAction unformalizeAction = new ClassUnformalizeOnSQ_CPAction();
-		unformalizeAction.run(new Action() {
-		});
-
-		validateOrGenerateResults(ce, generateResults);
-
+		try {
+			// before calling the action setup a thread that will
+			// configure the necessary values
+			Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+			FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+			TestUtil.okElementSelectionDialog(runnable, existingShells);
+			// get the action and execute it
+			GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
+			action.run(null);
+			validateOrGenerateResults(ce, generateResults);
+	
+			test_id = "11";
+	
+			// test formalizing the message against one of the operations
+			SynchronousMessage_c synchronousMessage = getSynchronousMessage("Informal Synchronous Message");
+	
+			assertNotNull(synchronousMessage);
+	
+			selection.clear();
+			selection.addToSelection(synchronousMessage);
+			selection.addToSelection(cp);
+	
+			sel = Selection.getInstance().getStructuredSelection();
+	
+			// create and initialize the wizard
+			CommunicationClassOperationFormalizeOnMSG_SMWizard wizard2 = new CommunicationClassOperationFormalizeOnMSG_SMWizard();
+			wizard2.init(workbench, sel, null);
+			WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
+					.getShell(), wizard2);
+			dialog.create();
+	
+			// Select the association in the wizard
+			CommunicationClassOperationFormalizeOnMSG_SMWizardPage4 page2 = (CommunicationClassOperationFormalizeOnMSG_SMWizardPage4) wizard2
+					.getStartingPage();
+			page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
+			Combo combo = page2.MessageCombo;
+			selectItemInList("CBOperation", combo);
+			assertTrue("Operation: " + "CBOperation, "
+					+ "was not selected in the wizard.", wizard2.performFinish());
+	
+			validateOrGenerateResults(ce, generateResults);
+		} finally {
+			// test unformalizing and external entity and the message
+			// through the external entity
+			test_id = "12";
+	
+			selection.clear();
+			selection.addToSelection(cp);
+	
+			ClassUnformalizeOnSQ_CPAction unformalizeAction = new ClassUnformalizeOnSQ_CPAction();
+			unformalizeAction.run(new Action() {
+			});
+	
+			validateOrGenerateResults(ce, generateResults);
+		}
 	}
 
 	/**
@@ -548,61 +558,62 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		IStructuredSelection sel = Selection.getInstance()
 				.getStructuredSelection();
-
-		// before calling the action setup a thread that will
-		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
-		// get the action and execute it
-		GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
-		action.run(null);
-
-		validateOrGenerateResults(ce, generateResults);
-
-		test_id = "14";
-
-		// test formalizing the message against one of the operations
-		AsynchronousMessage_c asynchronousMessage = getAsynchronousMessage("Informal Asynchronous Message");
-
-		assertNotNull(asynchronousMessage);
-
-		selection.clear();
-		selection.addToSelection(asynchronousMessage);
-		selection.addToSelection(cp);
-
-		sel = Selection.getInstance().getStructuredSelection();
-
-		// create and initialize the wizard
-		CommunicationClassEventFormalizeOnMSG_AMWizard wizard2 = new CommunicationClassEventFormalizeOnMSG_AMWizard();
-		wizard2.init(workbench, sel, null);
-		WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
-				.getShell(), wizard2);
-		dialog.create();
-
-		// Select the association in the wizard
-		CommunicationClassEventFormalizeOnMSG_AMWizardPage4 page2 = (CommunicationClassEventFormalizeOnMSG_AMWizardPage4) wizard2
-				.getStartingPage();
-		page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
-		Combo combo = page2.MessageCombo;
-		selectItemInList("TC_ST_A1: CB Event", combo);
-		assertTrue("Operation: " + "TC_ST_A1: CB Event, "
-				+ "was not selected in the wizard.", wizard2.performFinish());
-
-		validateOrGenerateResults(ce, generateResults);
-
-		// test unformalizing and external entity and the message
-		// through the external entity
-		test_id = "15";
-
-		selection.clear();
-		selection.addToSelection(cp);
-
-		ClassUnformalizeOnSQ_CPAction unformalizeAction = new ClassUnformalizeOnSQ_CPAction();
-		unformalizeAction.run(new Action() {
-		});
-
-		validateOrGenerateResults(ce, generateResults);
-
+		try {
+			// before calling the action setup a thread that will
+			// configure the necessary values
+			Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+			FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+			TestUtil.okElementSelectionDialog(runnable, existingShells);
+			// get the action and execute it
+			GenericPackageFormalizeOnSQ_CPAction action = new GenericPackageFormalizeOnSQ_CPAction();
+			action.run(null);
+	
+			validateOrGenerateResults(ce, generateResults);
+	
+			test_id = "14";
+	
+			// test formalizing the message against one of the operations
+			AsynchronousMessage_c asynchronousMessage = getAsynchronousMessage("Informal Asynchronous Message");
+	
+			assertNotNull(asynchronousMessage);
+	
+			selection.clear();
+			selection.addToSelection(asynchronousMessage);
+			selection.addToSelection(cp);
+	
+			sel = Selection.getInstance().getStructuredSelection();
+	
+			// create and initialize the wizard
+			CommunicationClassEventFormalizeOnMSG_AMWizard wizard2 = new CommunicationClassEventFormalizeOnMSG_AMWizard();
+			wizard2.init(workbench, sel, null);
+			WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
+					.getShell(), wizard2);
+			dialog.create();
+	
+			// Select the association in the wizard
+			CommunicationClassEventFormalizeOnMSG_AMWizardPage4 page2 = (CommunicationClassEventFormalizeOnMSG_AMWizardPage4) wizard2
+					.getStartingPage();
+			page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
+			Combo combo = page2.MessageCombo;
+			selectItemInList("TC_ST_A1: CB Event", combo);
+			assertTrue("Operation: " + "TC_ST_A1: CB Event, "
+					+ "was not selected in the wizard.", wizard2.performFinish());
+	
+			validateOrGenerateResults(ce, generateResults);
+		} finally {
+			// test unformalizing and external entity and the message
+			// through the external entity
+			test_id = "15";
+	
+			selection.clear();
+			selection.addToSelection(cp);
+	
+			ClassUnformalizeOnSQ_CPAction unformalizeAction = new ClassUnformalizeOnSQ_CPAction();
+			unformalizeAction.run(new Action() {
+			});
+	
+			validateOrGenerateResults(ce, generateResults);
+		}
 	}
 
 	/**
@@ -641,61 +652,62 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 
 		IStructuredSelection sel = Selection.getInstance()
 				.getStructuredSelection();
-
-		// before calling the action setup a thread that will
-		// configure the necessary values
-		FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype");
-		TestUtil.okElementSelectionDialog(runnable);
-		// get the action and execute it
-		GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
-		action.run(null);
-
-		validateOrGenerateResults(ce, generateResults);
-
-		test_id = "17";
-
-		// test formalizing the message against one of the operations
-		AsynchronousMessage_c asynchronousMessage = getAsynchronousMessage("Informal Asynchronous Message");
-
-		assertNotNull(asynchronousMessage);
-
-		selection.clear();
-		selection.addToSelection(asynchronousMessage);
-		selection.addToSelection(cip);
-
-		sel = Selection.getInstance().getStructuredSelection();
-
-		// create and initialize the wizard
-		CommunicationInstanceEventFormalizeOnMSG_AMWizard wizard2 = new CommunicationInstanceEventFormalizeOnMSG_AMWizard();
-		wizard2.init(workbench, sel, null);
-		WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
-				.getShell(), wizard2);
-		dialog.create();
-
-		// Select the association in the wizard
-		CommunicationInstanceEventFormalizeOnMSG_AMWizardPage4 page2 = (CommunicationInstanceEventFormalizeOnMSG_AMWizardPage4) wizard2
-				.getStartingPage();
-		page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
-		Combo combo = page2.MessageCombo;
-		selectItemInList("TC_ST1: IB Event", combo);
-		assertTrue("Operation: " + "TC_ST1: IB Event, "
-				+ "was not selected in the wizard.", wizard2.performFinish());
-
-		validateOrGenerateResults(ce, generateResults);
-
-		// test unformalizing and external entity and the message
-		// through the external entity
-		test_id = "18";
-
-		selection.clear();
-		selection.addToSelection(cip);
-
-		InstanceUnformalizeOnSQ_CIPAction unformalizeAction = new InstanceUnformalizeOnSQ_CIPAction();
-		unformalizeAction.run(new Action() {
-		});
-
-		validateOrGenerateResults(ce, generateResults);
-
+		try {
+			// before calling the action setup a thread that will
+			// configure the necessary values
+			Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+			FailableRunnable runnable = TestUtil.chooseItemInDialog(200, "Supertype", existingShells);
+			TestUtil.okElementSelectionDialog(runnable, existingShells);
+			// get the action and execute it
+			GenericPackageFormalizeOnSQ_CIPAction action = new GenericPackageFormalizeOnSQ_CIPAction();
+			action.run(null);
+	
+			validateOrGenerateResults(ce, generateResults);
+	
+			test_id = "17";
+	
+			// test formalizing the message against one of the operations
+			AsynchronousMessage_c asynchronousMessage = getAsynchronousMessage("Informal Asynchronous Message");
+	
+			assertNotNull(asynchronousMessage);
+	
+			selection.clear();
+			selection.addToSelection(asynchronousMessage);
+			selection.addToSelection(cip);
+	
+			sel = Selection.getInstance().getStructuredSelection();
+	
+			// create and initialize the wizard
+			CommunicationInstanceEventFormalizeOnMSG_AMWizard wizard2 = new CommunicationInstanceEventFormalizeOnMSG_AMWizard();
+			wizard2.init(workbench, sel, null);
+			WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow()
+					.getShell(), wizard2);
+			dialog.create();
+	
+			// Select the association in the wizard
+			CommunicationInstanceEventFormalizeOnMSG_AMWizardPage4 page2 = (CommunicationInstanceEventFormalizeOnMSG_AMWizardPage4) wizard2
+					.getStartingPage();
+			page2.createControl(workbench.getActiveWorkbenchWindow().getShell());
+			Combo combo = page2.MessageCombo;
+			selectItemInList("TC_ST1: IB Event", combo);
+			assertTrue("Operation: " + "TC_ST1: IB Event, "
+					+ "was not selected in the wizard.", wizard2.performFinish());
+	
+			validateOrGenerateResults(ce, generateResults);
+		} finally {
+			// test unformalizing and external entity and the message
+			// through the external entity
+			test_id = "18";
+	
+			selection.clear();
+			selection.addToSelection(cip);
+	
+			InstanceUnformalizeOnSQ_CIPAction unformalizeAction = new InstanceUnformalizeOnSQ_CIPAction();
+			unformalizeAction.run(new Action() {
+			});
+	
+			validateOrGenerateResults(ce, generateResults);
+		}
 	}
 
 	/**

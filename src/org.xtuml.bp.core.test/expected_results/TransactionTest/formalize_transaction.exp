@@ -49,8 +49,6 @@ Transaction started: Binary Formalize
  Creation of instance of type: core.ReferentialAttribute
  Attribute 'Ref_mode' of core.ReferentialAttribute changed ( '0' -> '1')
   instance of [core.ReferentialAttribute] RelatedAcross R106 To:  instance of [core.Attribute]
-  instance of [core.Attribute] UN-RelatedAcross R114 To:  instance of [core.DataType]
-  instance of [core.Attribute] RelatedAcross R114 To:  instance of [core.DataType]
   instance of [core.ReferentialAttribute] RelatedAcross R113 To:  instance of [core.BaseAttribute]
  Creation of instance of type: core.ReferredToIdentifierAttribute
   instance of [core.ReferredToIdentifierAttribute] RelatedAcross R110 To:  instance of [core.ClassIdentifierAttribute]
@@ -59,4 +57,4 @@ Transaction started: Binary Formalize
   instance of [core.AttributeReferenceInClass] RelatedAcross R108 To:  instance of [core.ReferentialAttribute]
   instance of [core.AttributeReferenceInClass] RelatedAcross R111 To:  instance of [core.ReferredToIdentifierAttribute]
   instance of [core.AttributeReferenceInClass] RelatedAcross R111 To:  instance of [core.ReferringClassInAssoc]
-Transaction Ended: Binary Formalize with delta size: 60
+Transaction Ended: Binary Formalize with delta size: 58

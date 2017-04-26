@@ -78,17 +78,6 @@ public class ComponentSyntaxTest_Generics extends BaseTest {
 		configured = true;
 		super.setUp();
 
-        if (m_workspace_path.equals(""))//$NON-NLS-1$
-        {
-          m_workspace_path = System.getProperty("WORKSPACE_PATH");//$NON-NLS-1$
-        }
-        assertNotNull( m_workspace_path );
-        if (m_logfile_path == null || m_logfile_path.equals(""))
-        {
-          m_logfile_path = System.getProperty("LOGFILE_PATH");
-        }
-        assertNotNull( m_logfile_path );
-
         TestingUtilities.importTestingProjectIntoWorkspace(m_comp_pkg_name);
         
         m_sys = getSystemModel(m_comp_pkg_name);

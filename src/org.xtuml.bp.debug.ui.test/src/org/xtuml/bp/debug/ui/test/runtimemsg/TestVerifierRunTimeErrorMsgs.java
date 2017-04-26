@@ -184,6 +184,34 @@ public class TestVerifierRunTimeErrorMsgs extends BaseTest {
 		for (Iterator<NonRootModelElement> iterator = ResultOfA.iterator(); iterator.hasNext();) {
 			NonRootModelElement nonRootModelElement = (NonRootModelElement) iterator
 					.next();
+			if(stringOfA.equals("A7")) {
+				if(nonRootModelElement instanceof ProvidedOperation_c) {
+					if(((ProvidedOperation_c) nonRootModelElement).getAction_semantics().equals("")) {
+						continue;
+					}
+				}
+			}
+			if(stringOfA.equals("A8") && !element.equals("C1N1CSM")) {
+				if(nonRootModelElement instanceof ProvidedSignal_c) {
+					if(((ProvidedSignal_c) nonRootModelElement).getAction_semantics().equals("")) {
+						continue;
+					}
+				}				
+			}
+			if(stringOfA.equals("A9")) {
+				if(nonRootModelElement instanceof RequiredOperation_c) {
+					if(((RequiredOperation_c) nonRootModelElement).getAction_semantics().equals("")) {
+						continue;
+					}
+				}				
+			}
+			if(stringOfA.equals("A10")) {
+				if(nonRootModelElement instanceof RequiredSignal_c) {
+					if(((RequiredSignal_c) nonRootModelElement).getAction_semantics().equals("")) {
+						continue;
+					}
+				}				
+			}
 			if (nonRootModelElement.getName().equalsIgnoreCase(elementName)) {
 				if ((nonRootModelElement instanceof ProvidedSignal_c || nonRootModelElement instanceof ProvidedOperation_c)
 						&& (element.equals("C1N1CSM") || element.equals("C1N1"))) {
@@ -1278,10 +1306,8 @@ public class TestVerifierRunTimeErrorMsgs extends BaseTest {
     boolean checkResult_Sys_Pkg_ModelClass_StateMachine_CTEvent() {
     	boolean Sys_Pkg_ModelClass_StateMachine_CTEvent = false;
     	String actual_results = DebugUITestUtilities.getConsoleText("null");
-    	String expected_results = "User invoked function: ExecuteA1CT\r\n";
-    	if (!Platform.getOS().contains("win")) {
-    		expected_results = expected_results.replace("\r", "");
-    	}
+    	String expected_results = "User invoked function: ExecuteA1CT" + System.getProperty("line.separator");
+
     	if (actual_results.contains(expected_results))
     	{
     		Sys_Pkg_ModelClass_StateMachine_CTEvent= true;

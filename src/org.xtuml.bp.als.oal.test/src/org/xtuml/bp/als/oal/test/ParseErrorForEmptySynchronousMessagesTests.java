@@ -33,6 +33,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IScopeContext;
+import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -97,6 +98,7 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 						.getManyPE_PEsOnR8000(testPkg));
 		ee.setIsrealized(true);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 4,
 				errors.length);
 		setProjectPreference(
@@ -112,6 +114,7 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE,
 				false);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 0,
 				errors.length);
 	}
@@ -135,6 +138,7 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE_REALIZED,
 				false);
 		IMarker[] errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 0,
 				errors.length);
 		ExternalEntity_c ee = ExternalEntity_c
@@ -145,12 +149,14 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 		Bridge_c bridge = Bridge_c.getOneS_BRGOnR19(ee);
 		bridge.setAction_semantics_internal("// test comment");
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 1,
 				errors.length);
 		setProjectPreference(
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE_REALIZED,
 				true);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 5,
 				errors.length);
 		setProjectPreference(
@@ -160,18 +166,18 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 				BridgePointProjectActionLanguagePreferences.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE,
 				false);
 		errors = parseModel(testPkg);
+		BaseTest.dispatchEvents();
 		assertEquals("Incorrect number of parse errors were found.", 1,
 				errors.length);
 	}
 	
 	private void setProjectPreference(String key, boolean value)
 			throws BackingStoreException {
-		BaseTest.dispatchEvents(0);
 		IScopeContext projectScope = new ProjectScope(project);
 		Preferences projectNode = projectScope
 				.getNode(BridgePointProjectPreferences.BP_PROJECT_PREFERENCES_ID);
 		projectNode.putBoolean(key, value);
-		BaseTest.dispatchEvents(0);
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 
 	private IMarker[] parseModel(NonRootModelElement testElement) throws CoreException {

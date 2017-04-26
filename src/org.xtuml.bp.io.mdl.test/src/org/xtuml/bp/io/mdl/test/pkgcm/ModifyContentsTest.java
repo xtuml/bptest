@@ -118,7 +118,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
               CorePlugin.logError(e.getMessage(), e);
         }
         while(display.readAndDispatch());
-        waitForJobs();
+        BaseTest.dispatchEvents();
         // the content replace will trigger another required upgrade
         // need to let it finish before proceeding
         BaseTest.dispatchEvents(0);
@@ -153,7 +153,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
               CorePlugin.logError(e.getMessage(), e);
         }
         while(display.readAndDispatch());
-        waitForJobs();
+        BaseTest.dispatchEvents();
         //get reloaded model element
         pmcBeingTested=PersistenceManager.findComponent(oldFile.getFullPath());
         meBeingTested=pmcBeingTested.getRootModelElement();
@@ -217,7 +217,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
             if(openEditors[i] instanceof ITextEditor){
                 testEditorContents((ITextEditor)openEditors[i],oldEditorContents[i]);
             }else if(openEditors[i] instanceof GraphicalEditor){
-                validateOrGenerateResultsGenerics((GraphicalEditor)openEditors[i], generateResult,true);
+                validateOrGenerateResults((GraphicalEditor)openEditors[i], generateResult,true);
         }
         } // end for   
         

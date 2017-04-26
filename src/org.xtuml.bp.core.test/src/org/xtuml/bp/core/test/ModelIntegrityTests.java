@@ -32,6 +32,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +43,7 @@ import org.xtuml.bp.core.IntegrityManager_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.SystemModel_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.IntegrityChecker;
 import org.xtuml.bp.test.common.BaseTest;
@@ -67,6 +69,14 @@ public class ModelIntegrityTests extends BaseTest {
 	}
 	
 	@Override
+	@Before
+	public void setUp() throws Exception {
+		super.setUp();
+		IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
+		store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, true);
+	}
+	
+	@Override
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
@@ -79,6 +89,8 @@ public class ModelIntegrityTests extends BaseTest {
 			issue.Dispose();
 		}
 		manager.delete();
+		IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
+		store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, false);
 	}
 
 	@Test
@@ -364,6 +376,7 @@ public class ModelIntegrityTests extends BaseTest {
 		char[] chars = new char[(int) file.length()];
 		FileReader reader = new FileReader(new File(path));
 		reader.read(chars);
+		reader.close();
 		return new String(chars);
 	}
 

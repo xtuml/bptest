@@ -20,13 +20,16 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.progress.BlockedJobsDialog;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -52,6 +55,8 @@ import org.xtuml.bp.core.common.ModelElement;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionException;
 import org.xtuml.bp.core.common.TransactionManager;
+import org.xtuml.bp.core.util.UIUtil;
+import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
@@ -629,31 +634,20 @@ public class CanvasInitialNameTests extends BaseTest {
 
 	static String errorTxt = "";
 
-	private void validateErrorMessage(final String expectedResult,
-			final String value) {
-		PlatformUI.getWorkbench().getDisplay().timerExec(1000, new Runnable() {
-
-			@Override
-			public void run() {
-				Shell activeShell = PlatformUI.getWorkbench().getDisplay()
-						.getActiveShell();
-				if (activeShell != null
-						&& activeShell.getData() instanceof InputDialog) {
-					if (!value.equals("empty")) {
-						Text text = UITestingUtilities
-								.findInputDialogTextField((InputDialog) activeShell
-										.getData());
-						text.setText(value);
-						text.notifyListeners(SWT.Traverse, new Event());
-					}
-					errorTxt = UITestingUtilities
-							.findInputDialogErrorText((InputDialog) activeShell
-									.getData());
-					((InputDialog) activeShell.getData()).close();
-				} else {
-					errorTxt = "";
+	private void validateErrorMessage(final String expectedResult, final String value) {
+		TestUtil.processShell(null, activeShell -> {
+			if (activeShell != null && activeShell.getData() instanceof InputDialog) {
+				if (!value.equals("empty")) {
+					Text text = UITestingUtilities.findInputDialogTextField((InputDialog) activeShell.getData());
+					text.setText(value);
+					text.notifyListeners(SWT.Traverse, new Event());
 				}
+				errorTxt = UITestingUtilities.findInputDialogErrorText((InputDialog) activeShell.getData());
+				((InputDialog) activeShell.getData()).close();
+			} else {
+				errorTxt = "";
 			}
+			return true;
 		});
 	}
 

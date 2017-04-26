@@ -24,6 +24,9 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFileState;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Association_c;
@@ -31,6 +34,7 @@ import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -38,6 +42,18 @@ import org.xtuml.bp.test.common.OrderedRunner;
 @RunWith(OrderedRunner.class)
 public class IntegrityIssueTests extends BaseTest {
 
+	@Before
+	public void setUp() {
+		IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
+		store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, true);
+	}
+	
+	@After
+	public void tearDown() {
+		IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
+		store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, false);	
+	}
+	
 	@Test
 	public void testProblemMarkers() throws Exception {
 		loadProject("ModelIntegrityIssueTest");

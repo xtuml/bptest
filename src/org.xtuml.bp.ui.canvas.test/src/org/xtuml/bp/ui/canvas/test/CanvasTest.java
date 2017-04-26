@@ -36,9 +36,14 @@ import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTGraphics;
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.preference.JFacePreferences;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gef.LayerConstants;
+import org.eclipse.gef.editparts.LayerManager;
+import org.eclipse.gef.editparts.ScalableFreeformRootEditPart;
+import org.eclipse.gef.ui.parts.ScrollingGraphicalViewer;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.GC;
@@ -47,6 +52,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.xtuml.bp.core.CorePlugin;
@@ -61,29 +67,28 @@ import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.test.common.UITestingUtilities;
-import org.xtuml.bp.ui.canvas.CanvasModelListener;
 import org.xtuml.bp.ui.canvas.CanvasPlugin;
 import org.xtuml.bp.ui.canvas.Diagram_c;
 import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
+import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
+import org.xtuml.bp.ui.graphics.parts.GraphicsEditPartFactory;
+import org.xtuml.bp.ui.graphics.parts.GraphicsScalableFreeformEditPart;
+import org.xtuml.bp.ui.graphics.print.PrintDiagramOperation;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
 
 import junit.framework.AssertionFailedError;
 
 public abstract class CanvasTest extends BaseTest {
   private String modelName = "";
-  private IPreferenceStore store=JFacePreferences.getPreferenceStore();
   
   public CanvasTest(String arg0)  {
-    super(null, arg0);
-    store.setValue("org.xtuml.bp.canvas.font","1|Tahoma|12|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma;");
-    
+    super(null, arg0);    
   }
   
   public CanvasTest(final String projectName, String arg0)  {
     super(projectName, null);
-    store.setValue("org.xtuml.bp.canvas.font","1|Tahoma|12|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma;");
   }
   
   protected String getModelName() {
@@ -98,7 +103,8 @@ public abstract class CanvasTest extends BaseTest {
   }
   protected String resultNamePostFix="";
   
-  @Before
+  @SuppressWarnings("deprecation")
+@Before
   public void setUp() throws Exception {
 	  super.setUp();
 	  CorePlugin.getDefault().getPluginPreferences().setValue(
@@ -286,7 +292,8 @@ public abstract class CanvasTest extends BaseTest {
     assertEquals("", importer.m_errorMessage );
 	modelRoot.setLoadPathForTests(x);
   }
-  public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boolean isHardCopy) throws Exception {
+  @SuppressWarnings("deprecation")
+public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boolean isHardCopy) throws Exception {
     /*
      * Create the unit under test (uut)
      */
@@ -332,60 +339,63 @@ public abstract class CanvasTest extends BaseTest {
 	    System.out.println("Wrote :" + pathName); //$NON-NLS-1$
     }
   }
-  protected void writeResultsGenerics(String[] results, Model_c uut, ImageData imgData) throws Exception {
-		String folder = m_workspace_path + TestingUtilities.getExpectedResultsPath() + getResultName() + "Generics/"; //$NON-NLS-1$ //$NON-NLS-2$
-		if(!(new File(folder).exists())) {
-			(new File(folder)).mkdirs();
-		}
-		String pathName = uut.getOoa_idLongBased() + "-" + uut.getModel_type();
-		
-		//After UIID long id is not guaranteed, so we need some hard coded names
-		if(!isFileExists(folder, pathName)){
-	       pathName=getFileName(uut.getModel_type());
-	   	}
 
-		pathName = folder + pathName;
-		
-	    if ( TestUtil.writeToFile(results, pathName) )
-	    {
-		    ImageLoader il = new ImageLoader();
-		    il.data = new ImageData[1];
-		    il.data[0] = imgData;
-		    il.save(pathName + ".jpg", 4); //$NON-NLS-1$
-		    System.out.println("Wrote :" + pathName); //$NON-NLS-1$
-	    }
-	  }
-  public CanvasTestResult drawDiagram(final GraphicalEditor editor, boolean zoomGroup, boolean zoomSelected, boolean isHardCopy, Rectangle size) {
-	  FontData prefFontData = new FontData("1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma"); //$NON-NLS-1$
-	  Font displayFont = new Font(Display.getDefault(), prefFontData);
-	  store.setValue("org.eclipse.jface.dialogfont", "1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma");
-	  store.setValue("org.eclipse.ui.workbench.TAB_TEXT_FONT", "1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma");
-	  store.setValue("org.eclipse.ui.workbench.VIEW_MESSAGE_TEXT_FONT", "1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma");
-	  CanvasPlugin.setGraphicalRepresents(editor.getModel());
-	  Image img = new Image(Display.getDefault(), size);
-	  final TestGC tester = new TestGC(new SWTGraphics(new GC(img)));
-	  tester.setFont(displayFont);
-	  FigureCanvas canvas = (FigureCanvas) editor.getCanvas();
-	  canvas.setBounds(size);
-	  canvas.getViewport().setBounds(new org.eclipse.draw2d.geometry.Rectangle(size));
-	  editor.zoomAll();
-	  while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-	  paint(tester, editor);
-	  CanvasTestResult result = new CanvasTestResult();
-	  result.transcript = tester.getResults();
-	  result.image = img.getImageData();
-	  tester.dispose();
-	  img.dispose();
-	  displayFont.dispose();
-	  return result;
-  }
-  
-  	protected void paint(TestGC tester, GraphicalEditor editor) {
-  		((FigureCanvas) editor.getCanvas()).getLightweightSystem()
-				.getUpdateManager().performValidation();
-		((FigureCanvas) editor.getCanvas())
-				.getLightweightSystem().getRootFigure().paint(tester);
-  	}
+	public CanvasTestResult drawDiagram(final GraphicalEditor editor, boolean zoomGroup, boolean zoomSelected,
+			boolean isHardCopy, Rectangle size) {
+		Shell shell = new Shell();
+		FigureCanvas figureCanvas = new FigureCanvas(shell);
+		GraphicalViewer viewer = new ScrollingGraphicalViewer();
+		viewer.createControl(figureCanvas);
+		viewer.setEditPartFactory(new GraphicsEditPartFactory());
+		ScalableFreeformRootEditPart rootEditPart = new GraphicsScalableFreeformEditPart();
+		viewer.setRootEditPart(rootEditPart);
+		viewer.setContents(editor.getModel());
+		rootEditPart.getFigure().validate();
+		IFigure cLayer = rootEditPart.getLayer(LayerConstants.CONNECTION_LAYER);
+		cLayer.validate();
+		figureCanvas.getViewport().getUpdateManager().performValidation();
+		org.eclipse.draw2d.geometry.Rectangle extentRectangle = GraphicalZoomManager
+				.getExtentRectangle(GraphicalEditor.getAllSymbols(viewer, editor.getModel().Hascontainersymbol()));
+		Image img = new Image(Display.getDefault(),
+				new Rectangle(extentRectangle.x, extentRectangle.y, extentRectangle.width, extentRectangle.height));
+		GC gc = new GC(img);
+		SWTGraphics swtGraphics = new SWTGraphics(gc);
+    	FontData prefFontData = new FontData("Courier", 10, SWT.DEFAULT);
+    	Font displayFont = new Font(PlatformUI.getWorkbench().getDisplay(), prefFontData);
+		Font originalFont = GraphicalEditor.getFont();
+		GraphicalEditor.setFont(displayFont);
+		swtGraphics.setFont(displayFont);
+		TestGC tester = new TestGC(swtGraphics);
+		LayerManager lm = (LayerManager) viewer.getEditPartRegistry().get(
+				LayerManager.ID);
+		IFigure figure = lm.getLayer(LayerConstants.PRINTABLE_LAYERS);
+		figure.setFont(displayFont);
+		// draw once with cropping enabled, this will allow
+		// an image that is legible 
+		PrintDiagramOperation.printImage(img, viewer, extentRectangle, editor.getModel().Hascontainersymbol(),
+				PrintDiagramOperation.FIT_PAGE, gc, tester);
+		CanvasTestResult result = new CanvasTestResult();
+		result.image = img.getImageData();
+		gc = new GC(img);
+		swtGraphics = new SWTGraphics(gc);
+		swtGraphics.setFont(displayFont);
+		tester = new TestGC(swtGraphics);
+		CanvasPlugin.disableCropping = true;
+		PrintDiagramOperation.printImage(img, viewer, extentRectangle, editor.getModel().Hascontainersymbol(),
+				PrintDiagramOperation.FIT_PAGE, gc, tester);
+		CanvasPlugin.disableCropping = false;
+		result.transcript = tester.getResults();
+		tester.dispose();
+		img.dispose();
+		swtGraphics.dispose();
+		rootEditPart.deactivate();
+		viewer.flush();
+		GraphicalEditor.setFont(originalFont);
+		displayFont.dispose();
+		shell.dispose();
+		BaseTest.dispatchEvents();
+		return result;
+	}
 
 	/**
   	 * Writes the given array of expected results out to one text file, 
@@ -422,9 +432,7 @@ public abstract class CanvasTest extends BaseTest {
         
 //      copy expected results image file to actual folder
 		String path_exp = m_workspace_path + TestingUtilities.getExpectedResultsPath() + getResultName();
-		if (testGlobals == true) {
-          path_exp = path_exp + "Globals";
-		}
+
 		path_exp = path_exp + "/";
 
 		if(!isFileExists(path_exp, filename)){
@@ -445,7 +453,7 @@ public abstract class CanvasTest extends BaseTest {
 			fos.write(b);
 			b= fis.read();
 		}
-		
+		fis.close();
 		fos.close();
 	}
 	}
@@ -491,6 +499,7 @@ public abstract class CanvasTest extends BaseTest {
 			b= fis.read();
 		}
 		
+		fis.close();
 		fos.close();
 	}
   	
@@ -509,7 +518,6 @@ public abstract class CanvasTest extends BaseTest {
      */
     public void validateOrGenerateResults(GraphicalEditor editor, boolean generate)
     {
-    	BaseTest.dispatchEvents(0);
         validateOrGenerateResults(editor, generate, false);
     }
     
@@ -566,50 +574,7 @@ public abstract class CanvasTest extends BaseTest {
 		    }
 		}
     }
-        public void validateOrGenerateResultsGenerics(GraphicalEditor editor, boolean generate)
-    {
-        validateOrGenerateResultsGenerics(editor, generate, false);
-    }
-    public void validateOrGenerateResultsGenerics(GraphicalEditor editor, boolean generate,
-            boolean preserveDiagramValues)
-        {
-    		// remember the diagram zoom and viewport location values, 
-    		// as they will be changed during the calls below
-    		Diagram_c diagram = Diagram_c.getOneDIM_DIAOnR18(editor.getModel());
-    		float zoom = diagram.getZoom();
-    		float viewportX = diagram.getViewportx();
-    		float viewportY = diagram.getViewporty();
-    		
-    		try {
-    			if (generate) {
-    	            CanvasTestResult result = drawDiagram(editor, true, false, false,
-    	                new Rectangle(0, 0, 1231, 861));
-    	            try {
-    	                writeResultsGenerics(result.transcript, editor.getModel(), result.image);
-    	            } catch (Exception e) {
-    	                CanvasPlugin.logError(
-    	                    "Exception encountered while writing results file", e);
-    	            }
-    	        } else {
-    	            try {
-    	                doTestDiagramGenerics(editor, editor.getModel().getModel_type(), 
-    	                    true, false, true);
-    	            } catch (Exception e) {
-    	                CanvasPlugin.logError(
-    	                    "Exception encountered while reading results file", e);
-    	            }
-    	        }
-    		}
-    		finally {
-    	        // if specified to do so, restore the diagram zoom and viewport 
-    		    // location values, which were altered by the calls above
-    		    if (preserveDiagramValues) {
-    			    diagram.setZoom(zoom);
-    			    diagram.setViewportx(viewportX);
-    			    diagram.setViewporty(viewportY);
-    		    }
-    		}
-        }
+
 	protected static UUID getSameAsBaseAttributeUUID(ModelRoot modelRoot) {
 		DataType_c[] dataTypes = DataType_c.DataTypeInstances(
 			modelRoot,

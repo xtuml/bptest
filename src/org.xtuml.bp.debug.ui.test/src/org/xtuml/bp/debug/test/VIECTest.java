@@ -137,15 +137,13 @@ public class VIECTest extends BaseTest {
 
 
 		String expectedConsoleText = "Simulation started.\r\nUser invoked function: " +
-				"CalculateFac\r\nLogInfo:  Calculating is 5\r\nLogInfo:  Calculate factorial for " +
-				"number 5\r\nLogInfo:  Calculate factorial for smaller number\r\nLogInfo:  " +
-				"Calculate factorial for number 4\r\nLogInfo:  Calculate factorial for smaller number\r\nLogInfo:  " +
-				"Calculate factorial for number 3\r\nLogInfo:  Calculate factorial for smaller number\r\nLogInfo:  " +
-				"Calculate factorial for number 2\r\nLogInfo:  Calculate factorial for smaller number\r\nLogInfo:  " +
-				"Calculate factorial for number 1\r\nLogReal:  120.0 is the result  \r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+				"CalculateFac\r\nLogInfo:  Calculating is 5" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for " +
+				"number 5" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for smaller number" + System.getProperty("line.separator") + "LogInfo:  " +
+				"Calculate factorial for number 4" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for smaller number" + System.getProperty("line.separator") + "LogInfo:  " +
+				"Calculate factorial for number 3" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for smaller number" + System.getProperty("line.separator") + "LogInfo:  " +
+				"Calculate factorial for number 2" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for smaller number" + System.getProperty("line.separator") + "LogInfo:  " +
+				"Calculate factorial for number 1" + System.getProperty("line.separator") + "LogReal:  120.0 is the result  " + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 		
@@ -180,16 +178,14 @@ public class VIECTest extends BaseTest {
 	DebugUITestUtilities.waitForBPThreads(m_sys);
 	DebugUITestUtilities.waitForExecution(); 	
 
-	String expectedConsoleText = "Simulation started.\r\nUser invoked function: " +
-			"SetFactorial\r\nLogInfo:  Calculate factorial for smaller number\r\nLogInfo:  " +
-			"Calculate factorial for number 4\r\nLogInfo:  Calculate factorial for smaller" +
-			" number\r\nLogInfo:  Calculate factorial for number 3\r\nLogInfo:  Calculate factorial " +
-			"for smaller number\r\nLogInfo:  Calculate factorial for number 2\r\nLogInfo:  Calculate" +
-			" factorial for smaller number\r\nLogInfo:  Calculate factorial for number 1\r\nLogInfo:  " +
-			"Final result24\r\n";
-	if (!Platform.getOS().contains("win")) {
-		expectedConsoleText = expectedConsoleText.replace("\r", "");
-	}
+	String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: " +
+			"SetFactorial" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for smaller number" + System.getProperty("line.separator") + "LogInfo:  " +
+			"Calculate factorial for number 4" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for smaller" +
+			" number" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for number 3" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial " +
+			"for smaller number" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for number 2" + System.getProperty("line.separator") + "LogInfo:  Calculate" +
+			" factorial for smaller number" + System.getProperty("line.separator") + "LogInfo:  Calculate factorial for number 1" + System.getProperty("line.separator") + "LogInfo:  " +
+			"Final result24" + System.getProperty("line.separator");
+
 	String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 	assertEquals(expectedConsoleText, actualConsoleText);
 

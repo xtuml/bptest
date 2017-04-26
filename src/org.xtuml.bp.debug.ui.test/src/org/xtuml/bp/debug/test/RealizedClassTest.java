@@ -146,10 +146,8 @@ public class RealizedClassTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution();
 		
-		String expectedConsoleText = "User invoked function: test\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\nLogSuccess:  Correct Value\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "User invoked function: test" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator") + "LogSuccess:  Correct Value" + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 
@@ -169,10 +167,8 @@ public class RealizedClassTest extends BaseTest {
 	    DebugUITestUtilities.waitForExecution();
 	    DebugUITestUtilities.waitForBPThreads(m_sys);
 	    DebugUITestUtilities.waitForExecution();
-	    String expectedConsoleText = "User invoked function: test_function\r\nLogInfo:  Hello, World!\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+	    String expectedConsoleText = "User invoked function: test_function" + System.getProperty("line.separator") + "LogInfo:  Hello, World!" + System.getProperty("line.separator");
+
 	    String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 	    assertEquals(expectedConsoleText, actualConsoleText);
 	}

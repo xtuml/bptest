@@ -268,6 +268,8 @@ public class PropertiesViewTest2 extends BaseTest
     	ClassInstanceParticipant_c parent = new ClassInstanceParticipant_c(modelRoot);
     	InstanceAttributeValue_c AtrValue = new InstanceAttributeValue_c(modelRoot);
     	FormalAttributeValue_c FmAtr = new FormalAttributeValue_c(modelRoot);
+    	Attribute_c attr = new Attribute_c(modelRoot);
+    	AtrValue.relateAcrossR938To(attr);
     	AtrValue.relateAcrossR937To(parent);
 		FmAtr.relateAcrossR948To(AtrValue);
 		FormalInstanceAttributeValuesSQ_AVPropertySource ps = new FormalInstanceAttributeValuesSQ_AVPropertySource(AtrValue);
@@ -321,10 +323,11 @@ public class PropertiesViewTest2 extends BaseTest
 			}
 		}
 		assertNotNull("Unable to locate label for chooser dialog descriptor", label);
-		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean");
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean", existingShells);
 		label.notifyListeners(SWT.MouseDoubleClick, new Event());
 		assertTrue(chooseItemInDialog.getFailure(), chooseItemInDialog.getFailure().equals(""));
-		TestUtil.okToDialog(1000);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		DataType_c dt = DataType_c.getOneS_DTOnR114(attr);
 		assertTrue("boolean data type was not set as type for attribute.", dt.getName().equals("boolean"));

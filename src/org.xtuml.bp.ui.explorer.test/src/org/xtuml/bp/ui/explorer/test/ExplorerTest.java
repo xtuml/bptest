@@ -34,9 +34,11 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IViewReference;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.junit.Test;
@@ -425,7 +427,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
     }
     
 	@Test
-	public void testMultipleOccurrenceInTreeInterfaceOperationParameter() {
+	public void testMultipleOccurrenceInTreeInterfaceOperationParameter() throws PartInitException {
 		// create the interface project
 		IProject referredTo = null;
 		IProject referring = null;
@@ -490,14 +492,16 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(pro);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		Requirement_c req = Requirement_c.getOneC_ROnR4009(InterfaceReference_c
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(req);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		DecoratingLabelProvider labelProvider = (DecoratingLabelProvider) getExplorerView()
@@ -533,6 +537,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				UITestingUtilities.checkItemStatusInContextMenu(menu, "Rename",
 						"", false));
 		// rename the occurrence
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(ele);
 		ExplorerUtil.selectItem(findItem);
@@ -551,6 +556,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 					"MutlipleOccurrenceElement did not have its name properly updated.",
 					labelProvider.getText(element).equals("new_name"));
 		}
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		ExplorerUtil.selectItem(findItem);
 		ExplorerUtil.deleteItem();
 		BaseTest.dispatchEvents(0);
@@ -563,7 +569,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 	}
 
 	@Test
-	public void testMultipleOccurrenceInTreeInterfaceSignalParameter() {
+	public void testMultipleOccurrenceInTreeInterfaceSignalParameter() throws PartInitException {
 		// create the interface project
 		IProject referredTo = null;
 		IProject referring = null;
@@ -628,14 +634,16 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(pro);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		Requirement_c req = Requirement_c.getOneC_ROnR4009(InterfaceReference_c
 				.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)));
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(req);
-		TestUtil.chooseItemInDialog(500, "Unnamed Interface");
+		existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		TestUtil.chooseItemInDialog(500, "Unnamed Interface", existingShells);
 		TestUtil.okToDialog(1000);
 		UITestingUtilities.activateMenuItem(menu, "Formalize...");
 		DecoratingLabelProvider labelProvider = (DecoratingLabelProvider) getExplorerView()
@@ -669,6 +677,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 				"Unable to find Rename menu item for MultipleOccurrenceElement.",
 				UITestingUtilities.checkItemStatusInContextMenu(menu, "Rename",
 						"", false));
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		// rename the occurrence
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(ele);
@@ -688,6 +697,7 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 					"MutlipleOccurrenceElement did not have its name properly updated.",
 					labelProvider.getText(element).equals("new_name"));
 		}
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
 		ExplorerUtil.selectItem(findItem);
 		ExplorerUtil.deleteItem();
 		BaseTest.dispatchEvents(0);

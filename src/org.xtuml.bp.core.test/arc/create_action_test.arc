@@ -297,8 +297,6 @@
   .if ((((action.Key_Lett == "S_EDT")) or (action.Key_Lett == "S_SDT")) or (action.Key_Lett == "S_UDT"))
         t1.setName("${oldName}");
 
-        TestUtil.dismissDialog(500);
-
         updateTreeItem( t1, "${newName}", ${useFocus} );
         
         assertEquals("${newName}", t1.getName() );
@@ -489,7 +487,7 @@
            .elif (action.Key_Lett == "C_PP")     
        		t1.relateAcrossR4006To(ExecutableProperty_c.getOneC_EPOnR4003(iface));
        	    .end if          
-  .end if
+  .end if 
         StructuredSelection sel = new StructuredSelection(t1);
         Selection.getInstance().setSelection(sel, true);
         DeleteAction t2 = new DeleteAction(null);

@@ -37,6 +37,7 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.XtUMLNature;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
@@ -78,6 +79,7 @@ public class WelcomePageTest extends TestCase {
 	public void runGettingStartedAction() {
 		// create and run new instances of GettingStartedAction
 		GettingStartedLiveHelpAction gsAction = new GettingStartedLiveHelpAction();
+		TestUtil.yesToDialog(5000);
 		gsAction.run();
 	}
 
@@ -176,10 +178,6 @@ public class WelcomePageTest extends TestCase {
 		props.put("model", "TemplateProject");
 		props.put("SingleFileModel", "false");
 		action.run(null, props);
-        
-        Shell helpShell = Display.getCurrent().getActiveShell();
-        if (! helpShell.isDisposed())
-            helpShell.forceActive();
 		
 		SystemModel_c system = SystemModel_c.SystemModelInstance(
 				Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {

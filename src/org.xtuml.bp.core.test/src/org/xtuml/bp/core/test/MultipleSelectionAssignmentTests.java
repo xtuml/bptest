@@ -31,6 +31,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFileState;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
@@ -162,11 +163,12 @@ public class MultipleSelectionAssignmentTests extends BaseTest {
 					.checkItemStatusInContextMenu(getExplorerView()
 							.getTreeViewer().getTree().getMenu(), menuItem, "",
 							false));
+			Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
 			if (testClasses[i] != ComponentReference_c.class) {
 				// now execute, selecting string as the type
 				FailableRunnable failable = TestUtil.chooseItemInDialog(200,
-						"string");
-				TestUtil.okElementSelectionDialog(failable);
+						"string", existingShells);
+				TestUtil.okElementSelectionDialog(failable, existingShells);
 				// open the dialog
 				IObjectActionDelegate action = getActionForType(testClasses[i]);
 				action.run(null);
@@ -177,8 +179,8 @@ public class MultipleSelectionAssignmentTests extends BaseTest {
 				// for a component reference we use a different action and
 				// select a component
 				FailableRunnable failable = TestUtil.chooseItemInDialog(200,
-						"Component");
-				TestUtil.okElementSelectionDialog(failable);
+						"Component", existingShells);
+				TestUtil.okElementSelectionDialog(failable, existingShells);
 				GenericPackageAssignComponentOnCL_ICAction action = new GenericPackageAssignComponentOnCL_ICAction();
 				action.run(null);
 				assertTrue("Error during element choosing.", failable

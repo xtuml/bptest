@@ -103,11 +103,7 @@ public class ModelTransactionTestGenerics extends BaseTest {
 
 		thisModelRoot = modelRoot;
 		result_folder = new String(m_workspace_path
-				+ "/expected_results/linux/TransactionTest/"); //$NON-NLS-1$
-		if(!Platform.getOS().equals("linux")) {
-			result_folder = new String(m_workspace_path
-					+ "/expected_results/TransactionTest/"); //$NON-NLS-1$			
-		}
+				+ "/expected_results/TransactionTest/"); //$NON-NLS-1$			
 
 		CanvasTransactionListener.disableReconciler();
 	}
@@ -214,6 +210,8 @@ public class ModelTransactionTestGenerics extends BaseTest {
 		
 		SequenceTestsGenerics.resizeMainWindow();
 
+		TestUtil.okToDialog(100);
+		
 		// Create Subsystem in domain, as this forces 
 		// execution of ModelSpecification_c.Elementcreated() (the one native operation that
 		// generates model change events)
@@ -461,6 +459,11 @@ public class ModelTransactionTestGenerics extends BaseTest {
 
 	@Test
 	public void testMenuItemUserAction() throws Exception {
+		// This test is disabled for CLI runs
+		// See https://support.onefact.net/issues/9453
+		if(BaseTest.isCLITestRun()) {
+			return;
+		}
 		AttributeMenuItemTestGenerics attrMenuItemTest = new AttributeMenuItemTestGenerics(); //$NON-NLS-1$
 		attrMenuItemTest.setReloadModel(true);
 		attrMenuItemTest.setUp();
