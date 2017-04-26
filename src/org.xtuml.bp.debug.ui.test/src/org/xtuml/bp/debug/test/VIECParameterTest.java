@@ -157,16 +157,13 @@ public class VIECParameterTest extends BaseTest {
 
 
 		String expectedConsoleText = "User invoked function: testSequence\r\n" +
-				"LogInfo:  Stack Log :: Call\r\n" +
-				"Call signal\r\n-----------\r\n" +
-				"CallerID =3000\r\n" +
-				"CalledID =6000\r\nServiceId=9000\r\n" +
-				"LogInfo:  Call received\r\nLogInfo:  CallerID  :3333\r\n" +
-				"LogInfo:  CalledID  :6666\r\n" +
-				"LogInfo:  ServiceID :9999\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+				"LogInfo:  Stack Log :: Call" + System.getProperty("line.separator") +
+				"Call signal" + System.getProperty("line.separator") + "-----------" + System.getProperty("line.separator") +
+				"CallerID =3000" + System.getProperty("line.separator") +
+				"CalledID =6000" + System.getProperty("line.separator") + "ServiceId=9000" + System.getProperty("line.separator") +
+				"LogInfo:  Call received" + System.getProperty("line.separator") + "LogInfo:  CallerID  :3333" + System.getProperty("line.separator") +
+				"LogInfo:  CalledID  :6666" + System.getProperty("line.separator") +
+				"LogInfo:  ServiceID :9999" + System.getProperty("line.separator");
 
 		String actualConsoleText = DebugUITestUtilities.getConsoleText();
 		assertEquals(expectedConsoleText, actualConsoleText);

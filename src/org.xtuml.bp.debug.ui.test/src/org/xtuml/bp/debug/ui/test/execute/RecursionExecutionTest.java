@@ -56,6 +56,7 @@ public class RecursionExecutionTest extends BaseTest {
 		super.setUp();
 		if (!initialized){
 			loadProject(projectName);
+			
 			final IProject project = ResourcesPlugin.getWorkspace().getRoot()
 			.getProject(projectName);
 			
@@ -75,7 +76,6 @@ public class RecursionExecutionTest extends BaseTest {
 
 			CorePlugin.enableParseAllOnResourceChange();
 
-			TestingUtilities.allowJobCompletion();
 			initialized = true;
 		}
 	}
@@ -98,14 +98,15 @@ public class RecursionExecutionTest extends BaseTest {
 	
 	@Test
 	public void testDeleteInstanceInRecursion() {
-		Package_c[] pkgs = Package_c.getManyEP_PKGsOnR1405(m_sys);
-		
-		Package_c pkg = null;
-		for(int i = 0; i < pkgs.length; i++) {
-			if(pkgs[i].getName().equalsIgnoreCase("Model")) {
-				pkg = pkgs[i];
-				break;
-			}
+		Package_c pkg = Package_c.getOneEP_PKGOnR1405(m_sys, candidate -> {
+			return ((Package_c) candidate).getName().equals("Model");
+		});
+		long waitTime = 2000;
+		long startTime = System.currentTimeMillis();
+		while(pkg == null && System.currentTimeMillis() - startTime < waitTime) {
+			pkg = Package_c.getOneEP_PKGOnR1405(m_sys, candidate -> {
+				return ((Package_c) candidate).getName().equals("Model");
+			});
 		}
 		
 		Function_c testFunc = Function_c.FunctionInstance(pkg.getModelRoot(),
@@ -120,13 +121,11 @@ public class RecursionExecutionTest extends BaseTest {
 			DebugUITestUtilities.waitForExecution();
 			DebugUITestUtilities.waitForBPThreads(m_sys);
 			DebugUITestUtilities.waitForExecution();
+			BaseTest.dispatchEvents();
 		}
 
-		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
-		String expectedConsoleText = "User invoked function: testDeleteInRecursion\r\nLogReal:  6.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  5.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  4.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  3.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\nUser invoked function: testDeleteInRecursion\r\nLogReal:  2.0   Instance to delete  \r\nLogInfo:  All instances have been deleted\r\n";	
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String actualConsoleText = DebugUITestUtilities.getConsoleText();
+		String expectedConsoleText = "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  6.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  5.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  4.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  3.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator") + "User invoked function: testDeleteInRecursion" + System.getProperty("line.separator") + "LogReal:  2.0   Instance to delete  " + System.getProperty("line.separator") + "LogInfo:  All instances have been deleted" + System.getProperty("line.separator");	
 
 		assertEquals(expectedConsoleText , actualConsoleText);
 		

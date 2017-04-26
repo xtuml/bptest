@@ -104,14 +104,7 @@ public class ParseAllActivitiesOnSystemModelTest extends UITextTest {
 		m_sysOne = getSystemModel(projOneName);
 		m_sysTwo = getSystemModel(projTwoName);
 
-		String test_repository_location = System
-				.getenv("XTUML_TEST_MODEL_REPOSITORY");
-		if (test_repository_location == null
-				|| test_repository_location.equals("")) {
-			// use the default location
-			test_repository_location = BaseTest.DEFAULT_XTUML_TEST_MODEL_REPOSITORY;
-		}
-
+		String test_repository_location = BaseTest.getTestModelRespositoryLocation();
 		String locOne = test_repository_location+ "/"
 				+ "ParseAllOnSystemTestModels/" + projOneName + ".xtuml";//$NON-NLS-1$
 		TestingUtilities.importModelUsingWizard(m_sysOne, locOne, false);

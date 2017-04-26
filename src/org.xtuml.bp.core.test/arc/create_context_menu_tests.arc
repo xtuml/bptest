@@ -156,6 +156,12 @@
       .assign attr_result = true
     .end if
   .end if
+  .if (((kl == "O_ATTR") and (label == "Split")) and (specialism == "Referential"))
+    .assign attr_result = true
+  .end if
+  .if (((kl == "O_ATTR") and (label == "Split")) and (specialism == "Base And Ref"))
+    .assign attr_result = true
+  .end if
   .if ((kl == "S_EDT") and (label == "Enumerator"))
     .assign attr_result = true
   .end if

@@ -354,27 +354,3 @@ Transaction started: Delete model element instance(s)
   instance of [ui.canvas.GraphicalElement] UN-RelatedAcross R1 To:  instance of [ui.canvas.Model]
  Deletion of instance of type: ui.canvas.GraphicalElement
 Transaction Ended: Delete model element instance(s) with delta size: 354
-Transaction started: Auto-reconcilation
- Creation of instance of type: ui.canvas.GraphicalElement
- Creation of instance of type: ui.canvas.Shape
- Creation of instance of type: ui.canvas.Graphnode
-  instance of [ui.canvas.Shape] RelatedAcross R19 To:  instance of [ui.canvas.Graphnode]
- Creation of instance of type: ui.canvas.Graphelement
-  instance of [ui.canvas.Graphnode] RelatedAcross R301 To:  instance of [ui.canvas.Graphelement]
-  instance of [ui.canvas.GraphicalElement] RelatedAcross R23 To:  instance of [ui.canvas.Graphelement]
- Creation of instance of type: ui.canvas.Diagramelement
-  instance of [ui.canvas.Graphelement] RelatedAcross R302 To:  instance of [ui.canvas.Diagramelement]
- Creation of instance of type: ui.canvas.NoncontainingShape
-  instance of [ui.canvas.NoncontainingShape] RelatedAcross R28 To:  instance of [ui.canvas.Shape]
- Attribute 'Selrectw' of ui.canvas.Model changed ( '0' -> '200')
- Attribute 'Selrecth' of ui.canvas.Model changed ( '0' -> '150')
- Attribute 'Width' of ui.canvas.Graphnode changed ( '0.0' -> '200.0')
- Attribute 'Height' of ui.canvas.Graphnode changed ( '0.0' -> '150.0')
-  instance of [ui.canvas.Shape] RelatedAcross R2 To:  instance of [ui.canvas.GraphicalElement]
-  instance of [ui.canvas.GraphicalElement] RelatedAcross R1 To:  instance of [ui.canvas.Model]
-  instance of [ui.canvas.GraphicalElement] RelatedAcross R10 To:  instance of [ui.canvas.ElementSpecification]
-  instance of [ui.canvas.ElementSpecification] RelatedAcross R16 To:  instance of [ui.canvas.GraphicalElement]
- Attribute 'Ooa_id' of ui.canvas.GraphicalElement changed ( '00000000-0000-0000-0000-000000000000' -> '269ef67c-c8d0-4817-8370-f658f8499e31')
- Attribute 'Represents' of ui.canvas.GraphicalElement changed ( 'null' -> ' instance of [core.Package]')
-  instance of [ui.canvas.ElementSpecification] UN-RelatedAcross R16 To:  instance of [ui.canvas.GraphicalElement]
-Transaction Ended: Auto-reconcilation with delta size: 22

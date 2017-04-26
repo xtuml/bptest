@@ -101,7 +101,7 @@ public class ImportPasteElementsWithIPRTest extends BaseTest {
 
 	@Test
 	public void testCopyPasteElementWithIPR() {
-		
+		BaseTest.dispatchEvents(0);
 		// create new package to paste Component reference in
 		m_sys.Newpackage();
 		setIPRPreference(projectName, false);
@@ -143,13 +143,18 @@ public class ImportPasteElementsWithIPRTest extends BaseTest {
 		ce = ((ModelEditor) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
-		TestUtil.yesToDialog(5000);
+		TestUtil.yesToDialog(200);
 		
 		// paste element
 		UITestingUtilities.pasteClipboardContents(new Point(700, 100), ce);
 		
 		// Verification
 		ComponentReference_c pasted = ComponentReference_c.getOneCL_ICOnR8001(PackageableElement_c.getOnePE_PEOnR8000(dest));
+		long maxWait = 300;
+		long startTime = System.currentTimeMillis();
+		while(pasted == null && System.currentTimeMillis() - startTime < maxWait) {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		}
 		assertNotNull(pasted);
 		assertFalse(pasted.getAssignedcomp_id() == Gd_c.Null_unique_id());
 			

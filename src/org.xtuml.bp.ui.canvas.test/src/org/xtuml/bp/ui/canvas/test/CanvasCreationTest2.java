@@ -102,7 +102,7 @@ public class CanvasCreationTest2 extends CanvasTest {
 		int mc_count_after = mcs.length;
 		assertTrue("Number of ModelClass instances found: " + Integer.toString(mc_count_after) + "Expected: " + Integer.toString(mc_count + 1), (mc_count + 1) == mc_count_after );
 		
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
         UITestingUtilities.deactivateTool(tool);
 	}
 	@Test
@@ -129,7 +129,7 @@ public class CanvasCreationTest2 extends CanvasTest {
 		int ic_count_after = ics.length;
 		assertTrue("Number of Imported Class instances found: " + Integer.toString(ic_count_after) + "Expected: " + Integer.toString(ic_count + 1), (ic_count + 1) == ic_count_after );
 		
-        validateOrGenerateResultsGenerics(ce, generateResults); 
+        validateOrGenerateResults(ce, generateResults); 
         UITestingUtilities.deactivateTool(tool);
 	}
 	@Test
@@ -159,7 +159,7 @@ public class CanvasCreationTest2 extends CanvasTest {
 		int udt_count_after = udts.length;
 		assertTrue("Number of Imported Class instances found: " + Integer.toString(udt_count_after) + "Expected: " + Integer.toString(udt_count + 1), (udt_count + 1) == udt_count_after );
 		
-        validateOrGenerateResultsGenerics(ce, generateResults); 
+        validateOrGenerateResults(ce, generateResults); 
         UITestingUtilities.deactivateTool(tool);
 	}
 
@@ -190,7 +190,7 @@ public class CanvasCreationTest2 extends CanvasTest {
 		int edt_count_after = edts.length;
 		assertTrue("Number of Imported Class instances found: " + Integer.toString(edt_count_after) + "Expected: " + Integer.toString(edt_count + 1), (edt_count + 1) == edt_count_after );
 		
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
         UITestingUtilities.deactivateTool(tool);
 	}
 	
@@ -218,16 +218,16 @@ public class CanvasCreationTest2 extends CanvasTest {
 		int ee_count_after = ees.length;
 		assertTrue("Number of Imported Class instances found: " + Integer.toString(ee_count_after) + "Expected: " + Integer.toString(ee_count + 1), (ee_count + 1) == ee_count_after );
 		
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
         UITestingUtilities.deactivateTool(tool);
 	}
 
     /* (non-Javadoc)
-     * @see org.xtuml.bp.ui.canvas.test.CanvasTest#validateOrGenerateResultsGenerics(GraphicalEditor, boolean)
+     * @see org.xtuml.bp.ui.canvas.test.CanvasTest#validateOrGenerateResults(GraphicalEditor, boolean)
      */
-    public void validateOrGenerateResultsGenerics(GraphicalEditor editor, boolean generate)
+    public void validateOrGenerateResults(GraphicalEditor editor, boolean generate)
     {
         // we want the diagram's values restored each time
-        super.validateOrGenerateResultsGenerics(editor, generate, true);
+        super.validateOrGenerateResults(editor, generate, true);
     }
 }

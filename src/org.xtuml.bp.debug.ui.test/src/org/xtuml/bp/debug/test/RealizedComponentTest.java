@@ -130,10 +130,8 @@ public class RealizedComponentTest extends BaseTest {
 	DebugUITestUtilities.waitForBPThreads(m_sys);
 	DebugUITestUtilities.waitForExecution(); 	
 
-	String expectedConsoleText = "Simulation started.\r\nUser invoked function: Calls\r\nLogInfo:  Calling 717544 ...\r\nLogSuccess:  Call Ended...\r\nLogInfo:  Calling 7177076 ...\r\nLogSuccess:  Call Ended...\r\nLogFailure:  No call found to end\r\n";
-	if (!Platform.getOS().contains("win")) {
-		expectedConsoleText = expectedConsoleText.replace("\r", "");
-	}
+	String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: Calls" + System.getProperty("line.separator") + "LogInfo:  Calling 717544 ..." + System.getProperty("line.separator") + "LogSuccess:  Call Ended..." + System.getProperty("line.separator") + "LogInfo:  Calling 7177076 ..." + System.getProperty("line.separator") + "LogSuccess:  Call Ended..." + System.getProperty("line.separator") + "LogFailure:  No call found to end" + System.getProperty("line.separator");
+
 	String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 	assertEquals(expectedConsoleText, actualConsoleText);
 
@@ -168,10 +166,8 @@ public class RealizedComponentTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution(); 	
 
-		String expectedConsoleText = "Simulation started.\r\nUser invoked function: AddContact\r\nLogInfo:  name is provided\r\nLogSuccess:  New Contact Added\r\nLogSuccess:  Process Completed\r\nLogSuccess:  done\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: AddContact" + System.getProperty("line.separator") + "LogInfo:  name is provided" + System.getProperty("line.separator") + "LogSuccess:  New Contact Added" + System.getProperty("line.separator") + "LogSuccess:  Process Completed" + System.getProperty("line.separator") + "LogSuccess:  done" + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 
@@ -206,10 +202,8 @@ public class RealizedComponentTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution(); 	
 
-		String expectedConsoleText = "Simulation started.\r\nUser invoked function: HandShake\r\nLogInfo:  HandShake with Phone is completed\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: HandShake" + System.getProperty("line.separator") + "LogInfo:  HandShake with Phone is completed" + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 
@@ -244,10 +238,8 @@ public class RealizedComponentTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution(); 	
 
-		String expectedConsoleText = "Simulation started.\r\nUser invoked function: SMS\r\nLogInfo:  Sending:  This is a SMS text\r\nLogInfo:  Message is Sent\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: SMS" + System.getProperty("line.separator") + "LogInfo:  Sending:  This is a SMS text" + System.getProperty("line.separator") + "LogInfo:  Message is Sent" + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 
@@ -282,10 +274,8 @@ public class RealizedComponentTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution(); 	
 
-		String expectedConsoleText = "Simulation started.\r\nUser invoked function: Sync\r\nLogInfo:  Sync started...\r\nLogFailure:  Sync Failed.\r\nLogFailure:  Could not update contact.\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: Sync" + System.getProperty("line.separator") + "LogInfo:  Sync started..." + System.getProperty("line.separator") + "LogFailure:  Sync Failed." + System.getProperty("line.separator") + "LogFailure:  Could not update contact." + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 
@@ -320,10 +310,8 @@ public class RealizedComponentTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution(); 	
 
-		String expectedConsoleText = "Simulation started.\r\nUser invoked function: Program\r\nLogInfo:  Program started.\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: Program" + System.getProperty("line.separator") + "LogInfo:  Program started." + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 
@@ -358,10 +346,8 @@ public class RealizedComponentTest extends BaseTest {
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 		DebugUITestUtilities.waitForExecution(); 	
 
-		String expectedConsoleText = "Simulation started.\r\nUser invoked function: Mail\r\nLogInfo:  Ack is received\r\nLogInfo:  Mail is sent.\r\n";
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
+		String expectedConsoleText = "Simulation started." + System.getProperty("line.separator") + "User invoked function: Mail" + System.getProperty("line.separator") + "LogInfo:  Ack is received" + System.getProperty("line.separator") + "LogInfo:  Mail is sent." + System.getProperty("line.separator");
+
 		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
 		assertEquals(expectedConsoleText, actualConsoleText);
 

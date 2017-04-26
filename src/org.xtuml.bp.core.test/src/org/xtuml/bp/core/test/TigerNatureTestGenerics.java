@@ -260,12 +260,9 @@ public class TigerNatureTestGenerics extends CanvasTest {
 
 	@Test
 	public void testNewProjectNonDefaultPath() throws Exception {
-		String location = "c:\\tiger_test";
-		if(!Platform.getOS().contains("win")) {
-			location = Platform.getInstanceLocation().getURL().toString()
+		String location = Platform.getInstanceLocation().getURL().toString()
 					.replaceAll("file:", "")
 					+ "../tiger_test";
-		}
 		File loc = new File(location);
 		if (loc.exists()) {
 			if (loc.isDirectory()) {
@@ -301,14 +298,9 @@ public class TigerNatureTestGenerics extends CanvasTest {
 		gc0.setSelection(false);
 		gc0.notifyListeners(SWT.Selection, null);
 		Text gc2 = (Text) gc[2];
-		if (Platform.getOS().contains("win")) {
-			gc2.setText("c:\\tiger_test");
-		}
-		else {
-			gc2.setText(Platform.getInstanceLocation().getURL().toString()
+		gc2.setText(Platform.getInstanceLocation().getURL().toString()
 					.replaceAll("file:", "")
 					+ "../tiger_test");
-		}
 
 		nsw.performFinish();
 		dialog.close();

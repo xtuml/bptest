@@ -36,6 +36,7 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;

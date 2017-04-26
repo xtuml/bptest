@@ -347,7 +347,7 @@ abstract class ModifyRelationTest extends PkgCMBaseTest {
         if (baseEditor != null)
             ;
         resultPostfix = "withDangling";
-        validateOrGenerateResultsGenerics(baseEditor, generateResult, false);
+        validateOrGenerateResults(baseEditor, generateResult, false);
 
         // renamed component should not be effected
         if (!testOnlyDelete) {
@@ -419,7 +419,7 @@ abstract class ModifyRelationTest extends PkgCMBaseTest {
     	Display display = Display.getCurrent();
     	if (baseEditor != null) {
     		resultPostfix = "withoutDangling";
-    		validateOrGenerateResultsGenerics(baseEditor, generateResult, false);
+    		validateOrGenerateResults(baseEditor, generateResult, false);
             PlatformUI.getWorkbench().getActiveWorkbenchWindow()
             .getActivePage().closeEditor(baseEditor.getParentEditor(), true);
        }

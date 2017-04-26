@@ -35,10 +35,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -54,6 +52,7 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.ui.explorer.ExplorerView;
@@ -145,12 +144,6 @@ public class WelcomePageTestGPS extends TestCase {
 		if (projectExists)
 			containsProjectMembers();
 	}
-
-	public void raiseWorkbench() {
-		Shell s = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-		s.forceActive();
-		s.forceFocus();
-	}
 	
 	@Test
 	public void testProjectCreation() {
@@ -163,8 +156,6 @@ public class WelcomePageTestGPS extends TestCase {
 		TestUtil.sleepWithDispatchOfEvents(7000);
 
 		verifyProjectCreated();
-
-		raiseWorkbench();
 	}
 	@Test
 	public void testNoProjectOverwrite() {
@@ -207,14 +198,17 @@ public class WelcomePageTestGPS extends TestCase {
 	}
 	@Test
 	public void testImportLoadPersistAndBuild()  throws Exception {
+		// This test is disabled for command line runs
+		// See https://support.onefact.net/issues/9414
+		if(BaseTest.isCLITestRun()) {
+			return;
+		}
 		int numImports = 3;
 		for (int i = 0; i < numImports; i++) {
 			System.out.println("Import number: " + String.valueOf(i+1));
 			TestUtil.selectButtonInDialog(1000, "Yes");
 			runGPSGettingStartedAction();
 			TestingUtilities.allowJobCompletion();
-			
-			raiseWorkbench();
 			
 			verifyProjectCreated();
 	
@@ -237,14 +231,17 @@ public class WelcomePageTestGPS extends TestCase {
 	}
 	@Test
     public void testSmartPreBuild() throws Exception {
+		// This test is disabled for command line runs
+		// See https://support.onefact.net/issues/9414
+		if(BaseTest.isCLITestRun()) {
+			return;
+		}
         // This test builds the project several times, testing that the exported
         // <project>.sql file from pre-builder is updated when needed and left
         // unmodified by the build (re-export skipped) when an update is not needed.
         TestUtil.selectButtonInDialog(1000, "Yes");
         runGPSGettingStartedAction();
         TestingUtilities.allowJobCompletion();
-
-        raiseWorkbench();
 
         verifyProjectCreated();
 
@@ -317,7 +314,6 @@ public class WelcomePageTestGPS extends TestCase {
 	private void checkForErrors() {
 		// Check the problems view
         g_view = selectView(project, "org.eclipse.ui.views.ProblemView");
-        IViewSite site = g_view.getViewSite();
 
         // Check the explorer view for orphaned elements
         ExplorerView view = null;

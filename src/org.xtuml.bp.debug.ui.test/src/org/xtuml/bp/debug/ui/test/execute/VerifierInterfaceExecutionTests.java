@@ -26,8 +26,6 @@ import java.util.ArrayList;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IProcess;
@@ -39,7 +37,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -69,7 +66,6 @@ import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
-import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.debug.ui.launch.BPDebugUtils;
@@ -132,20 +128,7 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 
 			});
 
-			PersistableModelComponent sys_comp = m_sys
-					.getPersistableComponent();
-			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
-
 			CorePlugin.enableParseAllOnResourceChange();
-
-			TestingUtilities.allowJobCompletion();
-			while (!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(
-					IProject.DEPTH_INFINITE)) {
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(
-						IProject.DEPTH_INFINITE, new NullProgressMonitor());
-				while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-					;
-			}
 
 			Ooaofooa.setPersistEnabled(true);
             delayGlobalUpgrade = false;
@@ -157,6 +140,7 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 	@After
 	public void tearDown() throws Exception {
 		DebugUITestUtilities.stopSession(m_sys, projectName);
+		DebugUITestUtilities.clearConsoleOutput();
 	}
 
     @Test
@@ -1639,7 +1623,7 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 		// get the text representation of the debug tree
 		String actual_results = DebugUITestUtilities
 				.getConsoleText();
-		assertEquals(expected_results, actual_results);
+		assertEquals(expected_results, actual_results.trim());
 	}
 	
 	@Test
@@ -2252,9 +2236,7 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 		ActivityEditor editor = DebugUITestUtilities.openActivityEditorForSelectedElement();
 		DebugUITestUtilities.setBreakpointAtLine(editor, 1);
 		
-		BPDebugUtils.executeElement(testFunc);
-		
-		DebugUITestUtilities.waitForExecution();
+		BPDebugUtils.executeElement(testFunc);		
 
 		ComponentInstance_c engine = ComponentInstance_c
 				.getOneI_EXEOnR2955(component);
@@ -2263,6 +2245,8 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
 		// wait for the execution to complete
 		DebugUITestUtilities.waitForBPThreads(m_sys);
 
+		DebugUITestUtilities.waitForExecution();
+		
 		// check that execution was suspended
 		IProcess process = DebugUITestUtilities.getProcessForEngine(engine);
 		assertNotNull(process);
@@ -2290,12 +2274,10 @@ public class VerifierInterfaceExecutionTests extends BaseTest {
         DebugUITestUtilities.waitForExecution();
         DebugUITestUtilities.waitForBPThreads(m_sys);
 		
-		String expectedConsoleText = "User invoked function: test\r\nLogInfo:  Test Pass\r\n";	
-		if (!Platform.getOS().contains("win")) {
-			expectedConsoleText = expectedConsoleText.replace("\r", "");
-		}
-		org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().readAndDispatch();
-		String actualConsoleText = DebugUITestUtilities.getConsoleText("null");
+		String expectedConsoleText = "User invoked function: test" + System.getProperty("line.separator") + "LogInfo:  Test Pass" + System.getProperty("line.separator");	
+
+		BaseTest.dispatchEvents(0);
+		String actualConsoleText = DebugUITestUtilities.getConsoleText(expectedConsoleText);
 		
 		assertEquals(expectedConsoleText, actualConsoleText);
 	}

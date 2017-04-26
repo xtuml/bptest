@@ -142,6 +142,11 @@ public class ModelChangeListenersBatchingTestGenerics extends CoreTest {
 
 	@Test
 	public void testRenameSQ_CP() throws Exception {
+		// This test is disabled for CLI runs
+		// See https://support.onefact.net/issues/9453
+		if(BaseTest.isCLITestRun()) {
+			return;
+		}
 		RenameTestGenerics renTest = new RenameTestGenerics();
 		renTest.setUp();
 		Display d = Display.getDefault();
@@ -177,6 +182,11 @@ public class ModelChangeListenersBatchingTestGenerics extends CoreTest {
 
 	@Test
 	public void testRenameO_ATTR() throws Exception {
+		// This test is disabled for CLI runs
+		// See https://support.onefact.net/issues/9453
+		if(BaseTest.isCLITestRun()) {
+			return;
+		}
 		RenameTestGenerics renTest = new RenameTestGenerics();
 		renTest.setUp();
 		Display d = Display.getDefault();

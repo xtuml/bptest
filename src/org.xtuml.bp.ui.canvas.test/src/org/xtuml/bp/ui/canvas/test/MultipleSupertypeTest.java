@@ -140,7 +140,7 @@ public class MultipleSupertypeTest extends CanvasTest
 	}
 
 	private void doDiagram(GraphicalEditor editor) {
-        validateOrGenerateResultsGenerics(editor, generateResults);
+        validateOrGenerateResults(editor, generateResults);
 	}
     
 	  public void setGenerateResults() {

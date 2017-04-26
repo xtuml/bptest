@@ -222,7 +222,7 @@ public class CanvasCreationTest extends CanvasTest {
 		createShape(new Point(320, 900), 200, 200, "Activity Final Node");
 		createShape(new Point(620, 900), 200, 200, "Flow Final Node");
 
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
 	}
 	public void createShape(Point location, int width, int height, String toolName) {
 		AbstractTool tool = UITestingUtilities.getTool(toolName);
@@ -251,17 +251,17 @@ public class CanvasCreationTest extends CanvasTest {
 		UITestingUtilities.deactivateTool(tool);
 	}
 	
-	public void createAndvalidateOrGenerateResultsGenerics(Object diagram) {
+	public void createAndvalidateOrGenerateResults(Object diagram) {
 		CanvasUtilities.openCanvasEditor(diagram);
 	}
 	
 	
     /* (non-Javadoc)
-     * @see org.xtuml.bp.ui.canvas.test.CanvasTest#validateOrGenerateResultsGenerics(GraphicalEditor, boolean)
+     * @see org.xtuml.bp.ui.canvas.test.CanvasTest#validateOrGenerateResults(GraphicalEditor, boolean)
      */
-    public void validateOrGenerateResultsGenerics(GraphicalEditor editor, boolean generate)
+    public void validateOrGenerateResults(GraphicalEditor editor, boolean generate)
     {
         // we want the diagram's values restored each time
-        super.validateOrGenerateResultsGenerics(editor, generate, true);
+        super.validateOrGenerateResults(editor, generate, true);
     }
 }

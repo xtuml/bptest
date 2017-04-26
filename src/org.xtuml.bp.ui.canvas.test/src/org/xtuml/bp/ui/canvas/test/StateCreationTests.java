@@ -110,7 +110,7 @@ public class StateCreationTests extends CanvasTest {
 		int st_count_after = sts.length;
 		assertTrue("Number of Imported Class instances found: " + Integer.toString(st_count_after) + "Expected: " + Integer.toString(st_count + 1), (st_count + 1) == st_count_after );
 		
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
         UITestingUtilities.deactivateTool(tool);
 	}
 	
@@ -138,16 +138,16 @@ public class StateCreationTests extends CanvasTest {
 		int st_count_after = sts.length;
 		assertTrue("Number of Imported Class instances found: " + Integer.toString(st_count_after) + "Expected: " + Integer.toString(st_count + 1), (st_count + 1) == st_count_after );
 		
-        validateOrGenerateResultsGenerics(ce, generateResults);
+        validateOrGenerateResults(ce, generateResults);
         UITestingUtilities.deactivateTool(tool);
 	}
 
     /* (non-Javadoc)
-     * @see org.xtuml.bp.ui.canvas.test.CanvasTest#validateOrGenerateResultsGenerics(GraphicalEditor, boolean)
+     * @see org.xtuml.bp.ui.canvas.test.CanvasTest#validateOrGenerateResults(GraphicalEditor, boolean)
      */
-    public void validateOrGenerateResultsGenerics(GraphicalEditor editor, boolean generate)
+    public void validateOrGenerateResults(GraphicalEditor editor, boolean generate)
     {
         // we want the diagram's values restored each time
-        super.validateOrGenerateResultsGenerics(editor, generate, true);
+        super.validateOrGenerateResults(editor, generate, true);
     }
 }

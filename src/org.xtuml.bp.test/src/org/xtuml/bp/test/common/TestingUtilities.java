@@ -35,12 +35,7 @@ import java.io.Reader;
 import java.lang.Thread.State;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import java.util.Vector;
-
-import junit.framework.Assert;
-import junit.framework.TestCase;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -58,7 +53,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.osgi.service.datalocation.Location;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.Button;
@@ -69,15 +63,16 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
-
 import org.xtuml.bp.core.CorePlugin;
-import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.IPersistenceHierarchyMetaData;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.utilities.ui.ProjectUtilities;
+
+import junit.framework.Assert;
+import junit.framework.TestCase;
 
 public class TestingUtilities {
 
@@ -801,27 +796,26 @@ public class TestingUtilities {
 
 	public static void importDevelopmentProjectIntoWorkspace(
 			String developmentWorkspaceProject) {
-		String workspace_location = System.getenv("XTUML_DEVELOPMENT_REPOSITORY");
-		if(workspace_location == null || workspace_location.equals("")) {
-			workspace_location = BaseTest.DEFAULT_XTUML_DEVELOPMENT_REPOSITORY;
-		}
+		String workspace_location = BaseTest.getDevelopmentWorkspaceLocation();
 		String pathToProject = workspace_location + "/src/" + developmentWorkspaceProject;
 		File file = new File(pathToProject);
 		if(!file.exists()) {
-			Assert.fail("Could not locate test model at: " + pathToProject);
+			TestCase.fail("Could not locate test model at: " + pathToProject);
 			return;
 		}
-		ProjectUtilities.importExistingProject(pathToProject, true);
-		BaseTest.dispatchEvents(0);
+		importProjectIntoWorkspace(pathToProject);
 	}
 
+	public static void importProjectIntoWorkspace(String rootProjectFolder) {
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			ProjectUtilities.importExistingProjectCLI(rootProjectFolder, true);
+			BaseTest.dispatchEvents(0);
+		});
+	}
+	
 	public static void importTestingProjectIntoWorkspace(String testProject) {
 		String testProjectPath = "";
-		String repository_location = System.getenv("XTUML_TEST_MODEL_REPOSITORY");
-		if (repository_location == null || repository_location.equals("")) {
-			// use the default location
-			repository_location = BaseTest.DEFAULT_XTUML_TEST_MODEL_REPOSITORY;
-		}
+		String repository_location = BaseTest.getTestModelRespositoryLocation();
 		if (testProject.equals("GPS Watch")) {
 			// GPS Watch is special. As of completion of DEI 7986, we have one 
 			// version that is used for testing and for distribution in the tool.
@@ -832,32 +826,16 @@ public class TestingUtilities {
 		} 
 		File file = new File(testProjectPath);
 		if(!file.exists()) {
-			// check the private repository
-			repository_location = System.getenv("XTUML_PRIVATE_MODEL_REPOSITORY");
-			if(repository_location == null || repository_location.equals("")) {
-				testProjectPath = BaseTest.DEFAULT_PRIVATE_MODEL_REPOSITORY
-						+ "/" + testProject;				
-			} else {
-				testProjectPath = repository_location + "/" + testProject;
-			}
-			file = new File(testProjectPath);
 			if(!file.exists()) {
-				Assert.fail("Could not locate test model at: " + testProjectPath);
+				TestCase.fail("Could not locate test model at: " + testProjectPath);
 				return;
 			}
 		}
-		BaseTest.dispatchEvents(0);
-		ProjectUtilities.importExistingProject(testProjectPath, true);
-		BaseTest.dispatchEvents(0);
+		importProjectIntoWorkspace(testProjectPath);
 	}
 
 	public static String getExpectedResultsPath() {
-		String result = "expected_results/";
-		String os = Platform.getOS(); 
-		if (!os.contains("win")) {
-			result = result + os + "/";
-		}
-		return result;
+		return "expected_results/";
 	}
 
 }
