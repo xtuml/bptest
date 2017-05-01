@@ -308,6 +308,7 @@ public class UITestingUtilities {
 			CanvasTestUtils.doMouseMove(location.x, location.y);
 			CanvasTestUtils.doMouseContextPress(location.x, location.y);
 			canvaspasteaction.run();
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		});
 		BaseTest.dispatchEvents(0);
 	}
