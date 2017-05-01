@@ -152,6 +152,7 @@ public class MultipleSelectionAssignmentTests extends BaseTest {
 	public void testMultipleSelectionAssignment() throws CoreException,
 			IOException {
 		for (int i = 0; i < testClasses.length; i++) {
+			BaseTest.dispatchEvents();
 			NonRootModelElement[] testElements = getTestElementsForType(testClasses[i]);
 			assertTrue("Unable to locate test elements for class type: "
 					+ testClasses[i].getSimpleName(), testElements.length > 0);
