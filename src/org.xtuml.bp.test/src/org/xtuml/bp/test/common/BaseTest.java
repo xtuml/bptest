@@ -441,13 +441,6 @@ public class BaseTest extends TestCase {
 						continue;
 					}
 					
-					// For some reason when running search tests with maven
-					// it tries to find org.eclipse.jdt.launching.macosx
-					// The tests run fine but fail due to these error log entries
-					if (stack != null && stack.contains("org.xtuml.bp.search.test")) {
-						continue;
-					}
-					
 					// Ignore workspace session errors on test shutdown
 					if (pluginID.equals("org.eclipse.core.resources") && entry.getMessage()
 							.contains("The workspace will exit with unsaved changes in this session")) {
