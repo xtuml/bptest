@@ -177,10 +177,12 @@ public class ParseErrorForEmptySynchronousMessagesTests extends BaseTest {
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 				;
 		});
+		BaseTest.dispatchEvents();
 		IScopeContext projectScope = new ProjectScope(project);
 		Preferences projectNode = projectScope
 				.getNode(BridgePointProjectPreferences.BP_PROJECT_PREFERENCES_ID);
 		projectNode.putBoolean(key, value);
+		projectNode.flush();
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 
