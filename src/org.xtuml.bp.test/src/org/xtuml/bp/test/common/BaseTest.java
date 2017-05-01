@@ -1278,6 +1278,10 @@ public class BaseTest extends TestCase {
 		compareAndOutputResults(fileName, log_output);
 	}
 	
+	public static void clearResultLogger() {
+		resultLogger.clearLog();
+	}
+	
 	public static void compareAndOutputResults(String fileName, String[] log_output) throws Exception{
 		
 		//Here get the contents from the file and compare with the contents of 

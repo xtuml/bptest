@@ -196,6 +196,8 @@ public class ModelTransactionTestGenerics extends BaseTest {
 	// Testing action/transaction that will result in both ooaofooa and ooaofgraphics changes
 	@Test
 	public void testShapeCreationTransactionThruCanvas() throws Exception {
+		// make the log is clear before starting the tests
+		BaseTest.clearResultLogger();
 		TransactionListener listener = new TransactionListener();
 		getSystemModel().getTransactionManager().addTransactionListener(
 				listener);
