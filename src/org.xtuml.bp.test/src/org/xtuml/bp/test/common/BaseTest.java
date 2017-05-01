@@ -444,7 +444,7 @@ public class BaseTest extends TestCase {
 					// For some reason when running search tests with maven
 					// it tries to find org.eclipse.jdt.launching.macosx
 					// The tests run fine but fail due to these error log entries
-					if (stack.contains("org.xtuml.bp.search.test")) {
+					if (stack != null && stack.contains("org.xtuml.bp.search.test")) {
 						continue;
 					}
 					
