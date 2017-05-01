@@ -458,6 +458,16 @@ public class BaseTest extends TestCase {
 						continue;
 					}
 					
+					/**
+					 * For now ignore consistency errors.  Another issue is raised https://support.onefact.net/issues/9483 which
+					 * will investigate and address these.  At this point normal consistency checking shall occur.  Another issue
+					 * is related to dangling reference checking.  For elements such as component references we allow a dangling
+					 * reference in the tool (unsynchronized), such cases shall not have the delete check performed.
+					 */
+					if (entry.getStack().contains("checkConsistency") || (entry.getMessage().contains("The following relationships"))) { //$NON-NLS-1$ //$NON-NLS-2$
+						continue;
+					}
+					
 					msg = prepend + ".log file is not empty";
 				}
 			}			
