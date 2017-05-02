@@ -207,6 +207,8 @@ public class BaseTest extends TestCase {
 	public static boolean testGlobals = false;
 	protected static boolean delayGlobalUpgrade = false;
 
+	protected static boolean logFileCheckingEnabled = true;
+
 	
 	public BaseTest(){
 		this(null, "");
@@ -414,6 +416,13 @@ public class BaseTest extends TestCase {
 				AbstractEntry[] elements = logView.getElements();
 				for(int i = 0; (i < elements.length) && msg.isEmpty(); i++) {
 					LogEntry entry = (LogEntry) elements[i];
+					
+					// allow certain plug-ins to disable log file checking
+					// this is only here to address a maven related issue with
+					// search tests, see  for more details.
+					if(!logFileCheckingEnabled) {
+						continue;
+					}
 					
 					// Allow messages that are informational.  They are not errors
 					if(entry.getSeverity() == IStatus.OK || entry.getSeverity() == IStatus.INFO) {

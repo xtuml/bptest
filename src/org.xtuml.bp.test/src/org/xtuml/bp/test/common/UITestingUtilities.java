@@ -307,8 +307,8 @@ public class UITestingUtilities {
 			CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
 			CanvasTestUtils.doMouseMove(location.x, location.y);
 			CanvasTestUtils.doMouseContextPress(location.x, location.y);
-			canvaspasteaction.run();
 			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			canvaspasteaction.run();
 		});
 		BaseTest.dispatchEvents(0);
 	}

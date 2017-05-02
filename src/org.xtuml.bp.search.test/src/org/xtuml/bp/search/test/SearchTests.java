@@ -44,6 +44,18 @@ public class SearchTests extends BaseTest {
 
 	@Override
 	@Before
+	public void setUp() {
+		BaseTest.logFileCheckingEnabled = false;
+	}
+	
+	@Override
+	@Before
+	public void tearDown() {
+		BaseTest.logFileCheckingEnabled = true;
+	}
+	
+	@Override
+	@Before
 	public void initialSetup() throws CoreException {
 
 		if (!firstTime)
