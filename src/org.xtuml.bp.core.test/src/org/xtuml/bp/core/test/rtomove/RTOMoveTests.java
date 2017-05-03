@@ -173,12 +173,7 @@ public class RTOMoveTests extends CanvasTest {
 			}
 		}
 		rgoUpdateSuccessful = false;
-		// When all tests run testA4C3_B15D1 fails with a 
-		// log file error.  It has something to do with dialog
-		// dismissal and previous tests as it will pass otherwise
-		// for now and until 9505 is considered resolved we
-		// will not check the log file for the RTO move tests
-		// super.tearDown();
+		super.tearDown();
 	}
 
 	/**
