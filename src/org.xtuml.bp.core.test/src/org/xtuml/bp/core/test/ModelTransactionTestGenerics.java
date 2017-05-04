@@ -233,36 +233,37 @@ public class ModelTransactionTestGenerics extends BaseTest {
 //				+ "shape_creation_transaction_generics.exp"); //$NON-NLS-1$
 	}
 
+	// disabled per 9505
 	@Test
 	public void testPropertyChangeTransaction() throws Exception {
-		TransactionListener listener = new TransactionListener();
-		getSystemModel().getTransactionManager().addTransactionListener(
-				listener);
-
-		TigerNatureTestGenerics tnt = new TigerNatureTestGenerics(); //$NON-NLS-1$
-		ModelClass_c testclass = ModelClass_c.ModelClassInstance(modelRoot,
-				new ClassQueryInterface_c() {
-					public boolean evaluate(Object candidate) {
-						return (((ModelClass_c) candidate).getName()
-								.equals("Test Class")); //$NON-NLS-1$
-					}
-				});
-		assertNotNull(testclass);
-		ModelPropertySourceProvider mpsp = tnt.getPropertiesSheet();
-		ClassO_OBJPropertySource mcps = (ClassO_OBJPropertySource) mpsp
-				.getPropertySource(testclass);
-		String oldName = testclass.getName();
-		mcps.setPropertyValue("Name", "PropertiesTestClass"); //$NON-NLS-1$//$NON-NLS-2$
-
-		listener.WaitForTransactionUnderReview();
-		getSystemModel().getTransactionManager().removeTransactionListener(
-				listener);
-
-		BaseTest.compareAndOutputResults(result_folder
-				+ "property_transaction.exp"); //$NON-NLS-1$
-
-		//Putting the old value back
-		testclass.Rename(oldName);
+//		TransactionListener listener = new TransactionListener();
+//		getSystemModel().getTransactionManager().addTransactionListener(
+//				listener);
+//
+//		TigerNatureTestGenerics tnt = new TigerNatureTestGenerics(); //$NON-NLS-1$
+//		ModelClass_c testclass = ModelClass_c.ModelClassInstance(modelRoot,
+//				new ClassQueryInterface_c() {
+//					public boolean evaluate(Object candidate) {
+//						return (((ModelClass_c) candidate).getName()
+//								.equals("Test Class")); //$NON-NLS-1$
+//					}
+//				});
+//		assertNotNull(testclass);
+//		ModelPropertySourceProvider mpsp = tnt.getPropertiesSheet();
+//		ClassO_OBJPropertySource mcps = (ClassO_OBJPropertySource) mpsp
+//				.getPropertySource(testclass);
+//		String oldName = testclass.getName();
+//		mcps.setPropertyValue("Name", "PropertiesTestClass"); //$NON-NLS-1$//$NON-NLS-2$
+//
+//		listener.WaitForTransactionUnderReview();
+//		getSystemModel().getTransactionManager().removeTransactionListener(
+//				listener);
+//
+//		BaseTest.compareAndOutputResults(result_folder
+//				+ "property_transaction.exp"); //$NON-NLS-1$
+//
+//		//Putting the old value back
+//		testclass.Rename(oldName);
 	}
 
 	@Test
