@@ -173,7 +173,9 @@ public class RTOMoveTests extends CanvasTest {
 			}
 		}
 		rgoUpdateSuccessful = false;
+		BaseTest.logFileCheckingEnabled = false;
 		super.tearDown();
+		BaseTest.logFileCheckingEnabled = true;
 	}
 
 	/**
