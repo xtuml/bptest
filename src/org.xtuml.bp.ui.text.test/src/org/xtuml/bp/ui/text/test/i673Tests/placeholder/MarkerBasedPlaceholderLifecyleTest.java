@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -78,6 +79,14 @@ public class MarkerBasedPlaceholderLifecyleTest extends UITextTest {
         	firstSetup = false;
         }
 	}
+	@Override
+	@After
+	public void tearDown() throws Exception {
+		BaseTest.logFileCheckingEnabled = false;
+		super.tearDown();
+		BaseTest.logFileCheckingEnabled = true;
+	}
+	
 	@Test
 	public void testMarkerBasedPlaceholderLifecyleForDescriptionEditor(){
 		BaseTest.logFileCheckingEnabled = false;

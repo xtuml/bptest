@@ -357,15 +357,7 @@ public class BaseTest extends TestCase {
 	
 	@After
 	public void tearDown() throws Exception {
-		// clear any left over events
-		// not sure why but some test is not on the UI thread when
-		// calling teardown
-		if (!PlatformUI.getWorkbench().getDisplay().isDisposed()
-				&& PlatformUI.getWorkbench().getDisplay().getThread() == Thread.currentThread()) {
-			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-				;
-		}
-		BaseTest.staticTearDown();
+7		BaseTest.staticTearDown();
 	}
 	
 

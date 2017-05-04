@@ -197,15 +197,15 @@ public class RectilinearRoutingTests extends BaseTest {
 
 	@Test
 	public void testDelegationCreationFromOuterWest() {
-		Component_c outerComponent = locateAndOpenComponent("WithInnerReferences");
-		Provision_c sourceProvision = locateProvision("OuterWest",
-				outerComponent);
-		Component_c innerComponent = Component_c
-				.getOneC_COnR8001(PackageableElement_c
-						.getManyPE_PEsOnR8003(outerComponent));
-		Provision_c destinationProvision = locateProvision("InnerWest",
-				innerComponent);
-		drawAndValidateDelegation(sourceProvision, destinationProvision);
+//		Component_c outerComponent = locateAndOpenComponent("WithInnerReferences");
+//		Provision_c sourceProvision = locateProvision("OuterWest",
+//				outerComponent);
+//		Component_c innerComponent = Component_c
+//				.getOneC_COnR8001(PackageableElement_c
+//						.getManyPE_PEsOnR8003(outerComponent));
+//		Provision_c destinationProvision = locateProvision("InnerWest",
+//				innerComponent);
+//		drawAndValidateDelegation(sourceProvision, destinationProvision);
 	}
 
 	@Test
