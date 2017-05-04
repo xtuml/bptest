@@ -357,7 +357,7 @@ public class BaseTest extends TestCase {
 	
 	@After
 	public void tearDown() throws Exception {
-7		BaseTest.staticTearDown();
+		BaseTest.staticTearDown();
 	}
 	
 
