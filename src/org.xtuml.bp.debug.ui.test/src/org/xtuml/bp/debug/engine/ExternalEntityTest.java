@@ -15,6 +15,7 @@ import org.xtuml.bp.debug.test.VerifierTest;
 import org.xtuml.bp.debug.ui.launch.BPDebugUtils;
 import org.xtuml.bp.debug.ui.test.DebugUITestUtilities;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
 
@@ -45,14 +46,6 @@ public class ExternalEntityTest extends VerifierTest {
 
 	public ExternalEntityTest() {
 		super("EE_Test");
-	}
-
-	@Test
-	public void testBasicEE()throws InterruptedException {
-	    redirectOutput("EE_Test");
-		executeModel();
-		endRedirection();
-		compareOutput("EE_Test");
 	}
 	
 	@Test
@@ -112,6 +105,16 @@ public class ExternalEntityTest extends VerifierTest {
 		expectedResults = TestUtil.getTextFileContents(expectedResultsFile);
 		actualResults = actualResults.trim();
 		expectedResults = expectedResults.trim();
-		assertEquals("Unexpected verifier output for isRealized values on EE.", expectedResults, actualResults);		
+		assertEquals("Unexpected verifier output for isRealized values on EE.", expectedResults, actualResults);	
+		DebugUITestUtilities.stopSession(m_sys, m_sys.getName());
+		DebugUITestUtilities.clearConsoleOutput();
+	}
+
+	@Test
+	public void testBasicEE()throws InterruptedException {
+	    redirectOutput("EE_Test");
+		executeModel();
+		endRedirection();
+		compareOutput("EE_Test");
 	}
 }

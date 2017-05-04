@@ -24,6 +24,7 @@
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.xtuml.bp.debug.engine.ExternalEntityTest;
 import org.xtuml.bp.debug.engine.VerifierMessageTestGlobals;
 import org.xtuml.bp.debug.test.DateLoggingTests;
 import org.xtuml.bp.debug.test.GlobalTestSetupClass;
@@ -50,7 +51,6 @@ import junit.framework.TestSuite;
 //	VerifierMessageTestGlobals.class,
 //	RealizedClassRelaunchTest.class,
 //	DLLRelaunchTest.class,
-	RecursionExecutionTest.class,
 	BlockedComponentExecutionTest.class,
 	VariableViewTests.class,
 	InstanceVariableViewTests.class,

@@ -17,6 +17,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,6 +63,12 @@ public class RecursionExecutionTest extends BaseTest {
 			
 
 			project.getName();
+			long maxTime = 2000;
+			long startTime = System.currentTimeMillis();
+			while(m_sys == null && System.currentTimeMillis() - startTime < maxTime) {
+				while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+				m_sys = getSystemModel(project.getName());
+			}
 			m_sys = getSystemModel(project.getName());
 
 			m_sys = SystemModel_c.SystemModelInstance(Ooaofooa

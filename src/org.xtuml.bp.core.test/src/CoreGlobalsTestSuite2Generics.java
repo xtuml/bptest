@@ -92,7 +92,6 @@ import junit.framework.TestSuite;
 		UndoRedoTestGenerics.class,
 		UseCaseTestsGenerics.class,
 		RefreshTestCoreGenerics.class,
-		ModificationValidationTestsGenerics.class,
 		UniqueNameTestGenerics.class,
 		ActivityTestsGenerics.class,
 		ModelIntegrityTests.class,

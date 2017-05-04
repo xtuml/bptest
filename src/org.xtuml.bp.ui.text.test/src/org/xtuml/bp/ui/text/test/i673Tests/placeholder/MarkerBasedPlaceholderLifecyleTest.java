@@ -32,6 +32,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Operation_c;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.ui.text.activity.ActivityEditorInputFactory;
@@ -79,7 +80,9 @@ public class MarkerBasedPlaceholderLifecyleTest extends UITextTest {
 	}
 	@Test
 	public void testMarkerBasedPlaceholderLifecyleForDescriptionEditor(){
+		BaseTest.logFileCheckingEnabled = false;
 		markerLifecycleForEditor(DescriptionEditorInputFactory.PLACEHOLDER_EXTENSION);
+		BaseTest.logFileCheckingEnabled = true;
 	}
 	
 	@Test

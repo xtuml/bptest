@@ -154,6 +154,7 @@ public class ImportPasteElementsWithIPRTest extends BaseTest {
 		long startTime = System.currentTimeMillis();
 		while(pasted == null && System.currentTimeMillis() - startTime < maxWait) {
 			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			pasted = ComponentReference_c.getOneCL_ICOnR8001(PackageableElement_c.getOnePE_PEOnR8000(dest));
 		}
 		assertNotNull(pasted);
 		assertFalse(pasted.getAssignedcomp_id() == Gd_c.Null_unique_id());

@@ -207,6 +207,8 @@ public class BaseTest extends TestCase {
 	public static boolean testGlobals = false;
 	protected static boolean delayGlobalUpgrade = false;
 
+	protected static boolean logFileCheckingEnabled = true;
+
 	
 	public BaseTest(){
 		this(null, "");
@@ -356,7 +358,13 @@ public class BaseTest extends TestCase {
 	@After
 	public void tearDown() throws Exception {
 		// clear any left over events
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		// not sure why but some test is not on the UI thread when
+		// calling teardown
+		if (!PlatformUI.getWorkbench().getDisplay().isDisposed()
+				&& PlatformUI.getWorkbench().getDisplay().getThread() == Thread.currentThread()) {
+			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+				;
+		}
 		BaseTest.staticTearDown();
 	}
 	
@@ -415,6 +423,13 @@ public class BaseTest extends TestCase {
 				for(int i = 0; (i < elements.length) && msg.isEmpty(); i++) {
 					LogEntry entry = (LogEntry) elements[i];
 					
+					// allow certain plug-ins to disable log file checking
+					// this is only here to address a maven related issue with
+					// search tests, see  for more details.
+					if(!logFileCheckingEnabled) {
+						continue;
+					}
+					
 					// Allow messages that are informational.  They are not errors
 					if(entry.getSeverity() == IStatus.OK || entry.getSeverity() == IStatus.INFO) {
 						continue;
@@ -455,6 +470,16 @@ public class BaseTest extends TestCase {
 					if(entry.getMessage().contains("Could not load SWT style")) {
 						// ignore as it provides no benefit to our testing
 						// this it ouside of our code and related to OS configuration
+						continue;
+					}
+					
+					/**
+					 * For now ignore consistency errors.  Another issue is raised https://support.onefact.net/issues/9483 which
+					 * will investigate and address these.  At this point normal consistency checking shall occur.  Another issue
+					 * is related to dangling reference checking.  For elements such as component references we allow a dangling
+					 * reference in the tool (unsynchronized), such cases shall not have the delete check performed.
+					 */
+					if (entry.getStack().contains("checkConsistency") || (entry.getMessage().contains("The following relationships"))) { //$NON-NLS-1$ //$NON-NLS-2$
 						continue;
 					}
 					
@@ -1266,6 +1291,10 @@ public class BaseTest extends TestCase {
 		String[] log_output = resultLogger.getLogContents();
 		resultLogger.clearLog();
 		compareAndOutputResults(fileName, log_output);
+	}
+	
+	public static void clearResultLogger() {
+		resultLogger.clearLog();
 	}
 	
 	public static void compareAndOutputResults(String fileName, String[] log_output) throws Exception{

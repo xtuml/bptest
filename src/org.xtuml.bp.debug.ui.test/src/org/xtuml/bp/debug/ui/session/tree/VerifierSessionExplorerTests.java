@@ -32,6 +32,7 @@ import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
+import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +48,6 @@ import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
-import org.xtuml.bp.core.util.UIUtil;
 import org.xtuml.bp.debug.ui.launch.BPDebugUtils;
 import org.xtuml.bp.debug.ui.test.DebugUITestUtilities;
 import org.xtuml.bp.test.TestUtil;
@@ -116,7 +116,6 @@ public class VerifierSessionExplorerTests extends BaseTest {
 	
 	@Test
 	public void testComponentsInSessionExplorerTree() {
-		BaseTest.waitFor(300);
 		Component_c component = Component_c.getOneC_COnR8001(PackageableElement_c.getManyPE_PEsOnR8000(Package_c.getManyEP_PKGsOnR1405(m_sys)), new ClassQueryInterface_c() {
 
 			public boolean evaluate(Object candidate) {
@@ -124,6 +123,20 @@ public class VerifierSessionExplorerTests extends BaseTest {
 			}
 
 		});
+		// we expect the component, just need to wait long
+		// enough
+		long startTime = System.currentTimeMillis();
+		long maxTime = 2000;
+		while(component == null && System.currentTimeMillis() - startTime < maxTime) {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			component = Component_c.getOneC_COnR8001(PackageableElement_c.getManyPE_PEsOnR8000(Package_c.getManyEP_PKGsOnR1405(m_sys)), new ClassQueryInterface_c() {
+
+				public boolean evaluate(Object candidate) {
+					return ((Component_c) candidate).getName().equals("fc1");
+				}
+
+			});
+		}
 		assertNotNull(component);
 
 		// launch the component
