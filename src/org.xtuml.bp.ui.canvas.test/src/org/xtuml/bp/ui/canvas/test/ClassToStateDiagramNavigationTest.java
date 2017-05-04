@@ -242,50 +242,51 @@ public class ClassToStateDiagramNavigationTest extends BaseTest
         // check that the editor that now has focus is for the correct 
         // instance state machine
         WorkbenchPart editorOpened = (WorkbenchPart) EditorUtil.getCurrentEditor();
-        assertTrue("Instance state machine diagram wasn't opened", 
-            editorOpened.getPartName().startsWith( className ));
-        
-        // close the editor just opened
-        EditorUtil.closeEditor((IEditorPart) editorOpened);
-        
-        // check that there is tooltip text for the marker-icon
-        Label label = (Label) ((IFigure) part.getFigure().getChildren().get(0)).getToolTip();
-        assertTrue("Tooltip text is absent or incorrect", 
-            label.getText().indexOf("Instance State Machine Diagram") >= 0);
-        
-        // find a class which we know is displaying a class 
-        // state machine marker-icon
-        className = "Disk Ownership";
-        clazz = OoaofooaUtil.getClass(subsystem, className);
-        
-        // double-click the marker-icon
-        node = GraphNodeUtil.getNode(graphicsModelRoot, clazz);
-        part = (AbstractGraphicalEditPart) UITestingUtilities.getEditorPartFor(Shape_c.getOneGD_SHPOnR19(node));
-
-        UITestingUtilities.clearGraphicalSelection();
-        editor.zoomAll();
-        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-        
-        point = ((IFigure) part.getFigure().getChildren().get(0)).getBounds().getLocation().getSWTPoint();
-        point.x = point.x + (iconSize / 2);
-        point.y = point.y + (iconSize / 2);
-        point = CanvasTestUtils.convertToMouseCoor(point, editor.getModel());
-        UITestingUtilities.doMouseDoubleClick(point.x, point.y);
-        
-        // check that the editor that now has focus is for the correct 
-        // instance state machine
-        editorOpened = (WorkbenchPart) EditorUtil.getCurrentEditor();
-        assertTrue("Class state machine diagram wasn't opened", 
-            editorOpened.getPartName().startsWith(
-                className ));
-        
-        // close the editor just opened
-        EditorUtil.closeEditor((IEditorPart) editorOpened);
-
-        // check that there is tooltip text for the marker-icon
-        label = (Label) ((IFigure) part.getFigure().getChildren().get(0)).getToolTip();
-        assertTrue("Tooltip text is absent or incorrect", 
-            label.getText().indexOf("Class State Machine Diagram") >= 0);
+        // disabled according to 9505
+//        assertTrue("Instance state machine diagram wasn't opened", 
+//            editorOpened.getPartName().startsWith( className ));
+//        
+//        // close the editor just opened
+//        EditorUtil.closeEditor((IEditorPart) editorOpened);
+//        
+//        // check that there is tooltip text for the marker-icon
+//        Label label = (Label) ((IFigure) part.getFigure().getChildren().get(0)).getToolTip();
+//        assertTrue("Tooltip text is absent or incorrect", 
+//            label.getText().indexOf("Instance State Machine Diagram") >= 0);
+//        
+//        // find a class which we know is displaying a class 
+//        // state machine marker-icon
+//        className = "Disk Ownership";
+//        clazz = OoaofooaUtil.getClass(subsystem, className);
+//        
+//        // double-click the marker-icon
+//        node = GraphNodeUtil.getNode(graphicsModelRoot, clazz);
+//        part = (AbstractGraphicalEditPart) UITestingUtilities.getEditorPartFor(Shape_c.getOneGD_SHPOnR19(node));
+//
+//        UITestingUtilities.clearGraphicalSelection();
+//        editor.zoomAll();
+//        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+//        
+//        point = ((IFigure) part.getFigure().getChildren().get(0)).getBounds().getLocation().getSWTPoint();
+//        point.x = point.x + (iconSize / 2);
+//        point.y = point.y + (iconSize / 2);
+//        point = CanvasTestUtils.convertToMouseCoor(point, editor.getModel());
+//        UITestingUtilities.doMouseDoubleClick(point.x, point.y);
+//        
+//        // check that the editor that now has focus is for the correct 
+//        // instance state machine
+//        editorOpened = (WorkbenchPart) EditorUtil.getCurrentEditor();
+//        assertTrue("Class state machine diagram wasn't opened", 
+//            editorOpened.getPartName().startsWith(
+//                className ));
+//        
+//        // close the editor just opened
+//        EditorUtil.closeEditor((IEditorPart) editorOpened);
+//
+//        // check that there is tooltip text for the marker-icon
+//        label = (Label) ((IFigure) part.getFigure().getChildren().get(0)).getToolTip();
+//        assertTrue("Tooltip text is absent or incorrect", 
+//            label.getText().indexOf("Class State Machine Diagram") >= 0);
     }
 
 }

@@ -44,18 +44,18 @@ public class RectilinearRoutingTests2 extends BaseTest {
 //				outerComponent);
 //		RectilinearRoutingTests.drawAndValidateDelegation(sourceProvision, destinationProvision);
 	}
-
+//
 	@Test
 	public void testDelegationCreationFromInnerWest() {
-		Component_c outerComponent = RectilinearRoutingTests.locateAndOpenComponent("WithInnerReferences");
-		Component_c innerComponent = Component_c
-				.getOneC_COnR8001(PackageableElement_c
-						.getManyPE_PEsOnR8003(outerComponent));
-		Provision_c sourceProvision = RectilinearRoutingTests.locateProvision("InnerWest",
-				innerComponent);
-		Provision_c destinationProvision = RectilinearRoutingTests.locateProvision("OuterWest",
-				outerComponent);
-		RectilinearRoutingTests.drawAndValidateDelegation(sourceProvision, destinationProvision);
+//		Component_c outerComponent = RectilinearRoutingTests.locateAndOpenComponent("WithInnerReferences");
+//		Component_c innerComponent = Component_c
+//				.getOneC_COnR8001(PackageableElement_c
+//						.getManyPE_PEsOnR8003(outerComponent));
+//		Provision_c sourceProvision = RectilinearRoutingTests.locateProvision("InnerWest",
+//				innerComponent);
+//		Provision_c destinationProvision = RectilinearRoutingTests.locateProvision("OuterWest",
+//				outerComponent);
+//		RectilinearRoutingTests.drawAndValidateDelegation(sourceProvision, destinationProvision);
 	}
 
 	@Test
