@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.ExternalEntity_c;
@@ -68,6 +69,11 @@ public class WelcomePageTest extends TestCase {
 		super();
 	}
 
+	@Override
+	public void setUp() {
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	}
+	
 //	// enforce ordering of tests in this class
 //	@Test
 //	public void testWelcomePageMicrowaveProject() throws CoreException, Exception {

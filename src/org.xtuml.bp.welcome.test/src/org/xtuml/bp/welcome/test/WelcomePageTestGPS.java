@@ -91,6 +91,11 @@ public class WelcomePageTestGPS extends TestCase {
             markingFolder + "domain.mark"
             };
 
+	@Override
+	public void setUp() {
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	}
+	
 	public WelcomePageTestGPS() {
 		super();
 	}
