@@ -188,19 +188,6 @@ public class CanvasInitialNameTests extends BaseTest {
 		doNewCMETest("Operation", CorePlugin.INVALID_NAME_SPACES);
 	}
 
-	// Disabled as per 9505
-	@Test
-	public void testMessageArgumentWithSpaces() {
-//		createElementInEditor("Interaction::Synchronous Message", editor);
-//		Message_c[] msgs = Message_c.getManyMSG_MsOnR8001(PackageableElement_c
-//				.getManyPE_PEsOnR8000(testPackage));
-//		Message_c msg = msgs[msgs.length - 1];
-//		SynchronousMessage_c sync = SynchronousMessage_c
-//				.getOneMSG_SMOnR1018(msg);
-//		UITestingUtilities.addElementToGraphicalSelection(sync);
-//		doNewCMETest("Argument", CorePlugin.INVALID_NAME_SPACES);
-	}
-
 	@Test
 	public void testInterfaceSignalWithSpaces() {
 		createElement("Newinterface", testPackage);

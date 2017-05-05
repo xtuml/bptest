@@ -29,7 +29,6 @@ import org.xtuml.bp.als.oal.test.ImplicitComponentAddressTest_Generics;
 import org.xtuml.bp.als.oal.test.OalParserGlobalsTest_Generics;
 import org.xtuml.bp.als.oal.test.OalParserTest_Generics;
 import org.xtuml.bp.als.oal.test.ParseAllInDomain_Generics;
-import org.xtuml.bp.als.oal.test.ParseErrorForEmptySynchronousMessagesTests;
 import org.xtuml.bp.als.oal.test.PolyEventTest;
 import org.xtuml.bp.als.oal.test.RelaxedSameDataTest_Generics;
 import org.xtuml.bp.als.oal.test.SingleDimensionFixedArrayAssigmentTest_0_Generics;
@@ -129,7 +128,6 @@ import junit.framework.TestSuite;
 	TestConstant_Generics.class,
 	TestAllowInterfaceNameInICMsg_Generics.class,
 	PolyEventTest.class,
-	ParseErrorForEmptySynchronousMessagesTests.class,
 	SupportConstantsViaIPRTests.class,
 })
 public class OALGlobalsTestSuite_Generics extends TestSuite {
