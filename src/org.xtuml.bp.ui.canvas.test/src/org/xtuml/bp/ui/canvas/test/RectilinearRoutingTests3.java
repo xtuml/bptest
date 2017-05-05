@@ -28,8 +28,8 @@ public class RectilinearRoutingTests3 extends BaseTest {
 						BridgePointPreferencesStore.RECTILINEAR_ROUTING);
 	}
 // Disabled as per 9505
-//	@Test
-//	public void testDelegationCreationFromOuterEastToComponent() {
+	@Test
+	public void testDelegationCreationFromOuterEastToComponent() {
 //		Component_c outerComponent = RectilinearRoutingTests.locateAndOpenComponent("WithoutInnerReferences");
 //		Provision_c sourceProvision = RectilinearRoutingTests.locateProvision("OuterEast",
 //				outerComponent);
@@ -37,7 +37,7 @@ public class RectilinearRoutingTests3 extends BaseTest {
 //				.getOneC_COnR8001(PackageableElement_c
 //						.getManyPE_PEsOnR8003(outerComponent));
 //		RectilinearRoutingTests.drawAndValidateDelegationToComponent(sourceProvision, innerComponent);
-//	}
+	}
 //
 //	@Test
 //	public void testDelegationCreationFromOuterWestToComponent() {
