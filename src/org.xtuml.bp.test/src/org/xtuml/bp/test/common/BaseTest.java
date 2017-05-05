@@ -371,8 +371,6 @@ public class BaseTest extends TestCase {
 				// is clear of events
 			}
 		});
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		
 		String result = getLogViewResult("");
 		if(!result.equals("")) {
 			fail(result);
