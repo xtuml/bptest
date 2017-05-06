@@ -27,49 +27,7 @@ public class RectilinearRoutingTests3 extends BaseTest {
 				.setValue(BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
 						BridgePointPreferencesStore.RECTILINEAR_ROUTING);
 	}
-// Disabled as per 9505
 	@Test
-	public void testDelegationCreationFromOuterEastToComponent() {
-//		Component_c outerComponent = RectilinearRoutingTests.locateAndOpenComponent("WithoutInnerReferences");
-//		Provision_c sourceProvision = RectilinearRoutingTests.locateProvision("OuterEast",
-//				outerComponent);
-//		Component_c innerComponent = Component_c
-//				.getOneC_COnR8001(PackageableElement_c
-//						.getManyPE_PEsOnR8003(outerComponent));
-//		RectilinearRoutingTests.drawAndValidateDelegationToComponent(sourceProvision, innerComponent);
-	}
-//
-//	@Test
-//	public void testDelegationCreationFromOuterWestToComponent() {
-//		Component_c outerComponent = RectilinearRoutingTests.locateAndOpenComponent("WithoutInnerReferences");
-//		Provision_c sourceProvision = RectilinearRoutingTests.locateProvision("OuterWest",
-//				outerComponent);
-//		Component_c innerComponent = Component_c
-//				.getOneC_COnR8001(PackageableElement_c
-//						.getManyPE_PEsOnR8003(outerComponent));
-//		RectilinearRoutingTests.drawAndValidateDelegationToComponent(sourceProvision, innerComponent);
-//	}
-//
-//	@Test
-//	public void testDelegationCreationFromOuterNorthToComponent() {
-//		Component_c outerComponent = RectilinearRoutingTests.locateAndOpenComponent("WithoutInnerReferences");
-//		Provision_c sourceProvision = RectilinearRoutingTests.locateProvision("OuterNorth",
-//				outerComponent);
-//		Component_c innerComponent = Component_c
-//				.getOneC_COnR8001(PackageableElement_c
-//						.getManyPE_PEsOnR8003(outerComponent));
-//		RectilinearRoutingTests.drawAndValidateDelegationToComponent(sourceProvision, innerComponent);
-//	}
-//
-//	@Test
-//	public void testDelegationCreationFromOuterSouthToComponent() {
-//		Component_c outerComponent = RectilinearRoutingTests.locateAndOpenComponent("WithoutInnerReferences");
-//		Provision_c sourceProvision = RectilinearRoutingTests.locateProvision("OuterSouth",
-//				outerComponent);
-//		Component_c innerComponent = Component_c
-//				.getOneC_COnR8001(PackageableElement_c
-//						.getManyPE_PEsOnR8003(outerComponent));
-//		RectilinearRoutingTests.drawAndValidateDelegationToComponent(sourceProvision, innerComponent);
-//	}
+	public void testPlaceHolder() {};
 
 }
