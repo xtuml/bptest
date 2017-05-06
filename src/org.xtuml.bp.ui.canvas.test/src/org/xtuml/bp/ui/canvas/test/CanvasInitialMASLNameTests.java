@@ -171,7 +171,7 @@ public class CanvasInitialMASLNameTests extends BaseTest {
 		UITestingUtilities.addElementToGraphicalSelection(iface);
 		doNewCMETest("Operation", CorePlugin.INVALID_MASL_NAME);
 	}
-=
+
 	@Test
 	public void testInterfaceSignalWithSpaces() {
 		createElement("Newinterface", testPackage);
