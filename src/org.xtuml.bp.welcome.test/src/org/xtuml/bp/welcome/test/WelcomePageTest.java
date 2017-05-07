@@ -136,47 +136,6 @@ public class WelcomePageTest extends TestCase {
 		runGettingStartedAction();
 		verifyProjectCreated();
 	}
-	// Currently disabled see 9505
-	@Test
-	public void testExternalEntityDefaults() throws CoreException {
-//		IProject existing = ResourcesPlugin.getWorkspace().getRoot().getProject("MicrowaveOven");
-//		if(existing.exists()) {
-//			existing.delete(true, new NullProgressMonitor());
-//			BaseTest.dispatchEvents(0);
-//		}
-//		TestingUtilities
-//				.importDevelopmentProjectIntoWorkspace("org.xtuml.bp.welcome/models/MicrowaveOven");
-//		BaseTest.dispatchEvents(0);
-//		verifyProjectCreated();
-//		
-//		SystemModel_c system = SystemModel_c.SystemModelInstance(
-//				Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
-//
-//					@Override
-//					public boolean evaluate(Object candidate) {
-//						return ((SystemModel_c) candidate).getName().equals(
-//								"MicrowaveOven");
-//					}
-//				});
-//
-//		assertNotNull(system);
-//		system.getPersistableComponent().loadComponentAndChildren(
-//				new NullProgressMonitor());
-//
-//		Ooaofooa[] instancesUnderSystem = Ooaofooa
-//				.getInstancesUnderSystem("MicrowaveOven");
-//		for (Ooaofooa root : instancesUnderSystem) {
-//			ExternalEntity_c[] ees = ExternalEntity_c
-//					.ExternalEntityInstances(root);
-//			for (ExternalEntity_c ee : ees) {
-//				if (!ee.getIsrealized()) {
-//					fail("External Entity: "
-//							+ ee.getName()
-//							+ " was not configured with the default isRealized = true");
-//				}
-//			}
-//		}
-	}
 	@Test
 	public void testExternalEntityDefaultsTemplateProject() {
 		// get handle to help shell in order to display after completing below actions
