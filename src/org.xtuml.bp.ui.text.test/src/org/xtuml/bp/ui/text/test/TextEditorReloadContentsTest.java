@@ -28,6 +28,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.IEditorPart;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +37,7 @@ import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.util.WorkspaceUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TextEditorUtils;
 import org.xtuml.bp.ui.text.AbstractModelElementEditorInput;
@@ -80,7 +82,15 @@ public class TextEditorReloadContentsTest extends UITextTest
         	firstSetup = false;
         }
     }   
-    
+
+    @Override
+    @After
+	public void tearDown() throws Exception {
+    	BaseTest.logFileCheckingEnabled = false;
+        super.setUp();
+        BaseTest.logFileCheckingEnabled = true;
+    }   
+
     /**
      * For issue 780.  Opens an activity editor and saves a change in it 
      * that causes a problem marker to be created, then recopies over the 

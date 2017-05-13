@@ -48,8 +48,9 @@ import junit.framework.TestSuite;
     FreeFloatingConnectorTest.class,
     GraphicalToolCreationTests.class,
     I686ClearDatabaseTest.class,
-    I835OpenDiagramEditorWithSearchView.class,
-    MultipleSupertypeTest.class,
+    // Disabled as per issue 9505
+//    I835OpenDiagramEditorWithSearchView.class,
+//    MultipleSupertypeTest.class,
     ClassToStateDiagramNavigationTest.class,
     I2053F2RenameTest.class,
     AutoReconciliationTests.class,

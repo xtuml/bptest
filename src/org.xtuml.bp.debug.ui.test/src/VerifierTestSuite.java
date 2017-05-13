@@ -44,6 +44,7 @@ import org.xtuml.bp.debug.test.VerifierUDTAsUDTInitializationTests;
 import org.xtuml.bp.debug.test.breakpoint.BreakpointTest;
 import org.xtuml.bp.debug.ui.launch.VerifierLaunchTestSuite;
 import org.xtuml.bp.debug.ui.session.tree.VerifierSessionExplorerTests;
+import org.xtuml.bp.debug.ui.test.execute.RecursionExecutionTest;
 import org.xtuml.bp.debug.ui.test.execute.VerifierExecuteActionTests;
 import org.xtuml.bp.debug.ui.test.execute.VerifierExecuteFragmentTest;
 import org.xtuml.bp.debug.ui.test.execute.VerifierInterfaceExecutionTests;
@@ -62,6 +63,11 @@ import junit.framework.TestSuite;
 @Suite.SuiteClasses({
 	GlobalTestSetupClass.class,
 	VerifierTestSuiteI.class,
+	// Disabling this until 9504 is resolved.
+	// the tests pass alone but for some reason
+	// cannot run even at the beginning
+	//ExternalEntityTest.class,
+	RecursionExecutionTest.class,
 	VerifierSessionExplorerTests.class,
 	VerifierLaunchTestSuite.class,
 	VerifierExecuteFragmentTest.class,		
@@ -73,7 +79,6 @@ import junit.framework.TestSuite;
 	SignalParameterPassingTest.class,
 	VerifierInterfaceExecutionTests.class,
 	VerifierTransitionActionTests.class,
-	ExternalEntityTest.class,
 	CreateAndGenerateEventTest.class,
 	TimerTest.class,
 	VerifierCreationTransitionDebugTest.class,

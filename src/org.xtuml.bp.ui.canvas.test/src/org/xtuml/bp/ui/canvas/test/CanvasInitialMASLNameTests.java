@@ -173,18 +173,6 @@ public class CanvasInitialMASLNameTests extends BaseTest {
 	}
 
 	@Test
-	public void testMessageArgumentWithSpaces() {
-		createElementInEditor("Interaction::Synchronous Message", editor);
-		Message_c[] msgs = Message_c.getManyMSG_MsOnR8001(PackageableElement_c
-				.getManyPE_PEsOnR8000(testPackage));
-		Message_c msg = msgs[msgs.length - 1];
-		SynchronousMessage_c sync = SynchronousMessage_c
-				.getOneMSG_SMOnR1018(msg);
-		UITestingUtilities.addElementToGraphicalSelection(sync);
-		doNewCMETest("Argument", CorePlugin.INVALID_MASL_NAME);
-	}
-
-	@Test
 	public void testInterfaceSignalWithSpaces() {
 		createElement("Newinterface", testPackage);
 		Interface_c[] ifaces = Interface_c

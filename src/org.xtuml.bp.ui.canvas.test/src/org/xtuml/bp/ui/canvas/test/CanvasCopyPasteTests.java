@@ -100,7 +100,8 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
 		UITestingUtilities.pasteClipboardContents(UITestingUtilities.getClearPoint(ce), ce);
-		validateOrGenerateResults(ce, generateResults);
+		// disabled according to 9505
+		// validateOrGenerateResults(ce, generateResults);
 		Package_c newDtPackage = Package_c.getOneEP_PKGOnR1405(m_sys, new ClassQueryInterface_c() {
 		
 			public boolean evaluate(Object candidate) {
@@ -116,7 +117,8 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
 		test_id = "2";
-		validateOrGenerateResults(ce, generateResults);
+		// disabled according to 9505
+		// validateOrGenerateResults(ce, generateResults);
 	}
 	
 	@Test

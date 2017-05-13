@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.ExternalEntity_c;
@@ -68,6 +69,11 @@ public class WelcomePageTest extends TestCase {
 		super();
 	}
 
+	@Override
+	public void setUp() {
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	}
+	
 //	// enforce ordering of tests in this class
 //	@Test
 //	public void testWelcomePageMicrowaveProject() throws CoreException, Exception {
@@ -129,46 +135,6 @@ public class WelcomePageTest extends TestCase {
 		runGettingStartedAction();
 		runGettingStartedAction();
 		verifyProjectCreated();
-	}
-	@Test
-	public void testExternalEntityDefaults() throws CoreException {
-		IProject existing = ResourcesPlugin.getWorkspace().getRoot().getProject("MicrowaveOven");
-		if(existing.exists()) {
-			existing.delete(true, new NullProgressMonitor());
-			BaseTest.dispatchEvents(0);
-		}
-		TestingUtilities
-				.importDevelopmentProjectIntoWorkspace("org.xtuml.bp.welcome/models/MicrowaveOven");
-		BaseTest.dispatchEvents(0);
-		verifyProjectCreated();
-		
-		SystemModel_c system = SystemModel_c.SystemModelInstance(
-				Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
-
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((SystemModel_c) candidate).getName().equals(
-								"MicrowaveOven");
-					}
-				});
-
-		assertNotNull(system);
-		system.getPersistableComponent().loadComponentAndChildren(
-				new NullProgressMonitor());
-
-		Ooaofooa[] instancesUnderSystem = Ooaofooa
-				.getInstancesUnderSystem("MicrowaveOven");
-		for (Ooaofooa root : instancesUnderSystem) {
-			ExternalEntity_c[] ees = ExternalEntity_c
-					.ExternalEntityInstances(root);
-			for (ExternalEntity_c ee : ees) {
-				if (!ee.getIsrealized()) {
-					fail("External Entity: "
-							+ ee.getName()
-							+ " was not configured with the default isRealized = true");
-				}
-			}
-		}
 	}
 	@Test
 	public void testExternalEntityDefaultsTemplateProject() {

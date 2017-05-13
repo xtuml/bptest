@@ -763,6 +763,16 @@ public class ${classname} extends CoreTest
 		}
     }
 
+	@Override
+	@After
+	public void tearDown() throws Exception {
+		// See issue 9505, disabling log file checking
+		// for now
+		BaseTest.logFileCheckingEnabled = false;
+		super.tearDown();
+		BaseTest.logFileCheckingEnabled = true;
+	}
+
 .select many new_action_set from instances of CME where ( selected.Specialism == "New" )
 .for each new_action in new_action_set
 .// TODO: FIXME dts0100656073

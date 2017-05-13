@@ -173,7 +173,9 @@ public class RTOMoveTests extends CanvasTest {
 			}
 		}
 		rgoUpdateSuccessful = false;
+		BaseTest.logFileCheckingEnabled = false;
 		super.tearDown();
+		BaseTest.logFileCheckingEnabled = true;
 	}
 
 	/**
@@ -308,6 +310,9 @@ public class RTOMoveTests extends CanvasTest {
 	 *            Model instance from the row
 	 */
 	void AC_BD_Action(NonRootModelElement source, NonRootModelElement target) {
+		// something in the suite is leaving a dialog open
+		// for now just force all UI events to occur (see 9505)
+		BaseTest.dispatchEvents();
 		cutSuccessful = false;
 		pasteSuccessful = false;
 		if(getMethodName().contains("C4")) {

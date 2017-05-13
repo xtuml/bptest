@@ -69,7 +69,11 @@ public class WelcomePageTestMetamodel extends TestCase {
 
 	private String[] expectedFiles = expectedXtUMLFiles;
 
-
+	@Override
+	public void setUp() {
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	}
+	
 	public WelcomePageTestMetamodel() {
 		super();
 	}

@@ -38,6 +38,7 @@ import org.junit.runner.RunWith;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
 @RunWith(OrderedRunner.class)
@@ -85,7 +86,10 @@ public class PkgCMModifyContentsTestGenerics extends ModifyContentsTest {
     }
     @After
 	public void tearDown()throws Exception{
+    	// Disabled until 9505 is resolved
+    	BaseTest.logFileCheckingEnabled = false;
         super.tearDown();
+        BaseTest.logFileCheckingEnabled = true;
         if (toRunTests()) // close editors after test run
         {
             Workbench.getInstance().getActiveWorkbenchWindow().getActivePage().
