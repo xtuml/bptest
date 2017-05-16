@@ -3,6 +3,7 @@
 	<name>org.xtuml.bp.io.mdl.test</name>
 	<comment></comment>
 	<projects>
+		<project>org.xtuml.bp.pkg-feature</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

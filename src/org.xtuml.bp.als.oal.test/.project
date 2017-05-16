@@ -7,6 +7,7 @@
 		<project>org.xtuml.bp.core</project>
 		<project>org.xtuml.bp.io.core</project>
 		<project>org.xtuml.bp.io.mdl</project>
+		<project>org.xtuml.bp.pkg-feature</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
