@@ -19,7 +19,6 @@ import java.lang.Thread.State;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
@@ -37,6 +36,8 @@ import org.eclipse.debug.ui.AbstractDebugView;
 import org.eclipse.debug.ui.DebugUITools;
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.debug.ui.IDebugView;
+import org.eclipse.jface.text.DocumentEvent;
+import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
@@ -46,7 +47,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
@@ -95,8 +95,9 @@ import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.ui.text.activity.ActivityEditor;
 
-import junit.framework.Assert;
+import junit.framework.TestCase;
 
+@SuppressWarnings("restriction")
 public class DebugUITestUtilities {
 
 	public static void joinLaunchJob() {
@@ -154,7 +155,7 @@ public class DebugUITestUtilities {
 							}
 						}
 					} catch (DebugException e) {
-						Assert.fail(e.toString());
+						TestCase.fail(e.toString());
 					}
 					break;
 				}
@@ -219,7 +220,7 @@ public class DebugUITestUtilities {
 	}
 	public static ActivityEditor openActivityEditorForSelectedElement() {
 		IEditorPart activeEditor = ExplorerUtil.openEditor();
-		Assert.assertTrue(
+		TestCase.assertTrue(
 				"Unable to open activity editor for selected element.",
 				activeEditor instanceof ActivityEditor);
 		return (ActivityEditor) activeEditor;
@@ -236,6 +237,7 @@ public class DebugUITestUtilities {
 		event.y = y;
 		event.button = 1;
 		column.notifyListeners(SWT.MouseDoubleClick, event);
+		BaseTest.dispatchEvents();
 	}
 
 	private static Composite getAnnotationRulerColumn(ActivityEditor editor) {
@@ -506,6 +508,7 @@ public class DebugUITestUtilities {
 							}
 						}
 					}
+					BaseTest.dispatchEvents(0);
 					processDebugEvents();
 				}
 			}
@@ -561,8 +564,6 @@ public class DebugUITestUtilities {
 	}
 
 	public static String getConsoleText(String expected) {
-		// wait for all outstanding events to complete
-		BaseTest.dispatchEvents(0);
 		IConsole[] consoles = ConsolePlugin.getDefault().getConsoleManager()
 				.getConsoles();
 		for (int i = 0; i < consoles.length; i++) {
@@ -580,15 +581,30 @@ public class DebugUITestUtilities {
 	}
 
 	static long maxWaitTime = 2000;
-
+	static boolean consoleUpdated = true;
 	private static void waitForConsoleUpdate(TextConsole console,
 			String expected) {
+		IDocumentListener testListener = (new IDocumentListener() {		
+			@Override
+			public void documentChanged(DocumentEvent event) {
+				consoleUpdated = true;
+			}
+			
+			@Override
+			public void documentAboutToBeChanged(DocumentEvent event) {
+				consoleUpdated = false;
+			}
+		});
+		while(!consoleUpdated);
+		console.getDocument().addDocumentListener(testListener);
+		BaseTest.dispatchEvents();
+		console.getDocument().removeDocumentListener(testListener);
 		ConsolePlugin.getDefault().getConsoleManager().refresh(console);
 		String consoleText = console.getDocument().get();
 		long start = System.currentTimeMillis();
 		if (expected.equals("")) {
-			while (!consoleText.equals(expected)) {
-				TestingUtilities.processDisplayEvents();
+			while (consoleText.equals(expected)) {
+				BaseTest.dispatchEvents(0);
 				processDebugEvents();
 				consoleText = console.getDocument().get();
 				long current = System.currentTimeMillis();
@@ -614,7 +630,7 @@ public class DebugUITestUtilities {
 	}
 
 	private static Job getJob(String name) {
-		Job[] jobs = Platform.getJobManager().find(null);
+		Job[] jobs = Job.getJobManager().find(null);
 		for (int i = 0; i < jobs.length; i++) {
 			if (jobs[i].getName().equals(name)) {
 				return jobs[i];
@@ -633,10 +649,7 @@ public class DebugUITestUtilities {
 						"org.eclipse.debug.ui.ProcessConsoleType")) {
 					waitForConsoleUpdate(console, "");
 					console.getDocument().set("");
-					BaseTest.waitForDecorator();
-					BaseTest.waitForPlaceHolderThread();
-					BaseTest.waitForTransaction();
-					while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+					BaseTest.dispatchEvents(0);
 				}
 			}
 		}
@@ -745,8 +758,6 @@ public class DebugUITestUtilities {
 	 * @param VariableName is the variable name
 	 * @return Variable children tree items ( if found )
 	 */
-	
-	@SuppressWarnings("restriction")
 	public static TreeItem[] expandValueinVariablesView(String VariableName) {
 		try{
 			boolean clicked = false;
@@ -830,11 +841,12 @@ public class DebugUITestUtilities {
 	public static void waitForExecution() {
 		TestingUtilities.processPlatformJobs();
 		// join the execute thread
-	  Thread thread = ExecuteAction.getRunner();
+		Thread thread = ExecuteAction.getRunner();
 		if (thread != null) {
-		  while (thread.isAlive()) {
-		    Display.getCurrent().readAndDispatch();
-		}
+			while (thread.isAlive()) {
+				while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+					;
+			}
 		}
 		processDebugEvents();
 	}
@@ -884,12 +896,17 @@ public class DebugUITestUtilities {
 	}
 
 	public static void stepOver(ComponentInstance_c engine, int stepCount) {
+		
 		showDebugView();
 		IProcess processForEngine = getProcessForEngine(engine);
 		for (int i = 0; i < stepCount; i++) {
 			try {
-				processForEngine.getLaunch().getDebugTarget().getThreads()[0]
-						.stepOver();
+				IThread[] threads = processForEngine.getLaunch().getDebugTarget().getThreads();
+				for(IThread thread : threads) {
+					if(((BPThread) thread).getEngine() == engine) {
+						thread.stepOver();
+					}
+				}
 			} catch (DebugException e) {
 			}
 		}
@@ -1069,7 +1086,7 @@ public class DebugUITestUtilities {
           tm.endTransaction(tr);
           TestingUtilities.allowJobCompletion();
           TestingUtilities.processPlatformJobs();
-          Assert.assertNotNull(
+          TestCase.assertNotNull(
             "Domain container package not found and cannot be created.",
             domContainer);
           for (final String domName : domNames) {
@@ -1079,15 +1096,15 @@ public class DebugUITestUtilities {
                   return ((Package_c) candidate).getName().equals(domName);
                 }
               });
-            Assert.assertNotNull(domPkg);
+            TestCase.assertNotNull(domPkg);
             ExplorerView ev = BaseTest.getExplorerView();
             Selection.getInstance().setSelection(new StructuredSelection(domPkg));
-            Assert.assertNotNull("Error opening Explorer View.", ev);
+            TestCase.assertNotNull("Error opening Explorer View.", ev);
             Menu mnu = ev.getTreeViewer().getTree().getMenu();
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
               "Error opening Menu in Explorer View on domain package.", mnu);
             MenuItem itm = UITestingUtilities.getMenuItem(mnu, "Cut");
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
               "Cut not available in Explorer View on domain package.", itm);
             UITestingUtilities.activateMenuItem(itm); // Cut the domain
             TestingUtilities.allowJobCompletion();
@@ -1102,7 +1119,7 @@ public class DebugUITestUtilities {
                   "Unnamed Component");
               }
             });
-            Assert.assertNotNull("Component cant be created for domain", comp);
+            TestCase.assertNotNull("Component cant be created for domain", comp);
             TransactionUtil.endTransactions(tg);
             TestingUtilities.allowJobCompletion();
             TestingUtilities.processPlatformJobs();
@@ -1114,11 +1131,11 @@ public class DebugUITestUtilities {
             TestingUtilities.processPlatformJobs();
             Selection.getInstance().setSelection(new StructuredSelection(comp));
             mnu = ev.getTreeViewer().getTree().getMenu();
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
                   "Error opening Menu in Explorer View on component created for domain.",
                   mnu);
             itm = UITestingUtilities.getMenuItem(mnu, "Paste");
-            Assert.assertNotNull(
+            TestCase.assertNotNull(
                   "Paste not available in Explorer View on component created for domain.",
                   itm);
             UITestingUtilities.activateMenuItem(itm); // Paste the domain
@@ -1127,7 +1144,7 @@ public class DebugUITestUtilities {
           }
         }
         catch (TransactionException te) {
-          Assert.fail("Transaction Exception making domains executable" + te);
+          TestCase.fail("Transaction Exception making domains executable" + te);
         }
       }
     }
@@ -1147,9 +1164,8 @@ public class DebugUITestUtilities {
 		  }
 		}
 		catch (DebugException de){
-			Assert.fail("Unexpected exception waiting for threads to start " + de.toString());
+			TestCase.fail("Unexpected exception waiting for threads to start " + de.toString());
 		}
 		return result;
 	}
-
 }

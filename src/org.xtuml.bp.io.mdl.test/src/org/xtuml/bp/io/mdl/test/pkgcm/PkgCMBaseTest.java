@@ -577,7 +577,7 @@ public class PkgCMBaseTest extends CanvasTest {
             NonRootModelElement meBeingTested) {
         EditorTestUtilities.checkAllEditorClosed(openEditors);
         if (baseEditor != null) {
-             validateOrGenerateResultsGenerics(baseEditor, generateResult);
+             validateOrGenerateResults(baseEditor, generateResult);
         }
         checkFileDeletion(oldFile);
         try{
@@ -587,10 +587,11 @@ public class PkgCMBaseTest extends CanvasTest {
 
     }
     protected void checkFileDeletion(IFile oldFile) {
-        BaseTest.waitForJobs();
-        Display display = Display.getCurrent();
-        while (display.readAndDispatch())
-            ;
+        BaseTest.dispatchEvents(0);
+        long startTime = System.currentTimeMillis();
+        while(System.currentTimeMillis() - startTime < 2000) {
+        	BaseTest.dispatchEvents();
+        }
         assertFalse("File still exists after deletion: "
                 + oldFile.getFullPath(), oldFile.exists());
         if(! throughRN){
@@ -608,7 +609,7 @@ public class PkgCMBaseTest extends CanvasTest {
     protected void performRenameChecks(Object[] openEditors,
             GraphicalEditor baseEditor, PersistableModelComponent component,
             String newName) {        
-        waitForJobs();
+        BaseTest.dispatchEvents();
         if (!generateResult) {
           EditorTestUtilities.checkAllEditorTitles(openEditors, newName);
           checkFileRename(component, newName);
@@ -621,7 +622,7 @@ public class PkgCMBaseTest extends CanvasTest {
     protected void performRenameChecksGenerics(Object[] openEditors,
             GraphicalEditor baseEditor, PersistableModelComponent component,
             String newName) {        
-        waitForJobs();
+        BaseTest.dispatchEvents(0);
         if (!generateResult) {
           EditorTestUtilities.checkAllEditorTitles(openEditors, newName);
           checkFileRename(component, newName);
@@ -629,7 +630,7 @@ public class PkgCMBaseTest extends CanvasTest {
           checkTreeItemExistance(component.getRootModelElement(), newName);
         }
         if (baseEditor != null)
-            validateOrGenerateResultsGenerics(baseEditor, generateResult);
+            validateOrGenerateResults(baseEditor, generateResult);
     }
     protected void checkFileRename(PersistableModelComponent pmcBeingTested,
             String newName) {
@@ -678,7 +679,7 @@ public class PkgCMBaseTest extends CanvasTest {
         checkTreeItemExistance(component.getRootModelElement(), component
                 .getName());
         if (baseEditor != null)
-            validateOrGenerateResultsGenerics(baseEditor, generateResult, true);
+            validateOrGenerateResults(baseEditor, generateResult, true);
     }
     protected void checkFileExistance(PersistableModelComponent pmcBeingTested) {
 

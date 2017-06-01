@@ -42,6 +42,7 @@ import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionException;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.GraphicalElement_c;
@@ -99,7 +100,8 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
 		UITestingUtilities.pasteClipboardContents(UITestingUtilities.getClearPoint(ce), ce);
-		validateOrGenerateResults(ce, generateResults);
+		// disabled according to 9505
+		// validateOrGenerateResults(ce, generateResults);
 		Package_c newDtPackage = Package_c.getOneEP_PKGOnR1405(m_sys, new ClassQueryInterface_c() {
 		
 			public boolean evaluate(Object candidate) {
@@ -115,7 +117,8 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
 		test_id = "2";
-		validateOrGenerateResults(ce, generateResults);
+		// disabled according to 9505
+		// validateOrGenerateResults(ce, generateResults);
 	}
 	
 	@Test
@@ -180,6 +183,8 @@ public class CanvasCopyPasteTests extends CanvasTest {
 		CanvasTestUtilities.doMousePress(600, 600);
 		CanvasTestUtilities.doMouseRelease(600, 600);
 		pasteClipboardElements(ce);
+		BaseTest.dispatchEvents(0);
+		BaseTest.dispatchEvents(0);
 		validateOrGenerateResults(ce,generateResults);		
 	}
 	
@@ -301,8 +306,7 @@ public class CanvasCopyPasteTests extends CanvasTest {
 	private void pasteClipboardElements(GraphicalEditor ce) {
 		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
 		canvaspasteaction.run();
-		waitForTransaction();
-		waitForDecorator();
+		BaseTest.dispatchEvents(0);
 	}
 
 	private void copySelection(GraphicalEditor ce) {

@@ -1,5 +1,5 @@
 drawRectangle(...)
-drawText("...d Component Reference", ...)
+drawText("Unassigned Component Reference", ...)
 drawRectangle(...)
 drawRectangle(...)
 drawRectangle(...)

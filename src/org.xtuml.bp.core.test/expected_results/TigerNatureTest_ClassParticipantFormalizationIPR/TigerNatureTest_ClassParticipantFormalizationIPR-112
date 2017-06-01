@@ -1,5 +1,5 @@
 drawRectangle(...)
-drawText("test_project_referenced:...", ...)
+drawText("test_project_referenced::Unnamed Package-3::referenced1", ...)
 drawText("{1,UnnamedClass}", ...)
 drawline(...)
 drawline(...)

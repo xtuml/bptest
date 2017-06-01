@@ -10,6 +10,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.ui.PlatformUI;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,7 +60,14 @@ public class DateLoggingTests extends BaseTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		loadProject("LogDateFormat");
+		BaseTest.waitFor(300);
+	}
 	
+	@After
+	public void tearDown() throws Exception {
+		DebugUITestUtilities.stopSession(m_sys, "LogDateFormat");
+		DebugUITestUtilities.clearConsoleOutput();
+		DebugUITestUtilities.clearDebugView();
 	}
 
 	@Test
@@ -112,8 +120,8 @@ public class DateLoggingTests extends BaseTest {
 		
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		String actualResults = DebugUITestUtilities.getConsoleText();
-		String dateAndMessage = actualResults.substring(37);
-		String date = dateAndMessage.substring(0, dateAndMessage.length()-10);
+		String dateAndMessage = actualResults.substring(36);
+		String date = dateAndMessage.substring(0, dateAndMessage.length()-9);
 		assertTrue(isValidFormat(date));
 		 
 

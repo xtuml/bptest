@@ -34,9 +34,11 @@ import org.eclipse.swt.widgets.Display;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.xtuml.bp.core.ClassStateMachine_c;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.CreationTransition_c;
 import org.xtuml.bp.core.Function_c;
+import org.xtuml.bp.core.StateMachine_c;
 import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TextEditorUtils;
@@ -85,7 +87,11 @@ public class I697OpenActivityEditorFromMarker extends UITextTest {
 	}
 	
 	private ActivityEditor openTransitionActivityEditor(){
-		Transition_c uut = Transition_c.TransitionInstance(modelRoot);
+		Transition_c uut = Transition_c.TransitionInstance(modelRoot, candidate -> {
+			Transition_c transition = (Transition_c) candidate;
+			ClassStateMachine_c csm = ClassStateMachine_c.getOneSM_ASMOnR517(StateMachine_c.getManySM_SMsOnR505(transition));
+			return csm != null;
+		});
 		assertNotNull(uut);
 
 		ActivityEditorInteraction.openActivityEditor(uut);

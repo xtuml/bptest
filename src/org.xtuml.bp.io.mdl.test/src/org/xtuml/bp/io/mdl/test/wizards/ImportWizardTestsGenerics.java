@@ -30,10 +30,13 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.SystemModel_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.io.mdl.wizards.ModelExportPage;
@@ -51,6 +54,11 @@ import org.xtuml.bp.ui.canvas.test.CanvasTestUtilities;
 @RunWith(OrderedRunner.class)
 public class ImportWizardTestsGenerics extends BaseTest {
 
+	@Before
+	public void setUp() {
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION,
+				true);
+	}
 	/**
 	 * Tests that when importing a core data types package, the graphical
 	 * elements for the removed core types are also removed
@@ -62,6 +70,7 @@ public class ImportWizardTestsGenerics extends BaseTest {
 			throws CoreException {
 		IProject testProject = TestingUtilities
 				.createProject("TestImportCoreDTPackage");
+		BaseTest.dispatchEvents();
 		// get the system model associated with the project
 		// created above
 		SystemModel_c systemModel = getSystemModel(testProject.getName());
@@ -69,9 +78,7 @@ public class ImportWizardTestsGenerics extends BaseTest {
 				systemModel);
 
 		UITestingUtilities.getGraphicalEditorFor(systemModel, true);
-		
-		Ooaofgraphics sysGraphicsRoot = Ooaofgraphics.getInstance(systemModel
-				.getModelRoot().getId());
+
 		AbstractTool tool = UITestingUtilities.getTool("Package");
 		UITestingUtilities.activateTool(tool);
 		// now create mouse events to create a new user data type
@@ -92,8 +99,7 @@ public class ImportWizardTestsGenerics extends BaseTest {
 
 				});		
 		UITestingUtilities.getGraphicalEditorFor(dtPackage, true);
-		Ooaofgraphics dtGraphicsRoot = Ooaofgraphics.getInstance(dtPackage
-				.getModelRoot().getId());		
+		
 		tool = UITestingUtilities.getTool("User Data Type");
 		UITestingUtilities.activateTool(tool);
 		// now create mouse events to create a new user data type

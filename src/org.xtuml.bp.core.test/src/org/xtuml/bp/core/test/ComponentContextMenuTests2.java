@@ -101,7 +101,13 @@ public class ComponentContextMenuTests2 extends BaseTest {
 
 	@Test
 	public void testContextMenuAssignSignalActionOnSM_TXN() {
-		Transition_c obj = Transition_c.TransitionInstance(modelRoot);
+		Transition_c obj = Transition_c.TransitionInstance(modelRoot, candidate -> {
+			Transition_c transition = ((Transition_c) candidate);
+			ClassStateMachine_c csm = ClassStateMachine_c
+					.getOneSM_ASMOnR517(StateMachine_c.getManySM_SMsOnR505(transition));
+			ModelClass_c mc = ModelClass_c.getOneO_OBJOnR519(csm);
+			return mc != null && mc.getName().equals("Test Class"); 
+		});
 		performContextMenuAssignSignalActionOnSM_TXN(obj);
 	}
 

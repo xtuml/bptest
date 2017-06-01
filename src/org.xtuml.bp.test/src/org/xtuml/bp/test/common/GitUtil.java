@@ -20,17 +20,16 @@
 
 package org.xtuml.bp.test.common;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.egit.core.RepositoryUtil;
+import org.eclipse.egit.ui.Activator;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.dnd.TextTransfer;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Tree;
@@ -39,11 +38,14 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
-
 import org.xtuml.bp.core.CorePlugin;
+import org.xtuml.bp.core.util.UIUtil;
 import org.xtuml.bp.model.compare.contentmergeviewer.ModelContentMergeViewer;
 import org.xtuml.bp.test.TestUtil;
 
+import junit.framework.TestCase;
+
+@SuppressWarnings("restriction")
 public class GitUtil {
 	public static final java.lang.String VIEW_ID = "org.eclipse.egit.ui.RepositoriesView";
 	
@@ -57,7 +59,7 @@ public class GitUtil {
 			IViewPart viewPart = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage()
 					.showView(VIEW_ID);
-			Assert.assertNotNull("", viewPart);
+			TestCase.assertNotNull("", viewPart);
 			return viewPart;
 		} catch (PartInitException e) {
 			CorePlugin.logError("Unable to open git repositories view.", e);
@@ -66,21 +68,15 @@ public class GitUtil {
 	}
 
 	public static void loadRepository(String location, String branch) {
-		BaseTest.dispatchEvents(0);
-		IViewPart gitRepositoryView = showGitRepositoriesView();
-		CommonNavigator view = (CommonNavigator) gitRepositoryView;
-		Control control = view.getCommonViewer().getControl();
-		CorePlugin.getSystemClipboard().setContents(
-				new Object[] { location },
-				new Transfer[] { TextTransfer.getInstance() });
-		UITestingUtilities.activateMenuItem(control.getMenu(),
-				"Paste R&epository Path or URI	Ctrl+V");
-		BaseTest.dispatchEvents(0);
+		RepositoryUtil util = Activator.getDefault().getRepositoryUtil();
+		util.addConfiguredRepository(new File(location + "/" + ".git"));
 		// if the repository is not in a clean
 		// state reset it here
 		String[] repositoryPath = location.split("/");
 		String repositoryName = repositoryPath[repositoryPath.length - 1];
+		BaseTest.dispatchEvents();
 		resetRepository(repositoryName, branch);
+		BaseTest.dispatchEvents();
 	}
 	
 	/**
@@ -95,7 +91,13 @@ public class GitUtil {
 	 * location.
 	 */
 	public static IProject loadProject(String projectName, String repositoryName) {
-		return GitUtil.loadProject(projectName, repositoryName, "master");
+		IProject project = GitUtil.loadProject(projectName, repositoryName, "master");
+		long maxWait = 500;
+		long startTime = System.currentTimeMillis();
+		while(!project.exists() && System.currentTimeMillis() - startTime < maxWait) {
+			BaseTest.dispatchEvents();
+		}
+		return project;
 	}
 
 	public static IProject loadProject(String projectName, String repositoryName, String branchName) {
@@ -106,7 +108,7 @@ public class GitUtil {
 		String treeItem = repositoryName + " [" + branchName;
 		TreeItem item = UITestingUtilities.findItemInTree(gitRepositoryTree,
 				treeItem);
-		Assert.assertNotNull(
+		TestCase.assertNotNull(
 				"Could not locate repository in the git repository view ("
 						+ treeItem + ").", item);
 		view.getCommonViewer().setSelection(
@@ -116,10 +118,11 @@ public class GitUtil {
 		TestUtil.finishToDialog(1000);
 		UITestingUtilities.activateMenuItem(gitRepositoryTree.getMenu(),
 				"&Import Projects...");
-		BaseTest.dispatchEvents(100);
+		BaseTest.dispatchEvents();
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-		Assert.assertTrue("Unable to load project from git repository: "
+		TestCase.assertTrue("Unable to load project from git repository: "
 				+ repositoryName, project.exists());
+		BaseTest.dispatchEvents();
 		return project;
 	}
 	
@@ -139,6 +142,7 @@ public class GitUtil {
 		TestUtil.mergeToDialog(500);
 		TestUtil.okToDialog(700);
 		UITestingUtilities.activateMenuItem(gitRepositoryTree.getMenu(), "&Merge...");
+		BaseTest.dispatchEvents();
 	}
 
 	public static void compareWithBranch(String remoteBranch, String repositoryName, String localBranch) {
@@ -176,20 +180,21 @@ public class GitUtil {
 	
 	public static void startMergeTool(String projectName) {
 		// process any pending events
-		BaseTest.dispatchEvents(0);
 		TreeViewer treeViewer = ExplorerUtil.getTreeViewer();
 		TreeItem item = UITestingUtilities.findItemInTree(treeViewer.getTree(), projectName);
 		treeViewer.setSelection(new StructuredSelection(item.getData()));
-		TestUtil.okToDialog(400);
 		UITestingUtilities.activateMenuItem(treeViewer.getTree().getMenu(), "Team::Merge Tool");
+		BaseTest.dispatchEvents();
 	}
 
 	public static void resetRepository(String repositoryName, String branch) {
 		// process any pending events
-		BaseTest.dispatchEvents(0);
 		IViewPart gitRepositoryView = showGitRepositoriesView();
-		BaseTest.dispatchEvents(0);
+		gitRepositoryView.getViewSite().getShell().update();
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
+		view.getCommonViewer().refresh();
+		BaseTest.dispatchEvents();
 		Control control = view.getCommonViewer().getControl();
 		Tree gitRepositoryTree = (Tree) control;
 		TreeItem item = UITestingUtilities.findItemInTree(gitRepositoryTree,
@@ -205,7 +210,6 @@ public class GitUtil {
 				TestUtil.yesToDialog(900);
 				UITestingUtilities.activateMenuItem(gitRepositoryTree.getMenu(), "&Reset");
 			}
-			BaseTest.dispatchEvents(0);
 			// switch to the expected branch
 			switchToBranch(branch, repositoryName);
 			return;
@@ -218,6 +222,7 @@ public class GitUtil {
 			TestUtil.yesToDialog(900);
 			UITestingUtilities.activateMenuItem(gitRepositoryTree.getMenu(), "&Reset");
 		}
+		BaseTest.dispatchEvents();
 	}
 
 	public static void switchToFile(String treeItem) {
@@ -237,17 +242,16 @@ public class GitUtil {
 		BaseTest.dispatchEvents(0);
 		TreeItem item = UITestingUtilities.findItemInTree(tree, treeItem);
 		tree.deselectAll();
-		BaseTest.dispatchEvents(0);
 		tree.select(item);
-		BaseTest.dispatchEvents(0);
 		Event event = new Event();
 		event.widget = tree;
 		tree.notifyListeners(14, event);
-		BaseTest.dispatchEvents(0);
+		BaseTest.dispatchEvents();
 	}
 
 	public static void switchToBranch(String branch, String repositoryName) {
 		IViewPart gitRepositoryView = showGitRepositoriesView();
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		Control control = view.getCommonViewer().getControl();
 		Tree gitRepositoryTree = (Tree) control;
@@ -255,9 +259,23 @@ public class GitUtil {
 				repositoryName);
 		view.getCommonViewer().setSelection(
 				new StructuredSelection(item.getData()));
+		// set the max wait time lower, the dialog will
+		// not always be there and in those cases waiting
+		// 2 seconds is not necessary
+		try {
+			TestUtil.maxRunTime = 300;
+			TestUtil.okToDialog(0);
+		} finally {
+			TestUtil.maxRunTime = 2000;
+		}
 		UITestingUtilities.activateMenuItem(gitRepositoryTree.getMenu(),
-				"Switch To::" + branch);		
-		BaseTest.dispatchEvents(0);
+				"Switch To::" + branch);	
+		// assure that there are no left over threads
+		// waiting to close a dialog
+		while(!TestUtil.shellProcessorThread.isEmpty()) {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		}
+		BaseTest.dispatchEvents();
 	}
 
 }

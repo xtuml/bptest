@@ -459,6 +459,7 @@ public class EditorTestUtilities {
 	}
 
 	public static void checkAllEditorTitles(Object[] openEditors, String newName) {
+		BaseTest.dispatchEvents(0);
 		for (int i = 0; i < openEditors.length; i++) {
 			checkEditorTitle((IEditorPart)openEditors[i],newName);	
 		}

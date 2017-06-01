@@ -26,8 +26,8 @@ import java.io.File;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.debug.internal.ui.DebugUIPlugin;
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Menu;
@@ -46,10 +46,8 @@ import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
-import org.xtuml.bp.core.util.UIUtil;
 import org.xtuml.bp.debug.ui.launch.BPDebugUtils;
 import org.xtuml.bp.debug.ui.test.DebugUITestUtilities;
 import org.xtuml.bp.test.TestUtil;
@@ -79,23 +77,18 @@ public class VerifierSessionExplorerTests extends BaseTest {
 			CorePlugin.disableParseAllOnResourceChange();
 
 			// set perspective switch dialog on launch
-			DebugUIPlugin.getDefault().getPluginPreferences().setValue(
+			IEclipsePreferences debug = DefaultScope.INSTANCE.getNode(IDebugUIConstants.PLUGIN_ID);
+			debug.put(
 					IDebugUIConstants.PLUGIN_ID + ".switch_to_perspective",
 					"always");
 
-			CorePlugin
-					.getDefault()
-					.getPluginPreferences()
-					.setDefault(
-							BridgePointPreferencesStore.ALLOW_IMPLICIT_COMPONENT_ADDRESSING,
-							true);
+			IEclipsePreferences core = DefaultScope.INSTANCE.getNode(IDebugUIConstants.PLUGIN_ID);
+
+			core.put(BridgePointPreferencesStore.ALLOW_IMPLICIT_COMPONENT_ADDRESSING, "true");
 
 			// initialize test model
 			final IProject project = ResourcesPlugin.getWorkspace().getRoot()
 					.getProject(projectName);
-
-			File sourceProject = new File(m_workspace_path + "../"
-					+ projectName);
 
 			loadProject(projectName);
 			m_sys = SystemModel_c.SystemModelInstance(Ooaofooa
@@ -108,20 +101,7 @@ public class VerifierSessionExplorerTests extends BaseTest {
 
 			});
 
-			PersistableModelComponent sys_comp = m_sys
-					.getPersistableComponent();
-			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
-
 			CorePlugin.enableParseAllOnResourceChange();
-
-			TestingUtilities.allowJobCompletion();
-			while (!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(
-					IProject.DEPTH_INFINITE)) {
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(
-						IProject.DEPTH_INFINITE, new NullProgressMonitor());
-				while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-					;
-			}
 
 			Ooaofooa.setPersistEnabled(true);
 
@@ -143,6 +123,20 @@ public class VerifierSessionExplorerTests extends BaseTest {
 			}
 
 		});
+		// we expect the component, just need to wait long
+		// enough
+		long startTime = System.currentTimeMillis();
+		long maxTime = 2000;
+		while(component == null && System.currentTimeMillis() - startTime < maxTime) {
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			component = Component_c.getOneC_COnR8001(PackageableElement_c.getManyPE_PEsOnR8000(Package_c.getManyEP_PKGsOnR1405(m_sys)), new ClassQueryInterface_c() {
+
+				public boolean evaluate(Object candidate) {
+					return ((Component_c) candidate).getName().equals("fc1");
+				}
+
+			});
+		}
 		assertNotNull(component);
 
 		// launch the component
@@ -158,7 +152,7 @@ public class VerifierSessionExplorerTests extends BaseTest {
 		Tree tree = sev.getTreeViewer().getTree();
 		String result = DebugUITestUtilities.getTreeTextRepresentation(tree);
 		File expectedResultsFile = new File(m_workspace_path + "expected_results/session_tree/component_session_tree.txt");
-		String expected_results = TestUtil.getTextFileContents(expectedResultsFile);
+		String expected_results = TestUtil.getTextFileContents(expectedResultsFile, false);
 		assertEquals(expected_results, result);
 	}
 	
@@ -341,19 +335,22 @@ public class VerifierSessionExplorerTests extends BaseTest {
 		SessionExplorerView sev = BPDebugUtils.openSessionExplorerView(true);
 		sev.getTreeViewer().expandToLevel(9);
 		sev.getTreeViewer().refresh();
-		UIUtil.dispatchAll();
+		BaseTest.dispatchEvents();
 		TestingUtilities.processDisplayEvents();
 		Tree tree = sev.getTreeViewer().getTree();
 		String result = DebugUITestUtilities.getTreeTextRepresentation(tree);
 		result = result.trim();
 		File expectedResultsFile = new File(m_workspace_path + expected_result);
-		String expected_results = TestUtil.getTextFileContents(expectedResultsFile);
+		String expected_results = TestUtil.getTextFileContents(expectedResultsFile, false);
 		assertEquals(expected_results, result);
 	}
 
 	private void executeFunction(Function_c function) {
 		BPDebugUtils.executeElement(function);
 		DebugUITestUtilities.waitForExecution();
+		DebugUITestUtilities.waitForBPThreads(m_sys);
+		BaseTest.dispatchEvents();
+		BaseTest.waitFor(100);
 	}
 	
 	/* This test stopped working with the promotion of 

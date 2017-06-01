@@ -108,7 +108,7 @@ public class TestReflexiveConnectorCreation extends BaseTest {
 								"Unnamed Package");
 					}
 				});
-		TestingUtilities.allowJobCompletion();
+		BaseTest.dispatchEvents(0);
 		CanvasUtilities.openCanvasEditor(testPackage);
 		AbstractTool classTool = UITestingUtilities.getTool("Classes", "Class");
 		UITestingUtilities.activateTool(classTool);
@@ -203,86 +203,5 @@ public class TestReflexiveConnectorCreation extends BaseTest {
 				points.size() == 5);
 		UITestingUtilities.deactivateTool(assocTool);
 	}
-	@Test
-	public void testReflexiveConnectorOnConnector() {
-		// create a generic package on the default project
-		SystemModel_c system = getSystemModel();
-		system.Newpackage();
-		Package_c testPackage = Package_c.getOneEP_PKGOnR1405(system,
-				new ClassQueryInterface_c() {
 
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((Package_c) candidate).getName().equals(
-								"Unnamed Package");
-					}
-				});
-		CanvasUtilities.openCanvasEditor(testPackage);
-		// maximize the editor area
-		if (!PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getActivePage().isPageZoomed()) {
-			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getActivePage().toggleZoom(
-							PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getActivePage()
-									.getActivePartReference());
-		}
-		AbstractTool classTool = UITestingUtilities.getTool("Interaction", "Class");
-		UITestingUtilities.activateTool(classTool);
-		UITestingUtilities.doMouseMove(500, 100);
-		UITestingUtilities.doMousePress(500, 100);
-		UITestingUtilities.doMouseMove(700, 300);
-		UITestingUtilities.doMouseRelease(700, 300);
-		UITestingUtilities.deactivateTool(classTool);
-		// locate the edit part for the new class
-		Shape_c shape = Shape_c.getManyGD_SHPsOnR2(GraphicalElement_c
-				.getManyGD_GEsOnR1(((GraphicalEditor) UITestingUtilities
-						.getActiveEditor()).getModel()))[1];
-		GraphicalEditPart editPart = (GraphicalEditPart) UITestingUtilities
-				.getEditorPartFor(shape);
-		Rectangle bounds = editPart.getFigure().getBounds().getCopy();
-		editPart.getFigure().translateToAbsolute(bounds);
-		// select the Association tool
-		AbstractTool commTool = UITestingUtilities.getTool("Sequence", "Communication Line");
-		UITestingUtilities.activateTool(commTool);
-		UITestingUtilities.doMouseMove(bounds.getCenter().x, bounds
-				.getCenter().y);
-		UITestingUtilities.doMousePress(bounds.getCenter().x, bounds
-				.getCenter().y);
-		UITestingUtilities.doMouseMove(bounds.getCenter().x, bounds
-				.getBottom().y + 400);
-		UITestingUtilities.doMouseRelease(bounds.getCenter().x, bounds
-				.getBottom().y + 400);
-		UITestingUtilities.deactivateTool(commTool);
-		Connector_c connector = Connector_c.getManyGD_CONsOnR2(GraphicalElement_c
-				.getManyGD_GEsOnR1(Model_c.getOneGD_MDOnR1(GraphicalElement_c
-						.getOneGD_GEOnR2(shape))))[2];
-		ConnectorEditPart connectorPart = (ConnectorEditPart) UITestingUtilities
-				.getEditorPartFor(connector);
-		PointList points = connectorPart.getConnectionFigure().getPoints().getCopy();
-		PointList translatedPoints = points.getCopy(); 
-		connectorPart.getFigure().translateToAbsolute(translatedPoints);
-		AbstractTool messageTool = UITestingUtilities.getTool("Interaction", "Return Message");
-		UITestingUtilities.activateTool(messageTool);
-		UITestingUtilities.doMouseMove(translatedPoints.getFirstPoint().x + 5, translatedPoints
-				.getFirstPoint().y + 100);
-		UITestingUtilities.doMousePress(translatedPoints.getFirstPoint().x + 5, translatedPoints
-				.getFirstPoint().y + 100);
-		UITestingUtilities.doMouseMove(translatedPoints.getFirstPoint().x - 5, translatedPoints
-				.getFirstPoint().y + 150);
-		UITestingUtilities.doMouseRelease(translatedPoints.getFirstPoint().x - 5, translatedPoints
-				.getFirstPoint().y + 150);
-		UITestingUtilities.deactivateTool(messageTool);		
-		// check that each bendpoint is on the right of the comm line
-		connector = Connector_c.getManyGD_CONsOnR2(GraphicalElement_c
-				.getManyGD_GEsOnR1(Model_c.getOneGD_MDOnR1(GraphicalElement_c
-						.getOneGD_GEOnR2(shape))))[3];
-		connectorPart = (ConnectorEditPart) UITestingUtilities
-				.getEditorPartFor(connector);
-		PointList newPoints = connectorPart.getConnectionFigure().getPoints();
-		assertTrue("Bendpoint was not on the right of the communication line.",
-				newPoints.getPoint(1).x > points.getMidpoint().x);
-		assertTrue("Bendpoint was not on the right of the communication line.",
-				newPoints.getPoint(2).x > points.getMidpoint().x);
-	}
 }

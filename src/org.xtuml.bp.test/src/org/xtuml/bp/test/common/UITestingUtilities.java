@@ -36,6 +36,7 @@ import java.util.Vector;
 import junit.framework.Assert;
 
 import org.eclipse.compare.internal.CompareEditor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
@@ -302,10 +303,13 @@ public class UITestingUtilities {
 		BaseTest.waitForTransaction();
 	}
 	public static void pasteClipboardContents(Point location, GraphicalEditor ce) {
-		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
-		CanvasTestUtils.doMouseMove(location.x, location.y);
-		CanvasTestUtils.doMouseContextPress(location.x, location.y);
-		canvaspasteaction.run();
+		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+			CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
+			CanvasTestUtils.doMouseMove(location.x, location.y);
+			CanvasTestUtils.doMouseContextPress(location.x, location.y);
+			canvaspasteaction.run();
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		});
 		BaseTest.dispatchEvents(0);
 	}
 
@@ -440,7 +444,7 @@ public class UITestingUtilities {
 		MenuItem item = getMenuItem(menu, name);
 		activateMenuItem(item);
 	}
-		UIUtil.dispatchAll();
+		BaseTest.dispatchEvents();
 	}
 
 	public class Tool_by_id_c implements ClassQueryInterface_c {
@@ -469,7 +473,11 @@ public class UITestingUtilities {
 				.getGraphicalEditor();
 		Event me = new Event();
 		if(ctrlDown) {
-			me.stateMask = SWT.CTRL;
+			if(Platform.getOS().equals(Platform.OS_MACOSX)) {
+				me.stateMask = SWT.COMMAND;
+			} else {
+				me.stateMask = SWT.CTRL;
+			}
 		}
 
 		if (eventType.equals("MouseMove")) {
@@ -575,8 +583,7 @@ public class UITestingUtilities {
 			me.button = 1;
 			ce.getCanvas().notifyListeners(SWT.MouseDoubleClick, me);
 		}
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		BaseTest.dispatchEvents();
 	}	
 
     /**
@@ -697,6 +704,7 @@ public class UITestingUtilities {
 	 */
 	public static GraphicalEditor addElementToGraphicalSelection(Object obj) {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
+
 		GraphicalEditor originalEditor = editor;
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		if(obj instanceof GraphicalEditPart) {

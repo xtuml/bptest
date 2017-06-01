@@ -29,8 +29,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.Assert;
-
 import org.eclipse.compare.ResourceNode;
 import org.eclipse.compare.internal.CompareEditor;
 import org.eclipse.compare.structuremergeviewer.DiffNode;
@@ -47,16 +45,15 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.team.internal.ui.actions.CompareAction;
+import org.eclipse.team.internal.ui.mapping.CommonViewerAdvisor.NavigableCommonViewer;
 import org.eclipse.team.internal.ui.mapping.DiffTreeChangesSection;
 import org.eclipse.team.internal.ui.mapping.ModelSynchronizePage;
-import org.eclipse.team.internal.ui.mapping.CommonViewerAdvisor.NavigableCommonViewer;
 import org.eclipse.team.internal.ui.synchronize.SynchronizeView;
 import org.eclipse.team.ui.synchronize.ISynchronizeView;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
 import org.xtuml.bp.compare.ComparePlugin;
 import org.xtuml.bp.compare.ModelCacheManager;
 import org.xtuml.bp.compare.ModelCacheManager.ModelLoadException;
@@ -71,6 +68,9 @@ import org.xtuml.bp.model.compare.contentmergeviewer.SynchronizedTreeViewer;
 import org.xtuml.bp.model.compare.providers.ComparableProvider;
 import org.xtuml.bp.test.TestUtil;
 
+import junit.framework.TestCase;
+
+@SuppressWarnings("restriction")
 public class CompareTestUtilities {
 	
 	public static void compareModels(IResource source, IResource target,
@@ -90,7 +90,7 @@ public class CompareTestUtilities {
 					return;
 				}
 			}
-			Assert.fail("Missing right side folder "
+			TestCase.fail("Missing right side folder "
 					+ source.getLocation().toString() + ".");
 		}
 		if (source instanceof IFolder && target instanceof IFolder) {
@@ -100,7 +100,7 @@ public class CompareTestUtilities {
 			try {
 				resources = sourceFolder.members();
 			} catch (CoreException e1) {
-				Assert.fail(e1.toString());
+				TestCase.fail(e1.toString());
 			}
 			for (int i = 0; i < resources.length; i++) {
 				IResource targetResource = targetFolder.findMember(resources[i]
@@ -144,7 +144,7 @@ public class CompareTestUtilities {
 			rootTwo = (CompareDocumentRangeNode) modelCacheManager.getModel(
 					fileNodeTwo, identifyingObj);
 		} catch (ModelLoadException e) {
-			Assert.fail(e.toString());
+			TestCase.fail(e.toString());
 		}
 
 		Differencer diff = new Differencer();
@@ -284,7 +284,7 @@ public class CompareTestUtilities {
 					}
 				}
 			}
-			Assert.assertEquals("Copied model element: "
+			TestCase.assertEquals("Copied model element: "
 					+ source.getName()
 							.replaceAll("." + Ooaofooa.MODELS_EXT, "")
 					+ " had differences.", leftResult, rightResult);
@@ -489,7 +489,7 @@ public class CompareTestUtilities {
 		action.run(null);
 		IEditorPart activeEditor = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		Assert.assertTrue("Unable to locate compare editor.", activeEditor instanceof CompareEditor);
+		TestCase.assertTrue("Unable to locate compare editor.", activeEditor instanceof CompareEditor);
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		Set<Object> keySet = TreeDifferencer.instances.keySet();
 		Object key = null;
@@ -680,7 +680,7 @@ public class CompareTestUtilities {
 			IViewPart viewPart = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage()
 					.showView(ISynchronizeView.VIEW_ID);
-			Assert.assertNotNull("", viewPart);
+			TestCase.assertNotNull("", viewPart);
 			return viewPart;
 		} catch (PartInitException e) {
 			CorePlugin.logError("Unable to open git repositories view.", e);
@@ -689,6 +689,7 @@ public class CompareTestUtilities {
 	}
 
 	public static void openElementInSyncronizeView(String elementName) {
+		TestUtil.yesToDialog(200);
 		IViewPart gitRepositoryView = showTeamSyncView();
 		SynchronizeView view = (SynchronizeView) gitRepositoryView;
 		ModelSynchronizePage page = (ModelSynchronizePage) view.getPage(view.getParticipant());
@@ -697,10 +698,12 @@ public class CompareTestUtilities {
 		Composite composite = (Composite) control;
 		DiffTreeChangesSection diffTree = (DiffTreeChangesSection) composite.getChildren()[0];
 		NavigableCommonViewer viewer = (NavigableCommonViewer) diffTree.getChangesViewer();
+		showTeamSyncView();
 		Tree tree = viewer.getTree();
 		viewer.expandAll();
-
-		BaseTest.dispatchEvents(0);
+		viewer.refresh();
+		
+		BaseTest.dispatchEvents(200);
 		
 		TreeItem localItem = UITestingUtilities.findItemInTree(tree,
 				elementName);

@@ -378,7 +378,7 @@ public abstract class RenameTest extends PkgCMBaseTest {
         
 
         if (baseEditor != null)
-            validateOrGenerateResultsGenerics(baseEditor, generateResult);
+            validateOrGenerateResults(baseEditor, generateResult);
 
         EditorTestUtilities.checkAllEditorClosed(openEditors);
         

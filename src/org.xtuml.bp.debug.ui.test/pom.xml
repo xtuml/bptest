@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
-		<version>5.8.6</version>
+		<version>6.2.5</version>
 		<relativePath>../../releng/org.xtuml.bp.releng.parent.tests/</relativePath>
 	</parent>
 	<groupId>org.xtuml.bp</groupId>
@@ -21,20 +21,9 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
-					<testClass>VerifierTestSuite</testClass>
-					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -Dfile.encoding=UTF-8</argLine>
-			
-					<executions>
-						<execution>
-							<id>ExistingProjectsTestSuite</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.debug.ui.test</testSuite>
-								<testClass>VerifierTestSuite2</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-					</executions>
+					<includes>
+						<include>**/VerifierTestFull.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

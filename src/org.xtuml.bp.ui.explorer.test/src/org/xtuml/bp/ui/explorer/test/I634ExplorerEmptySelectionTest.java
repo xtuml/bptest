@@ -62,7 +62,7 @@ import org.xtuml.bp.test.common.OrderedRunner;
 	@Test
 	public void testOpenOnLoadedModelInExplorer() throws Throwable{
         ExplorerTest.restoreProject();
-        ensureAvailableAndLoaded("small", false);
+        loadProject("small");
 
         IStructuredSelection sel =(IStructuredSelection)Selection.getInstance().getSelection(); 
 		if (!sel.isEmpty()){

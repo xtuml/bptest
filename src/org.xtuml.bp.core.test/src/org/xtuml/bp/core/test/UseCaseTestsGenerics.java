@@ -105,7 +105,7 @@ public class UseCaseTestsGenerics extends CanvasTest {
 		Ooaofooa.setPersistEnabled(true);
 		pkg.setName("Use Case Diagram");
 		Ooaofooa.setPersistEnabled(false);
-		validateOrGenerateResultsGenerics(ce, generateResults, false);
+		validateOrGenerateResults(ce, generateResults, false);
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class UseCaseTestsGenerics extends CanvasTest {
 
 		UITestingUtilities.deactivateTool(tool);
 
-		validateOrGenerateResultsGenerics(ce, generateResults, false);
+		validateOrGenerateResults(ce, generateResults, false);
 
 	}
 

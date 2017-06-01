@@ -87,7 +87,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 		String exportFilename = "watch_exportGenerics.xtuml";
         BaseTest.ensureFolderExists(m_workspace_path+"actual_results/");
         String exportPath = m_workspace_path + "actual_results/" + exportFilename;
-        String expectedResultsPath = m_workspace_path + TestingUtilities.getExpectedResultsPath() + exportFilename;
+        String expectedResultsPath = m_workspace_path + TestingUtilities.getExpectedResultsPath() + "export_results/" + exportFilename;
         
         IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
         store.setValue(BridgePointPreferencesStore.EXPORT_OAL, "always"); //$NON-NLS-1$
@@ -119,7 +119,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 		
 		// export with persisted OAL	        
         TestingUtilities.exportModelUsingWizard(m_workspace_path + (generateResults ? 
-              TestingUtilities.getExpectedResultsPath() : "actual_results") + 
+              TestingUtilities.getExpectedResultsPath() + "export_results/" : "actual_results") + 
               "/" + exportFilename, true);
 
         /* This part of the test is temporarily removed see issue dts0100753682

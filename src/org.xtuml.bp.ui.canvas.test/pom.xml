@@ -6,14 +6,13 @@
 	<parent>
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
-		<version>5.8.6</version>
+		<version>6.2.5</version>
 		<relativePath>../../releng/org.xtuml.bp.releng.parent.tests/</relativePath>
 	</parent>
 	<groupId>org.xtuml.bp</groupId>
 	<artifactId>org.xtuml.bp.ui.canvas.test</artifactId>
 	<version>1.0.0</version>
 	<packaging>eclipse-test-plugin</packaging>
-
 
 	<build>
 		<plugins>
@@ -39,6 +38,7 @@
 								<property name="sourceDir" value="${project.build.sourceDirectory}" />
 								<property name="ant.home" value="${ant-home-path}" />
 
++								<property name="eclipse.home" value="${eclipse-home-path}" />
 								<ant antfile="${basedir}/generate.xml" target="nb_all" />
 							</tasks>
 						</configuration>
@@ -50,30 +50,10 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
-				<configuration>
-					<testSuite>org.xtuml.bp.ui.canvas.test</testSuite>
-					<testClass>CanvasCCPGlobalsTestSuite</testClass>
-					<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/ui_explorer/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							
-					<executions>
-						<execution>
-							<id>GlobalsCanvasSuite1</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.ui.canvas.test</testSuite>
-								<testClass>GlobalsCanvasSuite1</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/ui_explorer/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-						
-						<execution>
-							<id>GlobalsCanvasSuite2</id>
-							<configuration>
-								<testSuite>org.xtuml.bp.ui.canvas.test</testSuite>
-								<testClass>GlobalsCanvasSuite2</testClass>
-								<argLine>-Xmx1024m -Xms512m -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir} -DLOGFILE_PATH=${project.build.directory}/bp_tests/ui_explorer/.metadata/.log -Dfile.encoding=UTF-8</argLine>
-							</configuration>
-						</execution>
-					</executions>
+				<configuration>		
+					<includes>
+						<include>**/CanvasTestFull.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>

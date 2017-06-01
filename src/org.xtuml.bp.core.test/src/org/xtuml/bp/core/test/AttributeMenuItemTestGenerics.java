@@ -52,6 +52,7 @@ import org.xtuml.bp.core.ui.RemoveFromIdentifierOnO_ATTRWizardPage1;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.SetAsBaseAttributeOnO_ATTRAction;
 import org.xtuml.bp.core.ui.SetAsDerivedAttributeOnO_ATTRAction;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Cl_c;
@@ -421,6 +422,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 		RemoveFromIdentifierOnO_ATTRWizardPage1 page = (RemoveFromIdentifierOnO_ATTRWizardPage1) wd
 				.getCurrentPage();
 		page.IdentifierCombo.select(0);
+		BaseTest.dispatchEvents(0);
 		String[] items = page.IdentifierCombo.getItems();
 		assertEquals(possible_ids.length, items.length);
 		for (int i = 0; i < possible_ids.length; ++i) {
@@ -453,7 +455,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdToRefForm"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new"));
-		UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		UUID expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -496,7 +498,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdToLink"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_one_id"));
-		UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		UUID expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -531,7 +533,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 		assertTrue(oth_attr.Actionfilter("id", "some"));
 		new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_oth_id"));
-		expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -573,7 +575,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdSub"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_id"));
-		UUID expectedId = getSameAsBaseAttributeUUID(Ooaofooa.getDefaultInstance());
+		UUID expectedId = attr.getDt_id();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});

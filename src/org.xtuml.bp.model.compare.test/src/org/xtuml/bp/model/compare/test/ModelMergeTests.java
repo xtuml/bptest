@@ -28,9 +28,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.navigator.CommonNavigator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -86,12 +91,15 @@ import org.xtuml.bp.test.common.CompareTestUtilities;
 import org.xtuml.bp.test.common.GitUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
+import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.test.common.ZipUtil;
 import org.xtuml.bp.ui.canvas.Connector_c;
 import org.xtuml.bp.ui.canvas.GraphicalElement_c;
 import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.ui.canvas.Shape_c;
+
+import junit.framework.TestCase;
 
 @RunWith(OrderedRunner.class)
 public class ModelMergeTests extends BaseTest {
@@ -124,13 +132,7 @@ public class ModelMergeTests extends BaseTest {
 				.setValue(
 						BridgePointPreferencesStore.ENABLE_ERROR_FOR_EMPTY_SYNCHRONOUS_MESSAGE,
 						false);
-		String test_repository_location = System
-				.getenv("XTUML_TEST_MODEL_REPOSITORY");
-		if (test_repository_location == null
-				|| test_repository_location.equals("")) {
-			// use the default location
-			test_repository_location = BaseTest.DEFAULT_XTUML_TEST_MODEL_REPOSITORY;
-		}
+		String test_repository_location = BaseTest.getTestModelRespositoryLocation();
 		test_repository_location = new Path(test_repository_location)
 				.removeLastSegments(1).toString();
 		ZipUtil.unzipFileContents(
@@ -162,6 +164,215 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
+	public void testAutomaticGraphicalMergeElementDeletion() throws Exception {
+		String projectName = "AutomaticGraphicalMerge";
+		// import git repository from models repo
+		GitUtil.loadRepository(test_repositories
+				+ "/" + projectName);
+		// import test project
+		GitUtil.loadProject(projectName, projectName);
+		// start the merge tool
+		GitUtil.startMergeTool(projectName);
+		// copy name change
+		m_sys = getSystemModel(projectName);
+		Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+		ActivityDiagramAction_c an = ActivityDiagramAction_c.getOneA_GAOnR1107(
+				ActionNode_c.getManyA_ACTsOnR1105(ActivityNode_c
+						.getManyA_NsOnR8001(PackageableElement_c
+								.getManyPE_PEsOnR8000(pkg))),
+				new ClassQueryInterface_c() {
+
+					@Override
+					public boolean evaluate(Object candidate) {
+						return ((ActivityDiagramAction_c) candidate).getName()
+								.equals("ActionOneRenamed");
+					}
+				});
+		CompareTestUtilities.selectElementInTree(false, an);
+		CompareTestUtilities.mergeSelection();
+		CompareTestUtilities.flushMergeEditor();
+		// make sure that the connection was not removed
+		// as the change to remove the edge was not merged
+		m_sys = getSystemModel(projectName);
+		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+		an = ActivityDiagramAction_c.getOneA_GAOnR1107(ActionNode_c
+				.getManyA_ACTsOnR1105(ActivityNode_c
+						.getManyA_NsOnR8001(PackageableElement_c
+								.getManyPE_PEsOnR8000(pkg))),
+				new ClassQueryInterface_c() {
+
+					@Override
+					public boolean evaluate(Object candidate) {
+						return ((ActivityDiagramAction_c) candidate).getName()
+								.equals("ActionOne");
+					}
+				});
+		assertNotNull(an);
+		ActivityEdge_c edge = ActivityEdge_c.getOneA_EOnR1104(ActivityNode_c
+				.getOneA_NOnR1105(ActionNode_c.getOneA_ACTOnR1107(an)));
+		assertNotNull(
+				"The edge was removed during merge, the test data is not valid.",
+				edge);
+		Ooaofgraphics graphicsRoot = Ooaofgraphics.getInstance(an
+				.getModelRoot().getId());
+		Connector_c connector = Connector_c.ConnectorInstance(graphicsRoot);
+		assertNotNull(
+				"The graphical connector was removed even though the semantic elements was not.",
+				connector);
+		GitUtil.startMergeTool(projectName);
+		// now copy the semantic removal
+		CompareTestUtilities.selectElementInTree(true, edge);
+		CompareTestUtilities.mergeSelection();
+		CompareTestUtilities.flushMergeEditor();
+		m_sys = getSystemModel(projectName);
+		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+		an = ActivityDiagramAction_c.getOneA_GAOnR1107(ActionNode_c
+				.getManyA_ACTsOnR1105(ActivityNode_c
+						.getManyA_NsOnR8001(PackageableElement_c
+								.getManyPE_PEsOnR8000(pkg))),
+				new ClassQueryInterface_c() {
+
+					@Override
+					public boolean evaluate(Object candidate) {
+						return ((ActivityDiagramAction_c) candidate).getName()
+								.equals("ActionOneRenamed");
+					}
+				});
+		edge = ActivityEdge_c.getOneA_EOnR1104(ActivityNode_c
+				.getOneA_NOnR1105(ActionNode_c.getOneA_ACTOnR1107(an)));
+		assertNull(
+				"The edge was not removed during merge, the test data is not valid.",
+				edge);
+		connector = Connector_c.ConnectorInstance(graphicsRoot);
+		assertNull(
+				"The graphical connector was not removed even though the semantic elements was.",
+				connector);
+		// delete test project if no failures/errors
+		// and reset the repository
+		TestUtil.deleteProject(getProjectHandle(projectName));
+	}
+
+	@Test
+	public void testAutomaticGraphicalMergeElementAdded() throws Exception {
+		String projectName = "AutomaticGraphicalMergeAddition";
+		// import git repository from models repo
+		GitUtil.loadRepository(test_repositories
+				+ "/" + projectName);
+		// import test project
+		GitUtil.loadProject(projectName, projectName);
+		// start the merge tool
+		GitUtil.startMergeTool(projectName);
+		// copy name change
+		m_sys = getSystemModel(projectName);
+		Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+		ActivityEdge_c edge = ActivityEdge_c.ActivityEdgeInstance(pkg
+				.getModelRoot());
+		CompareTestUtilities.selectElementInTree(true, edge);
+		CompareTestUtilities.mergeSelection();
+		CompareTestUtilities.flushMergeEditor();
+		// make sure that the connection was not added
+		// as the change to add the edge was not merged
+		m_sys = getSystemModel(projectName);
+		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+		edge = ActivityEdge_c.ActivityEdgeInstance(pkg.getModelRoot());
+		assertNull(
+				"The edge was added during merge, the test data is not valid.",
+				edge);
+		Ooaofgraphics graphicsRoot = Ooaofgraphics.getInstance(pkg
+				.getModelRoot().getId());
+		Connector_c connector = Connector_c.ConnectorInstance(graphicsRoot);
+		assertNull(
+				"The graphical connector was added even though the semantic elements was not.",
+				connector);
+		GitUtil.startMergeTool(projectName);
+		// now copy the semantic addition
+		ModelContentMergeViewer viewer = ModelContentMergeViewer
+				.getInstance(null);
+		edge = ActivityEdge_c
+				.ActivityEdgeInstance(viewer.getRightCompareRoot());
+		CompareTestUtilities.selectElementInTree(false, edge);
+		CompareTestUtilities.mergeSelection();
+		CompareTestUtilities.flushMergeEditor();
+		m_sys = getSystemModel(projectName);
+		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
+		ActivityEdge_c[] edges = ActivityEdge_c.ActivityEdgeInstances(pkg
+				.getModelRoot());
+		assertTrue(
+				"The edge was not added during merge, the test data is not valid.",
+				edges.length == 2);
+		Connector_c[] connectors = Connector_c.ConnectorInstances(graphicsRoot);
+		assertTrue(
+				"The graphical connector was not added even though the semantic elements was.",
+				connectors.length == 2);
+		// delete test project if no failures/errors
+		// and reset the repository
+		TestUtil.deleteProject(getProjectHandle(projectName));
+	}
+
+	@Test
+	public void testAddStatesAndTransitionsNoExceptions() throws Exception {
+		String projectName = "dts0101009924";
+		// import git repository from models repo
+		GitUtil.loadRepository(test_repositories
+				+ "/" + projectName);
+		// import test project
+		GitUtil.loadProject(projectName, projectName);
+		// start the merge tool
+		GitUtil.startMergeTool(projectName);
+		// just need to close now and make sure there
+		// were no exceptions
+		CompareTestUtilities.flushMergeEditor();
+		// delete test project if no failures/errors
+		// and reset the repository
+		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents();
+	}
+
+	@Test
+	public void testConnectorTextDoesNotDisappear() throws Exception {
+		String projectName = "dts0101039702";
+		// import git repository from models repo
+		GitUtil.loadRepository(test_repositories
+				+ "/" + projectName);
+		// import test project
+		GitUtil.loadProject(projectName, projectName);
+		// switch to slave and make sure the provision and
+		// requirement have a valid represents
+		GitUtil.switchToBranch("slave", projectName);
+		String modelRootId = "/" + projectName + "/" + Ooaofooa.MODELS_DIRNAME
+				+ "/" + projectName + "/" + "Components" + "/" + "Components"
+				+ "." + Ooaofooa.MODELS_EXT;
+		Connector_c[] connectors = Connector_c.ConnectorInstances(Ooaofgraphics
+				.getInstance(modelRootId));
+		assertTrue("Could not locate connectors in the model.",
+				connectors.length > 0);
+		for (Connector_c connector : connectors) {
+			GraphicalElement_c ge = GraphicalElement_c
+					.getOneGD_GEOnR2(connector);
+			NonRootModelElement nrme = (NonRootModelElement) ge.getRepresents();
+			assertFalse("Found an orphaned connector represents value.",
+					nrme.isOrphaned());
+		}
+		// switch to master and make sure the text is not
+		// missing
+		GitUtil.switchToBranch("master", projectName);
+		connectors = Connector_c.ConnectorInstances(Ooaofgraphics
+				.getInstance(modelRootId));
+		assertTrue("Could not locate connectors in the model.",
+				connectors.length > 0);
+		for (Connector_c connector : connectors) {
+			GraphicalElement_c ge = GraphicalElement_c
+					.getOneGD_GEOnR2(connector);
+			NonRootModelElement nrme = (NonRootModelElement) ge.getRepresents();
+			assertFalse("Found an orphaned connector represents value.",
+					nrme.isOrphaned());
+		}
+		// delete test project if no failures/errors
+		// and reset the repository
+		TestUtil.deleteProject(getProjectHandle(projectName));
+	}
+
+	@Test
 	public void testMergeOfTransitionNoOrphanedTransitions() throws Exception {
 		String projectName = "dts0101042909";
 		// import git repository from models repo
@@ -169,8 +380,6 @@ public class ModelMergeTests extends BaseTest {
 				+ "/" + projectName);
 		// import test project
 		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
 		// start the merge tool
 		GitUtil.startMergeTool(projectName);
 		// perform test
@@ -230,8 +439,6 @@ public class ModelMergeTests extends BaseTest {
 				+ "/" + projectName);
 		// import test project
 		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
 		// start the merge tool
 		GitUtil.startMergeTool(projectName);
 		// perform test
@@ -266,29 +473,36 @@ public class ModelMergeTests extends BaseTest {
 		// and reset the repository
 		TestUtil.deleteProject(getProjectHandle(projectName));
 	}
-
-	@Test
-	public void testGraphicalElementDifferencesOnlyCausesDirtyEditor() {
-		String projectName = "dts0101054289";
-		// import git repository from models repo
-		GitUtil.loadRepository(test_repositories
-				+ "/" + projectName);
-		// import test project
-		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
-		// start the merge tool
-		GitUtil.startMergeTool(projectName);
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		// check that the merge tool is dirty
-		ModelContentMergeViewer viewer = ModelContentMergeViewer
-				.getInstance(null);
-		assertTrue("Graphical changes only did not dirty the editor on open.",
-				viewer.internalIsLeftDirty());
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.closeAllEditors(false);
-		TestUtil.deleteProject(getProjectHandle(projectName));
-	}
+/**
+ * 
+ * Disabled as the existing test infrastructure does not handle situation
+ * with the latest egit.  We must access the merge tool through the synchronize
+ * view.  See https://support.onefact.net/issues/9402.
+ */
+//	@Test
+//	public void testGraphicalElementDifferencesOnlyCausesDirtyEditor() {
+//		String projectName = "dts0101054289";
+//		// import git repository from models repo
+//		GitUtil.loadRepository(test_repositories
+//				+ "/" + projectName);
+//		// import test project
+//		GitUtil.loadProject(projectName, projectName);
+//		int x = 0;
+//		while(x == 0) {
+//			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+//		}
+//		// start the merge tool
+//		GitUtil.startMergeTool(projectName);
+//		BaseTest.dispatchEvents(0);
+//		// check that the merge tool is dirty
+//		ModelContentMergeViewer viewer = ModelContentMergeViewer
+//				.getInstance(null);
+//		assertTrue("Graphical changes only did not dirty the editor on open.",
+//				viewer.internalIsLeftDirty());
+//		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+//				.closeAllEditors(false);
+//		TestUtil.deleteProject(getProjectHandle(projectName));
+//	}
 	
 	@Test
 	public void testMergeWithStateMachineAddedInSeparateBranches()
@@ -299,8 +513,6 @@ public class ModelMergeTests extends BaseTest {
 				+ "/" + projectName);
 		// import test project
 		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
 		// start the merge tool
 		GitUtil.startMergeTool(projectName);
 		// perform test
@@ -433,219 +645,6 @@ public class ModelMergeTests extends BaseTest {
 		}
 	}
 
-	@Test
-	public void testAutomaticGraphicalMergeElementDeletion() throws Exception {
-		String projectName = "AutomaticGraphicalMerge";
-		// import git repository from models repo
-		GitUtil.loadRepository(test_repositories
-				+ "/" + projectName);
-		// import test project
-		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
-		// start the merge tool
-		GitUtil.startMergeTool(projectName);
-		// copy name change
-		m_sys = getSystemModel(projectName);
-		Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
-		ActivityDiagramAction_c an = ActivityDiagramAction_c.getOneA_GAOnR1107(
-				ActionNode_c.getManyA_ACTsOnR1105(ActivityNode_c
-						.getManyA_NsOnR8001(PackageableElement_c
-								.getManyPE_PEsOnR8000(pkg))),
-				new ClassQueryInterface_c() {
-
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((ActivityDiagramAction_c) candidate).getName()
-								.equals("ActionOneRenamed");
-					}
-				});
-		CompareTestUtilities.selectElementInTree(false, an);
-		CompareTestUtilities.mergeSelection();
-		CompareTestUtilities.flushMergeEditor();
-		// make sure that the connection was not removed
-		// as the change to remove the edge was not merged
-		m_sys = getSystemModel(projectName);
-		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
-		an = ActivityDiagramAction_c.getOneA_GAOnR1107(ActionNode_c
-				.getManyA_ACTsOnR1105(ActivityNode_c
-						.getManyA_NsOnR8001(PackageableElement_c
-								.getManyPE_PEsOnR8000(pkg))),
-				new ClassQueryInterface_c() {
-
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((ActivityDiagramAction_c) candidate).getName()
-								.equals("ActionOne");
-					}
-				});
-		assertNotNull(an);
-		ActivityEdge_c edge = ActivityEdge_c.getOneA_EOnR1104(ActivityNode_c
-				.getOneA_NOnR1105(ActionNode_c.getOneA_ACTOnR1107(an)));
-		assertNotNull(
-				"The edge was removed during merge, the test data is not valid.",
-				edge);
-		Ooaofgraphics graphicsRoot = Ooaofgraphics.getInstance(an
-				.getModelRoot().getId());
-		Connector_c connector = Connector_c.ConnectorInstance(graphicsRoot);
-		assertNotNull(
-				"The graphical connector was removed even though the semantic elements was not.",
-				connector);
-		GitUtil.startMergeTool(projectName);
-		// now copy the semantic removal
-		CompareTestUtilities.selectElementInTree(true, edge);
-		CompareTestUtilities.mergeSelection();
-		CompareTestUtilities.flushMergeEditor();
-		m_sys = getSystemModel(projectName);
-		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
-		an = ActivityDiagramAction_c.getOneA_GAOnR1107(ActionNode_c
-				.getManyA_ACTsOnR1105(ActivityNode_c
-						.getManyA_NsOnR8001(PackageableElement_c
-								.getManyPE_PEsOnR8000(pkg))),
-				new ClassQueryInterface_c() {
-
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((ActivityDiagramAction_c) candidate).getName()
-								.equals("ActionOneRenamed");
-					}
-				});
-		edge = ActivityEdge_c.getOneA_EOnR1104(ActivityNode_c
-				.getOneA_NOnR1105(ActionNode_c.getOneA_ACTOnR1107(an)));
-		assertNull(
-				"The edge was not removed during merge, the test data is not valid.",
-				edge);
-		connector = Connector_c.ConnectorInstance(graphicsRoot);
-		assertNull(
-				"The graphical connector was not removed even though the semantic elements was.",
-				connector);
-		// delete test project if no failures/errors
-		// and reset the repository
-		TestUtil.deleteProject(getProjectHandle(projectName));
-	}
-
-	@Test
-	public void testAutomaticGraphicalMergeElementAdded() throws Exception {
-		String projectName = "AutomaticGraphicalMergeAddition";
-		// import git repository from models repo
-		GitUtil.loadRepository(test_repositories
-				+ "/" + projectName);
-		// import test project
-		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
-		// start the merge tool
-		GitUtil.startMergeTool(projectName);
-		// copy name change
-		m_sys = getSystemModel(projectName);
-		Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
-		ActivityEdge_c edge = ActivityEdge_c.ActivityEdgeInstance(pkg
-				.getModelRoot());
-		CompareTestUtilities.selectElementInTree(true, edge);
-		CompareTestUtilities.mergeSelection();
-		CompareTestUtilities.flushMergeEditor();
-		// make sure that the connection was not added
-		// as the change to add the edge was not merged
-		m_sys = getSystemModel(projectName);
-		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
-		edge = ActivityEdge_c.ActivityEdgeInstance(pkg.getModelRoot());
-		assertNull(
-				"The edge was added during merge, the test data is not valid.",
-				edge);
-		Ooaofgraphics graphicsRoot = Ooaofgraphics.getInstance(pkg
-				.getModelRoot().getId());
-		Connector_c connector = Connector_c.ConnectorInstance(graphicsRoot);
-		assertNull(
-				"The graphical connector was added even though the semantic elements was not.",
-				connector);
-		GitUtil.startMergeTool(projectName);
-		// now copy the semantic addition
-		ModelContentMergeViewer viewer = ModelContentMergeViewer
-				.getInstance(null);
-		edge = ActivityEdge_c
-				.ActivityEdgeInstance(viewer.getRightCompareRoot());
-		CompareTestUtilities.selectElementInTree(false, edge);
-		CompareTestUtilities.mergeSelection();
-		CompareTestUtilities.flushMergeEditor();
-		m_sys = getSystemModel(projectName);
-		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
-		ActivityEdge_c[] edges = ActivityEdge_c.ActivityEdgeInstances(pkg
-				.getModelRoot());
-		assertTrue(
-				"The edge was not added during merge, the test data is not valid.",
-				edges.length == 2);
-		Connector_c[] connectors = Connector_c.ConnectorInstances(graphicsRoot);
-		assertTrue(
-				"The graphical connector was not added even though the semantic elements was.",
-				connectors.length == 2);
-		// delete test project if no failures/errors
-		// and reset the repository
-		TestUtil.deleteProject(getProjectHandle(projectName));
-	}
-
-	@Test
-	public void testAddStatesAndTransitionsNoExceptions() throws Exception {
-		String projectName = "dts0101009924";
-		// import git repository from models repo
-		GitUtil.loadRepository(test_repositories
-				+ "/" + projectName);
-		// import test project
-		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
-		// start the merge tool
-		GitUtil.startMergeTool(projectName);
-		// just need to close now and make sure there
-		// were no exceptions
-		CompareTestUtilities.flushMergeEditor();
-		// delete test project if no failures/errors
-		// and reset the repository
-		TestUtil.deleteProject(getProjectHandle(projectName));
-	}
-
-	@Test
-	public void testConnectorTextDoesNotDisappear() throws Exception {
-		String projectName = "dts0101039702";
-		// import git repository from models repo
-		GitUtil.loadRepository(test_repositories
-				+ "/" + projectName);
-		// import test project
-		GitUtil.loadProject(projectName, projectName);
-		// switch to slave and make sure the provision and
-		// requirement have a valid represents
-		GitUtil.switchToBranch("slave", projectName);
-		String modelRootId = "/" + projectName + "/" + Ooaofooa.MODELS_DIRNAME
-				+ "/" + projectName + "/" + "Components" + "/" + "Components"
-				+ "." + Ooaofooa.MODELS_EXT;
-		Connector_c[] connectors = Connector_c.ConnectorInstances(Ooaofgraphics
-				.getInstance(modelRootId));
-		assertTrue("Could not locate connectors in the model.",
-				connectors.length > 0);
-		for (Connector_c connector : connectors) {
-			GraphicalElement_c ge = GraphicalElement_c
-					.getOneGD_GEOnR2(connector);
-			NonRootModelElement nrme = (NonRootModelElement) ge.getRepresents();
-			assertFalse("Found an orphaned connector represents value.",
-					nrme.isOrphaned());
-		}
-		// switch to master and make sure the text is not
-		// missing
-		GitUtil.switchToBranch("master", projectName);
-		connectors = Connector_c.ConnectorInstances(Ooaofgraphics
-				.getInstance(modelRootId));
-		assertTrue("Could not locate connectors in the model.",
-				connectors.length > 0);
-		for (Connector_c connector : connectors) {
-			GraphicalElement_c ge = GraphicalElement_c
-					.getOneGD_GEOnR2(connector);
-			NonRootModelElement nrme = (NonRootModelElement) ge.getRepresents();
-			assertFalse("Found an orphaned connector represents value.",
-					nrme.isOrphaned());
-		}
-		// delete test project if no failures/errors
-		// and reset the repository
-		TestUtil.deleteProject(getProjectHandle(projectName));
-	}
 
 	@Test
 	public void testValueModificationOfDescriptionThroughCompareDialog()
@@ -962,62 +961,6 @@ public class ModelMergeTests extends BaseTest {
 				viewer.getDifferencer().getLeftDifferences().size() == 0);
 	}
 
-	@Test
-	public void testGitConflictAnnotationRemoval() throws Exception {
-		String projectName = "GitAnnotationRemovalTest";
-		// import git repository from models repo
-		GitUtil.loadRepository(test_repositories
-				+ "/" + projectName);
-		// import test project
-		GitUtil.loadProject(projectName, projectName);
-		// merge the test branch
-		GitUtil.mergeBranch("slave", projectName);
-		// start the merge tool
-		GitUtil.startMergeTool(projectName);
-		// perform test
-		GitUtil.switchToFile("ClassStateMachine.xtuml");
-		CompareTestUtilities.copyAllNonConflictingChangesFromRightToLeft();
-		CompareTestUtilities.flushMergeEditor(true);
-		m_sys = getSystemModel(projectName);
-		Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
-		InstanceStateMachine_c ism = InstanceStateMachine_c
-				.InstanceStateMachineInstance(pkg.getModelRoot());
-		ClassStateMachine_c csm = ClassStateMachine_c
-				.ClassStateMachineInstance(pkg.getModelRoot());
-		ModelClass_c clazz = ModelClass_c
-				.ModelClassInstance(pkg.getModelRoot());
-		String ismContents = TestUtil.getTextFileContents(ism.getFile()
-				.getLocation().toFile());
-		String csmContents = TestUtil.getTextFileContents(csm.getFile()
-				.getLocation().toFile());
-		String classContents = TestUtil.getTextFileContents(clazz.getFile()
-				.getLocation().toFile());
-		assertTrue(
-				"Did not find the git annotation markers in an unviewed file.",
-				ismContents.contains(">>>"));
-		assertFalse("Found git annotation markers in a viewed and saved file.",
-				csmContents.contains(">>>"));
-		assertFalse("Found git annotation markers in a viewed file.",
-				classContents.contains(">>>"));
-		GitUtil.startMergeTool(projectName);
-		GitUtil.switchToFile("InstanceStateMachine.xtuml");
-		CompareTestUtilities.copyAllNonConflictingChangesFromRightToLeft();
-		CompareTestUtilities.closeMergeEditor(false);
-		ism = InstanceStateMachine_c.InstanceStateMachineInstance(pkg
-				.getModelRoot());
-		ismContents = TestUtil.getTextFileContents(ism.getFile().getLocation()
-				.toFile());
-		assertFalse("Found git annotation markers in an viewed file.",
-				ismContents.contains(">>>"));
-		StateMachineState_c[] states = StateMachineState_c
-				.getManySM_STATEsOnR501(StateMachine_c.getOneSM_SMOnR517(ism));
-		assertTrue(
-				"Changes were merged even when the merge editor was not saved.",
-				states.length == 2);
-		// delete test project if no failures/errors
-		// and reset the repository
-		TestUtil.deleteProject(getProjectHandle(projectName));
-	}
 	
 	@Test
 	public void testAutocrlfOption() throws Exception {

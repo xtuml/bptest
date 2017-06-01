@@ -53,7 +53,7 @@ public class NewShapeAfterRestart extends CanvasTest {
 	public NewShapeAfterRestart() {
 		super("org.xtuml.bp.core.test", null);
 		expected_string = new String[] { "drawRectangle(...)",
-				"drawText(" + String.valueOf('"') + "Unnamed ..." + String.valueOf('"') + ", ...)", "drawline(...)" };
+				"drawText(" + String.valueOf('"') + "Unnamed Instance : Informal Class" + String.valueOf('"') + ", ...)", "drawline(...)" };
 	}
 
 	protected String getResultName() {

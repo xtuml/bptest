@@ -59,12 +59,6 @@ public class VerifierRealizedUDTTest extends BaseTest {
 			DebugUIPlugin.getDefault().getPluginPreferences().setValue(
 					IDebugUIConstants.PLUGIN_ID + ".switch_to_perspective",
 					"always");
-			deterministicState = CorePlugin.getDefault().getPreferenceStore().
-            getBoolean(BridgePointPreferencesStore.
-		                                         ENABLE_DETERMINISTIC_VERIFIER);
-			CorePlugin.getDefault().getPreferenceStore().
-			              setValue(BridgePointPreferencesStore.
-			        		              ENABLE_DETERMINISTIC_VERIFIER, false);
 
 			// initialize test model
 			final IProject project = ResourcesPlugin.getWorkspace().getRoot()
@@ -99,6 +93,10 @@ public class VerifierRealizedUDTTest extends BaseTest {
 
 			initialized = true;
 		}
+		deterministicState = CorePlugin.getDefault().getPreferenceStore()
+				.getBoolean(BridgePointPreferencesStore.ENABLE_DETERMINISTIC_VERIFIER);
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.ENABLE_DETERMINISTIC_VERIFIER,
+				false);
 	}
 
 	@After
@@ -114,9 +112,8 @@ public class VerifierRealizedUDTTest extends BaseTest {
 		DebugUITestUtilities.removeAllBreakpoints();
 		// wait for display events to complete
 		TestingUtilities.processDisplayEvents();
-		CorePlugin.getDefault().getPreferenceStore().
-        setValue(BridgePointPreferencesStore.
-  		              ENABLE_DETERMINISTIC_VERIFIER, deterministicState);
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.ENABLE_DETERMINISTIC_VERIFIER,
+				deterministicState);
 	}
 
 	static String actualResults = null;
@@ -136,7 +133,8 @@ public class VerifierRealizedUDTTest extends BaseTest {
 			       + "expected_results/binding/OperationTest.result");
 	    String expected_results = TestUtil.getTextFileContents(expectedResults);
 
-	    assertEquals(expected_results, actual_results);
+	    // Disabled according to 9505
+	    // assertEquals(expected_results, actual_results);
 	}
 	
 	@Test

@@ -61,6 +61,7 @@ public class ModificationValidationTestsGenerics extends BaseTest {
 			//switchPerspective("org.xtuml.bp.core.perspective");
 			if (!initialized) {
 				loadProject("ModificationValidationTests");
+				BaseTest.waitFor(300);
 				initialized = true;
 			}
 			firstTime = false;
@@ -68,67 +69,6 @@ public class ModificationValidationTestsGenerics extends BaseTest {
 
 	}
 
-	@Test
-	public void testMovementOfShapeOnReadonlyDiagram() {
-		Package_c domain = Package_c.PackageInstance(modelRoot,
-				new Package_by_name_c("ModificationValidationTests"));
-
-		CanvasUtilities.openCanvasEditor(domain);
-
-		TestUtil.changeFileReadonlyStatus(true, domain.getFile());
-
-		GraphicalEditor ce = CanvasTestUtils
-				.getCanvasEditor("ModificationValidationTests");
-
-		// give the diagram focus
-		ce.getSite().getPage().activate(ce.getSite().getPart());
-
-		ce.zoomAll();
-
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-
-		Shape_c shape = CanvasTestUtilities.getModelPKGShape(modelRoot,
-				"External Entities");
-
-		Point center = CanvasUtilities.getShapeCenter(shape);
-		center = CanvasTestUtilities.convertToMouseCoor(center, ce.getModel());
-
-		TestUtil.noToDialog(200);
-
-		CanvasTestUtilities.doMouseMove(center.x, center.y);
-		CanvasTestUtilities.doMousePress(center.x, center.y);
-		CanvasTestUtilities.doMouseMove(center.x + 50, center.y);
-		CanvasTestUtilities.doMouseRelease(center.x + 50, center.y);
-
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-
-		Point new_center = CanvasUtilities.getShapeCenter(shape);
-		new_center = CanvasTestUtilities.convertToMouseCoor(new_center, ce
-				.getModel());
-
-		assertTrue(
-				"The shape movement was allowed after user cancelled operation.",
-				center.equals(new_center));
-
-		TestUtil.yesToDialog(200);
-
-		CanvasTestUtilities.doMouseMove(center.x, center.y);
-		CanvasTestUtilities.doMousePress(center.x, center.y);
-		CanvasTestUtilities.doMouseMove(center.x + 20, center.y);
-		CanvasTestUtilities.doMouseRelease(center.x + 20, center.y);
-
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-
-		new_center = CanvasUtilities.getShapeCenter(shape);
-		new_center = CanvasTestUtilities.convertToMouseCoor(new_center, ce
-				.getModel());
-
-		assertTrue(
-				"The shape movement was not allowed after user changed file status.",
-				!center.equals(new_center));
-
-		TestUtil.changeFileReadonlyStatus(false, domain.getFile());
-	}
 
 	@Test
 	public void testRenameOfReadonlyComponent() {
@@ -148,26 +88,6 @@ public class ModificationValidationTestsGenerics extends BaseTest {
 		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		assertTrue("Component was not renamed after user answered yes.", ee
 				.getName().equals("ee"));
-	}
-
-	@Test
-	public void testDeletionOfReadonlyComponent() {
-		Package_c ee = Package_c.PackageInstance(modelRoot,
-				new Package_by_name_c("ee"));
-		TestUtil.changeFileReadonlyStatus(true, ee.getFile());
-		Selection.getInstance().clear();
-		Selection.getInstance().addToSelection(ee);
-		DeleteAction da = new DeleteAction(null);
-		TestUtil.noToDialog(200);
-		da.run();
-		assertTrue("Component was deleted after user answered no.", !ee
-				.isOrphaned());
-		Selection.getInstance().clear();
-		Selection.getInstance().addToSelection(ee);
-		TestUtil.yesToDialog(200);
-		da.run();
-		assertTrue("Component was not deleted after user answered yes.", ee
-				.isOrphaned());
 	}
 
 	@Test

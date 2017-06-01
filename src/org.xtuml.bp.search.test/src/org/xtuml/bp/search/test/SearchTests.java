@@ -6,11 +6,11 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.search.ui.ISearchPageContainer;
 import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
@@ -19,12 +19,14 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.SystemModel_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.ExplorerUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.SearchUtilities;
 import org.xtuml.bp.test.common.TestingUtilities;
+import org.xtuml.bp.ui.explorer.ExplorerView;
 
 @RunWith(OrderedRunner.class)
 public class SearchTests extends BaseTest {
@@ -42,11 +44,24 @@ public class SearchTests extends BaseTest {
 
 	@Override
 	@Before
+	public void setUp() {
+		BaseTest.logFileCheckingEnabled = false;
+	}
+	
+	@Override
+	@Before
+	public void tearDown() {
+		BaseTest.logFileCheckingEnabled = true;
+	}
+	
+	@Override
+	@Before
 	public void initialSetup() throws CoreException {
 
 		if (!firstTime)
 			return;
 		loadProject(projectName);
+		BaseTest.waitFor(300);
 		m_sys = getSystemModel(projectName);
 		m_sys = SystemModel_c.SystemModelInstance(Ooaofooa
 				.getDefaultInstance(), new ClassQueryInterface_c() {
@@ -58,8 +73,10 @@ public class SearchTests extends BaseTest {
 		});
 
 		CorePlugin.enableParseAllOnResourceChange();
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
 
-		TestingUtilities.allowJobCompletion();
+		BaseTest.dispatchEvents();
 
 		IProject otherProject = TestingUtilities.createProject("TestSearchNoResults");
 		otherSystem = TestingUtilities.getSystemModel(otherProject.getName());
@@ -150,59 +167,41 @@ public class SearchTests extends BaseTest {
 						false, false, true, ISearchPageContainer.WORKSPACE_SCOPE,
 				""));		
 	}
+	
+	@Test
+	public void testSelectedResourcesScope() throws PartInitException {
+		searchWithSelectedScope(true);
+	}
 
 	@Test
-	public void testSelectedResourcesScope() {
-		// add the two test elements to the selection
-		ExplorerUtil.expandAll();
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
-				new StructuredSelection(new Object[] { searchClass,
-						searchOperation }));
-		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
-				true, ISearchPageContainer.SELECTION_SCOPE, "");
-		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
-		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchOperation"));
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
-				new StructuredSelection(new Object[] { otherSystem }));
-		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
-				true, ISearchPageContainer.SELECTION_SCOPE, "");	
-		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
-		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchOperation"));
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
-				new StructuredSelection(new Object[] { otherSystem }));
-		assertTrue("Values were not persisted in Search dialog.",
-				SearchUtilities.checkSearchDialogSettings("Find me", false,
-						false, true, true, ISearchPageContainer.SELECTION_SCOPE,
-						""));
+	public void testEnclosingProjectScope() throws PartInitException {
+		searchWithSelectedScope(false);
 	}
-	@Test
-	public void testEnclosingProjectScope() {
-		// add the two test elements to the selection
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
-				new StructuredSelection(new Object[] { searchClass,
-						searchOperation }));
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	
+	private void searchWithSelectedScope(boolean useSelection) throws PartInitException {
+		ExplorerView.getExplorerTreeViewer().setSelection(new StructuredSelection(new Object[] {searchClass, searchOperation}));
+		BaseTest.dispatchEvents(0);
 		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
-				true, ISearchPageContainer.SELECTED_PROJECTS_SCOPE, "");
+				true, useSelection ? ISearchPageContainer.SELECTION_SCOPE : ISearchPageContainer.SELECTED_PROJECTS_SCOPE, "");
+		BaseTest.dispatchEvents(0);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchOperation"));
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
-				new StructuredSelection(new Object[] { otherSystem }));
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
+		ExplorerView.getExplorerTreeViewer().setSelection(new StructuredSelection(new Object[] {otherSystem}));
+		ExplorerView.getExplorerTreeViewer().getControl().forceFocus();
+		BaseTest.dispatchEvents(0);
 		SearchUtilities.configureAndRunSearch("Find me", false, false, true,
-				true, ISearchPageContainer.SELECTED_PROJECTS_SCOPE, "");	
+				true, useSelection ? ISearchPageContainer.SELECTION_SCOPE : ISearchPageContainer.SELECTED_PROJECTS_SCOPE, "");
+		BaseTest.dispatchEvents(0);
 		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchClass"));
 		assertNull("Search did not produce expected results.", SearchUtilities.findResultInView("SearchOperation"));
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
-				new StructuredSelection(new Object[] { otherSystem }));
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
+		ExplorerView.getExplorerTreeViewer().setSelection(new StructuredSelection(new Object[] {otherSystem}));
+		ExplorerView.getExplorerTreeViewer().getControl().forceFocus();
+		BaseTest.dispatchEvents(0);
 		assertTrue("Values were not persisted in Search dialog.",
 				SearchUtilities.checkSearchDialogSettings("Find me", false,
-						false, true, true, ISearchPageContainer.SELECTED_PROJECTS_SCOPE,
+						false, true, true, useSelection ? ISearchPageContainer.SELECTION_SCOPE : ISearchPageContainer.SELECTED_PROJECTS_SCOPE,
 						""));
 	}
 	
@@ -247,8 +246,7 @@ public class SearchTests extends BaseTest {
 		}));
 		assertNotNull(pkg);
 		// add the two test elements to the selection
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
+		ExplorerView.getExplorerTreeViewer().setSelection(
 				new StructuredSelection(new Object[] { pkg }));
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		SearchUtilities.configureAndRunSearch("tube", false, false, true,
@@ -256,16 +254,14 @@ public class SearchTests extends BaseTest {
 		assertEquals("Search did not return expected result count.", 18,
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
+		ExplorerView.getExplorerTreeViewer().setSelection(
 				new StructuredSelection(new Object[] { pkg }));
 		SearchUtilities.configureAndRunSearch("watt", false, false, true,
 				true, ISearchPageContainer.SELECTION_SCOPE, "");
 		assertEquals("Search did not return expected result count.", 5,
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
-		ExplorerUtil.getView().setFocus();
-		ExplorerUtil.getView().getSite().getSelectionProvider().setSelection(
+		ExplorerView.getExplorerTreeViewer().setSelection(
 				new StructuredSelection(new Object[] { pkg }));
 		SearchUtilities.configureAndRunSearch("tube", false, false, true,
 				true, ISearchPageContainer.SELECTION_SCOPE, "");

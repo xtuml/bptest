@@ -24,7 +24,9 @@
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.xtuml.bp.debug.engine.ExternalEntityTest;
 import org.xtuml.bp.debug.engine.VerifierMessageTestGlobals;
+import org.xtuml.bp.debug.test.DateLoggingTests;
 import org.xtuml.bp.debug.test.GlobalTestSetupClass;
 import org.xtuml.bp.debug.test.InstanceVariableViewTests;
 import org.xtuml.bp.debug.test.RealizedClassRelaunchTest;
@@ -32,6 +34,7 @@ import org.xtuml.bp.debug.test.VariableViewTests;
 import org.xtuml.bp.debug.ui.launch.DLLRelaunchTest;
 import org.xtuml.bp.debug.ui.test.execute.BlockedComponentExecutionTest;
 import org.xtuml.bp.debug.ui.test.execute.RecursionExecutionTest;
+import org.xtuml.bp.debug.ui.test.realizedClasses.VerifierStaticVariablesInRealizedClassesTest;
 
 import junit.framework.TestSuite;
 
@@ -42,11 +45,12 @@ import junit.framework.TestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	GlobalTestSetupClass.class,
+	DateLoggingTests.class,
+	VerifierStaticVariablesInRealizedClassesTest.class,
 	// These are disabled until 8609 is resolved
 //	VerifierMessageTestGlobals.class,
 //	RealizedClassRelaunchTest.class,
 //	DLLRelaunchTest.class,
-	RecursionExecutionTest.class,
 	BlockedComponentExecutionTest.class,
 	VariableViewTests.class,
 	InstanceVariableViewTests.class,

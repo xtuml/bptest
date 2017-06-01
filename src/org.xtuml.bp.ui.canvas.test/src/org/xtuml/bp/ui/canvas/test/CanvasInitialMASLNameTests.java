@@ -19,7 +19,6 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
@@ -45,8 +44,8 @@ import org.xtuml.bp.core.SynchronousMessage_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ModelElement;
 import org.xtuml.bp.core.common.Transaction;
-import org.xtuml.bp.core.common.TransactionException;
 import org.xtuml.bp.core.common.TransactionManager;
+import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
@@ -171,18 +170,6 @@ public class CanvasInitialMASLNameTests extends BaseTest {
 		Interface_c iface = ifaces[ifaces.length - 1];
 		UITestingUtilities.addElementToGraphicalSelection(iface);
 		doNewCMETest("Operation", CorePlugin.INVALID_MASL_NAME);
-	}
-
-	@Test
-	public void testMessageArgumentWithSpaces() {
-		createElementInEditor("Interaction::Synchronous Message", editor);
-		Message_c[] msgs = Message_c.getManyMSG_MsOnR8001(PackageableElement_c
-				.getManyPE_PEsOnR8000(testPackage));
-		Message_c msg = msgs[msgs.length - 1];
-		SynchronousMessage_c sync = SynchronousMessage_c
-				.getOneMSG_SMOnR1018(msg);
-		UITestingUtilities.addElementToGraphicalSelection(sync);
-		doNewCMETest("Argument", CorePlugin.INVALID_MASL_NAME);
 	}
 
 	@Test
@@ -331,7 +318,7 @@ public class CanvasInitialMASLNameTests extends BaseTest {
 					new Class<?>[0]);
 			Cl_c.doMethod(method, container, new Object[0]);
 			TransactionManager.getSingleton().endTransaction(transaction);
-		} catch (TransactionException e) {
+		} catch (Exception e) {
 			if (transaction != null) {
 				TransactionManager.getSingleton().cancelTransaction(
 						transaction, e);
@@ -358,29 +345,19 @@ public class CanvasInitialMASLNameTests extends BaseTest {
 
 	private void validateErrorMessage(final String expectedResult,
 			final String value) {
-		PlatformUI.getWorkbench().getDisplay().timerExec(1000, new Runnable() {
-
-			@Override
-			public void run() {
-				Shell activeShell = PlatformUI.getWorkbench().getDisplay()
-						.getActiveShell();
-				if (activeShell != null
-						&& activeShell.getData() instanceof InputDialog) {
-					if (!value.equals("empty")) {
-						Text text = UITestingUtilities
-								.findInputDialogTextField((InputDialog) activeShell
-										.getData());
-						text.setText(value);
-						text.notifyListeners(SWT.Traverse, new Event());
-					}
-					errorTxt = UITestingUtilities
-							.findInputDialogErrorText((InputDialog) activeShell
-									.getData());
-					((InputDialog) activeShell.getData()).close();
-				} else {
-					errorTxt = "";
+		TestUtil.processShell(null, activeShell -> {
+			if (activeShell != null && activeShell.getData() instanceof InputDialog) {
+				if (!value.equals("empty")) {
+					Text text = UITestingUtilities.findInputDialogTextField((InputDialog) activeShell.getData());
+					text.setText(value);
+					text.notifyListeners(SWT.Traverse, new Event());
 				}
+				errorTxt = UITestingUtilities.findInputDialogErrorText((InputDialog) activeShell.getData());
+				((InputDialog) activeShell.getData()).close();
+			} else {
+				errorTxt = "";
 			}
+			return true;
 		});
 	}
 

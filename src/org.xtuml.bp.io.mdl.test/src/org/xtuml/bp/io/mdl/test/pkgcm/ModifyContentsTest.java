@@ -118,7 +118,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
               CorePlugin.logError(e.getMessage(), e);
         }
         while(display.readAndDispatch());
-        waitForJobs();
+        BaseTest.dispatchEvents();
         // the content replace will trigger another required upgrade
         // need to let it finish before proceeding
         BaseTest.dispatchEvents(0);
@@ -131,7 +131,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
         while(display.readAndDispatch());
     }
     protected void performModifyComponentContentsGenerics(String compType,String compName, int focusedEditor,int expectedEditorCount) throws Exception {
-
+    	BaseTest.dispatchEvents(0);
         initTest(compType, compName, focusedEditor, expectedEditorCount);
         // this pass is for setup workspace next pass will execute actual test
         if (!toRunTests())
@@ -145,6 +145,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
 
         // restore from local history
         try {
+        	BaseTest.dispatchEvents(0);
             IFileState[] history = oldFile.getHistory(null);
             oldFile.setContents(history[history.length-1],IFile.NONE,null);         
             
@@ -152,7 +153,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
               CorePlugin.logError(e.getMessage(), e);
         }
         while(display.readAndDispatch());
-        waitForJobs();
+        BaseTest.dispatchEvents();
         //get reloaded model element
         pmcBeingTested=PersistenceManager.findComponent(oldFile.getFullPath());
         meBeingTested=pmcBeingTested.getRootModelElement();
@@ -216,7 +217,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
             if(openEditors[i] instanceof ITextEditor){
                 testEditorContents((ITextEditor)openEditors[i],oldEditorContents[i]);
             }else if(openEditors[i] instanceof GraphicalEditor){
-                validateOrGenerateResultsGenerics((GraphicalEditor)openEditors[i], generateResult,true);
+                validateOrGenerateResults((GraphicalEditor)openEditors[i], generateResult,true);
         }
         } // end for   
         

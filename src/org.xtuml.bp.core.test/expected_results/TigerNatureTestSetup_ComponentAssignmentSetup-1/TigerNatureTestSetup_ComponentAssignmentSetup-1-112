@@ -1,6 +1,6 @@
 drawRectangle(...)
 drawText("«interface»", ...)
-drawText("InterfaceAssignmentSet...", ...)
+drawText("InterfaceAssignmentSetup-1", ...)
 drawline(...)
 drawRectangle(...)
 drawText("+ComponentAssignmentSetup-1", ...)

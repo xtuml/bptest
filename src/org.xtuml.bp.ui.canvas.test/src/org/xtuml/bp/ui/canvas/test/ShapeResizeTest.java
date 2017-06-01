@@ -15,6 +15,7 @@
 package org.xtuml.bp.ui.canvas.test;
 
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -85,13 +86,14 @@ public class ShapeResizeTest extends BaseTest
                 return ((Connector_c)candidate).Getendx() == corner.x;
             }
         });
-        
+        BaseTest.dispatchEvents(0);
         // click within the state, to select it
         GraphicalEditor editor = CanvasTestUtils.getCanvasEditor(
             "Dialing Monitor");
         editor.zoomAll();
         Model_c canvas = editor.getModel();
         Point mouse = CanvasTestUtils.convertToMouseCoor(corner, canvas);
+        Point adjustedMouse = new Point(mouse.x , mouse.y);
         final int offsetIntoShape = 20;
         CanvasTestUtils.doMousePress(
             mouse.x - offsetIntoShape, mouse.y - offsetIntoShape);
@@ -116,19 +118,31 @@ public class ShapeResizeTest extends BaseTest
         for (; dy > -mouseHeight; dy -= stepSize) {
             moves += 1;
             CanvasTestUtils.doMouseMove(mouse.x + dx, mouse.y + dy);
+            adjustedMouse.x = adjustedMouse.x + dx;
+            adjustedMouse.y = adjustedMouse.y + dy;
         }
-  
+        
         // now, drag the same corner such that some of the height is restored,
         // and then drag it again to remove the restored height; this 
         // bit will exercise the fix put into place for issue 1245
         for (int i = 0; i < moves; i++, dy += stepSize) {
             CanvasTestUtils.doMouseMove(mouse.x + dx, mouse.y + dy);
+            adjustedMouse.x = adjustedMouse.x + dx;
+            adjustedMouse.y = adjustedMouse.y + dy;
         }
         dy -= stepSize;
         CanvasTestUtils.doMouseMove(mouse.x + dx, mouse.y + dy);
+        adjustedMouse.x = adjustedMouse.x + dx;
+        adjustedMouse.y = adjustedMouse.y + dy;
 
         // make sure the total drag had some effect, to help validate this test
         CanvasTestUtils.doMouseRelease(mouse.x + dx, mouse.y + dy);
+
+        editor.getGraphicalViewer().getRootEditPart().refresh();
+        
+        BaseTest.dispatchEvents(200);
+        BaseTest.waitFor(300);
+        
         Point draggedCorner = CanvasTestUtils.getShapeSECorner(shape);
         assertTrue("Drag had no effect", !draggedCorner.equals(corner));
         

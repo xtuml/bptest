@@ -40,6 +40,7 @@ import org.xtuml.bp.core.test.DisposeTestGenerics;
 import org.xtuml.bp.core.test.FormalizeUnformalizeTestGenerics;
 import org.xtuml.bp.core.test.GetNameTestGenerics;
 import org.xtuml.bp.core.test.GlobalTestSetupClass;
+import org.xtuml.bp.core.test.ModificationValidationTestsGenerics;
 import org.xtuml.bp.core.test.MultipleReloadGenerics;
 import org.xtuml.bp.core.test.NumberingTestGenerics;
 import org.xtuml.bp.core.test.OperationsTestGenerics;
@@ -62,6 +63,7 @@ import junit.framework.TestSuite;
 		GlobalTestSetupClass.class,
 		CoreGlobalsTestSuiteIGenerics.class,
 		CoreTestSuiteIGenerics.class,
+		ModificationValidationTestsGenerics.class,
 		PreferencesTests.class,
 		SetTypeTestGenerics.class,
 		AssignComponentTestGenerics.class,		

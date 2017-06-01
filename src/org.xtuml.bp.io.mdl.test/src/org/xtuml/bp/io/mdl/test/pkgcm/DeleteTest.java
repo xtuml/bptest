@@ -74,7 +74,7 @@ public abstract class DeleteTest extends PkgCMBaseTest {
                 
         if (focusedEditor != EditorTestUtilities.EDITOR_TYPE_NONE) {            
             while (d.readAndDispatch());
-            BaseTest.waitForJobs();
+            BaseTest.dispatchEvents();
             openEditors = openEditors(pmcBeingTested);
             meBeingTested = pmcBeingTested.getRootModelElement();
             assertEquals("Not all required editors opened",expectedEditorCount,openEditors.length);
@@ -189,11 +189,11 @@ public abstract class DeleteTest extends PkgCMBaseTest {
         meBeingTested = pmcBeingTested.getRootModelElement();
         dispatchEvents(0);
         if (compType.equals("SystemModel")){        	
-            TestUtil.okToDialog(2000);
+            TestUtil.okToDialog(200);
         }
         doDeleteThruMExplorer();        
         try{
-            while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+            dispatchEvents(0);
         }catch(ConcurrentModificationException e){}
     	performDeleteChecksGenerics(openEditors, baseEditor, oldFile, meBeingTested);
     }

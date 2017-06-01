@@ -38,6 +38,7 @@ import org.xtuml.bp.core.UserDataType_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.Transaction;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.Cl_c;
@@ -354,6 +355,7 @@ public class TigerNatureWorkspaceSetupTestGenerics extends CanvasTest {
 
 		graphicsModelRoot = Ooaofgraphics.getInstance(dtPkg.getModelRoot().getId());
 		validateOrGenerateResults(ce, generateResults, true);
+		BaseTest.dispatchEvents(0);
 		PlatformUI.getWorkbench().close();
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}

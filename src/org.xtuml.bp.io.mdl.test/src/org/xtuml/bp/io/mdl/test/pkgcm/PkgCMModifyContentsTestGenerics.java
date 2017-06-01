@@ -37,6 +37,8 @@ import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Ooaofooa;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
 @RunWith(OrderedRunner.class)
@@ -84,7 +86,10 @@ public class PkgCMModifyContentsTestGenerics extends ModifyContentsTest {
     }
     @After
 	public void tearDown()throws Exception{
+    	// Disabled until 9505 is resolved
+    	BaseTest.logFileCheckingEnabled = false;
         super.tearDown();
+        BaseTest.logFileCheckingEnabled = true;
         if (toRunTests()) // close editors after test run
         {
             Workbench.getInstance().getActiveWorkbenchWindow().getActivePage().
@@ -94,6 +99,10 @@ public class PkgCMModifyContentsTestGenerics extends ModifyContentsTest {
 
     protected void setupProjectAndTestModel() throws CoreException {
     	if (firstTime_modCont) {
+			CorePlugin.getDefault().getPreferenceStore()
+					.setValue(BridgePointPreferencesStore.DEFAULT_ACTION_LANGUAGE_DIALECT, 0);
+			CorePlugin.getDefault().getPreferenceStore()
+					.setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS, false);
             //ensureAvailableAndLoaded(domainName, false);
             loadProject(projectName);
             m_sys= getSystemModel(projectName);

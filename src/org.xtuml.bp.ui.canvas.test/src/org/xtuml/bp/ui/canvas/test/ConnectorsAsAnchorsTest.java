@@ -32,11 +32,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.ActorParticipant_c;
 import org.xtuml.bp.core.ClassInstanceParticipant_c;
+import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.InteractionParticipant_c;
 import org.xtuml.bp.core.Lifespan_c;
 import org.xtuml.bp.core.Message_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.SynchronousMessage_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.test.common.CanvasTestUtils;
@@ -83,6 +85,8 @@ public class ConnectorsAsAnchorsTest extends CanvasTest {
 		if (firstTest) {
 		    loadProject("TestConnectorsAsAnchors");
 			firstTest = false;
+			CorePlugin.getDefault().getPreferenceStore()
+					.setValue(BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION, true);
 		}
 	}
 

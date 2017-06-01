@@ -66,11 +66,7 @@ public class ModelRecreationTests extends CanvasTest {
 	private SystemModel_c destSys;
 
 	public static File[] getTestModelNames() {
-		String repository_location = System.getenv("XTUML_TEST_MODEL_REPOSITORY");
-		if (repository_location == null || repository_location.equals("")) {
-			// use the default location
-			repository_location = BaseTest.DEFAULT_XTUML_TEST_MODEL_REPOSITORY;
-		}
+		String repository_location = BaseTest.getTestModelRespositoryLocation();
 		
 		File testFolder = new File(repository_location);
 		File[] testModels = testFolder.listFiles(new FileFilter() {
@@ -275,9 +271,7 @@ public class ModelRecreationTests extends CanvasTest {
 		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
 		if(ce != null && canvaspasteaction.isEnabled()) {
 			canvaspasteaction.run();
-			waitForTransaction();
-			waitForJobs();
-			waitForDecorator();
+			BaseTest.dispatchEvents();
 		}
 	}
 

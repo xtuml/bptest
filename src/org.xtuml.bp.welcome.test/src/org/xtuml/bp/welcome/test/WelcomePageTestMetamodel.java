@@ -69,7 +69,11 @@ public class WelcomePageTestMetamodel extends TestCase {
 
 	private String[] expectedFiles = expectedXtUMLFiles;
 
-
+	@Override
+	public void setUp() {
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	}
+	
 	public WelcomePageTestMetamodel() {
 		super();
 	}
@@ -120,7 +124,6 @@ public class WelcomePageTestMetamodel extends TestCase {
 
 	public void raiseWorkbench() {
 		Shell s = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-		s.forceActive();
 		s.forceFocus();
 	}
 	@Test

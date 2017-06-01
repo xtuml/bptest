@@ -40,6 +40,7 @@ import org.xtuml.bp.core.Component_c;
 import org.xtuml.bp.core.InstanceStateMachine_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.ElementSpecification_c;
@@ -80,28 +81,28 @@ public class SymbolTest extends CanvasTest {
 				return ((Package_c) candidate).getName().equals("Class Diagram Test Subsystem");
 			}
 		});
-		validateOrGenerateResultsGenerics(UITestingUtilities.getGraphicalEditorFor(d2, true), generateResults);
+		validateOrGenerateResults(UITestingUtilities.getGraphicalEditorFor(d2, true), generateResults);
 	}
 
 	@Test
 	public void testComponentDiagram() throws Exception {
 		test_id = "2";
 		Component_c comp = Component_c.ComponentInstance(modelRoot);
-		validateOrGenerateResultsGenerics(UITestingUtilities.getGraphicalEditorFor(comp, true), generateResults);
+		validateOrGenerateResults(UITestingUtilities.getGraphicalEditorFor(comp, true), generateResults);
 	}
 
 	@Test
 	public void testInstanceStateMachineDiagram() throws Exception {
 		test_id = "3";
 		InstanceStateMachine_c ism = InstanceStateMachine_c.InstanceStateMachineInstance(modelRoot);
-		validateOrGenerateResultsGenerics(UITestingUtilities.getGraphicalEditorFor(ism, true), generateResults);
+		validateOrGenerateResults(UITestingUtilities.getGraphicalEditorFor(ism, true), generateResults);
 	}
 	
 	@Test
 	public void testClassStateMachineDiagram() throws Exception {
 		test_id = "4";
 		ClassStateMachine_c csm = ClassStateMachine_c.ClassStateMachineInstance(modelRoot);
-		validateOrGenerateResultsGenerics(UITestingUtilities.getGraphicalEditorFor(csm, true), generateResults);
+		validateOrGenerateResults(UITestingUtilities.getGraphicalEditorFor(csm, true), generateResults);
 	}
 	
 	// Testing if Canvas Plugin loads the elemType values properly

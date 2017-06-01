@@ -47,13 +47,13 @@ VerifierInterfaceExecutionTests : SystemModel_c
         Functions : Package_c
           startInstanceViewing : Function_c
         ss : Package_c
-          cls 2 : ClassInEngine_c
+          cls : ClassInEngine_c
             State 1 : StateMachineState_c
           cls 3 : ClassInEngine_c
             start_test_bad_state : Operation_c
             start_test_current_action : Operation_c
             start_test_good_state : Operation_c
-          cls : ClassInEngine_c
+          cls 2 : ClassInEngine_c
             State 1 : StateMachineState_c
         testInstanceViewingAndNavigation : Package_c
           Class_1 : ClassInEngine_c
