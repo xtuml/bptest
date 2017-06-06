@@ -38,8 +38,8 @@ import junit.framework.TestSuite;
 @Suite.SuiteClasses({
    GlobalTestSetupClass.class,
    IOMdlGlobalsTestGenerics.class,
-   IOMdlPublishReferencesTest.class,
    IOMdlTestGenerics.class,
+   IOMdlPublishReferencesTest.class,
    IOMdlUnicodeTestGenerics.class,
    ImportReferencedIPRModelTest.class,
    ImportPasteElementsWithIPRTest.class,

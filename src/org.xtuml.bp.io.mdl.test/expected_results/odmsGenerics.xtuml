@@ -2277,6 +2277,531 @@ INSERT INTO SM_TXN
 	"c1e2a2b9-0379-9085-0d4b-8c4fdf432c80",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
+	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	1,
+	"b5544b82-8532-19e7-719b-d2730b375d37",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	'Disk Transfer',
+	13,
+	'D_DT',
+	'Object Description:
+
+Object Role:
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
+INSERT INTO O_BATTR
+	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
+INSERT INTO O_ATTR
+	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"00000000-0000-0000-0000-000000000000",
+	'Disk_Transfer_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Disk_Transfer_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	0,
+	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"15947d90-4185-26c0-365b-b2a74d2efba5",
+	"6ca3ab06-00d9-0dae-bb32-a4a930ae6a57",
+	"29b728f7-f8c5-1fa0-e76c-0398e22eb777",
+	"31688086-4ed0-2c6a-bc8f-c69797af9ee9",
+	"85f710dd-cf1b-83f0-151b-8fdc6fcd428e",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'Reference Domain:
+',
+	'Online Location',
+	'Online_Location_ID',
+	'R10.''originates at''');
+INSERT INTO O_RATTR
+	VALUES ("31688086-4ed0-2c6a-bc8f-c69797af9ee9",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	0,
+	'Online_Location_ID');
+INSERT INTO O_ATTR
+	VALUES ("31688086-4ed0-2c6a-bc8f-c69797af9ee9",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"c3a75758-2df2-42b3-2af4-5c8ab5d70172",
+	'Source_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Source_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	0,
+	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"e61b58dd-ad95-b4c4-7540-e48fbc7e8482",
+	"3ce349e9-f601-0139-8f67-385a98c6b4f2",
+	"8d268976-b4f7-c0af-89de-a679aea21a52",
+	"923a913f-1630-f438-85b9-eed996fba1e0",
+	"3fcdee94-e809-ccee-e333-4216ab6674fb",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'Reference Domain:
+',
+	'Online Location',
+	'Online_Location_ID',
+	'R11.''completes at''');
+INSERT INTO O_RATTR
+	VALUES ("923a913f-1630-f438-85b9-eed996fba1e0",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	0,
+	'Online_Location_ID');
+INSERT INTO O_ATTR
+	VALUES ("923a913f-1630-f438-85b9-eed996fba1e0",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"31688086-4ed0-2c6a-bc8f-c69797af9ee9",
+	'Destination_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Destination_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("011b0799-d2cf-0935-7af8-88afc2dc658f",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
+INSERT INTO O_BATTR
+	VALUES ("011b0799-d2cf-0935-7af8-88afc2dc658f",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
+INSERT INTO O_ATTR
+	VALUES ("011b0799-d2cf-0935-7af8-88afc2dc658f",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	"923a913f-1630-f438-85b9-eed996fba1e0",
+	'Status',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Status',
+	0,
+	"537c902d-1dd5-345f-15e8-27e76d4f79ca",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
+INSERT INTO O_OIDA
+	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
+	0,
+	'Disk_Transfer_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
+INSERT INTO O_ID
+	VALUES (2,
+	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
+INSERT INTO PE_PE
+	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
+	1,
+	"b5544b82-8532-19e7-719b-d2730b375d37",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
+	'Disk Request',
+	10,
+	'D_DQ',
+	'Object Description:
+
+Object Role:
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
+	0,
+	"402e3ace-d598-03de-13bd-939aa2ae1ab7",
+	"b891b6ca-a753-1b08-1311-386a41c2a70f",
+	"8a6b8d1c-6f1a-d299-28be-e851b2016aef",
+	"5d859166-786f-9741-50d3-684f5ab37def",
+	"0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
+	"8efd58e8-f6fd-88db-186f-1a2faa5236f9",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'Reference Domain:
+',
+	'Qualified Process',
+	'Qualified_Process_ID',
+	'R1.''needed by''');
+INSERT INTO O_RATTR
+	VALUES ("0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"402e3ace-d598-03de-13bd-939aa2ae1ab7",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
+	1,
+	'Qualified_Process_ID');
+INSERT INTO O_ATTR
+	VALUES ("0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"00000000-0000-0000-0000-000000000000",
+	'Qualified_Process_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Qualified_Process_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
+	"71e76219-f0a2-d2fa-c186-f42d214899f4",
+	0,
+	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
+	"b891b6ca-a753-1b08-1311-386a41c2a70f",
+	"8a6b8d1c-6f1a-d299-28be-e851b2016aef",
+	"3944bb9a-77b6-92f4-612c-615c51fbd5ee",
+	"c878a2f4-e227-8731-3e24-8a9e56c8c1af",
+	"a5241055-0b3e-e8b9-0e1c-3a71235f6d2e",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'Reference Domain:
+',
+	'Disk',
+	'Disk_ID',
+	'R1.''needs''');
+INSERT INTO O_RATTR
+	VALUES ("c878a2f4-e227-8731-3e24-8a9e56c8c1af",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
+	"71e76219-f0a2-d2fa-c186-f42d214899f4",
+	1,
+	'Disk_ID');
+INSERT INTO O_ATTR
+	VALUES ("c878a2f4-e227-8731-3e24-8a9e56c8c1af",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
+	'Disk_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Disk_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_BATTR
+	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_ATTR
+	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"c878a2f4-e227-8731-3e24-8a9e56c8c1af",
+	'Time_of_Request',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Time_of_Request',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c0a30700-eb18-85e6-5f2d-264c0d489f64",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_BATTR
+	VALUES ("c0a30700-eb18-85e6-5f2d-264c0d489f64",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_ATTR
+	VALUES ("c0a30700-eb18-85e6-5f2d-264c0d489f64",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
+	'Time_Request_Completed',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Time_Request_Completed',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_BATTR
+	VALUES ("9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_ATTR
+	VALUES ("9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"c0a30700-eb18-85e6-5f2d-264c0d489f64",
+	'Request_Pending',
+	'This attribute is TRUE only when the state machine is in the Accepting Disk Mount Request state.
+',
+	'',
+	'Request_Pending',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("73f454cf-9832-c22b-faba-311212a98e50",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_BATTR
+	VALUES ("73f454cf-9832-c22b-faba-311212a98e50",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_ATTR
+	VALUES ("73f454cf-9832-c22b-faba-311212a98e50",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	"9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
+	'current_state',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_OIDA
+	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	0,
+	'Time_of_Request');
+INSERT INTO O_OIDA
+	VALUES ("0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	0,
+	'Qualified_Process_ID');
+INSERT INTO O_OIDA
+	VALUES ("c878a2f4-e227-8731-3e24-8a9e56c8c1af",
+	"185d08f6-b74c-d843-5878-9403b03e674f",
+	0,
+	'Disk_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO O_ID
+	VALUES (2,
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO SM_ISM
+	VALUES ("009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"185d08f6-b74c-d843-5878-9403b03e674f");
+INSERT INTO SM_SM
+	VALUES ("009dc4db-5b23-2a08-0505-44ec3a65189b",
+	'',
+	4);
+INSERT INTO SM_MOORE
+	VALUES ("009dc4db-5b23-2a08-0505-44ec3a65189b");
+INSERT INTO SM_LEVT
+	VALUES ("a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'Disk Mount Request',
+	0,
+	'',
+	'D_DQ1',
+	'Event Descriptions:
+');
+INSERT INTO SM_LEVT
+	VALUES ("1d2f41ee-6fd8-c62d-38dd-da97414270bf",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("1d2f41ee-6fd8-c62d-38dd-da97414270bf",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("1d2f41ee-6fd8-c62d-38dd-da97414270bf",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'Disk Request Satisfied',
+	0,
+	'',
+	'D_DQ2',
+	'Event Descriptions:
+');
+INSERT INTO SM_STATE
+	VALUES ("09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000",
+	'Accepting Disk Mount Request',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
+	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
+	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("dd375635-08e7-83c5-452f-12546a25be21",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9");
+INSERT INTO SM_AH
+	VALUES ("dd375635-08e7-83c5-452f-12546a25be21",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b");
+INSERT INTO SM_ACT
+	VALUES ("dd375635-08e7-83c5-452f-12546a25be21",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	1,
+	'Assign Self.Request_Pending = TRUE;
+Generate D_DO_A1:''Disk Requested by QP'' () to D_DO Assigner;',
+	'',
+	0);
+INSERT INTO SM_STATE
+	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000",
+	'Disk Request Satisfied',
+	2,
+	1);
+INSERT INTO SM_EIGN
+	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
+	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
+	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
+	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
+	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("a5733f0e-fcfe-a18b-7a3e-62a61f0aa6dd",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"e0f81b12-71b3-1850-1f4b-cee3501aaeca");
+INSERT INTO SM_AH
+	VALUES ("a5733f0e-fcfe-a18b-7a3e-62a61f0aa6dd",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b");
+INSERT INTO SM_ACT
+	VALUES ("a5733f0e-fcfe-a18b-7a3e-62a61f0aa6dd",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	1,
+	'// Update Time Request Satisfied
+Assign Self.Request_Pending = FALSE;
+
+Generate D_DO_A6:''Ownership Established'' () to D_DO Assigner;',
+	'',
+	0);
+INSERT INTO SM_NSTXN
+	VALUES ("1391e94d-726b-b04e-0fa8-0cc3b6610cb7",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
+	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("390fe20a-736f-c975-89bc-96de899df819",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"1391e94d-726b-b04e-0fa8-0cc3b6610cb7");
+INSERT INTO SM_AH
+	VALUES ("390fe20a-736f-c975-89bc-96de899df819",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b");
+INSERT INTO SM_ACT
+	VALUES ("390fe20a-736f-c975-89bc-96de899df819",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	-1,
+	'',
+	'',
+	0);
+INSERT INTO SM_TXN
+	VALUES ("1391e94d-726b-b04e-0fa8-0cc3b6610cb7",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"e0f81b12-71b3-1850-1f4b-cee3501aaeca",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("3166a679-3e3c-982d-6a6f-2e5db4f18ab2",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
+	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("0f76edf2-f7fd-65a5-bde4-bd23546f5960",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"3166a679-3e3c-982d-6a6f-2e5db4f18ab2");
+INSERT INTO SM_AH
+	VALUES ("0f76edf2-f7fd-65a5-bde4-bd23546f5960",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b");
+INSERT INTO SM_ACT
+	VALUES ("0f76edf2-f7fd-65a5-bde4-bd23546f5960",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	-1,
+	'',
+	'',
+	0);
+INSERT INTO SM_TXN
+	VALUES ("3166a679-3e3c-982d-6a6f-2e5db4f18ab2",
+	"009dc4db-5b23-2a08-0505-44ec3a65189b",
+	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
 	VALUES ("71e76219-f0a2-d2fa-c186-f42d214899f4",
 	1,
 	"b5544b82-8532-19e7-719b-d2730b375d37",
@@ -3608,1141 +4133,6 @@ INSERT INTO SM_TXN
 	VALUES ("c5b7ed00-734f-6437-3982-912b28ef6516",
 	"ae64beee-7f88-46a2-fcf4-9f41fa6219af",
 	"018ed238-f62f-09ac-5260-011afa1392d4",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO PE_PE
-	VALUES ("2dac6327-6167-fa6f-7c8b-6ba751eda201",
-	1,
-	"b5544b82-8532-19e7-719b-d2730b375d37",
-	"00000000-0000-0000-0000-000000000000",
-	4);
-INSERT INTO O_OBJ
-	VALUES ("2dac6327-6167-fa6f-7c8b-6ba751eda201",
-	'Permanent Home in Library',
-	2,
-	'D_H',
-	'Object Description:
-
-Object Role:
-',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_NBATTR
-	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
-INSERT INTO O_BATTR
-	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
-INSERT INTO O_ATTR
-	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
-	"00000000-0000-0000-0000-000000000000",
-	'Row_Number',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Row_Number',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
-INSERT INTO O_BATTR
-	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
-INSERT INTO O_ATTR
-	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
-	"0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
-	'Column_Number',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Column_Number',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_ID
-	VALUES (0,
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
-INSERT INTO O_OIDA
-	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
-	0,
-	'Column_Number');
-INSERT INTO O_OIDA
-	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
-	0,
-	'Row_Number');
-INSERT INTO O_ID
-	VALUES (1,
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
-INSERT INTO O_ID
-	VALUES (2,
-	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
-INSERT INTO PE_PE
-	VALUES ("f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
-	1,
-	"b5544b82-8532-19e7-719b-d2730b375d37",
-	"00000000-0000-0000-0000-000000000000",
-	4);
-INSERT INTO O_OBJ
-	VALUES ("f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
-	'Qualified Process',
-	9,
-	'D_QP',
-	'Object Description:
-
-Object Role:
-',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_NBATTR
-	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO O_BATTR
-	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO O_ATTR
-	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
-	"00000000-0000-0000-0000-000000000000",
-	'Qualified_Process_ID',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Qualified_Process_ID',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("219452a5-d63d-670c-48cf-0378811dbc21",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO O_BATTR
-	VALUES ("219452a5-d63d-670c-48cf-0378811dbc21",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO O_ATTR
-	VALUES ("219452a5-d63d-670c-48cf-0378811dbc21",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
-	"402e3ace-d598-03de-13bd-939aa2ae1ab7",
-	'current_state',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
-INSERT INTO O_ID
-	VALUES (0,
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO O_OIDA
-	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
-	0,
-	'Qualified_Process_ID');
-INSERT INTO O_ID
-	VALUES (1,
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO O_ID
-	VALUES (2,
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO SM_ISM
-	VALUES ("931329ca-263b-620c-820c-c0f1cd8bc145",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
-INSERT INTO SM_SM
-	VALUES ("931329ca-263b-620c-820c-c0f1cd8bc145",
-	'',
-	5);
-INSERT INTO SM_MOORE
-	VALUES ("931329ca-263b-620c-820c-c0f1cd8bc145");
-INSERT INTO SM_EVTDI
-	VALUES ("73587986-1449-56a7-8208-d00d1b0750b8",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	'disk_id',
-	'Event Data Item Descriptions:
-',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	"38c912ae-4bd0-9695-4d2d-4b1b58566955",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_LEVT
-	VALUES ("38c912ae-4bd0-9695-4d2d-4b1b58566955",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEVT
-	VALUES ("38c912ae-4bd0-9695-4d2d-4b1b58566955",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EVT
-	VALUES ("38c912ae-4bd0-9695-4d2d-4b1b58566955",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"00000000-0000-0000-0000-000000000000",
-	1,
-	'Mount Disk',
-	0,
-	'',
-	'D_QP1',
-	'');
-INSERT INTO SM_STATE
-	VALUES ("70c7215f-d01a-addd-342a-69ad31311dbc",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"00000000-0000-0000-0000-000000000000",
-	'Requesting Disk',
-	1,
-	0);
-INSERT INTO SM_SEME
-	VALUES ("70c7215f-d01a-addd-342a-69ad31311dbc",
-	"38c912ae-4bd0-9695-4d2d-4b1b58566955",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_MOAH
-	VALUES ("1cbcbde8-24b6-f2ae-b957-f281238f2951",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"70c7215f-d01a-addd-342a-69ad31311dbc");
-INSERT INTO SM_AH
-	VALUES ("1cbcbde8-24b6-f2ae-b957-f281238f2951",
-	"931329ca-263b-620c-820c-c0f1cd8bc145");
-INSERT INTO SM_ACT
-	VALUES ("1cbcbde8-24b6-f2ae-b957-f281238f2951",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	1,
-	'create object instance dq of D_DQ;
-select any disk from instances of D_D where (selected.Disk_ID == rcvd_evt.disk_id);
-relate self to disk across R1 using dq;
-generate D_DQ1:''Disk Mount Request''() to dq;',
-	'',
-	0);
-INSERT INTO SM_NSTXN
-	VALUES ("bb6b8eb2-8b14-4beb-84cd-defc4c30a589",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"70c7215f-d01a-addd-342a-69ad31311dbc",
-	"38c912ae-4bd0-9695-4d2d-4b1b58566955",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_TAH
-	VALUES ("4327013f-341b-2219-30f0-73a195cfea33",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"bb6b8eb2-8b14-4beb-84cd-defc4c30a589");
-INSERT INTO SM_AH
-	VALUES ("4327013f-341b-2219-30f0-73a195cfea33",
-	"931329ca-263b-620c-820c-c0f1cd8bc145");
-INSERT INTO SM_ACT
-	VALUES ("4327013f-341b-2219-30f0-73a195cfea33",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	-1,
-	'',
-	'',
-	0);
-INSERT INTO SM_TXN
-	VALUES ("bb6b8eb2-8b14-4beb-84cd-defc4c30a589",
-	"931329ca-263b-620c-820c-c0f1cd8bc145",
-	"70c7215f-d01a-addd-342a-69ad31311dbc",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO PE_PE
-	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
-	1,
-	"b5544b82-8532-19e7-719b-d2730b375d37",
-	"00000000-0000-0000-0000-000000000000",
-	4);
-INSERT INTO O_OBJ
-	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
-	'Disk Request',
-	10,
-	'D_DQ',
-	'Object Description:
-
-Object Role:
-',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_REF
-	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
-	0,
-	"402e3ace-d598-03de-13bd-939aa2ae1ab7",
-	"b891b6ca-a753-1b08-1311-386a41c2a70f",
-	"8a6b8d1c-6f1a-d299-28be-e851b2016aef",
-	"5d859166-786f-9741-50d3-684f5ab37def",
-	"0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
-	"8efd58e8-f6fd-88db-186f-1a2faa5236f9",
-	"00000000-0000-0000-0000-000000000000",
-	0,
-	'Reference Domain:
-',
-	'Qualified Process',
-	'Qualified_Process_ID',
-	'R1.''needed by''');
-INSERT INTO O_RATTR
-	VALUES ("0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"402e3ace-d598-03de-13bd-939aa2ae1ab7",
-	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
-	1,
-	'Qualified_Process_ID');
-INSERT INTO O_ATTR
-	VALUES ("0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"00000000-0000-0000-0000-000000000000",
-	'Qualified_Process_ID',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Qualified_Process_ID',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000007",
-	'',
-	'');
-INSERT INTO O_REF
-	VALUES ("185d08f6-b74c-d843-5878-9403b03e674f",
-	"71e76219-f0a2-d2fa-c186-f42d214899f4",
-	0,
-	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
-	"b891b6ca-a753-1b08-1311-386a41c2a70f",
-	"8a6b8d1c-6f1a-d299-28be-e851b2016aef",
-	"3944bb9a-77b6-92f4-612c-615c51fbd5ee",
-	"c878a2f4-e227-8731-3e24-8a9e56c8c1af",
-	"a5241055-0b3e-e8b9-0e1c-3a71235f6d2e",
-	"00000000-0000-0000-0000-000000000000",
-	0,
-	'Reference Domain:
-',
-	'Disk',
-	'Disk_ID',
-	'R1.''needs''');
-INSERT INTO O_RATTR
-	VALUES ("c878a2f4-e227-8731-3e24-8a9e56c8c1af",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
-	"71e76219-f0a2-d2fa-c186-f42d214899f4",
-	1,
-	'Disk_ID');
-INSERT INTO O_ATTR
-	VALUES ("c878a2f4-e227-8731-3e24-8a9e56c8c1af",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
-	'Disk_ID',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Disk_ID',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000007",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_BATTR
-	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_ATTR
-	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"c878a2f4-e227-8731-3e24-8a9e56c8c1af",
-	'Time_of_Request',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Time_of_Request',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("c0a30700-eb18-85e6-5f2d-264c0d489f64",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_BATTR
-	VALUES ("c0a30700-eb18-85e6-5f2d-264c0d489f64",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_ATTR
-	VALUES ("c0a30700-eb18-85e6-5f2d-264c0d489f64",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
-	'Time_Request_Completed',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Time_Request_Completed',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_BATTR
-	VALUES ("9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_ATTR
-	VALUES ("9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"c0a30700-eb18-85e6-5f2d-264c0d489f64",
-	'Request_Pending',
-	'This attribute is TRUE only when the state machine is in the Accepting Disk Mount Request state.
-',
-	'',
-	'Request_Pending',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000001",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("73f454cf-9832-c22b-faba-311212a98e50",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_BATTR
-	VALUES ("73f454cf-9832-c22b-faba-311212a98e50",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_ATTR
-	VALUES ("73f454cf-9832-c22b-faba-311212a98e50",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	"9a9c9ea7-7c74-565f-dcc1-7158e2bd9287",
-	'current_state',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
-INSERT INTO O_ID
-	VALUES (0,
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_OIDA
-	VALUES ("04f960a9-e63c-9a41-f2fb-a5c9dabc39c0",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	0,
-	'Time_of_Request');
-INSERT INTO O_OIDA
-	VALUES ("0eeeaa9a-aae6-59be-9ed9-c885ade9d535",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	0,
-	'Qualified_Process_ID');
-INSERT INTO O_OIDA
-	VALUES ("c878a2f4-e227-8731-3e24-8a9e56c8c1af",
-	"185d08f6-b74c-d843-5878-9403b03e674f",
-	0,
-	'Disk_ID');
-INSERT INTO O_ID
-	VALUES (1,
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO O_ID
-	VALUES (2,
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO SM_ISM
-	VALUES ("009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"185d08f6-b74c-d843-5878-9403b03e674f");
-INSERT INTO SM_SM
-	VALUES ("009dc4db-5b23-2a08-0505-44ec3a65189b",
-	'',
-	4);
-INSERT INTO SM_MOORE
-	VALUES ("009dc4db-5b23-2a08-0505-44ec3a65189b");
-INSERT INTO SM_LEVT
-	VALUES ("a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEVT
-	VALUES ("a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EVT
-	VALUES ("a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000",
-	1,
-	'Disk Mount Request',
-	0,
-	'',
-	'D_DQ1',
-	'Event Descriptions:
-');
-INSERT INTO SM_LEVT
-	VALUES ("1d2f41ee-6fd8-c62d-38dd-da97414270bf",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEVT
-	VALUES ("1d2f41ee-6fd8-c62d-38dd-da97414270bf",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EVT
-	VALUES ("1d2f41ee-6fd8-c62d-38dd-da97414270bf",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000",
-	2,
-	'Disk Request Satisfied',
-	0,
-	'',
-	'D_DQ2',
-	'Event Descriptions:
-');
-INSERT INTO SM_STATE
-	VALUES ("09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000",
-	'Accepting Disk Mount Request',
-	1,
-	0);
-INSERT INTO SM_SEME
-	VALUES ("09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
-	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEME
-	VALUES ("09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
-	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_MOAH
-	VALUES ("dd375635-08e7-83c5-452f-12546a25be21",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9");
-INSERT INTO SM_AH
-	VALUES ("dd375635-08e7-83c5-452f-12546a25be21",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b");
-INSERT INTO SM_ACT
-	VALUES ("dd375635-08e7-83c5-452f-12546a25be21",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	1,
-	'Assign Self.Request_Pending = TRUE;
-Generate D_DO_A1:''Disk Requested by QP'' () to D_DO Assigner;',
-	'',
-	0);
-INSERT INTO SM_STATE
-	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000",
-	'Disk Request Satisfied',
-	2,
-	1);
-INSERT INTO SM_EIGN
-	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
-	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
-	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EIGN
-	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
-	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("e0f81b12-71b3-1850-1f4b-cee3501aaeca",
-	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_MOAH
-	VALUES ("a5733f0e-fcfe-a18b-7a3e-62a61f0aa6dd",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"e0f81b12-71b3-1850-1f4b-cee3501aaeca");
-INSERT INTO SM_AH
-	VALUES ("a5733f0e-fcfe-a18b-7a3e-62a61f0aa6dd",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b");
-INSERT INTO SM_ACT
-	VALUES ("a5733f0e-fcfe-a18b-7a3e-62a61f0aa6dd",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	1,
-	'// Update Time Request Satisfied
-Assign Self.Request_Pending = FALSE;
-
-Generate D_DO_A6:''Ownership Established'' () to D_DO Assigner;',
-	'',
-	0);
-INSERT INTO SM_NSTXN
-	VALUES ("1391e94d-726b-b04e-0fa8-0cc3b6610cb7",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
-	"1d2f41ee-6fd8-c62d-38dd-da97414270bf",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_TAH
-	VALUES ("390fe20a-736f-c975-89bc-96de899df819",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"1391e94d-726b-b04e-0fa8-0cc3b6610cb7");
-INSERT INTO SM_AH
-	VALUES ("390fe20a-736f-c975-89bc-96de899df819",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b");
-INSERT INTO SM_ACT
-	VALUES ("390fe20a-736f-c975-89bc-96de899df819",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	-1,
-	'',
-	'',
-	0);
-INSERT INTO SM_TXN
-	VALUES ("1391e94d-726b-b04e-0fa8-0cc3b6610cb7",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"e0f81b12-71b3-1850-1f4b-cee3501aaeca",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_NSTXN
-	VALUES ("3166a679-3e3c-982d-6a6f-2e5db4f18ab2",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
-	"a70e8bc5-d5b9-0227-947f-8f3a7dbb9e7d",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_TAH
-	VALUES ("0f76edf2-f7fd-65a5-bde4-bd23546f5960",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"3166a679-3e3c-982d-6a6f-2e5db4f18ab2");
-INSERT INTO SM_AH
-	VALUES ("0f76edf2-f7fd-65a5-bde4-bd23546f5960",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b");
-INSERT INTO SM_ACT
-	VALUES ("0f76edf2-f7fd-65a5-bde4-bd23546f5960",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	-1,
-	'',
-	'',
-	0);
-INSERT INTO SM_TXN
-	VALUES ("3166a679-3e3c-982d-6a6f-2e5db4f18ab2",
-	"009dc4db-5b23-2a08-0505-44ec3a65189b",
-	"09e8da8e-b129-86ee-fcd8-c23db9fa8af9",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO PE_PE
-	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	1,
-	"b5544b82-8532-19e7-719b-d2730b375d37",
-	"00000000-0000-0000-0000-000000000000",
-	4);
-INSERT INTO O_OBJ
-	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	'Disk Transfer',
-	13,
-	'D_DT',
-	'Object Description:
-
-Object Role:
-',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_NBATTR
-	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
-INSERT INTO O_BATTR
-	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
-INSERT INTO O_ATTR
-	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"00000000-0000-0000-0000-000000000000",
-	'Disk_Transfer_ID',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Disk_Transfer_ID',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000005",
-	'',
-	'');
-INSERT INTO O_REF
-	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	0,
-	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"15947d90-4185-26c0-365b-b2a74d2efba5",
-	"6ca3ab06-00d9-0dae-bb32-a4a930ae6a57",
-	"29b728f7-f8c5-1fa0-e76c-0398e22eb777",
-	"31688086-4ed0-2c6a-bc8f-c69797af9ee9",
-	"85f710dd-cf1b-83f0-151b-8fdc6fcd428e",
-	"00000000-0000-0000-0000-000000000000",
-	0,
-	'Reference Domain:
-',
-	'Online Location',
-	'Online_Location_ID',
-	'R10.''originates at''');
-INSERT INTO O_RATTR
-	VALUES ("31688086-4ed0-2c6a-bc8f-c69797af9ee9",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	0,
-	'Online_Location_ID');
-INSERT INTO O_ATTR
-	VALUES ("31688086-4ed0-2c6a-bc8f-c69797af9ee9",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"c3a75758-2df2-42b3-2af4-5c8ab5d70172",
-	'Source_ID',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Source_ID',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000007",
-	'',
-	'');
-INSERT INTO O_REF
-	VALUES ("a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	0,
-	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"e61b58dd-ad95-b4c4-7540-e48fbc7e8482",
-	"3ce349e9-f601-0139-8f67-385a98c6b4f2",
-	"8d268976-b4f7-c0af-89de-a679aea21a52",
-	"923a913f-1630-f438-85b9-eed996fba1e0",
-	"3fcdee94-e809-ccee-e333-4216ab6674fb",
-	"00000000-0000-0000-0000-000000000000",
-	0,
-	'Reference Domain:
-',
-	'Online Location',
-	'Online_Location_ID',
-	'R11.''completes at''');
-INSERT INTO O_RATTR
-	VALUES ("923a913f-1630-f438-85b9-eed996fba1e0",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	0,
-	'Online_Location_ID');
-INSERT INTO O_ATTR
-	VALUES ("923a913f-1630-f438-85b9-eed996fba1e0",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"31688086-4ed0-2c6a-bc8f-c69797af9ee9",
-	'Destination_ID',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Destination_ID',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000007",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("011b0799-d2cf-0935-7af8-88afc2dc658f",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
-INSERT INTO O_BATTR
-	VALUES ("011b0799-d2cf-0935-7af8-88afc2dc658f",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
-INSERT INTO O_ATTR
-	VALUES ("011b0799-d2cf-0935-7af8-88afc2dc658f",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	"923a913f-1630-f438-85b9-eed996fba1e0",
-	'Status',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Status',
-	0,
-	"537c902d-1dd5-345f-15e8-27e76d4f79ca",
-	'',
-	'');
-INSERT INTO O_ID
-	VALUES (0,
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
-INSERT INTO O_OIDA
-	VALUES ("c3a75758-2df2-42b3-2af4-5c8ab5d70172",
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143",
-	0,
-	'Disk_Transfer_ID');
-INSERT INTO O_ID
-	VALUES (1,
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
-INSERT INTO O_ID
-	VALUES (2,
-	"a6c1a8b1-7001-6a43-525d-c7e3a5130143");
-INSERT INTO PE_PE
-	VALUES ("9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	1,
-	"b5544b82-8532-19e7-719b-d2730b375d37",
-	"00000000-0000-0000-0000-000000000000",
-	4);
-INSERT INTO O_OBJ
-	VALUES ("9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	'Online Location',
-	15,
-	'D_OL',
-	'Object Description:
-
-Object Role:
-',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_NBATTR
-	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_BATTR
-	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_ATTR
-	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	"00000000-0000-0000-0000-000000000000",
-	'Online_Location_ID',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Online_Location_ID',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_BATTR
-	VALUES ("f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_ATTR
-	VALUES ("f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	'X_Coordinate',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'X_Coordinate',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("8df8b6b3-53fe-7772-e72e-b3ec1362d626",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_BATTR
-	VALUES ("8df8b6b3-53fe-7772-e72e-b3ec1362d626",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_ATTR
-	VALUES ("8df8b6b3-53fe-7772-e72e-b3ec1362d626",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	"f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
-	'Y_Coordinate',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Y_Coordinate',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("14b0470f-2424-24d6-e666-002e93d6a5f0",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_BATTR
-	VALUES ("14b0470f-2424-24d6-e666-002e93d6a5f0",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_ATTR
-	VALUES ("14b0470f-2424-24d6-e666-002e93d6a5f0",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	"8df8b6b3-53fe-7772-e72e-b3ec1362d626",
-	'Theta_Coordinate',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'Theta_Coordinate',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("f6c634f6-fd0f-9d63-12a3-eb4f028c59c4",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_BATTR
-	VALUES ("f6c634f6-fd0f-9d63-12a3-eb4f028c59c4",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_ATTR
-	VALUES ("f6c634f6-fd0f-9d63-12a3-eb4f028c59c4",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	"14b0470f-2424-24d6-e666-002e93d6a5f0",
-	'current_state',
-	'Attribute Description:
-
-Attribute Domain:
-',
-	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
-INSERT INTO O_ID
-	VALUES (0,
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_OIDA
-	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
-	0,
-	'Online_Location_ID');
-INSERT INTO O_ID
-	VALUES (1,
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO O_ID
-	VALUES (2,
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO SM_ISM
-	VALUES ("e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
-INSERT INTO SM_SM
-	VALUES ("e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	'',
-	9);
-INSERT INTO SM_MOORE
-	VALUES ("e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
-INSERT INTO SM_LEVT
-	VALUES ("f53d5989-6ad7-32f2-dab5-710c2c6c5483",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEVT
-	VALUES ("f53d5989-6ad7-32f2-dab5-710c2c6c5483",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EVT
-	VALUES ("f53d5989-6ad7-32f2-dab5-710c2c6c5483",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000",
-	1,
-	'Robot Removed Disk',
-	0,
-	'',
-	'D_OL1',
-	'Event Descriptions:
-');
-INSERT INTO SM_LEVT
-	VALUES ("fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEVT
-	VALUES ("fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EVT
-	VALUES ("fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000",
-	2,
-	'Robot Delivered Disk',
-	0,
-	'',
-	'D_OL2',
-	'Event Descriptions:
-');
-INSERT INTO SM_STATE
-	VALUES ("4c0aacaa-b502-14f3-d07d-c55b4a459051",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000",
-	'Removed Disk',
-	1,
-	0);
-INSERT INTO SM_SEME
-	VALUES ("4c0aacaa-b502-14f3-d07d-c55b4a459051",
-	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEME
-	VALUES ("4c0aacaa-b502-14f3-d07d-c55b4a459051",
-	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_MOAH
-	VALUES ("d3d0a837-0683-211e-bc8e-d5f6e296313e",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"4c0aacaa-b502-14f3-d07d-c55b4a459051");
-INSERT INTO SM_AH
-	VALUES ("d3d0a837-0683-211e-bc8e-d5f6e296313e",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
-INSERT INTO SM_ACT
-	VALUES ("d3d0a837-0683-211e-bc8e-d5f6e296313e",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	1,
-	'Select one slot related by Self->D_S[R7];
-If (not_empty slot)
-    Generate D_S3:''Robot Removed Disk'' () to slot;
-End if;
-
-Select one drive related by Self->D_DR[R7];
-If (not_empty drive)
-    Generate D_DR5:''Robot Removed Disk'' () to drive;
-End if;
-
-Select one port related by Self->D_P[R7];
-If (not_empty port)
-    Generate D_P11:''Robot Removed Disk'' () to port;
-End if;',
-	'',
-	0);
-INSERT INTO SM_STATE
-	VALUES ("d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000",
-	'Delivered Disk',
-	2,
-	0);
-INSERT INTO SM_SEME
-	VALUES ("d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
-	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEME
-	VALUES ("d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
-	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_MOAH
-	VALUES ("f77d2b4b-c157-eca6-9875-1bf6bdc64dbd",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db");
-INSERT INTO SM_AH
-	VALUES ("f77d2b4b-c157-eca6-9875-1bf6bdc64dbd",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
-INSERT INTO SM_ACT
-	VALUES ("f77d2b4b-c157-eca6-9875-1bf6bdc64dbd",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	1,
-	'Select one slot related by Self->D_S[R7];
-If (not_empty slot)
-    Generate D_S4:''Robot Delivered Disk'' () to slot;
-End if;
-
-Select one drive related by Self->D_DR[R7];
-If (not_empty drive)
-    Generate D_DR6:''Robot Delivered Disk'' () to drive;
-End if;
-
-Select one port related by Self->D_P[R7];
-If (not_empty port)
-    Generate D_P12:''Robot Delivered Disk'' () to port;
-End if;',
-	'',
-	0);
-INSERT INTO SM_NSTXN
-	VALUES ("96293b4d-f894-10da-7b28-bbc889747afa",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
-	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_TAH
-	VALUES ("50f91f2f-7ff1-e29f-954e-36c6cd6998b4",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"96293b4d-f894-10da-7b28-bbc889747afa");
-INSERT INTO SM_AH
-	VALUES ("50f91f2f-7ff1-e29f-954e-36c6cd6998b4",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
-INSERT INTO SM_ACT
-	VALUES ("50f91f2f-7ff1-e29f-954e-36c6cd6998b4",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	-1,
-	'',
-	'',
-	0);
-INSERT INTO SM_TXN
-	VALUES ("96293b4d-f894-10da-7b28-bbc889747afa",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_NSTXN
-	VALUES ("3e2350e2-e96f-7a7a-11a6-0cab7ca26dba",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
-	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_TAH
-	VALUES ("8a9ec6f5-cafa-6b70-c31d-a651a69f30ad",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"3e2350e2-e96f-7a7a-11a6-0cab7ca26dba");
-INSERT INTO SM_AH
-	VALUES ("8a9ec6f5-cafa-6b70-c31d-a651a69f30ad",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
-INSERT INTO SM_ACT
-	VALUES ("8a9ec6f5-cafa-6b70-c31d-a651a69f30ad",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	-1,
-	'',
-	'',
-	0);
-INSERT INTO SM_TXN
-	VALUES ("3e2350e2-e96f-7a7a-11a6-0cab7ca26dba",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_NSTXN
-	VALUES ("8e7acce5-73a5-3883-9f37-95822b055588",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
-	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_TAH
-	VALUES ("90f6a058-c4b4-827e-3f95-3320f5ce1c2f",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"8e7acce5-73a5-3883-9f37-95822b055588");
-INSERT INTO SM_AH
-	VALUES ("90f6a058-c4b4-827e-3f95-3320f5ce1c2f",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
-INSERT INTO SM_ACT
-	VALUES ("90f6a058-c4b4-827e-3f95-3320f5ce1c2f",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	-1,
-	'',
-	'',
-	0);
-INSERT INTO SM_TXN
-	VALUES ("8e7acce5-73a5-3883-9f37-95822b055588",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_NSTXN
-	VALUES ("9dd0aa3f-871f-fa3c-f70f-77566cf4cfc4",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
-	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_TAH
-	VALUES ("6129e88d-6d77-e078-1216-5101904972b6",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"9dd0aa3f-871f-fa3c-f70f-77566cf4cfc4");
-INSERT INTO SM_AH
-	VALUES ("6129e88d-6d77-e078-1216-5101904972b6",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
-INSERT INTO SM_ACT
-	VALUES ("6129e88d-6d77-e078-1216-5101904972b6",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	-1,
-	'',
-	'',
-	0);
-INSERT INTO SM_TXN
-	VALUES ("9dd0aa3f-871f-fa3c-f70f-77566cf4cfc4",
-	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
-	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
 	VALUES ("246d8991-5e09-2eb8-bc7c-73b84b9eed3b",
@@ -6099,6 +5489,144 @@ INSERT INTO SM_TXN
 	"85eb55f2-ec55-e822-e887-ab820dec618b",
 	"584954f8-3a5c-41c1-b4cf-4418f504dab0",
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	1,
+	"b5544b82-8532-19e7-719b-d2730b375d37",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	'Online Disk',
+	4,
+	'D_OND',
+	'Object Description:
+
+Object Role:
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	"71e76219-f0a2-d2fa-c186-f42d214899f4",
+	0,
+	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
+	"6e7fd0ad-9426-4f24-2a38-f43115041607",
+	"aea51f5f-5fd8-eaa5-526d-c79965d02bad",
+	"2765eae8-13a9-3bd2-ce67-9eb2f4e164ac",
+	"a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
+	"b01e2b5e-caf9-ce06-128c-3351204e4637",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'Reference Domain:
+',
+	'Disk',
+	'Disk_ID',
+	'R3');
+INSERT INTO O_RATTR
+	VALUES ("a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
+	"fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
+	"71e76219-f0a2-d2fa-c186-f42d214899f4",
+	1,
+	'Disk_ID');
+INSERT INTO O_ATTR
+	VALUES ("a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
+	"fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	"00000000-0000-0000-0000-000000000000",
+	'Disk_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Disk_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"fde649b9-7c46-03d6-b5bf-8fdedf719739");
+INSERT INTO O_OIDA
+	VALUES ("a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
+	"fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	0,
+	'Disk_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"fde649b9-7c46-03d6-b5bf-8fdedf719739");
+INSERT INTO O_ID
+	VALUES (2,
+	"fde649b9-7c46-03d6-b5bf-8fdedf719739");
+INSERT INTO PE_PE
+	VALUES ("9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	1,
+	"b5544b82-8532-19e7-719b-d2730b375d37",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	'Offline Disk',
+	3,
+	'D_OD',
+	'Object Description:
+
+Object Role:
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	"71e76219-f0a2-d2fa-c186-f42d214899f4",
+	0,
+	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
+	"6e7fd0ad-9426-4f24-2a38-f43115041607",
+	"50339025-1e0c-7767-de39-b209f772be57",
+	"2765eae8-13a9-3bd2-ce67-9eb2f4e164ac",
+	"e9ee599b-c37f-5930-ccb6-46a0996c362b",
+	"912c6f1b-bc0d-cb30-65c3-f293b0aefb67",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'Reference Domain:
+',
+	'Disk',
+	'Disk_ID',
+	'R3');
+INSERT INTO O_RATTR
+	VALUES ("e9ee599b-c37f-5930-ccb6-46a0996c362b",
+	"9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
+	"71e76219-f0a2-d2fa-c186-f42d214899f4",
+	1,
+	'Disk_ID');
+INSERT INTO O_ATTR
+	VALUES ("e9ee599b-c37f-5930-ccb6-46a0996c362b",
+	"9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	"00000000-0000-0000-0000-000000000000",
+	'Disk_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Disk_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"9092bd42-bedc-c054-8d58-eb95b2fc30b3");
+INSERT INTO O_OIDA
+	VALUES ("e9ee599b-c37f-5930-ccb6-46a0996c362b",
+	"9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	0,
+	'Disk_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"9092bd42-bedc-c054-8d58-eb95b2fc30b3");
+INSERT INTO O_ID
+	VALUES (2,
+	"9092bd42-bedc-c054-8d58-eb95b2fc30b3");
 INSERT INTO PE_PE
 	VALUES ("0f57db42-686c-07ad-1079-9652c321f23c",
 	1,
@@ -8892,143 +8420,615 @@ INSERT INTO SM_TXN
 	"f064723b-8816-0128-0d17-1ae5065ddf37",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
-	VALUES ("9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	VALUES ("9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
 	1,
 	"b5544b82-8532-19e7-719b-d2730b375d37",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO O_OBJ
-	VALUES ("9092bd42-bedc-c054-8d58-eb95b2fc30b3",
-	'Offline Disk',
-	3,
-	'D_OD',
+	VALUES ("9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	'Online Location',
+	15,
+	'D_OL',
 	'Object Description:
 
 Object Role:
 ',
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_REF
-	VALUES ("9092bd42-bedc-c054-8d58-eb95b2fc30b3",
-	"71e76219-f0a2-d2fa-c186-f42d214899f4",
-	0,
-	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
-	"6e7fd0ad-9426-4f24-2a38-f43115041607",
-	"50339025-1e0c-7767-de39-b209f772be57",
-	"2765eae8-13a9-3bd2-ce67-9eb2f4e164ac",
-	"e9ee599b-c37f-5930-ccb6-46a0996c362b",
-	"912c6f1b-bc0d-cb30-65c3-f293b0aefb67",
-	"00000000-0000-0000-0000-000000000000",
-	0,
-	'Reference Domain:
-',
-	'Disk',
-	'Disk_ID',
-	'R3');
-INSERT INTO O_RATTR
-	VALUES ("e9ee599b-c37f-5930-ccb6-46a0996c362b",
-	"9092bd42-bedc-c054-8d58-eb95b2fc30b3",
-	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
-	"71e76219-f0a2-d2fa-c186-f42d214899f4",
-	1,
-	'Disk_ID');
+INSERT INTO O_NBATTR
+	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_BATTR
+	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
 INSERT INTO O_ATTR
-	VALUES ("e9ee599b-c37f-5930-ccb6-46a0996c362b",
-	"9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
 	"00000000-0000-0000-0000-000000000000",
-	'Disk_ID',
+	'Online_Location_ID',
 	'Attribute Description:
 
 Attribute Domain:
 ',
 	'',
-	'Disk_ID',
+	'Online_Location_ID',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000007",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_BATTR
+	VALUES ("f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_ATTR
+	VALUES ("f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	"2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	'X_Coordinate',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'X_Coordinate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("8df8b6b3-53fe-7772-e72e-b3ec1362d626",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_BATTR
+	VALUES ("8df8b6b3-53fe-7772-e72e-b3ec1362d626",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_ATTR
+	VALUES ("8df8b6b3-53fe-7772-e72e-b3ec1362d626",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	"f2d864c7-0d40-13af-0cf2-92b62ca81f9a",
+	'Y_Coordinate',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Y_Coordinate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("14b0470f-2424-24d6-e666-002e93d6a5f0",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_BATTR
+	VALUES ("14b0470f-2424-24d6-e666-002e93d6a5f0",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_ATTR
+	VALUES ("14b0470f-2424-24d6-e666-002e93d6a5f0",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	"8df8b6b3-53fe-7772-e72e-b3ec1362d626",
+	'Theta_Coordinate',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Theta_Coordinate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f6c634f6-fd0f-9d63-12a3-eb4f028c59c4",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_BATTR
+	VALUES ("f6c634f6-fd0f-9d63-12a3-eb4f028c59c4",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO O_ATTR
+	VALUES ("f6c634f6-fd0f-9d63-12a3-eb4f028c59c4",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
+	"14b0470f-2424-24d6-e666-002e93d6a5f0",
+	'current_state',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
 	'',
 	'');
 INSERT INTO O_ID
 	VALUES (0,
-	"9092bd42-bedc-c054-8d58-eb95b2fc30b3");
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
 INSERT INTO O_OIDA
-	VALUES ("e9ee599b-c37f-5930-ccb6-46a0996c362b",
-	"9092bd42-bedc-c054-8d58-eb95b2fc30b3",
+	VALUES ("2bd342a8-54f3-5b4e-a7b8-75625f3803be",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a",
 	0,
-	'Disk_ID');
+	'Online_Location_ID');
 INSERT INTO O_ID
 	VALUES (1,
-	"9092bd42-bedc-c054-8d58-eb95b2fc30b3");
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
 INSERT INTO O_ID
 	VALUES (2,
-	"9092bd42-bedc-c054-8d58-eb95b2fc30b3");
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO SM_ISM
+	VALUES ("e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"9ed9f1e4-ab8e-f008-806d-f43cb6a0021a");
+INSERT INTO SM_SM
+	VALUES ("e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	'',
+	9);
+INSERT INTO SM_MOORE
+	VALUES ("e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
+INSERT INTO SM_LEVT
+	VALUES ("f53d5989-6ad7-32f2-dab5-710c2c6c5483",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("f53d5989-6ad7-32f2-dab5-710c2c6c5483",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("f53d5989-6ad7-32f2-dab5-710c2c6c5483",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'Robot Removed Disk',
+	0,
+	'',
+	'D_OL1',
+	'Event Descriptions:
+');
+INSERT INTO SM_LEVT
+	VALUES ("fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'Robot Delivered Disk',
+	0,
+	'',
+	'D_OL2',
+	'Event Descriptions:
+');
+INSERT INTO SM_STATE
+	VALUES ("4c0aacaa-b502-14f3-d07d-c55b4a459051",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000",
+	'Removed Disk',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("4c0aacaa-b502-14f3-d07d-c55b4a459051",
+	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("4c0aacaa-b502-14f3-d07d-c55b4a459051",
+	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("d3d0a837-0683-211e-bc8e-d5f6e296313e",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"4c0aacaa-b502-14f3-d07d-c55b4a459051");
+INSERT INTO SM_AH
+	VALUES ("d3d0a837-0683-211e-bc8e-d5f6e296313e",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
+INSERT INTO SM_ACT
+	VALUES ("d3d0a837-0683-211e-bc8e-d5f6e296313e",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	1,
+	'Select one slot related by Self->D_S[R7];
+If (not_empty slot)
+    Generate D_S3:''Robot Removed Disk'' () to slot;
+End if;
+
+Select one drive related by Self->D_DR[R7];
+If (not_empty drive)
+    Generate D_DR5:''Robot Removed Disk'' () to drive;
+End if;
+
+Select one port related by Self->D_P[R7];
+If (not_empty port)
+    Generate D_P11:''Robot Removed Disk'' () to port;
+End if;',
+	'',
+	0);
+INSERT INTO SM_STATE
+	VALUES ("d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000",
+	'Delivered Disk',
+	2,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
+	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
+	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("f77d2b4b-c157-eca6-9875-1bf6bdc64dbd",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db");
+INSERT INTO SM_AH
+	VALUES ("f77d2b4b-c157-eca6-9875-1bf6bdc64dbd",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
+INSERT INTO SM_ACT
+	VALUES ("f77d2b4b-c157-eca6-9875-1bf6bdc64dbd",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	1,
+	'Select one slot related by Self->D_S[R7];
+If (not_empty slot)
+    Generate D_S4:''Robot Delivered Disk'' () to slot;
+End if;
+
+Select one drive related by Self->D_DR[R7];
+If (not_empty drive)
+    Generate D_DR6:''Robot Delivered Disk'' () to drive;
+End if;
+
+Select one port related by Self->D_P[R7];
+If (not_empty port)
+    Generate D_P12:''Robot Delivered Disk'' () to port;
+End if;',
+	'',
+	0);
+INSERT INTO SM_NSTXN
+	VALUES ("96293b4d-f894-10da-7b28-bbc889747afa",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
+	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("50f91f2f-7ff1-e29f-954e-36c6cd6998b4",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"96293b4d-f894-10da-7b28-bbc889747afa");
+INSERT INTO SM_AH
+	VALUES ("50f91f2f-7ff1-e29f-954e-36c6cd6998b4",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
+INSERT INTO SM_ACT
+	VALUES ("50f91f2f-7ff1-e29f-954e-36c6cd6998b4",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	-1,
+	'',
+	'',
+	0);
+INSERT INTO SM_TXN
+	VALUES ("96293b4d-f894-10da-7b28-bbc889747afa",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("3e2350e2-e96f-7a7a-11a6-0cab7ca26dba",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
+	"f53d5989-6ad7-32f2-dab5-710c2c6c5483",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("8a9ec6f5-cafa-6b70-c31d-a651a69f30ad",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"3e2350e2-e96f-7a7a-11a6-0cab7ca26dba");
+INSERT INTO SM_AH
+	VALUES ("8a9ec6f5-cafa-6b70-c31d-a651a69f30ad",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
+INSERT INTO SM_ACT
+	VALUES ("8a9ec6f5-cafa-6b70-c31d-a651a69f30ad",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	-1,
+	'',
+	'',
+	0);
+INSERT INTO SM_TXN
+	VALUES ("3e2350e2-e96f-7a7a-11a6-0cab7ca26dba",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("8e7acce5-73a5-3883-9f37-95822b055588",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"4c0aacaa-b502-14f3-d07d-c55b4a459051",
+	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("90f6a058-c4b4-827e-3f95-3320f5ce1c2f",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"8e7acce5-73a5-3883-9f37-95822b055588");
+INSERT INTO SM_AH
+	VALUES ("90f6a058-c4b4-827e-3f95-3320f5ce1c2f",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
+INSERT INTO SM_ACT
+	VALUES ("90f6a058-c4b4-827e-3f95-3320f5ce1c2f",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	-1,
+	'',
+	'',
+	0);
+INSERT INTO SM_TXN
+	VALUES ("8e7acce5-73a5-3883-9f37-95822b055588",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("9dd0aa3f-871f-fa3c-f70f-77566cf4cfc4",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
+	"fdfc7781-50ee-c5ff-fab0-404e9c543d6b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("6129e88d-6d77-e078-1216-5101904972b6",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"9dd0aa3f-871f-fa3c-f70f-77566cf4cfc4");
+INSERT INTO SM_AH
+	VALUES ("6129e88d-6d77-e078-1216-5101904972b6",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb");
+INSERT INTO SM_ACT
+	VALUES ("6129e88d-6d77-e078-1216-5101904972b6",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	-1,
+	'',
+	'',
+	0);
+INSERT INTO SM_TXN
+	VALUES ("9dd0aa3f-871f-fa3c-f70f-77566cf4cfc4",
+	"e632e0c7-758c-9ab4-28e1-fd2fa4f526fb",
+	"d9f865a7-e8fb-f103-f3ed-b2fa2e0014db",
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
-	VALUES ("fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	VALUES ("2dac6327-6167-fa6f-7c8b-6ba751eda201",
 	1,
 	"b5544b82-8532-19e7-719b-d2730b375d37",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO O_OBJ
-	VALUES ("fde649b9-7c46-03d6-b5bf-8fdedf719739",
-	'Online Disk',
-	4,
-	'D_OND',
+	VALUES ("2dac6327-6167-fa6f-7c8b-6ba751eda201",
+	'Permanent Home in Library',
+	2,
+	'D_H',
 	'Object Description:
 
 Object Role:
 ',
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_REF
-	VALUES ("fde649b9-7c46-03d6-b5bf-8fdedf719739",
-	"71e76219-f0a2-d2fa-c186-f42d214899f4",
-	0,
-	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
-	"6e7fd0ad-9426-4f24-2a38-f43115041607",
-	"aea51f5f-5fd8-eaa5-526d-c79965d02bad",
-	"2765eae8-13a9-3bd2-ce67-9eb2f4e164ac",
-	"a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
-	"b01e2b5e-caf9-ce06-128c-3351204e4637",
-	"00000000-0000-0000-0000-000000000000",
-	0,
-	'Reference Domain:
-',
-	'Disk',
-	'Disk_ID',
-	'R3');
-INSERT INTO O_RATTR
-	VALUES ("a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
-	"fde649b9-7c46-03d6-b5bf-8fdedf719739",
-	"0358093c-825d-76c9-f7d6-5127b69ad0d4",
-	"71e76219-f0a2-d2fa-c186-f42d214899f4",
-	1,
-	'Disk_ID');
+INSERT INTO O_NBATTR
+	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
+INSERT INTO O_BATTR
+	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
 INSERT INTO O_ATTR
-	VALUES ("a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
-	"fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
 	"00000000-0000-0000-0000-000000000000",
-	'Disk_ID',
+	'Row_Number',
 	'Attribute Description:
 
 Attribute Domain:
 ',
 	'',
-	'Disk_ID',
+	'Row_Number',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000007",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
+INSERT INTO O_BATTR
+	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
+INSERT INTO O_ATTR
+	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
+	"0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
+	'Column_Number',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Column_Number',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID
 	VALUES (0,
-	"fde649b9-7c46-03d6-b5bf-8fdedf719739");
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
 INSERT INTO O_OIDA
-	VALUES ("a7079c7f-139b-9cb0-e6c9-d66fe578e6f2",
-	"fde649b9-7c46-03d6-b5bf-8fdedf719739",
+	VALUES ("ca2d64e2-5050-741a-1354-bda5c4951265",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
 	0,
-	'Disk_ID');
+	'Column_Number');
+INSERT INTO O_OIDA
+	VALUES ("0c9e414b-94c5-e20c-7aa3-6a0e9a304fd6",
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201",
+	0,
+	'Row_Number');
 INSERT INTO O_ID
 	VALUES (1,
-	"fde649b9-7c46-03d6-b5bf-8fdedf719739");
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
 INSERT INTO O_ID
 	VALUES (2,
-	"fde649b9-7c46-03d6-b5bf-8fdedf719739");
+	"2dac6327-6167-fa6f-7c8b-6ba751eda201");
+INSERT INTO PE_PE
+	VALUES ("f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
+	1,
+	"b5544b82-8532-19e7-719b-d2730b375d37",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
+	'Qualified Process',
+	9,
+	'D_QP',
+	'Object Description:
+
+Object Role:
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO O_BATTR
+	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO O_ATTR
+	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
+	"00000000-0000-0000-0000-000000000000",
+	'Qualified_Process_ID',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'Qualified_Process_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("219452a5-d63d-670c-48cf-0378811dbc21",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO O_BATTR
+	VALUES ("219452a5-d63d-670c-48cf-0378811dbc21",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO O_ATTR
+	VALUES ("219452a5-d63d-670c-48cf-0378811dbc21",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
+	"402e3ace-d598-03de-13bd-939aa2ae1ab7",
+	'current_state',
+	'Attribute Description:
+
+Attribute Domain:
+',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO O_OIDA
+	VALUES ("402e3ace-d598-03de-13bd-939aa2ae1ab7",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce",
+	0,
+	'Qualified_Process_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO O_ID
+	VALUES (2,
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO SM_ISM
+	VALUES ("931329ca-263b-620c-820c-c0f1cd8bc145",
+	"f97ff7ed-e29f-b194-bac4-9c4a53dc59ce");
+INSERT INTO SM_SM
+	VALUES ("931329ca-263b-620c-820c-c0f1cd8bc145",
+	'',
+	5);
+INSERT INTO SM_MOORE
+	VALUES ("931329ca-263b-620c-820c-c0f1cd8bc145");
+INSERT INTO SM_EVTDI
+	VALUES ("73587986-1449-56a7-8208-d00d1b0750b8",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	'disk_id',
+	'Event Data Item Descriptions:
+',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	"38c912ae-4bd0-9695-4d2d-4b1b58566955",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_LEVT
+	VALUES ("38c912ae-4bd0-9695-4d2d-4b1b58566955",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("38c912ae-4bd0-9695-4d2d-4b1b58566955",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("38c912ae-4bd0-9695-4d2d-4b1b58566955",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'Mount Disk',
+	0,
+	'',
+	'D_QP1',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("70c7215f-d01a-addd-342a-69ad31311dbc",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"00000000-0000-0000-0000-000000000000",
+	'Requesting Disk',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("70c7215f-d01a-addd-342a-69ad31311dbc",
+	"38c912ae-4bd0-9695-4d2d-4b1b58566955",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("1cbcbde8-24b6-f2ae-b957-f281238f2951",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"70c7215f-d01a-addd-342a-69ad31311dbc");
+INSERT INTO SM_AH
+	VALUES ("1cbcbde8-24b6-f2ae-b957-f281238f2951",
+	"931329ca-263b-620c-820c-c0f1cd8bc145");
+INSERT INTO SM_ACT
+	VALUES ("1cbcbde8-24b6-f2ae-b957-f281238f2951",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	1,
+	'create object instance dq of D_DQ;
+select any disk from instances of D_D where (selected.Disk_ID == rcvd_evt.disk_id);
+relate self to disk across R1 using dq;
+generate D_DQ1:''Disk Mount Request''() to dq;',
+	'',
+	0);
+INSERT INTO SM_NSTXN
+	VALUES ("bb6b8eb2-8b14-4beb-84cd-defc4c30a589",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"70c7215f-d01a-addd-342a-69ad31311dbc",
+	"38c912ae-4bd0-9695-4d2d-4b1b58566955",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("4327013f-341b-2219-30f0-73a195cfea33",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"bb6b8eb2-8b14-4beb-84cd-defc4c30a589");
+INSERT INTO SM_AH
+	VALUES ("4327013f-341b-2219-30f0-73a195cfea33",
+	"931329ca-263b-620c-820c-c0f1cd8bc145");
+INSERT INTO SM_ACT
+	VALUES ("4327013f-341b-2219-30f0-73a195cfea33",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	-1,
+	'',
+	'',
+	0);
+INSERT INTO SM_TXN
+	VALUES ("bb6b8eb2-8b14-4beb-84cd-defc4c30a589",
+	"931329ca-263b-620c-820c-c0f1cd8bc145",
+	"70c7215f-d01a-addd-342a-69ad31311dbc",
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
 	VALUES ("63ed611e-d739-00a6-117f-0b08f1c55463",
 	1,
