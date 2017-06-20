@@ -7,17 +7,17 @@
 	<parent>
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests.super</artifactId>
-		<version>6.2.5</version>
+		<version>6.2.5-SNAPSHOT</version>
 		<relativePath>../../../bridgepoint/releng/org.xtuml.bp.releng.parent.tests</relativePath>
 	</parent>
 
 	<groupId>org.xtuml.bp</groupId>
 	<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
-	<version>6.2.5</version>
+	<version>6.2.5-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
-        <xtumlmc_build>/build/buildmt/BridgePoint/tools/mc/bin/xtumlmc_build</xtumlmc_build>
+        <xtumlmc_build>${env.bp_install_dir}/tools/mc/bin/xtumlmc_build</xtumlmc_build>
 		<mcj_path>../../../bridgepoint/src/MC-Java</mcj_path>
 	</properties>
 
@@ -68,7 +68,7 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<argLine>${jvmArgs} -Xmx2g -Xms1024m -DPTC_MCC_ENABLED=true -DCLI_TEST_RUN=true -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8 -Declipse.pluginCustomization=../../../bridgepoint-fork-main/src/org.xtuml.bp.pkg/plugin_customization.ini -Declipse.product=org.xtuml.bp.pkg.BridgePoint</argLine>
+					<argLine>${jvmArgs} -Xmx2g -Xms1024m -DPTC_MCC_ENABLED=true -DCLI_TEST_RUN=true -Dorg.eclipse.epp.logging.aeri.ui.skipReports=true -DWORKSPACE_PATH=${basedir}/ -DLOGFILE_PATH=${project.build.directory}/bp_tests/core/.metadata/.log -Dfile.encoding=UTF-8 -Declipse.pluginCustomization=${mcj_path}/../org.xtuml.bp.pkg/plugin_customization.ini -Declipse.product=org.xtuml.bp.pkg.BridgePoint</argLine>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>true</useUIThread>
 					<testFailureIgnore>true</testFailureIgnore>
