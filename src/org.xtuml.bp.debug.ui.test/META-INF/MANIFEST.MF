@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Test Plug-in
 Bundle-SymbolicName: org.xtuml.bp.debug.ui.test;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.xtuml.bp.debug.ui.test.TestPlugin
 Bundle-Vendor: xtUML.org
 Require-Bundle: org.eclipse.core.runtime,
@@ -11,7 +11,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.xtuml.bp.core,
  org.junit,
  org.eclipse.jdt.junit,
- org.eclipse.pde.junit.runtime,
  org.eclipse.jdt.junit.runtime,
  org.xtuml.bp.debug.ui,
  org.xtuml.bp.test,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Nucleus BridgePoint Canvas Test Plug-in
 Bundle-SymbolicName: org.xtuml.bp.ui.canvas.test; singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: test.jar
 Bundle-Activator: org.xtuml.bp.ui.canvas.test.CanvasTestPlugin
 Bundle-Vendor: xtUML.org
@@ -27,7 +27,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.xtuml.bp.ui.explorer,
  org.xtuml.bp.ui.text,
  org.xtuml.bp.io.core,
- org.eclipse.pde.junit.runtime,
  org.eclipse.jdt.junit,
  org.eclipse.jdt.junit.runtime,
  org.xtuml.bp.io.mdl,
