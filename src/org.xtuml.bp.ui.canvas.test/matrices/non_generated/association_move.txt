@@ -1,0 +1,75 @@
+#================================================================
+#
+# Description:
+# This test matrix is used to test relationship move capabilities
+#
+#================================================================
+
+Degrees of Freedom:
+
+ObjectInRelationship(A)
+1. SimpleParticipant
+2. AssociativeOne
+3. AssociativeOther
+4. AssociativeLink
+5. Supertype
+6. Subtype
+
+Formalization(B)
+1. Formalized
+2. Unformalized
+
+Import(C)
+1. Imported
+2. Local
+
+TargetObject(D)
+1. Unspecified
+2. AssociativeLink
+3. AssociativeOne
+4. AssociativeOther
+5. Supertype
+6. Subtype
+
+Reflexive(E)
+1. Reflexive
+2. NonReflexive
+
+Routing(F)
+1. Rectilinear
+2. Oblique
+
+Results:
+1. moveSucceeds     "The move failed."
+2. moveDisallowed   "Disallowed move operation performed."
+
+Matrix:
+         A1B1C1 A1B1C2 A1B2C1 A1B2C2 A2B1C1 A2B1C2 A2B2C1 A2B2C2 A3B1C1 A3B1C2 A3B2C1 A3B2C2 A4B1C1 A4B1C2 A4B2C1 A4B2C2 A5B1C1 A5B1C2 A5B2C1 A5B2C2 A6B1C1 A6B1C2 A6B2C1 A6B2C2
+D1E1F1C1 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     X      X      X      X      X      X      X      X      X      X      X      X
+D1E1F1C2 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     X      X      X      X      X      X      X      X      X      X      X      X
+D1E1F2C1 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     X      X      X      X      X      X      X      X      X      X      X      X
+D1E1F2C2 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     X      X      X      X      X      X      X      X      X      X      X      X
+D1E2F1C1 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1
+D1E2F1C2 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1
+D1E2F2C1 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1
+D1E2F2C2 R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1     R1
+D2E2F1C1 X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2     X      X      X      X      X      X      X      X      X      X      X      X 
+D2E2F1C2 X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2     X      X      X      X      X      X      X      X      X      X      X      X 
+D2E2F2C1 X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2     X      X      X      X      X      X      X      X      X      X      X      X 
+D2E2F2C2 X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2     X      X      X      X      X      X      X      X      X      X      X      X 
+D3E2F1C1 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D3E2F1C2 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D3E2F2C1 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D3E2F2C2 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D4E2F1C1 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D4E2F1C2 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D4E2F2C1 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D4E2F2C2 X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     X      X      X      X      X      X      X      X 
+D5E2F1C1 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2
+D5E2F1C2 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2
+D5E2F2C1 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2
+D5E2F2C2 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2
+D6E2F1C1 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2
+D6E2F1C2 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2
+D6E2F2C1 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2
+D6E2F2C2 X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      X      R2     R2     R2     R2     R2     R2     R2     R2
