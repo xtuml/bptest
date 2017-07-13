@@ -69,9 +69,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E1F1C1", "1");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -92,9 +92,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E1F1C2", "2");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -115,9 +115,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E1F2C1", "3");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -138,9 +138,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E1F2C2", "4");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -161,9 +161,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F1C1", "5");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -184,9 +184,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F1C2", "6");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -207,9 +207,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F2C1", "7");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -230,9 +230,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F2C2", "8");
 
-        NonRootModelElement src = selectABC("A1B1C1");
+        NonRootModelElement src = selectABC("A1B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -253,9 +253,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E1F1C1", "9");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -276,9 +276,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E1F1C2", "10");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -299,9 +299,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E1F2C1", "11");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -322,9 +322,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E1F2C2", "12");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -345,9 +345,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F1C1", "13");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -368,9 +368,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F1C2", "14");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -391,9 +391,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F2C1", "15");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -414,9 +414,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F2C2", "16");
 
-        NonRootModelElement src = selectABC("A1B1C2");
+        NonRootModelElement src = selectABC("A1B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -437,9 +437,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E1F1C1", "17");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -460,9 +460,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E1F1C2", "18");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -483,9 +483,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E1F2C1", "19");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -506,9 +506,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E1F2C2", "20");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -529,9 +529,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F1C1", "21");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -552,9 +552,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F1C2", "22");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -575,9 +575,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F2C1", "23");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -598,9 +598,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F2C2", "24");
 
-        NonRootModelElement src = selectABC("A1B2C1");
+        NonRootModelElement src = selectABC("A1B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -621,9 +621,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E1F1C1", "25");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -644,9 +644,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E1F1C2", "26");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -667,9 +667,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E1F2C1", "27");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -690,9 +690,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E1F2C2", "28");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -713,9 +713,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F1C1", "29");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -736,9 +736,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F1C2", "30");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -759,9 +759,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F2C1", "31");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -782,9 +782,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F2C2", "32");
 
-        NonRootModelElement src = selectABC("A1B2C2");
+        NonRootModelElement src = selectABC("A1B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -805,9 +805,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E1F1C1", "33");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -828,9 +828,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E1F1C2", "34");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -851,9 +851,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E1F2C1", "35");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -874,9 +874,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E1F2C2", "36");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -897,9 +897,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F1C1", "37");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -920,9 +920,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F1C2", "38");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -943,9 +943,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F2C1", "39");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -966,9 +966,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F2C2", "40");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -989,9 +989,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D2E2F1C1", "41");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1012,9 +1012,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D2E2F1C2", "42");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1035,9 +1035,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D2E2F2C1", "43");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1058,9 +1058,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D2E2F2C2", "44");
 
-        NonRootModelElement src = selectABC("A2B1C1");
+        NonRootModelElement src = selectABC("A2B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1081,9 +1081,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E1F1C1", "45");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1104,9 +1104,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E1F1C2", "46");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1127,9 +1127,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E1F2C1", "47");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1150,9 +1150,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E1F2C2", "48");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1173,9 +1173,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F1C1", "49");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1196,9 +1196,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F1C2", "50");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1219,9 +1219,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F2C1", "51");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1242,9 +1242,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F2C2", "52");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1265,9 +1265,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D2E2F1C1", "53");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1288,9 +1288,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D2E2F1C2", "54");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1311,9 +1311,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D2E2F2C1", "55");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1334,9 +1334,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D2E2F2C2", "56");
 
-        NonRootModelElement src = selectABC("A2B1C2");
+        NonRootModelElement src = selectABC("A2B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1357,9 +1357,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E1F1C1", "57");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1380,9 +1380,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E1F1C2", "58");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1403,9 +1403,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E1F2C1", "59");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1426,9 +1426,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E1F2C2", "60");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1449,9 +1449,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E2F1C1", "61");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1472,9 +1472,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E2F1C2", "62");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1495,9 +1495,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E2F2C1", "63");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1518,9 +1518,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D1E2F2C2", "64");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1541,9 +1541,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D2E2F1C1", "65");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1564,9 +1564,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D2E2F1C2", "66");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1587,9 +1587,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D2E2F2C1", "67");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1610,9 +1610,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C1", "D2E2F2C2", "68");
 
-        NonRootModelElement src = selectABC("A2B2C1");
+        NonRootModelElement src = selectABC("A2B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1633,9 +1633,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E1F1C1", "69");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1656,9 +1656,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E1F1C2", "70");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1679,9 +1679,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E1F2C1", "71");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1702,9 +1702,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E1F2C2", "72");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1725,9 +1725,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E2F1C1", "73");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1748,9 +1748,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E2F1C2", "74");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1771,9 +1771,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E2F2C1", "75");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1794,9 +1794,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D1E2F2C2", "76");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1817,9 +1817,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D2E2F1C1", "77");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1840,9 +1840,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D2E2F1C2", "78");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1863,9 +1863,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D2E2F2C1", "79");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1886,9 +1886,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B2C2", "D2E2F2C2", "80");
 
-        NonRootModelElement src = selectABC("A2B2C2");
+        NonRootModelElement src = selectABC("A2B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -1909,9 +1909,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E1F1C1", "81");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1932,9 +1932,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E1F1C2", "82");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1955,9 +1955,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E1F2C1", "83");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -1978,9 +1978,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E1F2C2", "84");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2001,9 +2001,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F1C1", "85");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2024,9 +2024,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F1C2", "86");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2047,9 +2047,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F2C1", "87");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2070,9 +2070,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F2C2", "88");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2093,9 +2093,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D2E2F1C1", "89");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2116,9 +2116,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D2E2F1C2", "90");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2139,9 +2139,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D2E2F2C1", "91");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2162,9 +2162,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D2E2F2C2", "92");
 
-        NonRootModelElement src = selectABC("A3B1C1");
+        NonRootModelElement src = selectABC("A3B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2185,9 +2185,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E1F1C1", "93");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2208,9 +2208,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E1F1C2", "94");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2231,9 +2231,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E1F2C1", "95");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2254,9 +2254,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E1F2C2", "96");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2277,9 +2277,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F1C1", "97");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2300,9 +2300,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F1C2", "98");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2323,9 +2323,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F2C1", "99");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2346,9 +2346,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F2C2", "100");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2369,9 +2369,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D2E2F1C1", "101");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2392,9 +2392,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D2E2F1C2", "102");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2415,9 +2415,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D2E2F2C1", "103");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2438,9 +2438,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D2E2F2C2", "104");
 
-        NonRootModelElement src = selectABC("A3B1C2");
+        NonRootModelElement src = selectABC("A3B1C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2461,9 +2461,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E1F1C1", "105");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2484,9 +2484,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E1F1C2", "106");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2507,9 +2507,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E1F2C1", "107");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2530,9 +2530,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E1F2C2", "108");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2553,9 +2553,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F1C1", "109");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2576,9 +2576,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F1C2", "110");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2599,9 +2599,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F2C1", "111");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2622,9 +2622,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F2C2", "112");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2645,9 +2645,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D2E2F1C1", "113");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2668,9 +2668,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D2E2F1C2", "114");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2691,9 +2691,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D2E2F2C1", "115");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2714,9 +2714,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D2E2F2C2", "116");
 
-        NonRootModelElement src = selectABC("A3B2C1");
+        NonRootModelElement src = selectABC("A3B2C1", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2737,9 +2737,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E1F1C1", "117");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C1");
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2760,9 +2760,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E1F1C2", "118");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F1C2");
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2783,9 +2783,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E1F2C1", "119");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C1");
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2806,9 +2806,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E1F2C2", "120");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E1F2C2");
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2829,9 +2829,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F1C1", "121");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2852,9 +2852,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F1C2", "122");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C2");
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2875,9 +2875,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F2C1", "123");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C1");
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2898,9 +2898,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F2C2", "124");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F2C2");
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
@@ -2921,9 +2921,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D2E2F1C1", "125");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C1");
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2944,9 +2944,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D2E2F1C2", "126");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F1C2");
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2967,9 +2967,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D2E2F2C1", "127");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C1");
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -2990,9 +2990,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D2E2F2C2", "128");
 
-        NonRootModelElement src = selectABC("A3B2C2");
+        NonRootModelElement src = selectABC("A3B2C2", null);
 
-        NonRootModelElement dest = selectDEFC("D2E2F2C2");
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
@@ -3013,9 +3013,9 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D1E2F1C1", "129");
 
-        NonRootModelElement src = selectABC("A4B1C1");
+        NonRootModelElement src = selectABC("A4B1C1", null);
 
-        NonRootModelElement dest = selectDEFC("D1E2F1C1");
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
         assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));

@@ -27,16 +27,23 @@
 
 package org.xtuml.bp.ui.canvas.test.assoc;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import org.xtuml.bp.core.*;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.util.WorkspaceUtil;
 import org.xtuml.bp.test.common.*;
 import org.xtuml.bp.ui.canvas.*;
 import org.xtuml.bp.ui.graphics.editor.*;
+import org.xtuml.bp.ui.graphics.parts.ConnectorEditPart;
 import org.xtuml.bp.ui.canvas.test.*;
 
 public class AssociationMove extends CanvasTest {
@@ -50,6 +57,8 @@ public class AssociationMove extends CanvasTest {
     }
 
     protected GraphicalEditor fActiveEditor;
+    private boolean diagramZoomed;
+    private static boolean initialized;
 
     protected GraphicalEditor getActiveEditor() {
         return fActiveEditor;
@@ -62,15 +71,96 @@ public class AssociationMove extends CanvasTest {
     protected String getTestId(String src, String dest, String count) {
         return "test_" + count;
     }
-
+    
     @Before
-	public void setUp() throws Exception {
+    public void setUp() throws Exception {
         super.setUp();
+        CanvasTransactionListener.disableReconciler();
+        ConnectorEditPart.setToleranceForTests(15);
+        // load the test model
+        if (!initialized) {
+            // set the core plugin to debugging as
+            // there are some benign consistency errors
+            // causing failures
+            // These errors will be resolved when full
+            // generic package support is complete
+            CorePlugin.getDefault().setDebugging(true);
+            
+            WorkspaceUtil.setAutobuilding(false);
+
+            loadProject("AssociationMoveTests");
+
+            CorePlugin.disableParseAllOnResourceChange();
+
+            PersistableModelComponent sys_comp = m_sys
+                    .getPersistableComponent();
+            sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+            initialized = true;
+        } else {
+            // undo the last change
+            if (m_sys.getTransactionManager().getUndoAction().isEnabled()) {
+                m_sys.getTransactionManager().getUndoAction().run();
+            }
+        }
     }
 
     @After
-	public void tearDown() throws Exception {
+    public void tearDown() throws Exception {
         super.tearDown();
+        diagramZoomed = false;
+        fActiveEditor = null;
+        ConnectorEditPart.setToleranceForTests(-1);
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .closeAllEditors(false);
+        CanvasTransactionListener.enableReconciler();
+    }
+    
+    private Package_c getTestPackage() {
+        String package_name = "classes";
+        Package_c result = Package_c.getOneEP_PKGOnR1401(m_sys, new ClassQueryInterface_c() {
+            @Override
+            public boolean evaluate(Object selected) {
+                return ((Package_c)selected).getName().equals(package_name);
+            }
+        });
+        return result;
+    }
+    
+    private boolean targetIsReflexive( ClassInAssociation_c src_oir, final ModelClass_c target_obj ) {
+        // if the oir and target object are the same, then return false
+        if ( null == src_oir || null == target_obj || src_oir.getObj_id().equals(target_obj.getObj_id())) return false;
+
+        // participant to participant
+        ClassAsSimpleParticipant_c part = ClassAsSimpleParticipant_c.getOneR_PARTOnR207(SimpleAssociation_c.getOneR_SIMPOnR207(
+                ClassAsSimpleParticipant_c.getOneR_PARTOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(src_oir))), new ClassQueryInterface_c() {
+            @Override
+            public boolean evaluate( Object candidate ) {
+                return ((ClassAsSimpleParticipant_c)candidate).getObj_id().equals(target_obj.getObj_id());
+            }
+        });
+        if ( part != null ) return true;
+        
+        // formalizer to participant
+        part = ClassAsSimpleParticipant_c.getOneR_PARTOnR207(SimpleAssociation_c.getOneR_SIMPOnR208(ClassAsSimpleFormalizer_c.getOneR_FORMOnR205(
+                ReferringClassInAssoc_c.getOneR_RGOOnR203(src_oir))));
+        if ( part != null && part.getObj_id().equals(target_obj.getObj_id()) ) return true;
+        
+        // participant to formalizer
+        ClassAsSimpleFormalizer_c form = ClassAsSimpleFormalizer_c.getOneR_FORMOnR208(SimpleAssociation_c.getOneR_SIMPOnR207(
+                ClassAsSimpleParticipant_c.getOneR_PARTOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(src_oir))));
+        if ( form != null && form.getObj_id().equals(target_obj.getObj_id()) ) return true;
+        
+        // one to other
+       ClassAsAssociatedOtherSide_c other = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR210(LinkedAssociation_c.getOneR_ASSOCOnR209(
+               ClassAsAssociatedOneSide_c.getOneR_AONEOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(src_oir))));
+        if ( other != null && other.getObj_id().equals(target_obj.getObj_id()) ) return true;
+
+        // other to one
+       ClassAsAssociatedOneSide_c one = ClassAsAssociatedOneSide_c.getOneR_AONEOnR209(LinkedAssociation_c.getOneR_ASSOCOnR210(
+               ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(src_oir))));
+        if ( one != null && one.getObj_id().equals(target_obj.getObj_id()) ) return true;
+
+        return false;
     }
 
     /**
@@ -81,57 +171,83 @@ public class AssociationMove extends CanvasTest {
      * @param element The degree of freedom instance to retrieve
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectABC(String element) {
+    NonRootModelElement selectABC(String element, Object extraData) {
         NonRootModelElement nrme = null;
-        if (element.equalsIgnoreCase("A1B1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B2C2")) {
-        	//TODO: Implement
-        } else        assertTrue("An instance with degree of freedom type \"ABC\" was not found.  Instance Name: " + element + ".", nrme!=null);
+        Package_c testPackage = getTestPackage();
+
+        // select an OIR with the combination of all three tests
+        nrme = ClassInAssociation_c.getOneR_OIROnR201(Association_c.getManyR_RELsOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(testPackage)),
+                new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        final ClassInAssociation_c selected = (ClassInAssociation_c)candidate;
+                        boolean oir_type_test;
+                        boolean rel_formalized_test;
+                        boolean oir_imported_test;
+                        if (element.contains("A1")) {
+                            // select all simple participants
+                            ClassAsSimpleParticipant_c part = ClassAsSimpleParticipant_c.getOneR_PARTOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
+                            oir_type_test = part != null;
+                        }
+                        else if (element.contains("A2")) {
+                            // select all associative ones
+                            ClassAsAssociatedOneSide_c one = ClassAsAssociatedOneSide_c.getOneR_AONEOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
+                            oir_type_test = one != null;
+                        }
+                        else if (element.contains("A3")) {
+                            // select all associative others
+                            ClassAsAssociatedOtherSide_c other = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
+                            oir_type_test = other != null;
+                        }
+                        else if (element.contains("A4")) {
+                            // select all associative links
+                            ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(selected));
+                            oir_type_test = assr != null;
+                        }
+                        else if (element.contains("A5")) {
+                            // select all supertypes
+                            ClassAsSupertype_c sup = ClassAsSupertype_c.getOneR_SUPEROnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
+                            oir_type_test = sup != null;
+                        }
+                        else if (element.contains("A6")) {
+                            // select all subtypes
+                            ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(selected));
+                            oir_type_test = sub != null;
+                        }
+                        else {
+                            oir_type_test = false;
+                        }
+                        if (element.contains("B1")) {
+                            // select all formalized relationships
+                            Association_c rel = Association_c.getOneR_RELOnR201(selected);
+                            rel_formalized_test = rel.Isformalized();
+                        }
+                        else if (element.contains("B2")) {
+                            // select all formalized relationships
+                            Association_c rel = Association_c.getOneR_RELOnR201(selected);
+                            rel_formalized_test = !rel.Isformalized();
+                        }
+                        else {
+                            rel_formalized_test = false;
+                        }
+                        if (element.contains("C1")) {
+                            // select all classes that are imported
+                            ImportedClass_c iobj = ImportedClass_c.getOneO_IOBJOnR202(selected);
+                            oir_imported_test = iobj != null;
+                        }
+                        else if (element.contains("C2")) {
+                            // select all classes that are imported
+                            ImportedClass_c iobj = ImportedClass_c.getOneO_IOBJOnR202(selected);
+                            oir_imported_test = iobj == null;
+                        }
+                        else {
+                            oir_imported_test = false;
+                        }
+                        return oir_type_test && rel_formalized_test && oir_imported_test;
+                    }
+                });
+
+        assertTrue("An instance with degree of freedom type \"ABC\" was not found.  Instance Name: " + element + ".", nrme!=null);
         return nrme;
     }
 
@@ -143,65 +259,95 @@ public class AssociationMove extends CanvasTest {
      * @param element The degree of freedom instance to retrieve
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectDEFC(String element) {
+    NonRootModelElement selectDEFC(String element, Object extraData) {
         NonRootModelElement nrme = null;
-        if (element.equalsIgnoreCase("D1E1F1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D1E1F1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D1E1F2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D1E1F2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D1E2F1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D1E2F1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D1E2F2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D1E2F2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D2E2F1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D2E2F1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D2E2F2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D2E2F2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D3E2F1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D3E2F1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D3E2F2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D3E2F2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D4E2F1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D4E2F1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D4E2F2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D4E2F2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D5E2F1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D5E2F1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D5E2F2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D5E2F2C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D6E2F1C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D6E2F1C2")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D6E2F2C1")) {
-        	//TODO: Implement
-        } else if (element.equalsIgnoreCase("D6E2F2C2")) {
-        	//TODO: Implement
-        } 
+        ClassInAssociation_c src_oir = (ClassInAssociation_c)extraData;
+        Package_c testPackage = getTestPackage();
+
+        // select a packageable element
+        nrme = PackageableElement_c.getOnePE_PEOnR8000( testPackage, new ClassQueryInterface_c() {
+            @Override
+            public boolean evaluate(Object candidate) {
+                boolean imported = false;
+                ModelClass_c selected = ModelClass_c.getOneO_OBJOnR8001((PackageableElement_c)candidate);
+                if ( null == selected ) {
+                    imported = true;
+                    selected = ModelClass_c.getOneO_OBJOnR101(ImportedClass_c.getOneO_IOBJOnR8001((PackageableElement_c)candidate));
+                    if ( null == selected) return false; // not an IOBJ or OBJ
+                }
+                if ( selected.getObj_id().equals(src_oir.getObj_id()) ) return false; // disallow selecting the same object as the source
+
+                boolean obj_target_test;
+                boolean reflexive_test;
+                boolean obj_imported_test;
+                if (element.contains("D1")) {
+                    // select any obj
+                    obj_target_test = true;
+                }
+                else if (element.contains("D2")) {
+                    // select an associative link in the same relationship
+                    ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR211(LinkedAssociation_c.getOneR_ASSOCOnR206(Association_c.getOneR_RELOnR201(src_oir)));
+                    obj_target_test = assr != null && selected.getObj_id().equals(assr.getObj_id());
+                }
+                else if (element.contains("D3")) {
+                    // select an associative one in the same relationship
+                    ClassAsAssociatedOneSide_c one = ClassAsAssociatedOneSide_c.getOneR_AONEOnR209(LinkedAssociation_c.getOneR_ASSOCOnR206(Association_c.getOneR_RELOnR201(src_oir)));
+                    obj_target_test = one != null && selected.getObj_id().equals(one.getObj_id());
+                }
+                else if (element.contains("D4")) {
+                    // select an associative other in the same relationship
+                    ClassAsAssociatedOtherSide_c other = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR210(LinkedAssociation_c.getOneR_ASSOCOnR206(Association_c.getOneR_RELOnR201(src_oir)));
+                    obj_target_test = other != null && selected.getObj_id().equals(other.getObj_id());
+                }
+                else if (element.contains("D5")) {
+                    // select a supertype in the same relationship
+                    ClassAsSupertype_c sup = ClassAsSupertype_c.getOneR_SUPEROnR212(SubtypeSupertypeAssociation_c.getOneR_SUBSUPOnR206(Association_c.getOneR_RELOnR201(src_oir)));
+                    obj_target_test = sup != null && selected.getObj_id().equals(sup.getObj_id());
+                }
+                else if (element.contains("D6")) {
+                    // select a subtype in the same relationship
+                    ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR213(SubtypeSupertypeAssociation_c.getOneR_SUBSUPOnR206(Association_c.getOneR_RELOnR201(src_oir)));
+                    obj_target_test = sub != null && selected.getObj_id().equals(sub.getObj_id());
+                }
+                else {
+                    obj_target_test = false;
+                }
+                if (element.contains("E1")) {
+                    // select reflexive targets
+                    reflexive_test = targetIsReflexive( src_oir, selected );
+                }
+                else if (element.contains("E2")) {
+                    // select non-reflexive targets
+                    reflexive_test = !targetIsReflexive( src_oir, selected );
+                }
+                else {
+                    reflexive_test = false;
+                }
+                if (element.contains("C1")) {
+                    // select all classes that are imported
+                    obj_imported_test = imported;
+                }
+                else if (element.contains("C2")) {
+                    // select all classes that are imported
+                    obj_imported_test = !imported;
+                }
+                else {
+                    obj_imported_test = false;
+                }
+                return obj_target_test && reflexive_test && obj_imported_test;
+            }
+        });
+ 
+        // set the routing style
+        if (element.contains("F1")) {
+            CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
+                                                                   BridgePointPreferencesStore.RECTILINEAR_ROUTING );
+        }
+        else if (element.contains("F2")) {
+            CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
+                                                                   BridgePointPreferencesStore.OBLIQUE_ROUTING );
+        }
+
         assertTrue("An instance with degree of freedom type \"DEFC\" was not found.  Instance Name: " + element + ".", nrme!=null);
         return nrme;
     }
@@ -216,6 +362,7 @@ public class AssociationMove extends CanvasTest {
      */
     void ABC_DEFC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
         //TODO: Implement
+        System.out.println( "Hello, world!" );
     }
 
     /**
@@ -230,6 +377,7 @@ public class AssociationMove extends CanvasTest {
     boolean checkResult_moveSucceeds(NonRootModelElement source, NonRootModelElement destination) {
         boolean moveSucceeds = false;
         //TODO: Implement
+        moveSucceeds = true;
         return moveSucceeds;
     }
 
@@ -246,6 +394,7 @@ public class AssociationMove extends CanvasTest {
     boolean checkResult_moveDisallowed(NonRootModelElement source, NonRootModelElement destination) {
         boolean moveDisallowed = false;
         //TODO: Implement
+        moveDisallowed = true;
         return moveDisallowed;
     }
 

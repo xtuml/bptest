@@ -702,7 +702,7 @@ sub createInstanceAccessors() {
 		print $outputFH "     * \@param element The degree of freedom instance to retrieve\n";
 		print $outputFH "     * \@return A model element used in the test as specified by the test matrix\n";
 		print $outputFH "     */\n";
-		print $outputFH "    NonRootModelElement select$dofName(String element) {\n";
+		print $outputFH "    NonRootModelElement select$dofName(String element, Object extraData) {\n";
 		print $outputFH "        NonRootModelElement nrme = null;\n";
 
 		@keys = keys(%uniqueNames);
@@ -860,9 +860,9 @@ sub createTests() {
 				print $outputFH "        setUp();\n";
 				print $outputFH "        test_id = getTestId(\"$MatrixColNames[$col]\", \"$MatrixRowNames[$row]\", \"$testCnt\");\n";
 				print $outputFH "\n";
-				print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+				print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\", null);\n";
 				print $outputFH "\n";
-				print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+				print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\", src);\n";
 				print $outputFH "\n";
 				print $outputFH "        $myCol" . "_" . $myRow . "_" . "Action(src, dest);\n";				
                 # There may be multiple expected results				
