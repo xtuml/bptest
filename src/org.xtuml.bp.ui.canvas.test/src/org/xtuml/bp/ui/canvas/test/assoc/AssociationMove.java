@@ -28,6 +28,8 @@
 package org.xtuml.bp.ui.canvas.test.assoc;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
@@ -59,6 +61,7 @@ public class AssociationMove extends CanvasTest {
     protected GraphicalEditor fActiveEditor;
     private boolean diagramZoomed;
     private static boolean initialized;
+    private ConnectorEditPart testPart;
 
     protected GraphicalEditor getActiveEditor() {
         return fActiveEditor;
@@ -161,6 +164,144 @@ public class AssociationMove extends CanvasTest {
         if ( one != null && one.getObj_id().equals(target_obj.getObj_id()) ) return true;
 
         return false;
+    }
+    
+    private Graphconnector_c getAnchorFromR_OIR( ClassInAssociation_c oir ) {
+        NonRootModelElement representsCon = Association_c.getOneR_RELOnR201(oir);
+        ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(oir));
+        if ( null != assr ) representsCon = assr;
+        else {
+            ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(oir));
+            if ( null != sub ) representsCon = sub;
+        }
+        NonRootModelElement representsShape = ImportedClass_c.getOneO_IOBJOnR202(oir);
+        if ( null == representsShape ) representsShape = ModelClass_c.getOneO_OBJOnR201(oir);
+
+        // get all graphical elements on the diagram
+        GraphicalElement_c[] elements = GraphicalElement_c.getManyGD_GEsOnR1(fActiveEditor.getModel());
+        
+        // get the connector for the relationship
+        Graphedge_c edge = null;
+        for(int i = 0; i < elements.length; i++) {
+            if(elements[i].getRepresents() == representsCon) {
+                edge = Graphedge_c.getOneDIM_EDOnR20(Connector_c.getOneGD_CONOnR2(elements[i]));
+            }
+        }
+
+        // get the shape for the relationship
+        Graphnode_c node = null;
+        for(int i = 0; i < elements.length; i++) {
+            if(elements[i].getRepresents() == representsShape) {
+                node = Graphnode_c.getOneDIM_NDOnR19(Shape_c.getOneGD_SHPOnR2(elements[i]));
+            }
+        }
+        assertNotNull("Unable to find graphical elements for testing.", edge);
+        assertNotNull("Unable to find graphical elements for testing.", node);
+        
+        // get the anchor between them
+        Graphconnector_c anchor = Graphconnector_c.getOneDIM_CONOnR320(edge);
+        if ( null == anchor || !anchor.getElementid().equals(node.getElementid()) ) {
+            anchor = Graphconnector_c.getOneDIM_CONOnR321(edge);
+            if ( null == anchor || !anchor.getElementid().equals(node.getElementid()) ) anchor = null;
+        }
+
+        assertNotNull("Unable to find graphical elements for testing.", anchor);
+
+        return anchor;
+    }
+    
+    private Graphnode_c getShapeFromPE_PE( PackageableElement_c pe_pe ) {
+        NonRootModelElement representsShape = ImportedClass_c.getOneO_IOBJOnR8001(pe_pe);
+        if ( null == representsShape ) representsShape = ModelClass_c.getOneO_OBJOnR8001(pe_pe);
+
+        // get all graphical elements on the diagram
+        GraphicalElement_c[] elements = GraphicalElement_c.getManyGD_GEsOnR1(fActiveEditor.getModel());
+
+        // get the shape for the relationship
+        Graphnode_c node = null;
+        for(int i = 0; i < elements.length; i++) {
+            if(elements[i].getRepresents() == representsShape) {
+                node = Graphnode_c.getOneDIM_NDOnR19(Shape_c.getOneGD_SHPOnR2(elements[i]));
+            }
+        }
+
+        assertNotNull("Unable to find graphical elements for testing.", node);
+
+        return node;
+    }
+
+    private ConnectorEditPart getTestPart(NonRootModelElement instance) {
+        if ( instance instanceof ClassInAssociation_c ) {
+            ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203((ClassInAssociation_c)instance));
+            if ( null != assr ) instance = assr;
+            else {
+                ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203((ClassInAssociation_c)instance));
+                if ( null != sub ) instance = sub;
+                else {
+                    instance = Association_c.getOneR_RELOnR201((ClassInAssociation_c)instance);
+                }
+            }
+        }
+        if (testPart == null) {
+            // open the editor for the test
+            fActiveEditor = UITestingUtilities.getGraphicalEditorFor( instance, false, true );
+            adjustZoom();
+            testPart = (ConnectorEditPart) UITestingUtilities.getEditorPartFor( getConnectorInstance(instance) );
+        }
+        return testPart;
+    }
+
+    private Connector_c getConnectorInstance(NonRootModelElement testElement) {
+        GraphicalElement_c[] elements = GraphicalElement_c.getManyGD_GEsOnR1(fActiveEditor.getModel());
+        GraphicalElement_c element = null;
+        for(int i = 0; i < elements.length; i++) {
+            if(elements[i].getRepresents() == testElement) {
+                element = elements[i];
+            }
+        }
+        assertNotNull("Unable to find graphical element for testing.", element);
+        return Connector_c.getOneGD_CONOnR2(element);
+    }
+
+    private void adjustZoom() {
+        // we want to zoom all, then set zoom to 100% for
+        // easier positional calculations
+        // fill the available space with the editor
+        // as nothing else is interesting to this
+        // test
+        if(!PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().isPageZoomed()) {
+            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().toggleZoom(
+            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePartReference());
+        }
+        if(!diagramZoomed) { 
+            BaseTest.dispatchEvents(0);
+            // disable grid snapping to allow exact
+            // positions
+            CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.SNAP_TO_GRID, false);
+            getActiveEditor().configureGridOptions();
+            getActiveEditor().zoomAll();
+            while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+            diagramZoomed = true;
+        }
+    }
+    
+    private void moveAssociation( ConnectorEditPart editPart, Graphconnector_c anchor, Graphnode_c node ) {
+        UITestingUtilities.clearGraphicalSelection();
+        UITestingUtilities.addElementToGraphicalSelection(editPart);
+
+        // get source and destination point
+        Point srcPoint = new Point( (int)anchor.getPositionx(), (int)anchor.getPositiony() );
+        editPart.getFigure().translateToAbsolute(srcPoint);
+        Graphelement_c element = Graphelement_c.getOneDIM_GEOnR301(node);
+        Point dstPoint = new Point( (int)(element.getPositionx()), (int)(element.getPositiony()) );
+        editPart.getFigure().translateToAbsolute(dstPoint);
+        dstPoint.translate( (int)(node.getWidth() / 2), (int)(node.getHeight() / 2) );
+        
+        // move the mouse
+        UITestingUtilities.doMouseMove( srcPoint.x, srcPoint.y );
+        UITestingUtilities.doMousePress( srcPoint.x, srcPoint.y );
+        UITestingUtilities.doMouseMove( dstPoint.x, dstPoint.y );
+        UITestingUtilities.doMouseRelease( dstPoint.x, dstPoint.y );
     }
 
     /**
@@ -337,16 +478,6 @@ public class AssociationMove extends CanvasTest {
                 return obj_target_test && reflexive_test && obj_imported_test;
             }
         });
- 
-        // set the routing style
-        if (element.contains("F1")) {
-            CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
-                                                                   BridgePointPreferencesStore.RECTILINEAR_ROUTING );
-        }
-        else if (element.contains("F2")) {
-            CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
-                                                                   BridgePointPreferencesStore.OBLIQUE_ROUTING );
-        }
 
         assertTrue("An instance with degree of freedom type \"DEFC\" was not found.  Instance Name: " + element + ".", nrme!=null);
         return nrme;
@@ -361,8 +492,24 @@ public class AssociationMove extends CanvasTest {
      * @param rowInstance Model instance from the row
      */
     void ABC_DEFC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
-        //TODO: Implement
-        System.out.println( "Hello, world!" );
+        // set the routing style
+        if (test_id.contains("F1")) {
+            CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
+                                                                   BridgePointPreferencesStore.RECTILINEAR_ROUTING );
+        }
+        else if (test_id.contains("F2")) {
+            CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
+                                                                   BridgePointPreferencesStore.OBLIQUE_ROUTING );
+        }
+        
+        // get the edit part for the connector, the anchor and node
+        ConnectorEditPart testPart = getTestPart( columnInstance );
+        Graphconnector_c src_anchor = getAnchorFromR_OIR((ClassInAssociation_c)columnInstance);
+        Graphnode_c dest_node = getShapeFromPE_PE((PackageableElement_c)rowInstance);
+        
+        // perform move
+        moveAssociation( testPart, src_anchor, dest_node );
+        BaseTest.dispatchEvents(50);
     }
 
     /**
