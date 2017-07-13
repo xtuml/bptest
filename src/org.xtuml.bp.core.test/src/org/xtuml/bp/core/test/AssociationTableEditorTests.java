@@ -15,7 +15,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 import org.xtuml.bp.core.Association_c;
 import org.xtuml.bp.core.ClassAsLink_c;
@@ -185,6 +184,8 @@ public class AssociationTableEditorTests extends BaseTest {
 					cancel.notifyListeners(SWT.Selection, null);
 					return true;
 				}
+				Button cancel = TestUtil.findButton(shell, "Cancel");
+				cancel.notifyListeners(SWT.Selection, null);
 				return false;
 			});
 			formalizeButton.setSelection(!formalizeButton.getSelection());
@@ -215,14 +216,16 @@ public class AssociationTableEditorTests extends BaseTest {
 		testDialog(tab -> {
 			tab.getTableViewer().setSelection(new StructuredSelection(getAssociation(8)));
 			Button formalizeButton = tab.getFormalizeButton();
-			TestUtil.processShell(PlatformUI.getWorkbench().getDisplay().getShells(), shell -> {
+			TestUtil.dismissShell(shell -> {
 				if(!shell.isDisposed() && shell.getData() instanceof LinkedFormalizeOnR_RELWizard) {
 					wizardOpened = true;
 					Button cancel = TestUtil.findButton(shell, "Cancel");
 					cancel.notifyListeners(SWT.Selection, null);
+					return true;
 				}
 				Button cancel = TestUtil.findButton(shell, "Cancel");
 				cancel.notifyListeners(SWT.Selection, null);
+				return false;
 			});
 			formalizeButton.setSelection(!formalizeButton.getSelection());
 			formalizeButton.notifyListeners(SWT.Selection, null);
