@@ -521,11 +521,10 @@ public class AssociationMove extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_moveSucceeds(NonRootModelElement source, NonRootModelElement destination) {
-        boolean moveSucceeds = false;
+    boolean checkResult_assocInfoSame(NonRootModelElement source, NonRootModelElement destination) {
+        boolean assocInfoSame = false;
         //TODO: Implement
-        moveSucceeds = true;
-        return moveSucceeds;
+        return assocInfoSame;
     }
 
 
@@ -541,8 +540,55 @@ public class AssociationMove extends CanvasTest {
     boolean checkResult_moveDisallowed(NonRootModelElement source, NonRootModelElement destination) {
         boolean moveDisallowed = false;
         //TODO: Implement
-        moveDisallowed = true;
         return moveDisallowed;
+    }
+
+
+    /**
+    * This function verifies an expected result.
+    *
+    * @param source A model element instance aquired through a action taken
+    *               on a column of the matrix.
+    * @param destination A model element instance aquired through a action taken
+    *                    taken on a row of the matrix.
+    * @return true if the test succeeds, false if it fails
+    */
+    boolean checkResult_assocUnformal(NonRootModelElement source, NonRootModelElement destination) {
+        boolean assocUnformal = false;
+        //TODO: Implement
+        return assocUnformal;
+    }
+
+
+    /**
+    * This function verifies an expected result.
+    *
+    * @param source A model element instance aquired through a action taken
+    *               on a column of the matrix.
+    * @param destination A model element instance aquired through a action taken
+    *                    taken on a row of the matrix.
+    * @return true if the test succeeds, false if it fails
+    */
+    boolean checkResult_rectiliearCheck(NonRootModelElement source, NonRootModelElement destination) {
+        boolean rectiliearCheck = false;
+        //TODO: Implement
+        return rectiliearCheck;
+    }
+
+
+    /**
+    * This function verifies an expected result.
+    *
+    * @param source A model element instance aquired through a action taken
+    *               on a column of the matrix.
+    * @param destination A model element instance aquired through a action taken
+    *                    taken on a row of the matrix.
+    * @return true if the test succeeds, false if it fails
+    */
+    boolean checkResult_moveComplete(NonRootModelElement source, NonRootModelElement destination) {
+        boolean moveComplete = false;
+        //TODO: Implement
+        return moveComplete;
     }
 
 

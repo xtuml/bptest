@@ -74,7 +74,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -97,7 +100,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -120,7 +126,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -143,7 +151,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -166,7 +176,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -189,7 +202,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -212,7 +228,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -235,7 +253,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -258,7 +278,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -281,7 +304,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -304,7 +330,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -327,7 +355,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -350,7 +380,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -373,7 +406,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -396,7 +432,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -419,7 +457,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -442,7 +482,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -465,7 +508,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -488,7 +534,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -511,7 +559,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -534,7 +584,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -557,7 +610,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -580,7 +636,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -603,7 +661,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -626,7 +686,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -649,7 +712,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -672,7 +738,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -695,7 +763,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -718,7 +788,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -741,7 +814,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -764,7 +840,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -787,7 +865,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -810,7 +890,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -833,7 +916,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -856,7 +942,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -879,7 +967,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -902,7 +992,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -925,7 +1018,10 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -948,7 +1044,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -971,99 +1069,9 @@ public class AssociationMove_0 extends AssociationMove {
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C1) and row (D2E2F1C1).
-     * 
-     */
-    @Test
-	public void testA2B1C1_D2E2F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C1", "D2E2F1C1", "41");
-
-        NonRootModelElement src = selectABC("A2B1C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C1) and row (D2E2F1C2).
-     * 
-     */
-    @Test
-	public void testA2B1C1_D2E2F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C1", "D2E2F1C2", "42");
-
-        NonRootModelElement src = selectABC("A2B1C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C1) and row (D2E2F2C1).
-     * 
-     */
-    @Test
-	public void testA2B1C1_D2E2F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C1", "D2E2F2C1", "43");
-
-        NonRootModelElement src = selectABC("A2B1C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C1) and row (D2E2F2C2).
-     * 
-     */
-    @Test
-	public void testA2B1C1_D2E2F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C1", "D2E2F2C2", "44");
-
-        NonRootModelElement src = selectABC("A2B1C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1079,14 +1087,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E1F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E1F1C1", "45");
+        test_id = getTestId("A2B1C2", "D1E1F1C1", "41");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1102,14 +1113,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E1F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E1F1C2", "46");
+        test_id = getTestId("A2B1C2", "D1E1F1C2", "42");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1125,14 +1139,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E1F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E1F2C1", "47");
+        test_id = getTestId("A2B1C2", "D1E1F2C1", "43");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1148,14 +1164,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E1F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E1F2C2", "48");
+        test_id = getTestId("A2B1C2", "D1E1F2C2", "44");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1171,14 +1189,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E2F1C1", "49");
+        test_id = getTestId("A2B1C2", "D1E2F1C1", "45");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1194,14 +1215,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E2F1C2", "50");
+        test_id = getTestId("A2B1C2", "D1E2F1C2", "46");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1217,14 +1241,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E2F2C1", "51");
+        test_id = getTestId("A2B1C2", "D1E2F2C1", "47");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1240,658 +1266,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA2B1C2_D1E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A2B1C2", "D1E2F2C2", "52");
+        test_id = getTestId("A2B1C2", "D1E2F2C2", "48");
 
         NonRootModelElement src = selectABC("A2B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C2) and row (D2E2F1C1).
-     * 
-     */
-    @Test
-	public void testA2B1C2_D2E2F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C2", "D2E2F1C1", "53");
-
-        NonRootModelElement src = selectABC("A2B1C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C2) and row (D2E2F1C2).
-     * 
-     */
-    @Test
-	public void testA2B1C2_D2E2F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C2", "D2E2F1C2", "54");
-
-        NonRootModelElement src = selectABC("A2B1C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C2) and row (D2E2F2C1).
-     * 
-     */
-    @Test
-	public void testA2B1C2_D2E2F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C2", "D2E2F2C1", "55");
-
-        NonRootModelElement src = selectABC("A2B1C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B1C2) and row (D2E2F2C2).
-     * 
-     */
-    @Test
-	public void testA2B1C2_D2E2F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B1C2", "D2E2F2C2", "56");
-
-        NonRootModelElement src = selectABC("A2B1C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E1F1C1).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E1F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E1F1C1", "57");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E1F1C2).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E1F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E1F1C2", "58");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E1F2C1).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E1F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E1F2C1", "59");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E1F2C2).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E1F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E1F2C2", "60");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E2F1C1).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E2F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E2F1C1", "61");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E2F1C2).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E2F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E2F1C2", "62");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E2F2C1).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E2F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E2F2C1", "63");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D1E2F2C2).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D1E2F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D1E2F2C2", "64");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D2E2F1C1).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D2E2F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D2E2F1C1", "65");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D2E2F1C2).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D2E2F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D2E2F1C2", "66");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D2E2F2C1).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D2E2F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D2E2F2C1", "67");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C1) and row (D2E2F2C2).
-     * 
-     */
-    @Test
-	public void testA2B2C1_D2E2F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C1", "D2E2F2C2", "68");
-
-        NonRootModelElement src = selectABC("A2B2C1", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E1F1C1).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E1F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E1F1C1", "69");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E1F1C2).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E1F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E1F1C2", "70");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E1F2C1).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E1F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E1F2C1", "71");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E1F2C2).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E1F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E1F2C2", "72");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E2F1C1).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E2F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E2F1C1", "73");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E2F1C2).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E2F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E2F1C2", "74");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E2F2C1).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E2F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E2F2C1", "75");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D1E2F2C2).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D1E2F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D1E2F2C2", "76");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D2E2F1C1).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D2E2F1C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D2E2F1C1", "77");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D2E2F1C2).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D2E2F1C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D2E2F1C2", "78");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D2E2F2C1).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D2E2F2C1() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D2E2F2C1", "79");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (A2B2C2) and row (D2E2F2C2).
-     * 
-     */
-    @Test
-	public void testA2B2C2_D2E2F2C2() throws Exception {
-        setUp();
-        test_id = getTestId("A2B2C2", "D2E2F2C2", "80");
-
-        NonRootModelElement src = selectABC("A2B2C2", null);
-
-        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
-
-        ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1907,14 +1291,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E1F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E1F1C1", "81");
+        test_id = getTestId("A3B1C1", "D1E1F1C1", "49");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1930,14 +1317,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E1F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E1F1C2", "82");
+        test_id = getTestId("A3B1C1", "D1E1F1C2", "50");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1953,14 +1343,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E1F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E1F2C1", "83");
+        test_id = getTestId("A3B1C1", "D1E1F2C1", "51");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1976,14 +1368,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E1F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E1F2C2", "84");
+        test_id = getTestId("A3B1C1", "D1E1F2C2", "52");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1999,14 +1393,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E2F1C1", "85");
+        test_id = getTestId("A3B1C1", "D1E2F1C1", "53");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2022,14 +1419,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E2F1C2", "86");
+        test_id = getTestId("A3B1C1", "D1E2F1C2", "54");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2045,14 +1445,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E2F2C1", "87");
+        test_id = getTestId("A3B1C1", "D1E2F2C1", "55");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2068,14 +1470,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D1E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D1E2F2C2", "88");
+        test_id = getTestId("A3B1C1", "D1E2F2C2", "56");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2091,14 +1495,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D2E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D2E2F1C1", "89");
+        test_id = getTestId("A3B1C1", "D2E2F1C1", "57");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2114,14 +1518,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D2E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D2E2F1C2", "90");
+        test_id = getTestId("A3B1C1", "D2E2F1C2", "58");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2137,14 +1541,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D2E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D2E2F2C1", "91");
+        test_id = getTestId("A3B1C1", "D2E2F2C1", "59");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2160,14 +1564,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C1_D2E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C1", "D2E2F2C2", "92");
+        test_id = getTestId("A3B1C1", "D2E2F2C2", "60");
 
         NonRootModelElement src = selectABC("A3B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2183,14 +1587,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E1F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E1F1C1", "93");
+        test_id = getTestId("A3B1C2", "D1E1F1C1", "61");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2206,14 +1613,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E1F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E1F1C2", "94");
+        test_id = getTestId("A3B1C2", "D1E1F1C2", "62");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2229,14 +1639,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E1F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E1F2C1", "95");
+        test_id = getTestId("A3B1C2", "D1E1F2C1", "63");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2252,14 +1664,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E1F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E1F2C2", "96");
+        test_id = getTestId("A3B1C2", "D1E1F2C2", "64");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2275,14 +1689,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E2F1C1", "97");
+        test_id = getTestId("A3B1C2", "D1E2F1C1", "65");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2298,14 +1715,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E2F1C2", "98");
+        test_id = getTestId("A3B1C2", "D1E2F1C2", "66");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2321,14 +1741,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E2F2C1", "99");
+        test_id = getTestId("A3B1C2", "D1E2F2C1", "67");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2344,14 +1766,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D1E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D1E2F2C2", "100");
+        test_id = getTestId("A3B1C2", "D1E2F2C2", "68");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2367,14 +1791,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D2E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D2E2F1C1", "101");
+        test_id = getTestId("A3B1C2", "D2E2F1C1", "69");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2390,14 +1814,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D2E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D2E2F1C2", "102");
+        test_id = getTestId("A3B1C2", "D2E2F1C2", "70");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2413,14 +1837,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D2E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D2E2F2C1", "103");
+        test_id = getTestId("A3B1C2", "D2E2F2C1", "71");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2436,14 +1860,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B1C2_D2E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B1C2", "D2E2F2C2", "104");
+        test_id = getTestId("A3B1C2", "D2E2F2C2", "72");
 
         NonRootModelElement src = selectABC("A3B1C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2459,14 +1883,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E1F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E1F1C1", "105");
+        test_id = getTestId("A3B2C1", "D1E1F1C1", "73");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2482,14 +1909,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E1F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E1F1C2", "106");
+        test_id = getTestId("A3B2C1", "D1E1F1C2", "74");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2505,14 +1935,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E1F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E1F2C1", "107");
+        test_id = getTestId("A3B2C1", "D1E1F2C1", "75");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2528,14 +1960,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E1F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E1F2C2", "108");
+        test_id = getTestId("A3B2C1", "D1E1F2C2", "76");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2551,14 +1985,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E2F1C1", "109");
+        test_id = getTestId("A3B2C1", "D1E2F1C1", "77");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2574,14 +2011,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E2F1C2", "110");
+        test_id = getTestId("A3B2C1", "D1E2F1C2", "78");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2597,14 +2037,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E2F2C1", "111");
+        test_id = getTestId("A3B2C1", "D1E2F2C1", "79");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2620,14 +2062,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D1E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D1E2F2C2", "112");
+        test_id = getTestId("A3B2C1", "D1E2F2C2", "80");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2643,14 +2087,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D2E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D2E2F1C1", "113");
+        test_id = getTestId("A3B2C1", "D2E2F1C1", "81");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2666,14 +2110,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D2E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D2E2F1C2", "114");
+        test_id = getTestId("A3B2C1", "D2E2F1C2", "82");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2689,14 +2133,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D2E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D2E2F2C1", "115");
+        test_id = getTestId("A3B2C1", "D2E2F2C1", "83");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2712,14 +2156,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C1_D2E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C1", "D2E2F2C2", "116");
+        test_id = getTestId("A3B2C1", "D2E2F2C2", "84");
 
         NonRootModelElement src = selectABC("A3B2C1", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2735,14 +2179,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E1F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E1F1C1", "117");
+        test_id = getTestId("A3B2C2", "D1E1F1C1", "85");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2758,14 +2205,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E1F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E1F1C2", "118");
+        test_id = getTestId("A3B2C2", "D1E1F1C2", "86");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2781,14 +2231,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E1F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E1F2C1", "119");
+        test_id = getTestId("A3B2C2", "D1E1F2C1", "87");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2804,14 +2256,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E1F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E1F2C2", "120");
+        test_id = getTestId("A3B2C2", "D1E1F2C2", "88");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2827,14 +2281,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E2F1C1", "121");
+        test_id = getTestId("A3B2C2", "D1E2F1C1", "89");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2850,14 +2307,17 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E2F1C2", "122");
+        test_id = getTestId("A3B2C2", "D1E2F1C2", "90");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2873,14 +2333,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E2F2C1", "123");
+        test_id = getTestId("A3B2C2", "D1E2F2C1", "91");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2896,14 +2358,16 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D1E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D1E2F2C2", "124");
+        test_id = getTestId("A3B2C2", "D1E2F2C2", "92");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2919,14 +2383,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D2E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D2E2F1C1", "125");
+        test_id = getTestId("A3B2C2", "D2E2F1C1", "93");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2942,14 +2406,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D2E2F1C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D2E2F1C2", "126");
+        test_id = getTestId("A3B2C2", "D2E2F1C2", "94");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2965,14 +2429,14 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D2E2F2C1() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D2E2F2C1", "127");
+        test_id = getTestId("A3B2C2", "D2E2F2C1", "95");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2988,14 +2452,116 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA3B2C2_D2E2F2C2() throws Exception {
         setUp();
-        test_id = getTestId("A3B2C2", "D2E2F2C2", "128");
+        test_id = getTestId("A3B2C2", "D2E2F2C2", "96");
 
         NonRootModelElement src = selectABC("A3B2C2", null);
 
         NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("Disallowed move operation performed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D1E1F1C1).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D1E1F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D1E1F1C1", "97");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D1E1F1C2).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D1E1F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D1E1F1C2", "98");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D1E1F2C1).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D1E1F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D1E1F2C1", "99");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D1E1F2C2).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D1E1F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D1E1F2C2", "100");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3011,14 +2577,905 @@ public class AssociationMove_0 extends AssociationMove {
     @Test
 	public void testA4B1C1_D1E2F1C1() throws Exception {
         setUp();
-        test_id = getTestId("A4B1C1", "D1E2F1C1", "129");
+        test_id = getTestId("A4B1C1", "D1E2F1C1", "101");
 
         NonRootModelElement src = selectABC("A4B1C1", null);
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
         ABC_DEFC_Action(src, dest);
-        assertTrue("The move failed.", checkResult_moveSucceeds(src,dest));
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D1E2F1C2).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D1E2F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D1E2F1C2", "102");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D1E2F2C1).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D1E2F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D1E2F2C1", "103");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D1E2F2C2).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D1E2F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D1E2F2C2", "104");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D2E2F1C1).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D2E2F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D2E2F1C1", "105");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D2E2F1C2).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D2E2F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D2E2F1C2", "106");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D2E2F2C1).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D2E2F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D2E2F2C1", "107");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C1) and row (D2E2F2C2).
+     * 
+     */
+    @Test
+	public void testA4B1C1_D2E2F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C1", "D2E2F2C2", "108");
+
+        NonRootModelElement src = selectABC("A4B1C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E1F1C1).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E1F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E1F1C1", "109");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E1F1C2).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E1F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E1F1C2", "110");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E1F2C1).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E1F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E1F2C1", "111");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E1F2C2).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E1F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E1F2C2", "112");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E2F1C1).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E2F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E2F1C1", "113");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E2F1C2).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E2F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E2F1C2", "114");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E2F2C1).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E2F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E2F2C1", "115");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D1E2F2C2).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D1E2F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D1E2F2C2", "116");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D2E2F1C1).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D2E2F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D2E2F1C1", "117");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D2E2F1C2).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D2E2F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D2E2F1C2", "118");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D2E2F2C1).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D2E2F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D2E2F2C1", "119");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B1C2) and row (D2E2F2C2).
+     * 
+     */
+    @Test
+	public void testA4B1C2_D2E2F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B1C2", "D2E2F2C2", "120");
+
+        NonRootModelElement src = selectABC("A4B1C2", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E1F1C1).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E1F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E1F1C1", "121");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E1F1C2).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E1F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E1F1C2", "122");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E1F2C1).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E1F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E1F2C1", "123");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E1F2C2).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E1F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E1F2C2", "124");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E2F1C1).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E2F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E2F1C1", "125");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E2F1C2).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E2F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E2F1C2", "126");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E2F2C1).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E2F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E2F2C1", "127");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D1E2F2C2).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D1E2F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D1E2F2C2", "128");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D2E2F1C1).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D2E2F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D2E2F1C1", "129");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D2E2F1C2).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D2E2F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D2E2F1C2", "130");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D2E2F2C1).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D2E2F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D2E2F2C1", "131");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C1) and row (D2E2F2C2).
+     * 
+     */
+    @Test
+	public void testA4B2C1_D2E2F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C1", "D2E2F2C2", "132");
+
+        NonRootModelElement src = selectABC("A4B2C1", null);
+
+        NonRootModelElement dest = selectDEFC("D2E2F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C2) and row (D1E1F1C1).
+     * 
+     */
+    @Test
+	public void testA4B2C2_D1E1F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C2", "D1E1F1C1", "133");
+
+        NonRootModelElement src = selectABC("A4B2C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C2) and row (D1E1F1C2).
+     * 
+     */
+    @Test
+	public void testA4B2C2_D1E1F1C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C2", "D1E1F1C2", "134");
+
+        NonRootModelElement src = selectABC("A4B2C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F1C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C2) and row (D1E1F2C1).
+     * 
+     */
+    @Test
+	public void testA4B2C2_D1E1F2C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C2", "D1E1F2C1", "135");
+
+        NonRootModelElement src = selectABC("A4B2C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C2) and row (D1E1F2C2).
+     * 
+     */
+    @Test
+	public void testA4B2C2_D1E1F2C2() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C2", "D1E1F2C2", "136");
+
+        NonRootModelElement src = selectABC("A4B2C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E1F2C2", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (A4B2C2) and row (D1E2F1C1).
+     * 
+     */
+    @Test
+	public void testA4B2C2_D1E2F1C1() throws Exception {
+        setUp();
+        test_id = getTestId("A4B2C2", "D1E2F1C1", "137");
+
+        NonRootModelElement src = selectABC("A4B2C2", null);
+
+        NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
+
+        ABC_DEFC_Action(src, dest);
+        assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
+        assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
+        assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
