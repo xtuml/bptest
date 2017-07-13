@@ -331,26 +331,31 @@ public class AssociationMove extends CanvasTest {
                             oir_type_test = part != null;
                         }
                         else if (element.contains("A2")) {
+                            // select all simple formalizers
+                            ClassAsSimpleFormalizer_c form = ClassAsSimpleFormalizer_c.getOneR_FORMOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(selected));
+                            oir_type_test = form != null;
+                        }
+                        else if (element.contains("A3")) {
                             // select all associative ones
                             ClassAsAssociatedOneSide_c one = ClassAsAssociatedOneSide_c.getOneR_AONEOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
                             oir_type_test = one != null;
                         }
-                        else if (element.contains("A3")) {
+                        else if (element.contains("A4")) {
                             // select all associative others
                             ClassAsAssociatedOtherSide_c other = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
                             oir_type_test = other != null;
                         }
-                        else if (element.contains("A4")) {
+                        else if (element.contains("A5")) {
                             // select all associative links
                             ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(selected));
                             oir_type_test = assr != null;
                         }
-                        else if (element.contains("A5")) {
+                        else if (element.contains("A6")) {
                             // select all supertypes
                             ClassAsSupertype_c sup = ClassAsSupertype_c.getOneR_SUPEROnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
                             oir_type_test = sup != null;
                         }
-                        else if (element.contains("A6")) {
+                        else if (element.contains("A7")) {
                             // select all subtypes
                             ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(selected));
                             oir_type_test = sub != null;
