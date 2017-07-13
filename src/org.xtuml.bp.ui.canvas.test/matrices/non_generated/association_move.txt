@@ -45,7 +45,7 @@ Results:
 2. moveDisallowed   "Disallowed move operation completed."
 3. assocInfoSame    "The association details were not preserved."
 4. assocUnformal    "The association is formalized after move."
-5. rectiliearCheck  "Rectilinear routing did not work."
+5. rectilinearCheck "Rectilinear routing did not work."
 
 
 Matrix:

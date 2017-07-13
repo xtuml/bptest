@@ -50,12 +50,12 @@ public class AssociationMove_1 extends AssociationMove {
     }
 
     @Before
-	public void setUp() throws Exception {
+    public void setUp() throws Exception {
         super.setUp();
     }
 
     @After
-	public void tearDown() throws Exception {
+    public void tearDown() throws Exception {
         super.tearDown();
     }
 
@@ -65,7 +65,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA4B2C2_D1E2F1C2() throws Exception {
+    public void testA4B2C2_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A4B2C2", "D1E2F1C2", "1");
 
@@ -77,7 +77,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -91,7 +91,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA4B2C2_D1E2F2C1() throws Exception {
+    public void testA4B2C2_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A4B2C2", "D1E2F2C1", "2");
 
@@ -116,7 +116,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA4B2C2_D1E2F2C2() throws Exception {
+    public void testA4B2C2_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A4B2C2", "D1E2F2C2", "3");
 
@@ -141,7 +141,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA4B2C2_D2E2F1C1() throws Exception {
+    public void testA4B2C2_D2E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A4B2C2", "D2E2F1C1", "4");
 
@@ -164,7 +164,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA4B2C2_D2E2F1C2() throws Exception {
+    public void testA4B2C2_D2E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A4B2C2", "D2E2F1C2", "5");
 
@@ -187,7 +187,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA4B2C2_D2E2F2C1() throws Exception {
+    public void testA4B2C2_D2E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A4B2C2", "D2E2F2C1", "6");
 
@@ -210,7 +210,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA4B2C2_D2E2F2C2() throws Exception {
+    public void testA4B2C2_D2E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A4B2C2", "D2E2F2C2", "7");
 
@@ -233,7 +233,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D1E2F1C1() throws Exception {
+    public void testA5B1C1_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F1C1", "8");
 
@@ -245,7 +245,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -259,7 +259,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D1E2F1C2() throws Exception {
+    public void testA5B1C1_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F1C2", "9");
 
@@ -271,7 +271,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -285,7 +285,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D1E2F2C1() throws Exception {
+    public void testA5B1C1_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F2C1", "10");
 
@@ -310,7 +310,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D1E2F2C2() throws Exception {
+    public void testA5B1C1_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F2C2", "11");
 
@@ -335,7 +335,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D3E2F1C1() throws Exception {
+    public void testA5B1C1_D3E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D3E2F1C1", "12");
 
@@ -358,7 +358,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D3E2F1C2() throws Exception {
+    public void testA5B1C1_D3E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D3E2F1C2", "13");
 
@@ -381,7 +381,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D3E2F2C1() throws Exception {
+    public void testA5B1C1_D3E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D3E2F2C1", "14");
 
@@ -404,7 +404,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D3E2F2C2() throws Exception {
+    public void testA5B1C1_D3E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D3E2F2C2", "15");
 
@@ -427,7 +427,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D4E2F1C1() throws Exception {
+    public void testA5B1C1_D4E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D4E2F1C1", "16");
 
@@ -450,7 +450,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D4E2F1C2() throws Exception {
+    public void testA5B1C1_D4E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D4E2F1C2", "17");
 
@@ -473,7 +473,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D4E2F2C1() throws Exception {
+    public void testA5B1C1_D4E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D4E2F2C1", "18");
 
@@ -496,7 +496,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C1_D4E2F2C2() throws Exception {
+    public void testA5B1C1_D4E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C1", "D4E2F2C2", "19");
 
@@ -519,7 +519,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D1E2F1C1() throws Exception {
+    public void testA5B1C2_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F1C1", "20");
 
@@ -531,7 +531,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -545,7 +545,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D1E2F1C2() throws Exception {
+    public void testA5B1C2_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F1C2", "21");
 
@@ -557,7 +557,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -571,7 +571,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D1E2F2C1() throws Exception {
+    public void testA5B1C2_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F2C1", "22");
 
@@ -596,7 +596,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D1E2F2C2() throws Exception {
+    public void testA5B1C2_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F2C2", "23");
 
@@ -621,7 +621,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D3E2F1C1() throws Exception {
+    public void testA5B1C2_D3E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D3E2F1C1", "24");
 
@@ -644,7 +644,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D3E2F1C2() throws Exception {
+    public void testA5B1C2_D3E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D3E2F1C2", "25");
 
@@ -667,7 +667,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D3E2F2C1() throws Exception {
+    public void testA5B1C2_D3E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D3E2F2C1", "26");
 
@@ -690,7 +690,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D3E2F2C2() throws Exception {
+    public void testA5B1C2_D3E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D3E2F2C2", "27");
 
@@ -713,7 +713,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D4E2F1C1() throws Exception {
+    public void testA5B1C2_D4E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D4E2F1C1", "28");
 
@@ -736,7 +736,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D4E2F1C2() throws Exception {
+    public void testA5B1C2_D4E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D4E2F1C2", "29");
 
@@ -759,7 +759,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D4E2F2C1() throws Exception {
+    public void testA5B1C2_D4E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D4E2F2C1", "30");
 
@@ -782,7 +782,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B1C2_D4E2F2C2() throws Exception {
+    public void testA5B1C2_D4E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B1C2", "D4E2F2C2", "31");
 
@@ -805,7 +805,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D1E2F1C1() throws Exception {
+    public void testA5B2C1_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F1C1", "32");
 
@@ -817,7 +817,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -831,7 +831,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D1E2F1C2() throws Exception {
+    public void testA5B2C1_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F1C2", "33");
 
@@ -843,7 +843,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -857,7 +857,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D1E2F2C1() throws Exception {
+    public void testA5B2C1_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F2C1", "34");
 
@@ -882,7 +882,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D1E2F2C2() throws Exception {
+    public void testA5B2C1_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F2C2", "35");
 
@@ -907,7 +907,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D3E2F1C1() throws Exception {
+    public void testA5B2C1_D3E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D3E2F1C1", "36");
 
@@ -930,7 +930,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D3E2F1C2() throws Exception {
+    public void testA5B2C1_D3E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D3E2F1C2", "37");
 
@@ -953,7 +953,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D3E2F2C1() throws Exception {
+    public void testA5B2C1_D3E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D3E2F2C1", "38");
 
@@ -976,7 +976,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D3E2F2C2() throws Exception {
+    public void testA5B2C1_D3E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D3E2F2C2", "39");
 
@@ -999,7 +999,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D4E2F1C1() throws Exception {
+    public void testA5B2C1_D4E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D4E2F1C1", "40");
 
@@ -1022,7 +1022,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D4E2F1C2() throws Exception {
+    public void testA5B2C1_D4E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D4E2F1C2", "41");
 
@@ -1045,7 +1045,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D4E2F2C1() throws Exception {
+    public void testA5B2C1_D4E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D4E2F2C1", "42");
 
@@ -1068,7 +1068,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C1_D4E2F2C2() throws Exception {
+    public void testA5B2C1_D4E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C1", "D4E2F2C2", "43");
 
@@ -1091,7 +1091,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D1E2F1C1() throws Exception {
+    public void testA5B2C2_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F1C1", "44");
 
@@ -1103,7 +1103,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1117,7 +1117,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D1E2F1C2() throws Exception {
+    public void testA5B2C2_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F1C2", "45");
 
@@ -1129,7 +1129,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1143,7 +1143,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D1E2F2C1() throws Exception {
+    public void testA5B2C2_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F2C1", "46");
 
@@ -1168,7 +1168,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D1E2F2C2() throws Exception {
+    public void testA5B2C2_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F2C2", "47");
 
@@ -1193,7 +1193,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D3E2F1C1() throws Exception {
+    public void testA5B2C2_D3E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D3E2F1C1", "48");
 
@@ -1216,7 +1216,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D3E2F1C2() throws Exception {
+    public void testA5B2C2_D3E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D3E2F1C2", "49");
 
@@ -1239,7 +1239,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D3E2F2C1() throws Exception {
+    public void testA5B2C2_D3E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D3E2F2C1", "50");
 
@@ -1262,7 +1262,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D3E2F2C2() throws Exception {
+    public void testA5B2C2_D3E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D3E2F2C2", "51");
 
@@ -1285,7 +1285,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D4E2F1C1() throws Exception {
+    public void testA5B2C2_D4E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D4E2F1C1", "52");
 
@@ -1308,7 +1308,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D4E2F1C2() throws Exception {
+    public void testA5B2C2_D4E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D4E2F1C2", "53");
 
@@ -1331,7 +1331,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D4E2F2C1() throws Exception {
+    public void testA5B2C2_D4E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D4E2F2C1", "54");
 
@@ -1354,7 +1354,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA5B2C2_D4E2F2C2() throws Exception {
+    public void testA5B2C2_D4E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A5B2C2", "D4E2F2C2", "55");
 
@@ -1377,7 +1377,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D1E2F1C1() throws Exception {
+    public void testA6B1C1_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F1C1", "56");
 
@@ -1389,7 +1389,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1403,7 +1403,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D1E2F1C2() throws Exception {
+    public void testA6B1C1_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F1C2", "57");
 
@@ -1415,7 +1415,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1429,7 +1429,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D1E2F2C1() throws Exception {
+    public void testA6B1C1_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F2C1", "58");
 
@@ -1454,7 +1454,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D1E2F2C2() throws Exception {
+    public void testA6B1C1_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F2C2", "59");
 
@@ -1479,7 +1479,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D6E2F1C1() throws Exception {
+    public void testA6B1C1_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D6E2F1C1", "60");
 
@@ -1502,7 +1502,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D6E2F1C2() throws Exception {
+    public void testA6B1C1_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D6E2F1C2", "61");
 
@@ -1525,7 +1525,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D6E2F2C1() throws Exception {
+    public void testA6B1C1_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D6E2F2C1", "62");
 
@@ -1548,7 +1548,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C1_D6E2F2C2() throws Exception {
+    public void testA6B1C1_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C1", "D6E2F2C2", "63");
 
@@ -1571,7 +1571,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D1E2F1C1() throws Exception {
+    public void testA6B1C2_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F1C1", "64");
 
@@ -1583,7 +1583,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1597,7 +1597,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D1E2F1C2() throws Exception {
+    public void testA6B1C2_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F1C2", "65");
 
@@ -1609,7 +1609,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1623,7 +1623,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D1E2F2C1() throws Exception {
+    public void testA6B1C2_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F2C1", "66");
 
@@ -1648,7 +1648,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D1E2F2C2() throws Exception {
+    public void testA6B1C2_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F2C2", "67");
 
@@ -1673,7 +1673,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D6E2F1C1() throws Exception {
+    public void testA6B1C2_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D6E2F1C1", "68");
 
@@ -1696,7 +1696,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D6E2F1C2() throws Exception {
+    public void testA6B1C2_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D6E2F1C2", "69");
 
@@ -1719,7 +1719,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D6E2F2C1() throws Exception {
+    public void testA6B1C2_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D6E2F2C1", "70");
 
@@ -1742,7 +1742,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B1C2_D6E2F2C2() throws Exception {
+    public void testA6B1C2_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B1C2", "D6E2F2C2", "71");
 
@@ -1765,7 +1765,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D1E2F1C1() throws Exception {
+    public void testA6B2C1_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F1C1", "72");
 
@@ -1777,7 +1777,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1791,7 +1791,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D1E2F1C2() throws Exception {
+    public void testA6B2C1_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F1C2", "73");
 
@@ -1803,7 +1803,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1817,7 +1817,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D1E2F2C1() throws Exception {
+    public void testA6B2C1_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F2C1", "74");
 
@@ -1842,7 +1842,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D1E2F2C2() throws Exception {
+    public void testA6B2C1_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F2C2", "75");
 
@@ -1867,7 +1867,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D6E2F1C1() throws Exception {
+    public void testA6B2C1_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D6E2F1C1", "76");
 
@@ -1890,7 +1890,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D6E2F1C2() throws Exception {
+    public void testA6B2C1_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D6E2F1C2", "77");
 
@@ -1913,7 +1913,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D6E2F2C1() throws Exception {
+    public void testA6B2C1_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D6E2F2C1", "78");
 
@@ -1936,7 +1936,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C1_D6E2F2C2() throws Exception {
+    public void testA6B2C1_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C1", "D6E2F2C2", "79");
 
@@ -1959,7 +1959,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D1E2F1C1() throws Exception {
+    public void testA6B2C2_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F1C1", "80");
 
@@ -1971,7 +1971,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1985,7 +1985,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D1E2F1C2() throws Exception {
+    public void testA6B2C2_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F1C2", "81");
 
@@ -1997,7 +1997,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2011,7 +2011,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D1E2F2C1() throws Exception {
+    public void testA6B2C2_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F2C1", "82");
 
@@ -2036,7 +2036,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D1E2F2C2() throws Exception {
+    public void testA6B2C2_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F2C2", "83");
 
@@ -2061,7 +2061,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D6E2F1C1() throws Exception {
+    public void testA6B2C2_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D6E2F1C1", "84");
 
@@ -2084,7 +2084,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D6E2F1C2() throws Exception {
+    public void testA6B2C2_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D6E2F1C2", "85");
 
@@ -2107,7 +2107,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D6E2F2C1() throws Exception {
+    public void testA6B2C2_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D6E2F2C1", "86");
 
@@ -2130,7 +2130,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA6B2C2_D6E2F2C2() throws Exception {
+    public void testA6B2C2_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A6B2C2", "D6E2F2C2", "87");
 
@@ -2153,7 +2153,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D1E2F1C1() throws Exception {
+    public void testA7B1C1_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F1C1", "88");
 
@@ -2165,7 +2165,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2179,7 +2179,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D1E2F1C2() throws Exception {
+    public void testA7B1C1_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F1C2", "89");
 
@@ -2191,7 +2191,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2205,7 +2205,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D1E2F2C1() throws Exception {
+    public void testA7B1C1_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F2C1", "90");
 
@@ -2230,7 +2230,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D1E2F2C2() throws Exception {
+    public void testA7B1C1_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F2C2", "91");
 
@@ -2255,7 +2255,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D5E2F1C1() throws Exception {
+    public void testA7B1C1_D5E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D5E2F1C1", "92");
 
@@ -2278,7 +2278,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D5E2F1C2() throws Exception {
+    public void testA7B1C1_D5E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D5E2F1C2", "93");
 
@@ -2301,7 +2301,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D5E2F2C1() throws Exception {
+    public void testA7B1C1_D5E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D5E2F2C1", "94");
 
@@ -2324,7 +2324,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D5E2F2C2() throws Exception {
+    public void testA7B1C1_D5E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D5E2F2C2", "95");
 
@@ -2347,7 +2347,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D6E2F1C1() throws Exception {
+    public void testA7B1C1_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D6E2F1C1", "96");
 
@@ -2370,7 +2370,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D6E2F1C2() throws Exception {
+    public void testA7B1C1_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D6E2F1C2", "97");
 
@@ -2393,7 +2393,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D6E2F2C1() throws Exception {
+    public void testA7B1C1_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D6E2F2C1", "98");
 
@@ -2416,7 +2416,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C1_D6E2F2C2() throws Exception {
+    public void testA7B1C1_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C1", "D6E2F2C2", "99");
 
@@ -2439,7 +2439,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D1E2F1C1() throws Exception {
+    public void testA7B1C2_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F1C1", "100");
 
@@ -2451,7 +2451,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2465,7 +2465,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D1E2F1C2() throws Exception {
+    public void testA7B1C2_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F1C2", "101");
 
@@ -2477,7 +2477,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2491,7 +2491,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D1E2F2C1() throws Exception {
+    public void testA7B1C2_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F2C1", "102");
 
@@ -2516,7 +2516,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D1E2F2C2() throws Exception {
+    public void testA7B1C2_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F2C2", "103");
 
@@ -2541,7 +2541,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D5E2F1C1() throws Exception {
+    public void testA7B1C2_D5E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D5E2F1C1", "104");
 
@@ -2564,7 +2564,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D5E2F1C2() throws Exception {
+    public void testA7B1C2_D5E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D5E2F1C2", "105");
 
@@ -2587,7 +2587,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D5E2F2C1() throws Exception {
+    public void testA7B1C2_D5E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D5E2F2C1", "106");
 
@@ -2610,7 +2610,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D5E2F2C2() throws Exception {
+    public void testA7B1C2_D5E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D5E2F2C2", "107");
 
@@ -2633,7 +2633,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D6E2F1C1() throws Exception {
+    public void testA7B1C2_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D6E2F1C1", "108");
 
@@ -2656,7 +2656,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D6E2F1C2() throws Exception {
+    public void testA7B1C2_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D6E2F1C2", "109");
 
@@ -2679,7 +2679,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D6E2F2C1() throws Exception {
+    public void testA7B1C2_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D6E2F2C1", "110");
 
@@ -2702,7 +2702,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B1C2_D6E2F2C2() throws Exception {
+    public void testA7B1C2_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B1C2", "D6E2F2C2", "111");
 
@@ -2725,7 +2725,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D1E2F1C1() throws Exception {
+    public void testA7B2C1_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F1C1", "112");
 
@@ -2737,7 +2737,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2751,7 +2751,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D1E2F1C2() throws Exception {
+    public void testA7B2C1_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F1C2", "113");
 
@@ -2763,7 +2763,7 @@ public class AssociationMove_1 extends AssociationMove {
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));
-        assertTrue("Rectilinear routing did not work.", checkResult_rectiliearCheck(src,dest));
+        assertTrue("Rectilinear routing did not work.", checkResult_rectilinearCheck(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2777,7 +2777,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D1E2F2C1() throws Exception {
+    public void testA7B2C1_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F2C1", "114");
 
@@ -2802,7 +2802,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D1E2F2C2() throws Exception {
+    public void testA7B2C1_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F2C2", "115");
 
@@ -2827,7 +2827,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D5E2F1C1() throws Exception {
+    public void testA7B2C1_D5E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D5E2F1C1", "116");
 
@@ -2850,7 +2850,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D5E2F1C2() throws Exception {
+    public void testA7B2C1_D5E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D5E2F1C2", "117");
 
@@ -2873,7 +2873,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D5E2F2C1() throws Exception {
+    public void testA7B2C1_D5E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D5E2F2C1", "118");
 
@@ -2896,7 +2896,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D5E2F2C2() throws Exception {
+    public void testA7B2C1_D5E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D5E2F2C2", "119");
 
@@ -2919,7 +2919,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D6E2F1C1() throws Exception {
+    public void testA7B2C1_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D6E2F1C1", "120");
 
@@ -2942,7 +2942,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D6E2F1C2() throws Exception {
+    public void testA7B2C1_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D6E2F1C2", "121");
 
@@ -2965,7 +2965,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D6E2F2C1() throws Exception {
+    public void testA7B2C1_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D6E2F2C1", "122");
 
@@ -2988,7 +2988,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C1_D6E2F2C2() throws Exception {
+    public void testA7B2C1_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C1", "D6E2F2C2", "123");
 
@@ -3011,7 +3011,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D1E2F1C1() throws Exception {
+    public void testA7B2C2_D1E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F1C1", "124");
 
@@ -3036,7 +3036,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D1E2F1C2() throws Exception {
+    public void testA7B2C2_D1E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F1C2", "125");
 
@@ -3061,7 +3061,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D1E2F2C1() throws Exception {
+    public void testA7B2C2_D1E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F2C1", "126");
 
@@ -3086,7 +3086,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D1E2F2C2() throws Exception {
+    public void testA7B2C2_D1E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F2C2", "127");
 
@@ -3111,7 +3111,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D5E2F1C1() throws Exception {
+    public void testA7B2C2_D5E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D5E2F1C1", "128");
 
@@ -3134,7 +3134,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D5E2F1C2() throws Exception {
+    public void testA7B2C2_D5E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D5E2F1C2", "129");
 
@@ -3157,7 +3157,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D5E2F2C1() throws Exception {
+    public void testA7B2C2_D5E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D5E2F2C1", "130");
 
@@ -3180,7 +3180,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D5E2F2C2() throws Exception {
+    public void testA7B2C2_D5E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D5E2F2C2", "131");
 
@@ -3203,7 +3203,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D6E2F1C1() throws Exception {
+    public void testA7B2C2_D6E2F1C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D6E2F1C1", "132");
 
@@ -3226,7 +3226,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D6E2F1C2() throws Exception {
+    public void testA7B2C2_D6E2F1C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D6E2F1C2", "133");
 
@@ -3249,7 +3249,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D6E2F2C1() throws Exception {
+    public void testA7B2C2_D6E2F2C1() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D6E2F2C1", "134");
 
@@ -3272,7 +3272,7 @@ public class AssociationMove_1 extends AssociationMove {
      * 
      */
     @Test
-	public void testA7B2C2_D6E2F2C2() throws Exception {
+    public void testA7B2C2_D6E2F2C2() throws Exception {
         setUp();
         test_id = getTestId("A7B2C2", "D6E2F2C2", "135");
 

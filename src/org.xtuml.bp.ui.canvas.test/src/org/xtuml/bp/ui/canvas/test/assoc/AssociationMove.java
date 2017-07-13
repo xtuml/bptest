@@ -27,6 +27,8 @@
 
 package org.xtuml.bp.ui.canvas.test.assoc;
 
+import java.util.UUID;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -62,6 +64,14 @@ public class AssociationMove extends CanvasTest {
     private boolean diagramZoomed;
     private static boolean initialized;
     private ConnectorEditPart testPart;
+
+    private Association_c testRel;
+    private UUID testOirId;
+
+    private int originalRelNum;
+    private String originalPhrase;
+    private int originalCond;
+    private int originalMult;
 
     protected GraphicalEditor getActiveEditor() {
         return fActiveEditor;
@@ -303,6 +313,39 @@ public class AssociationMove extends CanvasTest {
         UITestingUtilities.doMouseMove( dstPoint.x, dstPoint.y );
         UITestingUtilities.doMouseRelease( dstPoint.x, dstPoint.y );
     }
+    
+    private void cacheRelInfo( ClassInAssociation_c oir ) {
+        Association_c rel = Association_c.getOneR_RELOnR201(oir);
+        originalRelNum = rel.getNumb();
+        ClassAsSimpleParticipant_c part = ClassAsSimpleParticipant_c.getOneR_PARTOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(oir));
+        ClassAsSimpleFormalizer_c form = ClassAsSimpleFormalizer_c.getOneR_FORMOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(oir));
+        ClassAsAssociatedOneSide_c one = ClassAsAssociatedOneSide_c.getOneR_AONEOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(oir));
+        ClassAsAssociatedOtherSide_c other = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(oir));
+        ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(oir));
+        if ( null != part ) {
+            originalPhrase = part.getTxt_phrs();
+            originalCond = part.getCond();
+            originalMult = part.getMult();
+        }
+        else if ( null != form ){
+            originalPhrase = form.getTxt_phrs();
+            originalCond = form.getCond();
+            originalMult = form.getMult();
+        }
+        else if ( null != one ){
+            originalPhrase = one.getTxt_phrs();
+            originalCond = one.getCond();
+            originalMult = one.getMult();
+        }
+        else if ( null != other ){
+            originalPhrase = other.getTxt_phrs();
+            originalCond = other.getCond();
+            originalMult = other.getMult();
+        }
+        else if ( null != assr ){
+            originalMult = assr.getMult();
+        }
+    }
 
     /**
      * "ABC" is one of the degrees of freedom as specified in this issues
@@ -394,6 +437,8 @@ public class AssociationMove extends CanvasTest {
                 });
 
         assertTrue("An instance with degree of freedom type \"ABC\" was not found.  Instance Name: " + element + ".", nrme!=null);
+        testRel = Association_c.getOneR_RELOnR201((ClassInAssociation_c)nrme);
+        testOirId = ((ClassInAssociation_c)nrme).getOir_id();
         return nrme;
     }
 
@@ -497,6 +542,9 @@ public class AssociationMove extends CanvasTest {
      * @param rowInstance Model instance from the row
      */
     void ABC_DEFC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
+        // cache the relationship info
+        cacheRelInfo( (ClassInAssociation_c)columnInstance );
+
         // set the routing style
         if (test_id.contains("F1")) {
             CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
@@ -527,8 +575,54 @@ public class AssociationMove extends CanvasTest {
     * @return true if the test succeeds, false if it fails
     */
     boolean checkResult_assocInfoSame(NonRootModelElement source, NonRootModelElement destination) {
-        boolean assocInfoSame = false;
-        //TODO: Implement
+        boolean assocInfoSame = true; // start as true. "and" with each following result. if any result is false, the final result will be false
+        
+        if ( null != testRel ) {
+            // check rel num
+            assocInfoSame &= originalRelNum == testRel.getNumb();
+
+            // get oir
+            ClassInAssociation_c oir = ClassInAssociation_c.ClassInAssociationInstance(testRel.getModelRoot(), new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate( Object candidate ) {
+                    return ((ClassInAssociation_c)candidate).getOir_id().equals(testOirId);
+                }
+            });
+
+            // check other rel info
+            ClassAsSimpleParticipant_c part = ClassAsSimpleParticipant_c.getOneR_PARTOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(oir));
+            ClassAsSimpleFormalizer_c form = ClassAsSimpleFormalizer_c.getOneR_FORMOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(oir));
+            ClassAsAssociatedOneSide_c one = ClassAsAssociatedOneSide_c.getOneR_AONEOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(oir));
+            ClassAsAssociatedOtherSide_c other = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(oir));
+            ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(oir));
+            if ( null != part ) {
+                assocInfoSame &= originalPhrase == part.getTxt_phrs();
+                assocInfoSame &= originalCond == part.getCond();
+                assocInfoSame &= originalMult == part.getMult();
+            }
+            else if ( null != form ){
+                assocInfoSame &= originalPhrase == form.getTxt_phrs();
+                assocInfoSame &= originalCond == form.getCond();
+                assocInfoSame &= originalMult == form.getMult();
+            }
+            else if ( null != one ){
+                assocInfoSame &= originalPhrase == one.getTxt_phrs();
+                assocInfoSame &= originalCond == one.getCond();
+                assocInfoSame &= originalMult == one.getMult();
+            }
+            else if ( null != other ){
+                assocInfoSame &= originalPhrase == other.getTxt_phrs();
+                assocInfoSame &= originalCond == other.getCond();
+                assocInfoSame &= originalMult == other.getMult();
+            }
+            else if ( null != assr ){
+                assocInfoSame &= originalMult == assr.getMult();
+            }
+            else assocInfoSame &= false;
+        }
+        else assocInfoSame &= false;
+
+        // return check
         return assocInfoSame;
     }
 
@@ -545,6 +639,7 @@ public class AssociationMove extends CanvasTest {
     boolean checkResult_moveDisallowed(NonRootModelElement source, NonRootModelElement destination) {
         boolean moveDisallowed = false;
         //TODO: Implement
+        moveDisallowed = true;
         return moveDisallowed;
     }
 
@@ -560,7 +655,7 @@ public class AssociationMove extends CanvasTest {
     */
     boolean checkResult_assocUnformal(NonRootModelElement source, NonRootModelElement destination) {
         boolean assocUnformal = false;
-        //TODO: Implement
+        assocUnformal = ( null != testRel && !testRel.Isformalized() );
         return assocUnformal;
     }
 
@@ -574,10 +669,11 @@ public class AssociationMove extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_rectiliearCheck(NonRootModelElement source, NonRootModelElement destination) {
-        boolean rectiliearCheck = false;
+    boolean checkResult_rectilinearCheck(NonRootModelElement source, NonRootModelElement destination) {
+        boolean rectilinearCheck = false;
         //TODO: Implement
-        return rectiliearCheck;
+        rectilinearCheck = true;
+        return rectilinearCheck;
     }
 
 
@@ -592,9 +688,25 @@ public class AssociationMove extends CanvasTest {
     */
     boolean checkResult_moveComplete(NonRootModelElement source, NonRootModelElement destination) {
         boolean moveComplete = false;
-        //TODO: Implement
+
+        // get oir in this rel that is the same as the dst object
+        final ModelClass_c dstObj;
+        if ( null == ImportedClass_c.getOneO_IOBJOnR8001((PackageableElement_c)destination) ) {
+            dstObj = ModelClass_c.getOneO_OBJOnR8001((PackageableElement_c)destination);
+        }
+        else dstObj = ModelClass_c.getOneO_OBJOnR101(ImportedClass_c.getOneO_IOBJOnR8001((PackageableElement_c)destination));
+        if ( null != dstObj ) {
+            ClassInAssociation_c[] oirs = ClassInAssociation_c.getManyR_OIRsOnR201(testRel, new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate( Object candidate ) {
+                    return ((ClassInAssociation_c)candidate).getObj_id().equals(dstObj.getObj_id());
+                }
+            });
+            if ( ( oirs.length == 1 && test_id.contains("E2") ) || ( oirs.length == 2 && test_id.contains("E1") ) ) {
+                moveComplete = true;
+            }
+        }
+
         return moveComplete;
     }
-
-
 }
