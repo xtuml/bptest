@@ -7,7 +7,7 @@
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
 		<version>6.4.3-SNAPSHOT</version>
-		<relativePath>../../../bridgepoint/releng/org.xtuml.bp.releng.parent.tests/</relativePath>
+		<relativePath>../../releng/org.xtuml.bp.releng.parent.tests/</relativePath>
 	</parent>
 	<groupId>org.xtuml.bp</groupId>
 	<artifactId>org.xtuml.bp.io.mdl.test</artifactId>
