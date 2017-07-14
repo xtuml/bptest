@@ -3,21 +3,33 @@ package org.xtuml.bp.core.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFileState;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 import org.xtuml.bp.core.Association_c;
+import org.xtuml.bp.core.ClassAsAssociatedOneSide_c;
+import org.xtuml.bp.core.ClassAsAssociatedOtherSide_c;
 import org.xtuml.bp.core.ClassAsLink_c;
+import org.xtuml.bp.core.ClassAsSimpleFormalizer_c;
+import org.xtuml.bp.core.ClassAsSimpleParticipant_c;
 import org.xtuml.bp.core.ClassAsSubtype_c;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.ImportedClass_c;
@@ -25,15 +37,17 @@ import org.xtuml.bp.core.LinkedAssociation_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
+import org.xtuml.bp.core.SimpleAssociation_c;
 import org.xtuml.bp.core.SubtypeSupertypeAssociation_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.editors.association.AssociationEditorTab;
 import org.xtuml.bp.core.editors.association.dialogs.AssociationTableDialog;
 import org.xtuml.bp.core.editors.association.editing.AssociationEditingSupport;
-import org.xtuml.bp.core.ui.BinaryFormalizeOnR_RELWizard;
-import org.xtuml.bp.core.ui.LinkedFormalizeOnR_RELWizard;
+import org.xtuml.bp.core.ui.BinaryFormalizeOnR_RELWizardPage1;
+import org.xtuml.bp.core.ui.LinkedFormalizeOnR_ASSRWizardPage1;
 import org.xtuml.bp.core.util.UIUtil;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
@@ -42,6 +56,7 @@ import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 
 import junit.framework.AssertionFailedError;
+import junit.framework.TestCase;
 
 public class AssociationTableEditorTests extends BaseTest {
 
@@ -52,7 +67,7 @@ public class AssociationTableEditorTests extends BaseTest {
 	public void initialSetup() throws Exception {
 		String testElementName = "AssociationEditing";
 		TestingUtilities.importTestingProjectIntoWorkspace(testElementName);
-		BaseTest.dispatchEvents();
+		UIUtil.dispatchAll();
 		m_sys = getSystemModel(testElementName);
 		modelRoot = Ooaofooa.getInstance("/AssociationEditing/models/AssociationEditing/AssociationEditing/AssociationEditing.xtuml");
 		pkg = Package_c.getOneEP_PKGOnR1401(m_sys,
@@ -173,26 +188,39 @@ public class AssociationTableEditorTests extends BaseTest {
 	
 	@Test
 	public void testFormalizeBinary() {
+		wizardOpened = false;
 		selectElement(getAssociation(2));
 		testDialog(tab -> {
 			tab.getTableViewer().setSelection(new StructuredSelection(getAssociation(2)));
 			Button formalizeButton = tab.getFormalizeButton();
-			TestUtil.dismissShell(shell -> {
-				if(!shell.isDisposed() && shell.getData() instanceof BinaryFormalizeOnR_RELWizard) {
-					wizardOpened = true;
+			Thread thread = new Thread(() -> {
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					TestCase.fail("Unable to wait for test dialog");
+				}
+				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+					Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+					if (shell != null && !shell.isDisposed() && shell.getData() instanceof WizardDialog) {
+						WizardDialog wd = (WizardDialog) shell.getData();
+						IWizardPage currentPage = wd.getCurrentPage();
+						if (currentPage instanceof BinaryFormalizeOnR_RELWizardPage1) {
+							wizardOpened = true;
+							Button cancel = TestUtil.findButton(shell, "Cancel");
+							cancel.notifyListeners(SWT.Selection, null);
+							return;
+						}
+					}
 					Button cancel = TestUtil.findButton(shell, "Cancel");
 					cancel.notifyListeners(SWT.Selection, null);
-					return true;
-				}
-				Button cancel = TestUtil.findButton(shell, "Cancel");
-				cancel.notifyListeners(SWT.Selection, null);
-				return false;
+				});
 			});
+			thread.start();
 			formalizeButton.setSelection(!formalizeButton.getSelection());
 			formalizeButton.notifyListeners(SWT.Selection, null);
 			UIUtil.dispatchAll();
+			assertTrue("Binary association formalize wizard did not open with configuration dialog.", wizardOpened);
 		});
-		assertTrue("Binary association formalize wizard did not open with configuration dialog.", wizardOpened);
 	}
 
 	@Test
@@ -205,8 +233,10 @@ public class AssociationTableEditorTests extends BaseTest {
 			formalizeButton.setSelection(!formalizeButton.getSelection());
 			formalizeButton.notifyListeners(SWT.Selection, null);
 			UIUtil.dispatchAll();
+			checkPersistence(true);
 		});
 		assertFalse("Configuration dialog did not unformalize association.", r7.Isformalized());
+		TransactionManager.getSingleton().getUndoAction().run();
 	}
 	
 	@Test
@@ -216,22 +246,33 @@ public class AssociationTableEditorTests extends BaseTest {
 		testDialog(tab -> {
 			tab.getTableViewer().setSelection(new StructuredSelection(getAssociation(8)));
 			Button formalizeButton = tab.getFormalizeButton();
-			TestUtil.dismissShell(shell -> {
-				if(!shell.isDisposed() && shell.getData() instanceof LinkedFormalizeOnR_RELWizard) {
-					wizardOpened = true;
+			Thread thread = new Thread(() -> {
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					TestCase.fail("Unable to wait for test dialog");
+				}
+				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+					Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+					if (shell != null && !shell.isDisposed() && shell.getData() instanceof WizardDialog) {
+						WizardDialog wd = (WizardDialog) shell.getData();
+						if (wd.getCurrentPage() instanceof LinkedFormalizeOnR_ASSRWizardPage1) {
+							wizardOpened = true;
+							Button cancel = TestUtil.findButton(shell, "Cancel");
+							cancel.notifyListeners(SWT.Selection, null);
+							return;
+						}
+					}
 					Button cancel = TestUtil.findButton(shell, "Cancel");
 					cancel.notifyListeners(SWT.Selection, null);
-					return true;
-				}
-				Button cancel = TestUtil.findButton(shell, "Cancel");
-				cancel.notifyListeners(SWT.Selection, null);
-				return false;
+				});
 			});
+			thread.start();
 			formalizeButton.setSelection(!formalizeButton.getSelection());
 			formalizeButton.notifyListeners(SWT.Selection, null);
 			UIUtil.dispatchAll();
+			assertTrue("Linked association formalize wizard did not open.", wizardOpened);
 		});		
-		assertTrue("Linked association formalize wizard did not open.", wizardOpened);
 	}
 
 	@Test
@@ -244,6 +285,7 @@ public class AssociationTableEditorTests extends BaseTest {
 			formalizeButton.setSelection(!formalizeButton.getSelection());
 			formalizeButton.notifyListeners(SWT.Selection, null);
 			UIUtil.dispatchAll();
+			checkPersistence(true);
 		});
 		assertFalse("Configuration dialog did not unformalize association.", r1.Isformalized());
 	}
@@ -367,12 +409,342 @@ public class AssociationTableEditorTests extends BaseTest {
 		testContextMenu(new String[] { "7" }, true);
 	}
 	
+	@Test
+	public void testModifyAssociationNumberBinary() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(2);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 0);
+			CellEditor cellEditor = tab.getEditingSupport()[0].getActiveCellEditor();
+			cellEditor.setValue("9");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			tab.getTableViewer().applyEditorValue();
+			assertTrue("Association number change was not made.", association.getNumb() == 9);
+			checkPersistence();
+			UIUtil.dispatchAll();
+			TransactionManager.getSingleton().getUndoAction().run();
+			UIUtil.dispatchAll();
+		});
+	}
+	
+	@Test
+	public void testModifyAssociationNumberLinked() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(1);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 0);
+			CellEditor cellEditor = tab.getEditingSupport()[0].getActiveCellEditor();
+			cellEditor.setValue("9");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			tab.getTableViewer().applyEditorValue();
+			assertTrue("Association number change was not made.", association.getNumb() == 9);
+			checkPersistence();
+			UIUtil.dispatchAll();
+			TransactionManager.getSingleton().getUndoAction().run();
+			UIUtil.dispatchAll();
+		});		
+	}
+
+	@Test
+	public void testModifyOneSideTextPhraseBinary() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(2);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 3);
+			CellEditor cellEditor = tab.getEditingSupport()[3].getActiveCellEditor();
+			cellEditor.setValue("new_phrase");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			assertTrue("Association phrase change was not made.", getPhrase(association, true).equals("new_phrase"));
+			checkPersistence();
+		});
+	}
+
+	@Test
+	public void testModifyOtherSideTextPhraseBinary() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(2);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 6);
+			CellEditor cellEditor = tab.getEditingSupport()[6].getActiveCellEditor();
+			cellEditor.setValue("new_phrase");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			assertTrue("Association phrase change was not made.", getPhrase(association, false).equals("new_phrase"));
+			checkPersistence();
+		});
+	}
+
+	@Test
+	public void testModifyOtherSideTextPhraseBinaryFormalized() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(7);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 6);
+			CellEditor cellEditor = tab.getEditingSupport()[6].getActiveCellEditor();
+			cellEditor.setValue("new_phrase");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			assertTrue("Association phrase change was not made.", getPhrase(association, false).equals("new_phrase"));
+			checkPersistence();
+		});
+	}
+
+	@Test
+	public void testModifyOneSideTextPhraseLinked() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(1);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 3);
+			CellEditor cellEditor = tab.getEditingSupport()[3].getActiveCellEditor();
+			cellEditor.setValue("new_phrase");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			assertTrue("Association phrase change was not made.", getPhrase(association, true).equals("new_phrase"));
+			checkPersistence();
+		});
+	}
+
+	@Test
+	public void testModifyOtherSideTextPhraseLinked() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(1);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 6);
+			CellEditor cellEditor = tab.getEditingSupport()[6].getActiveCellEditor();
+			cellEditor.setValue("new_phrase");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			assertTrue("Association phrase change was not made.", getPhrase(association, false).equals("new_phrase"));
+			checkPersistence();
+		});
+	}
+
+	@Test
+	public void testUndoRedo() {
+		// only need to test that CMEs are present
+		// and that keyboard shortcuts work all
+		// other aspects of undo/redo are already
+		// tested
+		testDialog(tab -> {
+			TransactionManager.getSingleton().clearStacks();
+			TransactionManager.getSingleton().setUndoRedoActionsState();
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Undo", "", true));
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Redo", "", true));
+			Association_c association = getAssociation(1);
+			tab.getTableViewer().setSelection(new StructuredSelection(association));
+			tab.getTableViewer().editElement(association, 6);
+			CellEditor cellEditor = tab.getEditingSupport()[6].getActiveCellEditor();
+			cellEditor.setValue("undo_test");
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			UIUtil.dispatchAll();
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Undo", "", false));
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Redo", "", true));			
+			// perform undo with keys
+			event.character = 'z';
+			event.keyCode = 'z';
+			event.stateMask = SWT.COMMAND;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			UIUtil.dispatchAll();
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Undo", "", true));
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Redo", "", false));			
+			event.character = 'z';
+			event.keyCode = 'z';
+			event.stateMask = SWT.COMMAND | SWT.SHIFT;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			UIUtil.dispatchAll();
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Undo", "", false));
+			assertTrue(UITestingUtilities.checkItemStatusInContextMenu(tab.getMenu(), "Redo", "", true));						
+		});
+	}
+	
+	@Test
+	public void testModificationRuleSimpleOne() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(2);
+			checkRuleModification(tab, association, true, 2);
+		});
+	}
+	
+	@Test
+	public void testModificationRuleSimpleOther() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(2);
+			checkRuleModification(tab, association, false, 5);
+		});		
+	}
+	
+	@Test
+	public void testModificationRuleLinkedOne() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(1);
+			checkRuleModification(tab, association, true, 2);
+		});		
+	}
+	
+	@Test
+	public void testModificationRuleLinkedOther() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(1);
+			checkRuleModification(tab, association, false, 5);
+		});		
+	}
+	
+	@Test
+	public void testModificationRuleLinkedLink() {
+		testDialog(tab -> {
+			Association_c association = getAssociation(1);
+			ClassAsLink_c link = ClassAsLink_c
+					.getOneR_ASSROnR211(LinkedAssociation_c.getManyR_ASSOCsOnR206(association));
+			checkRuleModification(tab, link, true, 7);
+		});		
+	}
+	
+	/**
+	 * 
+	 * 1 (unconditional one) mult = 0 cond = 0
+	 * 0..1 (conditional one) mult = 0 cond = 1
+	 * 1..* (unconditional many) mult = 1, cond = 0
+	 * * (conditional many) mult = 1, cond = 1
+	 * 
+	 */
+	private void checkRuleModification(AssociationEditorTab tab, NonRootModelElement element, boolean oneside, int column) {
+		int count = 4;
+		NonRootModelElement association = element;
+		if(association instanceof ClassAsLink_c) {
+			association = Association_c.getOneR_RELOnR206(LinkedAssociation_c.getManyR_ASSOCsOnR211((ClassAsLink_c) association));
+			count = 2;
+		}
+		for(int i = 0; i < count; i++) {
+			tab.getTableViewer().editElement(association, column);
+			ComboBoxCellEditor cellEditor = (ComboBoxCellEditor) tab.getEditingSupport()[column].getActiveCellEditor();
+			Object currentValue = cellEditor.getValue();
+			cellEditor.setValue(Integer.valueOf(i));
+			Event event = new Event();
+			event.character = SWT.CR;
+			event.keyCode = SWT.CR;
+			tab.getTableViewer().getTable().notifyListeners(SWT.KeyDown, event);
+			tab.getTableViewer().applyEditorValue();
+			UIUtil.dispatchAll();
+			if(currentValue.equals(Integer.valueOf(i))) {
+				// verify that no persistence occurred
+				checkPersistence(false);
+			} else {
+				int cond = 0;
+				int mult = 0;
+				if(i == 1 && element instanceof ClassAsLink_c) {
+					cond = 0;
+					mult = 1;
+				}
+				if(i == 1 && element instanceof Association_c) {
+					cond = 1;
+					mult = 0;
+				}
+				if(i == 2) {
+					cond = 0;
+					mult = 1;
+				}
+				if(i == 3) {
+					cond = 1;
+					mult = 1;
+				}
+				verifyRule(element, oneside, cond, mult);
+			}
+		}
+	}
+
+	private void verifyRule(NonRootModelElement association, boolean oneside, int cond, int mult) {
+		if(association instanceof ClassAsLink_c) {
+			assertTrue("Multiplicity was not set for association.", ((ClassAsLink_c) association).getMult() == mult);
+		} else {
+			SimpleAssociation_c simp = SimpleAssociation_c.getOneR_SIMPOnR206((Association_c) association);
+			LinkedAssociation_c linked = LinkedAssociation_c.getOneR_ASSOCOnR206((Association_c) association);
+			if(simp != null) {
+				ClassAsSimpleParticipant_c[] parts = ClassAsSimpleParticipant_c.getManyR_PARTsOnR207(simp);
+				if(parts.length > 1) {
+					if(oneside) {
+						assertTrue("Multiplicity was not set correctly for rule.", parts[0].getMult() == mult);
+						assertTrue("Conditionality was not set correctly for rule.", parts[0].getCond() == cond);
+					} else {
+						assertTrue("Multiplicity was not set correctly for rule.", parts[1].getMult() == mult);
+						assertTrue("Conditionality was not set correctly for rule.", parts[1].getCond() == cond);					
+					}
+				} else {
+					if(oneside) {
+						assertTrue("Multiplicity was not set correctly for rule.", parts[0].getMult() == mult);
+						assertTrue("Conditionality was not set correctly for rule.", parts[0].getCond() == cond);
+					} else {
+						ClassAsSimpleFormalizer_c form = ClassAsSimpleFormalizer_c.getOneR_FORMOnR208(simp);
+						assertTrue("Multiplicity was not set correctly for rule.", form.getMult() == mult);
+						assertTrue("Conditionality was not set correctly for rule.", form.getCond() == cond);						
+					}
+				}
+			} else {
+				if(oneside) {
+					ClassAsAssociatedOneSide_c one = ClassAsAssociatedOneSide_c.getOneR_AONEOnR209(linked);
+					assertTrue("Multiplicity was not set correctly for rule.", one.getMult() == mult);
+					assertTrue("Conditionality was not set correctly for rule.", one.getCond() == cond);
+				} else {
+					ClassAsAssociatedOtherSide_c oth = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR210(linked);
+					assertTrue("Multiplicity was not set correctly for rule.", oth.getMult() == mult);
+					assertTrue("Conditionality was not set correctly for rule.", oth.getCond() == cond);
+				}
+			}
+		}
+	}
+
+	private String getPhrase(Association_c association, boolean oneside) {
+		ClassAsSimpleParticipant_c[] parts = ClassAsSimpleParticipant_c.getManyR_PARTsOnR207(SimpleAssociation_c.getManyR_SIMPsOnR206(association));
+		if(parts.length != 0) {
+			if(oneside) {
+				return parts[0].getTxt_phrs();
+			} else {
+				if(parts.length > 1) {
+					return parts[1].getTxt_phrs();
+				} else {
+					return ClassAsSimpleFormalizer_c
+							.getOneR_FORMOnR208(SimpleAssociation_c.getManyR_SIMPsOnR206(association)).getTxt_phrs();
+				}
+			}
+		}
+		ClassAsAssociatedOneSide_c caos = ClassAsAssociatedOneSide_c.getOneR_AONEOnR209(LinkedAssociation_c.getManyR_ASSOCsOnR206(association));
+		if(caos != null) {
+			if(oneside) {
+				return caos.getTxt_phrs();
+			} else {
+				ClassAsAssociatedOtherSide_c caots = ClassAsAssociatedOtherSide_c
+						.getOneR_AOTHOnR210(LinkedAssociation_c.getManyR_ASSOCsOnR206(association));
+				return caots.getTxt_phrs();
+			}
+		}
+		return "";
+	}
+
 	public void selectElement(NonRootModelElement... elements) {
 		UITestingUtilities.clearGraphicalSelection();
 		for(NonRootModelElement element : elements) {
 			UITestingUtilities.addElementToGraphicalSelection(element);
 		}
-		BaseTest.dispatchEvents();
+		UIUtil.dispatchAll();
 	}
 
 	public Association_c getAssociation(int numb) {
@@ -401,7 +773,26 @@ public class AssociationTableEditorTests extends BaseTest {
 		ViewerCell focusCell = viewer.getColumnViewerEditor().getFocusCell();
 		assertTrue("Tab traversal did not move to the next editable cell.",
 				focusCell.getColumnIndex() == expectedColumn);
-		BaseTest.dispatchEvents();
+		UIUtil.dispatchAll();
+	}
+	
+	static int previousFileHistoryCount = 0;
+	public void checkPersistence() {
+		checkPersistence(true);
+	}
+	
+	public void checkPersistence(boolean changeExpected) {
+		try {
+			IFileState[] history = pkg.getFile().getHistory(new NullProgressMonitor());
+			if(changeExpected) {
+				assertTrue("Change was not persisted.", history.length > previousFileHistoryCount);
+			} else {
+				assertFalse("Change was persisted.", history.length > previousFileHistoryCount);
+			}
+			previousFileHistoryCount = history.length;
+		} catch (CoreException e) {
+			TestCase.fail("Unable to verify persistence of change.");
+		}
 	}
 	
 	interface DialogTest {
