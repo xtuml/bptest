@@ -13,13 +13,9 @@ import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.gef.editparts.ZoomManager;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-
 import org.xtuml.bp.core.*;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
@@ -34,7 +30,7 @@ import org.xtuml.bp.ui.canvas.test.*;
 
 public class AssociationMove extends CanvasTest {
     public static boolean generateResults = false;
-    public static boolean useDrawResults = true;
+    public static boolean useDrawResults = false;
 
     String test_id = "";
 
@@ -46,6 +42,9 @@ public class AssociationMove extends CanvasTest {
     private boolean diagramZoomed;
     private static boolean initialized;
     private ConnectorEditPart testPart;
+
+    private String row_id = "";
+    private String column_id = "";
 
     private Association_c testRel;
     private UUID testOirId;
@@ -64,6 +63,8 @@ public class AssociationMove extends CanvasTest {
     }
 
     protected String getTestId(String src, String dest, String count) {
+        column_id = src;
+        row_id = dest;
         return "test_" + count;
     }
     
@@ -528,11 +529,11 @@ public class AssociationMove extends CanvasTest {
         cacheRelInfo( (ClassInAssociation_c)columnInstance );
 
         // set the routing style
-        if (test_id.contains("F1")) {
+        if (row_id.contains("F1")) {
             CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
                                                                    BridgePointPreferencesStore.RECTILINEAR_ROUTING );
         }
-        else if (test_id.contains("F2")) {
+        else if (row_id.contains("F2")) {
             CorePlugin.getDefault().getPreferenceStore().setValue( BridgePointPreferencesStore.DEFAULT_ROUTING_STYLE,
                                                                    BridgePointPreferencesStore.OBLIQUE_ROUTING );
         }
@@ -684,7 +685,7 @@ public class AssociationMove extends CanvasTest {
                     return ((ClassInAssociation_c)candidate).getObj_id().equals(dstObj.getObj_id());
                 }
             });
-            if ( ( oirs.length == 1 && test_id.contains("E2") ) || ( oirs.length == 2 && test_id.contains("E1") ) ) {
+            if ( ( oirs.length == 1 && row_id.contains("E2") ) || ( oirs.length == 2 && row_id.contains("E1") ) ) {
                 moveComplete = true;
             }
         }
