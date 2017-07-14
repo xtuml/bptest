@@ -411,6 +411,10 @@ public class AssociationMove extends CanvasTest {
                             ImportedClass_c iobj = ImportedClass_c.getOneO_IOBJOnR202(selected);
                             oir_imported_test = iobj == null;
                         }
+                        else if (element.contains("C3")) {
+                            // don't specify imported or not
+                            oir_imported_test = true;
+                        }
                         else {
                             oir_imported_test = false;
                         }
@@ -503,6 +507,10 @@ public class AssociationMove extends CanvasTest {
                 else if (element.contains("C2")) {
                     // select all classes that are imported
                     obj_imported_test = !imported;
+                }
+                else if (element.contains("C3")) {
+                    // don't specify imported or not
+                    obj_imported_test = true;
                 }
                 else {
                     obj_imported_test = false;
