@@ -112,11 +112,10 @@ public class AssociationMove extends CanvasTest {
     }
     
     private Package_c getTestPackage() {
-        String package_name = "classes";
         Package_c result = Package_c.getOneEP_PKGOnR1401(m_sys, new ClassQueryInterface_c() {
             @Override
             public boolean evaluate(Object selected) {
-                return ((Package_c)selected).getName().equals(package_name);
+                return ((Package_c)selected).getName().equals(column_id);
             }
         });
         return result;
