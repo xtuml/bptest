@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: BridgePoint Test Plug-in
 Bundle-SymbolicName: org.xtuml.bp.test; singleton:=true
-Bundle-Version: 6.2.5.qualifier
+Bundle-Version: 6.4.3.qualifier
 Bundle-ClassPath: test.jar
 Bundle-Activator: org.xtuml.bp.test.TestPlugin
 Bundle-Vendor: xtUML.org
@@ -21,9 +21,6 @@ Require-Bundle: org.eclipse.compare,
  org.eclipse.jface.text,
  org.eclipse.search,
  org.eclipse.team.core,
- org.eclipse.team.cvs.core,
- org.eclipse.team.cvs.ssh2,
- org.eclipse.team.cvs.ui,
  org.eclipse.team.ui,
  org.eclipse.ui,
  org.eclipse.ui.editors,

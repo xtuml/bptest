@@ -69,7 +69,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -1111,7 +1110,6 @@ public class BaseTest extends TestCase {
 				ExplorerUtil.getTreeViewer().refresh();
 			}
 			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-			CVSLightweightDecorator.refresh();
 			Job.getJobManager().join(DecoratorManager.FAMILY_DECORATE, null);
 		} catch (OperationCanceledException e) {
 			fail(e.getMessage());
