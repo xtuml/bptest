@@ -32,7 +32,6 @@ public class AssociationMoveTestSuite extends TestSuite {
     public AssociationMoveTestSuite()
     {
         addTest(new TestSuite(AssociationMove_0.class));
-        addTest(new TestSuite(AssociationMove_1.class));
     }
 }
 
