@@ -483,8 +483,15 @@ public class AssociationMove extends CanvasTest {
                 }
                 else if (element.contains("D6")) {
                     // select a subtype in the same relationship
-                    ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR213(SubtypeSupertypeAssociation_c.getOneR_SUBSUPOnR206(Association_c.getOneR_RELOnR201(src_oir)));
-                    obj_target_test = sub != null && selected.getObj_id().equals(sub.getObj_id());
+                    final UUID selected_id = selected.getObj_id();
+                    ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR213(SubtypeSupertypeAssociation_c.getOneR_SUBSUPOnR206(
+                            Association_c.getOneR_RELOnR201(src_oir)), new ClassQueryInterface_c() {
+                        @Override
+                        public boolean evaluate( Object candidate ) {
+                            return ((ClassAsSubtype_c)candidate).getObj_id().equals(selected_id);
+                        }
+                    });
+                    obj_target_test = sub != null;
                 }
                 else {
                     obj_target_test = false;
@@ -586,29 +593,28 @@ public class AssociationMove extends CanvasTest {
             ClassAsAssociatedOtherSide_c other = ClassAsAssociatedOtherSide_c.getOneR_AOTHOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(oir));
             ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203(oir));
             if ( null != part ) {
-                assocInfoSame &= originalPhrase == part.getTxt_phrs();
+                assocInfoSame &= originalPhrase.equals(part.getTxt_phrs());
                 assocInfoSame &= originalCond == part.getCond();
                 assocInfoSame &= originalMult == part.getMult();
             }
             else if ( null != form ){
-                assocInfoSame &= originalPhrase == form.getTxt_phrs();
+                assocInfoSame &= originalPhrase.equals(form.getTxt_phrs());
                 assocInfoSame &= originalCond == form.getCond();
                 assocInfoSame &= originalMult == form.getMult();
             }
             else if ( null != one ){
-                assocInfoSame &= originalPhrase == one.getTxt_phrs();
+                assocInfoSame &= originalPhrase.equals(one.getTxt_phrs());
                 assocInfoSame &= originalCond == one.getCond();
                 assocInfoSame &= originalMult == one.getMult();
             }
             else if ( null != other ){
-                assocInfoSame &= originalPhrase == other.getTxt_phrs();
+                assocInfoSame &= originalPhrase.equals(other.getTxt_phrs());
                 assocInfoSame &= originalCond == other.getCond();
                 assocInfoSame &= originalMult == other.getMult();
             }
             else if ( null != assr ){
                 assocInfoSame &= originalMult == assr.getMult();
             }
-            else assocInfoSame &= false;
         }
         else assocInfoSame &= false;
 
