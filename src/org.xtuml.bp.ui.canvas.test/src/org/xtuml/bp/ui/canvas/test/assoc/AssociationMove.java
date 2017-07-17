@@ -458,8 +458,19 @@ public class AssociationMove extends CanvasTest {
                 boolean reflexive_test;
                 boolean obj_imported_test;
                 if (element.contains("D1")) {
-                    // select any obj
-                    obj_target_test = true;
+                    // select any obj not in the same relationship (unless it is reflexive test)
+                    if ( element.contains("E1")) {
+                        obj_target_test = true;
+                    }
+                    else {
+                        ClassInAssociation_c dst_oir = ClassInAssociation_c.getOneR_OIROnR201(selected, new ClassQueryInterface_c() {
+                            @Override
+                            public boolean evaluate(Object candidate) {
+                                return ((ClassInAssociation_c)candidate).getRel_id().equals(src_oir.getRel_id());
+                            }
+                        });
+                        obj_target_test = null == dst_oir;
+                    }
                 }
                 else if (element.contains("D2")) {
                     // select an associative link in the same relationship
@@ -634,8 +645,25 @@ public class AssociationMove extends CanvasTest {
     */
     boolean checkResult_moveDisallowed(NonRootModelElement source, NonRootModelElement destination) {
         boolean moveDisallowed = false;
-        //TODO: Implement
-        moveDisallowed = true;
+
+        // get oir in this rel that is the same as the dst object
+        final ClassInAssociation_c src_oir = (ClassInAssociation_c)source;
+        final ModelClass_c dstObj;
+        if ( null == ImportedClass_c.getOneO_IOBJOnR8001((PackageableElement_c)destination) ) {
+            dstObj = ModelClass_c.getOneO_OBJOnR8001((PackageableElement_c)destination);
+        }
+        else dstObj = ModelClass_c.getOneO_OBJOnR101(ImportedClass_c.getOneO_IOBJOnR8001((PackageableElement_c)destination));
+        if ( null != dstObj ) {
+            ClassInAssociation_c oir = ClassInAssociation_c.getOneR_OIROnR201(testRel, new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate( Object candidate ) {
+                    return ((ClassInAssociation_c)candidate).getObj_id().equals(dstObj.getObj_id()) &&
+                           ((ClassInAssociation_c)candidate).getOir_id().equals(src_oir.getOir_id());
+                }
+            });
+            if ( null == oir ) moveDisallowed = true;
+        }
+ 
         return moveDisallowed;
     }
 
@@ -686,21 +714,21 @@ public class AssociationMove extends CanvasTest {
         boolean moveComplete = false;
 
         // get oir in this rel that is the same as the dst object
+        final ClassInAssociation_c src_oir = (ClassInAssociation_c)source;
         final ModelClass_c dstObj;
         if ( null == ImportedClass_c.getOneO_IOBJOnR8001((PackageableElement_c)destination) ) {
             dstObj = ModelClass_c.getOneO_OBJOnR8001((PackageableElement_c)destination);
         }
         else dstObj = ModelClass_c.getOneO_OBJOnR101(ImportedClass_c.getOneO_IOBJOnR8001((PackageableElement_c)destination));
         if ( null != dstObj ) {
-            ClassInAssociation_c[] oirs = ClassInAssociation_c.getManyR_OIRsOnR201(testRel, new ClassQueryInterface_c() {
+            ClassInAssociation_c oir = ClassInAssociation_c.getOneR_OIROnR201(testRel, new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate( Object candidate ) {
-                    return ((ClassInAssociation_c)candidate).getObj_id().equals(dstObj.getObj_id());
+                    return ((ClassInAssociation_c)candidate).getObj_id().equals(dstObj.getObj_id()) &&
+                           ((ClassInAssociation_c)candidate).getOir_id().equals(src_oir.getOir_id());
                 }
             });
-            if ( ( oirs.length == 1 && row_id.contains("E2") ) || ( oirs.length == 2 && row_id.contains("E1") ) ) {
-                moveComplete = true;
-            }
+            if ( null != oir ) moveComplete = true;
         }
 
         return moveComplete;
