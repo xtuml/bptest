@@ -73,6 +73,9 @@ public class AssociationTableEditorTests extends BaseTest {
 		pkg = Package_c.getOneEP_PKGOnR1401(m_sys,
 				candidate -> ((Package_c) candidate).getName().equals(testElementName));
 		editor = UITestingUtilities.getGraphicalEditorFor(pkg, true);
+		// enable association editor
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.ENABLE_TABLE_BASED_ASSOCIATION_EDITING, true);
 	};
 
 	@Test
@@ -293,20 +296,19 @@ public class AssociationTableEditorTests extends BaseTest {
 	@Test
 	public void testCMEAssociation() {
 		selectElement(getAssociation(1));
-		testContextMenu("Configure Association", new String[] { "1" }, true);
+		testContextMenu("Configure Associations", new String[] { "1" }, true);
 	}
 
 	@Test
 	public void testCMEMultipleAssociation() {
 		selectElement(getAssociation(1), getAssociation(2));
-		testContextMenu("Configure Association", new String[] { "1", "2" }, true);
+		testContextMenu("Configure Associations", new String[] { "1", "2" }, true);
 	}
 
 	@Test
 	public void testCMEAssociationAndClass() {
 		selectElement(getAssociation(1), getModelClass("D"));
-		// no heterogeneous cme support yet
-		testContextMenu(null, false);
+		testContextMenu("Configure Associations", new String[] { "1", "2", "5" }, true);
 	}
 
 	@Test
@@ -319,7 +321,6 @@ public class AssociationTableEditorTests extends BaseTest {
 
 	@Test
 	public void testCMESimpleAssociationSupertype() {
-		// no heterogeneous cme support yet
 		selectElement(getAssociation(1), getAssociation(3));
 		testContextMenu(null, false);
 	}
@@ -335,7 +336,7 @@ public class AssociationTableEditorTests extends BaseTest {
 		Association_c assoc = getAssociation(1);
 		ClassAsLink_c link = ClassAsLink_c.getOneR_ASSROnR211(LinkedAssociation_c.getManyR_ASSOCsOnR206(assoc));
 		selectElement(link);
-		testContextMenu("Configure Association", new String[] { "1" }, true);
+		testContextMenu("Configure Associations", new String[] { "1" }, true);
 	}
 
 	@Test
@@ -368,7 +369,7 @@ public class AssociationTableEditorTests extends BaseTest {
 	public void testCMEClassImportClass() {
 		selectElement(ImportedClass_c.getOneO_IOBJOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(pkg)),
 				getModelClass("A"));
-		testContextMenu(null, false);
+		testContextMenu("Configure Associations", new String[] { "1", "4", "6" }, true);
 	}
 
 	@Test
@@ -388,7 +389,7 @@ public class AssociationTableEditorTests extends BaseTest {
 	@Test
 	public void testCMEClassAndAttachedAssociation() {
 		selectElement(getAssociation(1), getModelClass("A"));
-		testContextMenu(null, false);
+		testContextMenu("Configure Associations", new String[] { "1" }, true);
 	}
 
 	@Test
@@ -400,7 +401,7 @@ public class AssociationTableEditorTests extends BaseTest {
 	@Test
 	public void testCMEReflexive() {
 		selectElement(getAssociation(7));
-		testContextMenu("Configure Association", new String[] { "7" }, true);
+		testContextMenu("Configure Associations", new String[] { "7" }, true);
 	}
 
 	@Test
