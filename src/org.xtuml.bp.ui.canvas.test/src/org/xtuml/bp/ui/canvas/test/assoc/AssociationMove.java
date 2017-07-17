@@ -694,9 +694,21 @@ public class AssociationMove extends CanvasTest {
     * @return true if the test succeeds, false if it fails
     */
     boolean checkResult_rectilinearCheck(NonRootModelElement source, NonRootModelElement destination) {
-        boolean rectilinearCheck = false;
-        //TODO: Implement
-        rectilinearCheck = true;
+        boolean rectilinearCheck = true; // start as true. "and" with each following result. if any result is false, the final result will be false
+        NonRootModelElement instance = Association_c.getOneR_RELOnR201((ClassInAssociation_c)source);
+        ClassAsLink_c assr = ClassAsLink_c.getOneR_ASSROnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203((ClassInAssociation_c)source));
+        if ( null != assr ) instance = assr;
+        else {
+            ClassAsSubtype_c sub = ClassAsSubtype_c.getOneR_SUBOnR205(ReferringClassInAssoc_c.getOneR_RGOOnR203((ClassInAssociation_c)source));
+            if ( null != sub ) instance = sub;
+        }
+        Connector_c connector = getConnectorInstance( instance );
+        LineSegment_c[] lines = LineSegment_c.getManyGD_LSsOnR6(connector);
+        for ( LineSegment_c line : lines ) {
+            Waypoint_c startPoint = Waypoint_c.getOneDIM_WAYOnR21(line);
+            Waypoint_c endPoint = Waypoint_c.getOneDIM_WAYOnR22(line);
+            rectilinearCheck &= ( ( startPoint.getPositionx() == endPoint.getPositionx() ) ^ ( startPoint.getPositiony() == endPoint.getPositiony() ) );
+        }
         return rectilinearCheck;
     }
 
