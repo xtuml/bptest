@@ -32,20 +32,44 @@
 //
 package org.xtuml.bp.ui.canvas.test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.SWTGraphics;
+import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.PaletteData;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.xtuml.bp.core.Association_c;
+import org.xtuml.bp.core.ClassAsLink_c;
+import org.xtuml.bp.core.ClassAsSubtype_c;
 import org.xtuml.bp.core.ClassStateMachine_c;
 import org.xtuml.bp.core.Component_c;
+import org.xtuml.bp.core.CorePlugin;
+import org.xtuml.bp.core.End_c;
 import org.xtuml.bp.core.InstanceStateMachine_c;
+import org.xtuml.bp.core.LinkedAssociation_c;
 import org.xtuml.bp.core.Package_c;
+import org.xtuml.bp.core.PackageableElement_c;
+import org.xtuml.bp.core.Style_c;
+import org.xtuml.bp.core.SubtypeSupertypeAssociation_c;
+import org.xtuml.bp.core.SystemModel_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.test.common.BaseTest;
+import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.test.common.OrderedRunner;
+import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.ElementSpecification_c;
 import org.xtuml.bp.ui.canvas.ModelSpecification_c;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
+import org.xtuml.bp.ui.graphics.figures.DecoratedPolylineConnection;
+import org.xtuml.bp.ui.graphics.parts.ConnectorEditPart;
 
 @RunWith(OrderedRunner.class)
 public class SymbolTest extends CanvasTest {
@@ -63,6 +87,7 @@ public class SymbolTest extends CanvasTest {
 		super.setUp();
 
 		loadProject("canvastest");
+		TestingUtilities.importTestingProjectIntoWorkspace("AssociationFeedbackTestModel");
 	}
 
 	protected String getResultName() {
@@ -159,4 +184,199 @@ public class SymbolTest extends CanvasTest {
 		assertNotNull(ms);
 		assertEquals(value, ms.getModel_type());
 	}
+	
+	private NonRootModelElement getAssociationForTest(int numb, Class<?> expectedClassType) {
+		SystemModel_c system = getSystemModel("AssociationFeedbackTestModel");
+		Package_c pkg = Package_c.getOneEP_PKGOnR1401(system, new ClassQueryInterface_c() {
+			
+			@Override
+			public boolean evaluate(Object candidate) {
+				return ((Package_c) candidate).getName().equals("AssociationFeedback");
+			}
+		});
+		Association_c assoc = Association_c.getOneR_RELOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(pkg), new ClassQueryInterface_c() {
+			
+			@Override
+			public boolean evaluate(Object candidate) {
+				return ((Association_c) candidate).getNumb() == numb;
+			}
+		});
+		if(expectedClassType == Association_c.class) {
+			return assoc;
+		}
+		if(expectedClassType == ClassAsLink_c.class) {
+			return ClassAsLink_c.getOneR_ASSROnR211(LinkedAssociation_c.getManyR_ASSOCsOnR206(assoc));
+		}
+		if(expectedClassType == ClassAsSubtype_c.class) {
+			ClassAsSubtype_c subtype = ClassAsSubtype_c.getOneR_SUBOnR213(SubtypeSupertypeAssociation_c.getManyR_SUBSUPsOnR206(assoc));
+			return subtype;
+		}
+		// unsupported type
+		return null;
+	}
+	
+	private boolean testGetConnectorStyle(NonRootModelElement element, boolean bold) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Method method = element.getClass().getMethod("Get_style", new Class[] {Integer.TYPE});
+		Object invoke = method.invoke(element, new Object[] {End_c.Additional});
+		if(bold) {
+			return ((Integer) invoke) == Style_c.Bold;
+		} else {
+			if(element instanceof ClassAsLink_c) {
+				return ((Integer) invoke) == Style_c.Broken;
+			}
+			return ((Integer) invoke) == Style_c.None || ((Integer) invoke) == Style_c.Solid;
+		}
+	}
+	
+	private boolean testBoldAssociationDrawing(NonRootModelElement element, boolean bold) {
+		UITestingUtilities.getGraphicalEditorFor(element.getFirstParentPackage(), true);
+		ConnectorEditPart editorPartFor = (ConnectorEditPart) UITestingUtilities.getEditorPartFor(element);
+		DecoratedPolylineConnection connectionFigure = (DecoratedPolylineConnection) editorPartFor.getConnectionFigure();
+		Image image = new Image(PlatformUI.getWorkbench().getDisplay(), new ImageData(1280, 1024, 24, new PaletteData(0,  0, 0)));
+		GC gc = new GC(image);
+		Graphics g = new SWTGraphics(gc);
+		connectionFigure.paintFigure(g);
+		// assert that the line width is 3 if bold, 1 if not
+		if(bold) {
+			return g.getLineWidth() == 3;
+		} else {
+			return g.getLineWidth() == 0;
+		}
+	}
+	
+	@Test
+	public void testSimpleAssociationFormalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 2
+		NonRootModelElement associationForTest = getAssociationForTest(2, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, true));
+	}
+	@Test
+	public void testSimpleAssociationUnformalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 1
+		NonRootModelElement associationForTest = getAssociationForTest(1, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+	}
+	
+	@Test
+	public void testLinkedAssociationFormalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 4
+		NonRootModelElement associationForTest = getAssociationForTest(4, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, true));
+		// also test class as link
+		associationForTest = getAssociationForTest(4, ClassAsLink_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, true));
+	}
+	@Test
+	public void testLinkedAssociationUnformalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 3
+		NonRootModelElement associationForTest = getAssociationForTest(3, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+		// also test class as link
+		associationForTest = getAssociationForTest(3, ClassAsLink_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));		
+	}
+
+	@Test
+	public void testSubSupAssociationFormalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 6
+		NonRootModelElement associationForTest = getAssociationForTest(6, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, true));
+		// also test class as subtype
+		associationForTest = getAssociationForTest(6, ClassAsSubtype_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, true));
+	}
+	@Test
+	public void testSubSupAssociationUnformalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 5
+		NonRootModelElement associationForTest = getAssociationForTest(5, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+		// also test class as subtype
+		associationForTest = getAssociationForTest(5, ClassAsSubtype_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+	}
+
+	@Test
+	public void testSimpleAssociationFormalizedBoldGraphics() {
+		// Association 2
+		NonRootModelElement associationForTest = getAssociationForTest(2, Association_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, true));
+	}
+	@Test
+	public void testSimpleAssociationUnformalizedBoldGraphics() {
+		// Association 1
+		NonRootModelElement associationForTest = getAssociationForTest(1, Association_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, false));
+	}
+	
+	@Test
+	public void testLinkedAssociationFormalizedBoldGraphics() {
+		// Association 4
+		NonRootModelElement associationForTest = getAssociationForTest(4, Association_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, true));
+		// also test class as link
+		associationForTest = getAssociationForTest(4, ClassAsLink_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, true));
+	}
+	@Test
+	public void testLinkedAssociationUnformalizedBoldGraphics() {
+		// Association 3
+		NonRootModelElement associationForTest = getAssociationForTest(3, Association_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, false));
+		// also test class as link
+		associationForTest = getAssociationForTest(3, ClassAsLink_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, false));		
+	}
+
+	@Test
+	public void testSubSupAssociationFormalizedBoldGraphics() {
+		// Association 6
+		NonRootModelElement associationForTest = getAssociationForTest(6, Association_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, true));
+		// also test class as subtype
+		associationForTest = getAssociationForTest(6, ClassAsSubtype_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, true));
+	}
+	@Test
+	public void testSubSupAssociationUnformalizedBoldGraphics() {
+		// Association 5
+		NonRootModelElement associationForTest = getAssociationForTest(5, Association_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, false));
+		// also test class as subtype
+		associationForTest = getAssociationForTest(5, ClassAsSubtype_c.class);
+		assertTrue(testBoldAssociationDrawing(associationForTest, false));
+	}
+	
+	@Test
+	public void testFeedbackPreferenceOffSimpleAssociatonFormalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 2
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.SHOW_FORMALIZATIONS, false);
+		NonRootModelElement associationForTest = getAssociationForTest(2, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.SHOW_FORMALIZATIONS, true);
+	}
+	
+	@Test
+	public void testFeedbackPreferenceOffLinkedAssociatonFormalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 4
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.SHOW_FORMALIZATIONS, false);
+		NonRootModelElement associationForTest = getAssociationForTest(4, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+		// also test class as link
+		associationForTest = getAssociationForTest(4, ClassAsLink_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.SHOW_FORMALIZATIONS, true);
+	}
+
+	@Test
+	public void testFeedbackPreferenceOffSubSupAssociatonFormalized() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		// Association 6
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.SHOW_FORMALIZATIONS, false);
+		NonRootModelElement associationForTest = getAssociationForTest(6, Association_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+		// also test class as subtype
+		associationForTest = getAssociationForTest(6, ClassAsSubtype_c.class);
+		assertTrue(testGetConnectorStyle(associationForTest, false));
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.SHOW_FORMALIZATIONS, false);
+	}
+
 }
