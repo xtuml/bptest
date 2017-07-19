@@ -337,6 +337,19 @@ public class AssociationMove extends CanvasTest {
      * @param element The degree of freedom instance to retrieve
      * @return A model element used in the test as specified by the test matrix
      */
+    NonRootModelElement selectABC(String element) {
+        return selectABC(element, null);
+    }
+
+    /**
+     * "ABC" is one of the degrees of freedom as specified in this issues
+     * test matrix.
+     * This routine gets the "ABC" instance from the given name.
+     * 
+     * @param element The degree of freedom instance to retrieve
+     * @param extraData Extra data needed for selection
+     * @return A model element used in the test as specified by the test matrix
+     */
     NonRootModelElement selectABC(String element, Object extraData) {
         NonRootModelElement nrme = null;
         Package_c testPackage = getTestPackage();
@@ -434,6 +447,19 @@ public class AssociationMove extends CanvasTest {
      * This routine gets the "DEFC" instance from the given name.
      * 
      * @param element The degree of freedom instance to retrieve
+     * @return A model element used in the test as specified by the test matrix
+     */
+    NonRootModelElement selectDEFC(String element) {
+        return selectDEFC(element, null);
+    }
+
+    /**
+     * "DEFC" is one of the degrees of freedom as specified in this issues
+     * test matrix.
+     * This routine gets the "DEFC" instance from the given name.
+     * 
+     * @param element The degree of freedom instance to retrieve
+     * @param extraData Extra data needed for selection
      * @return A model element used in the test as specified by the test matrix
      */
     NonRootModelElement selectDEFC(String element, Object extraData) {

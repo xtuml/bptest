@@ -51,7 +51,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E1F1C3", "1");
 
-        NonRootModelElement src = selectABC("A1B1C1", null);
+        NonRootModelElement src = selectABC("A1B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -77,7 +77,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E1F2C3", "2");
 
-        NonRootModelElement src = selectABC("A1B1C1", null);
+        NonRootModelElement src = selectABC("A1B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -103,7 +103,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F1C1", "3");
 
-        NonRootModelElement src = selectABC("A1B1C1", null);
+        NonRootModelElement src = selectABC("A1B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -129,7 +129,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F1C2", "4");
 
-        NonRootModelElement src = selectABC("A1B1C1", null);
+        NonRootModelElement src = selectABC("A1B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -155,7 +155,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F2C1", "5");
 
-        NonRootModelElement src = selectABC("A1B1C1", null);
+        NonRootModelElement src = selectABC("A1B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -180,7 +180,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C1", "D1E2F2C2", "6");
 
-        NonRootModelElement src = selectABC("A1B1C1", null);
+        NonRootModelElement src = selectABC("A1B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -205,7 +205,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E1F1C3", "7");
 
-        NonRootModelElement src = selectABC("A1B1C2", null);
+        NonRootModelElement src = selectABC("A1B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -231,7 +231,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E1F2C3", "8");
 
-        NonRootModelElement src = selectABC("A1B1C2", null);
+        NonRootModelElement src = selectABC("A1B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -257,7 +257,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F1C1", "9");
 
-        NonRootModelElement src = selectABC("A1B1C2", null);
+        NonRootModelElement src = selectABC("A1B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -283,7 +283,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F1C2", "10");
 
-        NonRootModelElement src = selectABC("A1B1C2", null);
+        NonRootModelElement src = selectABC("A1B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -309,7 +309,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F2C1", "11");
 
-        NonRootModelElement src = selectABC("A1B1C2", null);
+        NonRootModelElement src = selectABC("A1B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -334,7 +334,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B1C2", "D1E2F2C2", "12");
 
-        NonRootModelElement src = selectABC("A1B1C2", null);
+        NonRootModelElement src = selectABC("A1B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -359,7 +359,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E1F1C3", "13");
 
-        NonRootModelElement src = selectABC("A1B2C1", null);
+        NonRootModelElement src = selectABC("A1B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -385,7 +385,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E1F2C3", "14");
 
-        NonRootModelElement src = selectABC("A1B2C1", null);
+        NonRootModelElement src = selectABC("A1B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -411,7 +411,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F1C1", "15");
 
-        NonRootModelElement src = selectABC("A1B2C1", null);
+        NonRootModelElement src = selectABC("A1B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -437,7 +437,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F1C2", "16");
 
-        NonRootModelElement src = selectABC("A1B2C1", null);
+        NonRootModelElement src = selectABC("A1B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -463,7 +463,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F2C1", "17");
 
-        NonRootModelElement src = selectABC("A1B2C1", null);
+        NonRootModelElement src = selectABC("A1B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -488,7 +488,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C1", "D1E2F2C2", "18");
 
-        NonRootModelElement src = selectABC("A1B2C1", null);
+        NonRootModelElement src = selectABC("A1B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -513,7 +513,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E1F1C3", "19");
 
-        NonRootModelElement src = selectABC("A1B2C2", null);
+        NonRootModelElement src = selectABC("A1B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -539,7 +539,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E1F2C3", "20");
 
-        NonRootModelElement src = selectABC("A1B2C2", null);
+        NonRootModelElement src = selectABC("A1B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -565,7 +565,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F1C1", "21");
 
-        NonRootModelElement src = selectABC("A1B2C2", null);
+        NonRootModelElement src = selectABC("A1B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -591,7 +591,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F1C2", "22");
 
-        NonRootModelElement src = selectABC("A1B2C2", null);
+        NonRootModelElement src = selectABC("A1B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -617,7 +617,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F2C1", "23");
 
-        NonRootModelElement src = selectABC("A1B2C2", null);
+        NonRootModelElement src = selectABC("A1B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -642,7 +642,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A1B2C2", "D1E2F2C2", "24");
 
-        NonRootModelElement src = selectABC("A1B2C2", null);
+        NonRootModelElement src = selectABC("A1B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -667,7 +667,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E1F1C3", "25");
 
-        NonRootModelElement src = selectABC("A2B1C1", null);
+        NonRootModelElement src = selectABC("A2B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -693,7 +693,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E1F2C3", "26");
 
-        NonRootModelElement src = selectABC("A2B1C1", null);
+        NonRootModelElement src = selectABC("A2B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -719,7 +719,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F1C1", "27");
 
-        NonRootModelElement src = selectABC("A2B1C1", null);
+        NonRootModelElement src = selectABC("A2B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -745,7 +745,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F1C2", "28");
 
-        NonRootModelElement src = selectABC("A2B1C1", null);
+        NonRootModelElement src = selectABC("A2B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -771,7 +771,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F2C1", "29");
 
-        NonRootModelElement src = selectABC("A2B1C1", null);
+        NonRootModelElement src = selectABC("A2B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -796,7 +796,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C1", "D1E2F2C2", "30");
 
-        NonRootModelElement src = selectABC("A2B1C1", null);
+        NonRootModelElement src = selectABC("A2B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -821,7 +821,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E1F1C3", "31");
 
-        NonRootModelElement src = selectABC("A2B1C2", null);
+        NonRootModelElement src = selectABC("A2B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -847,7 +847,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E1F2C3", "32");
 
-        NonRootModelElement src = selectABC("A2B1C2", null);
+        NonRootModelElement src = selectABC("A2B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -873,7 +873,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F1C1", "33");
 
-        NonRootModelElement src = selectABC("A2B1C2", null);
+        NonRootModelElement src = selectABC("A2B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -899,7 +899,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F1C2", "34");
 
-        NonRootModelElement src = selectABC("A2B1C2", null);
+        NonRootModelElement src = selectABC("A2B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -925,7 +925,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F2C1", "35");
 
-        NonRootModelElement src = selectABC("A2B1C2", null);
+        NonRootModelElement src = selectABC("A2B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -950,7 +950,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A2B1C2", "D1E2F2C2", "36");
 
-        NonRootModelElement src = selectABC("A2B1C2", null);
+        NonRootModelElement src = selectABC("A2B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -975,7 +975,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E1F1C3", "37");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -1001,7 +1001,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E1F2C3", "38");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -1027,7 +1027,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F1C1", "39");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -1053,7 +1053,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F1C2", "40");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -1079,7 +1079,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F2C1", "41");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -1104,7 +1104,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D1E2F2C2", "42");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -1129,7 +1129,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D2E2F1C3", "43");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -1152,7 +1152,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C1", "D2E2F2C3", "44");
 
-        NonRootModelElement src = selectABC("A3B1C1", null);
+        NonRootModelElement src = selectABC("A3B1C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -1175,7 +1175,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E1F1C3", "45");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -1201,7 +1201,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E1F2C3", "46");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -1227,7 +1227,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F1C1", "47");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -1253,7 +1253,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F1C2", "48");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -1279,7 +1279,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F2C1", "49");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -1304,7 +1304,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D1E2F2C2", "50");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -1329,7 +1329,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D2E2F1C3", "51");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -1352,7 +1352,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B1C2", "D2E2F2C3", "52");
 
-        NonRootModelElement src = selectABC("A3B1C2", null);
+        NonRootModelElement src = selectABC("A3B1C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -1375,7 +1375,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E1F1C3", "53");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -1401,7 +1401,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E1F2C3", "54");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -1427,7 +1427,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F1C1", "55");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -1453,7 +1453,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F1C2", "56");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -1479,7 +1479,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F2C1", "57");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -1504,7 +1504,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D1E2F2C2", "58");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -1529,7 +1529,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D2E2F1C3", "59");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -1552,7 +1552,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C1", "D2E2F2C3", "60");
 
-        NonRootModelElement src = selectABC("A3B2C1", null);
+        NonRootModelElement src = selectABC("A3B2C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -1575,7 +1575,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E1F1C3", "61");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -1601,7 +1601,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E1F2C3", "62");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -1627,7 +1627,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F1C1", "63");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -1653,7 +1653,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F1C2", "64");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -1679,7 +1679,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F2C1", "65");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -1704,7 +1704,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D1E2F2C2", "66");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -1729,7 +1729,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D2E2F1C3", "67");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -1752,7 +1752,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A3B2C2", "D2E2F2C3", "68");
 
-        NonRootModelElement src = selectABC("A3B2C2", null);
+        NonRootModelElement src = selectABC("A3B2C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -1775,7 +1775,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D1E1F1C3", "69");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -1801,7 +1801,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D1E1F2C3", "70");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -1827,7 +1827,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D1E2F1C1", "71");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -1853,7 +1853,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D1E2F1C2", "72");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -1879,7 +1879,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D1E2F2C1", "73");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -1904,7 +1904,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D1E2F2C2", "74");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -1929,7 +1929,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D2E2F1C3", "75");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -1952,7 +1952,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C1", "D2E2F2C3", "76");
 
-        NonRootModelElement src = selectABC("A4B1C1", null);
+        NonRootModelElement src = selectABC("A4B1C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -1975,7 +1975,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D1E1F1C3", "77");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -2001,7 +2001,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D1E1F2C3", "78");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -2027,7 +2027,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D1E2F1C1", "79");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -2053,7 +2053,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D1E2F1C2", "80");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -2079,7 +2079,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D1E2F2C1", "81");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -2104,7 +2104,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D1E2F2C2", "82");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -2129,7 +2129,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D2E2F1C3", "83");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -2152,7 +2152,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B1C2", "D2E2F2C3", "84");
 
-        NonRootModelElement src = selectABC("A4B1C2", null);
+        NonRootModelElement src = selectABC("A4B1C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -2175,7 +2175,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D1E1F1C3", "85");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -2201,7 +2201,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D1E1F2C3", "86");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -2227,7 +2227,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D1E2F1C1", "87");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -2253,7 +2253,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D1E2F1C2", "88");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -2279,7 +2279,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D1E2F2C1", "89");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -2304,7 +2304,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D1E2F2C2", "90");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -2329,7 +2329,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D2E2F1C3", "91");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -2352,7 +2352,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C1", "D2E2F2C3", "92");
 
-        NonRootModelElement src = selectABC("A4B2C1", null);
+        NonRootModelElement src = selectABC("A4B2C1");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -2375,7 +2375,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D1E1F1C3", "93");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F1C3", src);
 
@@ -2401,7 +2401,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D1E1F2C3", "94");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E1F2C3", src);
 
@@ -2427,7 +2427,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D1E2F1C1", "95");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -2453,7 +2453,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D1E2F1C2", "96");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -2479,7 +2479,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D1E2F2C1", "97");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -2504,7 +2504,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D1E2F2C2", "98");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -2529,7 +2529,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D2E2F1C3", "99");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F1C3", src);
 
@@ -2552,7 +2552,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A4B2C2", "D2E2F2C3", "100");
 
-        NonRootModelElement src = selectABC("A4B2C2", null);
+        NonRootModelElement src = selectABC("A4B2C2");
 
         NonRootModelElement dest = selectDEFC("D2E2F2C3", src);
 
@@ -2575,7 +2575,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F1C1", "101");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -2601,7 +2601,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F1C2", "102");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -2627,7 +2627,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F2C1", "103");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -2652,7 +2652,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D1E2F2C2", "104");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -2677,7 +2677,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D3E2F1C3", "105");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D3E2F1C3", src);
 
@@ -2700,7 +2700,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D3E2F2C3", "106");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D3E2F2C3", src);
 
@@ -2723,7 +2723,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D4E2F1C3", "107");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D4E2F1C3", src);
 
@@ -2746,7 +2746,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C1", "D4E2F2C3", "108");
 
-        NonRootModelElement src = selectABC("A5B1C1", null);
+        NonRootModelElement src = selectABC("A5B1C1");
 
         NonRootModelElement dest = selectDEFC("D4E2F2C3", src);
 
@@ -2769,7 +2769,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F1C1", "109");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -2795,7 +2795,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F1C2", "110");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -2821,7 +2821,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F2C1", "111");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -2846,7 +2846,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D1E2F2C2", "112");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -2871,7 +2871,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D3E2F1C3", "113");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D3E2F1C3", src);
 
@@ -2894,7 +2894,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D3E2F2C3", "114");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D3E2F2C3", src);
 
@@ -2917,7 +2917,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D4E2F1C3", "115");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D4E2F1C3", src);
 
@@ -2940,7 +2940,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B1C2", "D4E2F2C3", "116");
 
-        NonRootModelElement src = selectABC("A5B1C2", null);
+        NonRootModelElement src = selectABC("A5B1C2");
 
         NonRootModelElement dest = selectDEFC("D4E2F2C3", src);
 
@@ -2963,7 +2963,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F1C1", "117");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -2989,7 +2989,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F1C2", "118");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -3015,7 +3015,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F2C1", "119");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -3040,7 +3040,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D1E2F2C2", "120");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -3065,7 +3065,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D3E2F1C3", "121");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D3E2F1C3", src);
 
@@ -3088,7 +3088,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D3E2F2C3", "122");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D3E2F2C3", src);
 
@@ -3111,7 +3111,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D4E2F1C3", "123");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D4E2F1C3", src);
 
@@ -3134,7 +3134,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C1", "D4E2F2C3", "124");
 
-        NonRootModelElement src = selectABC("A5B2C1", null);
+        NonRootModelElement src = selectABC("A5B2C1");
 
         NonRootModelElement dest = selectDEFC("D4E2F2C3", src);
 
@@ -3157,7 +3157,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F1C1", "125");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -3183,7 +3183,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F1C2", "126");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -3209,7 +3209,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F2C1", "127");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -3234,7 +3234,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D1E2F2C2", "128");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -3259,7 +3259,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D3E2F1C3", "129");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D3E2F1C3", src);
 
@@ -3282,7 +3282,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D3E2F2C3", "130");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D3E2F2C3", src);
 
@@ -3305,7 +3305,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D4E2F1C3", "131");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D4E2F1C3", src);
 
@@ -3328,7 +3328,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A5B2C2", "D4E2F2C3", "132");
 
-        NonRootModelElement src = selectABC("A5B2C2", null);
+        NonRootModelElement src = selectABC("A5B2C2");
 
         NonRootModelElement dest = selectDEFC("D4E2F2C3", src);
 
@@ -3351,7 +3351,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F1C1", "133");
 
-        NonRootModelElement src = selectABC("A6B1C1", null);
+        NonRootModelElement src = selectABC("A6B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -3377,7 +3377,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F1C2", "134");
 
-        NonRootModelElement src = selectABC("A6B1C1", null);
+        NonRootModelElement src = selectABC("A6B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -3403,7 +3403,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F2C1", "135");
 
-        NonRootModelElement src = selectABC("A6B1C1", null);
+        NonRootModelElement src = selectABC("A6B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -3428,7 +3428,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C1", "D1E2F2C2", "136");
 
-        NonRootModelElement src = selectABC("A6B1C1", null);
+        NonRootModelElement src = selectABC("A6B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -3453,7 +3453,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C1", "D6E2F1C3", "137");
 
-        NonRootModelElement src = selectABC("A6B1C1", null);
+        NonRootModelElement src = selectABC("A6B1C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -3476,7 +3476,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C1", "D6E2F2C3", "138");
 
-        NonRootModelElement src = selectABC("A6B1C1", null);
+        NonRootModelElement src = selectABC("A6B1C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
@@ -3499,7 +3499,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F1C1", "139");
 
-        NonRootModelElement src = selectABC("A6B1C2", null);
+        NonRootModelElement src = selectABC("A6B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -3525,7 +3525,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F1C2", "140");
 
-        NonRootModelElement src = selectABC("A6B1C2", null);
+        NonRootModelElement src = selectABC("A6B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -3551,7 +3551,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F2C1", "141");
 
-        NonRootModelElement src = selectABC("A6B1C2", null);
+        NonRootModelElement src = selectABC("A6B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -3576,7 +3576,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C2", "D1E2F2C2", "142");
 
-        NonRootModelElement src = selectABC("A6B1C2", null);
+        NonRootModelElement src = selectABC("A6B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -3601,7 +3601,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C2", "D6E2F1C3", "143");
 
-        NonRootModelElement src = selectABC("A6B1C2", null);
+        NonRootModelElement src = selectABC("A6B1C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -3624,7 +3624,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B1C2", "D6E2F2C3", "144");
 
-        NonRootModelElement src = selectABC("A6B1C2", null);
+        NonRootModelElement src = selectABC("A6B1C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
@@ -3647,7 +3647,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F1C1", "145");
 
-        NonRootModelElement src = selectABC("A6B2C1", null);
+        NonRootModelElement src = selectABC("A6B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -3673,7 +3673,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F1C2", "146");
 
-        NonRootModelElement src = selectABC("A6B2C1", null);
+        NonRootModelElement src = selectABC("A6B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -3699,7 +3699,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F2C1", "147");
 
-        NonRootModelElement src = selectABC("A6B2C1", null);
+        NonRootModelElement src = selectABC("A6B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -3724,7 +3724,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C1", "D1E2F2C2", "148");
 
-        NonRootModelElement src = selectABC("A6B2C1", null);
+        NonRootModelElement src = selectABC("A6B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -3749,7 +3749,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C1", "D6E2F1C3", "149");
 
-        NonRootModelElement src = selectABC("A6B2C1", null);
+        NonRootModelElement src = selectABC("A6B2C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -3772,7 +3772,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C1", "D6E2F2C3", "150");
 
-        NonRootModelElement src = selectABC("A6B2C1", null);
+        NonRootModelElement src = selectABC("A6B2C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
@@ -3795,7 +3795,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F1C1", "151");
 
-        NonRootModelElement src = selectABC("A6B2C2", null);
+        NonRootModelElement src = selectABC("A6B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -3821,7 +3821,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F1C2", "152");
 
-        NonRootModelElement src = selectABC("A6B2C2", null);
+        NonRootModelElement src = selectABC("A6B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -3847,7 +3847,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F2C1", "153");
 
-        NonRootModelElement src = selectABC("A6B2C2", null);
+        NonRootModelElement src = selectABC("A6B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -3872,7 +3872,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C2", "D1E2F2C2", "154");
 
-        NonRootModelElement src = selectABC("A6B2C2", null);
+        NonRootModelElement src = selectABC("A6B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -3897,7 +3897,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C2", "D6E2F1C3", "155");
 
-        NonRootModelElement src = selectABC("A6B2C2", null);
+        NonRootModelElement src = selectABC("A6B2C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -3920,7 +3920,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A6B2C2", "D6E2F2C3", "156");
 
-        NonRootModelElement src = selectABC("A6B2C2", null);
+        NonRootModelElement src = selectABC("A6B2C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
@@ -3943,7 +3943,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F1C1", "157");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -3969,7 +3969,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F1C2", "158");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -3995,7 +3995,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F2C1", "159");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -4020,7 +4020,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D1E2F2C2", "160");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -4045,7 +4045,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D5E2F1C3", "161");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D5E2F1C3", src);
 
@@ -4068,7 +4068,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D5E2F2C3", "162");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D5E2F2C3", src);
 
@@ -4091,7 +4091,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D6E2F1C3", "163");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -4114,7 +4114,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C1", "D6E2F2C3", "164");
 
-        NonRootModelElement src = selectABC("A7B1C1", null);
+        NonRootModelElement src = selectABC("A7B1C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
@@ -4137,7 +4137,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F1C1", "165");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -4163,7 +4163,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F1C2", "166");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -4189,7 +4189,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F2C1", "167");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -4214,7 +4214,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D1E2F2C2", "168");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -4239,7 +4239,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D5E2F1C3", "169");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D5E2F1C3", src);
 
@@ -4262,7 +4262,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D5E2F2C3", "170");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D5E2F2C3", src);
 
@@ -4285,7 +4285,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D6E2F1C3", "171");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -4308,7 +4308,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B1C2", "D6E2F2C3", "172");
 
-        NonRootModelElement src = selectABC("A7B1C2", null);
+        NonRootModelElement src = selectABC("A7B1C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
@@ -4331,7 +4331,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F1C1", "173");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -4357,7 +4357,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F1C2", "174");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -4383,7 +4383,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F2C1", "175");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -4408,7 +4408,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D1E2F2C2", "176");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -4433,7 +4433,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D5E2F1C3", "177");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D5E2F1C3", src);
 
@@ -4456,7 +4456,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D5E2F2C3", "178");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D5E2F2C3", src);
 
@@ -4479,7 +4479,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D6E2F1C3", "179");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -4502,7 +4502,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C1", "D6E2F2C3", "180");
 
-        NonRootModelElement src = selectABC("A7B2C1", null);
+        NonRootModelElement src = selectABC("A7B2C1");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
@@ -4525,7 +4525,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F1C1", "181");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C1", src);
 
@@ -4550,7 +4550,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F1C2", "182");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F1C2", src);
 
@@ -4575,7 +4575,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F2C1", "183");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C1", src);
 
@@ -4600,7 +4600,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D1E2F2C2", "184");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D1E2F2C2", src);
 
@@ -4625,7 +4625,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D5E2F1C3", "185");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D5E2F1C3", src);
 
@@ -4648,7 +4648,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D5E2F2C3", "186");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D5E2F2C3", src);
 
@@ -4671,7 +4671,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D6E2F1C3", "187");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F1C3", src);
 
@@ -4694,7 +4694,7 @@ public class AssociationMove_0 extends AssociationMove {
         setUp();
         test_id = getTestId("A7B2C2", "D6E2F2C3", "188");
 
-        NonRootModelElement src = selectABC("A7B2C2", null);
+        NonRootModelElement src = selectABC("A7B2C2");
 
         NonRootModelElement dest = selectDEFC("D6E2F2C3", src);
 
