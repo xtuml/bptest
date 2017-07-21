@@ -1,13 +1,5 @@
 package org.xtuml.bp.welcome.test;
 //=====================================================================
-//
-//File:      $RCSfile: WelcomePageTest.java,v $
-//Version:   $Revision: 1.17 $
-//Modified:  $Date: 2013/01/10 23:05:14 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -26,10 +18,7 @@ import java.util.Properties;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,14 +31,14 @@ import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
+import org.xtuml.bp.utilities.ui.ProjectUtilities;
 import org.xtuml.bp.welcome.gettingstarted.GettingStartedLiveHelpAction;
 import org.xtuml.bp.welcome.gettingstarted.SampleProjectGettingStartedAction;
-
-import junit.framework.TestCase;
 @RunWith(OrderedRunner.class)
-public class WelcomePageTest extends TestCase {
+public class WelcomePageTest extends BaseTest {
 
 	private IProject project;
+	private final String ProjectName = "MicrowaveOven";
 
 	private String[] expectedXtUMLFiles = {".externalToolBuilders/Model Compiler.launch",
 	"models/MicrowaveOven/MicrowaveOven.xtuml"};
@@ -57,6 +46,7 @@ public class WelcomePageTest extends TestCase {
 	private String[] expectedFiles =expectedXtUMLFiles;
 	
 	private String markingFolder = "gen/";
+	private String codeGenFolder = "code_generation/";
 
 	private String[] MC3020Files = {
             markingFolder + "datatype.mark",
@@ -74,14 +64,6 @@ public class WelcomePageTest extends TestCase {
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 	
-//	// enforce ordering of tests in this class
-//	@Test
-//	public void testWelcomePageMicrowaveProject() throws CoreException, Exception {
-//		testProjectCreation();
-//		testExternalEntityDefaults();
-//		testExternalEntityDefaultsTemplateProject();
-//	}
-
 	public void runGettingStartedAction() {
 		// create and run new instances of GettingStartedAction
 		GettingStartedLiveHelpAction gsAction = new GettingStartedLiveHelpAction();
@@ -89,7 +71,7 @@ public class WelcomePageTest extends TestCase {
 		gsAction.run();
 	}
 
-	public boolean projectExists(String projectName) {
+	public boolean projectReady(String projectName) {
 		// Check that project exists in the workspace
 		// and that it is indeed an xtUML project
 		boolean projectExists = false;
@@ -126,7 +108,7 @@ public class WelcomePageTest extends TestCase {
 	}
 
 	public void verifyProjectCreated() {
-		boolean projectExists = projectExists("MicrowaveOven");
+		boolean projectExists = projectReady("MicrowaveOven");
 		if (projectExists)
 			containsProjectMembers();
 	}
@@ -174,4 +156,61 @@ public class WelcomePageTest extends TestCase {
 		}
 	}
 
+	@Test
+	public void testBuildProjectWithNoGenFolder() {
+        // Verify that <project>.sql file from pre-builder is created when no gen/ folder
+		// exists in the project
+
+        TestUtil.selectButtonInDialog(1000, "Yes");
+		runGettingStartedAction();
+        TestingUtilities.allowJobCompletion();
+
+        verifyProjectCreated();
+
+        final IProject project = ProjectUtilities.getProject(ProjectName);
+
+        // delete the gen/ folder
+        IFile genDir = project.getFile(markingFolder);
+        assertTrue("Expected directory: " + genDir.getName() + " exists and it should not.", !genDir.exists());
+        
+        // build
+        try {
+            ProjectUtilities.buildProject(project);
+		} catch (Exception e) {
+			fail("Failed to build the project. " + e.getMessage()); //$NON-NLS-1$
+		}
+        
+        // make sure pre-builder output exists
+        IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
+        assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
+	}
+	
+	@Test
+	public void testBuildProjectWithNoCodeGenFolder() {
+        // Verify that <project>.sql file from pre-builder is created when no gen/code_generation/ folder
+		// exists in the project
+
+        TestUtil.selectButtonInDialog(1000, "Yes");
+		runGettingStartedAction();
+        TestingUtilities.allowJobCompletion();
+
+        verifyProjectCreated();
+
+        final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(ProjectName);
+
+        // delete the gen/code_generation/ folder
+        IFile codeGenDir = project.getFile(markingFolder + codeGenFolder);
+        assertTrue("Expected directory: " + codeGenDir.getName() + " exists and it should not.", !codeGenDir.exists());
+        
+        // build
+        try {
+            ProjectUtilities.buildProject(project);
+		} catch (Exception e) {
+			fail("Failed to build the project. " + e.getMessage()); //$NON-NLS-1$
+		}
+        
+        // make sure pre-builder output exists
+        IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
+        assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
+	}
 }
