@@ -479,6 +479,9 @@ public class TestUtil
                 TableItem[] items = table.getItems();
                 return items;
             }
+            else if (child_set[i] instanceof Table) {
+            	return ((Table) child_set[i]).getItems();
+            }
             else if ( child_set[i] instanceof Composite )
             {
                 TableItem[] result = getTableItems((Composite)child_set[i]);
