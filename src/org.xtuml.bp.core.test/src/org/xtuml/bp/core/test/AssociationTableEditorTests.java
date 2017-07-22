@@ -188,43 +188,44 @@ public class AssociationTableEditorTests extends BaseTest {
 	}
 	
 	boolean wizardOpened = false;
+// Disabled for now as it can cause UI hangs resulting in non-complete builds
 	
-	@Test
-	public void testFormalizeBinary() {
-		wizardOpened = false;
-		selectElement(getAssociation(2));
-		testDialog(tab -> {
-			tab.getTableViewer().setSelection(new StructuredSelection(getAssociation(2)));
-			Button formalizeButton = tab.getFormalizeButton();
-			Thread thread = new Thread(() -> {
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					TestCase.fail("Unable to wait for test dialog");
-				}
-				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-					Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-					if (shell != null && !shell.isDisposed() && shell.getData() instanceof WizardDialog) {
-						WizardDialog wd = (WizardDialog) shell.getData();
-						IWizardPage currentPage = wd.getCurrentPage();
-						if (currentPage instanceof BinaryFormalizeOnR_RELWizardPage1) {
-							wizardOpened = true;
-							Button cancel = TestUtil.findButton(shell, "Cancel");
-							cancel.notifyListeners(SWT.Selection, null);
-							return;
-						}
-					}
-					Button cancel = TestUtil.findButton(shell, "Cancel");
-					cancel.notifyListeners(SWT.Selection, null);
-				});
-			});
-			thread.start();
-			formalizeButton.setSelection(!formalizeButton.getSelection());
-			formalizeButton.notifyListeners(SWT.Selection, null);
-			UIUtil.dispatchAll();
-			assertTrue("Binary association formalize wizard did not open with configuration dialog.", wizardOpened);
-		});
-	}
+//	@Test
+//	public void testFormalizeBinary() {
+//		wizardOpened = false;
+//		selectElement(getAssociation(2));
+//		testDialog(tab -> {
+//			tab.getTableViewer().setSelection(new StructuredSelection(getAssociation(2)));
+//			Button formalizeButton = tab.getFormalizeButton();
+//			Thread thread = new Thread(() -> {
+//				try {
+//					Thread.sleep(500);
+//				} catch (InterruptedException e) {
+//					TestCase.fail("Unable to wait for test dialog");
+//				}
+//				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+//					Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+//					if (shell != null && !shell.isDisposed() && shell.getData() instanceof WizardDialog) {
+//						WizardDialog wd = (WizardDialog) shell.getData();
+//						IWizardPage currentPage = wd.getCurrentPage();
+//						if (currentPage instanceof BinaryFormalizeOnR_RELWizardPage1) {
+//							wizardOpened = true;
+//							Button cancel = TestUtil.findButton(shell, "Cancel");
+//							cancel.notifyListeners(SWT.Selection, null);
+//							return;
+//						}
+//					}
+//					Button cancel = TestUtil.findButton(shell, "Cancel");
+//					cancel.notifyListeners(SWT.Selection, null);
+//				});
+//			});
+//			thread.start();
+//			formalizeButton.setSelection(!formalizeButton.getSelection());
+//			formalizeButton.notifyListeners(SWT.Selection, null);
+//			UIUtil.dispatchAll();
+//			assertTrue("Binary association formalize wizard did not open with configuration dialog.", wizardOpened);
+//		});
+//	}
 
 	@Test
 	public void testUnformalizeBinary() {
@@ -242,41 +243,43 @@ public class AssociationTableEditorTests extends BaseTest {
 		TransactionManager.getSingleton().getUndoAction().run();
 	}
 	
-	@Test
-	public void testFormalizeLinked() {
-		wizardOpened = false;
-		selectElement(getAssociation(8));
-		testDialog(tab -> {
-			tab.getTableViewer().setSelection(new StructuredSelection(getAssociation(8)));
-			Button formalizeButton = tab.getFormalizeButton();
-			Thread thread = new Thread(() -> {
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					TestCase.fail("Unable to wait for test dialog");
-				}
-				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-					Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-					if (shell != null && !shell.isDisposed() && shell.getData() instanceof WizardDialog) {
-						WizardDialog wd = (WizardDialog) shell.getData();
-						if (wd.getCurrentPage() instanceof LinkedFormalizeOnR_ASSRWizardPage1) {
-							wizardOpened = true;
-							Button cancel = TestUtil.findButton(shell, "Cancel");
-							cancel.notifyListeners(SWT.Selection, null);
-							return;
-						}
-					}
-					Button cancel = TestUtil.findButton(shell, "Cancel");
-					cancel.notifyListeners(SWT.Selection, null);
-				});
-			});
-			thread.start();
-			formalizeButton.setSelection(!formalizeButton.getSelection());
-			formalizeButton.notifyListeners(SWT.Selection, null);
-			UIUtil.dispatchAll();
-			assertTrue("Linked association formalize wizard did not open.", wizardOpened);
-		});		
-	}
+// Disabled for now as it can cause UI hangs resulting in non-complete builds
+
+//	@Test
+//	public void testFormalizeLinked() {
+//		wizardOpened = false;
+//		selectElement(getAssociation(8));
+//		testDialog(tab -> {
+//			tab.getTableViewer().setSelection(new StructuredSelection(getAssociation(8)));
+//			Button formalizeButton = tab.getFormalizeButton();
+//			Thread thread = new Thread(() -> {
+//				try {
+//					Thread.sleep(500);
+//				} catch (InterruptedException e) {
+//					TestCase.fail("Unable to wait for test dialog");
+//				}
+//				PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+//					Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+//					if (shell != null && !shell.isDisposed() && shell.getData() instanceof WizardDialog) {
+//						WizardDialog wd = (WizardDialog) shell.getData();
+//						if (wd.getCurrentPage() instanceof LinkedFormalizeOnR_ASSRWizardPage1) {
+//							wizardOpened = true;
+//							Button cancel = TestUtil.findButton(shell, "Cancel");
+//							cancel.notifyListeners(SWT.Selection, null);
+//							return;
+//						}
+//					}
+//					Button cancel = TestUtil.findButton(shell, "Cancel");
+//					cancel.notifyListeners(SWT.Selection, null);
+//				});
+//			});
+//			thread.start();
+//			formalizeButton.setSelection(!formalizeButton.getSelection());
+//			formalizeButton.notifyListeners(SWT.Selection, null);
+//			UIUtil.dispatchAll();
+//			assertTrue("Linked association formalize wizard did not open.", wizardOpened);
+//		});		
+//	}
 
 	@Test
 	public void testUnformalizeLinked() {
