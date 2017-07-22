@@ -15,9 +15,11 @@ package org.xtuml.bp.welcome.test;
 
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
@@ -62,6 +64,12 @@ public class WelcomePageTest extends BaseTest {
 	@Override
 	public void setUp() {
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+	}
+	
+	@Override
+	public void tearDown() throws Exception {
+		super.tearDown();
+		BaseTest.logFileCheckingEnabled = true;
 	}
 	
 	public void runGettingStartedAction() {
@@ -171,7 +179,13 @@ public class WelcomePageTest extends BaseTest {
 
         // delete the gen/ folder
         IFile genDir = project.getFile(markingFolder);
-        assertTrue("Expected directory: " + genDir.getName() + " exists and it should not.", !genDir.exists());
+        IPath location = genDir.getLocation();
+        java.io.File genDirFile = null;
+        if (location != null) { 
+        	genDirFile = location.toFile();
+        	FileUtils.deleteQuietly(genDirFile);
+            assertFalse("Directory " + genDir.getName() + " exists and it should not.", directoryExists(genDirFile));
+        }
         
         // build
         try {
@@ -183,6 +197,9 @@ public class WelcomePageTest extends BaseTest {
         // make sure pre-builder output exists
         IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
         assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
+        
+        // Don't care if the log is empty or not
+		BaseTest.logFileCheckingEnabled = false;
 	}
 	
 	@Test
@@ -200,7 +217,13 @@ public class WelcomePageTest extends BaseTest {
 
         // delete the gen/code_generation/ folder
         IFile codeGenDir = project.getFile(markingFolder + codeGenFolder);
-        assertTrue("Expected directory: " + codeGenDir.getName() + " exists and it should not.", !codeGenDir.exists());
+        IPath location = codeGenDir.getLocation();
+        java.io.File codeGenDirFile = null;
+        if (location != null) { 
+        	codeGenDirFile = location.toFile();
+        	FileUtils.deleteQuietly(codeGenDirFile);
+            assertFalse("Directory " + codeGenDir.getName() + " exists and it should not.", directoryExists(codeGenDirFile));
+        }
         
         // build
         try {
@@ -212,5 +235,21 @@ public class WelcomePageTest extends BaseTest {
         // make sure pre-builder output exists
         IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
         assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
+
+        // Don't care if the log is empty or not
+		BaseTest.logFileCheckingEnabled = false;
+	}
+	
+	private boolean directoryExists(java.io.File res) {
+		// Tests to see if a file or directory exists
+		boolean rVal = true;
+	    try {
+	    	FileUtils.sizeOf(res); 
+	    } catch (NullPointerException npe) {
+	    	rVal = false;
+	    } catch (IllegalArgumentException iae) {
+	    	rVal = false;
+	    }
+	    return rVal;
 	}
 }
