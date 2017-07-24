@@ -22,6 +22,8 @@ package org.xtuml.bp.welcome.test;
 //=====================================================================
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IFile;
@@ -34,13 +36,16 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.ExternalEntity_c;
@@ -55,8 +60,11 @@ import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
+import org.xtuml.bp.test.common.ZipUtil;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.utilities.ui.TreeUtilities;
+import org.xtuml.bp.welcome.WelcomePlugin;
+import org.xtuml.bp.welcome.gettingstarted.IGettingStartedConstants;
 import org.xtuml.bp.welcome.gettingstarted.SampleProjectGettingStartedAction;
 
 import junit.framework.TestCase;
@@ -90,6 +98,9 @@ public class WelcomePageTestGPS extends TestCase {
             markingFolder + "class.mark",
             markingFolder + "domain.mark"
             };
+	
+	@Rule
+    public TemporaryFolder tempFolder= new TemporaryFolder();
 
 	@Override
 	public void setUp() {
@@ -101,15 +112,21 @@ public class WelcomePageTestGPS extends TestCase {
 	}
 
 	public void runGPSGettingStartedAction() {
-		runGPSGettingStartedAction(true);
+		runGPSGettingStartedAction(true, "");
 	}
 	
-	public void runGPSGettingStartedAction(boolean importIntoWorkspace) {
+	public void runGPSGettingStartedAction(boolean importIntoWorkspace, String tempFolder) {
+		String singleFileModel = "zip";
+		String model = "GPS Watch";
+		if (!importIntoWorkspace) {
+			singleFileModel = tempFolder;
+		}
+		
 		// create and run new instances of GettingStarted for the GPS Watch model
 		SampleProjectGettingStartedAction action = new SampleProjectGettingStartedAction();
 		Properties props = new Properties();
-		props.put("model", "GPS Watch");
-		props.put("SingleFileModel", "zip");
+		props.put("model", model);
+		props.put("SingleFileModel", singleFileModel);
 		props.put("ImportIntoWorkspace", (importIntoWorkspace ? "true" : "false"));
 		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
@@ -425,12 +442,41 @@ public class WelcomePageTestGPS extends TestCase {
 		}
 	}
 	
+	/**
+	 * Get the path to this test plugin
+	 * 
+	 * @param entry
+	 * @return
+	 */
+	public static String getEntryPath(String entry) {
+		URL url = TestPlugin.getDefault().getBundle().getEntry(entry);
+		URL resolvedURL = null;
+		String result = "";
+		try {
+			resolvedURL =  Platform.resolve(url);
+			result = resolvedURL.getPath();
+		} catch (IOException e) {
+			System.err.println("Unable to resolve URL for entry: " + entry + ".  " + e.getLocalizedMessage()); //$NON-NLS-1$
+		}
+		return result;
+	}
+	
+    public static IPath getPluginPathAbsolute() {
+        IPath relPath = new Path( getEntryPath("") ); //$NON-NLS-1$
+        return relPath.makeAbsolute();
+    }
+    
 	@Test
-	public void testProjectCreationNoImportIntoworkspace() throws CoreException {
+	public void testProjectCreationNoImportIntoworkspace() throws Exception {
         TestingUtilities.deleteProject(ProjectName);	        
+
         
-        // The false parameter specifies to NOT import into workspace
-		runGPSGettingStartedAction(false);
+        String zipFilePath = WelcomePlugin.getPluginPathAbsolute() + IGettingStartedConstants.modelFolder + "/GPS Watch.zip";
+        File projectFolder = tempFolder.newFolder("GPS Watch");
+        ZipUtil.unzipFileContents(zipFilePath, tempFolder.getRoot().getAbsolutePath());
+        
+        // The false parameter specifies to NOT import into workspace        
+		runGPSGettingStartedAction(false, projectFolder.getAbsolutePath());
 		
 		verifyProjectCreated();
 
