@@ -101,12 +101,19 @@ public class WelcomePageTestGPS extends TestCase {
 	}
 
 	public void runGPSGettingStartedAction() {
+		runGPSGettingStartedAction(true);
+	}
+	
+	public void runGPSGettingStartedAction(boolean importIntoWorkspace) {
 		// create and run new instances of GettingStarted for the GPS Watch model
 		SampleProjectGettingStartedAction action = new SampleProjectGettingStartedAction();
 		Properties props = new Properties();
 		props.put("model", "GPS Watch");
 		props.put("SingleFileModel", "zip");
+		props.put("ImportIntoWorkspace", (importIntoWorkspace ? "true" : "false"));
+		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
+		TestingUtilities.allowJobCompletion();
 	}
 
 	public boolean projectReady(String projectName) {
@@ -130,18 +137,23 @@ public class WelcomePageTestGPS extends TestCase {
 
 	public void containsProjectMembers() {
 		/*
-		 * spot check the xtUML, Edge, and 3020 files
+		 * check the xtUML files/*
 		 */
 		for (int i = 0; i < expectedFiles.length; i++) {
 			IFile file = project.getFile(expectedFiles[i]);
 			assertTrue("Expected file: " + file.getName() + " does not exist.",
 					file.exists());
 		}
+		
+		/*
+		 * check the mc3020 files
+		 */
 		for (int i = 0; i < MC3020Files.length; i++) {
 			IFile file = project.getFile(MC3020Files[i]);
 			assertTrue("Expected file: " + file.getName() + " does not exist.",
 					file.exists());
 		}
+		
 	}
 
 	public void verifyProjectCreated() {
@@ -156,9 +168,6 @@ public class WelcomePageTestGPS extends TestCase {
 		
 		TestUtil.selectButtonInDialog(3000, "Yes");
 		runGPSGettingStartedAction();
-
-		// Give the import time to work
-		TestUtil.sleepWithDispatchOfEvents(7000);
 
 		verifyProjectCreated();
 	}
@@ -191,10 +200,7 @@ public class WelcomePageTestGPS extends TestCase {
 		
 		TestUtil.selectButtonInDialog(1000, "Yes");
 		runGPSGettingStartedAction();
-		
-		// Give the import time to work
-		TestUtil.sleepWithDispatchOfEvents(5000);
-		
+				
 		// We said to overwrite, so the dummy file should not be there
 		assertFalse("The project was not overwritten when it should have been.",
 				dummyFile.exists());
@@ -213,7 +219,6 @@ public class WelcomePageTestGPS extends TestCase {
 			System.out.println("Import number: " + String.valueOf(i+1));
 			TestUtil.selectButtonInDialog(1000, "Yes");
 			runGPSGettingStartedAction();
-			TestingUtilities.allowJobCompletion();
 			
 			verifyProjectCreated();
 	
@@ -246,7 +251,6 @@ public class WelcomePageTestGPS extends TestCase {
         // unmodified by the build (re-export skipped) when an update is not needed.
         TestUtil.selectButtonInDialog(1000, "Yes");
         runGPSGettingStartedAction();
-        TestingUtilities.allowJobCompletion();
 
         verifyProjectCreated();
 
@@ -259,7 +263,7 @@ public class WelcomePageTestGPS extends TestCase {
         
         // Second build.  Wait a while, then build again without touching the 
         // model data.  The pre-builder should not re-export.
-        TestUtil.sleepWithDispatchOfEvents(15000);
+		TestingUtilities.allowJobCompletion();
         buildProject(project);
         checkForErrors();
         long secondPrebuildOutputTimestamp = getPrebuildOutputTimestamp();
@@ -268,7 +272,7 @@ public class WelcomePageTestGPS extends TestCase {
 
         // Third build.  Wait a while, touch the model data by adding a meaningless
         // attribute to a class, then build again. The pre-builder should re-export.
-        TestUtil.sleepWithDispatchOfEvents(15000);
+		TestingUtilities.allowJobCompletion();
         String modelRootId = Ooaofooa.createModelRootId(ProjectName, "Library", true);
         Ooaofooa modelRoot = Ooaofooa.getInstance(modelRootId, true);
         ModelClass_c obj = ModelClass_c.ModelClassInstance(modelRoot, 
@@ -289,7 +293,7 @@ public class WelcomePageTestGPS extends TestCase {
         assertNotNull(attribute);
         attribute.setName("dummy");
         attribute.getPersistableComponent().persist();
-        TestUtil.sleepWithDispatchOfEvents(2000);
+		TestingUtilities.allowJobCompletion();
         buildProject(project);
         checkForErrors();
         long thirdPrebuildOutputTimestamp = getPrebuildOutputTimestamp();
@@ -338,6 +342,8 @@ public class WelcomePageTestGPS extends TestCase {
 			String elements = TreeUtilities.getTextResultForOrphanedElementList(orphaned);
 	        assertTrue("Orphaned elements are present: " + elements, false);			
 		}		
+		// this is a regression test for issue 9556
+		assertTrue("Expected tree items are missing from the Model Explorer View", topItem.getItemCount()==15);
 	}
 	
 	private void buildProject(final IProject project) throws Exception {
@@ -388,9 +394,6 @@ public class WelcomePageTestGPS extends TestCase {
 		TestUtil.selectButtonInDialog(1000, "Yes");
 		runGPSGettingStartedAction();
 
-		// Give the import time to work
-		TestUtil.sleepWithDispatchOfEvents(5000);
-
 		verifyProjectCreated();
 
 		SystemModel_c system = SystemModel_c.SystemModelInstance(
@@ -420,5 +423,19 @@ public class WelcomePageTestGPS extends TestCase {
 				}
 			}
 		}
+	}
+	
+	@Test
+	public void testProjectCreationNoImportIntoworkspace() throws CoreException {
+        TestingUtilities.deleteProject(ProjectName);	        
+        
+        // The false parameter specifies to NOT import into workspace
+		runGPSGettingStartedAction(false);
+		
+		verifyProjectCreated();
+
+		checkForErrors();
+		
+        TestingUtilities.deleteProject(ProjectName);	        
 	}
 }

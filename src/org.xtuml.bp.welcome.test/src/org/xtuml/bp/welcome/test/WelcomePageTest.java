@@ -133,6 +133,7 @@ public class WelcomePageTest extends BaseTest {
 		Properties props = new Properties();
 		props.put("model", "TemplateProject");
 		props.put("SingleFileModel", "false");
+		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
 		
 		SystemModel_c system = SystemModel_c.SystemModelInstance(
