@@ -78,6 +78,11 @@ public class AssociationTableEditorTests extends BaseTest {
 				.setValue(BridgePointPreferencesStore.ENABLE_TABLE_BASED_ASSOCIATION_EDITING, true);
 	};
 
+	@Override
+	public void tearDown() throws Exception {
+		super.tearDown();
+		BaseTest.dispatchEvents();
+	}
 	@Test
 	public void testFirstElementSelectedAndEditorStarted() {
 		selectElement(getAssociation(1));
