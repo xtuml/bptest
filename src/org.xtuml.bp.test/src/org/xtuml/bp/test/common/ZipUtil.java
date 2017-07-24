@@ -47,8 +47,13 @@ public class ZipUtil {
 		while(entry != null) {
 			File file = new File(outputFolder + File.separator + entry.getName());
 			if(entry.isDirectory()) {
-				file.mkdir();
+				file.mkdirs();
 			} else { 
+				// create any folders that may be specified in the file name path
+				// this is needed because folder entries are not always specified separately
+				if (file.getParentFile() != null && !file.getParentFile().exists()) {
+					file.getParentFile().mkdirs();
+				}
 				FileOutputStream fos = new FileOutputStream(file);
 				int length;
 				while((length = zis.read(buffer)) > 0) {
