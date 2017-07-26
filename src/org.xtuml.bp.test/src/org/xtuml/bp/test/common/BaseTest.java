@@ -458,7 +458,11 @@ public class BaseTest extends TestCase {
 					
 					if(entry.getMessage().contains("Could not load SWT style")) {
 						// ignore as it provides no benefit to our testing
-						// this it ouside of our code and related to OS configuration
+						// this it outside of our code and related to OS configuration
+						continue;
+					}
+					
+					if(entry.getMessage().contains("System property http.nonProxyHosts has been set to local")) {
 						continue;
 					}
 					
