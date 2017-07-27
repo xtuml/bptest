@@ -73,7 +73,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.menus.DynamicMenuContributionItem;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.properties.PropertySheet;
@@ -236,30 +235,6 @@ public class UITestingUtilities {
 		return withAccelerator.replaceFirst("&", "");
 	}
 	
-	public static boolean checkItemStatus(MenuItem item, boolean readonly) {
-		// verify the item
-		// if item is enabled
-		if (item.isEnabled()) {
-			// and is read only
-			if (readonly) {
-				// item should be disabled
-				return false;
-			} else {
-				// item is fine
-				return true;
-			}
-		} else {
-			// if item is disabled
-			// switch the returns
-			if (readonly) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-	}
-	
 	public static boolean checkItemStatusInContextMenu(Menu menu, String text, String childMenu, boolean readonly) {
     	
     	MenuItem[] items = getMenuItems(menu, childMenu);
@@ -267,10 +242,28 @@ public class UITestingUtilities {
     	// find the item in question
     	for(int i = 0; items != null && i < items.length; i++) {
     		if(removeAccelerator(items[i].getText()).indexOf(text) != -1) {
-    			return checkItemStatus(items[i], readonly);
-    		}    		
+    			// verify the item
+    			// if item is enabled
+    			if(items[i].isEnabled()) {
+    				// and is read only
+    				if(readonly) {
+    					// item should be disabled
+    					return false;
+    				} else {
+    					// item is fine
+    					return true;
+    				}
+    			} else {
+    				// if item is disabled
+    				// switch the returns
+    				if(readonly) {
+    					return true;
+    				} else {
+    					return false;
+    				}
+    			}
+    		}
     	}
-    	
     	// action was not found
     	return false;
     }
@@ -424,75 +417,33 @@ public class UITestingUtilities {
 		activateMenuItem(item);
 	}
 	
-	public static boolean checkItemStatusInContextMenuByPath(Menu menu, String path, boolean readonly) {
-		MenuItem item = getMenuItemByPath(menu, path);
-		return checkItemStatus(item, readonly);
-	}
-	
-	public static MenuItem[] getMenuItemsAtPath(Menu menu, String path) {
-		String[] menuPath = path.split("::");
-		String lastMenu = menuPath[menuPath.length - 1];
-		if (menuPath.length > 1) {
-			MenuItem item = null;
-			for (int i = 0; i < menuPath.length; i++) {
-				MenuItem[] children = getMenuItems(menu, "");
-				for (int j = 0; j < children.length; j++) {
-					if (removeAccelerator(children[j].getText()).equals(menuPath[i])) {
-						item = children[j];
-						if (item.getData() instanceof MenuManager) {
-							MenuManager manager = (MenuManager) item.getData();
-							menu = manager.getMenu();
-							if(item.getText().equals(lastMenu)) {
-								return getMenuItems(menu, "");
-							}
-						} else if (item.getMenu() != null) {
-							menu = item.getMenu();
-							if(item.getText().equals(lastMenu)) {
-								return getMenuItems(menu, "");
-							}
-						}
-						break;
-					}
-				}
-			}
-		}
-		return new MenuItem[0];
-	}
-	
-	public static MenuItem getMenuItemByPath(Menu menu, String path) {
+	public static void activateMenuItem(Menu menu, String name) {
 		// if the given name is a menu path, split it and execute
 		// the final menu item
-		String[] menuPath = path.split("::");
-		if (menuPath.length > 1) {
+		String[] menuPath = name.split("::");
+		if(menuPath.length > 1) {
 			MenuItem item = null;
-			for (int i = 0; i < menuPath.length; i++) {
+			for(int i = 0; i < menuPath.length; i++) {
 				MenuItem[] children = getMenuItems(menu, "");
-				for (int j = 0; j < children.length; j++) {
-					if (removeAccelerator(children[j].getText()).equals(menuPath[i])) {
+				for(int j = 0; j < children.length; j++) {
+					if(removeAccelerator(children[j].getText()).equals(menuPath[i])) {
 						item = children[j];
-						if (item.getData() instanceof MenuManager) {
+						if(item.getData() instanceof MenuManager) {
 							MenuManager manager = (MenuManager) item.getData();
 							menu = manager.getMenu();
-						} else if (item.getMenu() != null && i != menuPath.length - 1) {
-							menu = item.getMenu();
 						}
 						break;
 					}
 				}
-				if (item != null && !(item.getData() instanceof MenuManager) && item.getMenu() == null) {
+				if(item != null && !(item.getData() instanceof MenuManager)) {
 					break;
 				}
 			}
-			return item;
+			activateMenuItem(item);
 		} else {
-			MenuItem item = getMenuItem(menu, path);
-			return item;
-		}
-	}
-	
-	public static void activateMenuItem(Menu menu, String name) {
-		MenuItem item =getMenuItemByPath(menu, name);
+		MenuItem item = getMenuItem(menu, name);
 		activateMenuItem(item);
+	}
 		BaseTest.dispatchEvents();
 	}
 
