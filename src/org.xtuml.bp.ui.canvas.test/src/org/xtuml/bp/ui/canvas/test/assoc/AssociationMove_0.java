@@ -72,6 +72,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A1B1C1) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA1B1C1_D1E1F2C3() throws Exception {
         setUp();
@@ -93,6 +94,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A1B1C1) and row (D1E2F1C1).
@@ -226,6 +228,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A1B1C2) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA1B1C2_D1E1F2C3() throws Exception {
         setUp();
@@ -247,6 +250,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A1B1C2) and row (D1E2F1C1).
@@ -380,6 +384,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A1B2C1) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA1B2C1_D1E1F2C3() throws Exception {
         setUp();
@@ -401,6 +406,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A1B2C1) and row (D1E2F1C1).
@@ -534,6 +540,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A1B2C2) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA1B2C2_D1E1F2C3() throws Exception {
         setUp();
@@ -555,6 +562,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A1B2C2) and row (D1E2F1C1).
@@ -688,6 +696,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A2B1C1) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA2B1C1_D1E1F2C3() throws Exception {
         setUp();
@@ -709,6 +718,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A2B1C1) and row (D1E2F1C1).
@@ -842,6 +852,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A2B1C2) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA2B1C2_D1E1F2C3() throws Exception {
         setUp();
@@ -863,6 +874,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A2B1C2) and row (D1E2F1C1).
@@ -996,6 +1008,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A3B1C1) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA3B1C1_D1E1F2C3() throws Exception {
         setUp();
@@ -1017,6 +1030,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A3B1C1) and row (D1E2F1C1).
@@ -1196,6 +1210,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A3B1C2) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA3B1C2_D1E1F2C3() throws Exception {
         setUp();
@@ -1217,6 +1232,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A3B1C2) and row (D1E2F1C1).
@@ -1396,6 +1412,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A3B2C1) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA3B2C1_D1E1F2C3() throws Exception {
         setUp();
@@ -1417,6 +1434,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A3B2C1) and row (D1E2F1C1).
@@ -1596,6 +1614,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A3B2C2) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA3B2C2_D1E1F2C3() throws Exception {
         setUp();
@@ -1617,6 +1636,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A3B2C2) and row (D1E2F1C1).
@@ -1796,6 +1816,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A4B1C1) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA4B1C1_D1E1F2C3() throws Exception {
         setUp();
@@ -1817,6 +1838,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A4B1C1) and row (D1E2F1C1).
@@ -1996,6 +2018,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A4B1C2) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA4B1C2_D1E1F2C3() throws Exception {
         setUp();
@@ -2017,6 +2040,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A4B1C2) and row (D1E2F1C1).
@@ -2196,6 +2220,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A4B2C1) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA4B2C1_D1E1F2C3() throws Exception {
         setUp();
@@ -2217,6 +2242,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A4B2C1) and row (D1E2F1C1).
@@ -2396,6 +2422,7 @@ public class AssociationMove_0 extends AssociationMove {
      * Perform the test for the given matrix column (A4B2C2) and row (D1E1F2C3).
      * 
      */
+    /*
     @Test
     public void testA4B2C2_D1E1F2C3() throws Exception {
         setUp();
@@ -2417,6 +2444,7 @@ public class AssociationMove_0 extends AssociationMove {
         }
         tearDown();
     }
+    */
 
     /**
      * Perform the test for the given matrix column (A4B2C2) and row (D1E2F1C1).
