@@ -37,10 +37,10 @@ public class AssociationCardinalityMenuTests extends BaseTest {
 	
 	@Override
 	protected void initialSetup() throws Exception {
-		TestingUtilities.importTestingProjectIntoWorkspace(modelName);
+		TestingUtilities.importTestingProjectIntoWorkspace(modelName + "CardinalityMenu");
 		UIUtil.dispatchAll();
-		m_sys = getSystemModel(modelName);
-		modelRoot = Ooaofooa.getInstance("/AssociationEditing/models/AssociationEditing/AssociationEditing/AssociationEditing.xtuml");
+		m_sys = getSystemModel(modelName + "CardinalityMenu");
+		modelRoot = Ooaofooa.getInstance("/AssociationEditingCardinalityMenu/models/AssociationEditingCardinalityMenu/AssociationEditing/AssociationEditing.xtuml");
 		pkg = Package_c.getOneEP_PKGOnR1401(m_sys,
 				candidate -> ((Package_c) candidate).getName().equals(modelName));
 		editor = UITestingUtilities.getGraphicalEditorFor(pkg, true);
