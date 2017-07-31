@@ -31,6 +31,7 @@ import org.xtuml.bp.ui.canvas.test.anchors.GraphicalAnchorTests_0;
 import org.xtuml.bp.ui.canvas.test.movement.ConnectorMoveTests_0;
 import org.xtuml.bp.ui.canvas.test.routing.RectilinearRoutingTests_0;
 import org.xtuml.bp.ui.canvas.test.assoc.AssociationMove_0;
+import org.xtuml.bp.ui.canvas.test.assoc.AssociationMoveGPS;
 
 import junit.framework.TestSuite;
 
@@ -46,6 +47,7 @@ import junit.framework.TestSuite;
     ConnectorMoveTests_0.class,
     RectilinearRoutingTests_0.class,
     AssociationMove_0.class,
+    AssociationMoveGPS.class,
 })
 public class GlobalsCanvasSuite2 extends TestSuite {
 
