@@ -46,8 +46,8 @@ public class AssociationMove extends CanvasTest {
     private String row_id = "";
     private String column_id = "";
 
-    private Association_c testRel;
-    private UUID testOirId;
+    protected Association_c testRel;
+    protected UUID testOirId;
 
     private int originalRelNum;
     private String originalPhrase;
@@ -60,6 +60,10 @@ public class AssociationMove extends CanvasTest {
 
     public AssociationMove(String subTypeClassName, String subTypeArg0) {
         super(subTypeClassName, subTypeArg0);
+    }
+    
+    protected String getTestModel() {
+        return "AssociationMoveTests";
     }
 
     protected String getTestId(String src, String dest, String count) {
@@ -84,7 +88,7 @@ public class AssociationMove extends CanvasTest {
             
             WorkspaceUtil.setAutobuilding(false);
 
-            loadProject("AssociationMoveTests");
+            loadProject(getTestModel());
 
             CorePlugin.disableParseAllOnResourceChange();
 
@@ -111,7 +115,7 @@ public class AssociationMove extends CanvasTest {
         CanvasTransactionListener.enableReconciler();
     }
     
-    private Package_c getTestPackage() {
+    protected Package_c getTestPackage() {
         Package_c result = Package_c.getOneEP_PKGOnR1401(m_sys, new ClassQueryInterface_c() {
             @Override
             public boolean evaluate(Object selected) {
