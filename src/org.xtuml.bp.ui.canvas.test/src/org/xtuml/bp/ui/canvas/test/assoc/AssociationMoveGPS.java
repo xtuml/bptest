@@ -51,7 +51,7 @@ public class AssociationMoveGPS extends AssociationMove {
     }
     
     @Override
-    NonRootModelElement selectABC(String element, Object extraData) {
+    NonRootModelElement selectABCE(String element, Object extraData) {
         NonRootModelElement nrme = null;
         Package_c testPackage = getTestPackage();
         
@@ -98,11 +98,11 @@ public class AssociationMoveGPS extends AssociationMove {
         setUp();
         test_id = getTestId("R14.'has open'", "Display", "1");
 
-        NonRootModelElement src = selectABC( null );
+        NonRootModelElement src = selectABCE( null );
 
         NonRootModelElement dest = selectDEFC( null );
 
-        ABC_DEFC_Action(src, dest);
+        ABCE_DEFC_Action(src, dest);
         assertTrue("The move was not completed correctly.", checkResult_moveComplete(src,dest));
         assertTrue("The association details were not preserved.", checkResult_assocInfoSame(src,dest));
         assertTrue("The association is formalized after move.", checkResult_assocUnformal(src,dest));

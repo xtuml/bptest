@@ -71,7 +71,7 @@ public class AssociationMove extends CanvasTest {
         row_id = dest;
         return "test_" + count;
     }
-    
+
     @Before
     public void setUp() throws Exception {
         super.setUp();
@@ -119,10 +119,23 @@ public class AssociationMove extends CanvasTest {
         Package_c result = Package_c.getOneEP_PKGOnR1401(m_sys, new ClassQueryInterface_c() {
             @Override
             public boolean evaluate(Object selected) {
-                return ((Package_c)selected).getName().equals(column_id);
+                return ((Package_c)selected).getName().contains(column_id) ||
+                       column_id.contains(((Package_c)selected).getName());
             }
         });
         return result;
+    }
+    
+    private boolean sourceIsReflexive( ClassInAssociation_c src_oir ) {
+        ModelClass_c obj = ModelClass_c.getOneO_OBJOnR201( src_oir );
+        Association_c rel = Association_c.getOneR_RELOnR201( src_oir );
+        ClassInAssociation_c[] oirs = ClassInAssociation_c.getManyR_OIRsOnR201( rel, new ClassQueryInterface_c() {
+            @Override
+            public boolean evaluate(Object candidate) {
+                return ((ClassInAssociation_c)candidate).getObj_id().equals( obj.getObj_id() );
+            }
+        });
+        return oirs.length > 1;
     }
     
     private boolean targetIsReflexive( ClassInAssociation_c src_oir, final ModelClass_c target_obj ) {
@@ -334,31 +347,31 @@ public class AssociationMove extends CanvasTest {
     }
 
     /**
-     * "ABC" is one of the degrees of freedom as specified in this issues
+     * "ABCE" is one of the degrees of freedom as specified in this issues
      * test matrix.
-     * This routine gets the "ABC" instance from the given name.
+     * This routine gets the "ABCE" instance from the given name.
      * 
      * @param element The degree of freedom instance to retrieve
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectABC(String element) {
-        return selectABC(element, null);
+    NonRootModelElement selectABCE(String element) {
+        return selectABCE(element, null);
     }
 
     /**
-     * "ABC" is one of the degrees of freedom as specified in this issues
+     * "ABCE" is one of the degrees of freedom as specified in this issues
      * test matrix.
-     * This routine gets the "ABC" instance from the given name.
+     * This routine gets the "ABCE" instance from the given name.
      * 
      * @param element The degree of freedom instance to retrieve
      * @param extraData Extra data needed for selection
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectABC(String element, Object extraData) {
+    NonRootModelElement selectABCE(String element, Object extraData) {
         NonRootModelElement nrme = null;
         Package_c testPackage = getTestPackage();
 
-        // select an OIR with the combination of all three tests
+        // select an OIR with the combination of all four tests
         nrme = ClassInAssociation_c.getOneR_OIROnR201(Association_c.getManyR_RELsOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(testPackage)),
                 new ClassQueryInterface_c() {
                     @Override
@@ -367,6 +380,7 @@ public class AssociationMove extends CanvasTest {
                         boolean oir_type_test;
                         boolean rel_formalized_test;
                         boolean oir_imported_test;
+                        boolean oir_reflexive_test;
                         if (element.contains("A1")) {
                             // select all simple participants
                             ClassAsSimpleParticipant_c part = ClassAsSimpleParticipant_c.getOneR_PARTOnR204(ReferredToClassInAssoc_c.getOneR_RTOOnR203(selected));
@@ -435,7 +449,16 @@ public class AssociationMove extends CanvasTest {
                         else {
                             oir_imported_test = false;
                         }
-                        return oir_type_test && rel_formalized_test && oir_imported_test;
+                        if (element.contains("E1")) {
+                            oir_reflexive_test = sourceIsReflexive(selected);
+                        }
+                        else if (element.contains("E2")) {
+                            oir_reflexive_test = !sourceIsReflexive(selected);
+                        }
+                        else {
+                            oir_reflexive_test = false;
+                        }
+                        return oir_type_test && rel_formalized_test && oir_imported_test && oir_reflexive_test;
                     }
                 });
 
@@ -579,7 +602,7 @@ public class AssociationMove extends CanvasTest {
      * @param columnInstance Model instance from the column
      * @param rowInstance Model instance from the row
      */
-    void ABC_DEFC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
+    void ABCE_DEFC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
         // cache the relationship info
         cacheRelInfo( (ClassInAssociation_c)columnInstance );
 
