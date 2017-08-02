@@ -78,6 +78,8 @@ public class AssociationTableEditorTests extends BaseTest {
 	@Override
 	public void tearDown() throws Exception {
 		super.tearDown();
+		CorePlugin.getDefault().getPreferenceStore()
+				.setValue(BridgePointPreferencesStore.ENABLE_TABLE_BASED_ASSOCIATION_EDITING, false);
 		BaseTest.dispatchEvents();
 	}
 	@Test
