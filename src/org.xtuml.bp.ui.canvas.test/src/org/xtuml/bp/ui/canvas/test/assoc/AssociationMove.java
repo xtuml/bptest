@@ -214,6 +214,29 @@ public class AssociationMove extends CanvasTest {
             if ( null == anchor || !anchor.getElementid().equals(node.getElementid()) ) anchor = null;
         }
 
+        // for reflexives, check if this is the "start" or "end" oir
+        if ( representsCon instanceof Association_c && ((Association_c)representsCon).Is_reflexive() ) {
+            int end = End_c.End;
+            SimpleAssociation_c r_simp = SimpleAssociation_c.getOneR_SIMPOnR206( (Association_c)representsCon );
+            if ( null != r_simp && oir.getOir_id().equals( ClassAsSimpleParticipant_c.getOneR_PARTOnR207( r_simp ).getOir_id() ) ) {
+                end = End_c.Start;
+            }
+            else {
+                LinkedAssociation_c r_assoc = LinkedAssociation_c.getOneR_ASSOCOnR206( (Association_c)representsCon );
+                if ( null != r_assoc && oir.getOir_id().equals( ClassAsAssociatedOneSide_c.getOneR_AONEOnR209( r_assoc ).getOir_id()) ) {
+                    end = End_c.Start;
+                }
+            }
+            if ( End_c.Start == end ) {
+                anchor = Graphconnector_c.getOneDIM_CONOnR320(edge);
+                if ( null == anchor || !anchor.getElementid().equals(node.getElementid()) ) anchor = null;
+            }
+            else {
+                anchor = Graphconnector_c.getOneDIM_CONOnR321(edge);
+                if ( null == anchor || !anchor.getElementid().equals(node.getElementid()) ) anchor = null;
+            }
+        }
+
         assertNotNull("Unable to find graphical elements for testing.", anchor);
 
         return anchor;
@@ -462,7 +485,7 @@ public class AssociationMove extends CanvasTest {
                     }
                 });
 
-        assertTrue("An instance with degree of freedom type \"ABC\" was not found.  Instance Name: " + element + ".", nrme!=null);
+        assertTrue("An instance with degree of freedom type \"ABCE\" was not found.  Instance Name: " + element + ".", nrme!=null);
         testRel = Association_c.getOneR_RELOnR201((ClassInAssociation_c)nrme);
         testOirId = ((ClassInAssociation_c)nrme).getOir_id();
         return nrme;

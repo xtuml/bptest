@@ -69,7 +69,7 @@ public class AssociationMoveGPS extends AssociationMove {
             }
         })));
 
-        assertTrue("An instance with degree of freedom type \"ABC\" was not found.  Instance Name: " + element + ".", nrme!=null);
+        assertTrue("An instance with degree of freedom type \"ABCE\" was not found.  Instance Name: " + element + ".", nrme!=null);
         testRel = Association_c.getOneR_RELOnR201((ClassInAssociation_c)nrme);
         testOirId = ((ClassInAssociation_c)nrme).getOir_id();
         return nrme;
