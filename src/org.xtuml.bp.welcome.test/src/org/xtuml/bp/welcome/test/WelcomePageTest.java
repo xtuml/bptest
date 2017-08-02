@@ -33,7 +33,6 @@ import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
-import org.xtuml.bp.utilities.ui.ProjectUtilities;
 import org.xtuml.bp.welcome.gettingstarted.GettingStartedLiveHelpAction;
 import org.xtuml.bp.welcome.gettingstarted.SampleProjectGettingStartedAction;
 @RunWith(OrderedRunner.class)
@@ -176,7 +175,7 @@ public class WelcomePageTest extends BaseTest {
 
         verifyProjectCreated();
 
-        final IProject project = ProjectUtilities.getProject(ProjectName);
+        final IProject project = TestingUtilities.getProject(ProjectName);
 
         // delete the gen/ folder
         IFile genDir = project.getFile(markingFolder);
@@ -190,7 +189,7 @@ public class WelcomePageTest extends BaseTest {
         
         // build
         try {
-            ProjectUtilities.buildProject(project);
+            TestingUtilities.buildProject(project);
 		} catch (Exception e) {
 			fail("Failed to build the project. " + e.getMessage()); //$NON-NLS-1$
 		}
@@ -228,7 +227,7 @@ public class WelcomePageTest extends BaseTest {
         
         // build
         try {
-            ProjectUtilities.buildProject(project);
+            TestingUtilities.buildProject(project);
 		} catch (Exception e) {
 			fail("Failed to build the project. " + e.getMessage()); //$NON-NLS-1$
 		}
