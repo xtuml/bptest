@@ -29,6 +29,8 @@ import org.xtuml.bp.core.test.ActionTestGenerics;
 import org.xtuml.bp.core.test.AssignClassTestGenerics;
 import org.xtuml.bp.core.test.AssignComponentTestGenerics;
 import org.xtuml.bp.core.test.AssignRemoveEventsGenerics;
+import org.xtuml.bp.core.test.AssociationCardinalityMenuTests;
+import org.xtuml.bp.core.test.AssociationTableEditorTests;
 import org.xtuml.bp.core.test.AttributeMenuItemTestGenerics;
 import org.xtuml.bp.core.test.CantHappenEvtIgnoreEvtTestsGenerics;
 import org.xtuml.bp.core.test.CoreGlobalsTestSuiteIGenerics;
@@ -63,6 +65,8 @@ import junit.framework.TestSuite;
 		GlobalTestSetupClass.class,
 		CoreGlobalsTestSuiteIGenerics.class,
 		CoreTestSuiteIGenerics.class,
+		AssociationCardinalityMenuTests.class,
+		AssociationTableEditorTests.class,
 		ModificationValidationTestsGenerics.class,
 		PreferencesTests.class,
 		SetTypeTestGenerics.class,
