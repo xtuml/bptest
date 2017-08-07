@@ -19,8 +19,11 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,8 +38,10 @@ import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.welcome.gettingstarted.GettingStartedLiveHelpAction;
 import org.xtuml.bp.welcome.gettingstarted.SampleProjectGettingStartedAction;
+
+import junit.framework.TestCase;
 @RunWith(OrderedRunner.class)
-public class WelcomePageTest extends BaseTest {
+public class WelcomePageTest extends TestCase {
 
 	private IProject project;
 	private final String ProjectName = "MicrowaveOven";
@@ -65,12 +70,14 @@ public class WelcomePageTest extends BaseTest {
 		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 	
-	@Override
-	public void tearDown() throws Exception {
-		super.tearDown();
-		BaseTest.logFileCheckingEnabled = true;
-	}
-	
+//	// enforce ordering of tests in this class
+//	@Test
+//	public void testWelcomePageMicrowaveProject() throws CoreException, Exception {
+//		testProjectCreation();
+//		testExternalEntityDefaults();
+//		testExternalEntityDefaultsTemplateProject();
+//	}
+
 	public void runGettingStartedAction() {
 		// create and run new instances of GettingStartedAction
 		GettingStartedLiveHelpAction gsAction = new GettingStartedLiveHelpAction();
@@ -78,7 +85,7 @@ public class WelcomePageTest extends BaseTest {
 		gsAction.run();
 	}
 
-	public boolean projectReady(String projectName) {
+	public boolean projectExists(String projectName) {
 		// Check that project exists in the workspace
 		// and that it is indeed an xtUML project
 		boolean projectExists = false;
@@ -115,7 +122,7 @@ public class WelcomePageTest extends BaseTest {
 	}
 
 	public void verifyProjectCreated() {
-		boolean projectExists = projectReady("MicrowaveOven");
+		boolean projectExists = projectExists("MicrowaveOven");
 		if (projectExists)
 			containsProjectMembers();
 	}
@@ -164,6 +171,20 @@ public class WelcomePageTest extends BaseTest {
 		}
 	}
 
+	
+	private  boolean directoryExists(java.io.File res) {
+		// Tests to see if a file or directory exists
+		boolean rVal = true;
+	    try {
+	    	FileUtils.sizeOf(res); 
+	    } catch (NullPointerException npe) {
+	    	rVal = false;
+	    } catch (IllegalArgumentException iae) {
+	    	rVal = false;
+	    }
+	    return rVal;
+	}
+	
 	@Test
 	public void testBuildProjectWithNoGenFolder() {
         // Verify that <project>.sql file from pre-builder is created when no gen/ folder
@@ -198,8 +219,6 @@ public class WelcomePageTest extends BaseTest {
         IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
         assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
         
-        // Don't care if the log is empty or not
-		BaseTest.logFileCheckingEnabled = false;
 	}
 	
 	@Test
@@ -236,20 +255,6 @@ public class WelcomePageTest extends BaseTest {
         IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
         assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
 
-        // Don't care if the log is empty or not
-		BaseTest.logFileCheckingEnabled = false;
 	}
 	
-	private boolean directoryExists(java.io.File res) {
-		// Tests to see if a file or directory exists
-		boolean rVal = true;
-	    try {
-	    	FileUtils.sizeOf(res); 
-	    } catch (NullPointerException npe) {
-	    	rVal = false;
-	    } catch (IllegalArgumentException iae) {
-	    	rVal = false;
-	    }
-	    return rVal;
-	}
 }

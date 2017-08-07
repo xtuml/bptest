@@ -433,7 +433,7 @@ public class BaseTest extends TestCase {
 					String pluginID = entry.getPluginId();		
 					if ((pluginID.equals("org.antlr.eclipse.ui") || pluginID
 							.equals("org.eclipse.cdt.core"))
-							&& (stack != null) && stack.contains("ResourceException")
+							&& stack.contains("ResourceException")
 							&& stack.contains(".xtuml")) {
 						continue;
 					}
@@ -441,7 +441,7 @@ public class BaseTest extends TestCase {
 					// during command line runs mylyn does not behave well
 					// on mac, we just ignore any SWT exceptions from mylyn
 					// here as it has no affect on our tests
-					if(pluginID.equals("org.eclipse.mylyn.tasks.ui") && (stack != null) && stack.contains("SWTException")) {
+					if(pluginID.equals("org.eclipse.mylyn.tasks.ui") && stack.contains("SWTException")) {
 						continue;
 					}
 					
@@ -458,11 +458,7 @@ public class BaseTest extends TestCase {
 					
 					if(entry.getMessage().contains("Could not load SWT style")) {
 						// ignore as it provides no benefit to our testing
-						// this it outside of our code and related to OS configuration
-						continue;
-					}
-					
-					if(entry.getMessage().contains("System property http.nonProxyHosts has been set to local")) {
+						// this it ouside of our code and related to OS configuration
 						continue;
 					}
 					
@@ -472,7 +468,7 @@ public class BaseTest extends TestCase {
 					 * is related to dangling reference checking.  For elements such as component references we allow a dangling
 					 * reference in the tool (unsynchronized), such cases shall not have the delete check performed.
 					 */
-					if (((stack != null) && stack.contains("checkConsistency")) || (entry.getMessage().contains("The following relationships"))) { //$NON-NLS-1$ //$NON-NLS-2$
+					if (entry.getStack().contains("checkConsistency") || (entry.getMessage().contains("The following relationships"))) { //$NON-NLS-1$ //$NON-NLS-2$
 						continue;
 					}
 					

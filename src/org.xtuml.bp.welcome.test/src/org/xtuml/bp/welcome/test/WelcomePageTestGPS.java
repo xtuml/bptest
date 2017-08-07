@@ -1,5 +1,13 @@
 package org.xtuml.bp.welcome.test;
 //=====================================================================
+//
+//File:      $RCSfile: WelcomePageTestGPS.java,v $
+//Version:   $Revision: 1.17 $
+//Modified:  $Date: 2013/05/13 19:53:55 $
+//
+//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
+//
+//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -123,8 +131,6 @@ public class WelcomePageTestGPS extends TestCase {
 		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
 		TestingUtilities.allowJobCompletion();
-		
-	    TestingUtilities.refreshProject(ProjectName);
 	}
 
 	public boolean projectReady(String projectName) {
@@ -334,8 +340,6 @@ public class WelcomePageTestGPS extends TestCase {
 	private void checkForErrors() {
 		// Check the problems view
         g_view = selectView(project, "org.eclipse.ui.views.ProblemView");
-
-	    TestingUtilities.refreshProject(ProjectName);
 
         // Check the explorer view for orphaned elements
         ExplorerView view = null;
