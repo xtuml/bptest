@@ -83,6 +83,7 @@ public class WelcomePageTestMetamodel extends TestCase {
 		Properties props = new Properties();
 		props.put("model", ProjectName);
 		props.put("SingleFileModel", "true");
+		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);		
 	}
 
