@@ -31,21 +31,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
-import java.util.Vector;
 
-import junit.framework.Assert;
-
-import org.eclipse.compare.internal.CompareEditor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.InputDialog;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
@@ -59,33 +52,19 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
-import org.eclipse.team.core.diff.IThreeWayDiff;
-import org.eclipse.team.internal.ui.mapping.CommonViewerAdvisor.NavigableCommonViewer;
-import org.eclipse.team.internal.ui.mapping.DiffTreeChangesSection;
-import org.eclipse.team.internal.ui.mapping.ModelSynchronizePage;
-import org.eclipse.team.internal.ui.synchronize.SynchronizeView;
-import org.eclipse.team.ui.synchronize.ISynchronizeView;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.menus.DynamicMenuContributionItem;
-import org.eclipse.ui.navigator.CommonNavigator;
-import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.properties.PropertySheet;
-
-import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.ModelRoot;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
-import org.xtuml.bp.core.util.UIUtil;
 import org.xtuml.bp.ui.canvas.Cl_c;
 import org.xtuml.bp.ui.canvas.Connector_c;
 import org.xtuml.bp.ui.canvas.ElementInSuppression_c;
@@ -106,6 +85,8 @@ import org.xtuml.bp.ui.graphics.editor.ModelEditor;
 import org.xtuml.bp.ui.graphics.parts.DiagramEditPart;
 import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
+
+import junit.framework.Assert;
 
 public class UITestingUtilities {
 	private static Point fDownLocation;
@@ -964,6 +945,33 @@ public class UITestingUtilities {
 			}
 		}
 		return null;
+	}
+
+	public static void expandTree(TreeItem root) {
+		root.getParent().setRedraw(false);
+		Event evt = new Event();
+		evt.item = root;
+		evt.doit = true;
+		root.getParent().notifyListeners(SWT.Expand, evt);
+		root.setExpanded(true);
+		root.getParent().setRedraw(true);
+		root.getParent().update();
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		TreeItem [] items = root.getItems();
+		for (TreeItem item : items) {
+			expandTree(item);
+		}
+	}
+	
+	public static void expandTree(Tree tree) {
+		for(TreeItem item : tree.getItems()) {
+			expandTree(item);
+		}
+	}
+	
+	public static TreeItem findItemInTreeWithExpansion(Tree tree, String childItemName) {
+		expandTree(tree);
+		return findItemInTree(tree, childItemName);
 	}
 
 	/**
