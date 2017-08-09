@@ -21,7 +21,7 @@
 # the License.
 # =====================================================================
 #/
-my $perlScriptRevision = '$Revision: 1.14 $';
+my $perlScriptRevision = '$Revision: 1.15 $';
 $_ = $perlScriptRevision;
 ($perlScriptRevision) = (m/\$Revision: ([\d\.]*).*/);
 
@@ -52,6 +52,7 @@ my $priorLine = '';
 my $maxTestsPerClass = 250;
 my $createTestSuite =  0;
 my $createTestSuitePerClass =  0;
+my $passColToRow = 0;
 
 my $usage = <<USAGE;
 #===========================================================================
@@ -79,6 +80,8 @@ my $usage = <<USAGE;
 #       -suitePerClass : This is used in conjunction with -suite.  When 
 #                     -suitePerClass is used, a separate test suite for each 
 #                     java class file is created.
+#       -data      : Pass the column object as extra data to the selection of
+#                    the row object
 # 
 # Example Usage:
 # --------------
@@ -161,28 +164,29 @@ sub processCommandLine
 {
     # ARG[0] should be the input file and ARGV[1] should be the output file, the
     # rest is optional
-	if ($#ARGV <= 0) {
-		print($usage);
-		exit;
-	}
-	
-	for ( my $i = 0; $i < @ARGV; $i++ ) {
-	  if ($i==0) {
-    	$matrixFileName = $ARGV[$i];	      
-	  } elsif ($i==1) {
-    	$fqOutputFileName = $ARGV[$i];
-	  } else {
-    	  my $k = $ARGV[$i] if ( $ARGV[$i] =~ s/^-// );
-    	  if ( $k =~ /^(p)$/ ) { $i++; $packageName = $ARGV[$i]; }
-    	  elsif ( $k =~ /^(DNO)$/ ) { $overwriteFiles = 0; }
-    	  elsif ( $k =~ /^(n)$/ ) { $i++; $maxTestsPerClass = $ARGV[$i]; }
-    	  elsif ( $k =~ /^(suite)$/ ) { $createTestSuite = 1; }
-    	  elsif ( $k =~ /^(suitePerClass)$/ ) { $createTestSuitePerClass = 1; }
-    	  elsif ( $k =~ /^(h)$/ ) { print("$usage$description"); exit; }
-    	  elsif ( $k =~ /^(\?)$/ ) { print("$usage$description"); exit; }
-    	  else { die "Unrecognized argument ($k) to ExtractMetrics.pl\n"; }
-	  }
-	}
+    if ($#ARGV <= 0) {
+        print($usage);
+        exit;
+    }
+    
+    for ( my $i = 0; $i < @ARGV; $i++ ) {
+      if ($i==0) {
+        $matrixFileName = $ARGV[$i];          
+      } elsif ($i==1) {
+        $fqOutputFileName = $ARGV[$i];
+      } else {
+          my $k = $ARGV[$i] if ( $ARGV[$i] =~ s/^-// );
+          if ( $k =~ /^(p)$/ ) { $i++; $packageName = $ARGV[$i]; }
+          elsif ( $k =~ /^(DNO)$/ ) { $overwriteFiles = 0; }
+          elsif ( $k =~ /^(n)$/ ) { $i++; $maxTestsPerClass = $ARGV[$i]; }
+          elsif ( $k =~ /^(suite)$/ ) { $createTestSuite = 1; }
+          elsif ( $k =~ /^(suitePerClass)$/ ) { $createTestSuitePerClass = 1; }
+          elsif ( $k =~ /^(data)$/ ) { $passColToRow = 1; }
+          elsif ( $k =~ /^(h)$/ ) { print("$usage$description"); exit; }
+          elsif ( $k =~ /^(\?)$/ ) { print("$usage$description"); exit; }
+          else { die "Unrecognized argument ($k) to ExtractMetrics.pl\n"; }
+      }
+    }
 
     print "\n";
     print "TestMatrix: $matrixFileName\n";
@@ -192,104 +196,104 @@ sub processCommandLine
     print "Tests Per Class: $maxTestsPerClass\n";
     print "\n";
     
-	if ($packageName eq "") {
-		die "The package name must be specified.\n";
-	}	
+    if ($packageName eq "") {
+        die "The package name must be specified.\n";
+    }    
 };
 
 sub readEnumeratedItem();
 sub readEnumeratedItem() {
-	$_= $currentLine;
-	# example: 1. Provision_Unformalized
-	my ($number, $remainingText) = (m/(\d+)\.?\s*(.+)/x);
-	return $number,$remainingText;
+    $_= $currentLine;
+    # example: 1. Provision_Unformalized
+    my ($number, $remainingText) = (m/(\d+)\.?\s*(.+)/x);
+    return $number,$remainingText;
 }
 
 sub readDOFHeader();
 sub readDOFHeader() {
-	$_= $currentLine;
-	#example: Source(S)
-	$word   = '\w+';    # match a whole word.	
-	$brace  = '\(';    # match the left brace
-	
-	my ($name, $abbrev) = (/^($word)$brace($word)/x);
+    $_= $currentLine;
+    #example: Source(S)
+    $word   = '\w+';    # match a whole word.    
+    $brace  = '\(';    # match the left brace
+    
+    my ($name, $abbrev) = (/^($word)$brace($word)/x);
 
-	return $name,$abbrev;
+    return $name,$abbrev;
 }
 
 sub isDOFHeader();
 sub isDOFHeader() {
-	my $printWhenFound = shift(@_);
-	my $isHeader = 0;
-	my ($name, $abbrev) = readDOFHeader();
-	if ($name ne '' and $abbrev ne '') {
-		if ($printWhenFound) {
-			print "\tDOF: $name\n";
-		}
-		$isHeader = 1;
-	}
-	return $isHeader;
+    my $printWhenFound = shift(@_);
+    my $isHeader = 0;
+    my ($name, $abbrev) = readDOFHeader();
+    if ($name ne '' and $abbrev ne '') {
+        if ($printWhenFound) {
+            print "    DOF: $name\n";
+        }
+        $isHeader = 1;
+    }
+    return $isHeader;
 }
 
 sub isNewSection();
 sub isNewSection() {
-	my $isNew = 0;
-	my $len = length( $currentLine );
-	if ($len > 0 and substr($currentLine, $len-1, 1) eq ":") {
-		$isNew = 1;
-	}
-	return $isNew;
+    my $isNew = 0;
+    my $len = length( $currentLine );
+    if ($len > 0 and substr($currentLine, $len-1, 1) eq ":") {
+        $isNew = 1;
+    }
+    return $isNew;
 }
 
 sub readDegreesOfFreedom();
 sub readDegreesOfFreedom() {
-	my $DOFExpectedText = "Degrees of Freedom:";
-	
-	getNextLine();
-	if ($currentLine ne $DOFExpectedText) {
-		die "ERROR: Invalid file format.  Expected \"$DOFExpectedText\" found: \"$currentLine\".\n";
-	}
-	
-	getNextLine();
-	if ( &isDOFHeader(0) ) {
-		my $firstDOFHeader = 1;
-		my $dofInstanceCount = 0;
-		
-		while ($currentLine ne '') {
-		    if (isNewSection()) {
-		    	# Before move on to the another section make sure at least
-		    	# one DOF entry was specified for the prior DOF header
-		    	if ((not $firstDOFHeader) and (not $dofInstanceCount)) {
-		    		die "ERROR: At least one Degree Of Freedom should be specified for \"$priorLine\"";
-		    	}
-		    	
-		    	# exit when we hit the next section
-		    	last;
-		    }	
-		    if ( &isDOFHeader(1)) {
-		    	# Before move on to the another header make sure at least
-		    	# one DOF entry was specified for the prior DOF header
-		    	if ((not $firstDOFHeader) and (not $dofInstanceCount)) {
-		    		die "ERROR: At least one Degree Of Freedom should be specified for \"$priorLine\"";
-		    	}
-		    	my ($name, $abbrev) = readDOFHeader();
-		    	
-		    	# we create a type of degree of freedom here (add the type to the list)
-		    	my $dofCount = $#DegressOfFreedom+1;
-		    	$DegressOfFreedom[$dofCount][0] =  [$name,$abbrev];
-		    	$firstDOFHeader = 0;
-		    	$dofInstanceCount = 0;
-		    } else {
-		    	$firstDOFElementFound = 1;
-		    	my ($number, $name) = readEnumeratedItem();
-		    	my $dofCount = $#DegressOfFreedom;
-		    	$DegressOfFreedom[$dofCount][1][$dofInstanceCount++] = [$number,$name];
-		    }
-			getNextLine();
-		}
-	} else {
-		die "ERROR: At least 1 Degree of freedom is required.\n";
-	}
+    my $DOFExpectedText = "Degrees of Freedom:";
+    
+    getNextLine();
+    if ($currentLine ne $DOFExpectedText) {
+        die "ERROR: Invalid file format.  Expected \"$DOFExpectedText\" found: \"$currentLine\".\n";
+    }
+    
+    getNextLine();
+    if ( &isDOFHeader(0) ) {
+        my $firstDOFHeader = 1;
+        my $dofInstanceCount = 0;
+        
+        while ($currentLine ne '') {
+            if (isNewSection()) {
+                # Before move on to the another section make sure at least
+                # one DOF entry was specified for the prior DOF header
+                if ((not $firstDOFHeader) and (not $dofInstanceCount)) {
+                    die "ERROR: At least one Degree Of Freedom should be specified for \"$priorLine\"";
+                }
+                
+                # exit when we hit the next section
+                last;
+            }    
+            if ( &isDOFHeader(1)) {
+                # Before move on to the another header make sure at least
+                # one DOF entry was specified for the prior DOF header
+                if ((not $firstDOFHeader) and (not $dofInstanceCount)) {
+                    die "ERROR: At least one Degree Of Freedom should be specified for \"$priorLine\"";
+                }
+                my ($name, $abbrev) = readDOFHeader();
+                
+                # we create a type of degree of freedom here (add the type to the list)
+                my $dofCount = $#DegressOfFreedom+1;
+                $DegressOfFreedom[$dofCount][0] =  [$name,$abbrev];
+                $firstDOFHeader = 0;
+                $dofInstanceCount = 0;
+            } else {
+                $firstDOFElementFound = 1;
+                my ($number, $name) = readEnumeratedItem();
+                my $dofCount = $#DegressOfFreedom;
+                $DegressOfFreedom[$dofCount][1][$dofInstanceCount++] = [$number,$name];
+            }
+            getNextLine();
+        }
+    } else {
+        die "ERROR: At least 1 Degree of freedom is required.\n";
+    }
 }
 
 
@@ -297,206 +301,206 @@ sub readResultDescription();
 sub readResultDescription() {
     my $resultLine = shift(@_);
     
-   	$_ = $resultLine;
-   	# Example descriptions:
-   	#  isValidDestination    "Pasting of source element was not allowed"
-   	#  SatisfactionMade,"Satisfaction should have been made and was not"
-   	#  SatisfiedAndFormalized, Satisfaction was made and it is formalized.
-   	my ($resultFunction, $resultDescription) = (m/[\"| ]*([a-zA-Z1-9_]+)[\"|,| ]*([a-zA-Z1-9_, \.]*)\"?/x);
-   	
-   	if ($resultFunction eq "") {
-   	    die "Error: Missing result function name in the test matrix.";
-   	}
-   	
-   	# if the user didn't specify a description just use the function name.
-   	if ($resultDescription eq "") {
-   	    $resultDescription = $resultFunction;
-   	}
+       $_ = $resultLine;
+       # Example descriptions:
+       #  isValidDestination    "Pasting of source element was not allowed"
+       #  SatisfactionMade,"Satisfaction should have been made and was not"
+       #  SatisfiedAndFormalized, Satisfaction was made and it is formalized.
+       my ($resultFunction, $resultDescription) = (m/[\"| ]*([a-zA-Z1-9_]+)[\"|,| ]*([a-zA-Z1-9_, \.]*)\"?/x);
+       
+       if ($resultFunction eq "") {
+           die "Error: Missing result function name in the test matrix.";
+       }
+       
+       # if the user didn't specify a description just use the function name.
+       if ($resultDescription eq "") {
+           $resultDescription = $resultFunction;
+       }
     return $resultFunction, $resultDescription;
 }
 
 sub readResults();
 sub readResults() {
-	my $ResultsExpectedText = "Results:";
-	
-	if ($currentLine ne $ResultsExpectedText) {
-		die "ERROR: Invalid file format.  Expected \"$ResultsExpectedText\" found: \"$currentLine\".\n";
-	}
-	
-	getNextLine();
-	while ($currentLine ne '') {
-	    if (isNewSection()) {
-	    	# exit when we hit the next section
-	    	last;
-	    }	
-    	
-    	my ($number, $remainderOfLine) = readEnumeratedItem();
-    	$Results{$number} = $remainderOfLine;
-		getNextLine();
-	}
+    my $ResultsExpectedText = "Results:";
+    
+    if ($currentLine ne $ResultsExpectedText) {
+        die "ERROR: Invalid file format.  Expected \"$ResultsExpectedText\" found: \"$currentLine\".\n";
+    }
+    
+    getNextLine();
+    while ($currentLine ne '') {
+        if (isNewSection()) {
+            # exit when we hit the next section
+            last;
+        }    
+        
+        my ($number, $remainderOfLine) = readEnumeratedItem();
+        $Results{$number} = $remainderOfLine;
+        getNextLine();
+    }
 }
 
 sub getDOFTypeFromDOFInstance();
 sub getDOFTypeFromDOFInstance() {
-	$dofInstance = shift(@_);
-	$dofType = "";
-	my @dofTypes = split(/\d+/, $dofInstance);
-	if ($#dofTypes >= 0) {
-		$dofType = join('', @dofTypes);
-	}
+    $dofInstance = shift(@_);
+    $dofType = "";
+    my @dofTypes = split(/\d+/, $dofInstance);
+    if ($#dofTypes >= 0) {
+        $dofType = join('', @dofTypes);
+    }
 
-	return $dofType;	
+    return $dofType;    
 }
 
 sub getDOFInstanceIDFromDOFInstance();
 sub getDOFInstanceIDFromDOFInstance() {
-	$dofType = shift(@_);
-	my @dofInstances = getDOFInstanceIDListFromDOFInstance($dofType);
-	if ($#dofInstances >= 0) {
-		$dofInstance = join('', @dofInstances);
-	}
-	return $dofInstance;	
+    $dofType = shift(@_);
+    my @dofInstances = getDOFInstanceIDListFromDOFInstance($dofType);
+    if ($#dofInstances >= 0) {
+        $dofInstance = join('', @dofInstances);
+    }
+    return $dofInstance;    
 }
 
 sub getDOFInstanceIDListFromDOFInstance();
 sub getDOFInstanceIDListFromDOFInstance() {
-	$dofType = shift(@_);
-	$dofInstance = "";
+    $dofType = shift(@_);
+    $dofInstance = "";
 
-	my @dofInstances = ($dofType =~ m/(\d+)/g);
-	return @dofInstances;	
+    my @dofInstances = ($dofType =~ m/(\d+)/g);
+    return @dofInstances;    
 }
 
 sub readColumnNames();
 sub readColumnNames() {
-	@MatrixColNames = split(/\s+/, $currentLine);
+    @MatrixColNames = split(/\s+/, $currentLine);
 
-	while ($MatrixColNames[0] eq "") {
-		shift(@MatrixColNames);
-	}
-	
-	if ($#MatrixColNames >= 0) {
-		@dofColumnTypes = ();
-		for (my $i = 0; $i <= $#MatrixColNames; $i++) {			
-			my $dofType = &getDOFTypeFromDOFInstance( $MatrixColNames[$i] );
-			if ($dofType ne "") {
-				push(@dofColumnTypes, $dofType);
-			}
-		}
-	} else {
-		die "ERROR: At least 1 matrix column name is expected.\n"
-	}
+    while ($MatrixColNames[0] eq "") {
+        shift(@MatrixColNames);
+    }
+    
+    if ($#MatrixColNames >= 0) {
+        @dofColumnTypes = ();
+        for (my $i = 0; $i <= $#MatrixColNames; $i++) {            
+            my $dofType = &getDOFTypeFromDOFInstance( $MatrixColNames[$i] );
+            if ($dofType ne "") {
+                push(@dofColumnTypes, $dofType);
+            }
+        }
+    } else {
+        die "ERROR: At least 1 matrix column name is expected.\n"
+    }
 }
 
 
 sub readMatrix();
 sub readMatrix() {
-	my $MatrixExpectedText = "Matrix:";
-	
-	if ($currentLine ne $MatrixExpectedText) {
-		die "ERROR: Invalid file format.  Expected \"$MatrixExpectedText\" found: \"$currentLine\".\n";
-	}
-	
-	getNextLine();
-	readColumnNames();
-	
-	getNextLine();
-	while ($currentLine ne '') {
-		my @currentRow = split(/\s+/, $currentLine);	
-		while ($currentRow[0] eq "") {
-			shift(@currentRow);
-		}
-		
-		my $thisRowName = $currentRow[0];		
-		push(@MatrixRowNames, $thisRowName);
-		
-		shift(@currentRow); # drop the row name 
-		push(@MatrixRows, join(' ', @currentRow ));
+    my $MatrixExpectedText = "Matrix:";
+    
+    if ($currentLine ne $MatrixExpectedText) {
+        die "ERROR: Invalid file format.  Expected \"$MatrixExpectedText\" found: \"$currentLine\".\n";
+    }
+    
+    getNextLine();
+    readColumnNames();
+    
+    getNextLine();
+    while ($currentLine ne '') {
+        my @currentRow = split(/\s+/, $currentLine);    
+        while ($currentRow[0] eq "") {
+            shift(@currentRow);
+        }
+        
+        my $thisRowName = $currentRow[0];        
+        push(@MatrixRowNames, $thisRowName);
+        
+        shift(@currentRow); # drop the row name 
+        push(@MatrixRows, join(' ', @currentRow ));
 
-		my $dofType = &getDOFTypeFromDOFInstance( $thisRowName );
-		if ($dofType ne "") {
-			push(@dofRowTypes, $dofType);
-		}
+        my $dofType = &getDOFTypeFromDOFInstance( $thisRowName );
+        if ($dofType ne "") {
+            push(@dofRowTypes, $dofType);
+        }
 
-		getNextLine();
-	}
+        getNextLine();
+    }
 }
 
 
 sub getNextLine();
 sub getNextLine()
 {
-	$priorLine = $currentLine;
-	$currentLine = '';
-	while ( <$matrixFH> ) {
-		# Skip comments
-	    if (substr($_, 0, 1) eq "#") {
-	    	next;
-	    }
-	    #Skip blank lines
-		if ( /^\s*$/ ) {
-	    	next;
-	  	}
-	  	
-	  	# remove all whitespace aat the end of lines
-	  	s/\s+$//;
-	  	$currentLine = $_;
+    $priorLine = $currentLine;
+    $currentLine = '';
+    while ( <$matrixFH> ) {
+        # Skip comments
+        if (substr($_, 0, 1) eq "#") {
+            next;
+        }
+        #Skip blank lines
+        if ( /^\s*$/ ) {
+            next;
+          }
+          
+          # remove all whitespace aat the end of lines
+          s/\s+$//;
+          $currentLine = $_;
 
-	  	last;
-	}
+          last;
+    }
 }
 
 
 sub createTestSuiteClass();
 sub createTestSuiteClass() {
-	my $rootClass = shift ( @_ );
-	my $className = $rootClass . "TestSuite";
+    my $rootClass = shift ( @_ );
+    my $className = $rootClass . "TestSuite";
     $fqOutputFileName = catfile($outPath, $className);
-   	$fqOutputFileName .= $suffix;    		
-	($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
-	
-	if (-e $fqOutputFileName) {
-        print("\tOverwriting the TestSuite class: ($className).\n");
-	} else {
-        print("\tCreating the TestSuite class: ($className).\n");
-	}
-	    
-	open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
+       $fqOutputFileName .= $suffix;            
+    ($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
+    
+    if (-e $fqOutputFileName) {
+        print("    Overwriting the TestSuite class: ($className).\n");
+    } else {
+        print("    Creating the TestSuite class: ($className).\n");
+    }
+        
+    open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
     
     &createCopyrightAndPackageSpec( 1 );
-	print $outputFH "import java.io.File;\n";
-	print $outputFH "\n";
-	print $outputFH "import java.lang.Exception;\n";
-	print $outputFH "import junit.framework.Test;\n";
-	print $outputFH "import junit.framework.TestSuite;\n";
-	print $outputFH "import $packageName.*;\n";
-	print $outputFH "\n";
-	print $outputFH "public class $className extends TestSuite {\n";
-	print $outputFH "\n";
-	print $outputFH "    /**\n";
-	print $outputFH "     * Returns the suite.  This is required to\n";
-	print $outputFH "     * use the JUnit Launcher.\n";
-	print $outputFH "     */\n";
-	print $outputFH "    public static Test suite() {\n";
-	print $outputFH "        return new $className();\n";
-	print $outputFH "    }\n";
-	print $outputFH "\n"; 
-	print $outputFH "    /**\n";
-	print $outputFH "     * Construct the test suite.\n";
-	print $outputFH "     */\n";
-	print $outputFH "    public $className()\n";
-	print $outputFH "    {\n";
-	if ($createTestSuitePerClass) {
-		print $outputFH "        addTest(new TestSuite($rootClass.class));\n";
-	} else {
-		for (my $i = 0; $i <= $#classNameList; $i++) {
-			print $outputFH "        addTest(new TestSuite($classNameList[$i].class));\n";
-		}
-	}
-	print $outputFH "    }\n";
-	print $outputFH "}\n";
-	print $outputFH "\n";
-	
+    print $outputFH "import java.io.File;\n";
+    print $outputFH "\n";
+    print $outputFH "import java.lang.Exception;\n";
+    print $outputFH "import junit.framework.Test;\n";
+    print $outputFH "import junit.framework.TestSuite;\n";
+    print $outputFH "import $packageName.*;\n";
+    print $outputFH "\n";
+    print $outputFH "public class $className extends TestSuite {\n";
+    print $outputFH "\n";
+    print $outputFH "    /**\n";
+    print $outputFH "     * Returns the suite.  This is required to\n";
+    print $outputFH "     * use the JUnit Launcher.\n";
+    print $outputFH "     */\n";
+    print $outputFH "    public static Test suite() {\n";
+    print $outputFH "        return new $className();\n";
+    print $outputFH "    }\n";
+    print $outputFH "\n"; 
+    print $outputFH "    /**\n";
+    print $outputFH "     * Construct the test suite.\n";
+    print $outputFH "     */\n";
+    print $outputFH "    public $className()\n";
+    print $outputFH "    {\n";
+    if ($createTestSuitePerClass) {
+        print $outputFH "        addTest(new TestSuite($rootClass.class));\n";
+    } else {
+        for (my $i = 0; $i <= $#classNameList; $i++) {
+            print $outputFH "        addTest(new TestSuite($classNameList[$i].class));\n";
+        }
+    }
+    print $outputFH "    }\n";
+    print $outputFH "}\n";
+    print $outputFH "\n";
+    
     close($outputFH);
 }
 
@@ -504,53 +508,53 @@ sub createTestSuiteResultClass();
 sub createTestSuiteResultClass() {
     $className = $rootClassName . "TestResultSuite";
     $fqOutputFileName = catfile($outPath, $className);
-   	$fqOutputFileName .= $suffix;    		
-	($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
-	
-	if (-e $fqOutputFileName) {
-        print("\tOverwriting the TestResultSuite class: ($className).\n");
-	} else {
-        print("\tCreating the TestResultSuite class: ($className).\n");
-	}
-	    
-	open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
+       $fqOutputFileName .= $suffix;            
+    ($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
+    
+    if (-e $fqOutputFileName) {
+        print("    Overwriting the TestResultSuite class: ($className).\n");
+    } else {
+        print("    Creating the TestResultSuite class: ($className).\n");
+    }
+        
+    open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
     
     &createCopyrightAndPackageSpec( 1 );
-    	
-	print $outputFH "import junit.framework.Test;\n";
-	print $outputFH "import junit.framework.TestSuite;\n";
-	print $outputFH "\n";
-	print $outputFH "import org.eclipse.core.runtime.CoreException;\n";
-	print $outputFH "\n";
-	print $outputFH "public class $className extends TestSuite {\n";
-	print $outputFH "\n";
-	print $outputFH "    /**\n";
-	print $outputFH "     * Returns the suite.  This is required to\n";
-	print $outputFH "     * use the JUnit Launcher.\n";
-	print $outputFH "     */\n";
-	print $outputFH "    public static Test suite() throws CoreException {\n";
-	print $outputFH "        return new $className();\n";
-	print $outputFH "    }\n";
-	print $outputFH "\n";
-	print $outputFH "    /**\n";
-	print $outputFH "     * Construct the test suite.\n";
-	print $outputFH "     */\n";
-	print $outputFH "    public $className() throws CoreException\n";
-	print $outputFH "    {\n";
-	print $outputFH "    	$rootClassName.generateResults = true;\n";
-	if ($createTestSuitePerClass) {
-		for (my $i = 0; $i <= $#classNameList; $i++) {
-			my $testSuiteName = $classNameList[$i] . "TestSuite";
+        
+    print $outputFH "import junit.framework.Test;\n";
+    print $outputFH "import junit.framework.TestSuite;\n";
+    print $outputFH "\n";
+    print $outputFH "import org.eclipse.core.runtime.CoreException;\n";
+    print $outputFH "\n";
+    print $outputFH "public class $className extends TestSuite {\n";
+    print $outputFH "\n";
+    print $outputFH "    /**\n";
+    print $outputFH "     * Returns the suite.  This is required to\n";
+    print $outputFH "     * use the JUnit Launcher.\n";
+    print $outputFH "     */\n";
+    print $outputFH "    public static Test suite() throws CoreException {\n";
+    print $outputFH "        return new $className();\n";
+    print $outputFH "    }\n";
+    print $outputFH "\n";
+    print $outputFH "    /**\n";
+    print $outputFH "     * Construct the test suite.\n";
+    print $outputFH "     */\n";
+    print $outputFH "    public $className() throws CoreException\n";
+    print $outputFH "    {\n";
+    print $outputFH "        $rootClassName.generateResults = true;\n";
+    if ($createTestSuitePerClass) {
+        for (my $i = 0; $i <= $#classNameList; $i++) {
+            my $testSuiteName = $classNameList[$i] . "TestSuite";
 
-			print $outputFH "    	addTest(new $testSuiteName());\n";
-		}
-	} else {
-		my $testSuiteName = $rootClassName . "TestSuite";
-		print $outputFH "    	addTest(new $testSuiteName());\n";
-	}
-	print $outputFH "    }\n";
-	print $outputFH "}\n";
-	print $outputFH "\n";
+            print $outputFH "        addTest(new $testSuiteName());\n";
+        }
+    } else {
+        my $testSuiteName = $rootClassName . "TestSuite";
+        print $outputFH "        addTest(new $testSuiteName());\n";
+    }
+    print $outputFH "    }\n";
+    print $outputFH "}\n";
+    print $outputFH "\n";
 
     close($outputFH);
 }
@@ -560,237 +564,232 @@ sub createCopyrightAndPackageSpec();
 sub createCopyrightAndPackageSpec() {
     my $willBeModified = shift(@_);
     
-	print $outputFH "//=====================================================================\n";
-	print $outputFH "//\n";
-	print $outputFH '//File:      $RCSfile: UnitTestGenerator.pl,v $' . "\n";
-	print $outputFH '//Version:   $Revision: 1.14 $' . "\n";
-	print $outputFH '//Modified:  $Date: 2013/01/10 23:21:36 $' . "\n";
-	print $outputFH "//\n";
-	if ($willBeModified) {
-    	print $outputFH "// WARNING:      Do not edit this generated file\n";
-	} else {
-    	print $outputFH "// NOTE: This file was generated, but is maintained by hand.\n";
-	}
-	print $outputFH "// Generated by: $perlScriptName\n";
-	print $outputFH "// Version:      $perlScriptRevision\n";
-	my ($myMatrix, $myPath, $mySuffix) = fileparse( $matrixFileName, qr/\.[^.]*/ );
-	$myMatrix .= $mySuffix;
-	print $outputFH "// Matrix:       $myMatrix\n";
-	print $outputFH "//\n";
-	print $outputFH "//(c) Copyright 2007-2014 by Mentor Graphics Corp. All rights reserved.\n";
-	print $outputFH "//\n";
-	print $outputFH "//=====================================================================\n";
-    print $outputFH "// Licensed under the Apache License, Version 2.0 (the \"License\"); you may not\n"; 
-    print $outputFH "// use this file except in compliance with the License.  You may obtain a copy \n";
-    print $outputFH "// of the License at\n";
-    print $outputFH "// \n";
-    print $outputFH "//       http://www.apache.org/licenses/LICENSE-2.0\n";
-    print $outputFH "// \n";
-    print $outputFH "// Unless required by applicable law or agreed to in writing, software\n"; 
-    print $outputFH "// distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT\n"; 
-    print $outputFH "// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   See the \n";
-    print $outputFH "// License for the specific language governing permissions and limitations under\n";
-    print $outputFH "// the License.\n";
-	print $outputFH "//=====================================================================\n";
-	print $outputFH "\n";
-	print $outputFH "package $packageName;\n";
-	print $outputFH "\n";
+    print $outputFH "//=====================================================================\n";
+    print $outputFH "//\n";
+    if ($willBeModified) {
+        print $outputFH "// WARNING:      Do not edit this generated file\n";
+    } else {
+        print $outputFH "// NOTE: This file was generated, but is maintained by hand.\n";
+    }
+    print $outputFH "// Generated by: $perlScriptName\n";
+    print $outputFH "// Version:      $perlScriptRevision\n";
+    my ($myMatrix, $myPath, $mySuffix) = fileparse( $matrixFileName, qr/\.[^.]*/ );
+    $myMatrix .= $mySuffix;
+    print $outputFH "// Matrix:       $myMatrix\n";
+    print $outputFH "//\n";
+    print $outputFH "//=====================================================================\n";
+    print $outputFH "\n";
+    print $outputFH "package $packageName;\n";
+    print $outputFH "\n";
 }
 
 sub createImports();
 sub createImports() {
-	print $outputFH "import org.eclipse.ui.IEditorPart;\n";
-	print $outputFH "import org.junit.After;\n";
-	print $outputFH "import org.junit.Before;\n";
-	print $outputFH "import org.junit.Test;\n";
-	print $outputFH "\n";
-	print $outputFH "import org.xtuml.bp.core.*;\n";
-	print $outputFH "import org.xtuml.bp.core.common.NonRootModelElement;\n";
-	print $outputFH "import org.xtuml.bp.test.common.*;\n";
-	print $outputFH "import org.xtuml.bp.ui.canvas.*;\n";
-	print $outputFH "import org.xtuml.bp.ui.graphics.editor.*;\n";
-	print $outputFH "import org.xtuml.bp.ui.canvas.test.*;\n";
-	print $outputFH "\n";
+    print $outputFH "import org.eclipse.ui.IEditorPart;\n";
+    print $outputFH "import org.junit.After;\n";
+    print $outputFH "import org.junit.Before;\n";
+    print $outputFH "import org.junit.Test;\n";
+    print $outputFH "\n";
+    print $outputFH "import org.xtuml.bp.core.*;\n";
+    print $outputFH "import org.xtuml.bp.core.common.NonRootModelElement;\n";
+    print $outputFH "import org.xtuml.bp.test.common.*;\n";
+    print $outputFH "import org.xtuml.bp.ui.canvas.*;\n";
+    print $outputFH "import org.xtuml.bp.ui.graphics.editor.*;\n";
+    print $outputFH "import org.xtuml.bp.ui.canvas.test.*;\n";
+    print $outputFH "\n";
 }
 
 sub createGenericClassDefintion();
 sub createGenericClassDefintion() {
     my $isSubClass = shift(@_);
     
-	if ( $isSubClass ) {
-    	print $outputFH "public class $className extends $rootClassName {\n";
-		print $outputFH "\n";	
-		print $outputFH "    protected String getResultName() {\n";
-		print $outputFH "        return super.getResultName();\n";
-		print $outputFH "    }\n";
-		print $outputFH "\n";	
-		print $outputFH "    public $className() {\n";
-		print $outputFH "        super(\"$className\", null);\n";
-		print $outputFH "    }\n";
-		print $outputFH "\n";
-	} else {
-    	print $outputFH "public class $className extends CanvasTest {\n";
-		print $outputFH "    public static boolean generateResults = false;\n";
-		print $outputFH "    public static boolean useDrawResults = true;\n";
-		print $outputFH "\n";	
-		print $outputFH "    String test_id = \"\";\n";
-		print $outputFH "\n";	
-		print $outputFH "    protected String getResultName() {\n";
-		print $outputFH "        return getClass().getSimpleName() + \"_\" + test_id;\n";
-		print $outputFH "    }\n";
-		print $outputFH "\n";	
-		print $outputFH "    protected GraphicalEditor fActiveEditor;\n";	
-		print $outputFH "\n";	
-		print $outputFH "    protected GraphicalEditor getActiveEditor() {\n";
-		print $outputFH "        return fActiveEditor;\n";
-		print $outputFH "    }\n";
-		print $outputFH "\n";	
-		print $outputFH "    public $className(String subTypeClassName, String subTypeArg0) {\n";
-		print $outputFH "        super(subTypeClassName, subTypeArg0);\n";
-		print $outputFH "    }\n";
-		print $outputFH "\n";
-	  print $outputFH "    protected String getTestId(String src, String dest, String count) {\n";
-	  print $outputFH "        return \"test_\" + count;\n";
-	  print $outputFH "    }\n";
-	  print $outputFH "\n";	
-	}
-	print $outputFH "    \@Before\n\tpublic void setUp() throws Exception {\n";
-	print $outputFH "        super.setUp();\n";
-	print $outputFH "    }\n";
-	print $outputFH "\n";	
-	print $outputFH "    \@After\n\tpublic void tearDown() throws Exception {\n";
-	print $outputFH "        super.tearDown();\n";
-	print $outputFH "    }\n";
-	print $outputFH "\n";	
+    if ( $isSubClass ) {
+        print $outputFH "public class $className extends $rootClassName {\n";
+        print $outputFH "\n";    
+        print $outputFH "    protected String getResultName() {\n";
+        print $outputFH "        return super.getResultName();\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";    
+        print $outputFH "    public $className() {\n";
+        print $outputFH "        super(\"$className\", null);\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";
+    } else {
+        print $outputFH "public class $className extends CanvasTest {\n";
+        print $outputFH "    public static boolean generateResults = false;\n";
+        print $outputFH "    public static boolean useDrawResults = true;\n";
+        print $outputFH "\n";    
+        print $outputFH "    String test_id = \"\";\n";
+        print $outputFH "\n";    
+        print $outputFH "    protected String getResultName() {\n";
+        print $outputFH "        return getClass().getSimpleName() + \"_\" + test_id;\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";    
+        print $outputFH "    protected GraphicalEditor fActiveEditor;\n";    
+        print $outputFH "\n";    
+        print $outputFH "    protected GraphicalEditor getActiveEditor() {\n";
+        print $outputFH "        return fActiveEditor;\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";    
+        print $outputFH "    public $className(String subTypeClassName, String subTypeArg0) {\n";
+        print $outputFH "        super(subTypeClassName, subTypeArg0);\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";
+      print $outputFH "    protected String getTestId(String src, String dest, String count) {\n";
+      print $outputFH "        return \"test_\" + count;\n";
+      print $outputFH "    }\n";
+      print $outputFH "\n";    
+    }
+    print $outputFH "    \@Before\n    public void setUp() throws Exception {\n";
+    print $outputFH "        super.setUp();\n";
+    print $outputFH "    }\n";
+    print $outputFH "\n";    
+    print $outputFH "    \@After\n    public void tearDown() throws Exception {\n";
+    print $outputFH "        super.tearDown();\n";
+    print $outputFH "    }\n";
+    print $outputFH "\n";    
 }
 
 sub createInstanceAccessors();
-sub createInstanceAccessors() {	
-	my $type = shift(@_);
-	
-	my %uniqueTypes = ();
-	my %uniqueNames = ();
-	my @rowCol = ("row", "column");
-	for (my $outerCount = 0; $outerCount <= $#rowCol; $outerCount++) {
-    	if ($rowCol[$outerCount] eq "row"){
-    		for (my $i = 0; $i <= $#dofRowTypes; $i++) {		
-    			$uniqueTypes{"$dofRowTypes[$i]"} = " ";
-    		}
-    		
-    		for (my $j = 0; $j <= $#MatrixRowNames; $j++) {
-    			$uniqueNames{"$MatrixRowNames[$j]"} = " ";
-    		}
-    	} elsif ($rowCol[$outerCount] eq "column") {
-    		for (my $i = 0; $i <= $#dofColumnTypes; $i++) {		
-    			$uniqueTypes{"$dofColumnTypes[$i]"} = " ";
-    		}
-    		
-    		for (my $j = 0; $j <= $#MatrixColNames; $j++) {
-    			$uniqueNames{"$MatrixColNames[$j]"} = " ";
-    		}
-    	} else {
-    		die "ERROR: Unexpected type encountered in createInstanceAccessor(): \"$rowCol[$i]\"\n"
-    	}
-	}
+sub createInstanceAccessors() {    
+    my $type = shift(@_);
+    
+    my %uniqueTypes = ();
+    my %uniqueNames = ();
+    my @rowCol = ("row", "column");
+    for (my $outerCount = 0; $outerCount <= $#rowCol; $outerCount++) {
+        if ($rowCol[$outerCount] eq "row"){
+            for (my $i = 0; $i <= $#dofRowTypes; $i++) {        
+                $uniqueTypes{"$dofRowTypes[$i]"} = " ";
+            }
+            
+            for (my $j = 0; $j <= $#MatrixRowNames; $j++) {
+                $uniqueNames{"$MatrixRowNames[$j]"} = " ";
+            }
+        } elsif ($rowCol[$outerCount] eq "column") {
+            for (my $i = 0; $i <= $#dofColumnTypes; $i++) {        
+                $uniqueTypes{"$dofColumnTypes[$i]"} = " ";
+            }
+            
+            for (my $j = 0; $j <= $#MatrixColNames; $j++) {
+                $uniqueNames{"$MatrixColNames[$j]"} = " ";
+            }
+        } else {
+            die "ERROR: Unexpected type encountered in createInstanceAccessor(): \"$rowCol[$i]\"\n"
+        }
+    }
 
-	while (($dofName, $theVal) = each(%uniqueTypes)) {
-		print $outputFH "    /**\n";
-		print $outputFH "     * \"$dofName\" is one of the degrees of freedom as specified in this issues\n";
-		print $outputFH "     * test matrix.\n";
-		print $outputFH "     * This routine gets the \"$dofName\" instance from the given name.\n";
-		print $outputFH "     * \n";
-		print $outputFH "     * \@param element The degree of freedom instance to retrieve\n";
-		print $outputFH "     * \@return A model element used in the test as specified by the test matrix\n";
-		print $outputFH "     */\n";
-		print $outputFH "    NonRootModelElement select$dofName(String element) {\n";
-		print $outputFH "        NonRootModelElement nrme = null;\n";
+    while (($dofName, $theVal) = each(%uniqueTypes)) {
+        print $outputFH "    /**\n";
+        print $outputFH "     * \"$dofName\" is one of the degrees of freedom as specified in this issues\n";
+        print $outputFH "     * test matrix.\n";
+        print $outputFH "     * This routine gets the \"$dofName\" instance from the given name.\n";
+        print $outputFH "     * \n";
+        print $outputFH "     * \@param element The degree of freedom instance to retrieve\n";
+        print $outputFH "     * \@return A model element used in the test as specified by the test matrix\n";
+        print $outputFH "     */\n";
+        print $outputFH "    NonRootModelElement select$dofName(String element) {\n";
+        print $outputFH "        return select$dofName(element, null);\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";        
+        print $outputFH "    /**\n";
+        print $outputFH "     * \"$dofName\" is one of the degrees of freedom as specified in this issues\n";
+        print $outputFH "     * test matrix.\n";
+        print $outputFH "     * This routine gets the \"$dofName\" instance from the given name.\n";
+        print $outputFH "     * \n";
+        print $outputFH "     * \@param element The degree of freedom instance to retrieve\n";
+        print $outputFH "     * \@param extraData Extra data needed for selection\n";
+        print $outputFH "     * \@return A model element used in the test as specified by the test matrix\n";
+        print $outputFH "     */\n";
+        print $outputFH "    NonRootModelElement select$dofName(String element, Object extraData) {\n";
+        print $outputFH "        NonRootModelElement nrme = null;\n";
 
-		@keys = keys(%uniqueNames);
-		@sortedKeys = sort(@keys);
-		$isFirst = 1; 
-		for (my $i = 0; $i <= $#sortedKeys; $i++) {
-		    
-		    my $typeOfThisInstance = &getDOFTypeFromDOFInstance( $sortedKeys[$i] );
-		    
-			if ( $typeOfThisInstance eq $dofName ) {
-				# if this is the first
-				if ( $isFirst ) {
-					print $outputFH "        ";
-					$isFirst = 0;
-				} else {
-					print $outputFH " ";
-				}
-				print $outputFH "if (element.equalsIgnoreCase(\"$sortedKeys[$i]\")) {\n";
-				print $outputFH "        	//TODO: Implement\n";
-				print $outputFH "        } ";
-				
-				# if this the last element
-				if ($i == $#sortedKeys) {
-					print $outputFH "\n";
-				} else {
-					print $outputFH "else";
-				}
-			}
-		}
-		
-		print $outputFH "        assertTrue(\"An instance with degree of freedom type \\\"$dofName\\\" was not found.  Instance Name: \" + element + \".\", nrme!=null);\n";
-		print $outputFH "        return nrme;\n";
-		print $outputFH "    }\n";
-		print $outputFH "\n";		
-	}
+        @keys = keys(%uniqueNames);
+        @sortedKeys = sort(@keys);
+        $isFirst = 1; 
+        for (my $i = 0; $i <= $#sortedKeys; $i++) {
+            
+            my $typeOfThisInstance = &getDOFTypeFromDOFInstance( $sortedKeys[$i] );
+            
+            if ( $typeOfThisInstance eq $dofName ) {
+                # if this is the first
+                if ( $isFirst ) {
+                    print $outputFH "        ";
+                    $isFirst = 0;
+                } else {
+                    print $outputFH " ";
+                }
+                print $outputFH "if (element.equalsIgnoreCase(\"$sortedKeys[$i]\")) {\n";
+                print $outputFH "            //TODO: Implement\n";
+                print $outputFH "        } ";
+                
+                # if this the last element
+                if ($i == $#sortedKeys) {
+                    print $outputFH "\n";
+                } else {
+                    print $outputFH "else";
+                }
+            }
+        }
+        
+        print $outputFH "        assertTrue(\"An instance with degree of freedom type \\\"$dofName\\\" was not found.  Instance Name: \" + element + \".\", nrme!=null);\n";
+        print $outputFH "        return nrme;\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";        
+    }
 }
 
 sub createCellAction();
-sub createCellAction() {			
-	# Use a hash so we only get unique names
-	my %operationNames = ();
-	for (my $i = 0; $i <= $#dofColumnTypes; $i++) {
-		for (my $j = 0; $j <= $#dofRowTypes; $j++) {
-			$operationNames{"$dofColumnTypes[$i]_$dofRowTypes[$j]_Action"} = " ";
-		}
-	}
+sub createCellAction() {            
+    # Use a hash so we only get unique names
+    my %operationNames = ();
+    for (my $i = 0; $i <= $#dofColumnTypes; $i++) {
+        for (my $j = 0; $j <= $#dofRowTypes; $j++) {
+            $operationNames{"$dofColumnTypes[$i]_$dofRowTypes[$j]_Action"} = " ";
+        }
+    }
 
-	my @keys = keys(%operationNames);
-	for (my $i = 0; $i <= $#keys; $i++) {
-    	my $opName = $keys[$i];
-		print $outputFH "    /**\n";
-		print $outputFH "     * This routine performs the action associated with a matrix cell.\n";
-		print $outputFH "     * The parameters represent model instances aquired based on the specifed\n";
-		print $outputFH "     * column instance and row instance.\n";
-		print $outputFH "     * \n";
-		print $outputFH "     * \@param columnInstance Model instance from the column\n"; 
-		print $outputFH "     * \@param rowInstance Model instance from the row\n";
-		print $outputFH "     */\n";
-		print $outputFH "    void $opName(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {\n";
-		print $outputFH "        //TODO: Implement\n";
-		print $outputFH "    }\n";	
-		print $outputFH "\n";	
-	}	
+    my @keys = keys(%operationNames);
+    for (my $i = 0; $i <= $#keys; $i++) {
+        my $opName = $keys[$i];
+        print $outputFH "    /**\n";
+        print $outputFH "     * This routine performs the action associated with a matrix cell.\n";
+        print $outputFH "     * The parameters represent model instances aquired based on the specifed\n";
+        print $outputFH "     * column instance and row instance.\n";
+        print $outputFH "     * \n";
+        print $outputFH "     * \@param columnInstance Model instance from the column\n"; 
+        print $outputFH "     * \@param rowInstance Model instance from the row\n";
+        print $outputFH "     */\n";
+        print $outputFH "    void $opName(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {\n";
+        print $outputFH "        //TODO: Implement\n";
+        print $outputFH "    }\n";    
+        print $outputFH "\n";    
+    }    
 }
 
 sub createResultActions();
 sub createResultActions() {
-	my @keys = keys(%Results);
-	for (my $i = 0; $i <= $#keys; $i++) {
-    	my $resultLineValue = $Results{$keys[$i]};
+    my @keys = keys(%Results);
+    for (my $i = 0; $i <= $#keys; $i++) {
+        my $resultLineValue = $Results{$keys[$i]};
         my ($resultFunction, $resultDescription) = &readResultDescription($resultLineValue);
 
-		print $outputFH "    /**\n";
- 		print $outputFH "    * This function verifies an expected result.\n";
- 		print $outputFH "    *\n";
- 		print $outputFH "    * \@param source A model element instance aquired through a action taken\n";
- 		print $outputFH "    *               on a column of the matrix.\n";
- 		print $outputFH "    * \@param destination A model element instance aquired through a action taken\n";
- 		print $outputFH "    *                    taken on a row of the matrix.\n";
- 		print $outputFH "    * \@return true if the test succeeds, false if it fails\n";
- 		print $outputFH "    */\n";
-		print $outputFH "    boolean checkResult_$resultFunction(NonRootModelElement source, NonRootModelElement destination) {\n";
-		print $outputFH "        boolean $resultFunction = false;\n";
-		print $outputFH "        //TODO: Implement\n";
-		print $outputFH "        return $resultFunction;\n";
-		print $outputFH "    }\n";
-		print $outputFH "\n";
-		print $outputFH "\n";
+        print $outputFH "    /**\n";
+         print $outputFH "    * This function verifies an expected result.\n";
+         print $outputFH "    *\n";
+         print $outputFH "    * \@param source A model element instance aquired through a action taken\n";
+         print $outputFH "    *               on a column of the matrix.\n";
+         print $outputFH "    * \@param destination A model element instance aquired through a action taken\n";
+         print $outputFH "    *                    taken on a row of the matrix.\n";
+         print $outputFH "    * \@return true if the test succeeds, false if it fails\n";
+         print $outputFH "    */\n";
+        print $outputFH "    boolean checkResult_$resultFunction(NonRootModelElement source, NonRootModelElement destination) {\n";
+        print $outputFH "        boolean $resultFunction = false;\n";
+        print $outputFH "        //TODO: Implement\n";
+        print $outputFH "        return $resultFunction;\n";
+        print $outputFH "    }\n";
+        print $outputFH "\n";
+        print $outputFH "\n";
     }
 }
 
@@ -801,117 +800,124 @@ sub createResultActions() {
 #
 sub getNumTests();
 sub getNumTests() {
-	my $numTests = 0;
-	for (my $col = 0; $col <= $#MatrixColNames; $col++) {
-		for (my $row = 0; $row <= $#MatrixRowNames; $row++) {
-			
-			my $colType = &getDOFTypeFromDOFInstance($MatrixColNames[$col]);
-			my $rowType = &getDOFTypeFromDOFInstance($MatrixRowNames[$row]);
-			my $myCol = &getDOFTypeFromDOFInstance( $MatrixColNames[$col] );
-			my $myRow = &getDOFTypeFromDOFInstance( $MatrixRowNames[$row] );			
-			my @currentRow = split(/\s+/, $MatrixRows[$row]);
-			my $expectedResult = $currentRow[$col];
+    my $numTests = 0;
+    for (my $col = 0; $col <= $#MatrixColNames; $col++) {
+        for (my $row = 0; $row <= $#MatrixRowNames; $row++) {
+            
+            my $colType = &getDOFTypeFromDOFInstance($MatrixColNames[$col]);
+            my $rowType = &getDOFTypeFromDOFInstance($MatrixRowNames[$row]);
+            my $myCol = &getDOFTypeFromDOFInstance( $MatrixColNames[$col] );
+            my $myRow = &getDOFTypeFromDOFInstance( $MatrixRowNames[$row] );            
+            my @currentRow = split(/\s+/, $MatrixRows[$row]);
+            my $expectedResult = $currentRow[$col];
 
             # If the table has an "X" for the expected result it means don't generate it.
             if ($expectedResult ne "X") {
-            	$numTests = $numTests + 1;
+                $numTests = $numTests + 1;
             }
-		}
-	}
-	return $numTests;
+        }
+    }
+    return $numTests;
 }
 
 sub createTests();
 sub createTests() {
-	my $startCount = shift(@_);
-	my $testCnt = 0;
-	my $testCntSuite = 0;
-	my $cellsCounted = 0;
-	my $cellsCountedSuite = 0;
-	
-	print $outputFH "\n";
-	for (my $col = 0; $col <= $#MatrixColNames; $col++) {
-		for (my $row = 0; $row <= $#MatrixRowNames; $row++) {
-			my $colType = &getDOFTypeFromDOFInstance($MatrixColNames[$col]);
-			my $rowType = &getDOFTypeFromDOFInstance($MatrixRowNames[$row]);
-			my $myCol = &getDOFTypeFromDOFInstance( $MatrixColNames[$col] );
-			my $myRow = &getDOFTypeFromDOFInstance( $MatrixRowNames[$row] );			
-			my @currentRow = split(/\s+/, $MatrixRows[$row]);
-			my $expectedResult = $currentRow[$col];
-			
-			# If the table has an "X" for the expected result it means don't 
-			# generate a test for it.
-			if ($expectedResult ne "X") {
-				# startCnt and maxTests are used for the case where the suite 
-				# improve JDK performance.
-				if ($startCount > $cellsCounted++) {
-					next;
-				}
-				# note that testCnt is 1-based (a requirement of the test harness)
-				# each seperate file created starts with test id 1.
-				if ($testCnt++ >= $maxTestsPerClass) {
-					last;
-				}
-				print $outputFH "    /**\n";
-				print $outputFH "     * Perform the test for the given matrix column ($MatrixColNames[$col]) and row ($MatrixRowNames[$row]).\n";
-				print $outputFH "     * \n";
-				print $outputFH "     */\n";
-				print $outputFH "    \@Test\n\tpublic void test$MatrixColNames[$col]_$MatrixRowNames[$row]() throws Exception {\n";
-				print $outputFH "        setUp();\n";
-				print $outputFH "        test_id = getTestId(\"$MatrixColNames[$col]\", \"$MatrixRowNames[$row]\", \"$testCnt\");\n";
-				print $outputFH "\n";
-				print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
-				print $outputFH "\n";
-				print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
-				print $outputFH "\n";
-				print $outputFH "        $myCol" . "_" . $myRow . "_" . "Action(src, dest);\n";				
-                # There may be multiple expected results				
-				my @resultInstanceNums = &getDOFInstanceIDListFromDOFInstance( $expectedResult );
-				foreach my $resultID (@resultInstanceNums) {
-					my $resultLineValue = $Results{ $resultID };
-					my ($resultFunction, $resultDescription) = &readResultDescription($resultLineValue);
-					print $outputFH "        assertTrue(\"$resultDescription\", checkResult_$resultFunction(src,dest));\n";
-				}
-				print $outputFH "        \n";
-				print $outputFH "        GraphicalEditor editor = getActiveEditor();\n";
-				print $outputFH "        if(editor != null && useDrawResults) {\n";
-				print $outputFH "           validateOrGenerateResults(editor, generateResults);\n";
-				print $outputFH "        }\n";
-				print $outputFH "        tearDown();\n";				
-				print $outputFH "    }\n";
-				print $outputFH "\n";
-			}
-		}
-	}
+    my $startCount = shift(@_);
+    my $testCnt = 0;
+    my $testCntSuite = 0;
+    my $cellsCounted = 0;
+    my $cellsCountedSuite = 0;
+    
+    print $outputFH "\n";
+    for (my $col = 0; $col <= $#MatrixColNames; $col++) {
+        for (my $row = 0; $row <= $#MatrixRowNames; $row++) {
+            my $colType = &getDOFTypeFromDOFInstance($MatrixColNames[$col]);
+            my $rowType = &getDOFTypeFromDOFInstance($MatrixRowNames[$row]);
+            my $myCol = &getDOFTypeFromDOFInstance( $MatrixColNames[$col] );
+            my $myRow = &getDOFTypeFromDOFInstance( $MatrixRowNames[$row] );            
+            my @currentRow = split(/\s+/, $MatrixRows[$row]);
+            my $expectedResult = $currentRow[$col];
+            
+            # If the table has an "X" for the expected result it means don't 
+            # generate a test for it.
+            if ($expectedResult ne "X") {
+                # startCnt and maxTests are used for the case where the suite 
+                # improve JDK performance.
+                if ($startCount > $cellsCounted++) {
+                    next;
+                }
+                # note that testCnt is 1-based (a requirement of the test harness)
+                # each seperate file created starts with test id 1.
+                if ($testCnt++ >= $maxTestsPerClass) {
+                    last;
+                }
+                print $outputFH "    /**\n";
+                print $outputFH "     * Perform the test for the given matrix column ($MatrixColNames[$col]) and row ($MatrixRowNames[$row]).\n";
+                print $outputFH "     * \n";
+                print $outputFH "     */\n";
+                print $outputFH "    \@Test\n    public void test$MatrixColNames[$col]_$MatrixRowNames[$row]() throws Exception {\n";
+                print $outputFH "        setUp();\n";
+                print $outputFH "        test_id = getTestId(\"$MatrixColNames[$col]\", \"$MatrixRowNames[$row]\", \"$testCnt\");\n";
+                print $outputFH "\n";
+                if ( 1 == $passColToRow ) {
+                    print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                    print $outputFH "\n";
+                    print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\", src);\n";
+                }
+                else {
+                    print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                    print $outputFH "\n";
+                    print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                }
+                print $outputFH "\n";
+                print $outputFH "        $myCol" . "_" . $myRow . "_" . "Action(src, dest);\n";                
+                # There may be multiple expected results                
+                my @resultInstanceNums = &getDOFInstanceIDListFromDOFInstance( $expectedResult );
+                foreach my $resultID (@resultInstanceNums) {
+                    my $resultLineValue = $Results{ $resultID };
+                    my ($resultFunction, $resultDescription) = &readResultDescription($resultLineValue);
+                    print $outputFH "        assertTrue(\"$resultDescription\", checkResult_$resultFunction(src,dest));\n";
+                }
+                print $outputFH "        \n";
+                print $outputFH "        GraphicalEditor editor = getActiveEditor();\n";
+                print $outputFH "        if(editor != null && useDrawResults) {\n";
+                print $outputFH "           validateOrGenerateResults(editor, generateResults);\n";
+                print $outputFH "        }\n";
+                print $outputFH "        tearDown();\n";                
+                print $outputFH "    }\n";
+                print $outputFH "\n";
+            }
+        }
+    }
 }
-	
+    
 
 sub createSupertypeClassWithTODOs();
 sub createSupertypeClassWithTODOs() {
- 	$className = $rootClassName;
-	$fqOutputFileName = catfile($outPath, $className);
-	$fqOutputFileName .= $suffix;    		
+     $className = $rootClassName;
+    $fqOutputFileName = catfile($outPath, $className);
+    $fqOutputFileName .= $suffix;            
 
     if (-e $fqOutputFileName) {
         if ($overwriteFiles) {
-        	print("\tOverwriting the existing test superclass: $className\n");
+            print("    Overwriting the existing test superclass: $className\n");
         } else {
-        	print("\tSuperclass: $className exists.  Skipping generation of this file.\n");
-        	return;
+            print("    Superclass: $className exists.  Skipping generation of this file.\n");
+            return;
         }
     } else {
-        	print("\tCreating the test superclass: $className\n");
+            print("    Creating the test superclass: $className\n");
     }
-	
-   	open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
-   	&createCopyrightAndPackageSpec( 0 );
-   	createImports();
-   	&createGenericClassDefintion( 0 );
-   	&createInstanceAccessors();
-   	createCellAction();
-   	createResultActions();
-   	print $outputFH "}\n";
-   	close($outputFH);
+    
+       open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
+       &createCopyrightAndPackageSpec( 0 );
+       createImports();
+       &createGenericClassDefintion( 0 );
+       &createInstanceAccessors();
+       createCellAction();
+       createResultActions();
+       print $outputFH "}\n";
+       close($outputFH);
 }
 
 sub createTestClass();
@@ -919,43 +925,43 @@ sub createTestClass() {
     my $startCount = shift(@_);
     
     if (-e $fqOutputFileName) {
-    	print("\tOverwriting test class: $className\n");
+        print("    Overwriting test class: $className\n");
     } else {
-    	print("\tCreating test class: $className\n");
+        print("    Creating test class: $className\n");
     }
-	open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
-	&createCopyrightAndPackageSpec( 1 );
-	createImports();
-	&createGenericClassDefintion( 1 );
-	&createTests($startCount);	
-	print $outputFH "}\n";
-	close($outputFH);
+    open( $outputFH, ">" . $fqOutputFileName ) or die "ERROR:  Could not open file $fqOutputFileName.\n";
+    &createCopyrightAndPackageSpec( 1 );
+    createImports();
+    &createGenericClassDefintion( 1 );
+    &createTests($startCount);    
+    print $outputFH "}\n";
+    close($outputFH);
 }
 
 sub generateAllTestFiles();
 sub generateAllTestFiles() {
-	my $numTests = getNumTests();
-	print "\tTotal number of tests to generate: $numTests\n";
-	my $numSeperateFiles = sprintf("%d", $numTests / $maxTestsPerClass);
-	my $remainder = $numTests % $maxTestsPerClass;
-	if ($numSeperateFiles > 0 or $remainder > 0) {
-	    $numSeperateFiles++;
-	}
-	
-	($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
- 	$rootClassName = $className;
+    my $numTests = getNumTests();
+    print "    Total number of tests to generate: $numTests\n";
+    my $numSeperateFiles = sprintf("%d", $numTests / $maxTestsPerClass);
+    my $remainder = $numTests % $maxTestsPerClass;
+    if ($numSeperateFiles > 0 or $remainder > 0) {
+        $numSeperateFiles++;
+    }
+    
+    ($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
+     $rootClassName = $className;
     
     # create each Junit test class
-	my $startCount = 0;
+    my $startCount = 0;
     for (my $i = 0; $i < $numSeperateFiles; $i++) {
-   		$className = $rootClassName . "_" . $i;
-   		$fqOutputFileName = catfile($outPath, $className);
-   		$fqOutputFileName .= $suffix;    		
-		($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
+           $className = $rootClassName . "_" . $i;
+           $fqOutputFileName = catfile($outPath, $className);
+           $fqOutputFileName .= $suffix;            
+        ($className, $outPath, $suffix) = fileparse( $fqOutputFileName, qr/\.[^.]*/ );
         
         &createTestClass($startCount);
-   		push(@classNameList, $className); # keep track of each test class created    		
-   		$startCount += $maxTestsPerClass;		
+           push(@classNameList, $className); # keep track of each test class created            
+           $startCount += $maxTestsPerClass;        
     }
     
     createSupertypeClassWithTODOs();    
@@ -963,15 +969,15 @@ sub generateAllTestFiles() {
     # If multiple test files had to be created create a new test suite as 
     # a convience for the caller (they may or may not use it).
     if ($numSeperateFiles > 1 || $createTestSuite) {    
-    	if ($createTestSuitePerClass) {
-			for (my $i = 0; $i <= $#classNameList; $i++) {
-				&createTestSuiteClass( $classNameList[$i] );
-	    		&createTestSuiteResultClass();
-			}
-    	} else {
-	    	&createTestSuiteClass( $rootClassName );
-    		&createTestSuiteResultClass();
-    	}
+        if ($createTestSuitePerClass) {
+            for (my $i = 0; $i <= $#classNameList; $i++) {
+                &createTestSuiteClass( $classNameList[$i] );
+                &createTestSuiteResultClass();
+            }
+        } else {
+            &createTestSuiteClass( $rootClassName );
+            &createTestSuiteResultClass();
+        }
     }
 }
 
