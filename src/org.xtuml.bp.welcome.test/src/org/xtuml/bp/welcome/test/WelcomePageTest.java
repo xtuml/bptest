@@ -1,13 +1,5 @@
 package org.xtuml.bp.welcome.test;
 //=====================================================================
-//
-//File:      $RCSfile: WelcomePageTest.java,v $
-//Version:   $Revision: 1.17 $
-//Modified:  $Date: 2013/01/10 23:05:14 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -23,10 +15,12 @@ package org.xtuml.bp.welcome.test;
 
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -50,6 +44,7 @@ import junit.framework.TestCase;
 public class WelcomePageTest extends TestCase {
 
 	private IProject project;
+	private final String ProjectName = "MicrowaveOven";
 
 	private String[] expectedXtUMLFiles = {".externalToolBuilders/Model Compiler.launch",
 	"models/MicrowaveOven/MicrowaveOven.xtuml"};
@@ -57,6 +52,7 @@ public class WelcomePageTest extends TestCase {
 	private String[] expectedFiles =expectedXtUMLFiles;
 	
 	private String markingFolder = "gen/";
+	private String codeGenFolder = "code_generation/";
 
 	private String[] MC3020Files = {
             markingFolder + "datatype.mark",
@@ -143,6 +139,7 @@ public class WelcomePageTest extends TestCase {
 		Properties props = new Properties();
 		props.put("model", "TemplateProject");
 		props.put("SingleFileModel", "false");
+		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
 		
 		SystemModel_c system = SystemModel_c.SystemModelInstance(
@@ -174,4 +171,90 @@ public class WelcomePageTest extends TestCase {
 		}
 	}
 
+	
+	private  boolean directoryExists(java.io.File res) {
+		// Tests to see if a file or directory exists
+		boolean rVal = true;
+	    try {
+	    	FileUtils.sizeOf(res); 
+	    } catch (NullPointerException npe) {
+	    	rVal = false;
+	    } catch (IllegalArgumentException iae) {
+	    	rVal = false;
+	    }
+	    return rVal;
+	}
+	
+	@Test
+	public void testBuildProjectWithNoGenFolder() {
+        // Verify that <project>.sql file from pre-builder is created when no gen/ folder
+		// exists in the project
+
+        TestUtil.selectButtonInDialog(1000, "Yes");
+		runGettingStartedAction();
+        TestingUtilities.allowJobCompletion();
+
+        verifyProjectCreated();
+
+        final IProject project = TestingUtilities.getProject(ProjectName);
+
+        // delete the gen/ folder
+        IFile genDir = project.getFile(markingFolder);
+        IPath location = genDir.getLocation();
+        java.io.File genDirFile = null;
+        if (location != null) { 
+        	genDirFile = location.toFile();
+        	FileUtils.deleteQuietly(genDirFile);
+            assertFalse("Directory " + genDir.getName() + " exists and it should not.", directoryExists(genDirFile));
+        }
+        
+        // build
+        try {
+            TestingUtilities.buildProject(project);
+		} catch (Exception e) {
+			fail("Failed to build the project. " + e.getMessage()); //$NON-NLS-1$
+		}
+        
+        // make sure pre-builder output exists
+        IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
+        assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
+        
+	}
+	
+	@Test
+	public void testBuildProjectWithNoCodeGenFolder() {
+        // Verify that <project>.sql file from pre-builder is created when no gen/code_generation/ folder
+		// exists in the project
+
+        TestUtil.selectButtonInDialog(1000, "Yes");
+		runGettingStartedAction();
+        TestingUtilities.allowJobCompletion();
+
+        verifyProjectCreated();
+
+        final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(ProjectName);
+
+        // delete the gen/code_generation/ folder
+        IFile codeGenDir = project.getFile(markingFolder + codeGenFolder);
+        IPath location = codeGenDir.getLocation();
+        java.io.File codeGenDirFile = null;
+        if (location != null) { 
+        	codeGenDirFile = location.toFile();
+        	FileUtils.deleteQuietly(codeGenDirFile);
+            assertFalse("Directory " + codeGenDir.getName() + " exists and it should not.", directoryExists(codeGenDirFile));
+        }
+        
+        // build
+        try {
+            TestingUtilities.buildProject(project);
+		} catch (Exception e) {
+			fail("Failed to build the project. " + e.getMessage()); //$NON-NLS-1$
+		}
+        
+        // make sure pre-builder output exists
+        IFile file = project.getFile(markingFolder + codeGenFolder + ProjectName + ".sql");
+        assertTrue("Expected file: " + file.getName() + " does not exist.", file.exists());
+
+	}
+	
 }
