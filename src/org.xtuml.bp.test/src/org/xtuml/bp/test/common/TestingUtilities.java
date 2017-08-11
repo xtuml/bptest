@@ -42,6 +42,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
@@ -53,6 +54,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.Button;
@@ -61,6 +63,9 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.xtuml.bp.core.CorePlugin;
@@ -77,6 +82,8 @@ import junit.framework.TestCase;
 public class TestingUtilities {
 
 	private static boolean archiveFileOptionSet = false; 
+    private static String navigatorView = "org.eclipse.ui.views.ResourceNavigator"; //$NON-NLS-1$
+    private static IViewPart g_view = null;
 
 	public static IPath getSourceDirectory() {
 		IPath sourceDirectory = null;
@@ -836,4 +843,57 @@ public class TestingUtilities {
 		return "expected_results/";
 	}
 
+	public static void buildProject(final IProject project) throws Exception {
+	    g_view = selectView(project, navigatorView);
+		g_view.getSite().getSelectionProvider().setSelection(
+				new StructuredSelection(project));
+		Runnable r = new Runnable() {
+			public void run() {
+				try {
+			        project.build(IncrementalProjectBuilder.FULL_BUILD, null);		
+				} catch (Exception e) {
+					CorePlugin.logError(e.getMessage(), e);
+				}
+			}
+		};
+		r.run();
+        
+		allowJobCompletion();
+	}
+	
+	public static IProject getProject(String name) {
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(
+				name);
+		return project;
+	}
+	
+	public static void refreshProject(String projectName) {
+ 		try {
+ 		    final IProject project = getProject(projectName);
+ 		    project.refreshLocal(IProject.DEPTH_INFINITE, null);
+                    allowJobCompletion();
+ 		} catch (CoreException e) {
+ 			CorePlugin.logError(e.getMessage(), e);
+ 		}
+ 	}
+	
+	private static IViewPart selectView(final IProject project, final String viewName) throws Exception {
+		g_view = null;
+		Runnable r = new Runnable() {
+			public void run() {
+				IWorkbenchPage page = PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow().getActivePage();
+				try {
+					g_view = page.showView(viewName); //$NON-NLS-1$
+				} catch (PartInitException e) {
+					CorePlugin.logError("Failed to open the " + viewName + " view", e); //$NON-NLS-1$
+				}
+			}
+		};
+		r.run();
+		if ( g_view == null ) {
+		    throw new Exception("Unable to select view: " + viewName);
+		}
+		return g_view;
+	}
 }

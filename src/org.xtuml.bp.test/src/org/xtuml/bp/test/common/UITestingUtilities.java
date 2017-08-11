@@ -31,21 +31,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
-import java.util.Vector;
 
-import junit.framework.Assert;
-
-import org.eclipse.compare.internal.CompareEditor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.InputDialog;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
@@ -59,32 +52,19 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
-import org.eclipse.team.core.diff.IThreeWayDiff;
-import org.eclipse.team.internal.ui.mapping.CommonViewerAdvisor.NavigableCommonViewer;
-import org.eclipse.team.internal.ui.mapping.DiffTreeChangesSection;
-import org.eclipse.team.internal.ui.mapping.ModelSynchronizePage;
-import org.eclipse.team.internal.ui.synchronize.SynchronizeView;
-import org.eclipse.team.ui.synchronize.ISynchronizeView;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.navigator.CommonNavigator;
-import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.properties.PropertySheet;
-
-import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.ModelRoot;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
-import org.xtuml.bp.core.util.UIUtil;
 import org.xtuml.bp.ui.canvas.Cl_c;
 import org.xtuml.bp.ui.canvas.Connector_c;
 import org.xtuml.bp.ui.canvas.ElementInSuppression_c;
@@ -105,6 +85,8 @@ import org.xtuml.bp.ui.graphics.editor.ModelEditor;
 import org.xtuml.bp.ui.graphics.parts.DiagramEditPart;
 import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
+
+import junit.framework.Assert;
 
 public class UITestingUtilities {
 	private static Point fDownLocation;
@@ -235,6 +217,30 @@ public class UITestingUtilities {
 		return withAccelerator.replaceFirst("&", "");
 	}
 	
+	public static boolean checkItemStatus(MenuItem item, boolean readonly) {
+		// verify the item
+		// if item is enabled
+		if (item.isEnabled()) {
+			// and is read only
+			if (readonly) {
+				// item should be disabled
+				return false;
+			} else {
+				// item is fine
+				return true;
+			}
+		} else {
+			// if item is disabled
+			// switch the returns
+			if (readonly) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+	}
+	
 	public static boolean checkItemStatusInContextMenu(Menu menu, String text, String childMenu, boolean readonly) {
     	
     	MenuItem[] items = getMenuItems(menu, childMenu);
@@ -242,28 +248,10 @@ public class UITestingUtilities {
     	// find the item in question
     	for(int i = 0; items != null && i < items.length; i++) {
     		if(removeAccelerator(items[i].getText()).indexOf(text) != -1) {
-    			// verify the item
-    			// if item is enabled
-    			if(items[i].isEnabled()) {
-    				// and is read only
-    				if(readonly) {
-    					// item should be disabled
-    					return false;
-    				} else {
-    					// item is fine
-    					return true;
-    				}
-    			} else {
-    				// if item is disabled
-    				// switch the returns
-    				if(readonly) {
-    					return true;
-    				} else {
-    					return false;
-    				}
-    			}
-    		}
+    			return checkItemStatus(items[i], readonly);
+    		}    		
     	}
+    	
     	// action was not found
     	return false;
     }
@@ -417,33 +405,75 @@ public class UITestingUtilities {
 		activateMenuItem(item);
 	}
 	
-	public static void activateMenuItem(Menu menu, String name) {
-		// if the given name is a menu path, split it and execute
-		// the final menu item
-		String[] menuPath = name.split("::");
-		if(menuPath.length > 1) {
+	public static boolean checkItemStatusInContextMenuByPath(Menu menu, String path, boolean readonly) {
+		MenuItem item = getMenuItemByPath(menu, path);
+		return checkItemStatus(item, readonly);
+	}
+	
+	public static MenuItem[] getMenuItemsAtPath(Menu menu, String path) {
+		String[] menuPath = path.split("::");
+		String lastMenu = menuPath[menuPath.length - 1];
+		if (menuPath.length > 1) {
 			MenuItem item = null;
-			for(int i = 0; i < menuPath.length; i++) {
+			for (int i = 0; i < menuPath.length; i++) {
 				MenuItem[] children = getMenuItems(menu, "");
-				for(int j = 0; j < children.length; j++) {
-					if(removeAccelerator(children[j].getText()).equals(menuPath[i])) {
+				for (int j = 0; j < children.length; j++) {
+					if (removeAccelerator(children[j].getText()).equals(menuPath[i])) {
 						item = children[j];
-						if(item.getData() instanceof MenuManager) {
+						if (item.getData() instanceof MenuManager) {
 							MenuManager manager = (MenuManager) item.getData();
 							menu = manager.getMenu();
+							if(item.getText().equals(lastMenu)) {
+								return getMenuItems(menu, "");
+							}
+						} else if (item.getMenu() != null) {
+							menu = item.getMenu();
+							if(item.getText().equals(lastMenu)) {
+								return getMenuItems(menu, "");
+							}
 						}
 						break;
 					}
 				}
-				if(item != null && !(item.getData() instanceof MenuManager)) {
+			}
+		}
+		return new MenuItem[0];
+	}
+	
+	public static MenuItem getMenuItemByPath(Menu menu, String path) {
+		// if the given name is a menu path, split it and execute
+		// the final menu item
+		String[] menuPath = path.split("::");
+		if (menuPath.length > 1) {
+			MenuItem item = null;
+			for (int i = 0; i < menuPath.length; i++) {
+				MenuItem[] children = getMenuItems(menu, "");
+				for (int j = 0; j < children.length; j++) {
+					if (removeAccelerator(children[j].getText()).equals(menuPath[i])) {
+						item = children[j];
+						if (item.getData() instanceof MenuManager) {
+							MenuManager manager = (MenuManager) item.getData();
+							menu = manager.getMenu();
+						} else if (item.getMenu() != null && i != menuPath.length - 1) {
+							menu = item.getMenu();
+						}
+						break;
+					}
+				}
+				if (item != null && !(item.getData() instanceof MenuManager) && item.getMenu() == null) {
 					break;
 				}
 			}
-			activateMenuItem(item);
+			return item;
 		} else {
-		MenuItem item = getMenuItem(menu, name);
-		activateMenuItem(item);
+			MenuItem item = getMenuItem(menu, path);
+			return item;
+		}
 	}
+	
+	public static void activateMenuItem(Menu menu, String name) {
+		MenuItem item =getMenuItemByPath(menu, name);
+		activateMenuItem(item);
 		BaseTest.dispatchEvents();
 	}
 
@@ -915,6 +945,33 @@ public class UITestingUtilities {
 			}
 		}
 		return null;
+	}
+
+	public static void expandTree(TreeItem root) {
+		root.getParent().setRedraw(false);
+		Event evt = new Event();
+		evt.item = root;
+		evt.doit = true;
+		root.getParent().notifyListeners(SWT.Expand, evt);
+		root.setExpanded(true);
+		root.getParent().setRedraw(true);
+		root.getParent().update();
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		TreeItem [] items = root.getItems();
+		for (TreeItem item : items) {
+			expandTree(item);
+		}
+	}
+	
+	public static void expandTree(Tree tree) {
+		for(TreeItem item : tree.getItems()) {
+			expandTree(item);
+		}
+	}
+	
+	public static TreeItem findItemInTreeWithExpansion(Tree tree, String childItemName) {
+		expandTree(tree);
+		return findItemInTree(tree, childItemName);
 	}
 
 	/**
