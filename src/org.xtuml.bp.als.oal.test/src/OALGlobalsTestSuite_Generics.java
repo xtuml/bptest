@@ -89,7 +89,6 @@ import junit.framework.TestSuite;
 	TestBPPrefStrictTyping_Generics.class,
 	TestAssign_Generics.class,
 	TestExpr_Generics.class,
-	TestScopedConstants.class,
 	TestAttribute_Generics.class,
 	TestControl_Generics.class,
 	TestCRUD_Generics.class,
@@ -131,6 +130,7 @@ import junit.framework.TestSuite;
 	TestAllowInterfaceNameInICMsg_Generics.class,
 	PolyEventTest.class,
 	SupportConstantsViaIPRTests.class,
+	TestScopedConstants.class
 })
 public class OALGlobalsTestSuite_Generics extends TestSuite {
 	/**
