@@ -9,13 +9,21 @@ import org.junit.runner.RunWith;
 import org.xtuml.bp.als.oal.OalLexer;
 import org.xtuml.bp.als.oal.OalParser;
 import org.xtuml.bp.als.oal.Oal_validate;
+import org.xtuml.bp.core.AssignToMember_c;
 import org.xtuml.bp.core.Block_c;
 import org.xtuml.bp.core.Body_c;
 import org.xtuml.bp.core.FunctionBody_c;
 import org.xtuml.bp.core.Function_c;
+import org.xtuml.bp.core.LeafSymbolicConstant_c;
+import org.xtuml.bp.core.LiteralSymbolicConstant_c;
 import org.xtuml.bp.core.Oalconstants_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
+import org.xtuml.bp.core.SymbolicConstantValue_c;
+import org.xtuml.bp.core.SymbolicConstant_c;
+import org.xtuml.bp.core.TransientValueReference_c;
+import org.xtuml.bp.core.Value_c;
+import org.xtuml.bp.core.Variable_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.util.ContainerUtil;
 import org.xtuml.bp.test.common.BaseTest;
@@ -106,14 +114,6 @@ public class TestScopedConstants extends BaseTest {
         });
     }
     
-    // TODO remove this method
-    private void genParseErrorExpectedResults( String[] lines ) {
-        System.out.printf( "assertEquals( %d, lines.length );\n", lines.length );
-        for ( int i = 0; i < lines.length; i++ ) {
-            System.out.printf( "assertEquals( \"%s\", lines[%d] );\n", lines[i], i );
-        }
-    }
-    
     @Test
     public void testScopedConstants1() {
         String err = parseAction( "fail1 = non_existent::FOO;" );
@@ -174,14 +174,68 @@ public class TestScopedConstants extends BaseTest {
     
     @Test
     public void testScopedConstants7() {
+        String err = parseAction( "success1a = primary_colors_of_light::RED;\nsuccess1b = primary_colors::RED;" );
+        assertEquals( "", err );
+        Variable_c success1a = Variable_c.getOneV_VAROnR823(Block_c.getManyACT_BLKsOnR612(
+                Body_c.getOneACT_ACTOnR698(FunctionBody_c.getOneACT_FNBOnR695(testFunc))), new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Variable_c)candidate).getName().equals("success1a");
+                    }
+        });
+        Variable_c success1b = Variable_c.getOneV_VAROnR823(Block_c.getManyACT_BLKsOnR612(
+                Body_c.getOneACT_ACTOnR698(FunctionBody_c.getOneACT_FNBOnR695(testFunc))), new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Variable_c)candidate).getName().equals("success1b");
+                    }
+        });
+        LiteralSymbolicConstant_c success1a_val = LiteralSymbolicConstant_c.getOneCNST_LSCOnR1503(LeafSymbolicConstant_c.getOneCNST_LFSCOnR1502(
+                SymbolicConstant_c.getOneCNST_SYCOnR850(SymbolicConstantValue_c.getOneV_SCVOnR801(Value_c.getOneV_VALOnR609(
+                AssignToMember_c.getOneACT_AIOnR689(Value_c.getOneV_VALOnR801(TransientValueReference_c.getOneV_TVLOnR805(success1a))))))));
+        LiteralSymbolicConstant_c success1b_val = LiteralSymbolicConstant_c.getOneCNST_LSCOnR1503(LeafSymbolicConstant_c.getOneCNST_LFSCOnR1502(
+                SymbolicConstant_c.getOneCNST_SYCOnR850(SymbolicConstantValue_c.getOneV_SCVOnR801(Value_c.getOneV_VALOnR609(
+                AssignToMember_c.getOneACT_AIOnR689(Value_c.getOneV_VALOnR801(TransientValueReference_c.getOneV_TVLOnR805(success1b))))))));
+        assertNotNull( success1a_val );
+        assertEquals( "14", success1a_val.getValue() );
+        assertNotNull( success1b_val );
+        assertEquals( "10", success1b_val.getValue() );
     }
     
     @Test
     public void testScopedConstants8() {
+        String err = parseAction( "success2 = directions::LEFT;" );
+        assertEquals( "", err );
+        Variable_c success2 = Variable_c.getOneV_VAROnR823(Block_c.getManyACT_BLKsOnR612(
+                Body_c.getOneACT_ACTOnR698(FunctionBody_c.getOneACT_FNBOnR695(testFunc))), new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Variable_c)candidate).getName().equals("success2");
+                    }
+        });
+        LiteralSymbolicConstant_c success2_val = LiteralSymbolicConstant_c.getOneCNST_LSCOnR1503(LeafSymbolicConstant_c.getOneCNST_LFSCOnR1502(
+                SymbolicConstant_c.getOneCNST_SYCOnR850(SymbolicConstantValue_c.getOneV_SCVOnR801(Value_c.getOneV_VALOnR609(
+                AssignToMember_c.getOneACT_AIOnR689(Value_c.getOneV_VALOnR801(TransientValueReference_c.getOneV_TVLOnR805(success2))))))));
+        assertNotNull( success2_val );
+        assertEquals( "16", success2_val.getValue() );
     }
     
     @Test
     public void testScopedConstants9() {
+        String err = parseAction( "success3 = days::WEEKDAY;" );
+        assertEquals( "", err );
+        Variable_c success3 = Variable_c.getOneV_VAROnR823(Block_c.getManyACT_BLKsOnR612(
+                Body_c.getOneACT_ACTOnR698(FunctionBody_c.getOneACT_FNBOnR695(testFunc))), new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Variable_c)candidate).getName().equals("success3");
+                    }
+        });
+        LiteralSymbolicConstant_c success3_val = LiteralSymbolicConstant_c.getOneCNST_LSCOnR1503(LeafSymbolicConstant_c.getOneCNST_LFSCOnR1502(
+                SymbolicConstant_c.getOneCNST_SYCOnR850(SymbolicConstantValue_c.getOneV_SCVOnR801(Value_c.getOneV_VALOnR609(
+                AssignToMember_c.getOneACT_AIOnR689(Value_c.getOneV_VALOnR801(TransientValueReference_c.getOneV_TVLOnR805(success3))))))));
+        assertNotNull( success3_val );
+        assertEquals( "3", success3_val.getValue() );
     }
 
 }
