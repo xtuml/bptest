@@ -65,6 +65,7 @@ import org.xtuml.bp.als.oal.test.TestEvent_Generics;
 import org.xtuml.bp.als.oal.test.TestExpr_Generics;
 import org.xtuml.bp.als.oal.test.TestInvocation_Generics;
 import org.xtuml.bp.als.oal.test.TestLineNumbers_Generics;
+import org.xtuml.bp.als.oal.test.TestScopedConstants;
 import org.xtuml.bp.als.oal.test.TestSelectWhere_Generics;
 import org.xtuml.bp.als.oal.test.TestSelectWhere_OpNotAllowed;
 import org.xtuml.bp.als.oal.test.TestSelect_Generics;
@@ -88,6 +89,7 @@ import junit.framework.TestSuite;
 	TestBPPrefStrictTyping_Generics.class,
 	TestAssign_Generics.class,
 	TestExpr_Generics.class,
+	TestScopedConstants.class,
 	TestAttribute_Generics.class,
 	TestControl_Generics.class,
 	TestCRUD_Generics.class,
