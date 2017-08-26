@@ -65,6 +65,7 @@ import org.xtuml.bp.als.oal.test.TestEvent_Generics;
 import org.xtuml.bp.als.oal.test.TestExpr_Generics;
 import org.xtuml.bp.als.oal.test.TestInvocation_Generics;
 import org.xtuml.bp.als.oal.test.TestLineNumbers_Generics;
+import org.xtuml.bp.als.oal.test.TestScopedConstants;
 import org.xtuml.bp.als.oal.test.TestSelectWhere_Generics;
 import org.xtuml.bp.als.oal.test.TestSelectWhere_OpNotAllowed;
 import org.xtuml.bp.als.oal.test.TestSelect_Generics;
@@ -129,6 +130,7 @@ import junit.framework.TestSuite;
 	TestAllowInterfaceNameInICMsg_Generics.class,
 	PolyEventTest.class,
 	SupportConstantsViaIPRTests.class,
+	TestScopedConstants.class
 })
 public class OALGlobalsTestSuite_Generics extends TestSuite {
 	/**
