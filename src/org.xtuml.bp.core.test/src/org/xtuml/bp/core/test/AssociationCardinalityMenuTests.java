@@ -31,7 +31,7 @@ import junit.framework.TestCase;
 
 public class AssociationCardinalityMenuTests extends BaseTest {
 	
-	String modelName = "AssociationEditing";
+	String modelName = "AssociationEditingCardinalityMenu";
 	static Package_c pkg;
 	static GraphicalEditor editor;
 	
@@ -40,9 +40,9 @@ public class AssociationCardinalityMenuTests extends BaseTest {
 		TestingUtilities.importTestingProjectIntoWorkspace(modelName);
 		UIUtil.dispatchAll();
 		m_sys = getSystemModel(modelName);
-		modelRoot = Ooaofooa.getInstance("/AssociationEditing/models/AssociationEditing/AssociationEditing/AssociationEditing.xtuml");
+		modelRoot = Ooaofooa.getInstance("/" + modelName + "/models/" + modelName + "/AssociationEditing/AssociationEditing.xtuml");
 		pkg = Package_c.getOneEP_PKGOnR1401(m_sys,
-				candidate -> ((Package_c) candidate).getName().equals(modelName));
+				candidate -> ((Package_c) candidate).getName().equals("AssociationEditing"));
 		editor = UITestingUtilities.getGraphicalEditorFor(pkg, true);
 	}
 	
