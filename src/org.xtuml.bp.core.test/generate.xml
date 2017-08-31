@@ -265,6 +265,7 @@
 
   <property name="cvs_java_files" value="AddRemoveDataItemsTest.java,
     AssignClassTest.java, AssignRemoveEvents.java, AttributeMenuItemTest.java,
+  	AssociationCardinalityMenuTests.java,AssociationTableEditorTests.java,
     CantHappenEvtIgnoreEvtTests.java, CoreTest.java, CoreTestPlugin.java,
     CoreTestResultCreator.java, DeleteAttributesTest.java,
     DerivedAttributeTest.java, GetNameTest.java, NumberingTest.java,
