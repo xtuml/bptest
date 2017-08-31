@@ -352,7 +352,9 @@
 	IPRSetupTests.java,
   	NewShapeAfterRestart.java,
   	SetupCreationTests.java,
-	GlobalTestSetupClass.java,AssociationTableEditorTests.java,AssociationCardinalityMenuTests.java"/>
+	GlobalTestSetupClass.java"
+  	
+    />
 	
  
 	
