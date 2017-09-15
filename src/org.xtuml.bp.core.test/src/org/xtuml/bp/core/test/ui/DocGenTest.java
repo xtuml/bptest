@@ -9,6 +9,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
@@ -29,14 +30,6 @@ import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.test.common.UITestingUtilities;
 
-//========================================================================
-//
-//File:      $RCSfile: DocGenTest.java,v $
-//Version:   $Revision: 1.5 $
-//Modified:  $Date: 2013/01/10 22:49:35 $
-//
-//(c) Copyright 2011-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -65,8 +58,8 @@ public class DocGenTest extends BaseTest {
 	       "doc/doc.html"
 	};
 
-	public DocGenTest(String testName) throws Exception {
-		super("DocGenTest", testName);
+	public DocGenTest() throws Exception {
+		super("DocGenTest", null);
 	}
 
     @Override
@@ -199,11 +192,18 @@ public class DocGenTest extends BaseTest {
         Selection.getInstance().addToSelection(m_sys);
         menu = getExplorerView().getTreeViewer().getControl().getMenu();
 
+        MenuItem[] items = UITestingUtilities.getMenuItems(menu, "BridgePoint Utilities");
+        MenuItem docItem = null;
+        for ( MenuItem itemIter : items ) {
+            if ( itemIter.getText().equals("Create Documentation")) {
+            	docItem = itemIter;
+            	break;
+            }
+        }
         assertTrue(
-                "The \"Create documentation\" menu item was not available for testing.",
-                UITestingUtilities.checkItemStatusInContextMenu(menu,
-                        "Create documentation", "", false));
-        UITestingUtilities.activateMenuItem(menu, "Create documentation");
+                "The \"Create Documentation\" menu item was not available for testing.",
+                docItem != null);
+        UITestingUtilities.activateMenuItem(docItem);
 
         BaseTest.dispatchEvents();
 
