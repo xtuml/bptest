@@ -57,18 +57,24 @@ Possibilities(B)
 10. 6.2.13.5 Association Numbers
 11. 6.2.13.4 Association Phrase
 
+# For details on Scope see the analysis section: 5.2.11 from 9749_usecases.md listed in the header of this file.
+# In brief it is talking about the current body scope, for instance if a transient variable is defined with in
+# an if statement it is only available within that if block.
 Scope(C)
 1. Before
 2. After
 3. Within
 
+# Here visibility is referring to element access.  Elements that are not visible, say because
+# they are in a component that the activity body is not, should not show in an auto-complete
+# list.
 Visibility(D)
 1. Visible
 2. Non-Visible
 
 Results:
-1. exists "Did not find the element in the auto-complete list"
-2. non-existent "Found the element in the auto-complete list"
+1. exists " exists “An expected element was not present in the auto-complete list"
+2. non-existent "An element was found in the auto-complete list when it should not have been present"
 
 Matrix:
 		  C1D1       C1D2       C2D1       C2D2       C3D1       C3D2                											
