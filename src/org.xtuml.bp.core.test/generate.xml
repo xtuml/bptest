@@ -324,6 +324,7 @@
   	UndoRedoTestGenerics.java,
   	UniqueNameTestGenerics.java,
   	UseCaseTestsGenerics.java,
+  	UIConfigurationTests.java,
   	TestVisibilityInElementChooser.java,
   	MultipleSelectionAssignmentTests.java, 
   	MultipleTargetPasteTests.java,
