@@ -1,0 +1,1682 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+Notes -
+  xsltproc docgen.xsl doc.xml > doc.html
+-->
+<!DOCTYPE article PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
+JUNIT REPLACED - DTD PATH [
+]>
+<article>
+<title>
+  <trademark class='registered'>BridgePoint</trademark>
+  xtUML Generated Documentation
+</title>
+<articleinfo>
+  <author>
+    <personname>
+      <firstname></firstname><surname></surname>
+    </personname>
+  </author>
+  <publisher>
+  <publishername>company name</publishername>
+  <address>
+  <pob>8005 SW Boeckman Road</pob>
+  <city>Wilsonville</city>, <state>OR</state>
+  <postcode>97070</postcode> <country>USA</country>
+  </address>
+  </publisher>
+</articleinfo>
+<toc></toc>
+<section>
+<title>MicrowaveOven</title>
+<subtitle>Generated Documentation</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Please find below generated documentation for the system named MicrowaveOven.</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<section>
+<title>System-Level Packages</title>
+<subtitle></subtitle>
+<section>
+<title>MicrowaveOven</title>
+<subtitle>Package</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Domain Mission: Microwave Application Domain
+
+To capture the retained data and event sequencing associated with the use of a domestic microwave oven comprising :
+
+* a magnetron tube (with variable power output settings)
+* a turntable
+* an internal light
+* a beeper to signal when cooking is complete
+* an oven door
+
+Bridges to other Domains:
+
+* To Control Panel (Application User Interface Domain)
+* To PIO domain (not shown)
+* To Timer domain
+
+
+<figure id='MicrowaveOven-MicrowaveOven-PackageDiagram-figure'>
+<title id='MicrowaveOven-MicrowaveOven-PackageDiagram-figure-title'>MicrowaveOven Package Diagram</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Package Diagram.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>MicrowaveOven Packages</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Rendered here are the contained package diagrams.</literallayout></para>
+<section>
+<title>Microwave Oven</title>
+<subtitle>Package</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>The microwave oven subsystem models the microwave oven application<figure id='MicrowaveOven-MicrowaveOven-MicrowaveOven-PackageDiagram-figure'>
+<title id='MicrowaveOven-MicrowaveOven-MicrowaveOven-PackageDiagram-figure-title'>Microwave Oven Package Diagram</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Microwave Oven-Package Diagram.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>Classes</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><table frame='all'>
+<title>Classes</title>
+<tgroup cols='3' align='left' colsep='0' rowsep='0'>
+<thead>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Name</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Description</literallayout></para>
+</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Beeper</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>An audible signal generator. 
+
+The beeper repeats four times on completion of the cooking period, signalling to the user that the oven door can be opened to inspect the readiness of the food inside.  </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_state:state&lt;State_Model&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>beeper_delay_over:inst&lt;Event&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The delayed event supplied to the beeper&apos;&apos;s local timer, which fires to signify the completion of the 1 second beeper delay.</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>beep_count:integer</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A counter, incrementally increasing from zero as the beeper sounds. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>beeper_timer:inst_ref&lt;Timer&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A local timer, used to generate delays of 1 second between the sounding of each beep. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>BeeperID:unique_id</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The uniquely-specified beeper identifier.</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Door</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The hinged oven door, opened with an electro-mechanical release button on the control panel, and secured by steady force to the door front. The door is a vital safety component of the oven. The door must be securely closed before the oven tube can be powered on. 
+</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_state:state&lt;State_Model&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>is_secure:boolean</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A boolean status attribute reflecting whether the door is currently closed (secure) or open (not secure). </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>DoorID:unique_id</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The uniquely-specified door identifier. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Internal Light</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The internal oven light, illuminated only when the oven tube is powered on. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_state:state&lt;State_Model&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>LightID:unique_id</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The uniquely-specified light identifier.</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Magnetron Tube</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The magnetron tube is the core element of the microwave oven, generating microwave energy following AC/DC Voltage conversion. The tube operates from a 240V, 50Hz supply.
+
+The tube has variable power output, ranging from 600W to 1000W in discrete 100W steps. 
+
+The relevant behaviour of the tube is confined to :
+
+* power on 
+* power off
+* raising &amp; lowering output power level </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_state:state&lt;State_Model&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_power_output:tube_wattage</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Refer to the user-defined data type &quot;tube_wattage&quot; for a full description.</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>TubeID:unique_id</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The uniquely-specified tube identifier.</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Turntable</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A flat circular platter positioned in the middle of the oven floor, where food is placed for cooking. The platter takes the form of a turntable, rotating at a constant speed during cooking to uniformly distribute microwave radiation through the food. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_state:state&lt;State_Model&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>TurntableID:unique_id</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Oven</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The entire microwave oven assembly (with the exception of the Control Panel), comprising :
+
+* a door
+* an internal light
+* a turntable
+* a magnetron tube
+* a beeper</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_state:state&lt;State_Model&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>remaining_cooking_time:integer</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Records any remaining cooking period when cooking is suspended as a consequence of the oven door being opened or the &apos;&apos;cancel&apos;&apos; key being pressed by the oven user. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>oven_timer:inst_ref&lt;Timer&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A local oven countdown timer, set and reset by the user via the Control Panel</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>TurntableID:same_as&lt;Base_Attribute&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>DoorID:same_as&lt;Base_Attribute&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>BeeperID:same_as&lt;Base_Attribute&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>LightID:same_as&lt;Base_Attribute&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>TubeID:same_as&lt;Base_Attribute&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>OvenID:unique_id</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A uniquely assigned Oven identifier</literallayout></para>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Beeper-InstanceStateMachine-figure'>
+<title id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Beeper-InstanceStateMachine-figure-title'>Microwave Oven Beeper Instance State Machine</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Microwave Oven-Beeper-Instance State Machine.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Door-InstanceStateMachine-figure'>
+<title id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Door-InstanceStateMachine-figure-title'>Microwave Oven Door Instance State Machine</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Microwave Oven-Door-Instance State Machine.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-MicrowaveOven-InternalLight-InstanceStateMachine-figure'>
+<title id='MicrowaveOven-MicrowaveOven-MicrowaveOven-InternalLight-InstanceStateMachine-figure-title'>Microwave Oven Internal Light Instance State Machine</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Microwave Oven-Internal Light-Instance State Machine.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-MicrowaveOven-MagnetronTube-InstanceStateMachine-figure'>
+<title id='MicrowaveOven-MicrowaveOven-MicrowaveOven-MagnetronTube-InstanceStateMachine-figure-title'>Microwave Oven Magnetron Tube Instance State Machine</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Microwave Oven-Magnetron Tube-Instance State Machine.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Turntable-InstanceStateMachine-figure'>
+<title id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Turntable-InstanceStateMachine-figure-title'>Microwave Oven Turntable Instance State Machine</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Microwave Oven-Turntable-Instance State Machine.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Oven-InstanceStateMachine-figure'>
+<title id='MicrowaveOven-MicrowaveOven-MicrowaveOven-Oven-InstanceStateMachine-figure-title'>Microwave Oven Oven Instance State Machine</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Microwave Oven-Oven-Instance State Machine.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>Class Activities</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Here are listings of all of the activies in the class and its state machine(s).</literallayout></para>
+<section>
+<title>Instance State Machine Actions</title>
+<subtitle></subtitle>
+<section>
+<title>Beeper State[1]:Awaiting Beeper Request</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>assign self.beep_count = 0;
+
+cancelled_timer = TIM::timer_cancel(timer_inst_ref:self.beeper_timer);
+</programlisting></para>
+</section>
+<section>
+<title>Beeper State[2]:Beeping</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>if (self.beep_count == 0) // beeper yet to begin
+
+   create event instance delay_over of MO_B2:&apos;&apos;beep_delay_over&apos;&apos; to self;
+   assign self.beeper_delay_over = delay_over;
+   assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+
+elif (self.beep_count == 4) // last beep 
+
+   generate MO_B3:&apos;&apos;beeping_stopped&apos;&apos; to self;
+   select one oven related by self-&gt;MO_O[R3];
+   generate MO_O6:&apos;&apos;beeping_over&apos;&apos; to oven;
+
+else
+
+   assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+
+end if;
+
+assign self.beep_count = self.beep_count + 1;
+
+</programlisting></para>
+</section>
+</section>
+</section>
+<section>
+<title>Class Activities</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Here are listings of all of the activies in the class and its state machine(s).</literallayout></para>
+<section>
+<title>Instance State Machine Actions</title>
+<subtitle></subtitle>
+<section>
+<title>Door State[1]:Open</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>assign self.is_secure = false;
+
+select one oven related by self-&gt;MO_O[R4];
+generate MO_O4:&apos;&apos;cancel_cooking&apos;&apos; to oven;
+</programlisting></para>
+</section>
+<section>
+<title>Door State[2]:Closed</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>assign self.is_secure = true;
+</programlisting></para>
+</section>
+</section>
+</section>
+<section>
+<title>Class Activities</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Here are listings of all of the activies in the class and its state machine(s).</literallayout></para>
+<section>
+<title>Instance State Machine Actions</title>
+<subtitle></subtitle>
+<section>
+<title>Internal Light State[1]:Off</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Light off
+</programlisting></para>
+</section>
+<section>
+<title>Internal Light State[2]:On</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Light on
+</programlisting></para>
+</section>
+</section>
+</section>
+<section>
+<title>Class Activities</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Here are listings of all of the activies in the class and its state machine(s).</literallayout></para>
+<section>
+<title>Instance State Machine Actions</title>
+<subtitle></subtitle>
+<section>
+<title>Magnetron Tube State[2]:Reducing Output Power</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>if (self.current_power_output == tube_wattage::med_low)
+   self.current_power_output = tube_wattage::low;
+elif (self.current_power_output == tube_wattage::medium)
+   self.current_power_output = tube_wattage::med_low;
+elif (self.current_power_output == tube_wattage::med_high)
+   self.current_power_output = tube_wattage::medium;
+elif (self.current_power_output == tube_wattage::high)
+   self.current_power_output = tube_wattage::med_high;
+end if;
+</programlisting></para>
+</section>
+<section>
+<title>Magnetron Tube State[3]:Raising Output Power</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>if (self.current_power_output == tube_wattage::low)
+   self.current_power_output = tube_wattage::med_low;
+elif (self.current_power_output == tube_wattage::med_low)
+   self.current_power_output = tube_wattage::medium;
+elif (self.current_power_output == tube_wattage::medium)
+   self.current_power_output = tube_wattage::med_high;
+elif (self.current_power_output == tube_wattage::med_high)
+   self.current_power_output = tube_wattage::high;
+end if;
+</programlisting></para>
+</section>
+</section>
+</section>
+<section>
+<title>Class Activities</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Here are listings of all of the activies in the class and its state machine(s).</literallayout></para>
+<section>
+<title>Instance State Machine Actions</title>
+<subtitle></subtitle>
+<section>
+<title>Turntable State[1]:Stationary</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Turntable stationary
+</programlisting></para>
+</section>
+<section>
+<title>Turntable State[2]:Rotating</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Turntable spinning
+</programlisting></para>
+</section>
+</section>
+</section>
+<section>
+<title>Class Activities</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Here are listings of all of the activies in the class and its state machine(s).</literallayout></para>
+<section>
+<title>Instance State Machine Actions</title>
+<subtitle></subtitle>
+<section>
+<title>Oven State[1]:Awaiting Cooking Request</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>assign self.remaining_cooking_time = 0;
+
+select one beeper related by self-&gt;MO_B[R3];
+generate MO_B4:&apos;&apos;stop_beeping&apos;&apos; to beeper;
+</programlisting></para>
+</section>
+<section>
+<title>Oven State[2]:Ensuring Safe to Cook</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>if (self.remaining_cooking_time != 0)
+   select one door related by self-&gt;MO_D[R4];
+   if (door.is_secure == true)
+      generate MO_O7:&apos;&apos;oven_safe&apos;&apos;() to self;
+   end if;
+end if;
+</programlisting></para>
+</section>
+<section>
+<title>Oven State[3]:Cooking</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>create event instance cooking_over of MO_O5:&apos;&apos;cooking_period_over&apos;&apos;() to self;
+self.oven_timer = TIM::timer_start(microseconds:self.remaining_cooking_time, event_inst:cooking_over);
+
+select one light related by self-&gt;MO_IL[R2];
+generate MO_IL1:&apos;&apos;switch_on&apos;&apos; to light;
+
+select one turntable related by self-&gt;MO_TRN[R5];
+generate MO_TRN1:&apos;&apos;spin&apos;&apos; to turntable;
+
+select one tube related by self-&gt;MO_MT[R1];
+generate MO_MT3:&apos;&apos;power_on&apos;&apos; to tube;
+</programlisting></para>
+</section>
+<section>
+<title>Oven State[4]:Cooking Suspended</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>assign self.remaining_cooking_time = TIM::timer_remaining_time(timer_inst_ref:self.oven_timer);
+cancelled = TIM::timer_cancel(timer_inst_ref:self.oven_timer);
+
+select one light related by self-&gt;MO_IL[R2];
+generate MO_IL2:&apos;&apos;switch_off&apos;&apos; to light;
+
+select one turntable related by self-&gt;MO_TRN[R5];
+generate MO_TRN2:&apos;&apos;stop&apos;&apos; to turntable;
+
+select one tube related by self-&gt;MO_MT[R1];
+generate MO_MT4:&apos;&apos;power_off&apos;&apos; to tube;
+
+</programlisting></para>
+</section>
+<section>
+<title>Oven State[5]:Signalling Cooking Period Over</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>select one beeper related by self-&gt;MO_B[R3];
+generate MO_B1:&apos;&apos;start_beeping&apos;&apos; to beeper;
+
+select one light related by self-&gt;MO_IL[R2];
+generate MO_IL2:&apos;&apos;switch_off&apos;&apos; to light;
+
+select one turntable related by self-&gt;MO_TRN[R5];
+generate MO_TRN2:&apos;&apos;stop&apos;&apos; to turntable;
+
+select one tube related by self-&gt;MO_MT[R1];
+generate MO_MT4:&apos;&apos;power_off&apos;&apos; to tube;
+
+
+
+</programlisting></para>
+</section>
+<section>
+<title>Oven State[6]:Assigning Cooking Period</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>assign self.remaining_cooking_time = rcvd_evt.period;
+
+
+
+</programlisting></para>
+</section>
+</section>
+</section>
+</section>
+<section>
+<title>Associations</title>
+<subtitle>Associations</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><table frame='all'>
+<title>Microwave Oven</title>
+<tgroup cols='3' align='left' colsep='0' rowsep='0'>
+<thead>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Association.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Name</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Description</literallayout></para>
+</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Association.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>1</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A single magnetron tube is the core component of the oven assembly. Being related to the oven, it can be direclty powered on &amp; off.  </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Association.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>2</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A single, low wattage light illuminates the interior of the oven to aid viewing of the cooking process. Being related to the oven enables the light to be controlled on &amp; off as necessary.</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Association.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>3</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A single, audible, repeating beeper is a useful cosmetic component related to, and controlled by, the oven when cooking is over. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Association.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>4</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The oven door is a composite part of the microwave assembly, reflected by a mandatory 1:1 relationship.</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Association.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>5</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>A single turntable is an integral component of any modern microwave oven. Being related to the oven, it can be controlled directly by the oven during cooking.</literallayout></para>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</literallayout></para>
+</section>
+</section>
+<section>
+<title>Test Subsystem</title>
+<subtitle>Package</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-TestSubsystem-PackageDiagram-figure'>
+<title id='MicrowaveOven-MicrowaveOven-TestSubsystem-PackageDiagram-figure-title'>Test Subsystem Package Diagram</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Test Subsystem-Package Diagram.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>Classes</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><table frame='all'>
+<title>Classes</title>
+<tgroup cols='3' align='left' colsep='0' rowsep='0'>
+<thead>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Name</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Description</literallayout></para>
+</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Class.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Test Sequences</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Two sample test scenarios encapsulated within a class. </literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_state:state&lt;State_Model&gt;</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Attribute.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>TestSeqID:unique_id</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-TestSubsystem-TestSequences-InstanceStateMachine-figure'>
+<title id='MicrowaveOven-MicrowaveOven-TestSubsystem-TestSequences-InstanceStateMachine-figure-title'>Test Subsystem Test Sequences Instance State Machine</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Test Subsystem-Test Sequences-Instance State Machine.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>Class Activities</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'>Here are listings of all of the activies in the class and its state machine(s).</literallayout></para>
+<section>
+<title>Instance State Machine Actions</title>
+<subtitle></subtitle>
+<section>
+<title>Test Sequences State[1]:Awaiting Test Sequence Initiation</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>//Automatically initiate test sequence 1.
+generate MO_TS2:&apos;&apos;perform_test_seq_1&apos;&apos; to self;
+</programlisting></para>
+</section>
+<section>
+<title>Test Sequences State[2]:Performing Test Sequence 1</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Step 1. At T+2000000us, open the oven door to insert dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:&apos;&apos;release&apos;&apos; to door;
+   step1_timer=TIM::timer_start(microseconds:2000000,event_inst:release_door);
+end if;
+
+// Step 2. At T+3000000us, lower the output power setting to Med_High
+select any tube from instances of MO_MT;
+if (not_empty tube)
+   create event instance lower_power of MO_MT2:&apos;&apos;decrease_power&apos;&apos; to tube;
+   step2_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+end if;
+
+// Step 3. At T+4000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:&apos;&apos;close&apos;&apos; to door;
+   step3_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+end if;
+
+// Step 4. At T+5000000us, assign cooking period of 10 seconds and start cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance cooking_time of MO_O8:&apos;&apos;cooking_period&apos;&apos;(period:10000000) to oven;
+   step4a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+   create event instance start of MO_O3:&apos;&apos;start_cooking&apos;&apos; to oven;
+   step4b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+end if;
+
+// Step 5. At T+15secs, open the oven door to remove cooked dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:&apos;&apos;release&apos;&apos; to door;
+   step5_timer =TIM::timer_start(microseconds:15000000,event_inst:release_door);
+end if;
+
+// For codegen: Testing complete.  After 30 seconds, terminate the system
+// otherwise, executable will not terminate.
+create event instance finished of MO_TS4:&apos;&apos;test_seq_complete&apos;&apos; to self;
+terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);
+
+</programlisting></para>
+</section>
+<section>
+<title>Test Sequences State[3]:Performing Test Sequence 2</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Step 1. At T+2000000us, open the oven door to insert dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:&apos;&apos;release&apos;&apos; to door;
+   step1_timer =TIM::timer_start(microseconds:2000000,event_inst:release_door);
+end if;
+
+// Step 2. At T+4000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:&apos;&apos;close&apos;&apos; to door;
+   step2_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+end if;
+
+// Step 3. At T+5000000us, assign cooking period of 15seconds and start cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance cooking_time of MO_O8:&apos;&apos;cooking_period&apos;&apos;(period:15000000) to oven;
+   step3a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+   create event instance start of MO_O3:&apos;&apos;start_cooking&apos;&apos; to oven;
+   step3b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+end if;
+
+// Step 4. At T+6000000us, open the oven door to inspect dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:&apos;&apos;release&apos;&apos; to door;
+   step4_timer =TIM::timer_start(microseconds:6000000,event_inst:release_door);
+end if;
+
+// Step 5. At T+7000000us, lower the output power setting to Medium
+select any tube from instances of MO_MT;
+if (not_empty tube)
+   create event instance lower_power of MO_MT2:&apos;&apos;decrease_power&apos;&apos; to tube;
+   step5a_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+   step5b_timer = TIM::timer_start(microseconds:3000001,event_inst:lower_power);
+end if;
+
+// Step 6. At T+9000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:&apos;&apos;close&apos;&apos; to door;
+   step6_timer =TIM::timer_start(microseconds:9000000,event_inst:close_door);
+end if;
+
+// Step 7. At T+10000000us, resume cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance restart of MO_O3:&apos;&apos;start_cooking&apos;&apos; to oven;
+   step7_timer =TIM::timer_start(microseconds:10000000,event_inst:restart);
+end if;
+
+
+// For codegen: Testing complete.  After 30 seconds, terminate the system
+// otherwise, executable will not terminate.
+create event instance finished of MO_TS4:&apos;&apos;test_seq_complete&apos;&apos; to self;
+terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);
+
+
+</programlisting></para>
+</section>
+<section>
+<title>Test Sequences State[4]:Cooking Complete</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// For code generation: terminate system once complete
+::xit();
+</programlisting></para>
+</section>
+</section>
+</section>
+</section>
+</section>
+<section>
+<title>Functions</title>
+<subtitle>Package</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-Functions-PackageDiagram-figure'>
+<title id='MicrowaveOven-MicrowaveOven-Functions-PackageDiagram-figure-title'>Functions Package Diagram</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Functions-Package Diagram.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>Functions</title>
+<subtitle>Functions</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><table frame='all'>
+<title>Functions</title>
+<tgroup cols='3' align='left' colsep='0' rowsep='0'>
+<thead>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Name</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Description</literallayout></para>
+</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>StartCooking()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>CancelCooking()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>SpecifyCookingPeriod(cookingPeriod)</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>IncreasePower()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>DecreasePower()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>OpenDoor()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>CloseDoor()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>TestSequence1()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>DefineOven()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>setup()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>test()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Function.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>xit()</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</literallayout></para>
+<section>
+<title>Function Activities</title>
+<subtitle></subtitle>
+<section>
+<title>StartCooking</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>select any oven from instances of MO_O;
+generate MO_O3:&apos;&apos;start_cooking&apos;&apos;  to oven;
+</programlisting></para>
+</section>
+<section>
+<title>CancelCooking</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>select any oven from instances of MO_O;
+generate MO_O4:&apos;&apos;cancel_cooking&apos;&apos;  to oven;
+</programlisting></para>
+</section>
+<section>
+<title>SpecifyCookingPeriod</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// cooking period is to be specified in seconds and must be converted to usec in order
+// to be compatible with BP&apos;&apos;s view of time
+
+timePeriod = 1000000 * param.cookingPeriod;
+select any oven from instances of MO_O;
+generate MO_O8:&apos;&apos;cooking_period&apos;&apos; (period:timePeriod) to oven;
+
+</programlisting></para>
+</section>
+<section>
+<title>IncreasePower</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>select any tube from instances of MO_MT;
+generate MO_MT1:&apos;&apos;increase_power&apos;&apos;  to tube;
+</programlisting></para>
+</section>
+<section>
+<title>DecreasePower</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>select any tube from instances of MO_MT;
+generate MO_MT2:&apos;&apos;decrease_power&apos;&apos; to tube;
+</programlisting></para>
+</section>
+<section>
+<title>OpenDoor</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>select any door from instances of MO_D;
+generate MO_D1:&apos;&apos;release&apos;&apos;  to door;
+</programlisting></para>
+</section>
+<section>
+<title>CloseDoor</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>select any door from instances of MO_D;
+generate MO_D2:&apos;&apos;close&apos;&apos;  to door;
+</programlisting></para>
+</section>
+<section>
+<title>TestSequence1</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>create object instance testSequence of MO_TS;
+generate MO_TS2 to testSequence;
+</programlisting></para>
+</section>
+<section>
+<title>DefineOven</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Create the instances in the system.
+create object instance mo of MO_O;
+
+assign mo.remaining_cooking_time = 0;
+
+create object instance tube of MO_MT;
+relate mo to tube across R1;
+assign tube.current_power_output = tube_wattage::high;
+
+create object instance light of MO_IL;
+relate mo to light across R2;
+
+create object instance beeper of MO_B;
+relate mo to beeper across R3;
+
+create object instance door of MO_D;
+relate mo to door across R4;
+assign door.is_secure = false;
+
+create object instance turntable of MO_TRN;
+relate mo to turntable across R5;
+</programlisting></para>
+</section>
+<section>
+<title>setup</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Just call DefineOven, it takes care of everything.
+::DefineOven();
+
+</programlisting></para>
+</section>
+<section>
+<title>test</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// Initiate testing by just calling TestSequence1.
+::TestSequence1();
+</programlisting></para>
+</section>
+<section>
+<title>xit</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+<para><programlisting>// There&apos;&apos;s no persistence, so all we have to do is call ARCH::shutdown().
+ARCH::shutdown();
+</programlisting></para>
+</section>
+</section>
+</section>
+</section>
+<section>
+<title>External Entities</title>
+<subtitle>Package</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-ExternalEntities-PackageDiagram-figure'>
+<title id='MicrowaveOven-MicrowaveOven-ExternalEntities-PackageDiagram-figure-title'>External Entities Package Diagram</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-External Entities-Package Diagram.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>External Entities</title>
+<subtitle>External Entity</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><table frame='all'>
+<title>External Entities</title>
+<tgroup cols='4' align='left' colsep='0' rowsep='0'>
+<thead>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/ExternalEntity.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Name</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Description</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Bridges</literallayout></para>
+</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/ExternalEntity.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Time</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The Time external entity provides date, timestamp, and timer related operations.</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>current_date, create_date, get_second, get_minute, get_hour, get_day, get_month, get_year, current_clock, timer_start, timer_start_recurring, timer_remaining_time, timer_reset_time, timer_add_time, timer_cancel</literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/ExternalEntity.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Control Panel</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The Control Panel is used to simulate button presses on the microwave oven.  See the Object Communication Diagram (Asynchronous) for a detailed view of the events.</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/ExternalEntity.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Architecture</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>The Architecture external entity is used to model a shutdown bridge operation. This operation is called when the system has finished the test scenario.  
+
+When the microwave oven models are translated into code by the model compiler, the call to this bridge operation is mapped to an architecture method used to shut down the system.</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>shutdown</literallayout></para>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</literallayout></para>
+<section>
+<title>External Entity Activities</title>
+<subtitle></subtitle>
+<section>
+<title>Time Activities</title>
+<subtitle></subtitle>
+</section>
+<section>
+<title>Control Panel Activities</title>
+<subtitle></subtitle>
+</section>
+<section>
+<title>Architecture Activities</title>
+<subtitle></subtitle>
+</section>
+</section>
+</section>
+</section>
+<section>
+<title>Datatypes</title>
+<subtitle>Package</subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><figure id='MicrowaveOven-MicrowaveOven-Datatypes-PackageDiagram-figure'>
+<title id='MicrowaveOven-MicrowaveOven-Datatypes-PackageDiagram-figure-title'>Datatypes Package Diagram</title>
+<mediaobject><imageobject>
+<imagedata fileref='images/MicrowaveOven-MicrowaveOven-Datatypes-Package Diagram.png' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</figure>
+</literallayout></para>
+<section>
+<title>Datatypes</title>
+<subtitle></subtitle>
+<para><literallayout xml:space='preserve' class='monospaced'><table frame='all'>
+<title>Datatypes</title>
+<tgroup cols='3' align='left' colsep='0' rowsep='0'>
+<thead>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/DataType.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Name</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>Description</literallayout></para>
+</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'><mediaobject><imageobject>
+<imagedata fileref='images/Enumeration.gif' scalefit='1' width='100%'/>
+</imageobject></mediaobject>
+</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'>tube_wattage</literallayout></para>
+</entry>
+<entry>
+<para><literallayout xml:space='preserve' class='monospaced'></literallayout></para>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</literallayout></para>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</article>

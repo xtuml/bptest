@@ -22,6 +22,7 @@ import org.xtuml.bp.core.test.ImportedComponentIFTests;
 import org.xtuml.bp.core.test.RemoveSignalTests;
 import org.xtuml.bp.core.test.SystemLevelGlobalsTest;
 import org.xtuml.bp.core.test.UIConfigurationTests;
+import org.xtuml.bp.core.test.ui.DocGenTest;
 
 import junit.framework.TestSuite;
 
@@ -32,6 +33,7 @@ import junit.framework.TestSuite;
 @Suite.SuiteClasses({
 		GlobalTestSetupClass.class,
 		SystemLevelGlobalsTest.class,
+		DocGenTest.class,
 		ComponentContextMenuTests.class, 
 		ComponentContextMenuTests2.class, 
 		UIConfigurationTests.class,

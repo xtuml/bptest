@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>BridgePoint® xtUML Generated Documentation</title><link rel="stylesheet" href="techpub.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.1" /></head><body><div class="article" title="BridgePoint® xtUML Generated Documentation"><div class="titlepage"><div><div><h2 class="title"><a id="idm228014164704"></a>
+  <span class="trademark">BridgePoint</span>®
+  xtUML Generated Documentation
+</h2></div><div><div class="author"><h3 class="author"><span class="firstname"></span> <span class="surname"></span></h3></div></div></div><hr /></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#idm227918427264">1. MicrowaveOven</a></span></dt><dd><dl><dt><span class="section"><a href="#idm227918424576">1.1. System-Level Packages</a></span></dt><dd><dl><dt><span class="section"><a href="#idm227918423680">1.1.1. MicrowaveOven</a></span></dt><dd><dl><dt><span class="section"><a href="#idm227918419008">1.1.1.1. MicrowaveOven Packages</a></span></dt><dd><dl><dt><span class="section"><a href="#idm227918417216">1.1.1.1.1. Microwave Oven</a></span></dt><dt><span class="section"><a href="#idm227939409856">1.1.1.1.2. Test Subsystem</a></span></dt><dt><span class="section"><a href="#idm227939348032">1.1.1.1.3. Functions</a></span></dt><dt><span class="section"><a href="#idm227978415088">1.1.1.1.4. External Entities</a></span></dt><dt><span class="section"><a href="#idm227922092720">1.1.1.1.5. Datatypes</a></span></dt></dl></dd></dl></dd></dl></dd></dl></dd></dl></div><div class="list-of-figures"><p><b>List of Figures</b></p><dl><dt>1. <a href="#MicrowaveOven-MicrowaveOven-PackageDiagram-figure">MicrowaveOven Package Diagram</a></dt><dt>2. <a href="#MicrowaveOven-MicrowaveOven-MicrowaveOven-PackageDiagram-figure">Microwave Oven Package Diagram</a></dt><dt>3. <a href="#MicrowaveOven-MicrowaveOven-MicrowaveOven-Beeper-InstanceStateMachine-figure">Microwave Oven Beeper Instance State Machine</a></dt><dt>4. <a href="#MicrowaveOven-MicrowaveOven-MicrowaveOven-Door-InstanceStateMachine-figure">Microwave Oven Door Instance State Machine</a></dt><dt>5. <a href="#MicrowaveOven-MicrowaveOven-MicrowaveOven-InternalLight-InstanceStateMachine-figure">Microwave Oven Internal Light Instance State Machine</a></dt><dt>6. <a href="#MicrowaveOven-MicrowaveOven-MicrowaveOven-MagnetronTube-InstanceStateMachine-figure">Microwave Oven Magnetron Tube Instance State Machine</a></dt><dt>7. <a href="#MicrowaveOven-MicrowaveOven-MicrowaveOven-Turntable-InstanceStateMachine-figure">Microwave Oven Turntable Instance State Machine</a></dt><dt>8. <a href="#MicrowaveOven-MicrowaveOven-MicrowaveOven-Oven-InstanceStateMachine-figure">Microwave Oven Oven Instance State Machine</a></dt><dt>9. <a href="#MicrowaveOven-MicrowaveOven-TestSubsystem-PackageDiagram-figure">Test Subsystem Package Diagram</a></dt><dt>10. <a href="#MicrowaveOven-MicrowaveOven-TestSubsystem-TestSequences-InstanceStateMachine-figure">Test Subsystem Test Sequences Instance State Machine</a></dt><dt>11. <a href="#MicrowaveOven-MicrowaveOven-Functions-PackageDiagram-figure">Functions Package Diagram</a></dt><dt>12. <a href="#MicrowaveOven-MicrowaveOven-ExternalEntities-PackageDiagram-figure">External Entities Package Diagram</a></dt><dt>13. <a href="#MicrowaveOven-MicrowaveOven-Datatypes-PackageDiagram-figure">Datatypes Package Diagram</a></dt></dl></div><div class="list-of-tables"><p><b>List of Tables</b></p><dl><dt>1. <a href="#idm227918411136">Classes</a></dt><dt>2. <a href="#idm227939453488">Microwave Oven</a></dt><dt>3. <a href="#idm227939402288">Classes</a></dt><dt>4. <a href="#idm227939340400">Functions</a></dt><dt>5. <a href="#idm227978407968">External Entities</a></dt><dt>6. <a href="#idm227922085776">Datatypes</a></dt></dl></div><div class="section" title="1. MicrowaveOven"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm227918427264"></a>1. MicrowaveOven</h2></div><div><h3 class="subtitle">Generated Documentation</h3></div></div></div><pre class="literallayout">Please find below generated documentation for the system named MicrowaveOven.</pre><pre class="literallayout"></pre><div class="section" title="1.1. System-Level Packages"><div class="titlepage"><div><div><h3 class="title"><a id="idm227918424576"></a>1.1. System-Level Packages</h3></div><div><h4 class="subtitle"></h4></div></div></div><div class="section" title="1.1.1. MicrowaveOven"><div class="titlepage"><div><div><h4 class="title"><a id="idm227918423680"></a>1.1.1. MicrowaveOven</h4></div><div><h5 class="subtitle">Package</h5></div></div></div><pre class="literallayout">Domain Mission: Microwave Application Domain
+
+To capture the retained data and event sequencing associated with the use of a domestic microwave oven comprising :
+
+* a magnetron tube (with variable power output settings)
+* a turntable
+* an internal light
+* a beeper to signal when cooking is complete
+* an oven door
+
+Bridges to other Domains:
+
+* To Control Panel (Application User Interface Domain)
+* To PIO domain (not shown)
+* To Timer domain
+
+
+<div class="figure"><a id="MicrowaveOven-MicrowaveOven-PackageDiagram-figure"></a><p class="title"><b>Figure 1. MicrowaveOven Package Diagram</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Package Diagram.png" width="100%" alt="MicrowaveOven Package Diagram" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1. MicrowaveOven Packages"><div class="titlepage"><div><div><h5 class="title"><a id="idm227918419008"></a>1.1.1.1. MicrowaveOven Packages</h5></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Rendered here are the contained package diagrams.</pre><div class="section" title="1.1.1.1.1. Microwave Oven"><div class="titlepage"><div><div><h6 class="title"><a id="idm227918417216"></a>1.1.1.1.1. Microwave Oven</h6></div><div><h6 class="subtitle">Package</h6></div></div></div><pre class="literallayout">The microwave oven subsystem models the microwave oven application<div class="figure"><a id="MicrowaveOven-MicrowaveOven-MicrowaveOven-PackageDiagram-figure"></a><p class="title"><b>Figure 2. Microwave Oven Package Diagram</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Microwave Oven-Package Diagram.png" width="100%" alt="Microwave Oven Package Diagram" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1.1.1. Classes"><div class="titlepage"><div><div><h6 class="title"><a id="idm227918412672"></a>1.1.1.1.1.1. Classes</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"><div class="table"><a id="idm227918411136"></a><p class="title"><b>Table 1. Classes</b></p><div class="table-contents"><table summary="Classes" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</th><th align="left">
+<pre class="literallayout">Name</pre>
+</th><th align="left">
+<pre class="literallayout">Description</pre>
+</th></tr></thead><tbody><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Beeper</pre>
+</td><td align="left">
+<pre class="literallayout">An audible signal generator. 
+
+The beeper repeats four times on completion of the cooking period, signalling to the user that the oven door can be opened to inspect the readiness of the food inside.  </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_state:state&lt;State_Model&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">beeper_delay_over:inst&lt;Event&gt;</pre>
+</td><td align="left">
+<pre class="literallayout">The delayed event supplied to the beeper''s local timer, which fires to signify the completion of the 1 second beeper delay.</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">beep_count:integer</pre>
+</td><td align="left">
+<pre class="literallayout">A counter, incrementally increasing from zero as the beeper sounds. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">beeper_timer:inst_ref&lt;Timer&gt;</pre>
+</td><td align="left">
+<pre class="literallayout">A local timer, used to generate delays of 1 second between the sounding of each beep. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">BeeperID:unique_id</pre>
+</td><td align="left">
+<pre class="literallayout">The uniquely-specified beeper identifier.</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Door</pre>
+</td><td align="left">
+<pre class="literallayout">The hinged oven door, opened with an electro-mechanical release button on the control panel, and secured by steady force to the door front. The door is a vital safety component of the oven. The door must be securely closed before the oven tube can be powered on. 
+</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_state:state&lt;State_Model&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">is_secure:boolean</pre>
+</td><td align="left">
+<pre class="literallayout">A boolean status attribute reflecting whether the door is currently closed (secure) or open (not secure). </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">DoorID:unique_id</pre>
+</td><td align="left">
+<pre class="literallayout">The uniquely-specified door identifier. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Internal Light</pre>
+</td><td align="left">
+<pre class="literallayout">The internal oven light, illuminated only when the oven tube is powered on. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_state:state&lt;State_Model&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">LightID:unique_id</pre>
+</td><td align="left">
+<pre class="literallayout">The uniquely-specified light identifier.</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Magnetron Tube</pre>
+</td><td align="left">
+<pre class="literallayout">The magnetron tube is the core element of the microwave oven, generating microwave energy following AC/DC Voltage conversion. The tube operates from a 240V, 50Hz supply.
+
+The tube has variable power output, ranging from 600W to 1000W in discrete 100W steps. 
+
+The relevant behaviour of the tube is confined to :
+
+* power on 
+* power off
+* raising &amp; lowering output power level </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_state:state&lt;State_Model&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_power_output:tube_wattage</pre>
+</td><td align="left">
+<pre class="literallayout">Refer to the user-defined data type "tube_wattage" for a full description.</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">TubeID:unique_id</pre>
+</td><td align="left">
+<pre class="literallayout">The uniquely-specified tube identifier.</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Turntable</pre>
+</td><td align="left">
+<pre class="literallayout">A flat circular platter positioned in the middle of the oven floor, where food is placed for cooking. The platter takes the form of a turntable, rotating at a constant speed during cooking to uniformly distribute microwave radiation through the food. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_state:state&lt;State_Model&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">TurntableID:unique_id</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Oven</pre>
+</td><td align="left">
+<pre class="literallayout">The entire microwave oven assembly (with the exception of the Control Panel), comprising :
+
+* a door
+* an internal light
+* a turntable
+* a magnetron tube
+* a beeper</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_state:state&lt;State_Model&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">remaining_cooking_time:integer</pre>
+</td><td align="left">
+<pre class="literallayout">Records any remaining cooking period when cooking is suspended as a consequence of the oven door being opened or the ''cancel'' key being pressed by the oven user. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">oven_timer:inst_ref&lt;Timer&gt;</pre>
+</td><td align="left">
+<pre class="literallayout">A local oven countdown timer, set and reset by the user via the Control Panel</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">TurntableID:same_as&lt;Base_Attribute&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">DoorID:same_as&lt;Base_Attribute&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">BeeperID:same_as&lt;Base_Attribute&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">LightID:same_as&lt;Base_Attribute&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">TubeID:same_as&lt;Base_Attribute&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">OvenID:unique_id</pre>
+</td><td align="left">
+<pre class="literallayout">A uniquely assigned Oven identifier</pre>
+</td></tr></tbody></table></div></div><br class="table-break" />
+</pre><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-MicrowaveOven-Beeper-InstanceStateMachine-figure"></a><p class="title"><b>Figure 3. Microwave Oven Beeper Instance State Machine</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Microwave Oven-Beeper-Instance State Machine.png" width="100%" alt="Microwave Oven Beeper Instance State Machine" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-MicrowaveOven-Door-InstanceStateMachine-figure"></a><p class="title"><b>Figure 4. Microwave Oven Door Instance State Machine</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Microwave Oven-Door-Instance State Machine.png" width="100%" alt="Microwave Oven Door Instance State Machine" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-MicrowaveOven-InternalLight-InstanceStateMachine-figure"></a><p class="title"><b>Figure 5. Microwave Oven Internal Light Instance State Machine</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Microwave Oven-Internal Light-Instance State Machine.png" width="100%" alt="Microwave Oven Internal Light Instance State Machine" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-MicrowaveOven-MagnetronTube-InstanceStateMachine-figure"></a><p class="title"><b>Figure 6. Microwave Oven Magnetron Tube Instance State Machine</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Microwave Oven-Magnetron Tube-Instance State Machine.png" width="100%" alt="Microwave Oven Magnetron Tube Instance State Machine" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-MicrowaveOven-Turntable-InstanceStateMachine-figure"></a><p class="title"><b>Figure 7. Microwave Oven Turntable Instance State Machine</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Microwave Oven-Turntable-Instance State Machine.png" width="100%" alt="Microwave Oven Turntable Instance State Machine" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-MicrowaveOven-Oven-InstanceStateMachine-figure"></a><p class="title"><b>Figure 8. Microwave Oven Oven Instance State Machine</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Microwave Oven-Oven-Instance State Machine.png" width="100%" alt="Microwave Oven Oven Instance State Machine" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1.1.1.1. Class Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939542096"></a>1.1.1.1.1.1.1. Class Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Here are listings of all of the activies in the class and its state machine(s).</pre><div class="section" title="1.1.1.1.1.1.1.1. Instance State Machine Actions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939540016"></a>1.1.1.1.1.1.1.1. Instance State Machine Actions</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.1.1.1.1.1. Beeper State[1]:Awaiting Beeper Request"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939539120"></a>1.1.1.1.1.1.1.1.1. Beeper State[1]:Awaiting Beeper Request</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">assign self.beep_count = 0;
+
+cancelled_timer = TIM::timer_cancel(timer_inst_ref:self.beeper_timer);
+</pre></div><div class="section" title="1.1.1.1.1.1.1.1.2. Beeper State[2]:Beeping"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939535136"></a>1.1.1.1.1.1.1.1.2. Beeper State[2]:Beeping</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">if (self.beep_count == 0) // beeper yet to begin
+
+   create event instance delay_over of MO_B2:''beep_delay_over'' to self;
+   assign self.beeper_delay_over = delay_over;
+   assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+
+elif (self.beep_count == 4) // last beep 
+
+   generate MO_B3:''beeping_stopped'' to self;
+   select one oven related by self-&gt;MO_O[R3];
+   generate MO_O6:''beeping_over'' to oven;
+
+else
+
+   assign self.beeper_timer = TIM::timer_start(microseconds:100000,event_inst:self.beeper_delay_over);
+
+end if;
+
+assign self.beep_count = self.beep_count + 1;
+
+</pre></div></div></div><div class="section" title="1.1.1.1.1.1.2. Class Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939529872"></a>1.1.1.1.1.1.2. Class Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Here are listings of all of the activies in the class and its state machine(s).</pre><div class="section" title="1.1.1.1.1.1.2.1. Instance State Machine Actions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939528016"></a>1.1.1.1.1.1.2.1. Instance State Machine Actions</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.1.1.2.1.1. Door State[1]:Open"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939527120"></a>1.1.1.1.1.1.2.1.1. Door State[1]:Open</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">assign self.is_secure = false;
+
+select one oven related by self-&gt;MO_O[R4];
+generate MO_O4:''cancel_cooking'' to oven;
+</pre></div><div class="section" title="1.1.1.1.1.1.2.1.2. Door State[2]:Closed"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939523104"></a>1.1.1.1.1.1.2.1.2. Door State[2]:Closed</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">assign self.is_secure = true;
+</pre></div></div></div><div class="section" title="1.1.1.1.1.1.3. Class Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939518976"></a>1.1.1.1.1.1.3. Class Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Here are listings of all of the activies in the class and its state machine(s).</pre><div class="section" title="1.1.1.1.1.1.3.1. Instance State Machine Actions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939516896"></a>1.1.1.1.1.1.3.1. Instance State Machine Actions</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.1.1.3.1.1. Internal Light State[1]:Off"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939516000"></a>1.1.1.1.1.1.3.1.1. Internal Light State[1]:Off</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">// Light off
+</pre></div><div class="section" title="1.1.1.1.1.1.3.1.2. Internal Light State[2]:On"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939512128"></a>1.1.1.1.1.1.3.1.2. Internal Light State[2]:On</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">// Light on
+</pre></div></div></div><div class="section" title="1.1.1.1.1.1.4. Class Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939508000"></a>1.1.1.1.1.1.4. Class Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Here are listings of all of the activies in the class and its state machine(s).</pre><div class="section" title="1.1.1.1.1.1.4.1. Instance State Machine Actions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939505920"></a>1.1.1.1.1.1.4.1. Instance State Machine Actions</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.1.1.4.1.1. Magnetron Tube State[2]:Reducing Output Power"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939505024"></a>1.1.1.1.1.1.4.1.1. Magnetron Tube State[2]:Reducing Output Power</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">if (self.current_power_output == tube_wattage::med_low)
+   self.current_power_output = tube_wattage::low;
+elif (self.current_power_output == tube_wattage::medium)
+   self.current_power_output = tube_wattage::med_low;
+elif (self.current_power_output == tube_wattage::med_high)
+   self.current_power_output = tube_wattage::medium;
+elif (self.current_power_output == tube_wattage::high)
+   self.current_power_output = tube_wattage::med_high;
+end if;
+</pre></div><div class="section" title="1.1.1.1.1.1.4.1.2. Magnetron Tube State[3]:Raising Output Power"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939501152"></a>1.1.1.1.1.1.4.1.2. Magnetron Tube State[3]:Raising Output Power</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">if (self.current_power_output == tube_wattage::low)
+   self.current_power_output = tube_wattage::med_low;
+elif (self.current_power_output == tube_wattage::med_low)
+   self.current_power_output = tube_wattage::medium;
+elif (self.current_power_output == tube_wattage::medium)
+   self.current_power_output = tube_wattage::med_high;
+elif (self.current_power_output == tube_wattage::med_high)
+   self.current_power_output = tube_wattage::high;
+end if;
+</pre></div></div></div><div class="section" title="1.1.1.1.1.1.5. Class Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939495664"></a>1.1.1.1.1.1.5. Class Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Here are listings of all of the activies in the class and its state machine(s).</pre><div class="section" title="1.1.1.1.1.1.5.1. Instance State Machine Actions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939493584"></a>1.1.1.1.1.1.5.1. Instance State Machine Actions</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.1.1.5.1.1. Turntable State[1]:Stationary"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939492688"></a>1.1.1.1.1.1.5.1.1. Turntable State[1]:Stationary</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">// Turntable stationary
+</pre></div><div class="section" title="1.1.1.1.1.1.5.1.2. Turntable State[2]:Rotating"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939488816"></a>1.1.1.1.1.1.5.1.2. Turntable State[2]:Rotating</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">// Turntable spinning
+</pre></div></div></div><div class="section" title="1.1.1.1.1.1.6. Class Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939484688"></a>1.1.1.1.1.1.6. Class Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Here are listings of all of the activies in the class and its state machine(s).</pre><div class="section" title="1.1.1.1.1.1.6.1. Instance State Machine Actions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939482528"></a>1.1.1.1.1.1.6.1. Instance State Machine Actions</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.1.1.6.1.1. Oven State[1]:Awaiting Cooking Request"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939481632"></a>1.1.1.1.1.1.6.1.1. Oven State[1]:Awaiting Cooking Request</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">assign self.remaining_cooking_time = 0;
+
+select one beeper related by self-&gt;MO_B[R3];
+generate MO_B4:''stop_beeping'' to beeper;
+</pre></div><div class="section" title="1.1.1.1.1.1.6.1.2. Oven State[2]:Ensuring Safe to Cook"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939477520"></a>1.1.1.1.1.1.6.1.2. Oven State[2]:Ensuring Safe to Cook</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">if (self.remaining_cooking_time != 0)
+   select one door related by self-&gt;MO_D[R4];
+   if (door.is_secure == true)
+      generate MO_O7:''oven_safe''() to self;
+   end if;
+end if;
+</pre></div><div class="section" title="1.1.1.1.1.1.6.1.3. Oven State[3]:Cooking"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939473120"></a>1.1.1.1.1.1.6.1.3. Oven State[3]:Cooking</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">create event instance cooking_over of MO_O5:''cooking_period_over''() to self;
+self.oven_timer = TIM::timer_start(microseconds:self.remaining_cooking_time, event_inst:cooking_over);
+
+select one light related by self-&gt;MO_IL[R2];
+generate MO_IL1:''switch_on'' to light;
+
+select one turntable related by self-&gt;MO_TRN[R5];
+generate MO_TRN1:''spin'' to turntable;
+
+select one tube related by self-&gt;MO_MT[R1];
+generate MO_MT3:''power_on'' to tube;
+</pre></div><div class="section" title="1.1.1.1.1.1.6.1.4. Oven State[4]:Cooking Suspended"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939468784"></a>1.1.1.1.1.1.6.1.4. Oven State[4]:Cooking Suspended</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">assign self.remaining_cooking_time = TIM::timer_remaining_time(timer_inst_ref:self.oven_timer);
+cancelled = TIM::timer_cancel(timer_inst_ref:self.oven_timer);
+
+select one light related by self-&gt;MO_IL[R2];
+generate MO_IL2:''switch_off'' to light;
+
+select one turntable related by self-&gt;MO_TRN[R5];
+generate MO_TRN2:''stop'' to turntable;
+
+select one tube related by self-&gt;MO_MT[R1];
+generate MO_MT4:''power_off'' to tube;
+
+</pre></div><div class="section" title="1.1.1.1.1.1.6.1.5. Oven State[5]:Signalling Cooking Period Over"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939464800"></a>1.1.1.1.1.1.6.1.5. Oven State[5]:Signalling Cooking Period Over</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">select one beeper related by self-&gt;MO_B[R3];
+generate MO_B1:''start_beeping'' to beeper;
+
+select one light related by self-&gt;MO_IL[R2];
+generate MO_IL2:''switch_off'' to light;
+
+select one turntable related by self-&gt;MO_TRN[R5];
+generate MO_TRN2:''stop'' to turntable;
+
+select one tube related by self-&gt;MO_MT[R1];
+generate MO_MT4:''power_off'' to tube;
+
+
+
+</pre></div><div class="section" title="1.1.1.1.1.1.6.1.6. Oven State[6]:Assigning Cooking Period"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939459568"></a>1.1.1.1.1.1.6.1.6. Oven State[6]:Assigning Cooking Period</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">assign self.remaining_cooking_time = rcvd_evt.period;
+
+
+
+</pre></div></div></div></div><div class="section" title="1.1.1.1.1.2. Associations"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939455440"></a>1.1.1.1.1.2. Associations</h6></div><div><h6 class="subtitle">Associations</h6></div></div></div><pre class="literallayout"><div class="table"><a id="idm227939453488"></a><p class="title"><b>Table 2. Microwave Oven</b></p><div class="table-contents"><table summary="Microwave Oven" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Association.gif" width="100%" /></td></tr></table></div>
+</pre>
+</th><th align="left">
+<pre class="literallayout">Name</pre>
+</th><th align="left">
+<pre class="literallayout">Description</pre>
+</th></tr></thead><tbody><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Association.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">1</pre>
+</td><td align="left">
+<pre class="literallayout">A single magnetron tube is the core component of the oven assembly. Being related to the oven, it can be direclty powered on &amp; off.  </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Association.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">2</pre>
+</td><td align="left">
+<pre class="literallayout">A single, low wattage light illuminates the interior of the oven to aid viewing of the cooking process. Being related to the oven enables the light to be controlled on &amp; off as necessary.</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Association.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">3</pre>
+</td><td align="left">
+<pre class="literallayout">A single, audible, repeating beeper is a useful cosmetic component related to, and controlled by, the oven when cooking is over. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Association.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">4</pre>
+</td><td align="left">
+<pre class="literallayout">The oven door is a composite part of the microwave assembly, reflected by a mandatory 1:1 relationship.</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Association.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">5</pre>
+</td><td align="left">
+<pre class="literallayout">A single turntable is an integral component of any modern microwave oven. Being related to the oven, it can be controlled directly by the oven during cooking.</pre>
+</td></tr></tbody></table></div></div><br class="table-break" />
+</pre></div></div><div class="section" title="1.1.1.1.2. Test Subsystem"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939409856"></a>1.1.1.1.2. Test Subsystem</h6></div><div><h6 class="subtitle">Package</h6></div></div></div><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-TestSubsystem-PackageDiagram-figure"></a><p class="title"><b>Figure 9. Test Subsystem Package Diagram</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Test Subsystem-Package Diagram.png" width="100%" alt="Test Subsystem Package Diagram" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1.2.1. Classes"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939404160"></a>1.1.1.1.2.1. Classes</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"><div class="table"><a id="idm227939402288"></a><p class="title"><b>Table 3. Classes</b></p><div class="table-contents"><table summary="Classes" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</th><th align="left">
+<pre class="literallayout">Name</pre>
+</th><th align="left">
+<pre class="literallayout">Description</pre>
+</th></tr></thead><tbody><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Class.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Test Sequences</pre>
+</td><td align="left">
+<pre class="literallayout">Two sample test scenarios encapsulated within a class. </pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">current_state:state&lt;State_Model&gt;</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Attribute.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">TestSeqID:unique_id</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr></tbody></table></div></div><br class="table-break" />
+</pre><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-TestSubsystem-TestSequences-InstanceStateMachine-figure"></a><p class="title"><b>Figure 10. Test Subsystem Test Sequences Instance State Machine</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Test Subsystem-Test Sequences-Instance State Machine.png" width="100%" alt="Test Subsystem Test Sequences Instance State Machine" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1.2.1.1. Class Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939368096"></a>1.1.1.1.2.1.1. Class Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout">Here are listings of all of the activies in the class and its state machine(s).</pre><div class="section" title="1.1.1.1.2.1.1.1. Instance State Machine Actions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939365856"></a>1.1.1.1.2.1.1.1. Instance State Machine Actions</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.2.1.1.1.1. Test Sequences State[1]:Awaiting Test Sequence Initiation"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939364928"></a>1.1.1.1.2.1.1.1.1. Test Sequences State[1]:Awaiting Test Sequence Initiation</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">//Automatically initiate test sequence 1.
+generate MO_TS2:''perform_test_seq_1'' to self;
+</pre></div><div class="section" title="1.1.1.1.2.1.1.1.2. Test Sequences State[2]:Performing Test Sequence 1"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939360688"></a>1.1.1.1.2.1.1.1.2. Test Sequences State[2]:Performing Test Sequence 1</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">// Step 1. At T+2000000us, open the oven door to insert dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step1_timer=TIM::timer_start(microseconds:2000000,event_inst:release_door);
+end if;
+
+// Step 2. At T+3000000us, lower the output power setting to Med_High
+select any tube from instances of MO_MT;
+if (not_empty tube)
+   create event instance lower_power of MO_MT2:''decrease_power'' to tube;
+   step2_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+end if;
+
+// Step 3. At T+4000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:''close'' to door;
+   step3_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+end if;
+
+// Step 4. At T+5000000us, assign cooking period of 10 seconds and start cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance cooking_time of MO_O8:''cooking_period''(period:10000000) to oven;
+   step4a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+   create event instance start of MO_O3:''start_cooking'' to oven;
+   step4b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+end if;
+
+// Step 5. At T+15secs, open the oven door to remove cooked dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step5_timer =TIM::timer_start(microseconds:15000000,event_inst:release_door);
+end if;
+
+// For codegen: Testing complete.  After 30 seconds, terminate the system
+// otherwise, executable will not terminate.
+create event instance finished of MO_TS4:''test_seq_complete'' to self;
+terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);
+
+</pre></div><div class="section" title="1.1.1.1.2.1.1.1.3. Test Sequences State[3]:Performing Test Sequence 2"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939356432"></a>1.1.1.1.2.1.1.1.3. Test Sequences State[3]:Performing Test Sequence 2</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">// Step 1. At T+2000000us, open the oven door to insert dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step1_timer =TIM::timer_start(microseconds:2000000,event_inst:release_door);
+end if;
+
+// Step 2. At T+4000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:''close'' to door;
+   step2_timer =TIM::timer_start(microseconds:4000000,event_inst:close_door);
+end if;
+
+// Step 3. At T+5000000us, assign cooking period of 15seconds and start cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance cooking_time of MO_O8:''cooking_period''(period:15000000) to oven;
+   step3a_timer =TIM::timer_start(microseconds:5000000,event_inst:cooking_time);
+   create event instance start of MO_O3:''start_cooking'' to oven;
+   step3b_timer =TIM::timer_start(microseconds:5000001,event_inst:start);
+end if;
+
+// Step 4. At T+6000000us, open the oven door to inspect dish
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance release_door of MO_D1:''release'' to door;
+   step4_timer =TIM::timer_start(microseconds:6000000,event_inst:release_door);
+end if;
+
+// Step 5. At T+7000000us, lower the output power setting to Medium
+select any tube from instances of MO_MT;
+if (not_empty tube)
+   create event instance lower_power of MO_MT2:''decrease_power'' to tube;
+   step5a_timer =TIM::timer_start(microseconds:3000000,event_inst:lower_power);
+   step5b_timer = TIM::timer_start(microseconds:3000001,event_inst:lower_power);
+end if;
+
+// Step 6. At T+9000000us, close oven door
+select any door from instances of MO_D;
+if (not_empty door)
+   create event instance close_door of MO_D2:''close'' to door;
+   step6_timer =TIM::timer_start(microseconds:9000000,event_inst:close_door);
+end if;
+
+// Step 7. At T+10000000us, resume cooking
+select any oven from instances of MO_O;
+if (not_empty oven)
+   create event instance restart of MO_O3:''start_cooking'' to oven;
+   step7_timer =TIM::timer_start(microseconds:10000000,event_inst:restart);
+end if;
+
+
+// For codegen: Testing complete.  After 30 seconds, terminate the system
+// otherwise, executable will not terminate.
+create event instance finished of MO_TS4:''test_seq_complete'' to self;
+terminate_timer=TIM::timer_start(microseconds:30000000,event_inst:finished);
+
+
+</pre></div><div class="section" title="1.1.1.1.2.1.1.1.4. Test Sequences State[4]:Cooking Complete"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939352384"></a>1.1.1.1.2.1.1.1.4. Test Sequences State[4]:Cooking Complete</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="literallayout"></pre><pre class="programlisting">// For code generation: terminate system once complete
+::xit();
+</pre></div></div></div></div></div><div class="section" title="1.1.1.1.3. Functions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939348032"></a>1.1.1.1.3. Functions</h6></div><div><h6 class="subtitle">Package</h6></div></div></div><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-Functions-PackageDiagram-figure"></a><p class="title"><b>Figure 11. Functions Package Diagram</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Functions-Package Diagram.png" width="100%" alt="Functions Package Diagram" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1.3.1. Functions"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939342416"></a>1.1.1.1.3.1. Functions</h6></div><div><h6 class="subtitle">Functions</h6></div></div></div><pre class="literallayout"><div class="table"><a id="idm227939340400"></a><p class="title"><b>Table 4. Functions</b></p><div class="table-contents"><table summary="Functions" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</th><th align="left">
+<pre class="literallayout">Name</pre>
+</th><th align="left">
+<pre class="literallayout">Description</pre>
+</th></tr></thead><tbody><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">StartCooking()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">CancelCooking()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">SpecifyCookingPeriod(cookingPeriod)</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">IncreasePower()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">DecreasePower()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">OpenDoor()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">CloseDoor()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">TestSequence1()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">DefineOven()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">setup()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">test()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Function.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">xit()</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr></tbody></table></div></div><br class="table-break" />
+</pre><div class="section" title="1.1.1.1.3.1.1. Function Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939252784"></a>1.1.1.1.3.1.1. Function Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.3.1.1.1. StartCooking"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939251856"></a>1.1.1.1.3.1.1.1. StartCooking</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">select any oven from instances of MO_O;
+generate MO_O3:''start_cooking''  to oven;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.2. CancelCooking"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939248768"></a>1.1.1.1.3.1.1.2. CancelCooking</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">select any oven from instances of MO_O;
+generate MO_O4:''cancel_cooking''  to oven;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.3. SpecifyCookingPeriod"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939245728"></a>1.1.1.1.3.1.1.3. SpecifyCookingPeriod</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">// cooking period is to be specified in seconds and must be converted to usec in order
+// to be compatible with BP''s view of time
+
+timePeriod = 1000000 * param.cookingPeriod;
+select any oven from instances of MO_O;
+generate MO_O8:''cooking_period'' (period:timePeriod) to oven;
+
+</pre></div><div class="section" title="1.1.1.1.3.1.1.4. IncreasePower"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939242160"></a>1.1.1.1.3.1.1.4. IncreasePower</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">select any tube from instances of MO_MT;
+generate MO_MT1:''increase_power''  to tube;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.5. DecreasePower"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939239328"></a>1.1.1.1.3.1.1.5. DecreasePower</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">select any tube from instances of MO_MT;
+generate MO_MT2:''decrease_power'' to tube;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.6. OpenDoor"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939236416"></a>1.1.1.1.3.1.1.6. OpenDoor</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">select any door from instances of MO_D;
+generate MO_D1:''release''  to door;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.7. CloseDoor"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939233392"></a>1.1.1.1.3.1.1.7. CloseDoor</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">select any door from instances of MO_D;
+generate MO_D2:''close''  to door;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.8. TestSequence1"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939230368"></a>1.1.1.1.3.1.1.8. TestSequence1</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">create object instance testSequence of MO_TS;
+generate MO_TS2 to testSequence;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.9. DefineOven"><div class="titlepage"><div><div><h6 class="title"><a id="idm227939227456"></a>1.1.1.1.3.1.1.9. DefineOven</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">// Create the instances in the system.
+create object instance mo of MO_O;
+
+assign mo.remaining_cooking_time = 0;
+
+create object instance tube of MO_MT;
+relate mo to tube across R1;
+assign tube.current_power_output = tube_wattage::high;
+
+create object instance light of MO_IL;
+relate mo to light across R2;
+
+create object instance beeper of MO_B;
+relate mo to beeper across R3;
+
+create object instance door of MO_D;
+relate mo to door across R4;
+assign door.is_secure = false;
+
+create object instance turntable of MO_TRN;
+relate mo to turntable across R5;
+</pre></div><div class="section" title="1.1.1.1.3.1.1.10. setup"><div class="titlepage"><div><div><h6 class="title"><a id="idm227943968160"></a>1.1.1.1.3.1.1.10. setup</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">// Just call DefineOven, it takes care of everything.
+::DefineOven();
+
+</pre></div><div class="section" title="1.1.1.1.3.1.1.11. test"><div class="titlepage"><div><div><h6 class="title"><a id="idm227943965264"></a>1.1.1.1.3.1.1.11. test</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">// Initiate testing by just calling TestSequence1.
+::TestSequence1();
+</pre></div><div class="section" title="1.1.1.1.3.1.1.12. xit"><div class="titlepage"><div><div><h6 class="title"><a id="idm227943962368"></a>1.1.1.1.3.1.1.12. xit</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"></pre><pre class="programlisting">// There''s no persistence, so all we have to do is call ARCH::shutdown().
+ARCH::shutdown();
+</pre></div></div></div></div><div class="section" title="1.1.1.1.4. External Entities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227978415088"></a>1.1.1.1.4. External Entities</h6></div><div><h6 class="subtitle">Package</h6></div></div></div><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-ExternalEntities-PackageDiagram-figure"></a><p class="title"><b>Figure 12. External Entities Package Diagram</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-External Entities-Package Diagram.png" width="100%" alt="External Entities Package Diagram" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1.4.1. External Entities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227978409920"></a>1.1.1.1.4.1. External Entities</h6></div><div><h6 class="subtitle">External Entity</h6></div></div></div><pre class="literallayout"><div class="table"><a id="idm227978407968"></a><p class="title"><b>Table 5. External Entities</b></p><div class="table-contents"><table summary="External Entities" border="1"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/ExternalEntity.gif" width="100%" /></td></tr></table></div>
+</pre>
+</th><th align="left">
+<pre class="literallayout">Name</pre>
+</th><th align="left">
+<pre class="literallayout">Description</pre>
+</th><th align="left">
+<pre class="literallayout">Bridges</pre>
+</th></tr></thead><tbody><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/ExternalEntity.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Time</pre>
+</td><td align="left">
+<pre class="literallayout">The Time external entity provides date, timestamp, and timer related operations.</pre>
+</td><td align="left">
+<pre class="literallayout">current_date, create_date, get_second, get_minute, get_hour, get_day, get_month, get_year, current_clock, timer_start, timer_start_recurring, timer_remaining_time, timer_reset_time, timer_add_time, timer_cancel</pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/ExternalEntity.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Control Panel</pre>
+</td><td align="left">
+<pre class="literallayout">The Control Panel is used to simulate button presses on the microwave oven.  See the Object Communication Diagram (Asynchronous) for a detailed view of the events.</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/ExternalEntity.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">Architecture</pre>
+</td><td align="left">
+<pre class="literallayout">The Architecture external entity is used to model a shutdown bridge operation. This operation is called when the system has finished the test scenario.  
+
+When the microwave oven models are translated into code by the model compiler, the call to this bridge operation is mapped to an architecture method used to shut down the system.</pre>
+</td><td align="left">
+<pre class="literallayout">shutdown</pre>
+</td></tr></tbody></table></div></div><br class="table-break" />
+</pre><div class="section" title="1.1.1.1.4.1.1. External Entity Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227922097072"></a>1.1.1.1.4.1.1. External Entity Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div><div class="section" title="1.1.1.1.4.1.1.1. Time Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227922096176"></a>1.1.1.1.4.1.1.1. Time Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div></div><div class="section" title="1.1.1.1.4.1.1.2. Control Panel Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227922095152"></a>1.1.1.1.4.1.1.2. Control Panel Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div></div><div class="section" title="1.1.1.1.4.1.1.3. Architecture Activities"><div class="titlepage"><div><div><h6 class="title"><a id="idm227922094128"></a>1.1.1.1.4.1.1.3. Architecture Activities</h6></div><div><h6 class="subtitle"></h6></div></div></div></div></div></div></div><div class="section" title="1.1.1.1.5. Datatypes"><div class="titlepage"><div><div><h6 class="title"><a id="idm227922092720"></a>1.1.1.1.5. Datatypes</h6></div><div><h6 class="subtitle">Package</h6></div></div></div><pre class="literallayout"><div class="figure"><a id="MicrowaveOven-MicrowaveOven-Datatypes-PackageDiagram-figure"></a><p class="title"><b>Figure 13. Datatypes Package Diagram</b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/MicrowaveOven-MicrowaveOven-Datatypes-Package Diagram.png" width="100%" alt="Datatypes Package Diagram" /></td></tr></table></div></div></div><br class="figure-break" />
+</pre><div class="section" title="1.1.1.1.5.1. Datatypes"><div class="titlepage"><div><div><h6 class="title"><a id="idm227922087600"></a>1.1.1.1.5.1. Datatypes</h6></div><div><h6 class="subtitle"></h6></div></div></div><pre class="literallayout"><div class="table"><a id="idm227922085776"></a><p class="title"><b>Table 6. Datatypes</b></p><div class="table-contents"><table summary="Datatypes" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/DataType.gif" width="100%" /></td></tr></table></div>
+</pre>
+</th><th align="left">
+<pre class="literallayout">Name</pre>
+</th><th align="left">
+<pre class="literallayout">Description</pre>
+</th></tr></thead><tbody><tr><td align="left">
+<pre class="literallayout"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="100%"><tr><td><img src="images/Enumeration.gif" width="100%" /></td></tr></table></div>
+</pre>
+</td><td align="left">
+<pre class="literallayout">tube_wattage</pre>
+</td><td align="left">
+<pre class="literallayout"></pre>
+</td></tr></tbody></table></div></div><br class="table-break" />
+</pre></div></div></div></div></div></div></div></body></html>
