@@ -154,7 +154,7 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testRefAttrsDiffBaseType"));
 		Attribute_c ref_attr = Attribute_c.getOneO_ATTROnR102(mc,
 				new Attribute_by_name_c("attr1"));
-		assertFalse(ref_attr.Actionfilter("can", "combine"));
+		assertTrue(ref_attr.Actionfilter("can", "combine"));
 		assertFalse(ref_attr.Actionfilter("can", "split ref"));
 	}
 
@@ -217,9 +217,15 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		CombineWithOnO_ATTRWizardPage1 page = (CombineWithOnO_ATTRWizardPage1) wd
 				.getCurrentPage();
 		String[] items = page.Combine_withCombo.getItems();
-		assertEquals(1, items.length);
-		assertEquals("attr1", items[0]);
-		page.Combine_withCombo.select(0);
+		assertEquals(2, items.length);
+		int comboSelection = 0;
+		if (items[0].equals("attr1")) {
+		    assertEquals("attr2", items[1]);
+		} else {
+			assertEquals("attr1", items[1]);
+			comboSelection = 1;
+		}
+		page.Combine_withCombo.select(comboSelection);
 		IWizard w = page.getWizard();
 		w.performCancel();
 		wd.close();
