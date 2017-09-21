@@ -6,37 +6,22 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.swt.widgets.MenuItem;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.osgi.service.prefs.Preferences;
-import org.xtuml.bp.core.CorePlugin;
-import org.xtuml.bp.core.Ooaofooa;
-import org.xtuml.bp.core.SystemModel_c;
-import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.preferences.BridgePointProjectPreferences;
 import org.xtuml.bp.core.ui.preferences.BridgePointProjectReferencesPreferences;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
-import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.test.common.UITestingUtilities;
 
-//========================================================================
-//
-//File:      $RCSfile: DocGenTest.java,v $
-//Version:   $Revision: 1.5 $
-//Modified:  $Date: 2013/01/10 22:49:35 $
-//
-//(c) Copyright 2011-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -54,19 +39,18 @@ import org.xtuml.bp.test.common.UITestingUtilities;
 @RunWith(OrderedRunner.class)
 public class DocGenTest extends BaseTest {
 
-	private static String modelName = "DocGenTest";
+	private static String modelName = "";
     private String[] projSpecificExpectedFiles;
 
     private String[] expectedOutputFiles =  {
 	       "doc/images/DataType.gif",
-	       "doc/docgen.xsl",
 	       "doc/techpub.css",
 	       "doc/doc.xml",
 	       "doc/doc.html"
 	};
 
-	public DocGenTest(String testName) throws Exception {
-		super("DocGenTest", testName);
+	public DocGenTest() throws Exception {
+		super(null, null);
 	}
 
     @Override
@@ -80,54 +64,42 @@ public class DocGenTest extends BaseTest {
 	}
 
 	@Test
-	public void testDocumentGenerationDocGenTest() throws Exception {
+	public void testDocumentGenerationMicrowaveOven() throws Exception {
 
-	    modelName = "DocGenTest";
-        projSpecificExpectedFiles = new String[]{ "doc/images/DocGenTest-System Model Package Diagram.png" };
+	    modelName = "MicrowaveOven";
+        projSpecificExpectedFiles = new String[]{ "doc/images/MicrowaveOven-MicrowaveOven-Package Diagram.png" };
 
-	    loadTestModel();
+	    loadProject(modelName);
 	    runDocGenAndCheckResults();
 	}
 
-    @Test
-	public void testDocumentGenerationCFMon() throws Exception {
-
-        modelName = "CFMon";
-        projSpecificExpectedFiles = new String[]{ "doc/images/CFMon-System Model Package Diagram.png" };
-
-        loadTestModel();
-        runDocGenAndCheckResults();
-    }
-
-    @Test
-	public void testDocumentGenerationGPSWatch_System_IPR() throws Exception {
-        // This test uses three different test model projects that use IPRs.
-        // We load the library projects, then the system wiring project we'll
+	@Test
+	public void testDocumentGenerationInterProjectRealizedClass() throws Exception {
+        // This test uses a test model IPR on.
+        // We load the library project, then the referring project we'll
         // actually generate code for.
-        modelName = "GPSWatch_LibraryHW";
-        loadTestModel();
-        modelName = "GPSWatch_LibraryUI";
-        loadTestModel();
-        modelName = "GPSWatch_System";
-        loadTestModel();
+        modelName = "RealizedClassOnwer";  // Yes, the test model name has this typo in it!
+	    loadProject(modelName);
+        modelName = "InterProjectRealizedClass";
+	    loadProject(modelName);
         
         projSpecificExpectedFiles = new String[]{ 
-                "doc/images/GPSWatch_LibraryHW-System Model Package Diagram.png",
-                "doc/images/GPSWatch_LibraryUI-System Model Package Diagram.png",
-                "doc/images/GPSWatch_System-System Model Package Diagram.png"
+                "doc/images/RealizedClassOnwer-System-Package Diagram.png",
+                "doc/images/InterProjectRealizedClass-Top Package-Package Diagram.png"
                 };
 
         runDocGenAndCheckResults();
     }
 
-    @Test
-	public void testDocumentGenerationGPSWatch_System_No_IPR() throws Exception {
+	@Test
+	public void testDocumentGenerationInterProjectRealizedClass_RTO_Off() throws Exception {
         // This test runs DocGen on an IPR project but with the "Emit RTO project data"
         // preference turned off.  Thus, the resulting docs do not have info from
         // the referred-to projects included.
+        modelName = "InterProjectRealizedClass";
         
         projSpecificExpectedFiles = new String[]{ 
-                "doc/images/GPSWatch_System-System Model Package Diagram.png"
+                "doc/images/InterProjectRealizedClass-Top Package-Package Diagram.png"
                 };
 
         // Turn off the project preference to emit RTO project data
@@ -139,46 +111,6 @@ public class DocGenTest extends BaseTest {
         }
         
         runDocGenAndCheckResults("_RTO_Off");
-    }
-    
-    protected void loadTestModel() throws Exception {
-
-        CorePlugin.disableParseAllOnResourceChange();
-
-        // initialize test model
-        final IProject project = ResourcesPlugin.getWorkspace().getRoot()
-                .getProject(modelName);
-
-        File sourceProject = new File(m_workspace_path + "../" + modelName);
-
-        TestingUtilities.copyProjectContents(sourceProject, project);
-
-        TestingUtilities.allowJobCompletion();
-
-        m_sys = SystemModel_c.SystemModelInstance(
-                Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
-
-                    public boolean evaluate(Object candidate) {
-                        return ((SystemModel_c) candidate).getName().equals(
-                                project.getName());
-                    }
-
-                });
-
-        PersistableModelComponent sys_comp = m_sys.getPersistableComponent();
-        sys_comp.loadComponentAndChildren(new NullProgressMonitor());
-
-        TestingUtilities.allowJobCompletion();
-        while (!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(
-                IProject.DEPTH_INFINITE)) {
-            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(
-                    IProject.DEPTH_INFINITE, new NullProgressMonitor());
-            while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-                ;
-        }
-
-        Ooaofooa.setPersistEnabled(true);
-
     }
 
     public void runDocGenAndCheckResults() throws InterruptedException {
@@ -199,13 +131,22 @@ public class DocGenTest extends BaseTest {
         Selection.getInstance().addToSelection(m_sys);
         menu = getExplorerView().getTreeViewer().getControl().getMenu();
 
+        MenuItem[] items = UITestingUtilities.getMenuItems(menu, "BridgePoint Utilities");
+        MenuItem docItem = null;
+        for ( MenuItem itemIter : items ) {
+            if ( itemIter.getText().equals("Create Documentation")) {
+            	docItem = itemIter;
+            	break;
+            }
+        }
         assertTrue(
-                "The \"Create documentation\" menu item was not available for testing.",
-                UITestingUtilities.checkItemStatusInContextMenu(menu,
-                        "Create documentation", "", false));
-        UITestingUtilities.activateMenuItem(menu, "Create documentation");
+                "The \"Create Documentation\" menu item was not available for testing.",
+                docItem != null);
+        UITestingUtilities.activateMenuItem(docItem);
 
         BaseTest.dispatchEvents();
+        
+        Thread.sleep(4000);
 
         // Spot check existence of a few files that are output from various
         // pieces of the doc gen flow
@@ -234,11 +175,11 @@ public class DocGenTest extends BaseTest {
         // We must modify the compare data to remove autogenerated IDs
         expectedResults = new File(m_workspace_path + "/expected_results/DocGen/" + modelName + expectedResultsNameModifier + "_doc.html");
         expected_results = TestUtil.getTextFileContents(expectedResults);
-        expected_results = expected_results.replaceAll("id[0-9]+", "");
+        expected_results = expected_results.replaceAll("idm[0-9]+", "");
         ifile = project.getFile("doc/doc.html");
         actualResults = ifile.getRawLocation().makeAbsolute().toFile();
         actual_results = TestUtil.getTextFileContents(actualResults);
-        actual_results = actual_results.replaceAll("id[0-9]+", "");
+        actual_results = actual_results.replaceAll("idm[0-9]+", "");
         assertEquals(expected_results, actual_results);
 
     }
