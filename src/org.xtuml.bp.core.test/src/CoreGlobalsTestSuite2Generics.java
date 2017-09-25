@@ -22,11 +22,8 @@
 //=====================================================================
 
 
-import org.eclipse.core.runtime.CoreException;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.xtuml.bp.core.CorePlugin;
-import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.test.ActivityTestsGenerics;
 import org.xtuml.bp.core.test.CanRenameCanDeleteTestGenerics;
 import org.xtuml.bp.core.test.ClassKeyLetters;
@@ -44,7 +41,6 @@ import org.xtuml.bp.core.test.IntegrityIssueTests;
 import org.xtuml.bp.core.test.ModelChangeListenersBatchingTestGenerics;
 import org.xtuml.bp.core.test.ModelIntegrityTests;
 import org.xtuml.bp.core.test.ModelTransactionTestGenerics;
-import org.xtuml.bp.core.test.ModificationValidationTestsGenerics;
 import org.xtuml.bp.core.test.ModifyNonFullyLoadedModelTestsGenerics;
 import org.xtuml.bp.core.test.MultipleSelectionAssignmentTests;
 import org.xtuml.bp.core.test.PolymorphicEventAssignmentTestGenerics;
@@ -57,9 +53,7 @@ import org.xtuml.bp.core.test.UndoRedoTestGenerics;
 import org.xtuml.bp.core.test.UniqueNameTestGenerics;
 import org.xtuml.bp.core.test.UseCaseTestsGenerics;
 import org.xtuml.bp.core.test.ui.WritableContextMenuTestGenerics;
-import org.xtuml.bp.core.util.WorkspaceUtil;
 
-import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
@@ -88,7 +82,7 @@ import junit.framework.TestSuite;
 		ModelChangeListenersBatchingTestGenerics.class,
 		WritableContextMenuTestGenerics.class,
 		CreationTransitionEventReassignmentTestGenerics.class,
-//		PolymorphicEventAssignmentTestGenerics.class,
+        PolymorphicEventAssignmentTestGenerics.class,
 		UndoRedoTestGenerics.class,
 		UseCaseTestsGenerics.class,
 		RefreshTestCoreGenerics.class,
