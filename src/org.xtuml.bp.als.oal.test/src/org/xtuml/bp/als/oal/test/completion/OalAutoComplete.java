@@ -9,6 +9,8 @@
 
 package org.xtuml.bp.als.oal.test.completion;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.IEditorPart;
 import org.junit.After;
 import org.junit.Before;
@@ -19,11 +21,13 @@ import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.test.common.*;
 import org.xtuml.bp.ui.canvas.*;
 import org.xtuml.bp.ui.graphics.editor.*;
+import org.xtuml.bp.ui.text.activity.ActivityEditor;
 import org.xtuml.bp.ui.canvas.test.*;
 
 public class OalAutoComplete extends CanvasTest {
     public static boolean generateResults = false;
     public static boolean useDrawResults = true;
+    String[] results = null;
 
     String test_id = "";
 
@@ -31,9 +35,9 @@ public class OalAutoComplete extends CanvasTest {
         return getClass().getSimpleName() + "_" + test_id;
     }
 
-    protected GraphicalEditor fActiveEditor;
+    protected IEditorPart fActiveEditor;
 
-    protected GraphicalEditor getActiveEditor() {
+    protected IEditorPart getActiveEditor() {
         return fActiveEditor;
     }
 
@@ -48,6 +52,10 @@ public class OalAutoComplete extends CanvasTest {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+        // load the test model, later we may need
+        // to allow any model given in which case
+        // failures will need to be generous
+        loadProject("oal_autocomplete");
     }
 
     @After
@@ -56,795 +64,117 @@ public class OalAutoComplete extends CanvasTest {
     }
 
     /**
-     * "AB" is one of the degrees of freedom as specified in this issues
+     * "LPAH" is one of the degrees of freedom as specified in this issues
      * test matrix.
-     * This routine gets the "AB" instance from the given name.
+     * This routine gets the "LPAH" instance from the given name.
      * 
      * @param element The degree of freedom instance to retrieve
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectAB(String element) {
-        return selectAB(element, null);
+    NonRootModelElement selectLPAH(String element) {
+        return selectLPAH(element, null);
     }
 
     /**
-     * "AB" is one of the degrees of freedom as specified in this issues
+     * "LPAH" is one of the degrees of freedom as specified in this issues
      * test matrix.
-     * This routine gets the "AB" instance from the given name.
+     * This routine gets the "LPAH" instance from the given name.
      * 
      * @param element The degree of freedom instance to retrieve
      * @param extraData Extra data needed for selection
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectAB(String element, Object extraData) {
-        NonRootModelElement nrme = null;
-        if (element.equalsIgnoreCase("A10B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A10B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A11B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A12B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A13B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A14B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A15B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A16B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A17B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A18B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A19B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A1B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A20B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A21B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A22B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A23B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A24B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A25B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A26B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A27B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A28B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A29B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A2B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A30B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A31B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A32B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A33B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A3B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A4B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A5B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A6B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A7B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A8B9")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B11")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B3")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B4")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B5")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B6")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B7")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B8")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("A9B9")) {
-            //TODO: Implement
-        } else        assertTrue("An instance with degree of freedom type \"AB\" was not found.  Instance Name: " + element + ".", nrme!=null);
+    NonRootModelElement selectLPAH(String element, Object extraData) {
+        NonRootModelElement nrme = findElementForDof(element);
+        if(nrme != null) {
+        	// open the editor
+        	fActiveEditor = UITestingUtilities.getTextEditorFor(nrme, false);
+        	// locate the the entry point for starting text
+        	if(element.contains("L1P1")) {
+        		// this is a starting statement location
+        		results = populateAutoComplete("con");
+        	}
+        } else {
+        	assertTrue("An instance with degree of freedom type \"LPAH\" was not found.  Instance Name: " + element + ".", nrme!=null);
+        }
         return nrme;
     }
 
+	private String[] populateAutoComplete(String start) {
+		ActivityEditor editor = getActivityEditor();
+		editor.getTextViewer().getTextWidget().notifyListeners(SWT.SPACE | SWT.MODIFIER_MASK & SWT.CTRL, new Event());
+		// TODO: need to find tree or list here
+		return new String[0];
+	}
+
+	private ActivityEditor getActivityEditor() {
+		return (ActivityEditor) getActiveEditor();
+	}
+
+	NonRootModelElement findElementForDof(String element) {
+		Body_c body = null;
+		if (element.contains("AH1")) {
+			body = Body_c.getOneACT_ACTOnR698(StateActionBody_c.StateActionBodyInstance(modelRoot));
+		} else if (element.contains("AH2")) {
+			body = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.DerivedAttributeBodyInstance(modelRoot));
+		} else if (element.contains("AH3")) {
+			body = Body_c.getOneACT_ACTOnR698(OperationBody_c.OperationBodyInstance(modelRoot));
+		} else if (element.contains("AH4")) {
+			body = Body_c.getOneACT_ACTOnR698(FunctionBody_c.FunctionBodyInstance(modelRoot));
+		} else if (element.contains("AH5")) {
+			body = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
+		} else if (element.contains("AH6")) {
+			body = Body_c.getOneACT_ACTOnR698(ProvidedOperationBody_c.ProvidedOperationBodyInstance(modelRoot));
+		} else if (element.contains("AH7")) {
+			body = Body_c.getOneACT_ACTOnR698(ProvidedSignalBody_c.ProvidedSignalBodyInstance(modelRoot));
+		} else if (element.contains("AH8")) {
+			body = Body_c.getOneACT_ACTOnR698(RequiredOperationBody_c.RequiredOperationBodyInstance(modelRoot));
+		} else if (element.contains("AH9")) {
+			body = Body_c.getOneACT_ACTOnR698(RequiredSignalBody_c.RequiredSignalBodyInstance(modelRoot));
+		} else if (element.contains("AH10")) {
+			body = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
+		} else if (element.contains("AH11")) {
+			body = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.TransitionActionBodyInstance(modelRoot));
+		}
+		return body;
+	}
     /**
-     * "CD" is one of the degrees of freedom as specified in this issues
+     * "SV" is one of the degrees of freedom as specified in this issues
      * test matrix.
-     * This routine gets the "CD" instance from the given name.
+     * This routine gets the "SV" instance from the given name.
      * 
      * @param element The degree of freedom instance to retrieve
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectCD(String element) {
-        return selectCD(element, null);
+    NonRootModelElement selectSV(String element) {
+        return selectSV(element, null);
     }
 
     /**
-     * "CD" is one of the degrees of freedom as specified in this issues
+     * "SV" is one of the degrees of freedom as specified in this issues
      * test matrix.
-     * This routine gets the "CD" instance from the given name.
+     * This routine gets the "SV" instance from the given name.
      * 
      * @param element The degree of freedom instance to retrieve
      * @param extraData Extra data needed for selection
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectCD(String element, Object extraData) {
+    NonRootModelElement selectSV(String element, Object extraData) {
         NonRootModelElement nrme = null;
-        if (element.equalsIgnoreCase("C1D1")) {
+        if (element.equalsIgnoreCase("S1V1")) {
             //TODO: Implement
-        } else if (element.equalsIgnoreCase("C1D2")) {
+        } else if (element.equalsIgnoreCase("S1V2")) {
             //TODO: Implement
-        } else if (element.equalsIgnoreCase("C2D1")) {
+        } else if (element.equalsIgnoreCase("S2V1")) {
             //TODO: Implement
-        } else if (element.equalsIgnoreCase("C2D2")) {
+        } else if (element.equalsIgnoreCase("S2V2")) {
             //TODO: Implement
-        } else if (element.equalsIgnoreCase("C3D1")) {
+        } else if (element.equalsIgnoreCase("S3V1")) {
             //TODO: Implement
-        } else if (element.equalsIgnoreCase("C3D2")) {
+        } else if (element.equalsIgnoreCase("S3V2")) {
             //TODO: Implement
         } 
-        assertTrue("An instance with degree of freedom type \"CD\" was not found.  Instance Name: " + element + ".", nrme!=null);
+        assertTrue("An instance with degree of freedom type \"SV\" was not found.  Instance Name: " + element + ".", nrme!=null);
         return nrme;
     }
 
@@ -856,25 +186,9 @@ public class OalAutoComplete extends CanvasTest {
      * @param columnInstance Model instance from the column
      * @param rowInstance Model instance from the row
      */
-    void CD_AB_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
+    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
         //TODO: Implement
     }
-
-    /**
-    * This function verifies an expected result.
-    *
-    * @param source A model element instance aquired through a action taken
-    *               on a column of the matrix.
-    * @param destination A model element instance aquired through a action taken
-    *                    taken on a row of the matrix.
-    * @return true if the test succeeds, false if it fails
-    */
-    boolean checkResult_exists(NonRootModelElement source, NonRootModelElement destination) {
-        boolean exists = false;
-        
-        return exists;
-    }
-
 
     /**
     * This function verifies an expected result.
@@ -889,6 +203,22 @@ public class OalAutoComplete extends CanvasTest {
         boolean non = false;
         //TODO: Implement
         return non;
+    }
+
+
+    /**
+    * This function verifies an expected result.
+    *
+    * @param source A model element instance aquired through a action taken
+    *               on a column of the matrix.
+    * @param destination A model element instance aquired through a action taken
+    *                    taken on a row of the matrix.
+    * @return true if the test succeeds, false if it fails
+    */
+    boolean checkResult_exists(NonRootModelElement source, NonRootModelElement destination) {
+        boolean exists = false;
+        //TODO: Implement
+        return exists;
     }
 
 

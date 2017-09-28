@@ -1,11 +1,2 @@
-/OalAutoComplete_0.java
-/OalAutoComplete_1.java
-/OalAutoComplete_2.java
-/OalAutoComplete_3.java
-/OalAutoComplete_4.java
-/OalAutoComplete_5.java
-/OalAutoComplete_6.java
-/OalAutoComplete_7.java
-/OalAutoComplete_8.java
-/OalAutoCompleteTestResultSuite.java
-/OalAutoCompleteTestSuite.java
+/OalAutoComplete_*.java
+/OalAutoCompleteTest*.java
