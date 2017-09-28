@@ -5,9 +5,14 @@
 #
 # Note the numbers in this matrix document match the numbers for the
 # original analysis found here: https://github.com/travislondon/bridgepoint/blob/9749_usecases/doc-bridgepoint/notes/9749_usecases/9749_usecases.md
-# With the exception of the generated A, B which were generated just the same
 #
 Degrees of Freedom:
+
+# This test is not exhaustive following the grammar, as that would not be manageable.  It was designed
+# with a generated approach using the Ooa of ooa, as well as with consideration of the grammar.
+
+# Note that the implementation of these tests will not require the UI, but instead will test
+# the modeled proposal lists
 
 Locations(L)  
 1. 6.1.1 Beginning statement
@@ -33,16 +38,16 @@ Locations(L)
 21. 6.2.13.8 After unrelate <var1> from <var2> across
 22. 6.2.13.9 After urelate <var1> to <var2> across <rel>.
 23. 6.2.13.10 After unrelate <var1> to <var2> across <rel> using
-24. 6.2.15 After self.
-25. 6.2.16 After any selection
-26. 6.2.18 After cardinality, empty, not empty
-27. 6.2.19.1 After param.
-28. 6.2.20 After create object instance <var> of
-29. 6.2.21 After delete object instance
-30. 6.2.22 At the beginning of a generic expression
-31. 6.2.23 After create event instance <var> of
-32. 6.2.23.2 After create event instance <var> of <event> to
-33. 6.2.24 After <identifier>"::"
+24. 6.2.14 After self.
+25. 6.2.15 After any selection
+26. 6.2.16 After cardinality, empty, not empty
+27. 6.2.17.1 After param.
+28. 6.2.18 After create object instance <var> of
+29. 6.2.19 After delete object instance
+30. 6.2.20 At the beginning of a generic expression
+31. 6.2.21 After create event instance <var> of
+32. 6.2.21.2 After create event instance <var> of <event> to
+33. 6.2.22 After <identifier>"::"
 
 Possibilities(P)
 1. 6.1.1 control stop
@@ -81,29 +86,29 @@ Possibilities(P)
 34. 5.2.17 Parameters
 35. 6.2.13.5 Association Numbers
 36. 6.2.13.4 Association Phrase
-37. 6.2.9.4.1 creator
-38. 6.2.9.4.2 class
+37. 6.2.9.3.1 creator
+38. 6.2.9.3.2 class
 39. 6.2.9.2 Local variable of type inst<Event>
-40. 6.2.16.1 where
-41. 6.2.18 cardinality
-42. 6.2.18 empty
-43. 6.2.18 not_empty
+40. 5.2.16 where 
+41. 6.2.16 cardinality
+42. 6.2.16 empty
+43. 6.2.16 not  
 44. 6.2 Instance Handle
 45. 6.2 Instance Set
-46. 6.2.22.7.1 not
-47. 6.2.22.7.4 true
-48. 6.2.22.7.5 false
+46. 6.2.20.7.1 not
+47. 6.2.20.7.4 true
+48. 6.2.20.7.5 false
 49. 6.2.5.2.1 Interface messages
 50. 6.2.5.3.1 Local variable of type component_ref
 51. 6.2.7.1.1 related by
 52. 6.2.7.1.2 from instances of
 53. 6.2.93 Attributes of type inst<Event>
 54. 6.2.91 Event specifications
-55. 6.2.22.2 Constants
-56. 6.2.22.1 Structured data type
-57. 6.2.24.2 Enumerators
-58. 6.2.24.2 Enumeration data type
-59. 6.2.24.1 bridges
+55. 6.2.20.2 Constants
+56. 6.2.20.1 Structured data type
+57. 6.2.20.2 Enumerators
+58. 6.2.20.2 Enumeration data type
+59. 6.2.20.1 bridges
 
 Activity_Homes(AH)
 1. 5.1.1 State Action Body
