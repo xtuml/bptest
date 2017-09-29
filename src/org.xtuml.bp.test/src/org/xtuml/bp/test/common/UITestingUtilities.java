@@ -512,11 +512,11 @@ public class UITestingUtilities {
 	}
 
 	public static void activateMenuItem(Menu menu, String name) {
-		MenuItem item = getMenuItemByPath(menu, name);
+		MenuItem item =getMenuItemByPath(menu, name);
 		if ( item != null ) {
-		activateMenuItem(item);
-		BaseTest.dispatchEvents();
-	}
+			activateMenuItem(item);
+			BaseTest.dispatchEvents();
+		}
 	}
 
 	public class Tool_by_id_c implements ClassQueryInterface_c {
