@@ -625,9 +625,9 @@ sub createGenericClassDefintion() {
         print $outputFH "        return getClass().getSimpleName() + \"_\" + test_id;\n";
         print $outputFH "    }\n";
         print $outputFH "\n";    
-        print $outputFH "    protected GraphicalEditor fActiveEditor;\n";    
+        print $outputFH "    protected IEditorPart fActiveEditor;\n";    
         print $outputFH "\n";    
-        print $outputFH "    protected GraphicalEditor getActiveEditor() {\n";
+        print $outputFH "    protected IEditorPart getActiveEditor() {\n";
         print $outputFH "        return fActiveEditor;\n";
         print $outputFH "    }\n";
         print $outputFH "\n";    
