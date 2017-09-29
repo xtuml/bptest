@@ -26,7 +26,7 @@ Locations(L)
 9. 6.2.7.3 After select [one|any|many] <var> from instances of
 10. 6.2.9 After generate 
 11. 6.2.9.4 After <event_spec> to
-12. 6.2.10 After assign <var> =
+12. 6.2.10 After <var> =
 13. 6.2.11.2 After for each <var> in
 14. 6.2.11.5 After return
 15. 6.2.13 After relate
@@ -41,7 +41,7 @@ Locations(L)
 24. 6.2.14 After self.
 25. 6.2.15 After any selection
 26. 6.2.16 After cardinality, empty, not empty
-27. 6.2.17.1 After param.
+27. 6.2.15.1 After param.
 28. 6.2.18 After create object instance <var> of
 29. 6.2.19 After delete object instance
 30. 6.2.20 At the beginning of a generic expression
