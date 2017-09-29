@@ -144,7 +144,7 @@
     .if((((label == "Subsystem") or (label == "External Entity Package")) or (label == "Function Package")) or (label == "DataType Package"))
       .assign attr_result = true
     .end if
-    .if((((label == "Sequence Diagram") or (label == "Communication Diagram")) or (label == "Usecase Diagram")) or (label == "Activity Diagram"))
+    .if((((label == "Sequence Diagram") or (label == "Communication Diagram")) or (label == "Use Case Diagram")) or (label == "Activity Diagram"))
       .assign attr_result = true
     .end if
   .end if
@@ -191,7 +191,7 @@
     .if((((label == "Class") or (label == "Imported Class")) or (label == "Subsystem")) or (label == "Sequence Diagram"))
       .assign attr_result = true
     .end if
-    .if((((label == "Communication Diagram") or (label == "Usecase Diagram")) or (label == "Activity Diagram")) )
+    .if((((label == "Communication Diagram") or (label == "Use Case Diagram")) or (label == "Activity Diagram")) )
       .assign attr_result = true
     .end if
   .end if
@@ -225,7 +225,7 @@
     .end if
   .end if
   .if (kl == "UC_UCC")
-    .if((((label == "Use Case diagram") or (label == "Usecase")) or (label == "Actor")) )
+    .if((((label == "Use Case diagram") or (label == "Use Case")) or (label == "Actor")) )
       .assign attr_result = true
     .end if
   .end if

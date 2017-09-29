@@ -13,19 +13,17 @@
 //=====================================================================
 
 
-import org.eclipse.core.runtime.CoreException;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.test.ComponentContextMenuTests;
 import org.xtuml.bp.core.test.ComponentContextMenuTests2;
 import org.xtuml.bp.core.test.GlobalTestSetupClass;
 import org.xtuml.bp.core.test.ImportedComponentIFTests;
 import org.xtuml.bp.core.test.RemoveSignalTests;
 import org.xtuml.bp.core.test.SystemLevelGlobalsTest;
-import org.xtuml.bp.core.util.WorkspaceUtil;
+import org.xtuml.bp.core.test.UIConfigurationTests;
+import org.xtuml.bp.core.test.ui.DocGenTest;
 
-import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
@@ -35,8 +33,10 @@ import junit.framework.TestSuite;
 @Suite.SuiteClasses({
 		GlobalTestSetupClass.class,
 		SystemLevelGlobalsTest.class,
+		DocGenTest.class,
 		ComponentContextMenuTests.class, 
 		ComponentContextMenuTests2.class, 
+		UIConfigurationTests.class,
 		ImportedComponentIFTests.class, 
 		RemoveSignalTests.class,
 })

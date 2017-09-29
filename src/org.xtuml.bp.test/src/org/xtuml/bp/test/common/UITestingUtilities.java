@@ -247,6 +247,7 @@ public class UITestingUtilities {
 	}
 
 	public static boolean checkItemStatus(MenuItem item, boolean readonly) {
+		if (item == null) { return false; }
 		// verify the item
 		// if item is enabled
 		if (item.isEnabled()) {
@@ -493,6 +494,10 @@ public class UITestingUtilities {
 							menu = item.getMenu();
 						}
 						break;
+					} else {
+						// If there was no match, make sure the item value is empty so we don't
+						// return a match from earlier in the path traversal.
+						item = null; 
 					}
 				}
 				if (item != null && !(item.getData() instanceof MenuManager) && item.getMenu() == null) {
@@ -508,8 +513,10 @@ public class UITestingUtilities {
 
 	public static void activateMenuItem(Menu menu, String name) {
 		MenuItem item = getMenuItemByPath(menu, name);
+		if ( item != null ) {
 		activateMenuItem(item);
 		BaseTest.dispatchEvents();
+	}
 	}
 
 	public class Tool_by_id_c implements ClassQueryInterface_c {
