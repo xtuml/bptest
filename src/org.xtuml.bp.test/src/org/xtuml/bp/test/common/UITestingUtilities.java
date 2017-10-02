@@ -63,6 +63,7 @@ import org.xtuml.bp.core.ActionHome_c;
 import org.xtuml.bp.core.Action_c;
 import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.BaseAttribute_c;
+import org.xtuml.bp.core.Body_c;
 import org.xtuml.bp.core.BridgeBody_c;
 import org.xtuml.bp.core.Bridge_c;
 import org.xtuml.bp.core.DerivedAttributeBody_c;
@@ -1061,7 +1062,7 @@ public class UITestingUtilities {
 	}
 
 	public static IEditorPart getTextEditorFor(final NonRootModelElement columnInstance, boolean isRootOf) {
-		return getGraphicalEditorFor(columnInstance, isRootOf, true);
+		return getTextEditorFor(columnInstance, isRootOf, true);
 	}
 
 	public static IEditorPart getTextEditorFor(final NonRootModelElement columnInstance, boolean isRootOf,
@@ -1094,30 +1095,37 @@ public class UITestingUtilities {
 	}
 
 	private static NonRootModelElement getRootElementForBody(NonRootModelElement columnInstance, boolean validateOpen) {
-		if (columnInstance instanceof BridgeBody_c) {
-			return Bridge_c.getOneS_BRGOnR697((BridgeBody_c) columnInstance);
-		} else if (columnInstance instanceof OperationBody_c) {
-			return Operation_c.getOneO_TFROnR696((OperationBody_c) columnInstance);
-		} else if (columnInstance instanceof StateActionBody_c) {
-			return StateMachineState_c.getOneSM_STATEOnR511(MooreActionHome_c.getManySM_MOAHsOnR513(ActionHome_c
-					.getManySM_AHsOnR514(Action_c.getManySM_ACTsOnR691((StateActionBody_c) columnInstance))));
-		} else if (columnInstance instanceof FunctionBody_c) {
-			return Function_c.getOneS_SYNCOnR695((FunctionBody_c) columnInstance);
-		} else if (columnInstance instanceof DerivedAttributeBody_c) {
-			return DerivedBaseAttribute_c.getOneO_DBATTROnR693((DerivedAttributeBody_c) columnInstance);
-		} else if (columnInstance instanceof ProvidedOperationBody_c) {
-			return ProvidedOperation_c.getOneSPR_POOnR687((ProvidedOperationBody_c) columnInstance);
-		} else if (columnInstance instanceof ProvidedSignalBody_c) {
-			return ProvidedSignal_c.getOneSPR_PSOnR686((ProvidedSignalBody_c) columnInstance);
-		} else if (columnInstance instanceof RequiredOperationBody_c) {
-			return RequiredOperation_c.getOneSPR_ROOnR685((RequiredOperationBody_c) columnInstance);
-		} else if (columnInstance instanceof RequiredSignalBody_c) {
-			return RequiredSignal_c.getOneSPR_RSOnR684((RequiredSignalBody_c) columnInstance);
-		} else if (columnInstance instanceof TransitionActionBody_c) {
-			return Transition_c.getOneSM_TXNOnR512(MealyActionHome_c.getManySM_MEAHsOnR513(ActionHome_c
-					.getManySM_AHsOnR514(Action_c.getManySM_ACTsOnR688((TransitionActionBody_c) columnInstance))));
+		NonRootModelElement element = Bridge_c.getOneS_BRGOnR697(BridgeBody_c.getManyACT_BRBsOnR698((Body_c) columnInstance));
+		if (element == null) {
+			element = Operation_c.getOneO_TFROnR696((OperationBody_c.getManyACT_OPBsOnR698((Body_c) columnInstance)));
 		}
-		return null;
+		if(element == null) {
+			element = StateMachineState_c.getOneSM_STATEOnR511(MooreActionHome_c.getManySM_MOAHsOnR513(ActionHome_c
+					.getManySM_AHsOnR514(Action_c.getManySM_ACTsOnR691(StateActionBody_c.getManyACT_SABsOnR698((Body_c) columnInstance)))));
+		} 
+		if(element == null) {
+			element = Function_c.getOneS_SYNCOnR695(FunctionBody_c.getManyACT_FNBsOnR698((Body_c) columnInstance));
+		} 
+		if(element == null) {
+			element = DerivedBaseAttribute_c.getOneO_DBATTROnR693(DerivedAttributeBody_c.getManyACT_DABsOnR698((Body_c) columnInstance));
+		} 
+		if(element == null) {
+			element = ProvidedOperation_c.getOneSPR_POOnR687(ProvidedOperationBody_c.getManyACT_POBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = ProvidedSignal_c.getOneSPR_PSOnR686(ProvidedSignalBody_c.getManyACT_PSBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = RequiredOperation_c.getOneSPR_ROOnR685(RequiredOperationBody_c.getManyACT_ROBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = RequiredSignal_c.getOneSPR_RSOnR684(RequiredSignalBody_c.getManyACT_RSBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = Transition_c.getOneSM_TXNOnR512(MealyActionHome_c.getManySM_MEAHsOnR513(ActionHome_c
+					.getManySM_AHsOnR514(Action_c.getManySM_ACTsOnR688(TransitionActionBody_c.getManyACT_TABsOnR698((Body_c) columnInstance)))));
+		}
+		return element;
 	}
 
 }

@@ -9,24 +9,44 @@
 
 package org.xtuml.bp.als.oal.test.completion;
 
+import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.BadPositionCategoryException;
+import org.eclipse.jface.text.Position;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.IEditorPart;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-
-import org.xtuml.bp.core.*;
+import org.xtuml.bp.core.Body_c;
+import org.xtuml.bp.core.BridgeBody_c;
+import org.xtuml.bp.core.CorePlugin;
+import org.xtuml.bp.core.DerivedAttributeBody_c;
+import org.xtuml.bp.core.FunctionBody_c;
+import org.xtuml.bp.core.Ooaofooa;
+import org.xtuml.bp.core.OperationBody_c;
+import org.xtuml.bp.core.Package_c;
+import org.xtuml.bp.core.ProposalList_c;
+import org.xtuml.bp.core.Proposal_c;
+import org.xtuml.bp.core.ProvidedOperationBody_c;
+import org.xtuml.bp.core.ProvidedSignalBody_c;
+import org.xtuml.bp.core.RequiredOperationBody_c;
+import org.xtuml.bp.core.RequiredSignalBody_c;
+import org.xtuml.bp.core.StateActionBody_c;
+import org.xtuml.bp.core.TransitionActionBody_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
-import org.xtuml.bp.test.common.*;
-import org.xtuml.bp.ui.canvas.*;
-import org.xtuml.bp.ui.graphics.editor.*;
+import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
+import org.xtuml.bp.test.common.UITestingUtilities;
+import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.text.activity.ActivityEditor;
-import org.xtuml.bp.ui.canvas.test.*;
+import org.xtuml.bp.ui.text.activity.AllActivityModifier;
+import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
 
 public class OalAutoComplete extends CanvasTest {
     public static boolean generateResults = false;
-    public static boolean useDrawResults = true;
+    public static boolean useDrawResults = false;
     String[] results = null;
 
     String test_id = "";
@@ -42,7 +62,7 @@ public class OalAutoComplete extends CanvasTest {
     }
 
     public OalAutoComplete(String subTypeClassName, String subTypeArg0) {
-        super(subTypeClassName, subTypeArg0);
+        super(null, subTypeArg0);
     }
 
     protected String getTestId(String src, String dest, String count) {
@@ -52,11 +72,28 @@ public class OalAutoComplete extends CanvasTest {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        // load the test model, later we may need
-        // to allow any model given in which case
-        // failures will need to be generous
-        loadProject("oal_autocomplete");
+        CorePlugin.getDefault().getPluginPreferences().setValue(
+  	  	      BridgePointPreferencesStore.ENABLE_PARSE_ON_ACTIVITY_EDITS, true);
+		CorePlugin.getDefault().getPluginPreferences()
+				.setValue(BridgePointPreferencesStore.CONTENT_ASSIST_ENABLE_AUTO_TRIGGERING, true);
     }
+    
+    @Override
+    protected void initialSetup() throws Exception {
+    	loadProject("oal_autocomplete");
+    	modelRoot = Ooaofooa.getInstance("/oal_autocomplete/models/oal_autocomplete/Container/Container.xtuml");
+    	// create the initial OAL instances
+    	Package_c container = Package_c.getOneEP_PKGOnR1401(m_sys, new ClassQueryInterface_c() {
+			
+			@Override
+			public boolean evaluate(Object candidate) {
+				return ((Package_c) candidate).getName().equals("Container");
+			}
+		});
+    	Selection.getInstance().clear(); Selection.getInstance().addToSelection(container);
+    	ParseAllActivitiesAction action = new ParseAllActivitiesAction();
+    	action.run(null);
+    };
 
     @After
     public void tearDown() throws Exception {
@@ -89,54 +126,154 @@ public class OalAutoComplete extends CanvasTest {
         if(nrme != null) {
         	// open the editor
         	fActiveEditor = UITestingUtilities.getTextEditorFor(nrme, false);
-        	// locate the the entry point for starting text
-        	if(element.contains("L1P1")) {
-        		// this is a starting statement location
-        		results = populateAutoComplete("con");
-        	}
         } else {
         	assertTrue("An instance with degree of freedom type \"LPAH\" was not found.  Instance Name: " + element + ".", nrme!=null);
         }
         return nrme;
     }
 
-	private String[] populateAutoComplete(String start) {
+	private int getLineNumber(String element) {
+		if(element.contains("S2")) {
+			return 2;
+		} else if(element.contains("S3")) {
+			return 13;
+		}
+		return 0;
+	}
+
+	private String getLocationText() {
+		if(getName().contains("L2")) {
+			return "l2_var.";
+		} else if(getName().contains("L3")) {
+			return "::";
+		} else if(getName().contains("L4")) {
+			return "send";
+		} else if(getName().contains("L5")) {
+			return "send Port1::";
+		} else if(getName().contains("L6")) {
+			return "Port1::operation(parameter: 1) to";
+		} else if(getName().contains("L7")) {
+			return "select one l7_var_one";
+		} else if(getName().contains("L8")) {
+			return "select one l8_var_one related by l8_var_two->";
+		} else if(getName().contains("L9")) {
+			return "select one l9_var from instances of ";
+		} else if(getName().contains("L10")) {
+			return "generate";
+		} else if(getName().contains("L11")) {
+			return "generate L11Class1:event to";
+		} else if(getName().contains("L12")) {
+			return "p12_var =";
+		} else if(getName().contains("L13")) {
+			return "for each l13_var in";
+		} else if(getName().contains("L14")) {
+			return "return";
+		} else if(getName().contains("L15")) {
+			return "relate";
+		} else if(getName().contains("L16")) {
+			return "relate l16_var to";
+		} else if(getName().contains("L17")) {
+			return "relate l17_var to l17_var_2 across";
+		} else if(getName().contains("L18")) {
+			return "relate l18_var to l18_var_2 across R1.";
+		} else if(getName().contains("L19")) {
+			return "relate l19_var to l19_var_other across R2 using";
+		} else if(getName().contains("L20")) {
+			return "unrelate l20_var from";
+		} else if(getName().contains("L21")) {
+			return "unrelate l21_var from l21_var_2 across";
+		} else if(getName().contains("L22")) {
+			return "unrelate l22_var from l22_var_2 across R1.";
+		} else if(getName().contains("L23")) {
+			return "unrelate l23_var from l23_other across R2 using";
+		} else if(getName().contains("L24")) {
+			return "self.";
+		} else if(getName().contains("L25")) {
+			return "";
+		} else if(getName().contains("L26")) {
+			return "cardinality";
+		} else if(getName().contains("L27")) {
+			return "param.";
+		} else if(getName().contains("L28")) {
+			return "create object instance l28_var of";
+		} else if(getName().contains("L29")) {
+			return "delete object instance";
+		} else if(getName().contains("L30")) {
+			return "if(";
+		} else if(getName().contains("L31")) {
+			return "crete event instance l31_var of";
+		} else if(getName().contains("L32")) {
+			return "create event instance l32_var of L11Class1 to";
+		} else if(getName().contains("L33")) {
+			return "L33::";
+		}
+		return "";
+	}
+	
+	private String getPossibility(String element) {
+		if(element.contains("P1")) {
+			return "control stop";
+		} else if (element.contains("P2")) {
+			return "create event instance";
+		} else if (element.contains("P3")) {
+			return "create object instance";
+		} else if (element.contains("P4")) {
+			return "delete object instance";
+		} else if (element.contains("P5")) {
+			return "for each";
+		} else if (element.contains("P6")) {
+			return "generate";
+		} else if (element.contains("P7")) {
+			return "if";
+		} else if (element.contains("P8")) {
+			return "param";
+		}
+		return "";
+	}
+
+	private String[] populateAutoComplete(String element) throws BadLocationException, BadPositionCategoryException {
 		ActivityEditor editor = getActivityEditor();
-		editor.getTextViewer().getTextWidget().notifyListeners(SWT.SPACE | SWT.MODIFIER_MASK & SWT.CTRL, new Event());
-		// TODO: need to find tree or list here
-		return new String[0];
+		editor.getTextViewer().getDocument().replace(getLineNumber(element), getLocationText().length(), getLocationText());
+		BaseTest.dispatchEvents();
+		Proposal_c[] proposals = Proposal_c.getManyP_PsOnR1601(ProposalList_c.getManyP_PLsOnR1603(testBody));
+		String[] results = new String[proposals.length];
+		for(int i = 0; i < results.length; i++) {
+			results[i] = proposals[i].getDisplay_text();
+		}
+		return results;
 	}
 
 	private ActivityEditor getActivityEditor() {
 		return (ActivityEditor) getActiveEditor();
 	}
 
+	Body_c testBody = null;
+	private String[] actualProposals;
 	NonRootModelElement findElementForDof(String element) {
-		Body_c body = null;
 		if (element.contains("AH1")) {
-			body = Body_c.getOneACT_ACTOnR698(StateActionBody_c.StateActionBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(StateActionBody_c.StateActionBodyInstances(modelRoot));
 		} else if (element.contains("AH2")) {
-			body = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.DerivedAttributeBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.DerivedAttributeBodyInstance(modelRoot));
 		} else if (element.contains("AH3")) {
-			body = Body_c.getOneACT_ACTOnR698(OperationBody_c.OperationBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(OperationBody_c.OperationBodyInstance(modelRoot));
 		} else if (element.contains("AH4")) {
-			body = Body_c.getOneACT_ACTOnR698(FunctionBody_c.FunctionBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(FunctionBody_c.FunctionBodyInstance(modelRoot));
 		} else if (element.contains("AH5")) {
-			body = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
 		} else if (element.contains("AH6")) {
-			body = Body_c.getOneACT_ACTOnR698(ProvidedOperationBody_c.ProvidedOperationBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(ProvidedOperationBody_c.ProvidedOperationBodyInstance(modelRoot));
 		} else if (element.contains("AH7")) {
-			body = Body_c.getOneACT_ACTOnR698(ProvidedSignalBody_c.ProvidedSignalBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(ProvidedSignalBody_c.ProvidedSignalBodyInstance(modelRoot));
 		} else if (element.contains("AH8")) {
-			body = Body_c.getOneACT_ACTOnR698(RequiredOperationBody_c.RequiredOperationBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(RequiredOperationBody_c.RequiredOperationBodyInstance(modelRoot));
 		} else if (element.contains("AH9")) {
-			body = Body_c.getOneACT_ACTOnR698(RequiredSignalBody_c.RequiredSignalBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(RequiredSignalBody_c.RequiredSignalBodyInstance(modelRoot));
 		} else if (element.contains("AH10")) {
-			body = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
 		} else if (element.contains("AH11")) {
-			body = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.TransitionActionBodyInstance(modelRoot));
+			testBody = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.TransitionActionBodyInstance(modelRoot));
 		}
-		return body;
+		return testBody;
 	}
     /**
      * "SV" is one of the degrees of freedom as specified in this issues
@@ -160,22 +297,8 @@ public class OalAutoComplete extends CanvasTest {
      * @return A model element used in the test as specified by the test matrix
      */
     NonRootModelElement selectSV(String element, Object extraData) {
-        NonRootModelElement nrme = null;
-        if (element.equalsIgnoreCase("S1V1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("S1V2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("S2V1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("S2V2")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("S3V1")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("S3V2")) {
-            //TODO: Implement
-        } 
-        assertTrue("An instance with degree of freedom type \"SV\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
+    	// everything will be selected in the PAH selection, and test run
+        return null;
     }
 
     /**
@@ -185,9 +308,11 @@ public class OalAutoComplete extends CanvasTest {
      * 
      * @param columnInstance Model instance from the column
      * @param rowInstance Model instance from the row
+     * @throws BadPositionCategoryException 
+     * @throws BadLocationException 
      */
-    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
-        //TODO: Implement
+    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) throws BadLocationException, BadPositionCategoryException {
+        actualProposals = populateAutoComplete(getName());
     }
 
     /**
@@ -200,9 +325,12 @@ public class OalAutoComplete extends CanvasTest {
     * @return true if the test succeeds, false if it fails
     */
     boolean checkResult_non(NonRootModelElement source, NonRootModelElement destination) {
-        boolean non = false;
-        //TODO: Implement
-        return non;
+        for(String actual : actualProposals) {
+        	if(actual.equals(getPossibility(getName()))) {
+        		return false;
+        	}
+        }
+        return true;
     }
 
 
@@ -216,9 +344,12 @@ public class OalAutoComplete extends CanvasTest {
     * @return true if the test succeeds, false if it fails
     */
     boolean checkResult_exists(NonRootModelElement source, NonRootModelElement destination) {
-        boolean exists = false;
-        //TODO: Implement
-        return exists;
+        for(String actual : actualProposals) {
+        	if(actual.equals(getPossibility(getName()))) {
+        		return true;
+        	}
+        }
+        return false;
     }
 
 

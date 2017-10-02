@@ -1,11 +1,10 @@
 #
 #
 # This work is licensed under the Creative Commons CC0 License
-#
-#
+# 
 # Note the numbers in this matrix document match the numbers for the
 # original analysis found here: https://github.com/travislondon/bridgepoint/blob/9749_usecases/doc-bridgepoint/notes/9749_usecases/9749_usecases.md
-#
+#  
 Degrees of Freedom:
 
 # This test is not exhaustive following the grammar, as that would not be manageable.  It was designed
@@ -25,7 +24,7 @@ Locations(L)
 8. 6.2.7.2 After select [one|any|many] <var1> related by <var2>-> or ... -><key letters>[<rel>]->
 9. 6.2.7.3 After select [one|any|many] <var> from instances of
 10. 6.2.9 After generate 
-11. 6.2.9.4 After <event_spec> to
+11. 6.2.9.4 After generate <event_spec> to
 12. 6.2.10 After <var> =
 13. 6.2.11.2 After for each <var> in
 14. 6.2.11.5 After return
