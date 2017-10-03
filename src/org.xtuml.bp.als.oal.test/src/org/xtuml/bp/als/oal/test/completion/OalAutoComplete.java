@@ -9,39 +9,47 @@
 
 package org.xtuml.bp.als.oal.test.completion;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.BadPositionCategoryException;
-import org.eclipse.jface.text.Position;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Event;
+import org.eclipse.jface.text.Document;
+import org.eclipse.jface.text.IDocument;
+import org.eclipse.jface.text.IRegion;
 import org.eclipse.ui.IEditorPart;
 import org.junit.After;
 import org.junit.Before;
+import org.xtuml.bp.als.oal.ParseRunnable;
+import org.xtuml.bp.core.Action_c;
 import org.xtuml.bp.core.Body_c;
 import org.xtuml.bp.core.BridgeBody_c;
-import org.xtuml.bp.core.CorePlugin;
+import org.xtuml.bp.core.Bridge_c;
+import org.xtuml.bp.core.Component_c;
 import org.xtuml.bp.core.DerivedAttributeBody_c;
+import org.xtuml.bp.core.DerivedBaseAttribute_c;
 import org.xtuml.bp.core.FunctionBody_c;
+import org.xtuml.bp.core.Function_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.OperationBody_c;
+import org.xtuml.bp.core.Operation_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.ProposalList_c;
 import org.xtuml.bp.core.Proposal_c;
 import org.xtuml.bp.core.ProvidedOperationBody_c;
+import org.xtuml.bp.core.ProvidedOperation_c;
 import org.xtuml.bp.core.ProvidedSignalBody_c;
+import org.xtuml.bp.core.ProvidedSignal_c;
 import org.xtuml.bp.core.RequiredOperationBody_c;
+import org.xtuml.bp.core.RequiredOperation_c;
 import org.xtuml.bp.core.RequiredSignalBody_c;
+import org.xtuml.bp.core.RequiredSignal_c;
 import org.xtuml.bp.core.StateActionBody_c;
 import org.xtuml.bp.core.TransitionActionBody_c;
-import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
-import org.xtuml.bp.test.common.BaseTest;
-import org.xtuml.bp.test.common.UITestingUtilities;
+import org.xtuml.bp.core.util.ActionLanguageDescriptionUtil;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
-import org.xtuml.bp.ui.text.activity.ActivityEditor;
-import org.xtuml.bp.ui.text.activity.AllActivityModifier;
 import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
 
 public class OalAutoComplete extends CanvasTest {
@@ -72,10 +80,6 @@ public class OalAutoComplete extends CanvasTest {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        CorePlugin.getDefault().getPluginPreferences().setValue(
-  	  	      BridgePointPreferencesStore.ENABLE_PARSE_ON_ACTIVITY_EDITS, true);
-		CorePlugin.getDefault().getPluginPreferences()
-				.setValue(BridgePointPreferencesStore.CONTENT_ASSIST_ENABLE_AUTO_TRIGGERING, true);
     }
     
     @Override
@@ -97,7 +101,8 @@ public class OalAutoComplete extends CanvasTest {
 
     @After
     public void tearDown() throws Exception {
-        super.tearDown();
+        // do not tear down yet, not required as the supertype requires UI while these tests
+    	// do not
     }
 
     /**
@@ -122,23 +127,16 @@ public class OalAutoComplete extends CanvasTest {
      * @return A model element used in the test as specified by the test matrix
      */
     NonRootModelElement selectLPAH(String element, Object extraData) {
-        NonRootModelElement nrme = findElementForDof(element);
-        if(nrme != null) {
-        	// open the editor
-        	fActiveEditor = UITestingUtilities.getTextEditorFor(nrme, false);
-        } else {
-        	assertTrue("An instance with degree of freedom type \"LPAH\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        }
-        return nrme;
+    	return findElementForDof(element);
     }
 
 	private int getLineNumber(String element) {
 		if(element.contains("S2")) {
-			return 2;
+			return 28;
 		} else if(element.contains("S3")) {
-			return 13;
+			return 39;
 		}
-		return 0;
+		return 26;
 	}
 
 	private String getLocationText() {
@@ -231,10 +229,19 @@ public class OalAutoComplete extends CanvasTest {
 		return "";
 	}
 
-	private String[] populateAutoComplete(String element) throws BadLocationException, BadPositionCategoryException {
-		ActivityEditor editor = getActivityEditor();
-		editor.getTextViewer().getDocument().replace(getLineNumber(element), getLocationText().length(), getLocationText());
-		BaseTest.dispatchEvents();
+	private String[] populateAutoComplete(String element) throws BadLocationException {
+		if(getName().contains("AH11")) return new String[0];
+		NonRootModelElement rootElement = (NonRootModelElement) getRootElementForBody(testBody)[0];
+		int lineNumber = getLineNumber(element);
+		String locationText = getLocationText();
+		String action = ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(rootElement);
+		Document doc = new Document(action);
+		IRegion region = doc.getLineInformation(lineNumber);
+		doc.replace(region.getOffset(), locationText.length(), locationText);
+		int col = positionToCol(region.getOffset(), doc);
+        ParseRunnable parseRunner = new ParseRunnable(rootElement, doc.get(),
+                lineNumber - 1, col);
+        parseRunner.run();
 		Proposal_c[] proposals = Proposal_c.getManyP_PsOnR1601(ProposalList_c.getManyP_PLsOnR1603(testBody));
 		String[] results = new String[proposals.length];
 		for(int i = 0; i < results.length; i++) {
@@ -243,39 +250,96 @@ public class OalAutoComplete extends CanvasTest {
 		return results;
 	}
 
-	private ActivityEditor getActivityEditor() {
-		return (ActivityEditor) getActiveEditor();
+	private int positionToCol(int position, IDocument document) {
+		for (int i = 0, count = 0; i < document.getNumberOfLines(); i++) {
+			try {
+				if (position - count <= document.getLineLength(i))
+					return position - count + 1;
+				count += document.getLineLength(i);
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+
+	public static Object[] getRootElementForBody(NonRootModelElement columnInstance) {
+		NonRootModelElement element = Bridge_c.getOneS_BRGOnR697(BridgeBody_c.getManyACT_BRBsOnR698((Body_c) columnInstance));
+		if (element == null) {
+			element = Operation_c.getOneO_TFROnR696((OperationBody_c.getManyACT_OPBsOnR698((Body_c) columnInstance)));
+		}
+		if(element == null) {
+			element = Action_c.getOneSM_ACTOnR691(StateActionBody_c.getManyACT_SABsOnR698((Body_c) columnInstance));
+		} 
+		if(element == null) {
+			element = Function_c.getOneS_SYNCOnR695(FunctionBody_c.getManyACT_FNBsOnR698((Body_c) columnInstance));
+		} 
+		if(element == null) {
+			element = DerivedBaseAttribute_c.getOneO_DBATTROnR693(DerivedAttributeBody_c.getManyACT_DABsOnR698((Body_c) columnInstance));
+		} 
+		if(element == null) {
+			element = ProvidedOperation_c.getOneSPR_POOnR687(ProvidedOperationBody_c.getManyACT_POBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = ProvidedSignal_c.getOneSPR_PSOnR686(ProvidedSignalBody_c.getManyACT_PSBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = RequiredOperation_c.getOneSPR_ROOnR685(RequiredOperationBody_c.getManyACT_ROBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = RequiredSignal_c.getOneSPR_RSOnR684(RequiredSignalBody_c.getManyACT_RSBsOnR698((Body_c) columnInstance));
+		} 
+		if (element == null) {
+			element = Action_c.getOneSM_ACTOnR688(TransitionActionBody_c.getManyACT_TABsOnR698((Body_c) columnInstance));
+		}
+		String action = ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(element);
+		return new Object[] { element, action };
 	}
 
 	Body_c testBody = null;
 	private String[] actualProposals;
 	NonRootModelElement findElementForDof(String element) {
-		if (element.contains("AH1")) {
-			testBody = Body_c.getOneACT_ACTOnR698(StateActionBody_c.StateActionBodyInstances(modelRoot));
-		} else if (element.contains("AH2")) {
-			testBody = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.DerivedAttributeBodyInstance(modelRoot));
-		} else if (element.contains("AH3")) {
-			testBody = Body_c.getOneACT_ACTOnR698(OperationBody_c.OperationBodyInstance(modelRoot));
-		} else if (element.contains("AH4")) {
-			testBody = Body_c.getOneACT_ACTOnR698(FunctionBody_c.FunctionBodyInstance(modelRoot));
-		} else if (element.contains("AH5")) {
-			testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
-		} else if (element.contains("AH6")) {
-			testBody = Body_c.getOneACT_ACTOnR698(ProvidedOperationBody_c.ProvidedOperationBodyInstance(modelRoot));
-		} else if (element.contains("AH7")) {
-			testBody = Body_c.getOneACT_ACTOnR698(ProvidedSignalBody_c.ProvidedSignalBodyInstance(modelRoot));
-		} else if (element.contains("AH8")) {
-			testBody = Body_c.getOneACT_ACTOnR698(RequiredOperationBody_c.RequiredOperationBodyInstance(modelRoot));
-		} else if (element.contains("AH9")) {
-			testBody = Body_c.getOneACT_ACTOnR698(RequiredSignalBody_c.RequiredSignalBodyInstance(modelRoot));
-		} else if (element.contains("AH10")) {
-			testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.BridgeBodyInstance(modelRoot));
-		} else if (element.contains("AH11")) {
-			testBody = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.TransitionActionBodyInstance(modelRoot));
-		}
+		ClassQueryInterface_c classQuery = new ClassQueryInterface_c() {
+
+			@Override
+			public boolean evaluate(Object candidate) {
+				// ignore empty bodies
+				Object[] detail = getBodyDetail((Body_c) candidate);
+				NonRootModelElement pkg = (Package_c) detail[0];
+				String action = (String) detail[1];
+				if(action.length() == 0) {
+					return false;
+				}
+				int index = getName().indexOf("AH");
+				int length = getName().length();
+				CharSequence testSequence = getName().subSequence(index, length);
+				index = pkg.getName().indexOf("AH");
+				if(index != -1) {
+					length = pkg.getName().length();
+					CharSequence pkgSequence = pkg.getName().subSequence(index, length);			
+					return testSequence.equals(pkgSequence);
+				}
+				return false;
+			}
+		};
+		testBody = Body_c.BodyInstance(modelRoot, classQuery);
 		return testBody;
 	}
-    /**
+    protected Object[] getBodyDetail(Body_c body) {
+    	Object[] bodyDetail = getRootElementForBody(body);
+		NonRootModelElement root = (NonRootModelElement) bodyDetail[0];
+		Package_c parentPackage = root.getFirstParentPackage();
+		if(parentPackage == null) {
+			Component_c parentComponent = root.getFirstParentComponent();
+			if(parentComponent != null) {
+				parentPackage = parentComponent.getFirstParentPackage();
+			}
+		}
+		bodyDetail[0] = parentPackage;
+		return bodyDetail;
+	}
+
+	/**
      * "SV" is one of the degrees of freedom as specified in this issues
      * test matrix.
      * This routine gets the "SV" instance from the given name.
@@ -310,8 +374,13 @@ public class OalAutoComplete extends CanvasTest {
      * @param rowInstance Model instance from the row
      * @throws BadPositionCategoryException 
      * @throws BadLocationException 
+     * @throws InvocationTargetException 
+     * @throws IllegalArgumentException 
+     * @throws IllegalAccessException 
+     * @throws SecurityException 
+     * @throws NoSuchMethodException 
      */
-    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) throws BadLocationException, BadPositionCategoryException {
+    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) throws BadLocationException, BadPositionCategoryException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         actualProposals = populateAutoComplete(getName());
     }
 
@@ -325,7 +394,7 @@ public class OalAutoComplete extends CanvasTest {
     * @return true if the test succeeds, false if it fails
     */
     boolean checkResult_non(NonRootModelElement source, NonRootModelElement destination) {
-        for(String actual : actualProposals) {
+    	for(String actual : actualProposals) {
         	if(actual.equals(getPossibility(getName()))) {
         		return false;
         	}

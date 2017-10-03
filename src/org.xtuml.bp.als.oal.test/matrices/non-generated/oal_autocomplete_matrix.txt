@@ -121,7 +121,6 @@ Activity_Homes(AH)
 9. 5.1.1 Required Signal Body
 10. 5.1.1 Transition Action Body
 
-
 # For details on Scope see the analysis section: 5.2.11 from 9749_usecases.md listed in the header of this file.
 # In brief it is talking about the current body scope, for instance if a transient variable is defined with in
 # an if statement it is only available within that if block.
