@@ -299,38 +299,41 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.contains("P43")) {
 			return new String[] {"not"};
 		} else if (element.contains("P44")) {
-			return new String[] {"param"};
+			return new String[] {"l2_var"};
 		} else if (element.contains("P45")) {
-			return "param";
+			return new String[] {"l13_vars"};
 		} else if (element.contains("P46")) {
 			return new String[] {"not"};
 		} else if (element.contains("P47")) {
 			return new String[] {"true"};
 		} else if (element.contains("P48")) {
 			return new String[] {"false"};
-		} /** else if (element.contains("P49")) {
-			return "param";
+		} else if (element.contains("P49")) {
+			return new String[] {"operation( parameter: integer ), signal( parameter: integer )"};
 		} else if (element.contains("P50")) {
-			return "param";
+			return new String[] {""}; // not tested yet
 		} else if (element.contains("P51")) {
-			return "param";
+			return new String[] {"l2_var", "l8_var_one", "l8_var_two", "l11_var", "l11_inst_event", "l13_vars",
+				"l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
+				"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
+				"l23_other", "l23_link"};
 		} else if (element.contains("P52")) {
-			return "param";
+			return new String[] {"Class1, Class2, Class3, Class4, L11Class, L19, L19_other, L19_link, L2Class, L33, L8Class, L8Class_two"};
 		} else if (element.contains("P53")) {
-			return "param";
+			return new String[] {"l11_inst_event"};
 		} else if (element.contains("P54")) {
-			return "param";
+			return new String[] {"Class11:event()", "Class12:event()", "Class21:event()", "L11Class1:event()", "L11Class1_A1:event()"};
 		} else if (element.contains("P55")) {
-			return "param";
+			return new String[0]; // Untested for now;
 		} else if (element.contains("P56")) {
-			return "param";
+			return new String[0]; // Untested for now;
 		} else if (element.contains("P57")) {
-			return "param";
+			return new String[0]; // Untested for now;
 		} else if (element.contains("P58")) {
-			return "param";
+			return new String[0]; // Untested for now;
 		} else if (element.contains("P59")) {
-			return "param";
-		} */
+			return new String[] {"bridge( parameter: integer )"};
+		} 
 		return new String[0];
 	}
 
