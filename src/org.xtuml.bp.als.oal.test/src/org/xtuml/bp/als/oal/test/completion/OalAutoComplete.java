@@ -208,25 +208,130 @@ public class OalAutoComplete extends CanvasTest {
 		return "";
 	}
 	
-	private String getPossibility(String element) {
+	private String[] getPossibilities(String element) {
 		if(element.contains("P1")) {
-			return "control stop";
+			return new String[] {"control stop"};
 		} else if (element.contains("P2")) {
-			return "create event instance";
+			return new String[] {"create event instance"};
 		} else if (element.contains("P3")) {
-			return "create object instance";
+			return new String[] {"create object instance"};
 		} else if (element.contains("P4")) {
-			return "delete object instance";
+			return new String[] {"delete object instance"};
 		} else if (element.contains("P5")) {
-			return "for each";
+			return new String[] {"for each"};
 		} else if (element.contains("P6")) {
-			return "generate";
+			return new String[] {"generate"};
 		} else if (element.contains("P7")) {
-			return "if";
+			return new String[] {"if"};
 		} else if (element.contains("P8")) {
+			return new String[] {"param"};
+		} else if (element.contains("P9")) {
+			return new String[] {"relate"};
+		} else if (element.contains("P10")) {
+			return new String[] {"return"};
+		} else if (element.contains("P11")) {
+			return new String[] {"select any"};
+		} else if (element.contains("P12")) {
+			return new String[] {"select many"};
+		} else if (element.contains("P13")) {
+			return new String[] {"select one"};
+		} else if (element.contains("P14")) {
+			return new String[] {"send"};
+		} else if (element.contains("P15")) {
+			return new String[] {"unrelate"};
+		} else if (element.contains("P16")) {
+			return new String[] {"while"};
+		} else if (element.contains("P17")) {
+			return new String[] {"break"};
+		} else if (element.contains("P18")) {
+			return new String[] {"continue"};
+		} else if (element.contains("P19")) {
+			return new String[] {"end while"};
+		} else if (element.contains("P20")) {
+			return new String[] {"end for"};
+		} else if (element.contains("P21")) {
+			return new String[] {"elif"};
+		} else if (element.contains("P22")) {
+			return new String[] {"else"};
+		} else if (element.contains("P23")) {
+			return new String[] {"end if"};
+		} else if (element.contains("P24")) {
+			return new String[] {"self"};
+		}  else if (element.contains("P25")) {
+			return new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var", "l11_inst_event", "l13_vars",
+					"l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
+					"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
+					"l23_other", "l23_link", "x" };
+		} else if (element.contains("P26")) {
+			return new String[] {"L33_ee"};
+		} else if (element.contains("P27")) {
+			return new String[] {"L33"};
+		} else if (element.contains("P28")) {
+			return new String[] {"Port 1", "Port 2"};
+		} else if (element.contains("P29")) {
+			return new String[] {"attribute", "operation( param_one: integer, param_two: integer )"};
+		} else if (element.contains("P30")) {
+			return new String[] {"operation( param_one: integer, param_two: integer )"};
+		} else if (element.contains("P31")) {
+			return new String[] {"cb_operation"};
+		} else if (element.contains("P32")) {
+			return new String[0]; // not tested yet
+		} else if (element.contains("P33")) {
+			return new String[] {"function( parameter: integer)", "FunctionOne()", "FunctionOne-Parameters( ParameterOne: integer, ParameterTwo: real, ParameterThree: unique_id )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne: integer, ParameterTwo: real, ParameterThree: unique_id )"};
+		} else if (element.contains("P34")) {
+			return new String[] {""}; // not tested yet
+		} else if (element.contains("P35")) {
+			return new String[] {"R1"};
+		} else if (element.contains("P36")) {
+			return new String[] {"formalizer"};
+		} else if (element.contains("P37")) {
+			return new String[] {"creator"};
+		} else if (element.contains("P38")) {
+			return new String[] {"class"};
+		} else if (element.contains("P39")) {
+			return new String[] {"l11_inst_event"};
+		} else if (element.contains("P40")) {
+			return new String[] {"where"};
+		} else if (element.contains("P41")) {
+			return new String[] {"cardinality"};
+		} else if (element.contains("P42")) {
+			return new String[] {"empty"};
+		} else if (element.contains("P43")) {
+			return new String[] {"not"};
+		} else if (element.contains("P44")) {
+			return new String[] {"param"};
+		} else if (element.contains("P45")) {
 			return "param";
-		}
-		return "";
+		} else if (element.contains("P46")) {
+			return new String[] {"not"};
+		} else if (element.contains("P47")) {
+			return new String[] {"true"};
+		} else if (element.contains("P48")) {
+			return new String[] {"false"};
+		} /** else if (element.contains("P49")) {
+			return "param";
+		} else if (element.contains("P50")) {
+			return "param";
+		} else if (element.contains("P51")) {
+			return "param";
+		} else if (element.contains("P52")) {
+			return "param";
+		} else if (element.contains("P53")) {
+			return "param";
+		} else if (element.contains("P54")) {
+			return "param";
+		} else if (element.contains("P55")) {
+			return "param";
+		} else if (element.contains("P56")) {
+			return "param";
+		} else if (element.contains("P57")) {
+			return "param";
+		} else if (element.contains("P58")) {
+			return "param";
+		} else if (element.contains("P59")) {
+			return "param";
+		} */
+		return new String[0];
 	}
 
 	private String[] populateAutoComplete(String element) throws BadLocationException {
@@ -395,9 +500,12 @@ public class OalAutoComplete extends CanvasTest {
     */
     boolean checkResult_non(NonRootModelElement source, NonRootModelElement destination) {
     	for(String actual : actualProposals) {
-        	if(actual.equals(getPossibility(getName()))) {
-        		return false;
-        	}
+    		// make sure no possibility is present
+    		for(String possibility : getPossibilities(getName())) {
+	        	if(actual.equals(possibility)) {
+	        		return false;
+	        	}
+    		}
         }
         return true;
     }
@@ -414,8 +522,11 @@ public class OalAutoComplete extends CanvasTest {
     */
     boolean checkResult_exists(NonRootModelElement source, NonRootModelElement destination) {
         for(String actual : actualProposals) {
-        	if(actual.equals(getPossibility(getName()))) {
-        		return true;
+        	// make sure every possibility is present
+        	for(String possibility : getPossibilities(getName())) {
+	        	if(actual.equals(possibility)) {
+	        		return true;
+	        	}
         	}
         }
         return false;
