@@ -132,8 +132,7 @@ import junit.framework.TestSuite;
 	TestAllowInterfaceNameInICMsg_Generics.class,
 	PolyEventTest.class,
 	SupportConstantsViaIPRTests.class,
-	TestScopedConstants.class,
-	OalAutoCompleteTestSuite.class
+	TestScopedConstants.class
 })
 public class OALGlobalsTestSuite_Generics extends TestSuite {
 	/**
