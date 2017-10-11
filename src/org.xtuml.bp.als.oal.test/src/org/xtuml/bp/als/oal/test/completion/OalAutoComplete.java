@@ -338,7 +338,6 @@ public class OalAutoComplete extends CanvasTest {
 	}
 
 	private String[] populateAutoComplete(String element) throws BadLocationException {
-		if(getName().contains("AH11")) return new String[0];
 		NonRootModelElement rootElement = (NonRootModelElement) getRootElementForBody(testBody)[0];
 		int lineNumber = getLineNumber(element);
 		String locationText = getLocationText();
