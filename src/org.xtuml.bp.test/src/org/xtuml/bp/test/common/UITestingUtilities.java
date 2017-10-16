@@ -431,8 +431,21 @@ public class UITestingUtilities {
 		}
 		return null;
 	}
+	
+	public static boolean hasStyle(int styleBitsToCheck, int styleToLookFor ) {
+		boolean rVal = false;
+		
+		if (styleToLookFor==(styleBitsToCheck&styleToLookFor)) {
+			rVal = true;
+		}
+		return rVal;
+	}
 
 	public static void activateMenuItem(MenuItem item) {
+		int style = item.getStyle();
+		if (hasStyle(style, SWT.CHECK) | hasStyle(style, SWT.RADIO)) {
+			item.setSelection(!item.getSelection());
+		}
 		item.notifyListeners(SWT.Selection, null);
 	}
 

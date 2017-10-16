@@ -1149,6 +1149,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1172,6 +1173,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1351,6 +1353,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1374,6 +1377,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1957,6 +1961,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1980,6 +1985,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2159,6 +2165,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2182,6 +2189,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2711,6 +2719,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2734,6 +2743,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2757,6 +2767,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2780,6 +2791,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2905,6 +2917,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2928,6 +2941,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2951,6 +2965,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2974,6 +2989,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3487,6 +3503,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3510,6 +3527,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3635,6 +3653,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3658,6 +3677,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4079,6 +4099,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4102,6 +4123,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4125,6 +4147,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4148,6 +4171,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4273,6 +4297,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4296,6 +4321,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4319,6 +4345,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4342,6 +4369,7 @@ public class AssociationMove_0 extends AssociationMove {
 
         ABCE_DEFC_Action(src, dest);
         assertTrue("Disallowed move operation completed.", checkResult_moveDisallowed(src,dest));
+        assertTrue("The association is unformalized after disallowed move.", checkResult_assocFormal(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
