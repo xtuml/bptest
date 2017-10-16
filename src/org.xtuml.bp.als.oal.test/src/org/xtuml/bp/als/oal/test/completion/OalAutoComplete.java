@@ -10,15 +10,16 @@
 package org.xtuml.bp.als.oal.test.completion;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.BadPositionCategoryException;
 import org.eclipse.jface.text.Document;
-import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.ui.IEditorPart;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.xtuml.bp.als.oal.ParseRunnable;
 import org.xtuml.bp.core.Action_c;
 import org.xtuml.bp.core.Body_c;
@@ -33,8 +34,6 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.OperationBody_c;
 import org.xtuml.bp.core.Operation_c;
 import org.xtuml.bp.core.Package_c;
-import org.xtuml.bp.core.ProposalList_c;
-import org.xtuml.bp.core.Proposal_c;
 import org.xtuml.bp.core.ProvidedOperationBody_c;
 import org.xtuml.bp.core.ProvidedOperation_c;
 import org.xtuml.bp.core.ProvidedSignalBody_c;
@@ -49,9 +48,11 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.util.ActionLanguageDescriptionUtil;
+import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
 
+@RunWith(OrderedRunner.class)
 public class OalAutoComplete extends CanvasTest {
     public static boolean generateResults = false;
     public static boolean useDrawResults = false;
@@ -132,242 +133,251 @@ public class OalAutoComplete extends CanvasTest {
 
 	private int getLineNumber(String element) {
 		if(element.contains("S2")) {
-			return 28;
+			return 135;
 		} else if(element.contains("S3")) {
-			return 39;
+			return 52;
 		}
 		return 26;
 	}
 
 	private String getLocationText() {
-		if(getName().contains("L2")) {
+		String element = getEntryFromString(getName(), false);
+		if(element.equals("L2")) {
 			return "l2_var.";
-		} else if(getName().contains("L3")) {
+		} else if(element.equals("L3")) {
 			return "::";
-		} else if(getName().contains("L4")) {
+		} else if(element.equals("L4")) {
 			return "send";
-		} else if(getName().contains("L5")) {
+		} else if(element.equals("L5")) {
 			return "send Port1::";
-		} else if(getName().contains("L6")) {
+		} else if(element.equals("L6")) {
 			return "Port1::operation(parameter: 1) to";
-		} else if(getName().contains("L7")) {
+		} else if(element.equals("L7")) {
 			return "select one l7_var_one";
-		} else if(getName().contains("L8")) {
+		} else if(element.equals("L8")) {
 			return "select one l8_var_one related by l8_var_two->";
-		} else if(getName().contains("L9")) {
+		} else if(element.equals("L9")) {
 			return "select one l9_var from instances of ";
-		} else if(getName().contains("L10")) {
+		} else if(element.equals("L10")) {
 			return "generate";
-		} else if(getName().contains("L11")) {
+		} else if(element.equals("L11")) {
 			return "generate L11Class1:event to";
-		} else if(getName().contains("L12")) {
+		} else if(element.equals("L12")) {
 			return "p12_var =";
-		} else if(getName().contains("L13")) {
+		} else if(element.equals("L13")) {
 			return "for each l13_var in";
-		} else if(getName().contains("L14")) {
+		} else if(element.equals("L14")) {
 			return "return";
-		} else if(getName().contains("L15")) {
+		} else if(element.equals("L15")) {
 			return "relate";
-		} else if(getName().contains("L16")) {
+		} else if(element.equals("L16")) {
 			return "relate l16_var to";
-		} else if(getName().contains("L17")) {
+		} else if(element.equals("L17")) {
 			return "relate l17_var to l17_var_2 across";
-		} else if(getName().contains("L18")) {
+		} else if(element.equals("L18")) {
 			return "relate l18_var to l18_var_2 across R1.";
-		} else if(getName().contains("L19")) {
+		} else if(element.equals("L19")) {
 			return "relate l19_var to l19_var_other across R2 using";
-		} else if(getName().contains("L20")) {
+		} else if(element.equals("L20")) {
 			return "unrelate l20_var from";
-		} else if(getName().contains("L21")) {
+		} else if(element.equals("L21")) {
 			return "unrelate l21_var from l21_var_2 across";
-		} else if(getName().contains("L22")) {
+		} else if(element.equals("L22")) {
 			return "unrelate l22_var from l22_var_2 across R1.";
-		} else if(getName().contains("L23")) {
+		} else if(element.equals("L23")) {
 			return "unrelate l23_var from l23_other across R2 using";
-		} else if(getName().contains("L24")) {
+		} else if(element.equals("L24")) {
 			return "self.";
-		} else if(getName().contains("L25")) {
+		} else if(element.equals("L25")) {
 			return "";
-		} else if(getName().contains("L26")) {
+		} else if(element.equals("L26")) {
 			return "cardinality";
-		} else if(getName().contains("L27")) {
+		} else if(element.equals("L27")) {
 			return "param.";
-		} else if(getName().contains("L28")) {
+		} else if(element.equals("L28")) {
 			return "create object instance l28_var of";
-		} else if(getName().contains("L29")) {
+		} else if(element.equals("L29")) {
 			return "delete object instance";
-		} else if(getName().contains("L30")) {
+		} else if(element.equals("L30")) {
 			return "if(";
-		} else if(getName().contains("L31")) {
+		} else if(element.equals("L31")) {
 			return "crete event instance l31_var of";
-		} else if(getName().contains("L32")) {
+		} else if(element.equals("L32")) {
 			return "create event instance l32_var of L11Class1 to";
-		} else if(getName().contains("L33")) {
+		} else if(element.equals("L33")) {
 			return "L33::";
 		}
-		return "";
+		return " ";
 	}
 	
+	// example name: testS1V1_L1P21AH3
+	private String getEntryFromString(String string, boolean p_result) {
+		int l_index = string.indexOf("L");
+		int p_index = string.indexOf("P");
+		int ah_index = string.indexOf("AH");
+		CharSequence l_sequence = string.subSequence(l_index, p_index);
+		CharSequence p_sequence = string.subSequence(p_index, ah_index);
+		if(p_result) {
+			return p_sequence.toString();
+		} else {
+			return l_sequence.toString();
+		}
+	}
+
 	private String[] getPossibilities(String element) {
-		if(element.contains("P1")) {
+		element = getEntryFromString(element, true);
+		if(element.equals("P1")) {
 			return new String[] {"control stop"};
-		} else if (element.contains("P2")) {
+		} else if (element.equals("P2")) {
 			return new String[] {"create event instance"};
-		} else if (element.contains("P3")) {
+		} else if (element.equals("P3")) {
 			return new String[] {"create object instance"};
-		} else if (element.contains("P4")) {
+		} else if (element.equals("P4")) {
 			return new String[] {"delete object instance"};
-		} else if (element.contains("P5")) {
+		} else if (element.equals("P5")) {
 			return new String[] {"for each"};
-		} else if (element.contains("P6")) {
+		} else if (element.equals("P6")) {
 			return new String[] {"generate"};
-		} else if (element.contains("P7")) {
+		} else if (element.equals("P7")) {
 			return new String[] {"if"};
-		} else if (element.contains("P8")) {
+		} else if (element.equals("P8")) {
 			return new String[] {"param"};
-		} else if (element.contains("P9")) {
+		} else if (element.equals("P9")) {
 			return new String[] {"relate"};
-		} else if (element.contains("P10")) {
+		} else if (element.equals("P10")) {
 			return new String[] {"return"};
-		} else if (element.contains("P11")) {
+		} else if (element.equals("P11")) {
 			return new String[] {"select any"};
-		} else if (element.contains("P12")) {
+		} else if (element.equals("P12")) {
 			return new String[] {"select many"};
-		} else if (element.contains("P13")) {
+		} else if (element.equals("P13")) {
 			return new String[] {"select one"};
-		} else if (element.contains("P14")) {
+		} else if (element.equals("P14")) {
 			return new String[] {"send"};
-		} else if (element.contains("P15")) {
+		} else if (element.equals("P15")) {
 			return new String[] {"unrelate"};
-		} else if (element.contains("P16")) {
+		} else if (element.equals("P16")) {
 			return new String[] {"while"};
-		} else if (element.contains("P17")) {
+		} else if (element.equals("P17")) {
 			return new String[] {"break"};
-		} else if (element.contains("P18")) {
+		} else if (element.equals("P18")) {
 			return new String[] {"continue"};
-		} else if (element.contains("P19")) {
+		} else if (element.equals("P19")) {
 			return new String[] {"end while"};
-		} else if (element.contains("P20")) {
+		} else if (element.equals("P20")) {
 			return new String[] {"end for"};
-		} else if (element.contains("P21")) {
+		} else if (element.equals("P21")) {
 			return new String[] {"elif"};
-		} else if (element.contains("P22")) {
+		} else if (element.equals("P22")) {
 			return new String[] {"else"};
-		} else if (element.contains("P23")) {
+		} else if (element.equals("P23")) {
 			return new String[] {"end if"};
-		} else if (element.contains("P24")) {
+		} else if (element.equals("P24")) {
 			return new String[] {"self"};
-		}  else if (element.contains("P25")) {
+		}  else if (element.equals("P25")) {
 			return new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var", "l11_inst_event", "l13_vars",
 					"l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
 					"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
 					"l23_other", "l23_link", "x" };
-		} else if (element.contains("P26")) {
-			return new String[] {"L33_ee"};
-		} else if (element.contains("P27")) {
+		} else if (element.equals("P26")) {
 			return new String[] {"L33"};
-		} else if (element.contains("P28")) {
+		} else if (element.equals("P27")) {
+			return new String[] {"L33"};
+		} else if (element.equals("P28")) {
 			return new String[] {"Port 1", "Port 2"};
-		} else if (element.contains("P29")) {
+		} else if (element.equals("P29")) {
 			return new String[] {"attribute", "operation( param_one: integer, param_two: integer )"};
-		} else if (element.contains("P30")) {
+		} else if (element.equals("P30")) {
 			return new String[] {"operation( param_one: integer, param_two: integer )"};
-		} else if (element.contains("P31")) {
+		} else if (element.equals("P31")) {
 			return new String[] {"cb_operation"};
-		} else if (element.contains("P32")) {
+		} else if (element.equals("P32")) {
 			return new String[0]; // not tested yet
-		} else if (element.contains("P33")) {
+		} else if (element.equals("P33")) {
 			return new String[] {"function( parameter: integer)", "FunctionOne()", "FunctionOne-Parameters( ParameterOne: integer, ParameterTwo: real, ParameterThree: unique_id )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne: integer, ParameterTwo: real, ParameterThree: unique_id )"};
-		} else if (element.contains("P34")) {
+		} else if (element.equals("P34")) {
 			return new String[] {""}; // not tested yet
-		} else if (element.contains("P35")) {
+		} else if (element.equals("P35")) {
 			return new String[] {"R1"};
-		} else if (element.contains("P36")) {
+		} else if (element.equals("P36")) {
 			return new String[] {"formalizer"};
-		} else if (element.contains("P37")) {
+		} else if (element.equals("P37")) {
 			return new String[] {"creator"};
-		} else if (element.contains("P38")) {
+		} else if (element.equals("P38")) {
 			return new String[] {"class"};
-		} else if (element.contains("P39")) {
+		} else if (element.equals("P39")) {
 			return new String[] {"l11_inst_event"};
-		} else if (element.contains("P40")) {
+		} else if (element.equals("P40")) {
 			return new String[] {"where"};
-		} else if (element.contains("P41")) {
+		} else if (element.equals("P41")) {
 			return new String[] {"cardinality"};
-		} else if (element.contains("P42")) {
+		} else if (element.equals("P42")) {
 			return new String[] {"empty"};
-		} else if (element.contains("P43")) {
+		} else if (element.equals("P43")) {
 			return new String[] {"not"};
-		} else if (element.contains("P44")) {
+		} else if (element.equals("P44")) {
 			return new String[] {"l2_var"};
-		} else if (element.contains("P45")) {
+		} else if (element.equals("P45")) {
 			return new String[] {"l13_vars"};
-		} else if (element.contains("P46")) {
+		} else if (element.equals("P46")) {
 			return new String[] {"not"};
-		} else if (element.contains("P47")) {
+		} else if (element.equals("P47")) {
 			return new String[] {"true"};
-		} else if (element.contains("P48")) {
+		} else if (element.equals("P48")) {
 			return new String[] {"false"};
-		} else if (element.contains("P49")) {
+		} else if (element.equals("P49")) {
 			return new String[] {"operation( parameter: integer ), signal( parameter: integer )"};
-		} else if (element.contains("P50")) {
+		} else if (element.equals("P50")) {
 			return new String[] {""}; // not tested yet
-		} else if (element.contains("P51")) {
+		} else if (element.equals("P51")) {
 			return new String[] {"l2_var", "l8_var_one", "l8_var_two", "l11_var", "l11_inst_event", "l13_vars",
 				"l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
 				"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
 				"l23_other", "l23_link"};
-		} else if (element.contains("P52")) {
+		} else if (element.equals("P52")) {
 			return new String[] {"Class1, Class2, Class3, Class4, L11Class, L19, L19_other, L19_link, L2Class, L33, L8Class, L8Class_two"};
-		} else if (element.contains("P53")) {
+		} else if (element.equals("P53")) {
 			return new String[] {"l11_inst_event"};
-		} else if (element.contains("P54")) {
+		} else if (element.equals("P54")) {
 			return new String[] {"Class11:event()", "Class12:event()", "Class21:event()", "L11Class1:event()", "L11Class1_A1:event()"};
-		} else if (element.contains("P55")) {
+		} else if (element.equals("P55")) {
 			return new String[0]; // Untested for now;
-		} else if (element.contains("P56")) {
+		} else if (element.equals("P56")) {
 			return new String[0]; // Untested for now;
-		} else if (element.contains("P57")) {
+		} else if (element.equals("P57")) {
 			return new String[0]; // Untested for now;
-		} else if (element.contains("P58")) {
+		} else if (element.equals("P58")) {
 			return new String[0]; // Untested for now;
-		} else if (element.contains("P59")) {
+		} else if (element.equals("P59")) {
 			return new String[] {"bridge( parameter: integer )"};
 		} 
 		return new String[0];
 	}
 
-	private String[] populateAutoComplete(String element) throws BadLocationException {
+	private String[] populateAutoComplete(String element) throws BadLocationException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		NonRootModelElement rootElement = (NonRootModelElement) getRootElementForBody(testBody)[0];
 		int lineNumber = getLineNumber(element);
 		String locationText = getLocationText();
 		String action = ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(rootElement);
 		Document doc = new Document(action);
 		IRegion region = doc.getLineInformation(lineNumber);
-		doc.replace(region.getOffset(), locationText.length(), locationText);
-		int col = positionToCol(region.getOffset(), doc);
-        ParseRunnable parseRunner = new ParseRunnable(rootElement, doc.get(),
-                lineNumber - 1, col);
+		doc.replace(region.getOffset(), region.getLength(), locationText);
+		String documentContents = doc.get();
+        ParseRunnable parseRunner = new ParseRunnable(rootElement, documentContents,
+                lineNumber + 1, locationText.length());
         parseRunner.run();
-		Proposal_c[] proposals = Proposal_c.getManyP_PsOnR1601(ProposalList_c.getManyP_PLsOnR1603(testBody));
+        Class<?> proposalClass = Class.forName("org.xtuml.bp.core.Proposal_c");
+        Class<?> proposalListClass = Class.forName("org.xtuml.bp.core.ProposalList_c");
+		Method proposalMethod = proposalClass.getMethod("getManyP_PsOnR1601", new Class[] {proposalListClass}); 
+		Method getDisplayTextMethod = proposalClass.getMethod("getDisplay_text", new Class[0]);
+		Method proposalListsMethod = proposalListClass.getMethod("getOneP_PLOnR1603", new Class[] {Body_c.class});
+		Object proposalList = proposalListsMethod.invoke(null, new Object[] {testBody});
+		Object[] proposals = (Object[]) proposalMethod.invoke(null, new Object[] {proposalList});
 		String[] results = new String[proposals.length];
 		for(int i = 0; i < results.length; i++) {
-			results[i] = proposals[i].getDisplay_text();
+			results[i] = (String) getDisplayTextMethod.invoke(proposals[i]);
 		}
 		return results;
-	}
-
-	private int positionToCol(int position, IDocument document) {
-		for (int i = 0, count = 0; i < document.getNumberOfLines(); i++) {
-			try {
-				if (position - count <= document.getLineLength(i))
-					return position - count + 1;
-				count += document.getLineLength(i);
-			} catch (BadLocationException e) {
-				e.printStackTrace();
-			}
-		}
-		return 0;
 	}
 
 	public static Object[] getRootElementForBody(NonRootModelElement columnInstance) {
@@ -486,8 +496,9 @@ public class OalAutoComplete extends CanvasTest {
      * @throws IllegalAccessException 
      * @throws SecurityException 
      * @throws NoSuchMethodException 
+     * @throws ClassNotFoundException 
      */
-    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) throws BadLocationException, BadPositionCategoryException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) throws BadLocationException, BadPositionCategoryException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
         actualProposals = populateAutoComplete(getName());
     }
 
@@ -500,10 +511,21 @@ public class OalAutoComplete extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_non(NonRootModelElement source, NonRootModelElement destination) {
+    boolean checkResult_doesNotExist(NonRootModelElement source, NonRootModelElement destination) {
+    	// for non-existence of auto-complete we want these
+    	// to fail, as they will be incorrectly true in some
+    	// cases 
+    	try {
+			if(Class.forName("org.xtuml.bp.core.Proposal_c") == null) {
+				return false;
+			}
+		} catch (ClassNotFoundException e) {
+			return false;
+		}
+    	String[] possibilities = getPossibilities(getName());
     	for(String actual : actualProposals) {
     		// make sure no possibility is present
-    		for(String possibility : getPossibilities(getName())) {
+    		for(String possibility : possibilities) {
 	        	if(actual.equals(possibility)) {
 	        		return false;
 	        	}
@@ -512,8 +534,7 @@ public class OalAutoComplete extends CanvasTest {
         return true;
     }
 
-
-    /**
+	/**
     * This function verifies an expected result.
     *
     * @param source A model element instance aquired through a action taken
@@ -522,14 +543,16 @@ public class OalAutoComplete extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_exists(NonRootModelElement source, NonRootModelElement destination) {
-        for(String actual : actualProposals) {
-        	// make sure every possibility is present
-        	for(String possibility : getPossibilities(getName())) {
-	        	if(actual.equals(possibility)) {
-	        		return true;
-	        	}
-        	}
+    boolean checkResult_doesExist(NonRootModelElement source, NonRootModelElement destination) {
+    	String[] possibilities = getPossibilities(getName());
+    	for(String actual : actualProposals) {
+    		// make sure every possibility is present
+    		for(String possibility : possibilities) {
+	    		if(actual.equals(possibility)) {
+		        	System.err.println("Found an R1 Test Pass.");
+		        	return true;
+		        }
+    		}
         }
         return false;
     }
