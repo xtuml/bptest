@@ -56,6 +56,7 @@ import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
 public class OalAutoComplete extends CanvasTest {
     public static boolean generateResults = false;
     public static boolean useDrawResults = false;
+    public static boolean implementationExists = true;
     String[] results = null;
 
     String test_id = "";
@@ -98,6 +99,14 @@ public class OalAutoComplete extends CanvasTest {
     	Selection.getInstance().clear(); Selection.getInstance().addToSelection(container);
     	ParseAllActivitiesAction action = new ParseAllActivitiesAction();
     	action.run(null);
+    	// configure flag for existance of implementation of auto complete
+    	try {
+			if(Class.forName("org.xtuml.bp.core.Proposal_c") == null) {
+				implementationExists = false;
+			}
+		} catch (ClassNotFoundException e) {
+			implementationExists = false;
+		}
     };
 
     @After
@@ -515,13 +524,9 @@ public class OalAutoComplete extends CanvasTest {
     	// for non-existence of auto-complete we want these
     	// to fail, as they will be incorrectly true in some
     	// cases 
-    	try {
-			if(Class.forName("org.xtuml.bp.core.Proposal_c") == null) {
-				return false;
-			}
-		} catch (ClassNotFoundException e) {
-			return false;
-		}
+    	if(!implementationExists) {
+    		return false;
+    	}
     	String[] possibilities = getPossibilities(getName());
     	for(String actual : actualProposals) {
     		// make sure no possibility is present
