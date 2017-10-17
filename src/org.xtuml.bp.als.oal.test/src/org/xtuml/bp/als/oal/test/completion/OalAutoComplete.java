@@ -82,6 +82,7 @@ public class OalAutoComplete extends CanvasTest {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+        Ooaofooa.disableChangeNotification();
     }
     
     @Override
@@ -111,8 +112,7 @@ public class OalAutoComplete extends CanvasTest {
 
     @After
     public void tearDown() throws Exception {
-        // do not tear down yet, not required as the supertype requires UI while these tests
-    	// do not
+        Ooaofooa.enableChangeNotification();
     }
 
     /**
@@ -554,7 +554,6 @@ public class OalAutoComplete extends CanvasTest {
     		// make sure every possibility is present
     		for(String possibility : possibilities) {
 	    		if(actual.equals(possibility)) {
-		        	System.err.println("Found an R1 Test Pass.");
 		        	return true;
 		        }
     		}
