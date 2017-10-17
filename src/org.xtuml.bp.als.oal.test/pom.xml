@@ -23,7 +23,6 @@
 				<configuration>
 					<includes>
 						<include>**/OALGlobalsTestSuite_Generics.java</include>
-						<include>**/OalAutoCompleteTestSuite.java</include>
 					</includes>
 				</configuration>
 			</plugin>
