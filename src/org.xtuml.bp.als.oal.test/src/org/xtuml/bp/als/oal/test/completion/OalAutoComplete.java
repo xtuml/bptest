@@ -378,13 +378,13 @@ public class OalAutoComplete extends CanvasTest {
         Class<?> proposalClass = Class.forName("org.xtuml.bp.core.Proposal_c");
         Class<?> proposalListClass = Class.forName("org.xtuml.bp.core.ProposalList_c");
 		Method proposalMethod = proposalClass.getMethod("getManyP_PsOnR1601", new Class[] {proposalListClass}); 
-		Method getDisplayTextMethod = proposalClass.getMethod("getDisplay_text", new Class[0]);
+		Method getReplacementTextMethod = proposalClass.getMethod("getReplacement_text", new Class[0]);
 		Method proposalListsMethod = proposalListClass.getMethod("getOneP_PLOnR1603", new Class[] {Body_c.class});
 		Object proposalList = proposalListsMethod.invoke(null, new Object[] {testBody});
 		Object[] proposals = (Object[]) proposalMethod.invoke(null, new Object[] {proposalList});
 		String[] results = new String[proposals.length];
 		for(int i = 0; i < results.length; i++) {
-			results[i] = (String) getDisplayTextMethod.invoke(proposals[i]);
+			results[i] = (String) getReplacementTextMethod.invoke(proposals[i]);
 		}
 		return results;
 	}
