@@ -293,7 +293,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P27")) {
 			return new String[] {"L33::"};
 		} else if (element.equals("P28")) {
-			return new String[] {"Port 1", "Port 2"};
+			return new String[] {"Port1::", "Port2::"};
 		} else if (element.equals("P29")) {
 			return new String[] {"attribute", "operation( param_one:, param_two: )"};
 		} else if (element.equals("P30")) {
