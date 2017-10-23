@@ -345,8 +345,6 @@ public class OalAutoComplete extends CanvasTest {
 				"l23_other", "l23_link"};
 		} else if (element.equals("P52")) {
 			return new String[] {"Class1, Class2, Class3, Class4, L11Class, L19, L19_other, L19_link, L2Class, L33, L8Class, L8Class_two"};
-		} else if (element.equals("P53")) {
-			return new String[] {"l11_inst_event"};
 		} else if (element.equals("P54")) {
 			return new String[] {"Class11:event()", "Class12:event()", "Class21:event()", "L11Class1:event()", "L11Class1_A1:event()"};
 		} else if (element.equals("P55")) {
