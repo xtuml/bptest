@@ -53,7 +53,6 @@ import org.xtuml.bp.core.test.UndoRedoTestGenerics;
 import org.xtuml.bp.core.test.UniqueNameTestGenerics;
 import org.xtuml.bp.core.test.UseCaseTestsGenerics;
 import org.xtuml.bp.core.test.ui.WritableContextMenuTestGenerics;
-
 import junit.framework.TestSuite;
 
 /**
