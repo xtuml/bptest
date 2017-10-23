@@ -196,7 +196,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if(element.equals("L23")) {
 			return "unrelate l23_var from l23_other across R2 using";
 		} else if(element.equals("L24")) {
-			return "self.";
+			return "self";
 		} else if(element.equals("L25")) {
 			return "";
 		} else if(element.equals("L26")) {
@@ -289,21 +289,21 @@ public class OalAutoComplete extends CanvasTest {
 					"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
 					"l23_other", "l23_link", "x" };
 		} else if (element.equals("P26")) {
-			return new String[] {"L33"};
+			return new String[] {"L33::"};
 		} else if (element.equals("P27")) {
-			return new String[] {"L33"};
+			return new String[] {"L33::"};
 		} else if (element.equals("P28")) {
 			return new String[] {"Port 1", "Port 2"};
 		} else if (element.equals("P29")) {
-			return new String[] {"attribute", "operation( param_one: integer, param_two: integer )"};
+			return new String[] {"attribute", "operation( param_one:, param_two: )"};
 		} else if (element.equals("P30")) {
-			return new String[] {"operation( param_one: integer, param_two: integer )"};
+			return new String[] {"operation( param_one:, param_two: )"};
 		} else if (element.equals("P31")) {
 			return new String[] {"cb_operation"};
 		} else if (element.equals("P32")) {
 			return new String[0]; // not tested yet
 		} else if (element.equals("P33")) {
-			return new String[] {"function( parameter: integer)", "FunctionOne()", "FunctionOne-Parameters( ParameterOne: integer, ParameterTwo: real, ParameterThree: unique_id )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne: integer, ParameterTwo: real, ParameterThree: unique_id )"};
+			return new String[] {"function( parameter: )", "FunctionOne()", "FunctionOne-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )"};
 		} else if (element.equals("P34")) {
 			return new String[] {""}; // not tested yet
 		} else if (element.equals("P35")) {
@@ -335,7 +335,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P48")) {
 			return new String[] {"false"};
 		} else if (element.equals("P49")) {
-			return new String[] {"operation( parameter: integer ), signal( parameter: integer )"};
+			return new String[] {"operation( parameter: ), signal( parameter: )"};
 		} else if (element.equals("P50")) {
 			return new String[] {""}; // not tested yet
 		} else if (element.equals("P51")) {
@@ -358,7 +358,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P58")) {
 			return new String[0]; // Untested for now;
 		} else if (element.equals("P59")) {
-			return new String[] {"bridge( parameter: integer )"};
+			return new String[] {"bridge( parameter: )"};
 		} 
 		return new String[0];
 	}
