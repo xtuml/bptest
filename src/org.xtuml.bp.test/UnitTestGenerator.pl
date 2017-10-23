@@ -879,9 +879,9 @@ sub createTests() {
                     print $outputFH "        assertTrue(\"$resultDescription\", checkResult_$resultFunction(src,dest));\n";
                 }
                 print $outputFH "        \n";
-                print $outputFH "        GraphicalEditor editor = getActiveEditor();\n";
-                print $outputFH "        if(editor != null && useDrawResults) {\n";
-                print $outputFH "           validateOrGenerateResults(editor, generateResults);\n";
+                print $outputFH "        IEditorPart editor = getActiveEditor();\n";
+                print $outputFH "        if(editor != null && editor instanceof GraphicalEditor && useDrawResults) {\n";
+                print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
                 print $outputFH "        }\n";
                 print $outputFH "        tearDown();\n";                
                 print $outputFH "    }\n";

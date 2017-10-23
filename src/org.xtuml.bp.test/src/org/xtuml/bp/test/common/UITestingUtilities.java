@@ -63,6 +63,7 @@ import org.xtuml.bp.core.ActionHome_c;
 import org.xtuml.bp.core.Action_c;
 import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.BaseAttribute_c;
+import org.xtuml.bp.core.Body_c;
 import org.xtuml.bp.core.BridgeBody_c;
 import org.xtuml.bp.core.Bridge_c;
 import org.xtuml.bp.core.DerivedAttributeBody_c;
@@ -431,21 +432,8 @@ public class UITestingUtilities {
 		}
 		return null;
 	}
-	
-	public static boolean hasStyle(int styleBitsToCheck, int styleToLookFor ) {
-		boolean rVal = false;
-		
-		if (styleToLookFor==(styleBitsToCheck&styleToLookFor)) {
-			rVal = true;
-		}
-		return rVal;
-	}
 
 	public static void activateMenuItem(MenuItem item) {
-		int style = item.getStyle();
-		if (hasStyle(style, SWT.CHECK) | hasStyle(style, SWT.RADIO)) {
-			item.setSelection(!item.getSelection());
-		}
 		item.notifyListeners(SWT.Selection, null);
 	}
 
@@ -525,7 +513,7 @@ public class UITestingUtilities {
 	}
 
 	public static void activateMenuItem(Menu menu, String name) {
-		MenuItem item =getMenuItemByPath(menu, name);
+		MenuItem item = getMenuItemByPath(menu, name);
 		if ( item != null ) {
 			activateMenuItem(item);
 			BaseTest.dispatchEvents();
@@ -1071,66 +1059,6 @@ public class UITestingUtilities {
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().update();
 		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 			;
-	}
-
-	public static IEditorPart getTextEditorFor(final NonRootModelElement columnInstance, boolean isRootOf) {
-		return getGraphicalEditorFor(columnInstance, isRootOf, true);
-	}
-
-	public static IEditorPart getTextEditorFor(final NonRootModelElement columnInstance, boolean isRootOf,
-			boolean validateOpen) {
-		if (columnInstance == null)
-			return null;
-		if (isRootOf) {
-			IEditorReference[] editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.getEditorReferences();
-			int count = editorReferences.length;
-			CanvasTestUtils.openActivityEditor(columnInstance);
-			editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.getEditorReferences();
-			int count_after = editorReferences.length;
-			if (validateOpen) {
-				if (count < count_after) {
-					return (ActivityEditor) getActiveEditor();
-				} else {
-					// no editor was opened
-					return null;
-				}
-			} else {
-				return (ActivityEditor) getActiveEditor();
-			}
-		} else {
-			// look for a parent element that is related to a body
-			NonRootModelElement nrme = getRootElementForBody(columnInstance, validateOpen);
-			return getTextEditorFor(nrme, true, validateOpen);
-		}
-	}
-
-	private static NonRootModelElement getRootElementForBody(NonRootModelElement columnInstance, boolean validateOpen) {
-		if (columnInstance instanceof BridgeBody_c) {
-			return Bridge_c.getOneS_BRGOnR697((BridgeBody_c) columnInstance);
-		} else if (columnInstance instanceof OperationBody_c) {
-			return Operation_c.getOneO_TFROnR696((OperationBody_c) columnInstance);
-		} else if (columnInstance instanceof StateActionBody_c) {
-			return StateMachineState_c.getOneSM_STATEOnR511(MooreActionHome_c.getManySM_MOAHsOnR513(ActionHome_c
-					.getManySM_AHsOnR514(Action_c.getManySM_ACTsOnR691((StateActionBody_c) columnInstance))));
-		} else if (columnInstance instanceof FunctionBody_c) {
-			return Function_c.getOneS_SYNCOnR695((FunctionBody_c) columnInstance);
-		} else if (columnInstance instanceof DerivedAttributeBody_c) {
-			return DerivedBaseAttribute_c.getOneO_DBATTROnR693((DerivedAttributeBody_c) columnInstance);
-		} else if (columnInstance instanceof ProvidedOperationBody_c) {
-			return ProvidedOperation_c.getOneSPR_POOnR687((ProvidedOperationBody_c) columnInstance);
-		} else if (columnInstance instanceof ProvidedSignalBody_c) {
-			return ProvidedSignal_c.getOneSPR_PSOnR686((ProvidedSignalBody_c) columnInstance);
-		} else if (columnInstance instanceof RequiredOperationBody_c) {
-			return RequiredOperation_c.getOneSPR_ROOnR685((RequiredOperationBody_c) columnInstance);
-		} else if (columnInstance instanceof RequiredSignalBody_c) {
-			return RequiredSignal_c.getOneSPR_RSOnR684((RequiredSignalBody_c) columnInstance);
-		} else if (columnInstance instanceof TransitionActionBody_c) {
-			return Transition_c.getOneSM_TXNOnR512(MealyActionHome_c.getManySM_MEAHsOnR513(ActionHome_c
-					.getManySM_AHsOnR514(Action_c.getManySM_ACTsOnR688((TransitionActionBody_c) columnInstance))));
-		}
-		return null;
 	}
 
 }

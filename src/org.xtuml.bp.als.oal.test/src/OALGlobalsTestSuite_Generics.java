@@ -72,6 +72,8 @@ import org.xtuml.bp.als.oal.test.TestSelect_Generics;
 import org.xtuml.bp.als.oal.test.TestSelect_Generics_Ordered;
 import org.xtuml.bp.als.oal.test.TestStructuredDataType_Generics;
 import org.xtuml.bp.als.oal.test.VisibilityParserTest;
+import org.xtuml.bp.als.oal.test.completion.OalAutoComplete;
+import org.xtuml.bp.als.oal.test.completion.OalAutoCompleteTestSuite;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 
