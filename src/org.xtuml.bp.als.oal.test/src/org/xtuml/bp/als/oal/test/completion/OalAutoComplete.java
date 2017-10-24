@@ -305,7 +305,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P33")) {
 			return new String[] {"function( parameter: )", "FunctionOne()", "FunctionOne-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )"};
 		} else if (element.equals("P34")) {
-			return new String[] {""}; // not tested yet
+			return new String[0]; // not tested yet
 		} else if (element.equals("P35")) {
 			return new String[] {"R1"};
 		} else if (element.equals("P36")) {
@@ -337,7 +337,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P49")) {
 			return new String[] {"operation( parameter: ), signal( parameter: )"};
 		} else if (element.equals("P50")) {
-			return new String[] {""}; // not tested yet
+			return new String[0]; // not tested yet
 		} else if (element.equals("P51")) {
 			return new String[] {"related by"};
 		} else if (element.equals("P52")) {
