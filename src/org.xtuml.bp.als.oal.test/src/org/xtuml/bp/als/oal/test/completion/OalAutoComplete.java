@@ -354,7 +354,10 @@ public class OalAutoComplete extends CanvasTest {
 			return new String[0]; // Untested for now;
 		} else if (element.equals("P59")) {
 			return new String[] {"bridge( parameter: )"};
-		} 
+		} else if (element.equals("P60")) {
+			//return new String[] {"bridge( parameter: )"};
+			return new String[0]; // Untested for now;
+		}
 		return new String[0];
 	}
 
