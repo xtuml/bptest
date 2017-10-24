@@ -284,10 +284,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P24")) {
 			return new String[] {"self"};
 		}  else if (element.equals("P25")) {
-			return new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var", "l11_inst_event", "l13_vars",
-					"l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
-					"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
-					"l23_other", "l23_link", "x" };
+			return new String[] { "x" };
 		} else if (element.equals("P26")) {
 			return new String[] {"L33::"};
 		} else if (element.equals("P27")) {
@@ -297,7 +294,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P29")) {
 			return new String[] {"attribute", "operation( param_one:, param_two: )"};
 		} else if (element.equals("P30")) {
-			return new String[] {"operation( param_one:, param_two: )"};
+			return new String[] {"operation( param_one:, param_two:  )"};
 		} else if (element.equals("P31")) {
 			return new String[] {"cb_operation"};
 		} else if (element.equals("P32")) {
@@ -311,9 +308,9 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P36")) {
 			return new String[] {"formalizer"};
 		} else if (element.equals("P37")) {
-			return new String[] {"creator"};
+			return new String[0]; // creator is only added for creation events
 		} else if (element.equals("P38")) {
-			return new String[] {"class"};
+			return new String[0]; // 'class' is only added for class based state machine events
 		} else if (element.equals("P39")) {
 			return new String[] {"l11_inst_event"};
 		} else if (element.equals("P40")) {
@@ -325,7 +322,10 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P43")) {
 			return new String[] {"not"};
 		} else if (element.equals("P44")) {
-			return new String[] {"l2_var"};
+			return new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var", "l13_vars",
+					"l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
+					"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
+					"l23_other", "l23_link" };
 		} else if (element.equals("P45")) {
 			return new String[] {"l13_vars"};
 		} else if (element.equals("P46")) {
