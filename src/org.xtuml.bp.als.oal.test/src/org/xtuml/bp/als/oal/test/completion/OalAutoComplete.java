@@ -438,7 +438,25 @@ public class OalAutoComplete extends CanvasTest {
 				if(index != -1) {
 					length = pkg.getName().length();
 					CharSequence pkgSequence = pkg.getName().subSequence(index, length);			
-					return testSequence.equals(pkgSequence);
+					// For AH6-9 there are multiple bodies in the test package, so more
+					// filtering is required
+					if ( pkgSequence.toString().contains("AH6") ) {
+						ProvidedOperation_c spr_po = ProvidedOperation_c.getOneSPR_POOnR687(ProvidedOperationBody_c.getOneACT_POBOnR698((Body_c)candidate));
+					    return testSequence.equals(pkgSequence) && null != spr_po;
+					}
+					else if ( pkgSequence.toString().contains("AH7") ) {
+						ProvidedSignal_c spr_ps = ProvidedSignal_c.getOneSPR_PSOnR686(ProvidedSignalBody_c.getOneACT_PSBOnR698((Body_c)candidate));
+					    return testSequence.equals(pkgSequence) && null != spr_ps;
+					}
+					else if ( pkgSequence.toString().contains("AH8") ) {
+						RequiredOperation_c spr_ro = RequiredOperation_c.getOneSPR_ROOnR685(RequiredOperationBody_c.getOneACT_ROBOnR698((Body_c)candidate));
+					    return testSequence.equals(pkgSequence) && null != spr_ro;
+					}
+					else if ( pkgSequence.toString().contains("AH9") ) {
+						RequiredSignal_c spr_rs = RequiredSignal_c.getOneSPR_RSOnR684(RequiredSignalBody_c.getOneACT_RSBOnR698((Body_c)candidate));
+					    return testSequence.equals(pkgSequence) && null != spr_rs;
+					}
+					else return testSequence.equals(pkgSequence);
 				}
 				return false;
 			}
