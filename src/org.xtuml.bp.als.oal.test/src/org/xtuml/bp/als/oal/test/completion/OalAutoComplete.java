@@ -160,7 +160,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if(element.equals("L5")) {
 			return "send Port2::";
 		} else if(element.equals("L6")) {
-			return "Port2::operation(parameter: 1) to";
+			return "send Port2::operation(parameter: 1) to";
 		} else if(element.equals("L7")) {
 			return "select one l7_var_one";
 		} else if(element.equals("L8")) {
@@ -371,7 +371,7 @@ public class OalAutoComplete extends CanvasTest {
 		doc.replace(region.getOffset(), region.getLength(), locationText);
 		String documentContents = doc.get();
         ParseRunnable parseRunner = new ParseRunnable(rootElement, documentContents,
-                lineNumber + 1, locationText.length());
+                lineNumber + 1, locationText.length() + 1);
         parseRunner.run();
         Class<?> proposalClass = Class.forName("org.xtuml.bp.core.Proposal_c");
         Class<?> proposalListClass = Class.forName("org.xtuml.bp.core.ProposalList_c");
