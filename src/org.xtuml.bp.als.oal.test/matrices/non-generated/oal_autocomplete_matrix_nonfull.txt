@@ -389,7 +389,7 @@ L1P24AH10     R1         X          R1         X          R1         X
 L1P25AH1      X         X          R1         X          R1         X         
 L1P25AH2      X         X          R1         X          R1         X         
 L1P25AH3      X         X          R1         X          R1         X         
-L1P25AH4      R2         X          R1         X          R1         X         
+L1P25AH4      R1         X          R1         X          R1         X         
 L1P25AH5      X         X          R1         X          R1         X         
 L1P25AH6      X         X          R1         X          R1         X         
 L1P25AH7      X         X          R1         X          R1         X         
@@ -529,7 +529,7 @@ L1P38AH10      X         X         X         X         X         X
 L1P39AH1      X         X         X         X         X         X         
 L1P39AH2      X         X         X         X         X         X         
 L1P39AH3      X         X         X         X         X         X         
-L1P39AH4      R2         R2         R2         R2         R2         R2         
+L1P39AH4      R1         R2         R1         R2         R1         R2         
 L1P39AH5      X         X         X         X         X         X         
 L1P39AH6      X         X         X         X         X         X         
 L1P39AH7      X         X         X         X         X         X         
@@ -579,7 +579,7 @@ L1P43AH10      X         X         X         X         X         X
 L1P44AH1      X         X         X         X         X         X         
 L1P44AH2      X         X         X         X         X         X         
 L1P44AH3      X         X         X         X         X         X         
-L1P44AH4      R2         R2         R2         R2         R2         R2         
+L1P44AH4      R1         R2         R1         R2         R1         R2         
 L1P44AH5      X         X         X         X         X         X         
 L1P44AH6      X         X         X         X         X         X         
 L1P44AH7      X         X         X         X         X         X         
@@ -589,7 +589,7 @@ L1P44AH10      X         X         X         X         X         X
 L1P45AH1      X         X         X         X         X         X         
 L1P45AH2      X         X         X         X         X         X         
 L1P45AH3      X         X         X         X         X         X         
-L1P45AH4      R2         R2         R2         R2         R2         R2         
+L1P45AH4      R1         R2         R1         R2         R1         R2         
 L1P45AH5      X         X         X         X         X         X         
 L1P45AH6      X         X         X         X         X         X         
 L1P45AH7      X         X         X         X         X         X         
@@ -639,7 +639,7 @@ L1P49AH10      X         X         X         X         X         X
 L1P50AH1      X         X         X         X         X         X         
 L1P50AH2      X         X         X         X         X         X         
 L1P50AH3      X         X         X         X         X         X         
-L1P50AH4      R2         R2         R2         R2         R2         R2         
+L1P50AH4      R1         R2         R1         R2         R1         R2         
 L1P50AH5      X         X         X         X         X         X         
 L1P50AH6      X         X         X         X         X         X         
 L1P50AH7      X         X         X         X         X         X         
