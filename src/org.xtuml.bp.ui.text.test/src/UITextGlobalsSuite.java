@@ -28,6 +28,7 @@
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.xtuml.bp.ui.text.editor.oal.opendeclaration.OpenDeclarationTestsTestSuite;
 import org.xtuml.bp.ui.text.editor.oal.test.OALKeywordRuleTest;
 import org.xtuml.bp.ui.text.test.DomainDeleteTestI744;
 import org.xtuml.bp.ui.text.test.DuplicateRelationshipNumberParseAllTest;
@@ -65,7 +66,8 @@ import junit.framework.TestSuite;
     DomainDeleteTestI744.class,
     DuplicateRelationshipNumberParseAllTest.class,
     ParseAllOnModelReloadTest.class,
-    ParseAllActivitiesOnSystemModelTest.class
+    ParseAllActivitiesOnSystemModelTest.class,
+    OpenDeclarationTestsTestSuite.class
 })
 
 public class UITextGlobalsSuite extends TestSuite {
