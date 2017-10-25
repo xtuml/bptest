@@ -304,9 +304,9 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P34")) {
 			return new String[0]; // not tested yet
 		} else if (element.equals("P35")) {
-			return new String[] {"R1"};
+			return new String[] {"R1.'formalizer'"};
 		} else if (element.equals("P36")) {
-			return new String[] {"formalizer"};
+			return new String[] {"'formalizer'"};
 		} else if (element.equals("P37")) {
 			return new String[0]; // creator is only added for creation events
 		} else if (element.equals("P38")) {
