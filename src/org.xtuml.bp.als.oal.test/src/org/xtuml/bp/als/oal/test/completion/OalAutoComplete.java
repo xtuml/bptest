@@ -565,17 +565,17 @@ public class OalAutoComplete extends CanvasTest {
     */
     boolean checkResult_doesExist(NonRootModelElement source, NonRootModelElement destination) {
     	String[] possibilities = getPossibilities(getName());
-    	if ( 0 == possibilities.length )
-    		return true;  // if there are no possibilities, every possibility is present by definition
         // make sure every possibility is present
+    	int num_possibilities_present = 0;
         for(String possibility : possibilities) {
     	    for(String actual : actualProposals) {
 	    		if(actual.equals(possibility)) {
-		        	return true;
+	    			num_possibilities_present++;
+	    			break;
 		        }
     		}
         }
-        return false;
+        return ( num_possibilities_present == possibilities.length );
     }
 
 
