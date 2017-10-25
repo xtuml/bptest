@@ -158,9 +158,9 @@ public class OalAutoComplete extends CanvasTest {
 		} else if(element.equals("L4")) {
 			return "send";
 		} else if(element.equals("L5")) {
-			return "send Port2::";
+			return "send L33::";
 		} else if(element.equals("L6")) {
-			return "send Port2::operation(parameter: 1) to";
+			return "send L33::operation(parameter: 1) to";
 		} else if(element.equals("L7")) {
 			return "select one l7_var_one";
 		} else if(element.equals("L8")) {
@@ -290,7 +290,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P27")) {
 			return new String[] {"L33::"};
 		} else if (element.equals("P28")) {
-			return new String[] {"Port1::", "Port2::"};
+			return new String[] {"Port1::", "L33::"};
 		} else if (element.equals("P29")) {
 			return new String[] {"attribute"};
 		} else if (element.equals("P30")) {

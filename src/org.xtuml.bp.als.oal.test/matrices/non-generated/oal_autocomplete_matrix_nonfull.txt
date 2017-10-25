@@ -2170,7 +2170,7 @@ L4P25AH10      X         X         X         X         X         X
 L4P26AH1      X         X         X         X         X         X         
 L4P26AH2      X         X         X         X         X         X         
 L4P26AH3      X         X         X         X         X         X         
-L4P26AH4      R2         R2         R2         R2         R2         R2         
+L4P26AH4      X         X         X         X         X         X         
 L4P26AH5      X         X         X         X         X         X         
 L4P26AH6      X         X         X         X         X         X         
 L4P26AH7      X         X         X         X         X         X         
@@ -2180,7 +2180,7 @@ L4P26AH10      X         X         X         X         X         X
 L4P27AH1      X         X         X         X         X         X         
 L4P27AH2      X         X         X         X         X         X         
 L4P27AH3      X         X         X         X         X         X         
-L4P27AH4      R2         R2         R2         R2         R2         R2         
+L4P27AH4      X         X         X         X         X         X         
 L4P27AH5      X         X         X         X         X         X         
 L4P27AH6      X         X         X         X         X         X         
 L4P27AH7      X         X         X         X         X         X         
