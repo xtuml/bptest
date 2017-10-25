@@ -296,7 +296,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P30")) {
 			return new String[] {"operation( parameter: )"};
 		} else if (element.equals("P31")) {
-			return new String[] {"cb_operation"};
+			return new String[] {"cb_operation( parameter: )"};
 		} else if (element.equals("P32")) {
 			return new String[0]; // not tested yet
 		} else if (element.equals("P33")) {

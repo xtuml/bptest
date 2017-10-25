@@ -19330,7 +19330,7 @@ L33P30AH10      X         X         X         X         X         X
 L33P31AH1      R1         X         R1         X         R1         X         
 L33P31AH2      R1         X         R1         X         R1         X         
 L33P31AH3      R1         X         R1         X         R1         X         
-L33P31AH4      R1         R2         R1         R2         R1         R2         
+L33P31AH4      R1         X         R1         X         R1         X          
 L33P31AH5      R1         X         R1         X         R1         X         
 L33P31AH6      R1         X         R1         X         R1         X         
 L33P31AH7      R1         X         R1         X         R1         X         
