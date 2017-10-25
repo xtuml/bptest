@@ -198,7 +198,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if(element.equals("L24")) {
 			return "self.";
 		} else if(element.equals("L25")) {
-			return "";
+			return "select one l9_var from instances of L19 ";
 		} else if(element.equals("L26")) {
 			return "cardinality";
 		} else if(element.equals("L27")) {
