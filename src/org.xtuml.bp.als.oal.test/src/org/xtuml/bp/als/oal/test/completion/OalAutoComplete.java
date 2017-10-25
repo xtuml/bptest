@@ -196,7 +196,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if(element.equals("L23")) {
 			return "unrelate l23_var from l23_other across R2 using";
 		} else if(element.equals("L24")) {
-			return "self";
+			return "self.";
 		} else if(element.equals("L25")) {
 			return "";
 		} else if(element.equals("L26")) {
@@ -292,9 +292,9 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P28")) {
 			return new String[] {"Port1::", "Port2::"};
 		} else if (element.equals("P29")) {
-			return new String[] {"attribute", "operation( param_one:, param_two: )"};
+			return new String[] {"attribute"};
 		} else if (element.equals("P30")) {
-			return new String[] {"operation( param_one:, param_two: )"};
+			return new String[] {"operation( parameter: )"};
 		} else if (element.equals("P31")) {
 			return new String[] {"cb_operation"};
 		} else if (element.equals("P32")) {
