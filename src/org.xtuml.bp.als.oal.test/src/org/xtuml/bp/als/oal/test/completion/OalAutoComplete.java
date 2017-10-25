@@ -322,7 +322,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P43")) {
 			return new String[] {"not"};
 		} else if (element.equals("P44")) {
-			return new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var", "l13_vars",
+			return new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var",
 					"l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
 					"l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
 					"l23_other", "l23_link" };
@@ -343,7 +343,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P52")) {
 			return new String[] {"from instances of"};
 		} else if (element.equals("P54")) {
-			return new String[] {"Class11:event()", "Class12:event()", "Class21:event()", "L11Class1:event()", "L11Class1_A1:event()"};
+			return new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
 		} else if (element.equals("P55")) {
 			return new String[0]; // Untested for now;
 		} else if (element.equals("P56")) {
