@@ -200,7 +200,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if(element.equals("L25")) {
 			return "select one l9_var from instances of L19 ";
 		} else if(element.equals("L26")) {
-			return "cardinality";
+			return "card_var = cardinality ";
 		} else if(element.equals("L27")) {
 			return "param.";
 		} else if(element.equals("L28")) {
