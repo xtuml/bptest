@@ -335,7 +335,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if (element.equals("P48")) {
 			return new String[] {"false"};
 		} else if (element.equals("P49")) {
-			return new String[] {"operation( parameter: )", "signal( parameter: )"};
+			return new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
 		} else if (element.equals("P50")) {
 			return new String[0]; // not tested yet
 		} else if (element.equals("P51")) {
