@@ -210,7 +210,7 @@ public class OalAutoComplete extends CanvasTest {
 		} else if(element.equals("L30")) {
 			return "if(";
 		} else if(element.equals("L31")) {
-			return "crete event instance l31_var of";
+			return "create event instance l31_var of";
 		} else if(element.equals("L32")) {
 			return "create event instance l32_var of L11Class1 to";
 		} else if(element.equals("L33")) {
