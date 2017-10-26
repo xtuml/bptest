@@ -234,6 +234,7 @@ public class OalAutoComplete extends CanvasTest {
     }
 
     private String[] getPossibilities(String element) {
+        String location = getEntryFromString(getName(), false);
         element = getEntryFromString(element, true);
         if(element.equals("P1")) {
             return new String[] {"control stop"};
@@ -288,7 +289,13 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P26")) {
             return new String[] {"L33::"};
         } else if (element.equals("P27")) {
-            return new String[] {"L33::"};
+        	if ( location.equals("L9") ) {
+        		return new String[] {"Class1","Class2","Class3","Class4","L11Class","L19","L19_link",
+        				             "L19_other","L2Class","L8Class","L8Class_two","L33"};
+        	}
+        	else {
+                return new String[] {"L33::"};
+        	}
         } else if (element.equals("P28")) {
             return new String[] {"Port1::", "L33::"};
         } else if (element.equals("P29")) {
