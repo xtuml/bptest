@@ -289,7 +289,7 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P26")) {
             return new String[] {"L33::"};
         } else if (element.equals("P27")) {
-        	if ( location.equals("L9") ) {
+        	if ( location.equals("L9") || location.equals("L28") ) {
         		return new String[] {"Class1","Class2","Class3","Class4","L11Class","L19","L19_link",
         				             "L19_other","L2Class","L8Class","L8Class_two","L33"};
         	}
