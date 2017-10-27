@@ -48,6 +48,7 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.util.ActionLanguageDescriptionUtil;
+import org.xtuml.bp.core.util.DocumentUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
@@ -141,16 +142,15 @@ public class OalAutoComplete extends CanvasTest {
     }
 
     private int getLineNumber(String element) {
-        if(element.contains("S2")) {
-            return 135;
-        } else if(element.contains("S3")) {
-            return 52;
-        }
-        return 26;
+    	element = getEntryFromString( element, "S" );
+        NonRootModelElement rootElement = (NonRootModelElement) getRootElementForBody(testBody)[0];
+        String action = ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(rootElement);
+        Document doc = new Document(action);
+        return DocumentUtil.positionToLine( action.indexOf("insert test oal " + element), doc );
     }
 
     private String getLocationText() {
-        String element = getEntryFromString(getName(), 1);
+        String element = getEntryFromString(getName(), "L");
         if(element.equals("L2")) {
             return "l2_var.";
         } else if(element.equals("L3")) {
@@ -220,27 +220,42 @@ public class OalAutoComplete extends CanvasTest {
     }
     
     // example name: testS1V1_L1P21AH3
-    private String getEntryFromString(String string, int result) {
+    private String getEntryFromString(String string, String result) {
+        int s_index = string.indexOf("S");
+        int v_index = string.indexOf("V");
+        int _index = string.indexOf("_");
         int l_index = string.indexOf("L");
         int p_index = string.indexOf("P");
         int ah_index = string.indexOf("AH");
+        CharSequence s_sequence = string.subSequence(s_index, v_index);
+        CharSequence v_sequence = string.subSequence(v_index, _index);
         CharSequence l_sequence = string.subSequence(l_index, p_index);
         CharSequence p_sequence = string.subSequence(p_index, ah_index);
         CharSequence ah_sequence = string.subSequence(ah_index, string.length());
-        if ( 0 == result ) {
+        if ( "S".equals( result ) ) {
+            return s_sequence.toString();
+        }
+        else if ( "V".equals( result ) ) {
+            return v_sequence.toString();
+        }
+        else if ( "L".equals( result ) ) {
+            return l_sequence.toString();
+        }
+        else if ( "P".equals( result ) ) {
             return p_sequence.toString();
         }
-        else if ( 1 == result ) {
-            return l_sequence.toString();
-        } else {
+        else if ( "AH".equals( result ) ) {
             return ah_sequence.toString();
+        }
+        else {
+            return null;
         }
     }
 
     private String[] getPossibilities(String element) {
-        String location = getEntryFromString(element, 1);
-        String actionhome = getEntryFromString(element, 2);
-        element = getEntryFromString(element, 0);
+        String location = getEntryFromString(element, "L");
+        String actionhome = getEntryFromString(element, "AH");
+        element = getEntryFromString(element, "P");
         if(element.equals("P1")) {
             return new String[] {"control stop"};
         } else if (element.equals("P2")) {
@@ -458,23 +473,45 @@ public class OalAutoComplete extends CanvasTest {
                 if(index != -1) {
                     length = pkg.getName().length();
                     CharSequence pkgSequence = pkg.getName().subSequence(index, length);            
-                    // For AH6-9 there are multiple bodies in the test package, so more
-                    // filtering is required
-                    if ( pkgSequence.toString().contains("AH6") ) {
-                        ProvidedOperation_c spr_po = ProvidedOperation_c.getOneSPR_POOnR687(ProvidedOperationBody_c.getOneACT_POBOnR698((Body_c)candidate));
-                        return testSequence.equals(pkgSequence) && null != spr_po;
+                    if ( pkgSequence.toString().contains("AH10") ) {
+                        TransitionActionBody_c act_tab = TransitionActionBody_c.getOneACT_TABOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_tab;
+                    }
+                    else if ( pkgSequence.toString().contains("AH1") ) {
+                        StateActionBody_c act_sab = StateActionBody_c.getOneACT_SABOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_sab;
+                    }
+                    else if ( pkgSequence.toString().contains("AH2") ) {
+                        DerivedAttributeBody_c act_dab = DerivedAttributeBody_c.getOneACT_DABOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_dab;
+                    }
+                    else if ( pkgSequence.toString().contains("AH3") ) {
+                        FunctionBody_c act_fnb = FunctionBody_c.getOneACT_FNBOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_fnb;
+                    }
+                    else if ( pkgSequence.toString().contains("AH4") ) {
+                        OperationBody_c act_opb = OperationBody_c.getOneACT_OPBOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_opb;
+                    }
+                    else if ( pkgSequence.toString().contains("AH5") ) {
+                        BridgeBody_c act_brb = BridgeBody_c.getOneACT_BRBOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_brb;
+                    }
+                    else if ( pkgSequence.toString().contains("AH6") ) {
+                        ProvidedOperationBody_c act_pob = ProvidedOperationBody_c.getOneACT_POBOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_pob;
                     }
                     else if ( pkgSequence.toString().contains("AH7") ) {
-                        ProvidedSignal_c spr_ps = ProvidedSignal_c.getOneSPR_PSOnR686(ProvidedSignalBody_c.getOneACT_PSBOnR698((Body_c)candidate));
-                        return testSequence.equals(pkgSequence) && null != spr_ps;
+                        ProvidedSignalBody_c act_psb = ProvidedSignalBody_c.getOneACT_PSBOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_psb;
                     }
                     else if ( pkgSequence.toString().contains("AH8") ) {
-                        RequiredOperation_c spr_ro = RequiredOperation_c.getOneSPR_ROOnR685(RequiredOperationBody_c.getOneACT_ROBOnR698((Body_c)candidate));
-                        return testSequence.equals(pkgSequence) && null != spr_ro;
+                        RequiredOperationBody_c act_rob = RequiredOperationBody_c.getOneACT_ROBOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_rob;
                     }
                     else if ( pkgSequence.toString().contains("AH9") ) {
-                        RequiredSignal_c spr_rs = RequiredSignal_c.getOneSPR_RSOnR684(RequiredSignalBody_c.getOneACT_RSBOnR698((Body_c)candidate));
-                        return testSequence.equals(pkgSequence) && null != spr_rs;
+                        RequiredSignalBody_c act_rsb = RequiredSignalBody_c.getOneACT_RSBOnR698((Body_c)candidate);
+                        return testSequence.equals(pkgSequence) && null != act_rsb;
                     }
                     else return testSequence.equals(pkgSequence);
                 }
