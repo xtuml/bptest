@@ -214,7 +214,9 @@ public class OalAutoComplete extends CanvasTest {
         } else if(element.equals("L32")) {
             return "create event instance l32_var of L11Class1 to";
         } else if(element.equals("L33")) {
-            return "L33::";
+            return "invocation_return = L33::";
+        } else if(element.equals("L34")) {
+            return "ne_var = not_empty ";
         }
         return " ";
     }
@@ -341,9 +343,9 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P36")) {
             return new String[] {"'formalizer'"};
         } else if (element.equals("P37")) {
-            return new String[0]; // creator is only added for creation events
+            return new String[0]; // creator is only added for creation events. untested
         } else if (element.equals("P38")) {
-            return new String[0]; // 'class' is only added for class based state machine events
+            return new String[0]; // 'class' is only added for class based state machine events. untested
         } else if (element.equals("P39")) {
             return new String[] {"l11_inst_event"};
         } else if (element.equals("P40")) {
@@ -378,13 +380,11 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P54")) {
             return new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
         } else if (element.equals("P55")) {
-            return new String[0]; // Untested for now;
-        } else if (element.equals("P56")) {
-            return new String[0]; // Untested for now;
+            return new String[] {"const1", "const2"};
         } else if (element.equals("P57")) {
-            return new String[0]; // Untested for now;
+            return new String[] {"enum1", "enum2"};
         } else if (element.equals("P58")) {
-            return new String[0]; // Untested for now;
+            return new String[] {"L33::", "EDT2::"};
         } else if (element.equals("P59")) {
             return new String[] {"bridge( parameter: )"};
         } else if (element.equals("P60")) {
