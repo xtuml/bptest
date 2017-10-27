@@ -257,142 +257,149 @@ public class OalAutoComplete extends CanvasTest {
     private String[] getPossibilities(String element) {
         String location = getEntryFromString(element, "L");
         String actionhome = getEntryFromString(element, "AH");
+        String visibility = getEntryFromString(element, "V");
         element = getEntryFromString(element, "P");
+        String[] possibilities = new String[0];
         if(element.equals("P1")) {
-            return new String[] {"control stop"};
+            possibilities = new String[] {"control stop"};
         } else if (element.equals("P2")) {
-            return new String[] {"create event instance"};
+            possibilities = new String[] {"create event instance"};
         } else if (element.equals("P3")) {
-            return new String[] {"create object instance"};
+            possibilities = new String[] {"create object instance"};
         } else if (element.equals("P4")) {
-            return new String[] {"delete object instance"};
+            possibilities = new String[] {"delete object instance"};
         } else if (element.equals("P5")) {
-            return new String[] {"for each"};
+            possibilities = new String[] {"for each"};
         } else if (element.equals("P6")) {
-            return new String[] {"generate"};
+            possibilities = new String[] {"generate"};
         } else if (element.equals("P7")) {
-            return new String[] {"if"};
+            possibilities = new String[] {"if"};
         } else if (element.equals("P8")) {
-            return new String[] {"param"};
+            possibilities = new String[] {"param"};
         } else if (element.equals("P9")) {
-            return new String[] {"relate"};
+            possibilities = new String[] {"relate"};
         } else if (element.equals("P10")) {
-            return new String[] {"return"};
+            possibilities = new String[] {"return"};
         } else if (element.equals("P11")) {
-            return new String[] {"select any"};
+            possibilities = new String[] {"select any"};
         } else if (element.equals("P12")) {
-            return new String[] {"select many"};
+            possibilities = new String[] {"select many"};
         } else if (element.equals("P13")) {
-            return new String[] {"select one"};
+            possibilities = new String[] {"select one"};
         } else if (element.equals("P14")) {
-            return new String[] {"send"};
+            possibilities = new String[] {"send"};
         } else if (element.equals("P15")) {
-            return new String[] {"unrelate"};
+            possibilities = new String[] {"unrelate"};
         } else if (element.equals("P16")) {
-            return new String[] {"while"};
+            possibilities = new String[] {"while"};
         } else if (element.equals("P17")) {
-            return new String[] {"break"};
+            possibilities = new String[] {"break"};
         } else if (element.equals("P18")) {
-            return new String[] {"continue"};
+            possibilities = new String[] {"continue"};
         } else if (element.equals("P19")) {
-            return new String[] {"end while"};
+            possibilities = new String[] {"end while"};
         } else if (element.equals("P20")) {
-            return new String[] {"end for"};
+            possibilities = new String[] {"end for"};
         } else if (element.equals("P21")) {
-            return new String[] {"elif"};
+            possibilities = new String[] {"elif"};
         } else if (element.equals("P22")) {
-            return new String[] {"else"};
+            possibilities = new String[] {"else"};
         } else if (element.equals("P23")) {
-            return new String[] {"end if"};
+            possibilities = new String[] {"end if"};
         } else if (element.equals("P24")) {
-            return new String[] {"self"};
+            possibilities = new String[] {"self"};
         }  else if (element.equals("P25")) {
-            return new String[] { "x" };
+            possibilities = new String[] { "x" };
         } else if (element.equals("P26")) {
-            return new String[] {"L33::"};
+            possibilities = new String[] {"L33::"};
         } else if (element.equals("P27")) {
         	if ( location.equals("L9") || location.equals("L28") ) {
-        		return new String[] {"Class1","Class2","Class3","Class4","L11Class","L19","L19_link",
+        		possibilities = new String[] {"Class1","Class2","Class3","Class4","L11Class","L19","L19_link",
         				             "L19_other","L2Class","L8Class","L8Class_two","L33"};
         	}
         	else {
-                return new String[] {"L33::"};
+                possibilities = new String[] {"L33::"};
         	}
         } else if (element.equals("P28")) {
-            return new String[] {"Port1::", "L33::"};
+            possibilities = new String[] {"Port1::", "L33::"};
         } else if (element.equals("P29")) {
-            return new String[] {"attribute"};
+            possibilities = new String[] {"attribute"};
         } else if (element.equals("P30")) {
-            return new String[] {"operation( parameter: )"};
+            possibilities = new String[] {"operation( parameter: )"};
         } else if (element.equals("P31")) {
-            return new String[] {"cb_operation( parameter: )"};
+            possibilities = new String[] {"cb_operation( parameter: )"};
         } else if (element.equals("P33")) {
-            return new String[] {"function( parameter: )", "FunctionOne()", "FunctionOne-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )"};
+            possibilities = new String[] {"function( parameter: )", "FunctionOne()", "FunctionOne-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )"};
         } else if (element.equals("P34")) {
         	if ( actionhome.equals("AH6") || actionhome.equals("AH8") ) {
-                return new String[] {"op_parameter"};
+                possibilities = new String[] {"op_parameter"};
         	}
         	else if ( actionhome.equals("AH7") || actionhome.equals("AH9") ) {
-                return new String[] {"sig_parameter"};
+                possibilities = new String[] {"sig_parameter"};
         	}
         	else {
-                return new String[] {"parameter"};
+                possibilities = new String[] {"parameter"};
         	}
         } else if (element.equals("P35")) {
-            return new String[] {"R1.'formalizer'"};
+            possibilities = new String[] {"R1.'formalizer'"};
         } else if (element.equals("P36")) {
-            return new String[] {"'formalizer'"};
+            possibilities = new String[] {"'formalizer'"};
         } else if (element.equals("P37")) {
-            return new String[0]; // creator is only added for creation events. untested
+            possibilities = new String[0]; // creator is only added for creation events. untested
         } else if (element.equals("P38")) {
-            return new String[0]; // 'class' is only added for class based state machine events. untested
+            possibilities = new String[0]; // 'class' is only added for class based state machine events. untested
         } else if (element.equals("P39")) {
-            return new String[] {"l11_inst_event"};
+            possibilities = new String[] {"l11_inst_event"};
         } else if (element.equals("P40")) {
-            return new String[] {"where"};
+            possibilities = new String[] {"where"};
         } else if (element.equals("P41")) {
-            return new String[] {"cardinality"};
+            possibilities = new String[] {"cardinality"};
         } else if (element.equals("P42")) {
-            return new String[] {"empty"};
+            possibilities = new String[] {"empty"};
         } else if (element.equals("P43")) {
-            return new String[] {"not"};
+            possibilities = new String[] {"not"};
         } else if (element.equals("P44")) {
-            return new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var",
+            possibilities = new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var",
                     "l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
                     "l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
                     "l23_other", "l23_link" };
         } else if (element.equals("P45")) {
-            return new String[] {"l13_vars"};
+            possibilities = new String[] {"l13_vars"};
         } else if (element.equals("P46")) {
-            return new String[] {"not"};
+            possibilities = new String[] {"not"};
         } else if (element.equals("P47")) {
-            return new String[] {"true"};
+            possibilities = new String[] {"true"};
         } else if (element.equals("P48")) {
-            return new String[] {"false"};
+            possibilities = new String[] {"false"};
         } else if (element.equals("P49")) {
-            return new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
+            possibilities = new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
         } else if (element.equals("P50")) {
-            return new String[0]; // Untested
+            possibilities = new String[0]; // Untested
         } else if (element.equals("P51")) {
-            return new String[] {"related by"};
+            possibilities = new String[] {"related by"};
         } else if (element.equals("P52")) {
-            return new String[] {"from instances of"};
+            possibilities = new String[] {"from instances of"};
         } else if (element.equals("P54")) {
-            return new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
+            possibilities = new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
         } else if (element.equals("P55")) {
-            return new String[] {"const1", "const2"};
+            possibilities = new String[] {"const1", "const2"};
         } else if (element.equals("P57")) {
-            return new String[] {"enum1", "enum2"};
+            possibilities = new String[] {"enum1", "enum2"};
         } else if (element.equals("P58")) {
-            return new String[] {"L33::", "EDT2::"};
+            possibilities = new String[] {"L33::", "EDT2::"};
         } else if (element.equals("P59")) {
-            return new String[] {"bridge( parameter: )"};
+            possibilities = new String[] {"bridge( parameter: )"};
         } else if (element.equals("P60")) {
-            return new String[] {"->L8Class[R1.'simple']"};
+            possibilities = new String[] {"->L8Class[R1.'simple']"};
         } else if (element.equals("P61")) {
-            return new String[] {"not_empty"};
+            possibilities = new String[] {"not_empty"};
         }
-        return new String[0];
+        if ( visibility.equals("V2") ) {
+        	for ( int i = 0; i < possibilities.length; i++ ) {
+        		possibilities[i] = "invisible_" + possibilities[i]; // prepend with 'invisible_'
+        	}
+        }
+        return possibilities;
     }
 
     private String[] populateAutoComplete(String element) throws BadLocationException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
