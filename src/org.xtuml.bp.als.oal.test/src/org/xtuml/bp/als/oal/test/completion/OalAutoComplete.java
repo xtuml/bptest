@@ -389,6 +389,8 @@ public class OalAutoComplete extends CanvasTest {
             return new String[] {"bridge( parameter: )"};
         } else if (element.equals("P60")) {
             return new String[] {"->L8Class[R1.'simple']"};
+        } else if (element.equals("P61")) {
+            return new String[] {"not_empty"};
         }
         return new String[0];
     }
