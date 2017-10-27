@@ -150,7 +150,7 @@ public class OalAutoComplete extends CanvasTest {
     }
 
     private String getLocationText() {
-        String element = getEntryFromString(getName(), false);
+        String element = getEntryFromString(getName(), 1);
         if(element.equals("L2")) {
             return "l2_var.";
         } else if(element.equals("L3")) {
@@ -220,22 +220,27 @@ public class OalAutoComplete extends CanvasTest {
     }
     
     // example name: testS1V1_L1P21AH3
-    private String getEntryFromString(String string, boolean p_result) {
+    private String getEntryFromString(String string, int result) {
         int l_index = string.indexOf("L");
         int p_index = string.indexOf("P");
         int ah_index = string.indexOf("AH");
         CharSequence l_sequence = string.subSequence(l_index, p_index);
         CharSequence p_sequence = string.subSequence(p_index, ah_index);
-        if(p_result) {
+        CharSequence ah_sequence = string.subSequence(ah_index, string.length());
+        if ( 0 == result ) {
             return p_sequence.toString();
-        } else {
+        }
+        else if ( 1 == result ) {
             return l_sequence.toString();
+        } else {
+            return ah_sequence.toString();
         }
     }
 
     private String[] getPossibilities(String element) {
-        String location = getEntryFromString(getName(), false);
-        element = getEntryFromString(element, true);
+        String location = getEntryFromString(element, 1);
+        String actionhome = getEntryFromString(element, 2);
+        element = getEntryFromString(element, 0);
         if(element.equals("P1")) {
             return new String[] {"control stop"};
         } else if (element.equals("P2")) {
@@ -304,12 +309,18 @@ public class OalAutoComplete extends CanvasTest {
             return new String[] {"operation( parameter: )"};
         } else if (element.equals("P31")) {
             return new String[] {"cb_operation( parameter: )"};
-        } else if (element.equals("P32")) {
-            return new String[0]; // not tested yet
         } else if (element.equals("P33")) {
             return new String[] {"function( parameter: )", "FunctionOne()", "FunctionOne-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )"};
         } else if (element.equals("P34")) {
-            return new String[0]; // not tested yet
+        	if ( actionhome.equals("AH6") || actionhome.equals("AH8") ) {
+                return new String[] {"op_parameter"};
+        	}
+        	else if ( actionhome.equals("AH7") || actionhome.equals("AH9") ) {
+                return new String[] {"sig_parameter"};
+        	}
+        	else {
+                return new String[] {"parameter"};
+        	}
         } else if (element.equals("P35")) {
             return new String[] {"R1.'formalizer'"};
         } else if (element.equals("P36")) {
@@ -344,7 +355,7 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P49")) {
             return new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
         } else if (element.equals("P50")) {
-            return new String[0]; // not tested yet
+            return new String[0]; // Untested
         } else if (element.equals("P51")) {
             return new String[] {"related by"};
         } else if (element.equals("P52")) {
