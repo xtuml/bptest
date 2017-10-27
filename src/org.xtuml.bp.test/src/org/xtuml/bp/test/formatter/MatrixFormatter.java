@@ -100,12 +100,10 @@ public class MatrixFormatter {
 
     private List<String[]> matrix;
     private int numColumns;
-    private int columnWidth;
 
     public Matrix( int numColumns ) {
       matrix = new ArrayList<String[]>();
       this.numColumns = numColumns;
-      this.columnWidth = -1;
     }
 
     public void addHeader( String row, int lineNum ) {
@@ -134,22 +132,24 @@ public class MatrixFormatter {
     }
 
     public void print( PrintStream out ) {
-      if ( -1 == columnWidth ) columnWidth = calculateColumnWidth();
+      int[] columnWidths = new int[ numColumns + 1 ];
+      for ( int i = 0; i < numColumns + 1; i++ ) columnWidths[i] = -1;
       for ( String[] row : matrix ) {
-        for ( String item : row ) {
-          out.print( item );
-          int remainingSpaces = columnWidth - item.length();
+        for ( int j = 0; j < row.length; j++ ) {
+          out.print( row[j] );
+          if ( -1 == columnWidths[j] ) columnWidths[j] = calculateColumnWidth( j );
+          int remainingSpaces = columnWidths[j] - row[j].length();
           for ( int i = 0; i < remainingSpaces; i++ ) out.print( " " );
         }
         out.print( "\n" );
       }
     }
 
-    private int calculateColumnWidth() {
+    private int calculateColumnWidth( int columnNumber ) {
       int currentColumnWidth = -1;
       for ( String[] row : matrix ) {
-        for ( String item : row ) {
-          if ( item.length() > currentColumnWidth ) currentColumnWidth = item.length();
+        for ( int j = 0; j < row.length; j++ ) {
+          if ( j == columnNumber && row[j].length() > currentColumnWidth ) currentColumnWidth = row[j].length();
         }
       }
       return currentColumnWidth + 2; // column width is 2 spaces bigger than the longest item for padding
