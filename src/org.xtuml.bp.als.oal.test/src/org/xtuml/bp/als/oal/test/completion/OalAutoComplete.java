@@ -399,11 +399,10 @@ public class OalAutoComplete extends CanvasTest {
         String locationText = getLocationText();
         String action = ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(rootElement);
         Document doc = new Document(action);
-        IRegion region = doc.getLineInformation(lineNumber);
+        IRegion region = doc.getLineInformation(lineNumber-1);
         doc.replace(region.getOffset(), region.getLength(), locationText);
         String documentContents = doc.get();
-        ParseRunnable parseRunner = new ParseRunnable(rootElement, documentContents,
-                lineNumber + 1, locationText.length() + 1);
+        ParseRunnable parseRunner = new ParseRunnable(rootElement, documentContents, lineNumber + 1, locationText.length() + 1);
         parseRunner.run();
         Class<?> proposalClass = Class.forName("org.xtuml.bp.core.Proposal_c");
         Class<?> proposalListClass = Class.forName("org.xtuml.bp.core.ProposalList_c");
