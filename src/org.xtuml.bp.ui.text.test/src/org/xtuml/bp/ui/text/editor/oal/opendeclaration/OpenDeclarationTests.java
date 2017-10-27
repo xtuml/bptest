@@ -298,6 +298,50 @@ public class OpenDeclarationTests extends CanvasTest {
             //TODO: Implement
         } else if (element.equalsIgnoreCase("T10L11")) {
             //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L11")) {
+            //TODO: Implement
         } 
         assertTrue("An instance with degree of freedom type \"TL\" was not found.  Instance Name: " + element + ".", nrme!=null);
         return nrme;
@@ -471,26 +515,10 @@ public class OpenDeclarationTests extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_elementShownInMEandCanvas(NonRootModelElement source, NonRootModelElement destination) {
-        boolean elementShownInMEandCanvas = false;
+    boolean checkResult_transientDeclarationShown(NonRootModelElement source, NonRootModelElement destination) {
+        boolean transientDeclarationShown = false;
         //TODO: Implement
-        return elementShownInMEandCanvas;
-    }
-
-
-    /**
-    * This function verifies an expected result.
-    *
-    * @param source A model element instance aquired through a action taken
-    *               on a column of the matrix.
-    * @param destination A model element instance aquired through a action taken
-    *                    taken on a row of the matrix.
-    * @return true if the test succeeds, false if it fails
-    */
-    boolean checkResult_invalidSelection(NonRootModelElement source, NonRootModelElement destination) {
-        boolean invalidSelection = false;
-        //TODO: Implement
-        return invalidSelection;
+        return transientDeclarationShown;
     }
 
 
@@ -519,10 +547,26 @@ public class OpenDeclarationTests extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_transientDeclarationShown(NonRootModelElement source, NonRootModelElement destination) {
-        boolean transientDeclarationShown = false;
+    boolean checkResult_invalidSelection(NonRootModelElement source, NonRootModelElement destination) {
+        boolean invalidSelection = false;
         //TODO: Implement
-        return transientDeclarationShown;
+        return invalidSelection;
+    }
+
+
+    /**
+    * This function verifies an expected result.
+    *
+    * @param source A model element instance aquired through a action taken
+    *               on a column of the matrix.
+    * @param destination A model element instance aquired through a action taken
+    *                    taken on a row of the matrix.
+    * @return true if the test succeeds, false if it fails
+    */
+    boolean checkResult_elementShownInMEandCanvas(NonRootModelElement source, NonRootModelElement destination) {
+        boolean elementShownInMEandCanvas = false;
+        //TODO: Implement
+        return elementShownInMEandCanvas;
     }
 
 
