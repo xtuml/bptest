@@ -232,6 +232,10 @@ public class OalAutoComplete extends CanvasTest {
             return "invocation_return = L33::";
         } else if(element.equals("L34")) {
             return "ne_var = not_empty ";
+        } else if(element.equals("L35")) {
+            return "generate L11Class2:event2 to";
+        } else if(element.equals("L36")) {
+            return "generate L11Class_A1:event to";
         }
         return " ";
     }
@@ -360,9 +364,9 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P36")) {
             possibilities = new String[] {"'formalizer'"};
         } else if (element.equals("P37")) {
-            possibilities = new String[0]; // creator is only added for creation events. untested
+            possibilities = new String[] {"L11Class creator"};
         } else if (element.equals("P38")) {
-            possibilities = new String[0]; // 'class' is only added for class based state machine events. untested
+            possibilities = new String[] {"L11Class class"};
         } else if (element.equals("P39")) {
             possibilities = new String[] {"l11_inst_event"};
         } else if (element.equals("P40")) {
