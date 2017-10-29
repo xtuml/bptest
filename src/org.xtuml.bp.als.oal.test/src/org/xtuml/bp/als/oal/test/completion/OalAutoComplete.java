@@ -15,12 +15,12 @@ import java.lang.reflect.Method;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.BadPositionCategoryException;
 import org.eclipse.jface.text.Document;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.ui.IEditorPart;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.xtuml.bp.als.oal.ParseRunnable;
 import org.xtuml.bp.core.Action_c;
 import org.xtuml.bp.core.Body_c;
 import org.xtuml.bp.core.BridgeBody_c;
@@ -85,6 +85,12 @@ public class OalAutoComplete extends CanvasTest {
         super.setUp();
         Ooaofooa.disableChangeNotification();
     }
+
+    private static Method setUpMethod;
+    private static Method computeMethod;
+    private static Method cleanUpMethod;
+    private static Method getReplacementTextMethod;
+    private static Object processor;
     
     @Override
     protected void initialSetup() throws Exception {
@@ -109,6 +115,15 @@ public class OalAutoComplete extends CanvasTest {
         } catch (ClassNotFoundException e) {
             implementationExists = false;
         }
+
+        // set up reflection API for computing proposals
+        Class<?> processorClass = Class.forName( "org.xtuml.bp.ui.text.contentassist.OALCompletionProcessor" );
+        Class<?> proposalClass = Class.forName( "org.xtuml.bp.ui.text.contentassist.OALCompletionProposal" );
+        setUpMethod = processorClass.getMethod( "setUp" );
+        computeMethod = processorClass.getMethod( "computeCompletionProposals", IDocument.class, NonRootModelElement.class, int.class );
+        cleanUpMethod = processorClass.getMethod( "cleanUp", NonRootModelElement.class );
+        getReplacementTextMethod = proposalClass.getMethod( "getReplacementString" );
+        processor = processorClass.newInstance();
     };
 
     @After
@@ -402,7 +417,7 @@ public class OalAutoComplete extends CanvasTest {
         return possibilities;
     }
 
-    private String[] populateAutoComplete(String element) throws BadLocationException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    private String[] populateAutoComplete(String element) throws BadLocationException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         NonRootModelElement rootElement = (NonRootModelElement) getRootElementForBody(testBody)[0];
         int lineNumber = getLineNumber(element);
         String locationText = getLocationText();
@@ -410,20 +425,13 @@ public class OalAutoComplete extends CanvasTest {
         Document doc = new Document(action);
         IRegion region = doc.getLineInformation(lineNumber-1);
         doc.replace(region.getOffset(), region.getLength(), locationText);
-        String documentContents = doc.get();
-        ParseRunnable parseRunner = new ParseRunnable(rootElement, documentContents, lineNumber, locationText.length() + 1);
-        parseRunner.run();
-        Class<?> proposalClass = Class.forName("org.xtuml.bp.core.Proposal_c");
-        Class<?> proposalListClass = Class.forName("org.xtuml.bp.core.ProposalList_c");
-        Method proposalMethod = proposalClass.getMethod("getManyP_PsOnR1601", new Class[] {proposalListClass}); 
-        Method getReplacementTextMethod = proposalClass.getMethod("getReplacement_text", new Class[0]);
-        Method proposalListsMethod = proposalListClass.getMethod("getOneP_PLOnR1603", new Class[] {Body_c.class});
-        Object proposalList = proposalListsMethod.invoke(null, new Object[] {testBody});
-        Object[] proposals = (Object[]) proposalMethod.invoke(null, new Object[] {proposalList});
+        setUpMethod.invoke( processor );
+        Object[] proposals = (Object[]) computeMethod.invoke( processor, doc, rootElement, DocumentUtil.lineAndColumnToPosition( lineNumber, locationText.length() + 1, doc ) );
         String[] results = new String[proposals.length];
         for(int i = 0; i < results.length; i++) {
-            results[i] = (String) getReplacementTextMethod.invoke(proposals[i]);
+            results[i] = ((String)getReplacementTextMethod.invoke( proposals[i] )).trim();
         }
+        cleanUpMethod.invoke( processor, rootElement );
         return results;
     }
 
@@ -585,7 +593,7 @@ public class OalAutoComplete extends CanvasTest {
      * @throws NoSuchMethodException 
      * @throws ClassNotFoundException 
      */
-    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) throws BadLocationException, BadPositionCategoryException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
+    void SV_LPAH_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) throws BadLocationException, BadPositionCategoryException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, InstantiationException {
         actualProposals = populateAutoComplete(getName());
     }
 
