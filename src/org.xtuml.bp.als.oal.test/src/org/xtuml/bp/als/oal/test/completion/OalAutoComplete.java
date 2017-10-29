@@ -175,7 +175,7 @@ public class OalAutoComplete extends CanvasTest {
         } else if(element.equals("L5")) {
             return "send L33::";
         } else if(element.equals("L6")) {
-            return "send L33::operation(parameter: 1) to";
+            return "send L33::signal( sig_parameter:1 ) to";
         } else if(element.equals("L7")) {
             return "select one l7_var_one";
         } else if(element.equals("L8")) {
@@ -330,7 +330,7 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P27")) {
         	if ( location.equals("L9") || location.equals("L28") ) {
         		possibilities = new String[] {"Class1","Class2","Class3","Class4","L11Class","L19","L19_link",
-        				             "L19_other","L2Class","L8Class","L8Class_two","L33"};
+        				             "L19_other","L2Class","L8Class","L8Class_two","L33","L6Class"};
         	}
         	else {
                 possibilities = new String[] {"L33::"};
@@ -377,7 +377,7 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var",
                     "l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
                     "l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
-                    "l23_other", "l23_link" };
+                    "l23_other", "l23_link", "l6class" };
         } else if (element.equals("P45")) {
             possibilities = new String[] {"l13_vars"};
         } else if (element.equals("P46")) {
@@ -389,7 +389,12 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P49")) {
             possibilities = new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
         } else if (element.equals("P50")) {
-            possibilities = new String[0]; // Untested
+            if ( location.equals( "L6" ) && ( actionhome.equals( "AH6" ) || actionhome.equals( "AH7" ) || actionhome.equals( "AH8" ) || actionhome.equals( "AH9" ) ) ) {
+            	possibilities = new String[] {"comp_ref_var", "sender"};
+            }
+            else {
+            	possibilities = new String[] {"comp_ref_var"};
+            }
         } else if (element.equals("P51")) {
             possibilities = new String[] {"related by"};
         } else if (element.equals("P52")) {
