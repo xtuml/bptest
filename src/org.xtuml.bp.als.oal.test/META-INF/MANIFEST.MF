@@ -25,8 +25,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.xtuml.bp.test,
  org.xtuml.bp.ui.graphics,
  org.eclipse.gef,
- org.xtuml.bp.ui.text;bundle-version="6.6.1"
+ org.xtuml.bp.ui.text
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.xtuml.bp.als.oal.test
-Import-Package: org.xtuml.bp.ui.text.activity
