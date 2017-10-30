@@ -166,21 +166,21 @@ public class OalAutoComplete extends CanvasTest {
 
     private String getLocationText() {
         String element = getEntryFromString(getName(), "L");
-        if(element.equals("L2")) {
+        if(element.equals("L02")) {
             return "l2_var.";
-        } else if(element.equals("L3")) {
+        } else if(element.equals("L03")) {
             return "::";
-        } else if(element.equals("L4")) {
+        } else if(element.equals("L04")) {
             return "send";
-        } else if(element.equals("L5")) {
+        } else if(element.equals("L05")) {
             return "send L33::";
-        } else if(element.equals("L6")) {
+        } else if(element.equals("L06")) {
             return "send L33::signal( sig_parameter:1 ) to";
-        } else if(element.equals("L7")) {
+        } else if(element.equals("L07")) {
             return "select one l7_var_one";
-        } else if(element.equals("L8")) {
+        } else if(element.equals("L08")) {
             return "select one l8_var_one related by l8_var_two->";
-        } else if(element.equals("L9")) {
+        } else if(element.equals("L09")) {
             return "select one l9_var from instances of ";
         } else if(element.equals("L10")) {
             return "generate";
@@ -279,23 +279,23 @@ public class OalAutoComplete extends CanvasTest {
         String visibility = getEntryFromString(element, "V");
         element = getEntryFromString(element, "P");
         String[] possibilities = new String[0];
-        if(element.equals("P1")) {
+        if(element.equals("P01")) {
             possibilities = new String[] {"control stop"};
-        } else if (element.equals("P2")) {
+        } else if (element.equals("P02")) {
             possibilities = new String[] {"create event instance"};
-        } else if (element.equals("P3")) {
+        } else if (element.equals("P03")) {
             possibilities = new String[] {"create object instance"};
-        } else if (element.equals("P4")) {
+        } else if (element.equals("P04")) {
             possibilities = new String[] {"delete object instance"};
-        } else if (element.equals("P5")) {
+        } else if (element.equals("P05")) {
             possibilities = new String[] {"for each"};
-        } else if (element.equals("P6")) {
+        } else if (element.equals("P06")) {
             possibilities = new String[] {"generate"};
-        } else if (element.equals("P7")) {
+        } else if (element.equals("P07")) {
             possibilities = new String[] {"if"};
-        } else if (element.equals("P8")) {
+        } else if (element.equals("P08")) {
             possibilities = new String[] {"param"};
-        } else if (element.equals("P9")) {
+        } else if (element.equals("P09")) {
             possibilities = new String[] {"relate"};
         } else if (element.equals("P10")) {
             possibilities = new String[] {"return"};
@@ -332,7 +332,7 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P26")) {
             possibilities = new String[] {"L33::"};
         } else if (element.equals("P27")) {
-        	if ( location.equals("L9") || location.equals("L28") ) {
+        	if ( location.equals("L09") || location.equals("L28") ) {
         		possibilities = new String[] {"Class1","Class2","Class3","Class4","L11Class","L19","L19_link",
         				             "L19_other","L2Class","L8Class","L8Class_two","L33","L6Class"};
         	}
@@ -347,75 +347,75 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] {"operation( parameter: )"};
         } else if (element.equals("P31")) {
             possibilities = new String[] {"cb_operation( parameter: )"};
-        } else if (element.equals("P33")) {
+        } else if (element.equals("P32")) {
             possibilities = new String[] {"function( parameter: )", "FunctionOne()", "FunctionOne-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )"};
-        } else if (element.equals("P34")) {
-        	if ( actionhome.equals("AH6") || actionhome.equals("AH8") ) {
+        } else if (element.equals("P33")) {
+        	if ( actionhome.equals("AH06") || actionhome.equals("AH08") ) {
                 possibilities = new String[] {"op_parameter"};
         	}
-        	else if ( actionhome.equals("AH7") || actionhome.equals("AH9") ) {
+        	else if ( actionhome.equals("AH07") || actionhome.equals("AH09") ) {
                 possibilities = new String[] {"sig_parameter"};
         	}
         	else {
                 possibilities = new String[] {"parameter"};
         	}
-        } else if (element.equals("P35")) {
+        } else if (element.equals("P34")) {
             possibilities = new String[] {"R1.'formalizer'"};
-        } else if (element.equals("P36")) {
+        } else if (element.equals("P35")) {
             possibilities = new String[] {"'formalizer'"};
-        } else if (element.equals("P37")) {
+        } else if (element.equals("P36")) {
             possibilities = new String[] {"L11Class creator"};
-        } else if (element.equals("P38")) {
+        } else if (element.equals("P37")) {
             possibilities = new String[] {"L11Class class"};
-        } else if (element.equals("P39")) {
+        } else if (element.equals("P38")) {
             possibilities = new String[] {"l11_inst_event"};
-        } else if (element.equals("P40")) {
+        } else if (element.equals("P39")) {
             possibilities = new String[] {"where"};
-        } else if (element.equals("P41")) {
+        } else if (element.equals("P40")) {
             possibilities = new String[] {"cardinality"};
-        } else if (element.equals("P42")) {
+        } else if (element.equals("P41")) {
             possibilities = new String[] {"empty"};
-        } else if (element.equals("P43")) {
+        } else if (element.equals("P42")) {
             possibilities = new String[] {"not"};
-        } else if (element.equals("P44")) {
+        } else if (element.equals("P43")) {
             possibilities = new String[] { "l2_var", "l8_var_one", "l8_var_two", "l11_var",
                     "l16_var", "l16_var_2", "l17_var", "l17_var_2", "l18_var", "l18_var_2", "l19_var", "l19_var_other",
                     "l19_var_link", "l20_var", "l20_var_2", "l21_var", "l21_var_2", "l22_var", "l22_var_2", "l23_var",
                     "l23_other", "l23_link", "l6class" };
-        } else if (element.equals("P45")) {
+        } else if (element.equals("P44")) {
             possibilities = new String[] {"l13_vars"};
-        } else if (element.equals("P46")) {
+        } else if (element.equals("P45")) {
             possibilities = new String[] {"not"};
-        } else if (element.equals("P47")) {
+        } else if (element.equals("P46")) {
             possibilities = new String[] {"true"};
-        } else if (element.equals("P48")) {
+        } else if (element.equals("P47")) {
             possibilities = new String[] {"false"};
-        } else if (element.equals("P49")) {
+        } else if (element.equals("P48")) {
             possibilities = new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
-        } else if (element.equals("P50")) {
-            if ( location.equals( "L6" ) && ( actionhome.equals( "AH6" ) || actionhome.equals( "AH7" ) || actionhome.equals( "AH8" ) || actionhome.equals( "AH9" ) ) ) {
+        } else if (element.equals("P49")) {
+            if ( location.equals( "L06" ) && ( actionhome.equals( "AH06" ) || actionhome.equals( "AH07" ) || actionhome.equals( "AH08" ) || actionhome.equals( "AH09" ) ) ) {
             	possibilities = new String[] {"comp_ref_var", "sender"};
             }
             else {
             	possibilities = new String[] {"comp_ref_var"};
             }
-        } else if (element.equals("P51")) {
+        } else if (element.equals("P50")) {
             possibilities = new String[] {"related by"};
-        } else if (element.equals("P52")) {
+        } else if (element.equals("P51")) {
             possibilities = new String[] {"from instances of"};
-        } else if (element.equals("P54")) {
+        } else if (element.equals("P52")) {
             possibilities = new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
-        } else if (element.equals("P55")) {
+        } else if (element.equals("P53")) {
             possibilities = new String[] {"const1", "const2"};
-        } else if (element.equals("P57")) {
+        } else if (element.equals("P54")) {
             possibilities = new String[] {"enum1", "enum2"};
-        } else if (element.equals("P58")) {
+        } else if (element.equals("P55")) {
             possibilities = new String[] {"L33::", "EDT2::"};
-        } else if (element.equals("P59")) {
+        } else if (element.equals("P56")) {
             possibilities = new String[] {"bridge( parameter: )"};
-        } else if (element.equals("P60")) {
+        } else if (element.equals("P57")) {
             possibilities = new String[] {"->L8Class[R1.'simple']"};
-        } else if (element.equals("P61")) {
+        } else if (element.equals("P58")) {
             possibilities = new String[] {"not_empty"};
         }
         if ( visibility.equals("V2") ) {
@@ -502,39 +502,39 @@ public class OalAutoComplete extends CanvasTest {
                         TransitionActionBody_c act_tab = TransitionActionBody_c.getOneACT_TABOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_tab;
                     }
-                    else if ( pkgSequence.toString().contains("AH1") ) {
+                    else if ( pkgSequence.toString().contains("AH01") ) {
                         StateActionBody_c act_sab = StateActionBody_c.getOneACT_SABOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_sab;
                     }
-                    else if ( pkgSequence.toString().contains("AH2") ) {
+                    else if ( pkgSequence.toString().contains("AH02") ) {
                         DerivedAttributeBody_c act_dab = DerivedAttributeBody_c.getOneACT_DABOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_dab;
                     }
-                    else if ( pkgSequence.toString().contains("AH3") ) {
+                    else if ( pkgSequence.toString().contains("AH03") ) {
                         FunctionBody_c act_fnb = FunctionBody_c.getOneACT_FNBOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_fnb;
                     }
-                    else if ( pkgSequence.toString().contains("AH4") ) {
+                    else if ( pkgSequence.toString().contains("AH04") ) {
                         OperationBody_c act_opb = OperationBody_c.getOneACT_OPBOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_opb;
                     }
-                    else if ( pkgSequence.toString().contains("AH5") ) {
+                    else if ( pkgSequence.toString().contains("AH05") ) {
                         BridgeBody_c act_brb = BridgeBody_c.getOneACT_BRBOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_brb;
                     }
-                    else if ( pkgSequence.toString().contains("AH6") ) {
+                    else if ( pkgSequence.toString().contains("AH06") ) {
                         ProvidedOperationBody_c act_pob = ProvidedOperationBody_c.getOneACT_POBOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_pob;
                     }
-                    else if ( pkgSequence.toString().contains("AH7") ) {
+                    else if ( pkgSequence.toString().contains("AH07") ) {
                         ProvidedSignalBody_c act_psb = ProvidedSignalBody_c.getOneACT_PSBOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_psb;
                     }
-                    else if ( pkgSequence.toString().contains("AH8") ) {
+                    else if ( pkgSequence.toString().contains("AH08") ) {
                         RequiredOperationBody_c act_rob = RequiredOperationBody_c.getOneACT_ROBOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_rob;
                     }
-                    else if ( pkgSequence.toString().contains("AH9") ) {
+                    else if ( pkgSequence.toString().contains("AH09") ) {
                         RequiredSignalBody_c act_rsb = RequiredSignalBody_c.getOneACT_RSBOnR698((Body_c)candidate);
                         return testSequence.equals(pkgSequence) && null != act_rsb;
                     }
