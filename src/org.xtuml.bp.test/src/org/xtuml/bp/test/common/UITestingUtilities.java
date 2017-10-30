@@ -59,35 +59,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.PropertySheet;
-import org.xtuml.bp.core.ActionHome_c;
-import org.xtuml.bp.core.Action_c;
-import org.xtuml.bp.core.Attribute_c;
-import org.xtuml.bp.core.BaseAttribute_c;
-import org.xtuml.bp.core.Body_c;
-import org.xtuml.bp.core.BridgeBody_c;
-import org.xtuml.bp.core.Bridge_c;
-import org.xtuml.bp.core.DerivedAttributeBody_c;
-import org.xtuml.bp.core.DerivedBaseAttribute_c;
-import org.xtuml.bp.core.FunctionBody_c;
-import org.xtuml.bp.core.Function_c;
-import org.xtuml.bp.core.MealyActionHome_c;
-import org.xtuml.bp.core.MooreActionHome_c;
 import org.xtuml.bp.core.Ooaofooa;
-import org.xtuml.bp.core.OperationBody_c;
-import org.xtuml.bp.core.Operation_c;
-import org.xtuml.bp.core.ProvidedOperationBody_c;
-import org.xtuml.bp.core.ProvidedOperation_c;
-import org.xtuml.bp.core.ProvidedSignalBody_c;
-import org.xtuml.bp.core.ProvidedSignal_c;
-import org.xtuml.bp.core.RequiredOperationBody_c;
-import org.xtuml.bp.core.RequiredOperation_c;
-import org.xtuml.bp.core.RequiredSignalBody_c;
-import org.xtuml.bp.core.RequiredSignal_c;
-import org.xtuml.bp.core.StateActionBody_c;
-import org.xtuml.bp.core.StateMachineState_c;
-import org.xtuml.bp.core.TransitionActionBody_c;
-import org.xtuml.bp.core.TransitionActionHome_c;
-import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.ModelRoot;
 import org.xtuml.bp.core.common.NonRootModelElement;
@@ -112,14 +84,13 @@ import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.editor.ModelEditor;
 import org.xtuml.bp.ui.graphics.parts.DiagramEditPart;
 import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
-import org.xtuml.bp.ui.text.activity.ActivityEditor;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
 
 import junit.framework.Assert;
 
 public class UITestingUtilities {
 	private static Point fDownLocation;
-
+	
 	public static void printControl(Composite parent, String intend) throws Exception {
 		System.out.print(intend);
 		printOject("Parent", parent); //$NON-NLS-1$
@@ -150,8 +121,8 @@ public class UITestingUtilities {
 			}
 		}
 	}
-
-	protected static void printOject(String label, Object target) throws Exception {
+	
+	protected static void printOject(String label, Object target) throws Exception{
 		System.out.print(label);
 		printProperties(target);
 		System.out.println();
@@ -166,7 +137,7 @@ public class UITestingUtilities {
 				if (propertyType != null && !propertyType.isArray()) {
 					Method readMethod = propertyInfos[i].getReadMethod();
 
-					if (readMethod != null) {
+					if(readMethod != null){
 						Object propertyValue = readMethod.invoke(target, new Object[0]);
 						if (i > 0) {
 							System.out.print("; "); //$NON-NLS-1$
@@ -181,12 +152,12 @@ public class UITestingUtilities {
 	}
 
 	public static Object getProperty(Object target, String propertyName)
-			throws InvocationTargetException, IllegalAccessException {
+		throws InvocationTargetException, IllegalAccessException {
 		return invokeMethod(target, "get" + propertyName, new Object[0]); //$NON-NLS-1$
 	}
 
 	public static Object invokeMethod(Object target, String methodName, Object[] arguments)
-			throws InvocationTargetException, IllegalAccessException {
+		throws InvocationTargetException, IllegalAccessException {
 		Class targetClass = target.getClass();
 		Class[] argumentTypes = new Class[arguments.length];
 		for (int i = 0; i < argumentTypes.length; i++) {
@@ -226,7 +197,7 @@ public class UITestingUtilities {
 		return items;
 
 	}
-
+	
 	private static MenuItem[] getChildMenuItems(Menu menu, String childMenu) {
 		MenuItem[] parentItems = menu.getItems();
 		for (int i = 0; i < parentItems.length; i++) {
@@ -242,11 +213,10 @@ public class UITestingUtilities {
 		}
 		return null;
 	}
-
-	private static String removeAccelerator(String withAccelerator) {
+	private static String removeAccelerator(String withAccelerator){
 		return withAccelerator.replaceFirst("&", "");
 	}
-
+	
 	public static boolean checkItemStatus(MenuItem item, boolean readonly) {
 		if (item == null) { return false; }
 		// verify the item
@@ -271,68 +241,63 @@ public class UITestingUtilities {
 		}
 
 	}
-
+	
 	public static boolean checkItemStatusInContextMenu(Menu menu, String text, String childMenu, boolean readonly) {
-
-		MenuItem[] items = getMenuItems(menu, childMenu);
-
-		// find the item in question
-		for (int i = 0; items != null && i < items.length; i++) {
-			if (removeAccelerator(items[i].getText()).indexOf(text) != -1) {
-				return checkItemStatus(items[i], readonly);
-			}
-		}
-
-		// action was not found
-		return false;
-	}
-
+    	
+    	MenuItem[] items = getMenuItems(menu, childMenu);
+    	
+    	// find the item in question
+    	for(int i = 0; items != null && i < items.length; i++) {
+    		if(removeAccelerator(items[i].getText()).indexOf(text) != -1) {
+    			return checkItemStatus(items[i], readonly);
+    		}    		
+    	}
+    	
+    	// action was not found
+    	return false;
+    }
+	
 	public static boolean menuItemExists(Menu menu, String childMenu, String item) {
 		MenuItem[] menuItems = getMenuItems(menu, childMenu);
-		for (int i = 0; menuItems != null && i < menuItems.length; i++) {
-			if (removeAccelerator(menuItems[i].getText()).equals(item)) {
+		for(int i = 0; menuItems != null && i < menuItems.length; i++) {
+			if(removeAccelerator(menuItems[i].getText()).equals(item)) {
 				return true;
 			}
 		}
 		return false;
 	}
-
+	
 	public static IEditorPart getActiveEditor() {
-		IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.getActiveEditor();
-		if (activeEditor instanceof ModelEditor) {
+		IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		if(activeEditor instanceof ModelEditor) {
 			return ((ModelEditor) activeEditor).getActivePart();
 		} else
 			return activeEditor;
 	}
-
+	
 	public static void copyElement(NonRootModelElement element, GraphicalEditor ce) {
-		clearGraphicalSelection();
-		addElementToGraphicalSelection(element);
+		clearGraphicalSelection(); addElementToGraphicalSelection(element);
 		CanvasCopyAction canvascopyaction = new CanvasCopyAction(ce);
 		canvascopyaction.run();
 		BaseTest.waitForTransaction();
 	}
-
 	public static void copyElements(List elements, GraphicalEditor ce) {
 		clearGraphicalSelection();
 		Iterator iterator = elements.iterator();
-		while (iterator.hasNext()) {
+		while(iterator.hasNext()) {
 			addElementToGraphicalSelection(iterator.next());
 		}
 		CanvasCopyAction canvascopyaction = new CanvasCopyAction(ce);
 		canvascopyaction.run();
 		BaseTest.waitForTransaction();
 	}
-
 	public static void pasteClipboardContents(Point location, GraphicalEditor ce) {
 		PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
 			CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
 			CanvasTestUtils.doMouseMove(location.x, location.y);
 			CanvasTestUtils.doMouseContextPress(location.x, location.y);
 			canvaspasteaction.run();
-			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-				;
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		});
 		BaseTest.dispatchEvents(0);
 	}
@@ -340,22 +305,20 @@ public class UITestingUtilities {
 	public static GraphicalEditor getGraphicalEditorFor(final NonRootModelElement columnInstance, boolean isRootOf) {
 		return getGraphicalEditorFor(columnInstance, isRootOf, true);
 	}
-
-	public static GraphicalEditor getGraphicalEditorFor(final NonRootModelElement columnInstance, boolean isRootOf,
-			boolean validateOpen) {
-		if (columnInstance == null)
-			return null;
-		if (isRootOf) {
-			IEditorReference[] editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.getEditorReferences();
+	
+	public static GraphicalEditor getGraphicalEditorFor(final NonRootModelElement columnInstance, boolean isRootOf, boolean validateOpen) {
+		if(columnInstance == null) return null;
+		if(isRootOf) {
+			IEditorReference[] editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+					.getActivePage().getEditorReferences();
 			int count = editorReferences.length;
 			CanvasTestUtils.openCanvasEditor(columnInstance);
-			editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.getEditorReferences();
+			editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().getEditorReferences();
 			int count_after = editorReferences.length;
-			if (validateOpen) {
-				if (count < count_after) {
-					return (GraphicalEditor) getActiveEditor();
+			if(validateOpen) {
+				if(count < count_after) {
+					return (GraphicalEditor) getActiveEditor();	
 				} else {
 					// no editor was opened
 					return null;
@@ -367,22 +330,22 @@ public class UITestingUtilities {
 		Ooaofgraphics graphicsRoot = Ooaofgraphics.getInstance(columnInstance.getModelRoot().getId());
 		GraphicalElement_c[] elements = GraphicalElement_c.GraphicalElementInstances(graphicsRoot);
 		GraphicalEditor editor = getGraphicalEditorFrom(columnInstance, elements);
-		if (editor == null) {
+		if(editor == null) {
 			// try system level elements
 			elements = GraphicalElement_c.GraphicalElementInstances(Ooaofgraphics.getDefaultInstance());
 			editor = getGraphicalEditorFrom(columnInstance, elements);
 		}
 		return editor;
 	}
-
-	private static GraphicalEditor getGraphicalEditorFrom(final NonRootModelElement columnInstance,
-			GraphicalElement_c[] elements) {
-		for (int i = 0; i < elements.length; i++) {
-			if (elements[i].getRepresents() == null) {
-				elements[i].setRepresents(Cl_c.Getinstancefromooa_id((Ooaofooa) columnInstance.getModelRoot(),
-						elements[i].getOoa_id(), elements[i].getOoa_type()));
+	
+	private static GraphicalEditor getGraphicalEditorFrom(final NonRootModelElement columnInstance, GraphicalElement_c[] elements) {
+		for(int i = 0; i < elements.length; i++) {
+			if(elements[i].getRepresents() == null) {
+				elements[i].setRepresents(Cl_c.Getinstancefromooa_id((Ooaofooa)
+						columnInstance.getModelRoot(), elements[i].getOoa_id(),
+						elements[i].getOoa_type()));
 			}
-			if (elements[i].getRepresents() == columnInstance) {
+			if(elements[i].getRepresents() == columnInstance) {
 				Model_c model = Model_c.getOneGD_MDOnR1(elements[i]);
 				CanvasTestUtils.openCanvasEditor(model.getRepresents());
 				return (GraphicalEditor) getActiveEditor();
@@ -391,22 +354,23 @@ public class UITestingUtilities {
 		return null;
 	}
 
-	public static GraphicalElement_c getGraphicalElementFor(NonRootModelElement element,
-			boolean excludeSuppressedGraphics) {
+	public static GraphicalElement_c getGraphicalElementFor(NonRootModelElement element, boolean excludeSuppressedGraphics) {
 		Ooaofgraphics graphicsRoot = Ooaofgraphics.getInstance(element.getModelRoot().getId());
-		if (PersistenceManager.findComponent(element.getModelRoot().getId()).getRootModelElement() == element) {
+		if (PersistenceManager.findComponent(element.getModelRoot().getId())
+				.getRootModelElement() == element) {
 			graphicsRoot = Ooaofgraphics.getDefaultInstance();
 		}
 		GraphicalElement_c[] elements = GraphicalElement_c.GraphicalElementInstances(graphicsRoot);
-		for (int i = 0; i < elements.length; i++) {
+		for(int i = 0; i < elements.length; i++) {
 			ElementInSuppression_c eis = ElementInSuppression_c.getOneGD_EISOnR32(elements[i]);
-			if (excludeSuppressedGraphics && eis != null)
+			if(excludeSuppressedGraphics && eis != null)
 				continue;
-			if (elements[i].getRepresents() == null) {
-				elements[i].setRepresents(Cl_c.Getinstancefromooa_id((Ooaofooa) element.getModelRoot(),
-						elements[i].getOoa_id(), elements[i].getOoa_type()));
+			if(elements[i].getRepresents() == null) {
+				elements[i].setRepresents(Cl_c.Getinstancefromooa_id((Ooaofooa)
+						element.getModelRoot(), elements[i].getOoa_id(),
+						elements[i].getOoa_type()));
 			}
-			if (elements[i].getRepresents() == element) {
+			if(elements[i].getRepresents() == element) {
 				return elements[i];
 			}
 		}
@@ -415,25 +379,38 @@ public class UITestingUtilities {
 
 	public static MenuItem getMenuItem(Menu menu, String childMenu, String name) {
 		MenuItem[] items = getMenuItems(menu, childMenu);
-		for (int i = 0; items != null && i < items.length; i++) {
-			if (items[i].getText().equals(name)) {
+		for(int i = 0; items != null && i < items.length; i++) {
+			if(items[i].getText().equals(name)) {
+				return items[i];
+			}
+		}
+		return null;		
+	}
+	
+	public static MenuItem getMenuItem(Menu menu, String name) {
+		MenuItem[] items = getMenuItems(menu, "");
+		for(int i = 0; items != null && i < items.length; i++) {
+			if(items[i].getText().equals(name)) {
 				return items[i];
 			}
 		}
 		return null;
 	}
-
-	public static MenuItem getMenuItem(Menu menu, String name) {
-		MenuItem[] items = getMenuItems(menu, "");
-		for (int i = 0; items != null && i < items.length; i++) {
-			if (items[i].getText().equals(name)) {
-				return items[i];
-			}
+	
+	public static boolean hasStyle(int styleBitsToCheck, int styleToLookFor ) {
+		boolean rVal = false;
+		
+		if (styleToLookFor==(styleBitsToCheck&styleToLookFor)) {
+			rVal = true;
 		}
-		return null;
+		return rVal;
 	}
 
 	public static void activateMenuItem(MenuItem item) {
+		int style = item.getStyle();
+		if (hasStyle(style, SWT.CHECK) | hasStyle(style, SWT.RADIO)) {
+			item.setSelection(!item.getSelection());
+		}
 		item.notifyListeners(SWT.Selection, null);
 	}
 
@@ -441,12 +418,12 @@ public class UITestingUtilities {
 		MenuItem item = getMenuItem(menu, childMenu, name);
 		activateMenuItem(item);
 	}
-
+	
 	public static boolean checkItemStatusInContextMenuByPath(Menu menu, String path, boolean readonly) {
 		MenuItem item = getMenuItemByPath(menu, path);
 		return checkItemStatus(item, readonly);
 	}
-
+	
 	public static MenuItem[] getMenuItemsAtPath(Menu menu, String path) {
 		String[] menuPath = path.split("::");
 		String lastMenu = menuPath[menuPath.length - 1];
@@ -460,12 +437,12 @@ public class UITestingUtilities {
 						if (item.getData() instanceof MenuManager) {
 							MenuManager manager = (MenuManager) item.getData();
 							menu = manager.getMenu();
-							if (item.getText().equals(lastMenu)) {
+							if(item.getText().equals(lastMenu)) {
 								return getMenuItems(menu, "");
 							}
 						} else if (item.getMenu() != null) {
 							menu = item.getMenu();
-							if (item.getText().equals(lastMenu)) {
+							if(item.getText().equals(lastMenu)) {
 								return getMenuItems(menu, "");
 							}
 						}
@@ -476,7 +453,7 @@ public class UITestingUtilities {
 		}
 		return new MenuItem[0];
 	}
-
+	
 	public static MenuItem getMenuItemByPath(Menu menu, String path) {
 		// if the given name is a menu path, split it and execute
 		// the final menu item
@@ -511,9 +488,9 @@ public class UITestingUtilities {
 			return item;
 		}
 	}
-
+	
 	public static void activateMenuItem(Menu menu, String name) {
-		MenuItem item = getMenuItemByPath(menu, name);
+		MenuItem item =getMenuItemByPath(menu, name);
 		if ( item != null ) {
 			activateMenuItem(item);
 			BaseTest.dispatchEvents();
@@ -525,30 +502,28 @@ public class UITestingUtilities {
 			ModelTool_c selected = (ModelTool_c) candidate;
 			return (selected.getTool_id().equals(m_id));
 		}
-
 		public Tool_by_id_c(UUID id) {
 			m_id = id;
 		}
-
 		private UUID m_id;
 	}
-
+	
 	public static void activateTool(AbstractTool tool) {
 		CanvasUtilities.activateTool(tool);
 	}
-
+	
 	public static void deactivateTool(AbstractTool tool) {
 		CanvasUtilities.deactivateTool(tool);
 	}
-
+	
 	public static boolean ctrlDown = false;
-
 	public static void createMouseEvent(int x, int y, String eventType) {
-		GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.getActiveEditor()).getGraphicalEditor();
+		GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
+				.getGraphicalEditor();
 		Event me = new Event();
-		if (ctrlDown) {
-			if (Platform.getOS().equals(Platform.OS_MACOSX)) {
+		if(ctrlDown) {
+			if(Platform.getOS().equals(Platform.OS_MACOSX)) {
 				me.stateMask = SWT.COMMAND;
 			} else {
 				me.stateMask = SWT.CTRL;
@@ -558,7 +533,7 @@ public class UITestingUtilities {
 		if (eventType.equals("MouseMove")) {
 			me.x = x;
 			me.y = y;
-			if (fDownLocation != null) {
+			if(fDownLocation != null) {
 				me.stateMask |= SWT.BUTTON1;
 				// GEF has a drag event, which we need
 				// to imitate.
@@ -572,39 +547,39 @@ public class UITestingUtilities {
 				int yIncrement = yDelta / 10;
 				boolean crossedThreshold = false;
 				int xIncrementRealValue = xIncrement;
-				if (xIncrementRealValue < 0)
+				if(xIncrementRealValue < 0)
 					xIncrementRealValue = xIncrementRealValue * -1;
 				int yIncrementRealValue = yIncrement;
-				if (yIncrementRealValue < 0)
+				if(yIncrementRealValue < 0)
 					yIncrementRealValue = yIncrementRealValue * -1;
 				boolean reverse = x < xDownLocation;
-				if (yIncrementRealValue >= xIncrementRealValue)
+				if(yIncrementRealValue >= xIncrementRealValue)
 					reverse = y < yDownLocation;
-				while (!crossedThreshold) {
+				while(!crossedThreshold) {
 					xDownLocation = xDownLocation + xIncrement;
 					yDownLocation = yDownLocation + yIncrement;
 					me.x = xDownLocation;
 					me.y = yDownLocation;
-					if (xIncrementRealValue > yIncrementRealValue) {
-						if (reverse) {
+					if(xIncrementRealValue > yIncrementRealValue) {
+						if(reverse) {
 							// check that the current x < expected x
-							if (xDownLocation < x)
+							if(xDownLocation < x)
 								crossedThreshold = true;
 						} else {
-							if (xDownLocation > x)
+							if(xDownLocation > x)
 								crossedThreshold = true;
 						}
 					} else {
-						if (reverse) {
+						if(reverse) {
 							// check that the current x < expected x
-							if (yDownLocation < y)
+							if(yDownLocation < y)
 								crossedThreshold = true;
 						} else {
-							if (yDownLocation > y)
+							if(yDownLocation > y)
 								crossedThreshold = true;
 						}
 					}
-					if (crossedThreshold) {
+					if(crossedThreshold) {
 						// If we crossed the expected location, do not
 						// send this location. Instead send the expected
 						// location
@@ -659,117 +634,121 @@ public class UITestingUtilities {
 			ce.getCanvas().notifyListeners(SWT.MouseDoubleClick, me);
 		}
 		BaseTest.dispatchEvents();
-	}
+	}	
 
-	/**
-	 * A convenience method. See method wrapped.
-	 */
-	public static void doMousePress(int x, int y) {
+    /**
+     * A convenience method.  See method wrapped.
+     */
+    public static void doMousePress(int x, int y)
+    {
 		createMouseEvent(x, y, "MouseDown");
-	}
+    }
 
-	/**
-	 * A convenience method. See method wrapped.
-	 */
-	public static void doMouseRelease(int x, int y) {
+    /**
+     * A convenience method.  See method wrapped.
+     */
+    public static void doMouseRelease(int x, int y)
+    {
 		createMouseEvent(x, y, "MouseUp");
-	}
+    }
 
-	/**
-	 * A convenience method. See method wrapped.
-	 */
-	public static void doMouseMove(int x, int y) {
+    /**
+     * A convenience method.  See method wrapped.
+     */
+    public static void doMouseMove(int x, int y)
+    {
 		createMouseEvent(x, y, "MouseMove");
-	}
+    }
 
-	/**
-	 * A convenience method. See method wrapped.
-	 */
-	public static void doMouseContextPress(int x, int y) {
+    /**
+     * A convenience method.  See method wrapped.
+     */
+    public static void doMouseContextPress(int x, int y)
+    {
 		createMouseEvent(x, y, "MouseContextDown");
-	}
-
-	/**
-	 * A convenience method. See method wrapped.
-	 */
-	public static void doMousePressRetainSelection(int x, int y) {
+    }
+    
+    /**
+     * A convenience method.  See method wrapped.
+     */
+    public static void doMousePressRetainSelection(int x, int y)
+    {
 		createMouseEvent(x, y, "MouseDownRetainSelection");
-	}
-
-	/**
-	 * A convenience method. See method wrapped.
-	 */
-	public static void doMouseDoubleClick(int x, int y) {
-		createMouseEvent(x, y, "MouseDoubleClick");
-	}
-
-	private static void createElementInDiagram(GraphicalEditor ce, String toolSet, String toolName, int x1, int y1,
-			int x2, int y2) {
+    }
+    
+    /**
+     * A convenience method.  See method wrapped.
+     */
+    public static void doMouseDoubleClick(int x, int y)
+    {
+        createMouseEvent(x, y, "MouseDoubleClick");
+    }
+	
+    private static void createElementInDiagram(GraphicalEditor ce, String toolSet , String toolName, int x1, int y1, int x2, int y2) {
 		AbstractTool tool = null;
-		if (toolSet != null) {
+		if (toolSet != null) { 
 			tool = ce.getTool(toolSet, toolName);
 		} else {
 			tool = ce.getTool(toolName);
 		}
-		if (tool != null) {
+		if(tool != null) {
 			activateTool(tool);
 			doMouseMove(x1, y1);
 			doMousePress(x1, y1);
-			doMouseMove(x2, y2);
-			doMouseRelease(x2, y2);
+			doMouseMove(x2,y2);
+			doMouseRelease(x2,y2);
 			deactivateTool(tool);
 		} else {
 			Assert.fail("Unable to locate tool for given diagram.");
 		}
-	}
-
+    }
+    
 	public static void createShapeInDiagram(GraphicalEditor ce, Rectangle rectangle, String toolName) {
 		createShapeInDiagram(ce, rectangle, null, toolName);
 	}
-
-	public static void createShapeInDiagram(GraphicalEditor ce, Rectangle rectangle, String toolSet, String toolName) {
-		createElementInDiagram(ce, toolSet, toolName, rectangle.x, rectangle.y, rectangle.x + rectangle.width,
-				rectangle.y + rectangle.height);
+	public static void createShapeInDiagram(GraphicalEditor ce, Rectangle rectangle, String toolSet , String toolName) {
+		createElementInDiagram(ce, toolSet, toolName, rectangle.x, rectangle.y, rectangle.x + rectangle.width, rectangle.y + rectangle.height);
 	}
-
-	public static void createConnectorInDiagram(GraphicalEditor ce, Point start, Point end, String toolSet,
-			String toolName) {
+	
+	public static void createConnectorInDiagram(GraphicalEditor ce, Point start,
+			Point end, String toolSet, String toolName) 
+	{
 		createElementInDiagram(ce, toolSet, toolName, start.x, start.y, end.x, end.y);
 	}
-
-	public static void createConnectorInDiagram(GraphicalEditor ce, Point start, Point end, String toolName) {
-		createConnectorInDiagram(ce, start, end, null, toolName);
+	
+	public static void createConnectorInDiagram(GraphicalEditor ce, Point start,
+			Point end, String toolName) 
+	{
+		createConnectorInDiagram(ce, start, end, null, toolName );
 	}
 
 	public static void cutElement(NonRootModelElement element, GraphicalEditor ce) {
-		clearGraphicalSelection();
-		addElementToGraphicalSelection(element);
+		clearGraphicalSelection(); addElementToGraphicalSelection(element);
 		CanvasCutAction canvascutaction = new CanvasCutAction(ce);
 		canvascutaction.run();
 		BaseTest.waitForTransaction();
 	}
-
+	
 	public static void cutElementInExplorer(NonRootModelElement element, ExplorerView explorer) {
-		Selection.getInstance().clear();
-		Selection.getInstance().addToSelection(element);
+		Selection.getInstance().clear(); Selection.getInstance().addToSelection(element);
 		ExplorerCutAction cut = new ExplorerCutAction(explorer.getTreeViewer());
 		cut.run();
 		BaseTest.dispatchEvents(0);
 	}
-
+	
 	public static AbstractTool getTool(String toolName) {
 		return CanvasUtilities.getTool(toolName);
 	}
-
 	public static AbstractTool getTool(String toolSet, String toolName) {
 		return CanvasUtilities.getTool(toolSet, toolName);
-
+		
 	}
 
 	/**
-	 * This method will select the appropriate editor part in the current
-	 * editor, if the current editor is not the appropriate one it tries to
-	 * locate it. If a different editor was opened the method will return it
+	 * This method will select the appropriate editor part in
+	 * the current editor, if the current editor is not the appropriate
+	 * one it tries to locate it.  If a different editor was opened
+	 * the method will return it
 	 * 
 	 * @param obj
 	 */
@@ -778,45 +757,43 @@ public class UITestingUtilities {
 
 		GraphicalEditor originalEditor = editor;
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
-		if (obj instanceof GraphicalEditPart) {
+		if(obj instanceof GraphicalEditPart) {
 			viewer.appendSelection((EditPart) obj);
-			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-				;
+			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 			return editor;
 		}
 		Model_c model = (Model_c) viewer.getContents().getModel();
 		GraphicalElement_c[] elements = GraphicalElement_c.getManyGD_GEsOnR1(model);
 		GraphicalElement_c element = null;
-		for (int i = 0; i < elements.length; i++) {
-			if (elements[i].getRepresents() == obj) {
+		for(int i = 0; i < elements.length; i++) {
+			if(elements[i].getRepresents() == obj) {
 				element = elements[i];
 				break;
 			}
 		}
-		if (element == null) {
+		if(element == null) {
 			editor = getGraphicalEditorFor((NonRootModelElement) obj, false);
-			if (editor == null)
+			if(editor == null)
 				return null;
 			viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 			model = (Model_c) viewer.getContents().getModel();
 			elements = GraphicalElement_c.getManyGD_GEsOnR1(model);
-			for (int i = 0; i < elements.length; i++) {
-				if (elements[i].getRepresents() == obj) {
+			for(int i = 0; i < elements.length; i++) {
+				if(elements[i].getRepresents() == obj) {
 					element = elements[i];
 					break;
 				}
 			}
 		}
-		if (element == null) {
+		if(element == null) {
 			return originalEditor;
 		}
 		Object gObject = Shape_c.getOneGD_SHPOnR2(element);
-		if (gObject == null)
+		if(gObject == null)
 			gObject = Connector_c.getOneGD_CONOnR2(element);
 		GraphicalEditPart part = (GraphicalEditPart) viewer.getEditPartRegistry().get(gObject);
 		viewer.appendSelection(part);
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		return editor;
 	}
 
@@ -824,40 +801,37 @@ public class UITestingUtilities {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		viewer.deselectAll();
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 
 	public static void revealElementInGraphicalEditor(Shape_c shape) {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		viewer.reveal(getEditorPartFor(shape));
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 
 	public static EditPart getEditorPartFor(Object element) {
 		final Object initialElement = element;
-		if (element instanceof NonRootModelElement) {
+		if(element instanceof NonRootModelElement) {
 			ModelRoot root = ((NonRootModelElement) element).getModelRoot();
-			if (root instanceof Ooaofooa) {
+			if(root instanceof Ooaofooa) {
 				// locate the shape or connector that represents the
 				// given element
 				Ooaofgraphics graphicRoot = Ooaofgraphics.getInstance(root.getId());
-				GraphicalElement_c ge = GraphicalElement_c.GraphicalElementInstance(graphicRoot,
-						new ClassQueryInterface_c() {
-
-							@Override
-							public boolean evaluate(Object candidate) {
-								return ((GraphicalElement_c) candidate).getRepresents() == initialElement;
-							}
-						});
+				GraphicalElement_c ge = GraphicalElement_c.GraphicalElementInstance(graphicRoot, new ClassQueryInterface_c() {
+					
+					@Override
+					public boolean evaluate(Object candidate) {
+						return ((GraphicalElement_c) candidate).getRepresents() == initialElement;
+					}
+				});
 				Shape_c shape = Shape_c.getOneGD_SHPOnR2(ge);
-				if (shape != null) {
+				if(shape != null) {
 					element = shape;
 				}
 				Connector_c con = Connector_c.getOneGD_CONOnR2(ge);
-				if (con != null) {
+				if(con != null) {
 					element = con;
 				}
 			}
@@ -871,8 +845,7 @@ public class UITestingUtilities {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		viewer.deselect(part);
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
 
 	public static void pasteClipboardContentsInExplorer(Object destination) {
@@ -882,7 +855,7 @@ public class UITestingUtilities {
 		paste.run();
 		BaseTest.dispatchEvents(0);
 	}
-
+	
 	public static void pasteClipboardContentsInExplorer() {
 		ExplorerPasteAction paste = new ExplorerPasteAction();
 		paste.run();
@@ -904,48 +877,51 @@ public class UITestingUtilities {
 			propSheet.getSite().getPage().hideView(propSheet);
 		}
 	}
-
+	
 	/**
 	 * This function finds the property view and returns it.
 	 * 
-	 * @return The property sheet view or null if the property sheet view is not
-	 *         visible
+	 * @return The property sheet view or null if the property sheet view is
+	 *         not visible
 	 */
 	public static PropertySheet getPropertySheet() {
 		PropertySheet propSheet = null;
-		IWorkbenchWindow[] windows = PlatformUI.getWorkbench().getWorkbenchWindows();
-		for (int i = 0; propSheet == null && i < windows.length; ++i) {
+		IWorkbenchWindow[] windows = PlatformUI.getWorkbench()
+				.getWorkbenchWindows();
+		for (int i = 0; propSheet==null && i < windows.length; ++i) {
 			IWorkbenchPage[] pages = windows[i].getPages();
-			for (int j = 0; propSheet == null && j < pages.length; ++j) {
+			for (int j = 0; propSheet==null && j < pages.length; ++j) {
 				IViewReference[] views = pages[j].getViewReferences();
-				for (int k = 0; propSheet == null && k < views.length; ++k) {
+				for (int k = 0; propSheet==null && k < views.length; ++k) {
 					if (views[k].getPart(false) instanceof PropertySheet) {
-						propSheet = (PropertySheet) views[k].getPart(false);
+						propSheet = (PropertySheet)views[k].getPart(false);
 					}
 				}
 			}
 		}
 		return propSheet;
 	}
-
-	public static Point getClearPoint(GraphicalEditor rowEditor) {
-		Point point = new Point(100, 100);
-		List<GraphicalEditPart> allSymbols = GraphicalEditor.getAllSymbols(rowEditor.getGraphicalViewer(),
-				rowEditor.getModel().Hascontainersymbol());
+	
+    public static Point getClearPoint(GraphicalEditor rowEditor) {
+    	Point point = new Point(100, 100);
+		List<GraphicalEditPart> allSymbols = GraphicalEditor.getAllSymbols(
+				rowEditor.getGraphicalViewer(), rowEditor.getModel()
+						.Hascontainersymbol());
 		org.eclipse.draw2d.geometry.Rectangle extentRectangle = GraphicalZoomManager.getExtentRectangle(allSymbols);
-		if (extentRectangle == null) {
+		if(extentRectangle == null) {
 			// no need to change position
 			return point;
 		}
-		((DiagramEditPart) rowEditor.getGraphicalViewer().getContents()).getFigure()
-				.translateToAbsolute(extentRectangle);
+		((DiagramEditPart) rowEditor.getGraphicalViewer().getContents())
+				.getFigure().translateToAbsolute(extentRectangle);
 		point.x = extentRectangle.getRight().x + 100;
 		return point;
 	}
 
-	public static void cutElementsInExplorer(Object[] cuttableElements, ExplorerView explorer) {
+	public static void cutElementsInExplorer(Object[] cuttableElements,
+			ExplorerView explorer) {
 		Selection.getInstance().clear();
-		for (Object element : cuttableElements) {
+		for(Object element : cuttableElements) {
 			Selection.getInstance().addToSelection(element);
 		}
 		ExplorerCutAction cut = new ExplorerCutAction(explorer.getTreeViewer());
@@ -961,10 +937,10 @@ public class UITestingUtilities {
 	private static List<Text> findTextInControl(Composite composite) {
 		List<Text> texts = new ArrayList<Text>();
 		Control[] children = composite.getChildren();
-		for (Control control : children) {
-			if (control instanceof Text) {
+		for(Control control : children) {
+			if(control instanceof Text) {
 				texts.add((Text) control);
-			} else if (control instanceof Composite) {
+			} else if(control instanceof Composite) {
 				texts.addAll(findTextInControl((Composite) control));
 			}
 		}
@@ -975,16 +951,16 @@ public class UITestingUtilities {
 		List<Text> texts = findTextInControl(dialog.getShell());
 		return texts.get(0);
 	}
-
+	
 	/**
-	 * This method returns a tree item in the given tree that contains the given
-	 * text. It does not do an exact match.
+	 * This method returns a tree item in the given tree that contains
+	 * the given text.  It does not do an exact match.
 	 */
 	public static TreeItem findItemInTree(Tree tree, String name) {
 		TreeItem[] items = tree.getItems();
-		for (TreeItem item : items) {
+		for(TreeItem item : items) {
 			TreeItem foundItem = findItemInTree(item, name);
-			if (foundItem != null) {
+			if(foundItem != null) {
 				return foundItem;
 			}
 		}
@@ -1000,37 +976,36 @@ public class UITestingUtilities {
 		root.setExpanded(true);
 		root.getParent().setRedraw(true);
 		root.getParent().update();
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
-		TreeItem[] items = root.getItems();
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		TreeItem [] items = root.getItems();
 		for (TreeItem item : items) {
 			expandTree(item);
 		}
 	}
-
+	
 	public static void expandTree(Tree tree) {
-		for (TreeItem item : tree.getItems()) {
+		for(TreeItem item : tree.getItems()) {
 			expandTree(item);
 		}
 	}
-
+	
 	public static TreeItem findItemInTreeWithExpansion(Tree tree, String childItemName) {
 		expandTree(tree);
 		return findItemInTree(tree, childItemName);
 	}
 
 	/**
-	 * This method returns a tree item as a child of the given item that
-	 * contains the given text. It does not do an exact match.
+	 * This method returns a tree item as a child of the given item
+	 * that contains the given text.  It does not do an exact match.
 	 */
 	public static TreeItem findItemInTree(TreeItem item, String name) {
-		if (item.getText().contains(name)) {
+		if(item.getText().contains(name)) {
 			return item;
 		} else {
 			TreeItem[] children = item.getItems();
-			for (TreeItem child : children) {
+			for(TreeItem child : children) {
 				TreeItem foundItem = findItemInTree(child, name);
-				if (foundItem != null) {
+				if(foundItem != null) {
 					return foundItem;
 				}
 			}
@@ -1038,27 +1013,34 @@ public class UITestingUtilities {
 		return null;
 	}
 
-	public static Tree findTree(Composite parent) {
-		Control[] child_set = parent.getChildren();
-		for (int i = 0; i < child_set.length; ++i) {
-			if (child_set[i] instanceof Tree) {
-				return (Tree) child_set[i];
-			} else if (child_set[i] instanceof Composite) {
-				Tree result = findTree((Composite) child_set[i]);
-				if (result != null) {
-					return result;
-				}
-			}
-		}
-		return null;
-	}
+    public static Tree findTree(Composite parent) {
+        Control [] child_set = parent.getChildren();
+        for ( int i = 0; i < child_set.length; ++i )
+        {
+            if ( child_set[i] instanceof Tree )
+            {
+            	return (Tree) child_set[i];
+            }
+            else if ( child_set[i] instanceof Composite )
+            {
+                Tree result = findTree((Composite)child_set[i]);
+                if ( result != null )
+                {
+                   return result;   
+                }
+            }
+        }
+        return null;
+    }
 
 	public static void resizeMainWindow(int x, int y) {
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().setSize(x, y);
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().redraw();
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().update();
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()
+				.setSize(x, y);
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()
+				.redraw();
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()
+				.update();
+		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 	}
-
+	
 }
