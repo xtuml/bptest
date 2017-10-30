@@ -48,7 +48,6 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.util.ActionLanguageDescriptionUtil;
-import org.xtuml.bp.core.util.DocumentUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
@@ -92,6 +91,9 @@ public class OalAutoComplete extends CanvasTest {
     private static Method getReplacementTextMethod;
     private static Object processor;
     
+    private static Method lineAndColumnToPosition;
+    private static Method positionToLine;
+    
     @Override
     protected void initialSetup() throws Exception {
         loadProject("oal_autocomplete");
@@ -124,6 +126,10 @@ public class OalAutoComplete extends CanvasTest {
         cleanUpMethod = processorClass.getMethod( "cleanUp", NonRootModelElement.class );
         getReplacementTextMethod = proposalClass.getMethod( "getReplacementString" );
         processor = processorClass.newInstance();
+        
+        Class<?> docUtil = Class.forName( "org.xtuml.bp.core.util.DocumentUtil" );
+        lineAndColumnToPosition = docUtil.getMethod( "lineAndColumnToPosition", int.class, int.class, IDocument.class );
+        positionToLine = docUtil.getMethod( "positionToLine", int.class, IDocument.class );
     };
 
     @After
@@ -156,12 +162,12 @@ public class OalAutoComplete extends CanvasTest {
         return findElementForDof(element);
     }
 
-    private int getLineNumber(String element) {
+    private int getLineNumber(String element) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
     	element = getEntryFromString( element, "S" );
         NonRootModelElement rootElement = (NonRootModelElement) getRootElementForBody(testBody)[0];
         String action = ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(rootElement);
         Document doc = new Document(action);
-        return DocumentUtil.positionToLine( action.indexOf("insert test oal " + element), doc );
+        return (int)positionToLine.invoke( null, action.indexOf("insert test oal " + element), doc );
     }
 
     private String getLocationText() {
@@ -435,7 +441,7 @@ public class OalAutoComplete extends CanvasTest {
         IRegion region = doc.getLineInformation(lineNumber-1);
         doc.replace(region.getOffset(), region.getLength(), locationText);
         setUpMethod.invoke( processor );
-        Object[] proposals = (Object[]) computeMethod.invoke( processor, doc, rootElement, DocumentUtil.lineAndColumnToPosition( lineNumber, locationText.length() + 1, doc ) );
+        Object[] proposals = (Object[]) computeMethod.invoke( processor, doc, rootElement, (int)lineAndColumnToPosition.invoke( null, lineNumber, locationText.length() + 1, doc ) );
         String[] results = new String[proposals.length];
         for(int i = 0; i < results.length; i++) {
             results[i] = ((String)getReplacementTextMethod.invoke( proposals[i] )).trim();
