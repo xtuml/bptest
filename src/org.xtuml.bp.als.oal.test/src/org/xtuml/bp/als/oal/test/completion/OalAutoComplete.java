@@ -83,6 +83,7 @@ public class OalAutoComplete extends CanvasTest {
     public void setUp() throws Exception {
         super.setUp();
         Ooaofooa.disableChangeNotification();
+        assertTrue( "Completion assistance is not implemented for OAL", implementationExists );
     }
 
     private static Method setUpMethod;
@@ -118,18 +119,20 @@ public class OalAutoComplete extends CanvasTest {
             implementationExists = false;
         }
 
-        // set up reflection API for computing proposals
-        Class<?> processorClass = Class.forName( "org.xtuml.bp.ui.text.contentassist.OALCompletionProcessor" );
-        Class<?> proposalClass = Class.forName( "org.xtuml.bp.ui.text.contentassist.OALCompletionProposal" );
-        setUpMethod = processorClass.getMethod( "setUp" );
-        computeMethod = processorClass.getMethod( "computeCompletionProposals", IDocument.class, NonRootModelElement.class, int.class );
-        cleanUpMethod = processorClass.getMethod( "cleanUp", NonRootModelElement.class );
-        getReplacementTextMethod = proposalClass.getMethod( "getReplacementString" );
-        processor = processorClass.newInstance();
-        
-        Class<?> docUtil = Class.forName( "org.xtuml.bp.core.util.DocumentUtil" );
-        lineAndColumnToPosition = docUtil.getMethod( "lineAndColumnToPosition", int.class, int.class, IDocument.class );
-        positionToLine = docUtil.getMethod( "positionToLine", int.class, IDocument.class );
+        if ( implementationExists ) {
+            // set up reflection API for computing proposals
+            Class<?> processorClass = Class.forName( "org.xtuml.bp.ui.text.contentassist.OALCompletionProcessor" );
+            Class<?> proposalClass = Class.forName( "org.xtuml.bp.ui.text.contentassist.OALCompletionProposal" );
+            setUpMethod = processorClass.getMethod( "setUp" );
+            computeMethod = processorClass.getMethod( "computeCompletionProposals", IDocument.class, NonRootModelElement.class, int.class );
+            cleanUpMethod = processorClass.getMethod( "cleanUp", NonRootModelElement.class );
+            getReplacementTextMethod = proposalClass.getMethod( "getReplacementString" );
+            processor = processorClass.newInstance();
+            
+            Class<?> docUtil = Class.forName( "org.xtuml.bp.core.util.DocumentUtil" );
+            lineAndColumnToPosition = docUtil.getMethod( "lineAndColumnToPosition", int.class, int.class, IDocument.class );
+            positionToLine = docUtil.getMethod( "positionToLine", int.class, IDocument.class );
+        }
     };
 
     @After
@@ -622,12 +625,6 @@ public class OalAutoComplete extends CanvasTest {
     * @return true if the test succeeds, false if it fails
     */
     boolean checkResult_doesNotExist(NonRootModelElement source, NonRootModelElement destination) {
-        // for non-existence of auto-complete we want these
-        // to fail, as they will be incorrectly true in some
-        // cases 
-        if(!implementationExists) {
-            return false;
-        }
         String[] possibilities = getPossibilities(getName());
         // make sure no possibility is present
         for(String possibility : possibilities) {
