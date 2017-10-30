@@ -58,6 +58,11 @@ public class OpenDeclarationTestsTestSuite extends TestSuite {
         addTest(new TestSuite(OpenDeclarationTests_24.class));
         addTest(new TestSuite(OpenDeclarationTests_25.class));
         addTest(new TestSuite(OpenDeclarationTests_26.class));
+        addTest(new TestSuite(OpenDeclarationTests_27.class));
+        addTest(new TestSuite(OpenDeclarationTests_28.class));
+        addTest(new TestSuite(OpenDeclarationTests_29.class));
+        addTest(new TestSuite(OpenDeclarationTests_30.class));
+        addTest(new TestSuite(OpenDeclarationTests_31.class));
     }
 }
 

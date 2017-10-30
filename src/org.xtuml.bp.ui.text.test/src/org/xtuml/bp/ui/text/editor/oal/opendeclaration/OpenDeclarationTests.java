@@ -56,6 +56,298 @@ public class OpenDeclarationTests extends CanvasTest {
     }
 
     /**
+     * "TL" is one of the degrees of freedom as specified in this issues
+     * test matrix.
+     * This routine gets the "TL" instance from the given name.
+     * 
+     * @param element The degree of freedom instance to retrieve
+     * @return A model element used in the test as specified by the test matrix
+     */
+    NonRootModelElement selectTL(String element) {
+        return selectTL(element, null);
+    }
+
+    /**
+     * "TL" is one of the degrees of freedom as specified in this issues
+     * test matrix.
+     * This routine gets the "TL" instance from the given name.
+     * 
+     * @param element The degree of freedom instance to retrieve
+     * @param extraData Extra data needed for selection
+     * @return A model element used in the test as specified by the test matrix
+     */
+    NonRootModelElement selectTL(String element, Object extraData) {
+        NonRootModelElement nrme = null;
+        if (element.equalsIgnoreCase("T01L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T01L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T02L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T03L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T04L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T05L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T06L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T07L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T08L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T09L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T10L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T11L11")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L01")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L02")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L03")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L04")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L05")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L06")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L07")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L08")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L09")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L10")) {
+            //TODO: Implement
+        } else if (element.equalsIgnoreCase("T12L11")) {
+            //TODO: Implement
+        } 
+        assertTrue("An instance with degree of freedom type \"TL\" was not found.  Instance Name: " + element + ".", nrme!=null);
+        return nrme;
+    }
+
+    /**
      * "EPMC" is one of the degrees of freedom as specified in this issues
      * test matrix.
      * This routine gets the "EPMC" instance from the given name.
@@ -203,254 +495,6 @@ public class OpenDeclarationTests extends CanvasTest {
     }
 
     /**
-     * "LT" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "LT" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectLT(String element) {
-        return selectLT(element, null);
-    }
-
-    /**
-     * "LT" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "LT" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @param extraData Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectLT(String element, Object extraData) {
-        NonRootModelElement nrme = null;
-        if (element.equalsIgnoreCase("L01T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L01T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L02T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L03T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L04T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L05T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L06T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L07T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L08T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L09T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L10T10")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T01")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T02")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T03")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T04")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T05")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T06")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T07")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T08")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T09")) {
-            //TODO: Implement
-        } else if (element.equalsIgnoreCase("L11T10")) {
-            //TODO: Implement
-        } 
-        assertTrue("An instance with degree of freedom type \"LT\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
-    }
-
-    /**
      * This routine performs the action associated with a matrix cell.
      * The parameters represent model instances aquired based on the specifed
      * column instance and row instance.
@@ -458,7 +502,7 @@ public class OpenDeclarationTests extends CanvasTest {
      * @param columnInstance Model instance from the column
      * @param rowInstance Model instance from the row
      */
-    void LT_EPMC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
+    void TL_EPMC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
         //TODO: Implement
     }
 
@@ -471,10 +515,26 @@ public class OpenDeclarationTests extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_elementShownInCanvasNotME(NonRootModelElement source, NonRootModelElement destination) {
-        boolean elementShownInCanvasNotME = false;
+    boolean checkResult_transientDeclarationShown(NonRootModelElement source, NonRootModelElement destination) {
+        boolean transientDeclarationShown = false;
         //TODO: Implement
-        return elementShownInCanvasNotME;
+        return transientDeclarationShown;
+    }
+
+
+    /**
+    * This function verifies an expected result.
+    *
+    * @param source A model element instance aquired through a action taken
+    *               on a column of the matrix.
+    * @param destination A model element instance aquired through a action taken
+    *                    taken on a row of the matrix.
+    * @return true if the test succeeds, false if it fails
+    */
+    boolean checkResult_elementShownInMENotCanvas(NonRootModelElement source, NonRootModelElement destination) {
+        boolean elementShownInMENotCanvas = false;
+        //TODO: Implement
+        return elementShownInMENotCanvas;
     }
 
 
@@ -503,22 +563,6 @@ public class OpenDeclarationTests extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_transientDeclarationShown(NonRootModelElement source, NonRootModelElement destination) {
-        boolean transientDeclarationShown = false;
-        //TODO: Implement
-        return transientDeclarationShown;
-    }
-
-
-    /**
-    * This function verifies an expected result.
-    *
-    * @param source A model element instance aquired through a action taken
-    *               on a column of the matrix.
-    * @param destination A model element instance aquired through a action taken
-    *                    taken on a row of the matrix.
-    * @return true if the test succeeds, false if it fails
-    */
     boolean checkResult_elementShownInMEandCanvas(NonRootModelElement source, NonRootModelElement destination) {
         boolean elementShownInMEandCanvas = false;
         //TODO: Implement
@@ -535,10 +579,10 @@ public class OpenDeclarationTests extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
-    boolean checkResult_elementShownInMENotCanvas(NonRootModelElement source, NonRootModelElement destination) {
-        boolean elementShownInMENotCanvas = false;
+    boolean checkResult_elementShownInCanvasNotME(NonRootModelElement source, NonRootModelElement destination) {
+        boolean elementShownInCanvasNotME = false;
         //TODO: Implement
-        return elementShownInMENotCanvas;
+        return elementShownInCanvasNotME;
     }
 
 

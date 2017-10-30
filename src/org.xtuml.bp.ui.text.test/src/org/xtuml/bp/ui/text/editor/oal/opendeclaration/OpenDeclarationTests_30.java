@@ -21,14 +21,14 @@ import org.xtuml.bp.ui.canvas.*;
 import org.xtuml.bp.ui.graphics.editor.*;
 import org.xtuml.bp.ui.canvas.test.*;
 
-public class OpenDeclarationTests_3 extends OpenDeclarationTests {
+public class OpenDeclarationTests_30 extends OpenDeclarationTests {
 
     protected String getResultName() {
         return super.getResultName();
     }
 
-    public OpenDeclarationTests_3() {
-        super("OpenDeclarationTests_3", null);
+    public OpenDeclarationTests_30() {
+        super("OpenDeclarationTests_30", null);
     }
 
     @Before
@@ -43,705 +43,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
 
 
     /**
-     * Perform the test for the given matrix column (T02L02) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testT02L02_E01P01M01C02() throws Exception {
+    public void testT12L05_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L02", "E01P01M01C02", "1");
+        test_id = getTestId("T12L05", "E01P01M01C01", "1");
 
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E01P01M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E02P01M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E02P01M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E02P01M01C02", "2");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E02P01M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E03P01M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E03P01M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E03P01M01C02", "3");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E03P01M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E04P01M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E04P01M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E04P01M01C02", "4");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E04P01M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E05P01M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E05P01M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E05P01M01C02", "5");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E05P01M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E01P02M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E01P02M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E01P02M01C02", "6");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E01P02M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E02P02M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E02P02M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E02P02M01C02", "7");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E02P02M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E03P02M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E03P02M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E03P02M01C02", "8");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E03P02M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E04P02M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E04P02M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E04P02M01C02", "9");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E04P02M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E05P02M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E05P02M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E05P02M01C02", "10");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E05P02M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E01P03M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E01P03M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E01P03M01C02", "11");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E01P03M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E02P03M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E02P03M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E02P03M01C02", "12");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E02P03M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E03P03M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E03P03M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E03P03M01C02", "13");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E03P03M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E04P03M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E04P03M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E04P03M01C02", "14");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E04P03M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E05P03M01C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E05P03M01C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E05P03M01C02", "15");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E05P03M01C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E01P01M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E01P01M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E01P01M02C02", "16");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E01P01M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E02P01M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E02P01M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E02P01M02C02", "17");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E02P01M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E03P01M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E03P01M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E03P01M02C02", "18");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E03P01M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E04P01M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E04P01M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E04P01M02C02", "19");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E04P01M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E05P01M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E05P01M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E05P01M02C02", "20");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E05P01M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E01P02M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E01P02M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E01P02M02C02", "21");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E01P02M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E02P02M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E02P02M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E02P02M02C02", "22");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E02P02M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E03P02M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E03P02M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E03P02M02C02", "23");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E03P02M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E04P02M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E04P02M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E04P02M02C02", "24");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E04P02M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E05P02M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E05P02M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E05P02M02C02", "25");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E05P02M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E01P03M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E01P03M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E01P03M02C02", "26");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E01P03M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E02P03M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E02P03M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E02P03M02C02", "27");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E02P03M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E03P03M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E03P03M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E03P03M02C02", "28");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E03P03M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E04P03M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E04P03M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E04P03M02C02", "29");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E04P03M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L02) and row (E05P03M02C02).
-     * 
-     */
-    @Test
-    public void testT02L02_E05P03M02C02() throws Exception {
-        setUp();
-        test_id = getTestId("T02L02", "E05P03M02C02", "30");
-
-        NonRootModelElement src = selectTL("T02L02");
-
-        NonRootModelElement dest = selectEPMC("E05P03M02C02");
-
-        TL_EPMC_Action(src, dest);
-        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
-        
-        GraphicalEditor editor = getActiveEditor();
-        if(editor != null && useDrawResults) {
-           validateOrGenerateResults(editor, generateResults);
-        }
-        tearDown();
-    }
-
-    /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P01M01C01).
-     * 
-     */
-    @Test
-    public void testT02L03_E01P01M01C01() throws Exception {
-        setUp();
-        test_id = getTestId("T02L03", "E01P01M01C01", "31");
-
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
@@ -756,15 +66,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testT02L03_E02P01M01C01() throws Exception {
+    public void testT12L05_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P01M01C01", "32");
+        test_id = getTestId("T12L05", "E02P01M01C01", "2");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
@@ -779,15 +89,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testT02L03_E03P01M01C01() throws Exception {
+    public void testT12L05_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P01M01C01", "33");
+        test_id = getTestId("T12L05", "E03P01M01C01", "3");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
@@ -802,15 +112,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testT02L03_E04P01M01C01() throws Exception {
+    public void testT12L05_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P01M01C01", "34");
+        test_id = getTestId("T12L05", "E04P01M01C01", "4");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
@@ -825,15 +135,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testT02L03_E05P01M01C01() throws Exception {
+    public void testT12L05_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P01M01C01", "35");
+        test_id = getTestId("T12L05", "E05P01M01C01", "5");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
@@ -848,15 +158,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testT02L03_E01P02M01C01() throws Exception {
+    public void testT12L05_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P02M01C01", "36");
+        test_id = getTestId("T12L05", "E01P02M01C01", "6");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
@@ -871,15 +181,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testT02L03_E02P02M01C01() throws Exception {
+    public void testT12L05_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P02M01C01", "37");
+        test_id = getTestId("T12L05", "E02P02M01C01", "7");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
@@ -894,15 +204,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testT02L03_E03P02M01C01() throws Exception {
+    public void testT12L05_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P02M01C01", "38");
+        test_id = getTestId("T12L05", "E03P02M01C01", "8");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
@@ -917,15 +227,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testT02L03_E04P02M01C01() throws Exception {
+    public void testT12L05_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P02M01C01", "39");
+        test_id = getTestId("T12L05", "E04P02M01C01", "9");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
@@ -940,15 +250,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testT02L03_E05P02M01C01() throws Exception {
+    public void testT12L05_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P02M01C01", "40");
+        test_id = getTestId("T12L05", "E05P02M01C01", "10");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
@@ -963,15 +273,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testT02L03_E01P03M01C01() throws Exception {
+    public void testT12L05_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P03M01C01", "41");
+        test_id = getTestId("T12L05", "E01P03M01C01", "11");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
@@ -986,15 +296,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testT02L03_E02P03M01C01() throws Exception {
+    public void testT12L05_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P03M01C01", "42");
+        test_id = getTestId("T12L05", "E02P03M01C01", "12");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
@@ -1009,15 +319,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testT02L03_E03P03M01C01() throws Exception {
+    public void testT12L05_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P03M01C01", "43");
+        test_id = getTestId("T12L05", "E03P03M01C01", "13");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
@@ -1032,15 +342,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testT02L03_E04P03M01C01() throws Exception {
+    public void testT12L05_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P03M01C01", "44");
+        test_id = getTestId("T12L05", "E04P03M01C01", "14");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
@@ -1055,15 +365,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T12L05) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testT02L03_E05P03M01C01() throws Exception {
+    public void testT12L05_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P03M01C01", "45");
+        test_id = getTestId("T12L05", "E05P03M01C01", "15");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
@@ -1078,15 +388,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testT02L03_E01P01M02C01() throws Exception {
+    public void testT12L05_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P01M02C01", "46");
+        test_id = getTestId("T12L05", "E01P01M02C01", "16");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
@@ -1101,15 +411,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testT02L03_E02P01M02C01() throws Exception {
+    public void testT12L05_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P01M02C01", "47");
+        test_id = getTestId("T12L05", "E02P01M02C01", "17");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
@@ -1124,15 +434,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testT02L03_E03P01M02C01() throws Exception {
+    public void testT12L05_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P01M02C01", "48");
+        test_id = getTestId("T12L05", "E03P01M02C01", "18");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
@@ -1147,15 +457,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testT02L03_E04P01M02C01() throws Exception {
+    public void testT12L05_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P01M02C01", "49");
+        test_id = getTestId("T12L05", "E04P01M02C01", "19");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
@@ -1170,15 +480,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testT02L03_E05P01M02C01() throws Exception {
+    public void testT12L05_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P01M02C01", "50");
+        test_id = getTestId("T12L05", "E05P01M02C01", "20");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
@@ -1193,15 +503,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testT02L03_E01P02M02C01() throws Exception {
+    public void testT12L05_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P02M02C01", "51");
+        test_id = getTestId("T12L05", "E01P02M02C01", "21");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
@@ -1216,15 +526,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testT02L03_E02P02M02C01() throws Exception {
+    public void testT12L05_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P02M02C01", "52");
+        test_id = getTestId("T12L05", "E02P02M02C01", "22");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
@@ -1239,15 +549,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testT02L03_E03P02M02C01() throws Exception {
+    public void testT12L05_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P02M02C01", "53");
+        test_id = getTestId("T12L05", "E03P02M02C01", "23");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
@@ -1262,15 +572,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testT02L03_E04P02M02C01() throws Exception {
+    public void testT12L05_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P02M02C01", "54");
+        test_id = getTestId("T12L05", "E04P02M02C01", "24");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
@@ -1285,15 +595,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testT02L03_E05P02M02C01() throws Exception {
+    public void testT12L05_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P02M02C01", "55");
+        test_id = getTestId("T12L05", "E05P02M02C01", "25");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
@@ -1308,15 +618,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testT02L03_E01P03M02C01() throws Exception {
+    public void testT12L05_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P03M02C01", "56");
+        test_id = getTestId("T12L05", "E01P03M02C01", "26");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
@@ -1331,15 +641,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testT02L03_E02P03M02C01() throws Exception {
+    public void testT12L05_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P03M02C01", "57");
+        test_id = getTestId("T12L05", "E02P03M02C01", "27");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
@@ -1354,15 +664,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testT02L03_E03P03M02C01() throws Exception {
+    public void testT12L05_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P03M02C01", "58");
+        test_id = getTestId("T12L05", "E03P03M02C01", "28");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
@@ -1377,15 +687,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testT02L03_E04P03M02C01() throws Exception {
+    public void testT12L05_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P03M02C01", "59");
+        test_id = getTestId("T12L05", "E04P03M02C01", "29");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
@@ -1400,15 +710,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T12L05) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testT02L03_E05P03M02C01() throws Exception {
+    public void testT12L05_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P03M02C01", "60");
+        test_id = getTestId("T12L05", "E05P03M02C01", "30");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
@@ -1423,15 +733,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testT02L03_E01P01M01C02() throws Exception {
+    public void testT12L05_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P01M01C02", "61");
+        test_id = getTestId("T12L05", "E01P01M01C02", "31");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
@@ -1446,15 +756,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testT02L03_E02P01M01C02() throws Exception {
+    public void testT12L05_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P01M01C02", "62");
+        test_id = getTestId("T12L05", "E02P01M01C02", "32");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
@@ -1469,15 +779,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testT02L03_E03P01M01C02() throws Exception {
+    public void testT12L05_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P01M01C02", "63");
+        test_id = getTestId("T12L05", "E03P01M01C02", "33");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
@@ -1492,15 +802,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testT02L03_E04P01M01C02() throws Exception {
+    public void testT12L05_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P01M01C02", "64");
+        test_id = getTestId("T12L05", "E04P01M01C02", "34");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
@@ -1515,15 +825,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testT02L03_E05P01M01C02() throws Exception {
+    public void testT12L05_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P01M01C02", "65");
+        test_id = getTestId("T12L05", "E05P01M01C02", "35");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
@@ -1538,15 +848,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testT02L03_E01P02M01C02() throws Exception {
+    public void testT12L05_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P02M01C02", "66");
+        test_id = getTestId("T12L05", "E01P02M01C02", "36");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
@@ -1561,15 +871,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testT02L03_E02P02M01C02() throws Exception {
+    public void testT12L05_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P02M01C02", "67");
+        test_id = getTestId("T12L05", "E02P02M01C02", "37");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
@@ -1584,15 +894,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testT02L03_E03P02M01C02() throws Exception {
+    public void testT12L05_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P02M01C02", "68");
+        test_id = getTestId("T12L05", "E03P02M01C02", "38");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
@@ -1607,15 +917,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testT02L03_E04P02M01C02() throws Exception {
+    public void testT12L05_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P02M01C02", "69");
+        test_id = getTestId("T12L05", "E04P02M01C02", "39");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
@@ -1630,15 +940,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testT02L03_E05P02M01C02() throws Exception {
+    public void testT12L05_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P02M01C02", "70");
+        test_id = getTestId("T12L05", "E05P02M01C02", "40");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
 
@@ -1653,15 +963,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P03M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E01P03M01C02).
      * 
      */
     @Test
-    public void testT02L03_E01P03M01C02() throws Exception {
+    public void testT12L05_E01P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P03M01C02", "71");
+        test_id = getTestId("T12L05", "E01P03M01C02", "41");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C02");
 
@@ -1676,15 +986,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P03M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E02P03M01C02).
      * 
      */
     @Test
-    public void testT02L03_E02P03M01C02() throws Exception {
+    public void testT12L05_E02P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P03M01C02", "72");
+        test_id = getTestId("T12L05", "E02P03M01C02", "42");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C02");
 
@@ -1699,15 +1009,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P03M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E03P03M01C02).
      * 
      */
     @Test
-    public void testT02L03_E03P03M01C02() throws Exception {
+    public void testT12L05_E03P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P03M01C02", "73");
+        test_id = getTestId("T12L05", "E03P03M01C02", "43");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C02");
 
@@ -1722,15 +1032,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P03M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E04P03M01C02).
      * 
      */
     @Test
-    public void testT02L03_E04P03M01C02() throws Exception {
+    public void testT12L05_E04P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P03M01C02", "74");
+        test_id = getTestId("T12L05", "E04P03M01C02", "44");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C02");
 
@@ -1745,15 +1055,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P03M01C02).
+     * Perform the test for the given matrix column (T12L05) and row (E05P03M01C02).
      * 
      */
     @Test
-    public void testT02L03_E05P03M01C02() throws Exception {
+    public void testT12L05_E05P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P03M01C02", "75");
+        test_id = getTestId("T12L05", "E05P03M01C02", "45");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C02");
 
@@ -1768,15 +1078,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P01M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E01P01M02C02).
      * 
      */
     @Test
-    public void testT02L03_E01P01M02C02() throws Exception {
+    public void testT12L05_E01P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P01M02C02", "76");
+        test_id = getTestId("T12L05", "E01P01M02C02", "46");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C02");
 
@@ -1791,15 +1101,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P01M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E02P01M02C02).
      * 
      */
     @Test
-    public void testT02L03_E02P01M02C02() throws Exception {
+    public void testT12L05_E02P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P01M02C02", "77");
+        test_id = getTestId("T12L05", "E02P01M02C02", "47");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C02");
 
@@ -1814,15 +1124,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P01M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E03P01M02C02).
      * 
      */
     @Test
-    public void testT02L03_E03P01M02C02() throws Exception {
+    public void testT12L05_E03P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P01M02C02", "78");
+        test_id = getTestId("T12L05", "E03P01M02C02", "48");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C02");
 
@@ -1837,15 +1147,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P01M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E04P01M02C02).
      * 
      */
     @Test
-    public void testT02L03_E04P01M02C02() throws Exception {
+    public void testT12L05_E04P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P01M02C02", "79");
+        test_id = getTestId("T12L05", "E04P01M02C02", "49");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C02");
 
@@ -1860,15 +1170,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P01M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E05P01M02C02).
      * 
      */
     @Test
-    public void testT02L03_E05P01M02C02() throws Exception {
+    public void testT12L05_E05P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P01M02C02", "80");
+        test_id = getTestId("T12L05", "E05P01M02C02", "50");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C02");
 
@@ -1883,15 +1193,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P02M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E01P02M02C02).
      * 
      */
     @Test
-    public void testT02L03_E01P02M02C02() throws Exception {
+    public void testT12L05_E01P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P02M02C02", "81");
+        test_id = getTestId("T12L05", "E01P02M02C02", "51");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C02");
 
@@ -1906,15 +1216,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P02M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E02P02M02C02).
      * 
      */
     @Test
-    public void testT02L03_E02P02M02C02() throws Exception {
+    public void testT12L05_E02P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P02M02C02", "82");
+        test_id = getTestId("T12L05", "E02P02M02C02", "52");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C02");
 
@@ -1929,15 +1239,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P02M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E03P02M02C02).
      * 
      */
     @Test
-    public void testT02L03_E03P02M02C02() throws Exception {
+    public void testT12L05_E03P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P02M02C02", "83");
+        test_id = getTestId("T12L05", "E03P02M02C02", "53");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C02");
 
@@ -1952,15 +1262,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P02M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E04P02M02C02).
      * 
      */
     @Test
-    public void testT02L03_E04P02M02C02() throws Exception {
+    public void testT12L05_E04P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P02M02C02", "84");
+        test_id = getTestId("T12L05", "E04P02M02C02", "54");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C02");
 
@@ -1975,15 +1285,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P02M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E05P02M02C02).
      * 
      */
     @Test
-    public void testT02L03_E05P02M02C02() throws Exception {
+    public void testT12L05_E05P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P02M02C02", "85");
+        test_id = getTestId("T12L05", "E05P02M02C02", "55");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C02");
 
@@ -1998,15 +1308,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E01P03M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E01P03M02C02).
      * 
      */
     @Test
-    public void testT02L03_E01P03M02C02() throws Exception {
+    public void testT12L05_E01P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E01P03M02C02", "86");
+        test_id = getTestId("T12L05", "E01P03M02C02", "56");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C02");
 
@@ -2021,15 +1331,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E02P03M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E02P03M02C02).
      * 
      */
     @Test
-    public void testT02L03_E02P03M02C02() throws Exception {
+    public void testT12L05_E02P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E02P03M02C02", "87");
+        test_id = getTestId("T12L05", "E02P03M02C02", "57");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C02");
 
@@ -2044,15 +1354,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E03P03M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E03P03M02C02).
      * 
      */
     @Test
-    public void testT02L03_E03P03M02C02() throws Exception {
+    public void testT12L05_E03P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E03P03M02C02", "88");
+        test_id = getTestId("T12L05", "E03P03M02C02", "58");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C02");
 
@@ -2067,15 +1377,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E04P03M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E04P03M02C02).
      * 
      */
     @Test
-    public void testT02L03_E04P03M02C02() throws Exception {
+    public void testT12L05_E04P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E04P03M02C02", "89");
+        test_id = getTestId("T12L05", "E04P03M02C02", "59");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C02");
 
@@ -2090,15 +1400,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L03) and row (E05P03M02C02).
+     * Perform the test for the given matrix column (T12L05) and row (E05P03M02C02).
      * 
      */
     @Test
-    public void testT02L03_E05P03M02C02() throws Exception {
+    public void testT12L05_E05P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L03", "E05P03M02C02", "90");
+        test_id = getTestId("T12L05", "E05P03M02C02", "60");
 
-        NonRootModelElement src = selectTL("T02L03");
+        NonRootModelElement src = selectTL("T12L05");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C02");
 
@@ -2113,15 +1423,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P01M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testT02L04_E01P01M01C01() throws Exception {
+    public void testT12L06_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P01M01C01", "91");
+        test_id = getTestId("T12L06", "E01P01M01C01", "61");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
@@ -2136,15 +1446,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testT02L04_E02P01M01C01() throws Exception {
+    public void testT12L06_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P01M01C01", "92");
+        test_id = getTestId("T12L06", "E02P01M01C01", "62");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
@@ -2159,15 +1469,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testT02L04_E03P01M01C01() throws Exception {
+    public void testT12L06_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P01M01C01", "93");
+        test_id = getTestId("T12L06", "E03P01M01C01", "63");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
@@ -2182,15 +1492,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testT02L04_E04P01M01C01() throws Exception {
+    public void testT12L06_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P01M01C01", "94");
+        test_id = getTestId("T12L06", "E04P01M01C01", "64");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
@@ -2205,15 +1515,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testT02L04_E05P01M01C01() throws Exception {
+    public void testT12L06_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P01M01C01", "95");
+        test_id = getTestId("T12L06", "E05P01M01C01", "65");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
@@ -2228,15 +1538,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testT02L04_E01P02M01C01() throws Exception {
+    public void testT12L06_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P02M01C01", "96");
+        test_id = getTestId("T12L06", "E01P02M01C01", "66");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
@@ -2251,15 +1561,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testT02L04_E02P02M01C01() throws Exception {
+    public void testT12L06_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P02M01C01", "97");
+        test_id = getTestId("T12L06", "E02P02M01C01", "67");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
@@ -2274,15 +1584,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testT02L04_E03P02M01C01() throws Exception {
+    public void testT12L06_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P02M01C01", "98");
+        test_id = getTestId("T12L06", "E03P02M01C01", "68");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
@@ -2297,15 +1607,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testT02L04_E04P02M01C01() throws Exception {
+    public void testT12L06_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P02M01C01", "99");
+        test_id = getTestId("T12L06", "E04P02M01C01", "69");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
@@ -2320,15 +1630,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testT02L04_E05P02M01C01() throws Exception {
+    public void testT12L06_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P02M01C01", "100");
+        test_id = getTestId("T12L06", "E05P02M01C01", "70");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
@@ -2343,15 +1653,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testT02L04_E01P03M01C01() throws Exception {
+    public void testT12L06_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P03M01C01", "101");
+        test_id = getTestId("T12L06", "E01P03M01C01", "71");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
@@ -2366,15 +1676,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testT02L04_E02P03M01C01() throws Exception {
+    public void testT12L06_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P03M01C01", "102");
+        test_id = getTestId("T12L06", "E02P03M01C01", "72");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
@@ -2389,15 +1699,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testT02L04_E03P03M01C01() throws Exception {
+    public void testT12L06_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P03M01C01", "103");
+        test_id = getTestId("T12L06", "E03P03M01C01", "73");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
@@ -2412,15 +1722,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testT02L04_E04P03M01C01() throws Exception {
+    public void testT12L06_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P03M01C01", "104");
+        test_id = getTestId("T12L06", "E04P03M01C01", "74");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
@@ -2435,15 +1745,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T12L06) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testT02L04_E05P03M01C01() throws Exception {
+    public void testT12L06_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P03M01C01", "105");
+        test_id = getTestId("T12L06", "E05P03M01C01", "75");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
@@ -2458,15 +1768,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testT02L04_E01P01M02C01() throws Exception {
+    public void testT12L06_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P01M02C01", "106");
+        test_id = getTestId("T12L06", "E01P01M02C01", "76");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
@@ -2481,15 +1791,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testT02L04_E02P01M02C01() throws Exception {
+    public void testT12L06_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P01M02C01", "107");
+        test_id = getTestId("T12L06", "E02P01M02C01", "77");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
@@ -2504,15 +1814,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testT02L04_E03P01M02C01() throws Exception {
+    public void testT12L06_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P01M02C01", "108");
+        test_id = getTestId("T12L06", "E03P01M02C01", "78");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
@@ -2527,15 +1837,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testT02L04_E04P01M02C01() throws Exception {
+    public void testT12L06_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P01M02C01", "109");
+        test_id = getTestId("T12L06", "E04P01M02C01", "79");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
@@ -2550,15 +1860,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testT02L04_E05P01M02C01() throws Exception {
+    public void testT12L06_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P01M02C01", "110");
+        test_id = getTestId("T12L06", "E05P01M02C01", "80");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
@@ -2573,15 +1883,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testT02L04_E01P02M02C01() throws Exception {
+    public void testT12L06_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P02M02C01", "111");
+        test_id = getTestId("T12L06", "E01P02M02C01", "81");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
@@ -2596,15 +1906,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testT02L04_E02P02M02C01() throws Exception {
+    public void testT12L06_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P02M02C01", "112");
+        test_id = getTestId("T12L06", "E02P02M02C01", "82");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
@@ -2619,15 +1929,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testT02L04_E03P02M02C01() throws Exception {
+    public void testT12L06_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P02M02C01", "113");
+        test_id = getTestId("T12L06", "E03P02M02C01", "83");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
@@ -2642,15 +1952,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testT02L04_E04P02M02C01() throws Exception {
+    public void testT12L06_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P02M02C01", "114");
+        test_id = getTestId("T12L06", "E04P02M02C01", "84");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
@@ -2665,15 +1975,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testT02L04_E05P02M02C01() throws Exception {
+    public void testT12L06_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P02M02C01", "115");
+        test_id = getTestId("T12L06", "E05P02M02C01", "85");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
@@ -2688,15 +1998,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testT02L04_E01P03M02C01() throws Exception {
+    public void testT12L06_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P03M02C01", "116");
+        test_id = getTestId("T12L06", "E01P03M02C01", "86");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
@@ -2711,15 +2021,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testT02L04_E02P03M02C01() throws Exception {
+    public void testT12L06_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P03M02C01", "117");
+        test_id = getTestId("T12L06", "E02P03M02C01", "87");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
@@ -2734,15 +2044,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testT02L04_E03P03M02C01() throws Exception {
+    public void testT12L06_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P03M02C01", "118");
+        test_id = getTestId("T12L06", "E03P03M02C01", "88");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
@@ -2757,15 +2067,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testT02L04_E04P03M02C01() throws Exception {
+    public void testT12L06_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P03M02C01", "119");
+        test_id = getTestId("T12L06", "E04P03M02C01", "89");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
@@ -2780,15 +2090,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T12L06) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testT02L04_E05P03M02C01() throws Exception {
+    public void testT12L06_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P03M02C01", "120");
+        test_id = getTestId("T12L06", "E05P03M02C01", "90");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
@@ -2803,15 +2113,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testT02L04_E01P01M01C02() throws Exception {
+    public void testT12L06_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P01M01C02", "121");
+        test_id = getTestId("T12L06", "E01P01M01C02", "91");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
@@ -2826,15 +2136,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testT02L04_E02P01M01C02() throws Exception {
+    public void testT12L06_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P01M01C02", "122");
+        test_id = getTestId("T12L06", "E02P01M01C02", "92");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
@@ -2849,15 +2159,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testT02L04_E03P01M01C02() throws Exception {
+    public void testT12L06_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P01M01C02", "123");
+        test_id = getTestId("T12L06", "E03P01M01C02", "93");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
@@ -2872,15 +2182,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testT02L04_E04P01M01C02() throws Exception {
+    public void testT12L06_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P01M01C02", "124");
+        test_id = getTestId("T12L06", "E04P01M01C02", "94");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
@@ -2895,15 +2205,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testT02L04_E05P01M01C02() throws Exception {
+    public void testT12L06_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P01M01C02", "125");
+        test_id = getTestId("T12L06", "E05P01M01C02", "95");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
@@ -2918,15 +2228,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testT02L04_E01P02M01C02() throws Exception {
+    public void testT12L06_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P02M01C02", "126");
+        test_id = getTestId("T12L06", "E01P02M01C02", "96");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
@@ -2941,15 +2251,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testT02L04_E02P02M01C02() throws Exception {
+    public void testT12L06_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P02M01C02", "127");
+        test_id = getTestId("T12L06", "E02P02M01C02", "97");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
@@ -2964,15 +2274,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testT02L04_E03P02M01C02() throws Exception {
+    public void testT12L06_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P02M01C02", "128");
+        test_id = getTestId("T12L06", "E03P02M01C02", "98");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
@@ -2987,15 +2297,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testT02L04_E04P02M01C02() throws Exception {
+    public void testT12L06_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P02M01C02", "129");
+        test_id = getTestId("T12L06", "E04P02M01C02", "99");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
@@ -3010,15 +2320,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testT02L04_E05P02M01C02() throws Exception {
+    public void testT12L06_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P02M01C02", "130");
+        test_id = getTestId("T12L06", "E05P02M01C02", "100");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
 
@@ -3033,15 +2343,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P03M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E01P03M01C02).
      * 
      */
     @Test
-    public void testT02L04_E01P03M01C02() throws Exception {
+    public void testT12L06_E01P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P03M01C02", "131");
+        test_id = getTestId("T12L06", "E01P03M01C02", "101");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C02");
 
@@ -3056,15 +2366,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P03M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E02P03M01C02).
      * 
      */
     @Test
-    public void testT02L04_E02P03M01C02() throws Exception {
+    public void testT12L06_E02P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P03M01C02", "132");
+        test_id = getTestId("T12L06", "E02P03M01C02", "102");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C02");
 
@@ -3079,15 +2389,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P03M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E03P03M01C02).
      * 
      */
     @Test
-    public void testT02L04_E03P03M01C02() throws Exception {
+    public void testT12L06_E03P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P03M01C02", "133");
+        test_id = getTestId("T12L06", "E03P03M01C02", "103");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C02");
 
@@ -3102,15 +2412,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P03M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E04P03M01C02).
      * 
      */
     @Test
-    public void testT02L04_E04P03M01C02() throws Exception {
+    public void testT12L06_E04P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P03M01C02", "134");
+        test_id = getTestId("T12L06", "E04P03M01C02", "104");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C02");
 
@@ -3125,15 +2435,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P03M01C02).
+     * Perform the test for the given matrix column (T12L06) and row (E05P03M01C02).
      * 
      */
     @Test
-    public void testT02L04_E05P03M01C02() throws Exception {
+    public void testT12L06_E05P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P03M01C02", "135");
+        test_id = getTestId("T12L06", "E05P03M01C02", "105");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C02");
 
@@ -3148,15 +2458,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P01M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E01P01M02C02).
      * 
      */
     @Test
-    public void testT02L04_E01P01M02C02() throws Exception {
+    public void testT12L06_E01P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P01M02C02", "136");
+        test_id = getTestId("T12L06", "E01P01M02C02", "106");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C02");
 
@@ -3171,15 +2481,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P01M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E02P01M02C02).
      * 
      */
     @Test
-    public void testT02L04_E02P01M02C02() throws Exception {
+    public void testT12L06_E02P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P01M02C02", "137");
+        test_id = getTestId("T12L06", "E02P01M02C02", "107");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C02");
 
@@ -3194,15 +2504,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P01M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E03P01M02C02).
      * 
      */
     @Test
-    public void testT02L04_E03P01M02C02() throws Exception {
+    public void testT12L06_E03P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P01M02C02", "138");
+        test_id = getTestId("T12L06", "E03P01M02C02", "108");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C02");
 
@@ -3217,15 +2527,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P01M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E04P01M02C02).
      * 
      */
     @Test
-    public void testT02L04_E04P01M02C02() throws Exception {
+    public void testT12L06_E04P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P01M02C02", "139");
+        test_id = getTestId("T12L06", "E04P01M02C02", "109");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C02");
 
@@ -3240,15 +2550,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P01M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E05P01M02C02).
      * 
      */
     @Test
-    public void testT02L04_E05P01M02C02() throws Exception {
+    public void testT12L06_E05P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P01M02C02", "140");
+        test_id = getTestId("T12L06", "E05P01M02C02", "110");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C02");
 
@@ -3263,15 +2573,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P02M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E01P02M02C02).
      * 
      */
     @Test
-    public void testT02L04_E01P02M02C02() throws Exception {
+    public void testT12L06_E01P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P02M02C02", "141");
+        test_id = getTestId("T12L06", "E01P02M02C02", "111");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C02");
 
@@ -3286,15 +2596,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P02M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E02P02M02C02).
      * 
      */
     @Test
-    public void testT02L04_E02P02M02C02() throws Exception {
+    public void testT12L06_E02P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P02M02C02", "142");
+        test_id = getTestId("T12L06", "E02P02M02C02", "112");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C02");
 
@@ -3309,15 +2619,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P02M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E03P02M02C02).
      * 
      */
     @Test
-    public void testT02L04_E03P02M02C02() throws Exception {
+    public void testT12L06_E03P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P02M02C02", "143");
+        test_id = getTestId("T12L06", "E03P02M02C02", "113");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C02");
 
@@ -3332,15 +2642,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P02M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E04P02M02C02).
      * 
      */
     @Test
-    public void testT02L04_E04P02M02C02() throws Exception {
+    public void testT12L06_E04P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P02M02C02", "144");
+        test_id = getTestId("T12L06", "E04P02M02C02", "114");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C02");
 
@@ -3355,15 +2665,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P02M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E05P02M02C02).
      * 
      */
     @Test
-    public void testT02L04_E05P02M02C02() throws Exception {
+    public void testT12L06_E05P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P02M02C02", "145");
+        test_id = getTestId("T12L06", "E05P02M02C02", "115");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C02");
 
@@ -3378,15 +2688,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E01P03M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E01P03M02C02).
      * 
      */
     @Test
-    public void testT02L04_E01P03M02C02() throws Exception {
+    public void testT12L06_E01P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E01P03M02C02", "146");
+        test_id = getTestId("T12L06", "E01P03M02C02", "116");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C02");
 
@@ -3401,15 +2711,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E02P03M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E02P03M02C02).
      * 
      */
     @Test
-    public void testT02L04_E02P03M02C02() throws Exception {
+    public void testT12L06_E02P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E02P03M02C02", "147");
+        test_id = getTestId("T12L06", "E02P03M02C02", "117");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C02");
 
@@ -3424,15 +2734,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E03P03M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E03P03M02C02).
      * 
      */
     @Test
-    public void testT02L04_E03P03M02C02() throws Exception {
+    public void testT12L06_E03P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E03P03M02C02", "148");
+        test_id = getTestId("T12L06", "E03P03M02C02", "118");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C02");
 
@@ -3447,15 +2757,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E04P03M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E04P03M02C02).
      * 
      */
     @Test
-    public void testT02L04_E04P03M02C02() throws Exception {
+    public void testT12L06_E04P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E04P03M02C02", "149");
+        test_id = getTestId("T12L06", "E04P03M02C02", "119");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C02");
 
@@ -3470,15 +2780,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L04) and row (E05P03M02C02).
+     * Perform the test for the given matrix column (T12L06) and row (E05P03M02C02).
      * 
      */
     @Test
-    public void testT02L04_E05P03M02C02() throws Exception {
+    public void testT12L06_E05P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L04", "E05P03M02C02", "150");
+        test_id = getTestId("T12L06", "E05P03M02C02", "120");
 
-        NonRootModelElement src = selectTL("T02L04");
+        NonRootModelElement src = selectTL("T12L06");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C02");
 
@@ -3493,15 +2803,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P01M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testT02L05_E01P01M01C01() throws Exception {
+    public void testT12L07_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P01M01C01", "151");
+        test_id = getTestId("T12L07", "E01P01M01C01", "121");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
@@ -3516,15 +2826,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testT02L05_E02P01M01C01() throws Exception {
+    public void testT12L07_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P01M01C01", "152");
+        test_id = getTestId("T12L07", "E02P01M01C01", "122");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
@@ -3539,15 +2849,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testT02L05_E03P01M01C01() throws Exception {
+    public void testT12L07_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P01M01C01", "153");
+        test_id = getTestId("T12L07", "E03P01M01C01", "123");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
@@ -3562,15 +2872,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testT02L05_E04P01M01C01() throws Exception {
+    public void testT12L07_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P01M01C01", "154");
+        test_id = getTestId("T12L07", "E04P01M01C01", "124");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
@@ -3585,15 +2895,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testT02L05_E05P01M01C01() throws Exception {
+    public void testT12L07_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P01M01C01", "155");
+        test_id = getTestId("T12L07", "E05P01M01C01", "125");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
@@ -3608,15 +2918,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testT02L05_E01P02M01C01() throws Exception {
+    public void testT12L07_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P02M01C01", "156");
+        test_id = getTestId("T12L07", "E01P02M01C01", "126");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
@@ -3631,15 +2941,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testT02L05_E02P02M01C01() throws Exception {
+    public void testT12L07_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P02M01C01", "157");
+        test_id = getTestId("T12L07", "E02P02M01C01", "127");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
@@ -3654,15 +2964,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testT02L05_E03P02M01C01() throws Exception {
+    public void testT12L07_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P02M01C01", "158");
+        test_id = getTestId("T12L07", "E03P02M01C01", "128");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
@@ -3677,15 +2987,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testT02L05_E04P02M01C01() throws Exception {
+    public void testT12L07_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P02M01C01", "159");
+        test_id = getTestId("T12L07", "E04P02M01C01", "129");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
@@ -3700,15 +3010,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testT02L05_E05P02M01C01() throws Exception {
+    public void testT12L07_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P02M01C01", "160");
+        test_id = getTestId("T12L07", "E05P02M01C01", "130");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
@@ -3723,15 +3033,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testT02L05_E01P03M01C01() throws Exception {
+    public void testT12L07_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P03M01C01", "161");
+        test_id = getTestId("T12L07", "E01P03M01C01", "131");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
@@ -3746,15 +3056,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testT02L05_E02P03M01C01() throws Exception {
+    public void testT12L07_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P03M01C01", "162");
+        test_id = getTestId("T12L07", "E02P03M01C01", "132");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
@@ -3769,15 +3079,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testT02L05_E03P03M01C01() throws Exception {
+    public void testT12L07_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P03M01C01", "163");
+        test_id = getTestId("T12L07", "E03P03M01C01", "133");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
@@ -3792,15 +3102,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testT02L05_E04P03M01C01() throws Exception {
+    public void testT12L07_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P03M01C01", "164");
+        test_id = getTestId("T12L07", "E04P03M01C01", "134");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
@@ -3815,15 +3125,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T12L07) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testT02L05_E05P03M01C01() throws Exception {
+    public void testT12L07_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P03M01C01", "165");
+        test_id = getTestId("T12L07", "E05P03M01C01", "135");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
@@ -3838,15 +3148,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testT02L05_E01P01M02C01() throws Exception {
+    public void testT12L07_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P01M02C01", "166");
+        test_id = getTestId("T12L07", "E01P01M02C01", "136");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
@@ -3861,15 +3171,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testT02L05_E02P01M02C01() throws Exception {
+    public void testT12L07_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P01M02C01", "167");
+        test_id = getTestId("T12L07", "E02P01M02C01", "137");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
@@ -3884,15 +3194,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testT02L05_E03P01M02C01() throws Exception {
+    public void testT12L07_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P01M02C01", "168");
+        test_id = getTestId("T12L07", "E03P01M02C01", "138");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
@@ -3907,15 +3217,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testT02L05_E04P01M02C01() throws Exception {
+    public void testT12L07_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P01M02C01", "169");
+        test_id = getTestId("T12L07", "E04P01M02C01", "139");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
@@ -3930,15 +3240,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testT02L05_E05P01M02C01() throws Exception {
+    public void testT12L07_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P01M02C01", "170");
+        test_id = getTestId("T12L07", "E05P01M02C01", "140");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
@@ -3953,15 +3263,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testT02L05_E01P02M02C01() throws Exception {
+    public void testT12L07_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P02M02C01", "171");
+        test_id = getTestId("T12L07", "E01P02M02C01", "141");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
@@ -3976,15 +3286,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testT02L05_E02P02M02C01() throws Exception {
+    public void testT12L07_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P02M02C01", "172");
+        test_id = getTestId("T12L07", "E02P02M02C01", "142");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
@@ -3999,15 +3309,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testT02L05_E03P02M02C01() throws Exception {
+    public void testT12L07_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P02M02C01", "173");
+        test_id = getTestId("T12L07", "E03P02M02C01", "143");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
@@ -4022,15 +3332,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testT02L05_E04P02M02C01() throws Exception {
+    public void testT12L07_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P02M02C01", "174");
+        test_id = getTestId("T12L07", "E04P02M02C01", "144");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
@@ -4045,15 +3355,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testT02L05_E05P02M02C01() throws Exception {
+    public void testT12L07_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P02M02C01", "175");
+        test_id = getTestId("T12L07", "E05P02M02C01", "145");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
@@ -4068,15 +3378,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testT02L05_E01P03M02C01() throws Exception {
+    public void testT12L07_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P03M02C01", "176");
+        test_id = getTestId("T12L07", "E01P03M02C01", "146");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
@@ -4091,15 +3401,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testT02L05_E02P03M02C01() throws Exception {
+    public void testT12L07_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P03M02C01", "177");
+        test_id = getTestId("T12L07", "E02P03M02C01", "147");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
@@ -4114,15 +3424,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testT02L05_E03P03M02C01() throws Exception {
+    public void testT12L07_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P03M02C01", "178");
+        test_id = getTestId("T12L07", "E03P03M02C01", "148");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
@@ -4137,15 +3447,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testT02L05_E04P03M02C01() throws Exception {
+    public void testT12L07_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P03M02C01", "179");
+        test_id = getTestId("T12L07", "E04P03M02C01", "149");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
@@ -4160,15 +3470,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T12L07) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testT02L05_E05P03M02C01() throws Exception {
+    public void testT12L07_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P03M02C01", "180");
+        test_id = getTestId("T12L07", "E05P03M02C01", "150");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
@@ -4183,15 +3493,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testT02L05_E01P01M01C02() throws Exception {
+    public void testT12L07_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P01M01C02", "181");
+        test_id = getTestId("T12L07", "E01P01M01C02", "151");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
@@ -4206,15 +3516,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testT02L05_E02P01M01C02() throws Exception {
+    public void testT12L07_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P01M01C02", "182");
+        test_id = getTestId("T12L07", "E02P01M01C02", "152");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
@@ -4229,15 +3539,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testT02L05_E03P01M01C02() throws Exception {
+    public void testT12L07_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P01M01C02", "183");
+        test_id = getTestId("T12L07", "E03P01M01C02", "153");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
@@ -4252,15 +3562,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testT02L05_E04P01M01C02() throws Exception {
+    public void testT12L07_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P01M01C02", "184");
+        test_id = getTestId("T12L07", "E04P01M01C02", "154");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
@@ -4275,15 +3585,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testT02L05_E05P01M01C02() throws Exception {
+    public void testT12L07_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P01M01C02", "185");
+        test_id = getTestId("T12L07", "E05P01M01C02", "155");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
@@ -4298,15 +3608,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testT02L05_E01P02M01C02() throws Exception {
+    public void testT12L07_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P02M01C02", "186");
+        test_id = getTestId("T12L07", "E01P02M01C02", "156");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
@@ -4321,15 +3631,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testT02L05_E02P02M01C02() throws Exception {
+    public void testT12L07_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P02M01C02", "187");
+        test_id = getTestId("T12L07", "E02P02M01C02", "157");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
@@ -4344,15 +3654,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testT02L05_E03P02M01C02() throws Exception {
+    public void testT12L07_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P02M01C02", "188");
+        test_id = getTestId("T12L07", "E03P02M01C02", "158");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
@@ -4367,15 +3677,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testT02L05_E04P02M01C02() throws Exception {
+    public void testT12L07_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P02M01C02", "189");
+        test_id = getTestId("T12L07", "E04P02M01C02", "159");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
@@ -4390,15 +3700,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testT02L05_E05P02M01C02() throws Exception {
+    public void testT12L07_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P02M01C02", "190");
+        test_id = getTestId("T12L07", "E05P02M01C02", "160");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
 
@@ -4413,15 +3723,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P03M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E01P03M01C02).
      * 
      */
     @Test
-    public void testT02L05_E01P03M01C02() throws Exception {
+    public void testT12L07_E01P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P03M01C02", "191");
+        test_id = getTestId("T12L07", "E01P03M01C02", "161");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C02");
 
@@ -4436,15 +3746,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P03M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E02P03M01C02).
      * 
      */
     @Test
-    public void testT02L05_E02P03M01C02() throws Exception {
+    public void testT12L07_E02P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P03M01C02", "192");
+        test_id = getTestId("T12L07", "E02P03M01C02", "162");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C02");
 
@@ -4459,15 +3769,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P03M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E03P03M01C02).
      * 
      */
     @Test
-    public void testT02L05_E03P03M01C02() throws Exception {
+    public void testT12L07_E03P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P03M01C02", "193");
+        test_id = getTestId("T12L07", "E03P03M01C02", "163");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C02");
 
@@ -4482,15 +3792,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P03M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E04P03M01C02).
      * 
      */
     @Test
-    public void testT02L05_E04P03M01C02() throws Exception {
+    public void testT12L07_E04P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P03M01C02", "194");
+        test_id = getTestId("T12L07", "E04P03M01C02", "164");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C02");
 
@@ -4505,15 +3815,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P03M01C02).
+     * Perform the test for the given matrix column (T12L07) and row (E05P03M01C02).
      * 
      */
     @Test
-    public void testT02L05_E05P03M01C02() throws Exception {
+    public void testT12L07_E05P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P03M01C02", "195");
+        test_id = getTestId("T12L07", "E05P03M01C02", "165");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C02");
 
@@ -4528,15 +3838,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P01M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E01P01M02C02).
      * 
      */
     @Test
-    public void testT02L05_E01P01M02C02() throws Exception {
+    public void testT12L07_E01P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P01M02C02", "196");
+        test_id = getTestId("T12L07", "E01P01M02C02", "166");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C02");
 
@@ -4551,15 +3861,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P01M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E02P01M02C02).
      * 
      */
     @Test
-    public void testT02L05_E02P01M02C02() throws Exception {
+    public void testT12L07_E02P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P01M02C02", "197");
+        test_id = getTestId("T12L07", "E02P01M02C02", "167");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C02");
 
@@ -4574,15 +3884,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P01M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E03P01M02C02).
      * 
      */
     @Test
-    public void testT02L05_E03P01M02C02() throws Exception {
+    public void testT12L07_E03P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P01M02C02", "198");
+        test_id = getTestId("T12L07", "E03P01M02C02", "168");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C02");
 
@@ -4597,15 +3907,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P01M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E04P01M02C02).
      * 
      */
     @Test
-    public void testT02L05_E04P01M02C02() throws Exception {
+    public void testT12L07_E04P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P01M02C02", "199");
+        test_id = getTestId("T12L07", "E04P01M02C02", "169");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C02");
 
@@ -4620,15 +3930,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P01M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E05P01M02C02).
      * 
      */
     @Test
-    public void testT02L05_E05P01M02C02() throws Exception {
+    public void testT12L07_E05P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P01M02C02", "200");
+        test_id = getTestId("T12L07", "E05P01M02C02", "170");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C02");
 
@@ -4643,15 +3953,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P02M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E01P02M02C02).
      * 
      */
     @Test
-    public void testT02L05_E01P02M02C02() throws Exception {
+    public void testT12L07_E01P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P02M02C02", "201");
+        test_id = getTestId("T12L07", "E01P02M02C02", "171");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C02");
 
@@ -4666,15 +3976,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P02M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E02P02M02C02).
      * 
      */
     @Test
-    public void testT02L05_E02P02M02C02() throws Exception {
+    public void testT12L07_E02P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P02M02C02", "202");
+        test_id = getTestId("T12L07", "E02P02M02C02", "172");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C02");
 
@@ -4689,15 +3999,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P02M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E03P02M02C02).
      * 
      */
     @Test
-    public void testT02L05_E03P02M02C02() throws Exception {
+    public void testT12L07_E03P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P02M02C02", "203");
+        test_id = getTestId("T12L07", "E03P02M02C02", "173");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C02");
 
@@ -4712,15 +4022,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P02M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E04P02M02C02).
      * 
      */
     @Test
-    public void testT02L05_E04P02M02C02() throws Exception {
+    public void testT12L07_E04P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P02M02C02", "204");
+        test_id = getTestId("T12L07", "E04P02M02C02", "174");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C02");
 
@@ -4735,15 +4045,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P02M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E05P02M02C02).
      * 
      */
     @Test
-    public void testT02L05_E05P02M02C02() throws Exception {
+    public void testT12L07_E05P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P02M02C02", "205");
+        test_id = getTestId("T12L07", "E05P02M02C02", "175");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C02");
 
@@ -4758,15 +4068,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E01P03M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E01P03M02C02).
      * 
      */
     @Test
-    public void testT02L05_E01P03M02C02() throws Exception {
+    public void testT12L07_E01P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E01P03M02C02", "206");
+        test_id = getTestId("T12L07", "E01P03M02C02", "176");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C02");
 
@@ -4781,15 +4091,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E02P03M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E02P03M02C02).
      * 
      */
     @Test
-    public void testT02L05_E02P03M02C02() throws Exception {
+    public void testT12L07_E02P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E02P03M02C02", "207");
+        test_id = getTestId("T12L07", "E02P03M02C02", "177");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C02");
 
@@ -4804,15 +4114,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E03P03M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E03P03M02C02).
      * 
      */
     @Test
-    public void testT02L05_E03P03M02C02() throws Exception {
+    public void testT12L07_E03P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E03P03M02C02", "208");
+        test_id = getTestId("T12L07", "E03P03M02C02", "178");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C02");
 
@@ -4827,15 +4137,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E04P03M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E04P03M02C02).
      * 
      */
     @Test
-    public void testT02L05_E04P03M02C02() throws Exception {
+    public void testT12L07_E04P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E04P03M02C02", "209");
+        test_id = getTestId("T12L07", "E04P03M02C02", "179");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C02");
 
@@ -4850,15 +4160,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L05) and row (E05P03M02C02).
+     * Perform the test for the given matrix column (T12L07) and row (E05P03M02C02).
      * 
      */
     @Test
-    public void testT02L05_E05P03M02C02() throws Exception {
+    public void testT12L07_E05P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L05", "E05P03M02C02", "210");
+        test_id = getTestId("T12L07", "E05P03M02C02", "180");
 
-        NonRootModelElement src = selectTL("T02L05");
+        NonRootModelElement src = selectTL("T12L07");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C02");
 
@@ -4873,15 +4183,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P01M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testT02L06_E01P01M01C01() throws Exception {
+    public void testT12L08_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P01M01C01", "211");
+        test_id = getTestId("T12L08", "E01P01M01C01", "181");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
@@ -4896,15 +4206,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testT02L06_E02P01M01C01() throws Exception {
+    public void testT12L08_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P01M01C01", "212");
+        test_id = getTestId("T12L08", "E02P01M01C01", "182");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
@@ -4919,15 +4229,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testT02L06_E03P01M01C01() throws Exception {
+    public void testT12L08_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P01M01C01", "213");
+        test_id = getTestId("T12L08", "E03P01M01C01", "183");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
@@ -4942,15 +4252,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testT02L06_E04P01M01C01() throws Exception {
+    public void testT12L08_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P01M01C01", "214");
+        test_id = getTestId("T12L08", "E04P01M01C01", "184");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
@@ -4965,15 +4275,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testT02L06_E05P01M01C01() throws Exception {
+    public void testT12L08_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P01M01C01", "215");
+        test_id = getTestId("T12L08", "E05P01M01C01", "185");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
@@ -4988,15 +4298,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testT02L06_E01P02M01C01() throws Exception {
+    public void testT12L08_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P02M01C01", "216");
+        test_id = getTestId("T12L08", "E01P02M01C01", "186");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
@@ -5011,15 +4321,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testT02L06_E02P02M01C01() throws Exception {
+    public void testT12L08_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P02M01C01", "217");
+        test_id = getTestId("T12L08", "E02P02M01C01", "187");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
@@ -5034,15 +4344,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testT02L06_E03P02M01C01() throws Exception {
+    public void testT12L08_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P02M01C01", "218");
+        test_id = getTestId("T12L08", "E03P02M01C01", "188");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
@@ -5057,15 +4367,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testT02L06_E04P02M01C01() throws Exception {
+    public void testT12L08_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P02M01C01", "219");
+        test_id = getTestId("T12L08", "E04P02M01C01", "189");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
@@ -5080,15 +4390,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testT02L06_E05P02M01C01() throws Exception {
+    public void testT12L08_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P02M01C01", "220");
+        test_id = getTestId("T12L08", "E05P02M01C01", "190");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
@@ -5103,15 +4413,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testT02L06_E01P03M01C01() throws Exception {
+    public void testT12L08_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P03M01C01", "221");
+        test_id = getTestId("T12L08", "E01P03M01C01", "191");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
@@ -5126,15 +4436,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testT02L06_E02P03M01C01() throws Exception {
+    public void testT12L08_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P03M01C01", "222");
+        test_id = getTestId("T12L08", "E02P03M01C01", "192");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
@@ -5149,15 +4459,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testT02L06_E03P03M01C01() throws Exception {
+    public void testT12L08_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P03M01C01", "223");
+        test_id = getTestId("T12L08", "E03P03M01C01", "193");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
@@ -5172,15 +4482,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testT02L06_E04P03M01C01() throws Exception {
+    public void testT12L08_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P03M01C01", "224");
+        test_id = getTestId("T12L08", "E04P03M01C01", "194");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
@@ -5195,15 +4505,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T12L08) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testT02L06_E05P03M01C01() throws Exception {
+    public void testT12L08_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P03M01C01", "225");
+        test_id = getTestId("T12L08", "E05P03M01C01", "195");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
@@ -5218,15 +4528,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testT02L06_E01P01M02C01() throws Exception {
+    public void testT12L08_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P01M02C01", "226");
+        test_id = getTestId("T12L08", "E01P01M02C01", "196");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
@@ -5241,15 +4551,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testT02L06_E02P01M02C01() throws Exception {
+    public void testT12L08_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P01M02C01", "227");
+        test_id = getTestId("T12L08", "E02P01M02C01", "197");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
@@ -5264,15 +4574,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testT02L06_E03P01M02C01() throws Exception {
+    public void testT12L08_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P01M02C01", "228");
+        test_id = getTestId("T12L08", "E03P01M02C01", "198");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
@@ -5287,15 +4597,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testT02L06_E04P01M02C01() throws Exception {
+    public void testT12L08_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P01M02C01", "229");
+        test_id = getTestId("T12L08", "E04P01M02C01", "199");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
@@ -5310,15 +4620,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testT02L06_E05P01M02C01() throws Exception {
+    public void testT12L08_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P01M02C01", "230");
+        test_id = getTestId("T12L08", "E05P01M02C01", "200");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
@@ -5333,15 +4643,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testT02L06_E01P02M02C01() throws Exception {
+    public void testT12L08_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P02M02C01", "231");
+        test_id = getTestId("T12L08", "E01P02M02C01", "201");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
@@ -5356,15 +4666,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testT02L06_E02P02M02C01() throws Exception {
+    public void testT12L08_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P02M02C01", "232");
+        test_id = getTestId("T12L08", "E02P02M02C01", "202");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
@@ -5379,15 +4689,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testT02L06_E03P02M02C01() throws Exception {
+    public void testT12L08_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P02M02C01", "233");
+        test_id = getTestId("T12L08", "E03P02M02C01", "203");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
@@ -5402,15 +4712,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testT02L06_E04P02M02C01() throws Exception {
+    public void testT12L08_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P02M02C01", "234");
+        test_id = getTestId("T12L08", "E04P02M02C01", "204");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
@@ -5425,15 +4735,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testT02L06_E05P02M02C01() throws Exception {
+    public void testT12L08_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P02M02C01", "235");
+        test_id = getTestId("T12L08", "E05P02M02C01", "205");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
@@ -5448,15 +4758,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testT02L06_E01P03M02C01() throws Exception {
+    public void testT12L08_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P03M02C01", "236");
+        test_id = getTestId("T12L08", "E01P03M02C01", "206");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
@@ -5471,15 +4781,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testT02L06_E02P03M02C01() throws Exception {
+    public void testT12L08_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P03M02C01", "237");
+        test_id = getTestId("T12L08", "E02P03M02C01", "207");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
@@ -5494,15 +4804,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testT02L06_E03P03M02C01() throws Exception {
+    public void testT12L08_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P03M02C01", "238");
+        test_id = getTestId("T12L08", "E03P03M02C01", "208");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
@@ -5517,15 +4827,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testT02L06_E04P03M02C01() throws Exception {
+    public void testT12L08_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P03M02C01", "239");
+        test_id = getTestId("T12L08", "E04P03M02C01", "209");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
@@ -5540,15 +4850,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T12L08) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testT02L06_E05P03M02C01() throws Exception {
+    public void testT12L08_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P03M02C01", "240");
+        test_id = getTestId("T12L08", "E05P03M02C01", "210");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
@@ -5563,15 +4873,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testT02L06_E01P01M01C02() throws Exception {
+    public void testT12L08_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P01M01C02", "241");
+        test_id = getTestId("T12L08", "E01P01M01C02", "211");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
@@ -5586,15 +4896,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testT02L06_E02P01M01C02() throws Exception {
+    public void testT12L08_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P01M01C02", "242");
+        test_id = getTestId("T12L08", "E02P01M01C02", "212");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
@@ -5609,15 +4919,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testT02L06_E03P01M01C02() throws Exception {
+    public void testT12L08_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P01M01C02", "243");
+        test_id = getTestId("T12L08", "E03P01M01C02", "213");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
@@ -5632,15 +4942,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testT02L06_E04P01M01C02() throws Exception {
+    public void testT12L08_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P01M01C02", "244");
+        test_id = getTestId("T12L08", "E04P01M01C02", "214");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
@@ -5655,15 +4965,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testT02L06_E05P01M01C02() throws Exception {
+    public void testT12L08_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P01M01C02", "245");
+        test_id = getTestId("T12L08", "E05P01M01C02", "215");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
@@ -5678,15 +4988,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testT02L06_E01P02M01C02() throws Exception {
+    public void testT12L08_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E01P02M01C02", "246");
+        test_id = getTestId("T12L08", "E01P02M01C02", "216");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
@@ -5701,15 +5011,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testT02L06_E02P02M01C02() throws Exception {
+    public void testT12L08_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E02P02M01C02", "247");
+        test_id = getTestId("T12L08", "E02P02M01C02", "217");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
@@ -5724,15 +5034,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testT02L06_E03P02M01C02() throws Exception {
+    public void testT12L08_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E03P02M01C02", "248");
+        test_id = getTestId("T12L08", "E03P02M01C02", "218");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
@@ -5747,15 +5057,15 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testT02L06_E04P02M01C02() throws Exception {
+    public void testT12L08_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E04P02M01C02", "249");
+        test_id = getTestId("T12L08", "E04P02M01C02", "219");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
@@ -5770,17 +5080,707 @@ public class OpenDeclarationTests_3 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (T02L06) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T12L08) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testT02L06_E05P02M01C02() throws Exception {
+    public void testT12L08_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("T02L06", "E05P02M01C02", "250");
+        test_id = getTestId("T12L08", "E05P02M01C02", "220");
 
-        NonRootModelElement src = selectTL("T02L06");
+        NonRootModelElement src = selectTL("T12L08");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E01P03M01C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E01P03M01C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E01P03M01C02", "221");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E01P03M01C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E02P03M01C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E02P03M01C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E02P03M01C02", "222");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E02P03M01C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E03P03M01C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E03P03M01C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E03P03M01C02", "223");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E03P03M01C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E04P03M01C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E04P03M01C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E04P03M01C02", "224");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E04P03M01C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E05P03M01C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E05P03M01C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E05P03M01C02", "225");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E05P03M01C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E01P01M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E01P01M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E01P01M02C02", "226");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E01P01M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E02P01M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E02P01M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E02P01M02C02", "227");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E02P01M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E03P01M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E03P01M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E03P01M02C02", "228");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E03P01M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E04P01M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E04P01M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E04P01M02C02", "229");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E04P01M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E05P01M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E05P01M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E05P01M02C02", "230");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E05P01M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E01P02M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E01P02M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E01P02M02C02", "231");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E01P02M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E02P02M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E02P02M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E02P02M02C02", "232");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E02P02M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E03P02M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E03P02M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E03P02M02C02", "233");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E03P02M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E04P02M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E04P02M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E04P02M02C02", "234");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E04P02M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E05P02M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E05P02M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E05P02M02C02", "235");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E05P02M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E01P03M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E01P03M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E01P03M02C02", "236");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E01P03M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E02P03M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E02P03M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E02P03M02C02", "237");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E02P03M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E03P03M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E03P03M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E03P03M02C02", "238");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E03P03M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E04P03M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E04P03M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E04P03M02C02", "239");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E04P03M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L08) and row (E05P03M02C02).
+     * 
+     */
+    @Test
+    public void testT12L08_E05P03M02C02() throws Exception {
+        setUp();
+        test_id = getTestId("T12L08", "E05P03M02C02", "240");
+
+        NonRootModelElement src = selectTL("T12L08");
+
+        NonRootModelElement dest = selectEPMC("E05P03M02C02");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E01P01M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E01P01M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E01P01M01C01", "241");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E01P01M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E02P01M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E02P01M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E02P01M01C01", "242");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E02P01M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E03P01M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E03P01M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E03P01M01C01", "243");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E03P01M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E04P01M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E04P01M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E04P01M01C01", "244");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E04P01M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E05P01M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E05P01M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E05P01M01C01", "245");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E05P01M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E01P02M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E01P02M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E01P02M01C01", "246");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E01P02M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E02P02M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E02P02M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E02P02M01C01", "247");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E02P02M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E03P02M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E03P02M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E03P02M01C01", "248");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E03P02M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E04P02M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E04P02M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E04P02M01C01", "249");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E04P02M01C01");
+
+        TL_EPMC_Action(src, dest);
+        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        
+        GraphicalEditor editor = getActiveEditor();
+        if(editor != null && useDrawResults) {
+           validateOrGenerateResults(editor, generateResults);
+        }
+        tearDown();
+    }
+
+    /**
+     * Perform the test for the given matrix column (T12L09) and row (E05P02M01C01).
+     * 
+     */
+    @Test
+    public void testT12L09_E05P02M01C01() throws Exception {
+        setUp();
+        test_id = getTestId("T12L09", "E05P02M01C01", "250");
+
+        NonRootModelElement src = selectTL("T12L09");
+
+        NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
         TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));

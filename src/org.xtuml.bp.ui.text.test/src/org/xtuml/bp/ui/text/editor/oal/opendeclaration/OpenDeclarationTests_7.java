@@ -43,20 +43,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
 
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T03L08) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testL03T10_E01P03M01C01() throws Exception {
+    public void testT03L08_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P03M01C01", "1");
+        test_id = getTestId("T03L08", "E01P03M01C01", "1");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -66,20 +66,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T03L08) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testL03T10_E02P03M01C01() throws Exception {
+    public void testT03L08_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P03M01C01", "2");
+        test_id = getTestId("T03L08", "E02P03M01C01", "2");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -89,20 +89,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T03L08) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testL03T10_E03P03M01C01() throws Exception {
+    public void testT03L08_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P03M01C01", "3");
+        test_id = getTestId("T03L08", "E03P03M01C01", "3");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -112,20 +112,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T03L08) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testL03T10_E04P03M01C01() throws Exception {
+    public void testT03L08_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P03M01C01", "4");
+        test_id = getTestId("T03L08", "E04P03M01C01", "4");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -135,20 +135,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T03L08) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testL03T10_E05P03M01C01() throws Exception {
+    public void testT03L08_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P03M01C01", "5");
+        test_id = getTestId("T03L08", "E05P03M01C01", "5");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -158,19 +158,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testL03T10_E01P01M02C01() throws Exception {
+    public void testT03L08_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P01M02C01", "6");
+        test_id = getTestId("T03L08", "E01P01M02C01", "6");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -181,19 +181,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testL03T10_E02P01M02C01() throws Exception {
+    public void testT03L08_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P01M02C01", "7");
+        test_id = getTestId("T03L08", "E02P01M02C01", "7");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -204,19 +204,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testL03T10_E03P01M02C01() throws Exception {
+    public void testT03L08_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P01M02C01", "8");
+        test_id = getTestId("T03L08", "E03P01M02C01", "8");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -227,19 +227,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testL03T10_E04P01M02C01() throws Exception {
+    public void testT03L08_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P01M02C01", "9");
+        test_id = getTestId("T03L08", "E04P01M02C01", "9");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -250,19 +250,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testL03T10_E05P01M02C01() throws Exception {
+    public void testT03L08_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P01M02C01", "10");
+        test_id = getTestId("T03L08", "E05P01M02C01", "10");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -273,19 +273,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testL03T10_E01P02M02C01() throws Exception {
+    public void testT03L08_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P02M02C01", "11");
+        test_id = getTestId("T03L08", "E01P02M02C01", "11");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -296,19 +296,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testL03T10_E02P02M02C01() throws Exception {
+    public void testT03L08_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P02M02C01", "12");
+        test_id = getTestId("T03L08", "E02P02M02C01", "12");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -319,19 +319,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testL03T10_E03P02M02C01() throws Exception {
+    public void testT03L08_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P02M02C01", "13");
+        test_id = getTestId("T03L08", "E03P02M02C01", "13");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -342,19 +342,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testL03T10_E04P02M02C01() throws Exception {
+    public void testT03L08_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P02M02C01", "14");
+        test_id = getTestId("T03L08", "E04P02M02C01", "14");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -365,19 +365,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testL03T10_E05P02M02C01() throws Exception {
+    public void testT03L08_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P02M02C01", "15");
+        test_id = getTestId("T03L08", "E05P02M02C01", "15");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -388,20 +388,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testL03T10_E01P03M02C01() throws Exception {
+    public void testT03L08_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P03M02C01", "16");
+        test_id = getTestId("T03L08", "E01P03M02C01", "16");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -411,20 +411,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testL03T10_E02P03M02C01() throws Exception {
+    public void testT03L08_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P03M02C01", "17");
+        test_id = getTestId("T03L08", "E02P03M02C01", "17");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -434,20 +434,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testL03T10_E03P03M02C01() throws Exception {
+    public void testT03L08_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P03M02C01", "18");
+        test_id = getTestId("T03L08", "E03P03M02C01", "18");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -457,20 +457,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testL03T10_E04P03M02C01() throws Exception {
+    public void testT03L08_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P03M02C01", "19");
+        test_id = getTestId("T03L08", "E04P03M02C01", "19");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -480,20 +480,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T03L08) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testL03T10_E05P03M02C01() throws Exception {
+    public void testT03L08_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P03M02C01", "20");
+        test_id = getTestId("T03L08", "E05P03M02C01", "20");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -503,19 +503,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testL03T10_E01P01M01C02() throws Exception {
+    public void testT03L08_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P01M01C02", "21");
+        test_id = getTestId("T03L08", "E01P01M01C02", "21");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -526,19 +526,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testL03T10_E02P01M01C02() throws Exception {
+    public void testT03L08_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P01M01C02", "22");
+        test_id = getTestId("T03L08", "E02P01M01C02", "22");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -549,19 +549,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testL03T10_E03P01M01C02() throws Exception {
+    public void testT03L08_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P01M01C02", "23");
+        test_id = getTestId("T03L08", "E03P01M01C02", "23");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -572,19 +572,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testL03T10_E04P01M01C02() throws Exception {
+    public void testT03L08_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P01M01C02", "24");
+        test_id = getTestId("T03L08", "E04P01M01C02", "24");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -595,19 +595,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testL03T10_E05P01M01C02() throws Exception {
+    public void testT03L08_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P01M01C02", "25");
+        test_id = getTestId("T03L08", "E05P01M01C02", "25");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -618,19 +618,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testL03T10_E01P02M01C02() throws Exception {
+    public void testT03L08_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P02M01C02", "26");
+        test_id = getTestId("T03L08", "E01P02M01C02", "26");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -641,19 +641,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testL03T10_E02P02M01C02() throws Exception {
+    public void testT03L08_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P02M01C02", "27");
+        test_id = getTestId("T03L08", "E02P02M01C02", "27");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -664,19 +664,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testL03T10_E03P02M01C02() throws Exception {
+    public void testT03L08_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P02M01C02", "28");
+        test_id = getTestId("T03L08", "E03P02M01C02", "28");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -687,19 +687,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testL03T10_E04P02M01C02() throws Exception {
+    public void testT03L08_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P02M01C02", "29");
+        test_id = getTestId("T03L08", "E04P02M01C02", "29");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -710,19 +710,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testL03T10_E05P02M01C02() throws Exception {
+    public void testT03L08_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P02M01C02", "30");
+        test_id = getTestId("T03L08", "E05P02M01C02", "30");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -733,20 +733,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P03M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E01P03M01C02).
      * 
      */
     @Test
-    public void testL03T10_E01P03M01C02() throws Exception {
+    public void testT03L08_E01P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P03M01C02", "31");
+        test_id = getTestId("T03L08", "E01P03M01C02", "31");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -756,20 +756,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P03M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E02P03M01C02).
      * 
      */
     @Test
-    public void testL03T10_E02P03M01C02() throws Exception {
+    public void testT03L08_E02P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P03M01C02", "32");
+        test_id = getTestId("T03L08", "E02P03M01C02", "32");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -779,20 +779,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P03M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E03P03M01C02).
      * 
      */
     @Test
-    public void testL03T10_E03P03M01C02() throws Exception {
+    public void testT03L08_E03P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P03M01C02", "33");
+        test_id = getTestId("T03L08", "E03P03M01C02", "33");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -802,20 +802,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P03M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E04P03M01C02).
      * 
      */
     @Test
-    public void testL03T10_E04P03M01C02() throws Exception {
+    public void testT03L08_E04P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P03M01C02", "34");
+        test_id = getTestId("T03L08", "E04P03M01C02", "34");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -825,20 +825,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P03M01C02).
+     * Perform the test for the given matrix column (T03L08) and row (E05P03M01C02).
      * 
      */
     @Test
-    public void testL03T10_E05P03M01C02() throws Exception {
+    public void testT03L08_E05P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P03M01C02", "35");
+        test_id = getTestId("T03L08", "E05P03M01C02", "35");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -848,19 +848,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P01M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E01P01M02C02).
      * 
      */
     @Test
-    public void testL03T10_E01P01M02C02() throws Exception {
+    public void testT03L08_E01P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P01M02C02", "36");
+        test_id = getTestId("T03L08", "E01P01M02C02", "36");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -871,19 +871,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P01M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E02P01M02C02).
      * 
      */
     @Test
-    public void testL03T10_E02P01M02C02() throws Exception {
+    public void testT03L08_E02P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P01M02C02", "37");
+        test_id = getTestId("T03L08", "E02P01M02C02", "37");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -894,19 +894,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P01M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E03P01M02C02).
      * 
      */
     @Test
-    public void testL03T10_E03P01M02C02() throws Exception {
+    public void testT03L08_E03P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P01M02C02", "38");
+        test_id = getTestId("T03L08", "E03P01M02C02", "38");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -917,19 +917,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P01M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E04P01M02C02).
      * 
      */
     @Test
-    public void testL03T10_E04P01M02C02() throws Exception {
+    public void testT03L08_E04P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P01M02C02", "39");
+        test_id = getTestId("T03L08", "E04P01M02C02", "39");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -940,19 +940,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P01M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E05P01M02C02).
      * 
      */
     @Test
-    public void testL03T10_E05P01M02C02() throws Exception {
+    public void testT03L08_E05P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P01M02C02", "40");
+        test_id = getTestId("T03L08", "E05P01M02C02", "40");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -963,19 +963,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P02M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E01P02M02C02).
      * 
      */
     @Test
-    public void testL03T10_E01P02M02C02() throws Exception {
+    public void testT03L08_E01P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P02M02C02", "41");
+        test_id = getTestId("T03L08", "E01P02M02C02", "41");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -986,19 +986,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P02M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E02P02M02C02).
      * 
      */
     @Test
-    public void testL03T10_E02P02M02C02() throws Exception {
+    public void testT03L08_E02P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P02M02C02", "42");
+        test_id = getTestId("T03L08", "E02P02M02C02", "42");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1009,19 +1009,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P02M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E03P02M02C02).
      * 
      */
     @Test
-    public void testL03T10_E03P02M02C02() throws Exception {
+    public void testT03L08_E03P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P02M02C02", "43");
+        test_id = getTestId("T03L08", "E03P02M02C02", "43");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1032,19 +1032,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P02M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E04P02M02C02).
      * 
      */
     @Test
-    public void testL03T10_E04P02M02C02() throws Exception {
+    public void testT03L08_E04P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P02M02C02", "44");
+        test_id = getTestId("T03L08", "E04P02M02C02", "44");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1055,19 +1055,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P02M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E05P02M02C02).
      * 
      */
     @Test
-    public void testL03T10_E05P02M02C02() throws Exception {
+    public void testT03L08_E05P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P02M02C02", "45");
+        test_id = getTestId("T03L08", "E05P02M02C02", "45");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1078,20 +1078,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E01P03M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E01P03M02C02).
      * 
      */
     @Test
-    public void testL03T10_E01P03M02C02() throws Exception {
+    public void testT03L08_E01P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E01P03M02C02", "46");
+        test_id = getTestId("T03L08", "E01P03M02C02", "46");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1101,20 +1101,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E02P03M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E02P03M02C02).
      * 
      */
     @Test
-    public void testL03T10_E02P03M02C02() throws Exception {
+    public void testT03L08_E02P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E02P03M02C02", "47");
+        test_id = getTestId("T03L08", "E02P03M02C02", "47");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1124,20 +1124,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E03P03M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E03P03M02C02).
      * 
      */
     @Test
-    public void testL03T10_E03P03M02C02() throws Exception {
+    public void testT03L08_E03P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E03P03M02C02", "48");
+        test_id = getTestId("T03L08", "E03P03M02C02", "48");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1147,20 +1147,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E04P03M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E04P03M02C02).
      * 
      */
     @Test
-    public void testL03T10_E04P03M02C02() throws Exception {
+    public void testT03L08_E04P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E04P03M02C02", "49");
+        test_id = getTestId("T03L08", "E04P03M02C02", "49");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1170,20 +1170,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L03T10) and row (E05P03M02C02).
+     * Perform the test for the given matrix column (T03L08) and row (E05P03M02C02).
      * 
      */
     @Test
-    public void testL03T10_E05P03M02C02() throws Exception {
+    public void testT03L08_E05P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L03T10", "E05P03M02C02", "50");
+        test_id = getTestId("T03L08", "E05P03M02C02", "50");
 
-        NonRootModelElement src = selectLT("L03T10");
+        NonRootModelElement src = selectTL("T03L08");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1193,19 +1193,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P01M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testL04T01_E01P01M01C01() throws Exception {
+    public void testT03L09_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P01M01C01", "51");
+        test_id = getTestId("T03L09", "E01P01M01C01", "51");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1216,19 +1216,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testL04T01_E02P01M01C01() throws Exception {
+    public void testT03L09_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P01M01C01", "52");
+        test_id = getTestId("T03L09", "E02P01M01C01", "52");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1239,19 +1239,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testL04T01_E03P01M01C01() throws Exception {
+    public void testT03L09_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P01M01C01", "53");
+        test_id = getTestId("T03L09", "E03P01M01C01", "53");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1262,19 +1262,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testL04T01_E04P01M01C01() throws Exception {
+    public void testT03L09_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P01M01C01", "54");
+        test_id = getTestId("T03L09", "E04P01M01C01", "54");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1285,19 +1285,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testL04T01_E05P01M01C01() throws Exception {
+    public void testT03L09_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P01M01C01", "55");
+        test_id = getTestId("T03L09", "E05P01M01C01", "55");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1308,19 +1308,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testL04T01_E01P02M01C01() throws Exception {
+    public void testT03L09_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P02M01C01", "56");
+        test_id = getTestId("T03L09", "E01P02M01C01", "56");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1331,19 +1331,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testL04T01_E02P02M01C01() throws Exception {
+    public void testT03L09_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P02M01C01", "57");
+        test_id = getTestId("T03L09", "E02P02M01C01", "57");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1354,19 +1354,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testL04T01_E03P02M01C01() throws Exception {
+    public void testT03L09_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P02M01C01", "58");
+        test_id = getTestId("T03L09", "E03P02M01C01", "58");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1377,19 +1377,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testL04T01_E04P02M01C01() throws Exception {
+    public void testT03L09_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P02M01C01", "59");
+        test_id = getTestId("T03L09", "E04P02M01C01", "59");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1400,19 +1400,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testL04T01_E05P02M01C01() throws Exception {
+    public void testT03L09_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P02M01C01", "60");
+        test_id = getTestId("T03L09", "E05P02M01C01", "60");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1423,20 +1423,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testL04T01_E01P03M01C01() throws Exception {
+    public void testT03L09_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P03M01C01", "61");
+        test_id = getTestId("T03L09", "E01P03M01C01", "61");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1446,20 +1446,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testL04T01_E02P03M01C01() throws Exception {
+    public void testT03L09_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P03M01C01", "62");
+        test_id = getTestId("T03L09", "E02P03M01C01", "62");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1469,20 +1469,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testL04T01_E03P03M01C01() throws Exception {
+    public void testT03L09_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P03M01C01", "63");
+        test_id = getTestId("T03L09", "E03P03M01C01", "63");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1492,20 +1492,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testL04T01_E04P03M01C01() throws Exception {
+    public void testT03L09_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P03M01C01", "64");
+        test_id = getTestId("T03L09", "E04P03M01C01", "64");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1515,20 +1515,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T03L09) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testL04T01_E05P03M01C01() throws Exception {
+    public void testT03L09_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P03M01C01", "65");
+        test_id = getTestId("T03L09", "E05P03M01C01", "65");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1538,19 +1538,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testL04T01_E01P01M02C01() throws Exception {
+    public void testT03L09_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P01M02C01", "66");
+        test_id = getTestId("T03L09", "E01P01M02C01", "66");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1561,19 +1561,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testL04T01_E02P01M02C01() throws Exception {
+    public void testT03L09_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P01M02C01", "67");
+        test_id = getTestId("T03L09", "E02P01M02C01", "67");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1584,19 +1584,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testL04T01_E03P01M02C01() throws Exception {
+    public void testT03L09_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P01M02C01", "68");
+        test_id = getTestId("T03L09", "E03P01M02C01", "68");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1607,19 +1607,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testL04T01_E04P01M02C01() throws Exception {
+    public void testT03L09_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P01M02C01", "69");
+        test_id = getTestId("T03L09", "E04P01M02C01", "69");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1630,19 +1630,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testL04T01_E05P01M02C01() throws Exception {
+    public void testT03L09_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P01M02C01", "70");
+        test_id = getTestId("T03L09", "E05P01M02C01", "70");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1653,19 +1653,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testL04T01_E01P02M02C01() throws Exception {
+    public void testT03L09_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P02M02C01", "71");
+        test_id = getTestId("T03L09", "E01P02M02C01", "71");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1676,19 +1676,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testL04T01_E02P02M02C01() throws Exception {
+    public void testT03L09_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P02M02C01", "72");
+        test_id = getTestId("T03L09", "E02P02M02C01", "72");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1699,19 +1699,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testL04T01_E03P02M02C01() throws Exception {
+    public void testT03L09_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P02M02C01", "73");
+        test_id = getTestId("T03L09", "E03P02M02C01", "73");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1722,19 +1722,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testL04T01_E04P02M02C01() throws Exception {
+    public void testT03L09_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P02M02C01", "74");
+        test_id = getTestId("T03L09", "E04P02M02C01", "74");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1745,19 +1745,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testL04T01_E05P02M02C01() throws Exception {
+    public void testT03L09_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P02M02C01", "75");
+        test_id = getTestId("T03L09", "E05P02M02C01", "75");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1768,20 +1768,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testL04T01_E01P03M02C01() throws Exception {
+    public void testT03L09_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P03M02C01", "76");
+        test_id = getTestId("T03L09", "E01P03M02C01", "76");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1791,20 +1791,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testL04T01_E02P03M02C01() throws Exception {
+    public void testT03L09_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P03M02C01", "77");
+        test_id = getTestId("T03L09", "E02P03M02C01", "77");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1814,20 +1814,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testL04T01_E03P03M02C01() throws Exception {
+    public void testT03L09_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P03M02C01", "78");
+        test_id = getTestId("T03L09", "E03P03M02C01", "78");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1837,20 +1837,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testL04T01_E04P03M02C01() throws Exception {
+    public void testT03L09_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P03M02C01", "79");
+        test_id = getTestId("T03L09", "E04P03M02C01", "79");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1860,20 +1860,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T03L09) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testL04T01_E05P03M02C01() throws Exception {
+    public void testT03L09_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P03M02C01", "80");
+        test_id = getTestId("T03L09", "E05P03M02C01", "80");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -1883,19 +1883,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testL04T01_E01P01M01C02() throws Exception {
+    public void testT03L09_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P01M01C02", "81");
+        test_id = getTestId("T03L09", "E01P01M01C02", "81");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1906,19 +1906,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testL04T01_E02P01M01C02() throws Exception {
+    public void testT03L09_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P01M01C02", "82");
+        test_id = getTestId("T03L09", "E02P01M01C02", "82");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1929,19 +1929,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testL04T01_E03P01M01C02() throws Exception {
+    public void testT03L09_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P01M01C02", "83");
+        test_id = getTestId("T03L09", "E03P01M01C02", "83");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1952,19 +1952,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testL04T01_E04P01M01C02() throws Exception {
+    public void testT03L09_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P01M01C02", "84");
+        test_id = getTestId("T03L09", "E04P01M01C02", "84");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1975,19 +1975,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testL04T01_E05P01M01C02() throws Exception {
+    public void testT03L09_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P01M01C02", "85");
+        test_id = getTestId("T03L09", "E05P01M01C02", "85");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -1998,19 +1998,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testL04T01_E01P02M01C02() throws Exception {
+    public void testT03L09_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P02M01C02", "86");
+        test_id = getTestId("T03L09", "E01P02M01C02", "86");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2021,19 +2021,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testL04T01_E02P02M01C02() throws Exception {
+    public void testT03L09_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P02M01C02", "87");
+        test_id = getTestId("T03L09", "E02P02M01C02", "87");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2044,19 +2044,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testL04T01_E03P02M01C02() throws Exception {
+    public void testT03L09_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P02M01C02", "88");
+        test_id = getTestId("T03L09", "E03P02M01C02", "88");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2067,19 +2067,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testL04T01_E04P02M01C02() throws Exception {
+    public void testT03L09_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P02M01C02", "89");
+        test_id = getTestId("T03L09", "E04P02M01C02", "89");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2090,19 +2090,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testL04T01_E05P02M01C02() throws Exception {
+    public void testT03L09_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P02M01C02", "90");
+        test_id = getTestId("T03L09", "E05P02M01C02", "90");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2113,20 +2113,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P03M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E01P03M01C02).
      * 
      */
     @Test
-    public void testL04T01_E01P03M01C02() throws Exception {
+    public void testT03L09_E01P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P03M01C02", "91");
+        test_id = getTestId("T03L09", "E01P03M01C02", "91");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2136,20 +2136,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P03M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E02P03M01C02).
      * 
      */
     @Test
-    public void testL04T01_E02P03M01C02() throws Exception {
+    public void testT03L09_E02P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P03M01C02", "92");
+        test_id = getTestId("T03L09", "E02P03M01C02", "92");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2159,20 +2159,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P03M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E03P03M01C02).
      * 
      */
     @Test
-    public void testL04T01_E03P03M01C02() throws Exception {
+    public void testT03L09_E03P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P03M01C02", "93");
+        test_id = getTestId("T03L09", "E03P03M01C02", "93");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2182,20 +2182,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P03M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E04P03M01C02).
      * 
      */
     @Test
-    public void testL04T01_E04P03M01C02() throws Exception {
+    public void testT03L09_E04P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P03M01C02", "94");
+        test_id = getTestId("T03L09", "E04P03M01C02", "94");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2205,20 +2205,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P03M01C02).
+     * Perform the test for the given matrix column (T03L09) and row (E05P03M01C02).
      * 
      */
     @Test
-    public void testL04T01_E05P03M01C02() throws Exception {
+    public void testT03L09_E05P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P03M01C02", "95");
+        test_id = getTestId("T03L09", "E05P03M01C02", "95");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2228,19 +2228,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P01M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E01P01M02C02).
      * 
      */
     @Test
-    public void testL04T01_E01P01M02C02() throws Exception {
+    public void testT03L09_E01P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P01M02C02", "96");
+        test_id = getTestId("T03L09", "E01P01M02C02", "96");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2251,19 +2251,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P01M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E02P01M02C02).
      * 
      */
     @Test
-    public void testL04T01_E02P01M02C02() throws Exception {
+    public void testT03L09_E02P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P01M02C02", "97");
+        test_id = getTestId("T03L09", "E02P01M02C02", "97");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2274,19 +2274,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P01M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E03P01M02C02).
      * 
      */
     @Test
-    public void testL04T01_E03P01M02C02() throws Exception {
+    public void testT03L09_E03P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P01M02C02", "98");
+        test_id = getTestId("T03L09", "E03P01M02C02", "98");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2297,19 +2297,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P01M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E04P01M02C02).
      * 
      */
     @Test
-    public void testL04T01_E04P01M02C02() throws Exception {
+    public void testT03L09_E04P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P01M02C02", "99");
+        test_id = getTestId("T03L09", "E04P01M02C02", "99");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2320,19 +2320,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P01M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E05P01M02C02).
      * 
      */
     @Test
-    public void testL04T01_E05P01M02C02() throws Exception {
+    public void testT03L09_E05P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P01M02C02", "100");
+        test_id = getTestId("T03L09", "E05P01M02C02", "100");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2343,19 +2343,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P02M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E01P02M02C02).
      * 
      */
     @Test
-    public void testL04T01_E01P02M02C02() throws Exception {
+    public void testT03L09_E01P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P02M02C02", "101");
+        test_id = getTestId("T03L09", "E01P02M02C02", "101");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2366,19 +2366,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P02M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E02P02M02C02).
      * 
      */
     @Test
-    public void testL04T01_E02P02M02C02() throws Exception {
+    public void testT03L09_E02P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P02M02C02", "102");
+        test_id = getTestId("T03L09", "E02P02M02C02", "102");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2389,19 +2389,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P02M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E03P02M02C02).
      * 
      */
     @Test
-    public void testL04T01_E03P02M02C02() throws Exception {
+    public void testT03L09_E03P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P02M02C02", "103");
+        test_id = getTestId("T03L09", "E03P02M02C02", "103");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2412,19 +2412,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P02M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E04P02M02C02).
      * 
      */
     @Test
-    public void testL04T01_E04P02M02C02() throws Exception {
+    public void testT03L09_E04P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P02M02C02", "104");
+        test_id = getTestId("T03L09", "E04P02M02C02", "104");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2435,19 +2435,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P02M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E05P02M02C02).
      * 
      */
     @Test
-    public void testL04T01_E05P02M02C02() throws Exception {
+    public void testT03L09_E05P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P02M02C02", "105");
+        test_id = getTestId("T03L09", "E05P02M02C02", "105");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2458,20 +2458,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E01P03M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E01P03M02C02).
      * 
      */
     @Test
-    public void testL04T01_E01P03M02C02() throws Exception {
+    public void testT03L09_E01P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E01P03M02C02", "106");
+        test_id = getTestId("T03L09", "E01P03M02C02", "106");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2481,20 +2481,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E02P03M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E02P03M02C02).
      * 
      */
     @Test
-    public void testL04T01_E02P03M02C02() throws Exception {
+    public void testT03L09_E02P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E02P03M02C02", "107");
+        test_id = getTestId("T03L09", "E02P03M02C02", "107");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2504,20 +2504,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E03P03M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E03P03M02C02).
      * 
      */
     @Test
-    public void testL04T01_E03P03M02C02() throws Exception {
+    public void testT03L09_E03P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E03P03M02C02", "108");
+        test_id = getTestId("T03L09", "E03P03M02C02", "108");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2527,20 +2527,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E04P03M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E04P03M02C02).
      * 
      */
     @Test
-    public void testL04T01_E04P03M02C02() throws Exception {
+    public void testT03L09_E04P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E04P03M02C02", "109");
+        test_id = getTestId("T03L09", "E04P03M02C02", "109");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2550,20 +2550,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T01) and row (E05P03M02C02).
+     * Perform the test for the given matrix column (T03L09) and row (E05P03M02C02).
      * 
      */
     @Test
-    public void testL04T01_E05P03M02C02() throws Exception {
+    public void testT03L09_E05P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T01", "E05P03M02C02", "110");
+        test_id = getTestId("T03L09", "E05P03M02C02", "110");
 
-        NonRootModelElement src = selectLT("L04T01");
+        NonRootModelElement src = selectTL("T03L09");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2573,19 +2573,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P01M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testL04T02_E01P01M01C01() throws Exception {
+    public void testT03L10_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P01M01C01", "111");
+        test_id = getTestId("T03L10", "E01P01M01C01", "111");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2596,19 +2596,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testL04T02_E02P01M01C01() throws Exception {
+    public void testT03L10_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P01M01C01", "112");
+        test_id = getTestId("T03L10", "E02P01M01C01", "112");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2619,19 +2619,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testL04T02_E03P01M01C01() throws Exception {
+    public void testT03L10_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P01M01C01", "113");
+        test_id = getTestId("T03L10", "E03P01M01C01", "113");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2642,19 +2642,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testL04T02_E04P01M01C01() throws Exception {
+    public void testT03L10_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P01M01C01", "114");
+        test_id = getTestId("T03L10", "E04P01M01C01", "114");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2665,19 +2665,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testL04T02_E05P01M01C01() throws Exception {
+    public void testT03L10_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P01M01C01", "115");
+        test_id = getTestId("T03L10", "E05P01M01C01", "115");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2688,19 +2688,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testL04T02_E01P02M01C01() throws Exception {
+    public void testT03L10_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P02M01C01", "116");
+        test_id = getTestId("T03L10", "E01P02M01C01", "116");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2711,19 +2711,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testL04T02_E02P02M01C01() throws Exception {
+    public void testT03L10_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P02M01C01", "117");
+        test_id = getTestId("T03L10", "E02P02M01C01", "117");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2734,19 +2734,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testL04T02_E03P02M01C01() throws Exception {
+    public void testT03L10_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P02M01C01", "118");
+        test_id = getTestId("T03L10", "E03P02M01C01", "118");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2757,19 +2757,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testL04T02_E04P02M01C01() throws Exception {
+    public void testT03L10_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P02M01C01", "119");
+        test_id = getTestId("T03L10", "E04P02M01C01", "119");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2780,19 +2780,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testL04T02_E05P02M01C01() throws Exception {
+    public void testT03L10_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P02M01C01", "120");
+        test_id = getTestId("T03L10", "E05P02M01C01", "120");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2803,20 +2803,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testL04T02_E01P03M01C01() throws Exception {
+    public void testT03L10_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P03M01C01", "121");
+        test_id = getTestId("T03L10", "E01P03M01C01", "121");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2826,20 +2826,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testL04T02_E02P03M01C01() throws Exception {
+    public void testT03L10_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P03M01C01", "122");
+        test_id = getTestId("T03L10", "E02P03M01C01", "122");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2849,20 +2849,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testL04T02_E03P03M01C01() throws Exception {
+    public void testT03L10_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P03M01C01", "123");
+        test_id = getTestId("T03L10", "E03P03M01C01", "123");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2872,20 +2872,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testL04T02_E04P03M01C01() throws Exception {
+    public void testT03L10_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P03M01C01", "124");
+        test_id = getTestId("T03L10", "E04P03M01C01", "124");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2895,20 +2895,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T03L10) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testL04T02_E05P03M01C01() throws Exception {
+    public void testT03L10_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P03M01C01", "125");
+        test_id = getTestId("T03L10", "E05P03M01C01", "125");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -2918,19 +2918,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testL04T02_E01P01M02C01() throws Exception {
+    public void testT03L10_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P01M02C01", "126");
+        test_id = getTestId("T03L10", "E01P01M02C01", "126");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2941,19 +2941,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testL04T02_E02P01M02C01() throws Exception {
+    public void testT03L10_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P01M02C01", "127");
+        test_id = getTestId("T03L10", "E02P01M02C01", "127");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2964,19 +2964,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testL04T02_E03P01M02C01() throws Exception {
+    public void testT03L10_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P01M02C01", "128");
+        test_id = getTestId("T03L10", "E03P01M02C01", "128");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -2987,19 +2987,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testL04T02_E04P01M02C01() throws Exception {
+    public void testT03L10_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P01M02C01", "129");
+        test_id = getTestId("T03L10", "E04P01M02C01", "129");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3010,19 +3010,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testL04T02_E05P01M02C01() throws Exception {
+    public void testT03L10_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P01M02C01", "130");
+        test_id = getTestId("T03L10", "E05P01M02C01", "130");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3033,19 +3033,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testL04T02_E01P02M02C01() throws Exception {
+    public void testT03L10_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P02M02C01", "131");
+        test_id = getTestId("T03L10", "E01P02M02C01", "131");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3056,19 +3056,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testL04T02_E02P02M02C01() throws Exception {
+    public void testT03L10_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P02M02C01", "132");
+        test_id = getTestId("T03L10", "E02P02M02C01", "132");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3079,19 +3079,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testL04T02_E03P02M02C01() throws Exception {
+    public void testT03L10_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P02M02C01", "133");
+        test_id = getTestId("T03L10", "E03P02M02C01", "133");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3102,19 +3102,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testL04T02_E04P02M02C01() throws Exception {
+    public void testT03L10_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P02M02C01", "134");
+        test_id = getTestId("T03L10", "E04P02M02C01", "134");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3125,19 +3125,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testL04T02_E05P02M02C01() throws Exception {
+    public void testT03L10_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P02M02C01", "135");
+        test_id = getTestId("T03L10", "E05P02M02C01", "135");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3148,20 +3148,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testL04T02_E01P03M02C01() throws Exception {
+    public void testT03L10_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P03M02C01", "136");
+        test_id = getTestId("T03L10", "E01P03M02C01", "136");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3171,20 +3171,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testL04T02_E02P03M02C01() throws Exception {
+    public void testT03L10_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P03M02C01", "137");
+        test_id = getTestId("T03L10", "E02P03M02C01", "137");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3194,20 +3194,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testL04T02_E03P03M02C01() throws Exception {
+    public void testT03L10_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P03M02C01", "138");
+        test_id = getTestId("T03L10", "E03P03M02C01", "138");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3217,20 +3217,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testL04T02_E04P03M02C01() throws Exception {
+    public void testT03L10_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P03M02C01", "139");
+        test_id = getTestId("T03L10", "E04P03M02C01", "139");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3240,20 +3240,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T03L10) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testL04T02_E05P03M02C01() throws Exception {
+    public void testT03L10_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P03M02C01", "140");
+        test_id = getTestId("T03L10", "E05P03M02C01", "140");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3263,19 +3263,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testL04T02_E01P01M01C02() throws Exception {
+    public void testT03L10_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P01M01C02", "141");
+        test_id = getTestId("T03L10", "E01P01M01C02", "141");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3286,19 +3286,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testL04T02_E02P01M01C02() throws Exception {
+    public void testT03L10_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P01M01C02", "142");
+        test_id = getTestId("T03L10", "E02P01M01C02", "142");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3309,19 +3309,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testL04T02_E03P01M01C02() throws Exception {
+    public void testT03L10_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P01M01C02", "143");
+        test_id = getTestId("T03L10", "E03P01M01C02", "143");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3332,19 +3332,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testL04T02_E04P01M01C02() throws Exception {
+    public void testT03L10_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P01M01C02", "144");
+        test_id = getTestId("T03L10", "E04P01M01C02", "144");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3355,19 +3355,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testL04T02_E05P01M01C02() throws Exception {
+    public void testT03L10_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P01M01C02", "145");
+        test_id = getTestId("T03L10", "E05P01M01C02", "145");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3378,19 +3378,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testL04T02_E01P02M01C02() throws Exception {
+    public void testT03L10_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P02M01C02", "146");
+        test_id = getTestId("T03L10", "E01P02M01C02", "146");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3401,19 +3401,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testL04T02_E02P02M01C02() throws Exception {
+    public void testT03L10_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P02M01C02", "147");
+        test_id = getTestId("T03L10", "E02P02M01C02", "147");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3424,19 +3424,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testL04T02_E03P02M01C02() throws Exception {
+    public void testT03L10_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P02M01C02", "148");
+        test_id = getTestId("T03L10", "E03P02M01C02", "148");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3447,19 +3447,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testL04T02_E04P02M01C02() throws Exception {
+    public void testT03L10_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P02M01C02", "149");
+        test_id = getTestId("T03L10", "E04P02M01C02", "149");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3470,19 +3470,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testL04T02_E05P02M01C02() throws Exception {
+    public void testT03L10_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P02M01C02", "150");
+        test_id = getTestId("T03L10", "E05P02M01C02", "150");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3493,20 +3493,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P03M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E01P03M01C02).
      * 
      */
     @Test
-    public void testL04T02_E01P03M01C02() throws Exception {
+    public void testT03L10_E01P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P03M01C02", "151");
+        test_id = getTestId("T03L10", "E01P03M01C02", "151");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3516,20 +3516,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P03M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E02P03M01C02).
      * 
      */
     @Test
-    public void testL04T02_E02P03M01C02() throws Exception {
+    public void testT03L10_E02P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P03M01C02", "152");
+        test_id = getTestId("T03L10", "E02P03M01C02", "152");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3539,20 +3539,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P03M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E03P03M01C02).
      * 
      */
     @Test
-    public void testL04T02_E03P03M01C02() throws Exception {
+    public void testT03L10_E03P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P03M01C02", "153");
+        test_id = getTestId("T03L10", "E03P03M01C02", "153");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3562,20 +3562,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P03M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E04P03M01C02).
      * 
      */
     @Test
-    public void testL04T02_E04P03M01C02() throws Exception {
+    public void testT03L10_E04P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P03M01C02", "154");
+        test_id = getTestId("T03L10", "E04P03M01C02", "154");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3585,20 +3585,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P03M01C02).
+     * Perform the test for the given matrix column (T03L10) and row (E05P03M01C02).
      * 
      */
     @Test
-    public void testL04T02_E05P03M01C02() throws Exception {
+    public void testT03L10_E05P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P03M01C02", "155");
+        test_id = getTestId("T03L10", "E05P03M01C02", "155");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3608,19 +3608,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P01M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E01P01M02C02).
      * 
      */
     @Test
-    public void testL04T02_E01P01M02C02() throws Exception {
+    public void testT03L10_E01P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P01M02C02", "156");
+        test_id = getTestId("T03L10", "E01P01M02C02", "156");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3631,19 +3631,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P01M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E02P01M02C02).
      * 
      */
     @Test
-    public void testL04T02_E02P01M02C02() throws Exception {
+    public void testT03L10_E02P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P01M02C02", "157");
+        test_id = getTestId("T03L10", "E02P01M02C02", "157");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3654,19 +3654,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P01M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E03P01M02C02).
      * 
      */
     @Test
-    public void testL04T02_E03P01M02C02() throws Exception {
+    public void testT03L10_E03P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P01M02C02", "158");
+        test_id = getTestId("T03L10", "E03P01M02C02", "158");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3677,19 +3677,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P01M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E04P01M02C02).
      * 
      */
     @Test
-    public void testL04T02_E04P01M02C02() throws Exception {
+    public void testT03L10_E04P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P01M02C02", "159");
+        test_id = getTestId("T03L10", "E04P01M02C02", "159");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3700,19 +3700,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P01M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E05P01M02C02).
      * 
      */
     @Test
-    public void testL04T02_E05P01M02C02() throws Exception {
+    public void testT03L10_E05P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P01M02C02", "160");
+        test_id = getTestId("T03L10", "E05P01M02C02", "160");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3723,19 +3723,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P02M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E01P02M02C02).
      * 
      */
     @Test
-    public void testL04T02_E01P02M02C02() throws Exception {
+    public void testT03L10_E01P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P02M02C02", "161");
+        test_id = getTestId("T03L10", "E01P02M02C02", "161");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3746,19 +3746,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P02M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E02P02M02C02).
      * 
      */
     @Test
-    public void testL04T02_E02P02M02C02() throws Exception {
+    public void testT03L10_E02P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P02M02C02", "162");
+        test_id = getTestId("T03L10", "E02P02M02C02", "162");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3769,19 +3769,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P02M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E03P02M02C02).
      * 
      */
     @Test
-    public void testL04T02_E03P02M02C02() throws Exception {
+    public void testT03L10_E03P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P02M02C02", "163");
+        test_id = getTestId("T03L10", "E03P02M02C02", "163");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3792,19 +3792,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P02M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E04P02M02C02).
      * 
      */
     @Test
-    public void testL04T02_E04P02M02C02() throws Exception {
+    public void testT03L10_E04P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P02M02C02", "164");
+        test_id = getTestId("T03L10", "E04P02M02C02", "164");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3815,19 +3815,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P02M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E05P02M02C02).
      * 
      */
     @Test
-    public void testL04T02_E05P02M02C02() throws Exception {
+    public void testT03L10_E05P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P02M02C02", "165");
+        test_id = getTestId("T03L10", "E05P02M02C02", "165");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3838,20 +3838,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E01P03M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E01P03M02C02).
      * 
      */
     @Test
-    public void testL04T02_E01P03M02C02() throws Exception {
+    public void testT03L10_E01P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E01P03M02C02", "166");
+        test_id = getTestId("T03L10", "E01P03M02C02", "166");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3861,20 +3861,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E02P03M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E02P03M02C02).
      * 
      */
     @Test
-    public void testL04T02_E02P03M02C02() throws Exception {
+    public void testT03L10_E02P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E02P03M02C02", "167");
+        test_id = getTestId("T03L10", "E02P03M02C02", "167");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3884,20 +3884,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E03P03M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E03P03M02C02).
      * 
      */
     @Test
-    public void testL04T02_E03P03M02C02() throws Exception {
+    public void testT03L10_E03P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E03P03M02C02", "168");
+        test_id = getTestId("T03L10", "E03P03M02C02", "168");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3907,20 +3907,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E04P03M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E04P03M02C02).
      * 
      */
     @Test
-    public void testL04T02_E04P03M02C02() throws Exception {
+    public void testT03L10_E04P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E04P03M02C02", "169");
+        test_id = getTestId("T03L10", "E04P03M02C02", "169");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3930,20 +3930,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T02) and row (E05P03M02C02).
+     * Perform the test for the given matrix column (T03L10) and row (E05P03M02C02).
      * 
      */
     @Test
-    public void testL04T02_E05P03M02C02() throws Exception {
+    public void testT03L10_E05P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T02", "E05P03M02C02", "170");
+        test_id = getTestId("T03L10", "E05P03M02C02", "170");
 
-        NonRootModelElement src = selectLT("L04T02");
+        NonRootModelElement src = selectTL("T03L10");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -3953,19 +3953,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P01M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testL04T03_E01P01M01C01() throws Exception {
+    public void testT03L11_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P01M01C01", "171");
+        test_id = getTestId("T03L11", "E01P01M01C01", "171");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3976,19 +3976,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testL04T03_E02P01M01C01() throws Exception {
+    public void testT03L11_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P01M01C01", "172");
+        test_id = getTestId("T03L11", "E02P01M01C01", "172");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -3999,19 +3999,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testL04T03_E03P01M01C01() throws Exception {
+    public void testT03L11_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P01M01C01", "173");
+        test_id = getTestId("T03L11", "E03P01M01C01", "173");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4022,19 +4022,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testL04T03_E04P01M01C01() throws Exception {
+    public void testT03L11_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P01M01C01", "174");
+        test_id = getTestId("T03L11", "E04P01M01C01", "174");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4045,19 +4045,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testL04T03_E05P01M01C01() throws Exception {
+    public void testT03L11_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P01M01C01", "175");
+        test_id = getTestId("T03L11", "E05P01M01C01", "175");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4068,19 +4068,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testL04T03_E01P02M01C01() throws Exception {
+    public void testT03L11_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P02M01C01", "176");
+        test_id = getTestId("T03L11", "E01P02M01C01", "176");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4091,19 +4091,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testL04T03_E02P02M01C01() throws Exception {
+    public void testT03L11_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P02M01C01", "177");
+        test_id = getTestId("T03L11", "E02P02M01C01", "177");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4114,19 +4114,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testL04T03_E03P02M01C01() throws Exception {
+    public void testT03L11_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P02M01C01", "178");
+        test_id = getTestId("T03L11", "E03P02M01C01", "178");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4137,19 +4137,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testL04T03_E04P02M01C01() throws Exception {
+    public void testT03L11_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P02M01C01", "179");
+        test_id = getTestId("T03L11", "E04P02M01C01", "179");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4160,19 +4160,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testL04T03_E05P02M01C01() throws Exception {
+    public void testT03L11_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P02M01C01", "180");
+        test_id = getTestId("T03L11", "E05P02M01C01", "180");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4183,20 +4183,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testL04T03_E01P03M01C01() throws Exception {
+    public void testT03L11_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P03M01C01", "181");
+        test_id = getTestId("T03L11", "E01P03M01C01", "181");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4206,20 +4206,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testL04T03_E02P03M01C01() throws Exception {
+    public void testT03L11_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P03M01C01", "182");
+        test_id = getTestId("T03L11", "E02P03M01C01", "182");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4229,20 +4229,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testL04T03_E03P03M01C01() throws Exception {
+    public void testT03L11_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P03M01C01", "183");
+        test_id = getTestId("T03L11", "E03P03M01C01", "183");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4252,20 +4252,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testL04T03_E04P03M01C01() throws Exception {
+    public void testT03L11_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P03M01C01", "184");
+        test_id = getTestId("T03L11", "E04P03M01C01", "184");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4275,20 +4275,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T03L11) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testL04T03_E05P03M01C01() throws Exception {
+    public void testT03L11_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P03M01C01", "185");
+        test_id = getTestId("T03L11", "E05P03M01C01", "185");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4298,19 +4298,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testL04T03_E01P01M02C01() throws Exception {
+    public void testT03L11_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P01M02C01", "186");
+        test_id = getTestId("T03L11", "E01P01M02C01", "186");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4321,19 +4321,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testL04T03_E02P01M02C01() throws Exception {
+    public void testT03L11_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P01M02C01", "187");
+        test_id = getTestId("T03L11", "E02P01M02C01", "187");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4344,19 +4344,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testL04T03_E03P01M02C01() throws Exception {
+    public void testT03L11_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P01M02C01", "188");
+        test_id = getTestId("T03L11", "E03P01M02C01", "188");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4367,19 +4367,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testL04T03_E04P01M02C01() throws Exception {
+    public void testT03L11_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P01M02C01", "189");
+        test_id = getTestId("T03L11", "E04P01M02C01", "189");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4390,19 +4390,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testL04T03_E05P01M02C01() throws Exception {
+    public void testT03L11_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P01M02C01", "190");
+        test_id = getTestId("T03L11", "E05P01M02C01", "190");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4413,19 +4413,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P02M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E01P02M02C01).
      * 
      */
     @Test
-    public void testL04T03_E01P02M02C01() throws Exception {
+    public void testT03L11_E01P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P02M02C01", "191");
+        test_id = getTestId("T03L11", "E01P02M02C01", "191");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4436,19 +4436,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P02M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E02P02M02C01).
      * 
      */
     @Test
-    public void testL04T03_E02P02M02C01() throws Exception {
+    public void testT03L11_E02P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P02M02C01", "192");
+        test_id = getTestId("T03L11", "E02P02M02C01", "192");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4459,19 +4459,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P02M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E03P02M02C01).
      * 
      */
     @Test
-    public void testL04T03_E03P02M02C01() throws Exception {
+    public void testT03L11_E03P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P02M02C01", "193");
+        test_id = getTestId("T03L11", "E03P02M02C01", "193");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4482,19 +4482,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P02M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E04P02M02C01).
      * 
      */
     @Test
-    public void testL04T03_E04P02M02C01() throws Exception {
+    public void testT03L11_E04P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P02M02C01", "194");
+        test_id = getTestId("T03L11", "E04P02M02C01", "194");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4505,19 +4505,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P02M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E05P02M02C01).
      * 
      */
     @Test
-    public void testL04T03_E05P02M02C01() throws Exception {
+    public void testT03L11_E05P02M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P02M02C01", "195");
+        test_id = getTestId("T03L11", "E05P02M02C01", "195");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4528,20 +4528,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P03M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E01P03M02C01).
      * 
      */
     @Test
-    public void testL04T03_E01P03M02C01() throws Exception {
+    public void testT03L11_E01P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P03M02C01", "196");
+        test_id = getTestId("T03L11", "E01P03M02C01", "196");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4551,20 +4551,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P03M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E02P03M02C01).
      * 
      */
     @Test
-    public void testL04T03_E02P03M02C01() throws Exception {
+    public void testT03L11_E02P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P03M02C01", "197");
+        test_id = getTestId("T03L11", "E02P03M02C01", "197");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4574,20 +4574,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P03M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E03P03M02C01).
      * 
      */
     @Test
-    public void testL04T03_E03P03M02C01() throws Exception {
+    public void testT03L11_E03P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P03M02C01", "198");
+        test_id = getTestId("T03L11", "E03P03M02C01", "198");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4597,20 +4597,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P03M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E04P03M02C01).
      * 
      */
     @Test
-    public void testL04T03_E04P03M02C01() throws Exception {
+    public void testT03L11_E04P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P03M02C01", "199");
+        test_id = getTestId("T03L11", "E04P03M02C01", "199");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4620,20 +4620,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P03M02C01).
+     * Perform the test for the given matrix column (T03L11) and row (E05P03M02C01).
      * 
      */
     @Test
-    public void testL04T03_E05P03M02C01() throws Exception {
+    public void testT03L11_E05P03M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P03M02C01", "200");
+        test_id = getTestId("T03L11", "E05P03M02C01", "200");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4643,19 +4643,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P01M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E01P01M01C02).
      * 
      */
     @Test
-    public void testL04T03_E01P01M01C02() throws Exception {
+    public void testT03L11_E01P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P01M01C02", "201");
+        test_id = getTestId("T03L11", "E01P01M01C02", "201");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4666,19 +4666,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P01M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E02P01M01C02).
      * 
      */
     @Test
-    public void testL04T03_E02P01M01C02() throws Exception {
+    public void testT03L11_E02P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P01M01C02", "202");
+        test_id = getTestId("T03L11", "E02P01M01C02", "202");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4689,19 +4689,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P01M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E03P01M01C02).
      * 
      */
     @Test
-    public void testL04T03_E03P01M01C02() throws Exception {
+    public void testT03L11_E03P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P01M01C02", "203");
+        test_id = getTestId("T03L11", "E03P01M01C02", "203");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4712,19 +4712,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P01M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E04P01M01C02).
      * 
      */
     @Test
-    public void testL04T03_E04P01M01C02() throws Exception {
+    public void testT03L11_E04P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P01M01C02", "204");
+        test_id = getTestId("T03L11", "E04P01M01C02", "204");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4735,19 +4735,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P01M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E05P01M01C02).
      * 
      */
     @Test
-    public void testL04T03_E05P01M01C02() throws Exception {
+    public void testT03L11_E05P01M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P01M01C02", "205");
+        test_id = getTestId("T03L11", "E05P01M01C02", "205");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4758,19 +4758,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P02M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E01P02M01C02).
      * 
      */
     @Test
-    public void testL04T03_E01P02M01C02() throws Exception {
+    public void testT03L11_E01P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P02M01C02", "206");
+        test_id = getTestId("T03L11", "E01P02M01C02", "206");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4781,19 +4781,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P02M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E02P02M01C02).
      * 
      */
     @Test
-    public void testL04T03_E02P02M01C02() throws Exception {
+    public void testT03L11_E02P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P02M01C02", "207");
+        test_id = getTestId("T03L11", "E02P02M01C02", "207");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4804,19 +4804,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P02M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E03P02M01C02).
      * 
      */
     @Test
-    public void testL04T03_E03P02M01C02() throws Exception {
+    public void testT03L11_E03P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P02M01C02", "208");
+        test_id = getTestId("T03L11", "E03P02M01C02", "208");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4827,19 +4827,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P02M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E04P02M01C02).
      * 
      */
     @Test
-    public void testL04T03_E04P02M01C02() throws Exception {
+    public void testT03L11_E04P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P02M01C02", "209");
+        test_id = getTestId("T03L11", "E04P02M01C02", "209");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4850,19 +4850,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P02M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E05P02M01C02).
      * 
      */
     @Test
-    public void testL04T03_E05P02M01C02() throws Exception {
+    public void testT03L11_E05P02M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P02M01C02", "210");
+        test_id = getTestId("T03L11", "E05P02M01C02", "210");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -4873,20 +4873,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P03M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E01P03M01C02).
      * 
      */
     @Test
-    public void testL04T03_E01P03M01C02() throws Exception {
+    public void testT03L11_E01P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P03M01C02", "211");
+        test_id = getTestId("T03L11", "E01P03M01C02", "211");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4896,20 +4896,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P03M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E02P03M01C02).
      * 
      */
     @Test
-    public void testL04T03_E02P03M01C02() throws Exception {
+    public void testT03L11_E02P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P03M01C02", "212");
+        test_id = getTestId("T03L11", "E02P03M01C02", "212");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4919,20 +4919,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P03M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E03P03M01C02).
      * 
      */
     @Test
-    public void testL04T03_E03P03M01C02() throws Exception {
+    public void testT03L11_E03P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P03M01C02", "213");
+        test_id = getTestId("T03L11", "E03P03M01C02", "213");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4942,20 +4942,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P03M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E04P03M01C02).
      * 
      */
     @Test
-    public void testL04T03_E04P03M01C02() throws Exception {
+    public void testT03L11_E04P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P03M01C02", "214");
+        test_id = getTestId("T03L11", "E04P03M01C02", "214");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4965,20 +4965,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P03M01C02).
+     * Perform the test for the given matrix column (T03L11) and row (E05P03M01C02).
      * 
      */
     @Test
-    public void testL04T03_E05P03M01C02() throws Exception {
+    public void testT03L11_E05P03M01C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P03M01C02", "215");
+        test_id = getTestId("T03L11", "E05P03M01C02", "215");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -4988,19 +4988,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P01M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E01P01M02C02).
      * 
      */
     @Test
-    public void testL04T03_E01P01M02C02() throws Exception {
+    public void testT03L11_E01P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P01M02C02", "216");
+        test_id = getTestId("T03L11", "E01P01M02C02", "216");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5011,19 +5011,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P01M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E02P01M02C02).
      * 
      */
     @Test
-    public void testL04T03_E02P01M02C02() throws Exception {
+    public void testT03L11_E02P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P01M02C02", "217");
+        test_id = getTestId("T03L11", "E02P01M02C02", "217");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5034,19 +5034,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P01M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E03P01M02C02).
      * 
      */
     @Test
-    public void testL04T03_E03P01M02C02() throws Exception {
+    public void testT03L11_E03P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P01M02C02", "218");
+        test_id = getTestId("T03L11", "E03P01M02C02", "218");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5057,19 +5057,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P01M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E04P01M02C02).
      * 
      */
     @Test
-    public void testL04T03_E04P01M02C02() throws Exception {
+    public void testT03L11_E04P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P01M02C02", "219");
+        test_id = getTestId("T03L11", "E04P01M02C02", "219");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5080,19 +5080,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P01M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E05P01M02C02).
      * 
      */
     @Test
-    public void testL04T03_E05P01M02C02() throws Exception {
+    public void testT03L11_E05P01M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P01M02C02", "220");
+        test_id = getTestId("T03L11", "E05P01M02C02", "220");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5103,19 +5103,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P02M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E01P02M02C02).
      * 
      */
     @Test
-    public void testL04T03_E01P02M02C02() throws Exception {
+    public void testT03L11_E01P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P02M02C02", "221");
+        test_id = getTestId("T03L11", "E01P02M02C02", "221");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5126,19 +5126,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P02M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E02P02M02C02).
      * 
      */
     @Test
-    public void testL04T03_E02P02M02C02() throws Exception {
+    public void testT03L11_E02P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P02M02C02", "222");
+        test_id = getTestId("T03L11", "E02P02M02C02", "222");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5149,19 +5149,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P02M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E03P02M02C02).
      * 
      */
     @Test
-    public void testL04T03_E03P02M02C02() throws Exception {
+    public void testT03L11_E03P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P02M02C02", "223");
+        test_id = getTestId("T03L11", "E03P02M02C02", "223");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5172,19 +5172,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P02M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E04P02M02C02).
      * 
      */
     @Test
-    public void testL04T03_E04P02M02C02() throws Exception {
+    public void testT03L11_E04P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P02M02C02", "224");
+        test_id = getTestId("T03L11", "E04P02M02C02", "224");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5195,19 +5195,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P02M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E05P02M02C02).
      * 
      */
     @Test
-    public void testL04T03_E05P02M02C02() throws Exception {
+    public void testT03L11_E05P02M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P02M02C02", "225");
+        test_id = getTestId("T03L11", "E05P02M02C02", "225");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P02M02C02");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5218,20 +5218,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E01P03M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E01P03M02C02).
      * 
      */
     @Test
-    public void testL04T03_E01P03M02C02() throws Exception {
+    public void testT03L11_E01P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E01P03M02C02", "226");
+        test_id = getTestId("T03L11", "E01P03M02C02", "226");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E01P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5241,20 +5241,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E02P03M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E02P03M02C02).
      * 
      */
     @Test
-    public void testL04T03_E02P03M02C02() throws Exception {
+    public void testT03L11_E02P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E02P03M02C02", "227");
+        test_id = getTestId("T03L11", "E02P03M02C02", "227");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E02P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5264,20 +5264,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E03P03M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E03P03M02C02).
      * 
      */
     @Test
-    public void testL04T03_E03P03M02C02() throws Exception {
+    public void testT03L11_E03P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E03P03M02C02", "228");
+        test_id = getTestId("T03L11", "E03P03M02C02", "228");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E03P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5287,20 +5287,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E04P03M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E04P03M02C02).
      * 
      */
     @Test
-    public void testL04T03_E04P03M02C02() throws Exception {
+    public void testT03L11_E04P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E04P03M02C02", "229");
+        test_id = getTestId("T03L11", "E04P03M02C02", "229");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E04P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5310,20 +5310,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T03) and row (E05P03M02C02).
+     * Perform the test for the given matrix column (T03L11) and row (E05P03M02C02).
      * 
      */
     @Test
-    public void testL04T03_E05P03M02C02() throws Exception {
+    public void testT03L11_E05P03M02C02() throws Exception {
         setUp();
-        test_id = getTestId("L04T03", "E05P03M02C02", "230");
+        test_id = getTestId("T03L11", "E05P03M02C02", "230");
 
-        NonRootModelElement src = selectLT("L04T03");
+        NonRootModelElement src = selectTL("T03L11");
 
         NonRootModelElement dest = selectEPMC("E05P03M02C02");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5333,19 +5333,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E01P01M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E01P01M01C01).
      * 
      */
     @Test
-    public void testL04T04_E01P01M01C01() throws Exception {
+    public void testT04L01_E01P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E01P01M01C01", "231");
+        test_id = getTestId("T04L01", "E01P01M01C01", "231");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E01P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5356,19 +5356,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E02P01M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E02P01M01C01).
      * 
      */
     @Test
-    public void testL04T04_E02P01M01C01() throws Exception {
+    public void testT04L01_E02P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E02P01M01C01", "232");
+        test_id = getTestId("T04L01", "E02P01M01C01", "232");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E02P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5379,19 +5379,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E03P01M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E03P01M01C01).
      * 
      */
     @Test
-    public void testL04T04_E03P01M01C01() throws Exception {
+    public void testT04L01_E03P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E03P01M01C01", "233");
+        test_id = getTestId("T04L01", "E03P01M01C01", "233");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E03P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5402,19 +5402,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E04P01M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E04P01M01C01).
      * 
      */
     @Test
-    public void testL04T04_E04P01M01C01() throws Exception {
+    public void testT04L01_E04P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E04P01M01C01", "234");
+        test_id = getTestId("T04L01", "E04P01M01C01", "234");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E04P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5425,19 +5425,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E05P01M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E05P01M01C01).
      * 
      */
     @Test
-    public void testL04T04_E05P01M01C01() throws Exception {
+    public void testT04L01_E05P01M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E05P01M01C01", "235");
+        test_id = getTestId("T04L01", "E05P01M01C01", "235");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E05P01M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5448,19 +5448,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E01P02M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E01P02M01C01).
      * 
      */
     @Test
-    public void testL04T04_E01P02M01C01() throws Exception {
+    public void testT04L01_E01P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E01P02M01C01", "236");
+        test_id = getTestId("T04L01", "E01P02M01C01", "236");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E01P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5471,19 +5471,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E02P02M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E02P02M01C01).
      * 
      */
     @Test
-    public void testL04T04_E02P02M01C01() throws Exception {
+    public void testT04L01_E02P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E02P02M01C01", "237");
+        test_id = getTestId("T04L01", "E02P02M01C01", "237");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E02P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5494,19 +5494,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E03P02M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E03P02M01C01).
      * 
      */
     @Test
-    public void testL04T04_E03P02M01C01() throws Exception {
+    public void testT04L01_E03P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E03P02M01C01", "238");
+        test_id = getTestId("T04L01", "E03P02M01C01", "238");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E03P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5517,19 +5517,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E04P02M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E04P02M01C01).
      * 
      */
     @Test
-    public void testL04T04_E04P02M01C01() throws Exception {
+    public void testT04L01_E04P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E04P02M01C01", "239");
+        test_id = getTestId("T04L01", "E04P02M01C01", "239");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E04P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5540,19 +5540,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E05P02M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E05P02M01C01).
      * 
      */
     @Test
-    public void testL04T04_E05P02M01C01() throws Exception {
+    public void testT04L01_E05P02M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E05P02M01C01", "240");
+        test_id = getTestId("T04L01", "E05P02M01C01", "240");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E05P02M01C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5563,20 +5563,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E01P03M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E01P03M01C01).
      * 
      */
     @Test
-    public void testL04T04_E01P03M01C01() throws Exception {
+    public void testT04L01_E01P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E01P03M01C01", "241");
+        test_id = getTestId("T04L01", "E01P03M01C01", "241");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E01P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5586,20 +5586,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E02P03M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E02P03M01C01).
      * 
      */
     @Test
-    public void testL04T04_E02P03M01C01() throws Exception {
+    public void testT04L01_E02P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E02P03M01C01", "242");
+        test_id = getTestId("T04L01", "E02P03M01C01", "242");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E02P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5609,20 +5609,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E03P03M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E03P03M01C01).
      * 
      */
     @Test
-    public void testL04T04_E03P03M01C01() throws Exception {
+    public void testT04L01_E03P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E03P03M01C01", "243");
+        test_id = getTestId("T04L01", "E03P03M01C01", "243");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E03P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5632,20 +5632,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E04P03M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E04P03M01C01).
      * 
      */
     @Test
-    public void testL04T04_E04P03M01C01() throws Exception {
+    public void testT04L01_E04P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E04P03M01C01", "244");
+        test_id = getTestId("T04L01", "E04P03M01C01", "244");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E04P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5655,20 +5655,20 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E05P03M01C01).
+     * Perform the test for the given matrix column (T04L01) and row (E05P03M01C01).
      * 
      */
     @Test
-    public void testL04T04_E05P03M01C01() throws Exception {
+    public void testT04L01_E05P03M01C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E05P03M01C01", "245");
+        test_id = getTestId("T04L01", "E05P03M01C01", "245");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E05P03M01C01");
 
-        LT_EPMC_Action(src, dest);
-        assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
+        TL_EPMC_Action(src, dest);
+        assertTrue("The selection made based on cursor position is not valid", checkResult_invalidSelection(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
         if(editor != null && useDrawResults) {
@@ -5678,19 +5678,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E01P01M02C01).
+     * Perform the test for the given matrix column (T04L01) and row (E01P01M02C01).
      * 
      */
     @Test
-    public void testL04T04_E01P01M02C01() throws Exception {
+    public void testT04L01_E01P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E01P01M02C01", "246");
+        test_id = getTestId("T04L01", "E01P01M02C01", "246");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E01P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5701,19 +5701,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E02P01M02C01).
+     * Perform the test for the given matrix column (T04L01) and row (E02P01M02C01).
      * 
      */
     @Test
-    public void testL04T04_E02P01M02C01() throws Exception {
+    public void testT04L01_E02P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E02P01M02C01", "247");
+        test_id = getTestId("T04L01", "E02P01M02C01", "247");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E02P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5724,19 +5724,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E03P01M02C01).
+     * Perform the test for the given matrix column (T04L01) and row (E03P01M02C01).
      * 
      */
     @Test
-    public void testL04T04_E03P01M02C01() throws Exception {
+    public void testT04L01_E03P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E03P01M02C01", "248");
+        test_id = getTestId("T04L01", "E03P01M02C01", "248");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E03P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5747,19 +5747,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E04P01M02C01).
+     * Perform the test for the given matrix column (T04L01) and row (E04P01M02C01).
      * 
      */
     @Test
-    public void testL04T04_E04P01M02C01() throws Exception {
+    public void testT04L01_E04P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E04P01M02C01", "249");
+        test_id = getTestId("T04L01", "E04P01M02C01", "249");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E04P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
@@ -5770,19 +5770,19 @@ public class OpenDeclarationTests_7 extends OpenDeclarationTests {
     }
 
     /**
-     * Perform the test for the given matrix column (L04T04) and row (E05P01M02C01).
+     * Perform the test for the given matrix column (T04L01) and row (E05P01M02C01).
      * 
      */
     @Test
-    public void testL04T04_E05P01M02C01() throws Exception {
+    public void testT04L01_E05P01M02C01() throws Exception {
         setUp();
-        test_id = getTestId("L04T04", "E05P01M02C01", "250");
+        test_id = getTestId("T04L01", "E05P01M02C01", "250");
 
-        NonRootModelElement src = selectLT("L04T04");
+        NonRootModelElement src = selectTL("T04L01");
 
         NonRootModelElement dest = selectEPMC("E05P01M02C01");
 
-        LT_EPMC_Action(src, dest);
+        TL_EPMC_Action(src, dest);
         assertTrue("Declaration was shown in model explorer, and canvas.", checkResult_elementShownInMEandCanvas(src,dest));
         
         GraphicalEditor editor = getActiveEditor();
