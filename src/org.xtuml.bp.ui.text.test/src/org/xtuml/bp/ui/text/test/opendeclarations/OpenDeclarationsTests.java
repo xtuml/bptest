@@ -9,6 +9,7 @@
 
 package org.xtuml.bp.ui.text.test.opendeclarations;
 
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
@@ -27,9 +28,12 @@ import org.xtuml.bp.core.ExternalEntity_c;
 import org.xtuml.bp.core.FunctionBody_c;
 import org.xtuml.bp.core.Function_c;
 import org.xtuml.bp.core.InstanceStateMachine_c;
+import org.xtuml.bp.core.InterfaceOperation_c;
 import org.xtuml.bp.core.InterfaceReference_c;
+import org.xtuml.bp.core.InterfaceSignal_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.MooreActionHome_c;
+import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.OperationBody_c;
 import org.xtuml.bp.core.Operation_c;
 import org.xtuml.bp.core.Package_c;
@@ -48,6 +52,7 @@ import org.xtuml.bp.core.RequiredSignalBody_c;
 import org.xtuml.bp.core.RequiredSignal_c;
 import org.xtuml.bp.core.Requirement_c;
 import org.xtuml.bp.core.StateActionBody_c;
+import org.xtuml.bp.core.StateMachineEvent_c;
 import org.xtuml.bp.core.StateMachineState_c;
 import org.xtuml.bp.core.StateMachine_c;
 import org.xtuml.bp.core.TransitionActionBody_c;
@@ -55,10 +60,13 @@ import org.xtuml.bp.core.TransitionActionHome_c;
 import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.test.common.CanvasEditorUtils;
+import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
+import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
 
 import com.sun.javafx.sg.prism.NGShape.Mode;
 
@@ -76,14 +84,15 @@ public class OpenDeclarationsTests extends CanvasTest {
 
 	protected GraphicalEditor fActiveEditor;
 	private NonRootModelElement testBody;
-	private Object testElement;
+	private NonRootModelElement testElement;
+	private NonRootModelElement activityElement;
 
 	protected GraphicalEditor getActiveEditor() {
 		return fActiveEditor;
 	}
 
 	public OpenDeclarationsTests(String subTypeClassName, String subTypeArg0) {
-		super(subTypeClassName, subTypeArg0);
+		super(null, subTypeArg0);
 	}
 
 	protected String getTestId(String src, String dest, String count) {
@@ -92,21 +101,118 @@ public class OpenDeclarationsTests extends CanvasTest {
 
 	@Override
 	protected void initialSetup() throws Exception {
-		TestingUtilities.importDevelopmentProjectIntoWorkspace("org.xtuml.bp.ui.canvas");
+		loadProject("oal_open_declarations");
+		m_sys = getSystemModel("oal_open_declarations");
+		modelRoot = Ooaofooa.getInstance(
+				"/oal_open_declarations/models/oal_open_declarations/MainPackage/MainPackage.xtuml");
+		Selection.getInstance().setSelection(new StructuredSelection(Package_c.getOneEP_PKGOnR1401(m_sys)));
+		ParseAllActivitiesAction action = new ParseAllActivitiesAction();
+		action.run(null);
 	};
 
 	@Before
 	public void setUp() throws Exception {
+		super.setUp();
+		setupTestBody();
 		testElement = getTestElement();
+		assertNotNull("Could not locate test element.", testElement);
 		// open the editor for the test element
+		CanvasTestUtils.openActivityEditor(activityElement);
+	}
 
+	private NonRootModelElement getTestElement() {
+		String name = getName();
+		String t = name.substring(4, 7);
+		switch (t) {
+		case "T01":
+			// TODO: locate a transient variable for test
+			break;
+		case "T02":
+			return ModelClass_c.ModelClassInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((ModelClass_c) candidate).getName().equals(t);
+				}
+			});
+		case "T03":
+			return Function_c.FunctionInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((Function_c) candidate).getName().equals(t);
+				}
+			});
+		case "T04":
+			return ExternalEntity_c.ExternalEntityInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((ExternalEntity_c) candidate).getName().equals(t);
+				}
+			});
+		case "T05":
+			return Port_c.PortInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((Port_c) candidate).getName().equals(t);
+				}
+			});
+		case "T06":
+			return StateMachineEvent_c.StateMachineEventInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((StateMachineEvent_c) candidate).getMning().contains(t);
+				}
+			});
+		case "T07":
+			return Operation_c.OperationInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((Operation_c) candidate).getName().equals("t");
+				}
+			});
+		case "T08":
+			return Bridge_c.BridgeInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((Bridge_c) candidate).getName().equals(t);
+				}
+			});
+		case "T09":
+			return InterfaceOperation_c.InterfaceOperationInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((InterfaceOperation_c) candidate).getName().equals(t);
+				}
+			});
+		case "T10":
+			return InterfaceSignal_c.InterfaceSignalInstance(modelRoot, new ClassQueryInterface_c() {
+				
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((InterfaceSignal_c) candidate).getName().equals(t);
+				}
+			});
+		case "T11":
+			// TODO: Locate usage of param in test OAL
+			break;
+		case "T12":
+			// TODO: Locate usage of param in test OAL
+			break;
+		default:
+			break;
+		}
+		return null;
 	}
 
 	// example of test name: testT01L01_E01P01M01C01
-	private Object getTestElement() {
-		if (testBody != null) {
-			return testBody;
-		}
+	private void setupTestBody() {
 		Package_c mainPackage = Package_c.getOneEP_PKGOnR1401(m_sys);
 		// first extract the L, and open the body for it
 		String name = getName();
@@ -132,29 +238,34 @@ public class OpenDeclarationsTests extends CanvasTest {
 			RequiredSignal_c rs = RequiredSignal_c.getOneSPR_RSOnR4502(
 					RequiredExecutableProperty_c.getManySPR_REPsOnR4500(Requirement_c.getManyC_RsOnR4009(
 							InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)))));
+			activityElement = rs;
 			testBody = Body_c.getOneACT_ACTOnR698(RequiredSignalBody_c.getOneACT_RSBOnR684(rs));
 			break;
 		case "L02":
 			RequiredOperation_c ro = RequiredOperation_c.getOneSPR_ROOnR4502(
 					RequiredExecutableProperty_c.getManySPR_REPsOnR4500(Requirement_c.getManyC_RsOnR4009(
 							InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)))));
+			activityElement = ro;
 			testBody = Body_c.getOneACT_ACTOnR698(RequiredOperationBody_c.getOneACT_ROBOnR685(ro));
 			break;
 		case "L03":
 			ProvidedSignal_c ps = ProvidedSignal_c.getOneSPR_PSOnR4503(
 					ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(Provision_c.getManyC_PsOnR4009(
 							InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)))));
+			activityElement = ps;
 			testBody = Body_c.getOneACT_ACTOnR698(ProvidedSignalBody_c.getOneACT_PSBOnR686(ps));
 			break;
 		case "L04":
 			ProvidedOperation_c po = ProvidedOperation_c.getOneSPR_POOnR4503(
 					ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(Provision_c.getManyC_PsOnR4009(
 							InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(component)))));
+			activityElement = po;
 			testBody = Body_c.getOneACT_ACTOnR698(ProvidedOperationBody_c.getOneACT_POBOnR687(po));
 			break;
 		case "L05":
 			Transition_c transition = Transition_c.getOneSM_TXNOnR505(
 					StateMachine_c.getManySM_SMsOnR517(InstanceStateMachine_c.getManySM_ISMsOnR518(modelClass)));
+			activityElement = transition;
 			testBody = Body_c.getOneACT_ACTOnR698(
 					TransitionActionBody_c.getManyACT_TABsOnR688(Action_c.getManySM_ACTsOnR514(ActionHome_c
 							.getManySM_AHsOnR513(TransitionActionHome_c.getManySM_TAHsOnR530(transition)))));
@@ -162,12 +273,14 @@ public class OpenDeclarationsTests extends CanvasTest {
 		case "L06":
 			StateMachineState_c state = StateMachineState_c.getOneSM_STATEOnR501(
 					StateMachine_c.getManySM_SMsOnR517(InstanceStateMachine_c.getManySM_ISMsOnR518(modelClass)));
+			activityElement = state;
 			testBody = Body_c.getOneACT_ACTOnR698(StateActionBody_c.getManyACT_SABsOnR691(Action_c.getManySM_ACTsOnR514(
 					ActionHome_c.getManySM_AHsOnR513(MooreActionHome_c.getManySM_MOAHsOnR511(state)))));
 			break;
 		case "L07":
 			DerivedBaseAttribute_c dba = DerivedBaseAttribute_c.getOneO_DBATTROnR107(
 					BaseAttribute_c.getManyO_BATTRsOnR106(Attribute_c.getManyO_ATTRsOnR102(modelClass)));
+			activityElement = dba;
 			testBody = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.getManyACT_DABsOnR693(dba));
 			break;
 		case "L08":
@@ -179,11 +292,13 @@ public class OpenDeclarationsTests extends CanvasTest {
 							return ((Function_c) candidate).getName().equals(l);
 						}
 					});
+			activityElement = function;
 			testBody = Body_c.getOneACT_ACTOnR698(FunctionBody_c.getManyACT_FNBsOnR695(function));
 			break;
 		case "L09":
 			Operation_c operation = Operation_c.getOneO_TFROnR115(
 					ModelClass_c.getManyO_OBJsOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(mainPackage)));
+			activityElement = operation;
 			testBody = Body_c.getOneACT_ACTOnR698(OperationBody_c.getManyACT_OPBsOnR696(operation));
 			break;
 		case "L10":
@@ -194,12 +309,12 @@ public class OpenDeclarationsTests extends CanvasTest {
 					return ((ExternalEntity_c) candidate).getName().equals(l);
 				}
 			}));
+			activityElement = bridge;
 			testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.getManyACT_BRBsOnR697(bridge));
 			break;
 		default:
 			break;
 		}
-		return testBody;
 	}
 
 	@After
