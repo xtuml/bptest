@@ -191,10 +191,16 @@ public class OalAutoComplete extends CanvasTest {
             return "select one l8_var_one related by l8_var_two->";
         } else if(element.equals("L09")) {
             return "select one l9_var from instances of ";
+        } else if(element.equals("L25")) {
+            return "select one l9_var from instances of L19 ";
         } else if(element.equals("L10")) {
             return "generate";
         } else if(element.equals("L11")) {
             return "generate L11Class1:event to";
+        } else if(element.equals("L35")) {
+            return "generate L11Class2:event2 to";
+        } else if(element.equals("L36")) {
+            return "generate L11Class_A1:event to";
         } else if(element.equals("L12")) {
             return "p12_var =";
         } else if(element.equals("L13")) {
@@ -211,6 +217,8 @@ public class OalAutoComplete extends CanvasTest {
             return "relate l18_var to l18_var_2 across R1.";
         } else if(element.equals("L19")) {
             return "relate l19_var to l19_var_other across R2 using";
+        } else if(element.equals("L37")) {
+            return "unrelate ";
         } else if(element.equals("L20")) {
             return "unrelate l20_var from";
         } else if(element.equals("L21")) {
@@ -221,10 +229,10 @@ public class OalAutoComplete extends CanvasTest {
             return "unrelate l23_var from l23_other across R2 using";
         } else if(element.equals("L24")) {
             return "self.";
-        } else if(element.equals("L25")) {
-            return "select one l9_var from instances of L19 ";
         } else if(element.equals("L26")) {
             return "card_var = cardinality ";
+        } else if(element.equals("L34")) {
+            return "ne_var = not_empty ";
         } else if(element.equals("L27")) {
             return "param.";
         } else if(element.equals("L28")) {
@@ -239,14 +247,6 @@ public class OalAutoComplete extends CanvasTest {
             return "create event instance l32_var of L11Class1 to";
         } else if(element.equals("L33")) {
             return "invocation_return = L33::";
-        } else if(element.equals("L34")) {
-            return "ne_var = not_empty ";
-        } else if(element.equals("L35")) {
-            return "generate L11Class2:event2 to";
-        } else if(element.equals("L36")) {
-            return "generate L11Class_A1:event to";
-        } else if(element.equals("L37")) {
-            return "unrelate ";
         }
         return " ";
     }
@@ -405,23 +405,23 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
         } else if (element.equals("P49")) {
             possibilities = new String[] {"comp_ref_var"};
-        } else if (element.equals("P58")) {
-            possibilities = new String[] {"sender"};
         } else if (element.equals("P50")) {
-            possibilities = new String[] {"related by"};
+            possibilities = new String[] {"sender"};
         } else if (element.equals("P51")) {
-            possibilities = new String[] {"from instances of"};
+            possibilities = new String[] {"related by"};
         } else if (element.equals("P52")) {
-            possibilities = new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
+            possibilities = new String[] {"from instances of"};
         } else if (element.equals("P53")) {
-            possibilities = new String[] {"const1", "const2"};
+            possibilities = new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
         } else if (element.equals("P54")) {
-            possibilities = new String[] {"enum1", "enum2"};
+            possibilities = new String[] {"const1", "const2"};
         } else if (element.equals("P55")) {
-            possibilities = new String[] {"L33::", "EDT2::"};
+            possibilities = new String[] {"enum1", "enum2"};
         } else if (element.equals("P56")) {
-            possibilities = new String[] {"bridge( parameter: )"};
+            possibilities = new String[] {"L33::", "EDT2::"};
         } else if (element.equals("P57")) {
+            possibilities = new String[] {"bridge( parameter: )"};
+        } else if (element.equals("P58")) {
             possibilities = new String[] {"->L8Class[R1.'simple']"};
         }
         if ( visibility.equals("V2") ) {
