@@ -245,6 +245,8 @@ public class OalAutoComplete extends CanvasTest {
             return "generate L11Class2:event2 to";
         } else if(element.equals("L36")) {
             return "generate L11Class_A1:event to";
+        } else if(element.equals("L37")) {
+            return "unrelate ";
         }
         return " ";
     }
@@ -394,7 +396,7 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P44")) {
             possibilities = new String[] {"l13_vars"};
         } else if (element.equals("P45")) {
-            possibilities = new String[] {"not"};
+            possibilities = new String[] {"not_empty"};
         } else if (element.equals("P46")) {
             possibilities = new String[] {"true"};
         } else if (element.equals("P47")) {
@@ -402,12 +404,9 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P48")) {
             possibilities = new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
         } else if (element.equals("P49")) {
-            if ( location.equals( "L06" ) && ( actionhome.equals( "AH06" ) || actionhome.equals( "AH07" ) || actionhome.equals( "AH08" ) || actionhome.equals( "AH09" ) ) ) {
-            	possibilities = new String[] {"comp_ref_var", "sender"};
-            }
-            else {
-            	possibilities = new String[] {"comp_ref_var"};
-            }
+            possibilities = new String[] {"comp_ref_var"};
+        } else if (element.equals("P58")) {
+            possibilities = new String[] {"sender"};
         } else if (element.equals("P50")) {
             possibilities = new String[] {"related by"};
         } else if (element.equals("P51")) {
@@ -424,8 +423,6 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] {"bridge( parameter: )"};
         } else if (element.equals("P57")) {
             possibilities = new String[] {"->L8Class[R1.'simple']"};
-        } else if (element.equals("P58")) {
-            possibilities = new String[] {"not_empty"};
         }
         if ( visibility.equals("V2") ) {
         	for ( int i = 0; i < possibilities.length; i++ ) {
