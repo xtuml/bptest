@@ -63,12 +63,10 @@ import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.test.common.CanvasEditorUtils;
 import org.xtuml.bp.test.common.CanvasTestUtils;
-import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
+import org.xtuml.bp.ui.text.activity.OpenDeclarationAction;
 import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
-
-import com.sun.javafx.sg.prism.NGShape.Mode;
 
 import junit.framework.TestCase;
 
@@ -125,14 +123,14 @@ public class OpenDeclarationsTests extends CanvasTest {
 		String t = name.substring(4, 7);
 		switch (t) {
 		case "T01":
-			// TODO: locate a transient variable for test
+			
 			break;
 		case "T02":
 			return ModelClass_c.ModelClassInstance(modelRoot, new ClassQueryInterface_c() {
 				
 				@Override
 				public boolean evaluate(Object candidate) {
-					return ((ModelClass_c) candidate).getName().equals(t);
+					return ((ModelClass_c) candidate).getName().equals("testClass");
 				}
 			});
 		case "T03":
@@ -347,10 +345,9 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return A model element used in the test as specified by the test matrix
 	 */
 	NonRootModelElement selectTL(String element, Object extraData) {
-		NonRootModelElement nrme = null;
-		assertTrue("An instance with degree of freedom type \"TL\" was not found.  Instance Name: " + element + ".",
-				nrme != null);
-		return nrme;
+		// not necessary as the test elements are configured during
+		// setup
+		return null;
 	}
 
 	/**
@@ -376,10 +373,9 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return A model element used in the test as specified by the test matrix
 	 */
 	NonRootModelElement selectEPMC(String element, Object extraData) {
-		NonRootModelElement nrme = null;
-		assertTrue("An instance with degree of freedom type \"EPMC\" was not found.  Instance Name: " + element + ".",
-				nrme != null);
-		return nrme;
+		// not necessary as the test elements are configured during
+		// setup
+		return null;
 	}
 
 	/**
@@ -395,6 +391,14 @@ public class OpenDeclarationsTests extends CanvasTest {
 	void TL_EPMC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
 		setupModelExplorer();
 		setupCanvas();
+		// locate cursor location
+		
+		// set the cursor location
+		
+		// execute the open declaration action
+		OpenDeclarationAction action = new OpenDeclarationAction();
+		action.setActiveEditor(null,
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
 	}
 
 	private void setupCanvas() {
