@@ -201,8 +201,11 @@ public class OpenDeclarationsTests extends CanvasTest {
 			// TODO: Locate usage of param in test OAL
 			break;
 		case "T12":
-			// TODO: Locate usage of param in test OAL
+			// TODO: Locate usage of Association number in test OAL
 			break;
+		case "T13":
+                        // TODO: Locate usage of attribute in test OAL
+                        break;
 		default:
 			break;
 		}
