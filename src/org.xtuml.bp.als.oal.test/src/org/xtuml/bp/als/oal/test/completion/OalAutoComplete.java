@@ -191,61 +191,61 @@ public class OalAutoComplete extends CanvasTest {
             return "select one l8_var_one related by l8_var_two->";
         } else if(element.equals("L09")) {
             return "select one l9_var from instances of ";
-        } else if(element.equals("L25")) {
-            return "select one l9_var from instances of L19 ";
         } else if(element.equals("L10")) {
-            return "generate";
+            return "select one l9_var from instances of L19 ";
         } else if(element.equals("L11")) {
-            return "generate L11Class1:event to";
-        } else if(element.equals("L35")) {
-            return "generate L11Class2:event2 to";
-        } else if(element.equals("L36")) {
-            return "generate L11Class_A1:event to";
+            return "generate";
         } else if(element.equals("L12")) {
-            return "p12_var =";
+            return "generate L11Class1:event to";
         } else if(element.equals("L13")) {
-            return "for each l13_var in";
+            return "generate L11Class2:event2 to";
         } else if(element.equals("L14")) {
-            return "return";
+            return "generate L11Class_A1:event to";
         } else if(element.equals("L15")) {
-            return "relate";
+            return "p12_var =";
         } else if(element.equals("L16")) {
-            return "relate l16_var to";
+            return "for each l13_var in";
         } else if(element.equals("L17")) {
-            return "relate l17_var to l17_var_2 across";
+            return "return";
         } else if(element.equals("L18")) {
-            return "relate l18_var to l18_var_2 across R1.";
+            return "relate";
         } else if(element.equals("L19")) {
-            return "relate l19_var to l19_var_other across R2 using";
-        } else if(element.equals("L37")) {
-            return "unrelate ";
+            return "relate l16_var to";
         } else if(element.equals("L20")) {
-            return "unrelate l20_var from";
+            return "relate l17_var to l17_var_2 across";
         } else if(element.equals("L21")) {
-            return "unrelate l21_var from l21_var_2 across";
+            return "relate l18_var to l18_var_2 across R1.";
         } else if(element.equals("L22")) {
-            return "unrelate l22_var from l22_var_2 across R1.";
+            return "relate l19_var to l19_var_other across R2 using";
         } else if(element.equals("L23")) {
-            return "unrelate l23_var from l23_other across R2 using";
+            return "unrelate ";
         } else if(element.equals("L24")) {
-            return "self.";
+            return "unrelate l20_var from";
+        } else if(element.equals("L25")) {
+            return "unrelate l21_var from l21_var_2 across";
         } else if(element.equals("L26")) {
-            return "card_var = cardinality ";
-        } else if(element.equals("L34")) {
-            return "ne_var = not_empty ";
+            return "unrelate l22_var from l22_var_2 across R1.";
         } else if(element.equals("L27")) {
-            return "param.";
+            return "unrelate l23_var from l23_other across R2 using";
         } else if(element.equals("L28")) {
-            return "create object instance l28_var of";
+            return "self.";
         } else if(element.equals("L29")) {
-            return "delete object instance";
+            return "card_var = cardinality ";
         } else if(element.equals("L30")) {
-            return "if(";
+            return "ne_var = not_empty ";
         } else if(element.equals("L31")) {
-            return "create event instance l31_var of";
+            return "param.";
         } else if(element.equals("L32")) {
-            return "create event instance l32_var of L11Class1 to";
+            return "create object instance l28_var of";
         } else if(element.equals("L33")) {
+            return "delete object instance";
+        } else if(element.equals("L34")) {
+            return "if(";
+        } else if(element.equals("L35")) {
+            return "create event instance l31_var of";
+        } else if(element.equals("L36")) {
+            return "create event instance l32_var of L11Class1 to";
+        } else if(element.equals("L37")) {
             return "invocation_return = L33::";
         }
         return " ";
@@ -343,7 +343,7 @@ public class OalAutoComplete extends CanvasTest {
         } else if (element.equals("P26")) {
             possibilities = new String[] {"L33::"};
         } else if (element.equals("P27")) {
-        	if ( location.equals("L09") || location.equals("L28") ) {
+        	if ( location.equals("L09") || location.equals("L32") ) {
         		possibilities = new String[] {"Class1","Class2","Class3","Class4","L11Class","L19","L19_link",
         				             "L19_other","L2Class","L8Class","L8Class_two","L33","L6Class"};
         	}
