@@ -1102,10 +1102,9 @@ public class TestControl_Generics extends TestCase {
 	public void testForNotSetVar() throws RecognitionException, TokenStreamException {
 		String x = OalParserTest_Generics.parseAction("x = 1; for each y in x end for;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
 		String lines[] = x.split("\n");//$NON-NLS-1$
-		assertEquals(2, lines.length);
-		assertEquals(":1:28-30: Variable ->x<- does not exist in scope as an object instance set variable", lines[0]); //$NON-NLS-1$
-		assertEquals("line 1:32: expecting Semicolon, found 'null'", lines[1]); //$NON-NLS-1$
-		OalParserTest_Generics.validateBlkStmtVal(1, 1, 2);
+		assertEquals(1, lines.length);
+		assertEquals(":1:22-22: Variable ->x<- does not exist in scope as an object instance set variable", lines[0]); //$NON-NLS-1$
+		OalParserTest_Generics.validateBlkStmtVal(1, 2, 2);
 	}
 	@Test
 	public void testForNoSetVar() throws RecognitionException, TokenStreamException {

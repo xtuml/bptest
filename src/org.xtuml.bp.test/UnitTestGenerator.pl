@@ -53,6 +53,7 @@ my $maxTestsPerClass = 250;
 my $createTestSuite =  0;
 my $createTestSuitePerClass =  0;
 my $passColToRow = 0;
+my $generateConditionalTests = 0;
 
 my $usage = <<USAGE;
 #===========================================================================
@@ -82,6 +83,8 @@ my $usage = <<USAGE;
 #                     java class file is created.
 #       -data      : Pass the column object as extra data to the selection of
 #                    the row object
+#       -c         : Generate tests marked as conditional. These tests are
+#                    denoted with "XC"
 # 
 # Example Usage:
 # --------------
@@ -152,6 +155,9 @@ my $description = <<DESCRIPTION;
 # 7. If a result is not possible and therefore you do not wish to 
 #    generate a test for a particular cell(s) in the matrix, an upper-case 
 #    "X" can be placed in that cell and no test will be generated for it.
+# 8. If it is desireable to conditionally disable a test, "XC" can be placed
+#    in that cell and the test will only be generated if -c is passed to the
+#    script
 #===========================================================================
 DESCRIPTION
 
@@ -182,6 +188,7 @@ sub processCommandLine
           elsif ( $k =~ /^(suite)$/ ) { $createTestSuite = 1; }
           elsif ( $k =~ /^(suitePerClass)$/ ) { $createTestSuitePerClass = 1; }
           elsif ( $k =~ /^(data)$/ ) { $passColToRow = 1; }
+          elsif ( $k =~ /^(c)$/ ) { $generateConditionalTests = 1; }
           elsif ( $k =~ /^(h)$/ ) { print("$usage$description"); exit; }
           elsif ( $k =~ /^(\?)$/ ) { print("$usage$description"); exit; }
           else { die "Unrecognized argument ($k) to ExtractMetrics.pl\n"; }
@@ -625,9 +632,9 @@ sub createGenericClassDefintion() {
         print $outputFH "        return getClass().getSimpleName() + \"_\" + test_id;\n";
         print $outputFH "    }\n";
         print $outputFH "\n";    
-        print $outputFH "    protected GraphicalEditor fActiveEditor;\n";    
+        print $outputFH "    protected IEditorPart fActiveEditor;\n";    
         print $outputFH "\n";    
-        print $outputFH "    protected GraphicalEditor getActiveEditor() {\n";
+        print $outputFH "    protected IEditorPart getActiveEditor() {\n";
         print $outputFH "        return fActiveEditor;\n";
         print $outputFH "    }\n";
         print $outputFH "\n";    
@@ -812,7 +819,11 @@ sub getNumTests() {
             my $expectedResult = $currentRow[$col];
 
             # If the table has an "X" for the expected result it means don't generate it.
-            if ($expectedResult ne "X") {
+            # If the table contains "XC" for the expected result and -c is not specified,
+            # don't generate it.
+            if ( $expectedResult ne "X" &&
+                 ( ( index($expectedResult, "XC") == -1 ) ||
+                   ( index($expectedResult, "XC") != -1 && 1 == $generateConditionalTests ) ) ) {
                 $numTests = $numTests + 1;
             }
         }
@@ -840,7 +851,11 @@ sub createTests() {
             
             # If the table has an "X" for the expected result it means don't 
             # generate a test for it.
-            if ($expectedResult ne "X") {
+            # If the table contains "XC" for the expected result and -c is
+            # not specified, don't generate a test for it
+            if ( $expectedResult ne "X" &&
+                 ( ( index($expectedResult, "XC") == -1 ) ||
+                   ( index($expectedResult, "XC") != -1 && 1 == $generateConditionalTests ) ) ) {
                 # startCnt and maxTests are used for the case where the suite 
                 # improve JDK performance.
                 if ($startCount > $cellsCounted++) {
@@ -879,9 +894,9 @@ sub createTests() {
                     print $outputFH "        assertTrue(\"$resultDescription\", checkResult_$resultFunction(src,dest));\n";
                 }
                 print $outputFH "        \n";
-                print $outputFH "        GraphicalEditor editor = getActiveEditor();\n";
-                print $outputFH "        if(editor != null && useDrawResults) {\n";
-                print $outputFH "           validateOrGenerateResults(editor, generateResults);\n";
+                print $outputFH "        IEditorPart editor = getActiveEditor();\n";
+                print $outputFH "        if(editor != null && editor instanceof GraphicalEditor && useDrawResults) {\n";
+                print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
                 print $outputFH "        }\n";
                 print $outputFH "        tearDown();\n";                
                 print $outputFH "    }\n";
