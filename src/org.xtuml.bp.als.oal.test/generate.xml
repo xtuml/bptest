@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bp.als.oal" default="all" basedir=".">
+
+	<import file="${mcj_path}/common.xml"/>
+
+	<property name="plugins-home" value="${ant.home}/../.."/>
+
+	<target name="all" description="Generate all code for this project" depends="generate_oal_complete_matrix_tests" />
+
+	<target name="nb_all" description="Generate all code for this project" depends="generate_oal_complete_matrix_tests" />
+
+	<property name="test-matrix" value="matrices/non-generated/oal_autocomplete_matrix.txt"/>
+	<property name="include-conditional-tests" value=""/>
+	<!-- <property name="include-conditional-tests" value="-c"/> -->
+
+	<target name="matrix.depends">
+		<uptodate property="matrix_oal_auto-complete.buildNotNeeded" value="yes" srcfile="${test-matrix}" targetfile="src/org/xtuml/bp/als/oal/test/completion/OalAutoComplete_0.java" />
+	</target>
+
+	<target name="generate_oal_complete_matrix_tests" description="Generate code for oal auto-complete" depends="matrix.depends" unless="matrix_oal_auto-complete.buildNotNeeded">
+		<exec vmlauncher="false" failonerror="true" executable="perl">
+			<arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${test-matrix} src/org/xtuml/bp/als/oal/test/completion/OalAutoComplete.java
+        -n 250 -p org.xtuml.bp.als.oal.test.completion -DNO -data ${include-conditional-tests}" />
+		</exec>
+	</target>
+
+
+	<!-- CLEAN ALL -->
+	<target name="clean_all" depends="clean_generated_matrix_code" />
+
+	<target name="clean_generated_matrix_code" description="Clean generated oal auto-complete code." >
+		<echo>Removing code generated for oal auto-complete</echo>
+		<delete>
+			<fileset dir="src/org/xtuml/bp/als/oal/test/completion/">
+				<exclude name="OalAutoComplete.java" />
+				<include name="**.java" />
+			</fileset>
+		</delete>
+	</target>
+</project>
