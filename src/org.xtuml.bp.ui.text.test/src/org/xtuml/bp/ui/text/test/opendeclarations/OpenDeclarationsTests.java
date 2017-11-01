@@ -11,6 +11,7 @@ package org.xtuml.bp.ui.text.test.opendeclarations;
 
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IRegion;
+import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.PartInitException;
@@ -129,8 +130,8 @@ public class OpenDeclarationsTests extends CanvasTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		setupTestBody();
-		testElement = getTestElement();
 		testDocument = new Document(ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(activityElement));
+		testElement = getTestElement();
 		assertNotNull("Could not locate test element.", testElement);
 		// open the editor for the test oal
 		CanvasTestUtils.openActivityEditor(activityElement);
@@ -281,7 +282,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 		Package_c mainPackage = Package_c.getOneEP_PKGOnR1401(m_sys);
 		// first extract the L, and open the body for it
 		String name = getName();
-		String l = name.substring(name.length() - 3, name.length() - 1);
+		String l = name.substring(7, 10);
 		ModelClass_c modelClass = ModelClass_c.getOneO_OBJOnR8001(
 				PackageableElement_c.getManyPE_PEsOnR8000(mainPackage), new ClassQueryInterface_c() {
 
@@ -481,14 +482,14 @@ public class OpenDeclarationsTests extends CanvasTest {
 		} else if(name.contains("P3")) {
 			IRegion wordRegion = editor.findWord(testDocument, cursorStart);
 			location = cursorStart + wordRegion.getLength();
-		}
-		// set the cursor location
-		editor.getTextViewer().setSelection(new TextSelection(location, 1));
-		
+		}		
 		// execute the open declaration action
 		OpenDeclarationAction action = new OpenDeclarationAction();
 		action.setActiveEditor(null,
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
+		// set the cursor location
+		editor.getTextViewer().setSelection(new TextSelection(location, 1));
+		
 	}
 
 	private void setupCanvas() {
@@ -545,9 +546,10 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return true if the test succeeds, false if it fails
 	 */
 	boolean checkResult_transientDeclarationShown(NonRootModelElement source, NonRootModelElement destination) {
-		boolean transientDeclarationShown = false;
-		// TODO: Implement
-		return transientDeclarationShown;
+		ActivityEditor editor = (ActivityEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getActiveEditor();
+		ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
+		return testElement.equals(selection.getOffset());
 	}
 
 	/**
@@ -562,9 +564,8 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return true if the test succeeds, false if it fails
 	 */
 	boolean checkResult_elementShownInMENotCanvas(NonRootModelElement source, NonRootModelElement destination) {
-		boolean elementShownInMENotCanvas = false;
-		// TODO: Implement
-		return elementShownInMENotCanvas;
+		// TODO: implement result
+		return false;
 	}
 
 	/**
