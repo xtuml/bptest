@@ -69,7 +69,7 @@
 				<configuration>
 					<includes>
 						<include>**/UITextGlobalsSuite.java</include>
-						<include>**/OpenDeclarationsTestsSuite.java</include>
+						<include>**/OpenDeclarationsTestsTestSuite.java</include>
 					</includes>
 				</configuration>
 			</plugin>
