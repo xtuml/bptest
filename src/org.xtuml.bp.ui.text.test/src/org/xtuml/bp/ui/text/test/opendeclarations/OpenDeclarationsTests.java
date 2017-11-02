@@ -142,7 +142,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 		String name = getName();
 		String t = name.substring(4, 7);
 		String row = name.split("_")[1];
-		String e = row.substring(0, 2);
+		String e = row.substring(0, 3);
 		switch (t) {
 		case "T01":
 			// return the first Variable location as offset
@@ -465,7 +465,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 		String name = getName();
 		String t = name.substring(4, 7);
 		String row = name.split("_")[1];
-		String e = row.substring(0, 2);
+		String e = row.substring(0, 3);
 		int cursorStart = doc.indexOf(t + e);
 		int location = cursorStart;
 		ActivityEditor editor = (ActivityEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
