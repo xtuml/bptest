@@ -120,10 +120,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 		loadProject("oal_open_declarations");
 		m_sys = getSystemModel("oal_open_declarations");
 		modelRoot = Ooaofooa
-				.getInstance("/oal_open_declarations/models/oal_open_declarations/MainPackage/MainPackage.xtuml");
-		Selection.getInstance().setSelection(new StructuredSelection(Package_c.getOneEP_PKGOnR1401(m_sys)));
-		ParseAllActivitiesAction action = new ParseAllActivitiesAction();
-		action.run(null);
+				.getInstance("/oal_open_declarations/models/oal_open_declarations/subPackage/subPackage.xtuml");
 	};
 
 	@Before
@@ -133,7 +130,6 @@ public class OpenDeclarationsTests extends CanvasTest {
 		testDocument = new Document(ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(activityElement));
 		testElement = getTestElement();
 		assertNotNull("Could not locate test element.", testElement);
-		// open the editor for the test oal
 		CanvasTestUtils.openActivityEditor(activityElement);
 	}
 
@@ -279,19 +275,25 @@ public class OpenDeclarationsTests extends CanvasTest {
 
 	// example of test name: testT01L01_E01P01M01C01
 	private void setupTestBody() {
-		Package_c mainPackage = Package_c.getOneEP_PKGOnR1401(m_sys);
+		Package_c subPackage = Package_c.getOneEP_PKGOnR1405(m_sys, new ClassQueryInterface_c() {
+			
+			@Override
+			public boolean evaluate(Object candidate) {
+				return ((Package_c) candidate).getName().equals("SubPackage");
+			}
+		});
 		// first extract the L, and open the body for it
 		String name = getName();
 		String l = name.substring(7, 10);
 		ModelClass_c modelClass = ModelClass_c.getOneO_OBJOnR8001(
-				PackageableElement_c.getManyPE_PEsOnR8000(mainPackage), new ClassQueryInterface_c() {
+				PackageableElement_c.getManyPE_PEsOnR8000(subPackage), new ClassQueryInterface_c() {
 
 					@Override
 					public boolean evaluate(Object candidate) {
 						return ((ModelClass_c) candidate).getName().equals(l);
 					}
 				});
-		Component_c component = Component_c.getOneC_COnR8001(PackageableElement_c.getManyPE_PEsOnR8000(mainPackage),
+		Component_c component = Component_c.getOneC_COnR8001(PackageableElement_c.getManyPE_PEsOnR8000(subPackage),
 				new ClassQueryInterface_c() {
 
 					@Override
@@ -299,6 +301,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 						return ((Component_c) candidate).getName().equals(l);
 					}
 				});
+		
 		switch (l) {
 		case "L01":
 			RequiredSignal_c rs = RequiredSignal_c.getOneSPR_RSOnR4502(
@@ -350,7 +353,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 			testBody = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.getManyACT_DABsOnR693(dba));
 			break;
 		case "L08":
-			Function_c function = Function_c.getOneS_SYNCOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(mainPackage),
+			Function_c function = Function_c.getOneS_SYNCOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(subPackage),
 					new ClassQueryInterface_c() {
 
 						@Override
@@ -363,13 +366,13 @@ public class OpenDeclarationsTests extends CanvasTest {
 			break;
 		case "L09":
 			Operation_c operation = Operation_c.getOneO_TFROnR115(
-					ModelClass_c.getManyO_OBJsOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(mainPackage)));
+					ModelClass_c.getManyO_OBJsOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(subPackage)));
 			activityElement = operation;
 			testBody = Body_c.getOneACT_ACTOnR698(OperationBody_c.getManyACT_OPBsOnR696(operation));
 			break;
 		case "L10":
 			Bridge_c bridge = Bridge_c.getOneS_BRGOnR19(ExternalEntity_c.getManyS_EEsOnR8001(
-					PackageableElement_c.getManyPE_PEsOnR8000(mainPackage), new ClassQueryInterface_c() {
+					PackageableElement_c.getManyPE_PEsOnR8000(subPackage), new ClassQueryInterface_c() {
 
 						@Override
 						public boolean evaluate(Object candidate) {
