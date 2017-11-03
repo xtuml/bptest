@@ -37,7 +37,8 @@
 .function call_filter_func
   .param inst_ref action  .//CME
   .param string assertValue
-  .select many filter_set related by action->MEF[R2013]
+  .//Old style here, new on next line. pyrsl is more picky about using properly set up referentials: .select many filter_set related by action->MEF[R2013]
+  .select many filter_set from instances of MEF where (((selected.Specialism == action.Specialism) and (selected.Label == action.Label)) and (selected.Key_Lett == action.Key_Lett))
   .if (not_empty filter_set)
     .for each filter in filter_set
       .if(action.Key_Lett == "MSG_SM")
