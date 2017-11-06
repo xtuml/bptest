@@ -9,15 +9,20 @@
 
 package org.xtuml.bp.ui.text.test.opendeclarations;
 
+import java.lang.reflect.Method;
+
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.text.TextSelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.xtuml.bp.core.ActionHome_c;
 import org.xtuml.bp.core.Action_c;
 import org.xtuml.bp.core.Attribute_c;
@@ -75,18 +80,21 @@ import org.xtuml.bp.core.TransitionActionHome_c;
 import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
-import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.util.ActionLanguageDescriptionUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasEditorUtils;
 import org.xtuml.bp.test.common.CanvasTestUtils;
+import org.xtuml.bp.test.common.ExplorerUtil;
+import org.xtuml.bp.test.common.OrderedRunner;
+import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.text.activity.ActivityEditor;
 import org.xtuml.bp.ui.text.activity.OpenDeclarationAction;
-import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
 
 import junit.framework.TestCase;
 
+@RunWith(OrderedRunner.class)
 public class OpenDeclarationsTests extends CanvasTest {
 	public static boolean generateResults = false;
 	public static boolean useDrawResults = true;
@@ -492,13 +500,14 @@ public class OpenDeclarationsTests extends CanvasTest {
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
 		// set the cursor location
 		editor.getTextViewer().setSelection(new TextSelection(location, 1));
+		action.run(null);
 		
 	}
 
 	private void setupCanvas() {
 		if (getName().contains("C2")) {
 			// open the canvas editor for this test
-			CanvasEditorUtils.openEditorWithShapeOf(testBody);
+			fActiveEditor = CanvasEditorUtils.openEditorWithShapeOf(testBody);
 		} else {
 			// nothing to do as the tear down makes sure
 			// only the editor for the OAL is opened
@@ -532,9 +541,16 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return true if the test succeeds, false if it fails
 	 */
 	boolean checkResult_elementShownInMEandCanvas(NonRootModelElement source, NonRootModelElement destination) {
-		boolean elementShownInMEandCanvas = false;
-		// TODO: Implement
-		return elementShownInMEandCanvas;
+		BaseTest.dispatchEvents();
+		// locate selection in ME, assure diagram is opened
+		boolean diagramOpened = getActiveEditor() != null && getActiveEditor() instanceof GraphicalEditor;
+		if(!diagramOpened) {
+			return false;
+		}
+		IStructuredSelection selection = ((StructuredSelection) ExplorerUtil.getTreeViewer().getSelection());
+		IStructuredSelection canvasSelection = ((StructuredSelection) UITestingUtilities.getActiveEditor().getSite()
+				.getSelectionProvider().getSelection());
+		return selection.getFirstElement() == testElement && canvasSelection.getFirstElement() == testElement;
 	}
 
 	/**
@@ -549,6 +565,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return true if the test succeeds, false if it fails
 	 */
 	boolean checkResult_transientDeclarationShown(NonRootModelElement source, NonRootModelElement destination) {
+		BaseTest.dispatchEvents();
 		ActivityEditor editor = (ActivityEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getActiveEditor();
 		ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
@@ -567,8 +584,14 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return true if the test succeeds, false if it fails
 	 */
 	boolean checkResult_elementShownInMENotCanvas(NonRootModelElement source, NonRootModelElement destination) {
-		// TODO: implement result
-		return false;
+		BaseTest.dispatchEvents();
+		// locate selection in ME, assure no diagram is opened
+		boolean diagramOpened = getActiveEditor() != null && (getActiveEditor() instanceof GraphicalEditor);
+		if(diagramOpened) {
+			return false;
+		}
+		IStructuredSelection selection = ((StructuredSelection) ExplorerUtil.getTreeViewer().getSelection());
+		return selection.getFirstElement() == testElement;
 	}
 
 	/**
@@ -583,9 +606,15 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return true if the test succeeds, false if it fails
 	 */
 	boolean checkResult_elementShownInCanvasNotME(NonRootModelElement source, NonRootModelElement destination) {
-		boolean elementShownInCanvasNotME = false;
-		// TODO: Implement
-		return elementShownInCanvasNotME;
+		BaseTest.dispatchEvents();
+		// locate selection in ME, assure no diagram is opened
+		boolean diagramOpened = getActiveEditor() != null && getActiveEditor() instanceof GraphicalEditor;
+		if (!diagramOpened) {
+			return false;
+		}
+		IStructuredSelection selection = ((StructuredSelection) UITestingUtilities.getActiveEditor().getSite()
+				.getSelectionProvider().getSelection());
+		return selection.getFirstElement() == testElement;
 	}
 
 	/**
@@ -600,9 +629,16 @@ public class OpenDeclarationsTests extends CanvasTest {
 	 * @return true if the test succeeds, false if it fails
 	 */
 	boolean checkResult_invalidSelection(NonRootModelElement source, NonRootModelElement destination) {
-		boolean invalidSelection = false;
-		// TODO: Implement
-		return invalidSelection;
+		BaseTest.dispatchEvents();
+		// no selection should be made in either canvas or ME
+		// locate selection in ME, assure no diagram is opened
+		boolean diagramNotOpened = getActiveEditor() == null && !(getActiveEditor() instanceof GraphicalEditor);
+		if(!diagramNotOpened) {
+			return false;
+		}
+		IStructuredSelection selection = ((StructuredSelection) ExplorerUtil.getTreeViewer().getSelection());
+		return selection.getFirstElement() != testElement;
+
 	}
 
 }
