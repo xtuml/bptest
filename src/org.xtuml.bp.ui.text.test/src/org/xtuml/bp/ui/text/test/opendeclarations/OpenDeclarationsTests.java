@@ -125,7 +125,7 @@ public class OpenDeclarationsTests extends CanvasTest {
 
     @Override
     protected void initialSetup() throws Exception {
-    	// load the test model
+        // load the test model
         loadProject("oal_open_declarations");
         m_sys = getSystemModel("oal_open_declarations");
         modelRoot = Ooaofooa.getInstance("/oal_open_declarations/models/oal_open_declarations/MainPackage/MainPackage.xtuml");
@@ -174,12 +174,12 @@ public class OpenDeclarationsTests extends CanvasTest {
                 }
             });
         case "T05":
-        	return Port_c.getOneC_POOnR4010( Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
-				@Override
-				public boolean evaluate(Object candidate) {
-					return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
-				}
-        	}), new ClassQueryInterface_c() {
+            return Port_c.getOneC_POOnR4010( Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate(Object candidate) {
+                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
+                }
+            }), new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
                     return ((Port_c) candidate).getName().equals(t + e);
@@ -305,11 +305,11 @@ public class OpenDeclarationsTests extends CanvasTest {
                 });
             }
         case "T12":
-        	// in this section, because of the inability to name
-        	// relationships freeform, relationships have been
-        	// numbered such that in each case, if 'R99' is replaced
-        	// by 'T12E', the relationship specification will match
-        	// the desired DOF selection
+            // in this section, because of the inability to name
+            // relationships freeform, relationships have been
+            // numbered such that in each case, if 'R99' is replaced
+            // by 'T12E', the relationship specification will match
+            // the desired DOF selection
             return Association_c.AssociationInstance(modelRoot, new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
@@ -336,100 +336,100 @@ public class OpenDeclarationsTests extends CanvasTest {
         switch ( l ) {
             case "L01":
                 RequiredSignal_c rs = RequiredSignal_c.RequiredSignalInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((RequiredSignal_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((RequiredSignal_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = rs;
                 testBody = Body_c.getOneACT_ACTOnR698(RequiredSignalBody_c.getOneACT_RSBOnR684(rs));
                 break;
             case "L02":
                 RequiredOperation_c ro = RequiredOperation_c.RequiredOperationInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((RequiredOperation_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((RequiredOperation_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = ro;
                 testBody = Body_c.getOneACT_ACTOnR698(RequiredOperationBody_c.getOneACT_ROBOnR685(ro));
                 break;
             case "L03":
                 ProvidedSignal_c ps = ProvidedSignal_c.ProvidedSignalInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((ProvidedSignal_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((ProvidedSignal_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = ps;
                 testBody = Body_c.getOneACT_ACTOnR698(ProvidedSignalBody_c.getOneACT_PSBOnR686(ps));
                 break;
             case "L04":
                 ProvidedOperation_c po = ProvidedOperation_c.ProvidedOperationInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((ProvidedOperation_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((ProvidedOperation_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = po;
                 testBody = Body_c.getOneACT_ACTOnR698(ProvidedOperationBody_c.getOneACT_POBOnR687(po));
                 break;
             case "L05":
                 Transition_c transition = Transition_c.TransitionInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((Transition_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Transition_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = transition;
                 testBody = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.getManyACT_TABsOnR688(Action_c.getManySM_ACTsOnR514(ActionHome_c.getManySM_AHsOnR513(TransitionActionHome_c.getManySM_TAHsOnR530(transition)))));
                 break;
             case "L06":
                 StateMachineState_c state = StateMachineState_c.StateMachineStateInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((StateMachineState_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((StateMachineState_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = state;
                 testBody = Body_c.getOneACT_ACTOnR698(StateActionBody_c.getManyACT_SABsOnR691(Action_c.getManySM_ACTsOnR514(ActionHome_c.getManySM_AHsOnR513(MooreActionHome_c.getManySM_MOAHsOnR511(state)))));
                 break;
             case "L07":
                 DerivedBaseAttribute_c dba = DerivedBaseAttribute_c.DerivedBaseAttributeInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((DerivedBaseAttribute_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((DerivedBaseAttribute_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = dba;
                 testBody = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.getManyACT_DABsOnR693(dba));
                 break;
             case "L08":
                 Function_c function = Function_c.FunctionInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((Function_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Function_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = function;
                 testBody = Body_c.getOneACT_ACTOnR698(FunctionBody_c.getManyACT_FNBsOnR695(function));
                 break;
             case "L09":
                 Operation_c operation = Operation_c.OperationInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((Operation_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Operation_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = operation;
                 testBody = Body_c.getOneACT_ACTOnR698(OperationBody_c.getManyACT_OPBsOnR696(operation));
                 break;
             case "L10":
                 Bridge_c bridge = Bridge_c.BridgeInstance( modelRoot, new ClassQueryInterface_c() {
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((Bridge_c)candidate).getName().equals( l );
-					}
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Bridge_c)candidate).getName().equals( l );
+                    }
                 });
                 activityElement = bridge;
                 testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.getManyACT_BRBsOnR697(bridge));
@@ -441,44 +441,44 @@ public class OpenDeclarationsTests extends CanvasTest {
     }
     
     private IRegion getTestWord( String element ) {
-    	String documentText = testDocument.get();
-    	String t = element.substring( 3, 6 );
-    	String e = element.substring( 6, 9 );
-    	int commentLine = DocumentUtil.positionToLine( documentText.indexOf( "// " + t + " " + e ), testDocument );
-    	String testLine = documentText.substring( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument),
-    	                                          DocumentUtil.lineAndColumnToPosition( commentLine + 2, 1, testDocument) );
-    	int lineOffset = 0;
-    	int wordLength = 0;
-    	// for T06 we want to select the entire event
-    	// spec, not just the event Mning
-    	if ( element.contains("T06") ) {
+        String documentText = testDocument.get();
+        String t = element.substring( 3, 6 );
+        String e = element.substring( 6, 9 );
+        int commentLine = DocumentUtil.positionToLine( documentText.indexOf( "// " + t + " " + e ), testDocument );
+        String testLine = documentText.substring( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument),
+                                                  DocumentUtil.lineAndColumnToPosition( commentLine + 2, 1, testDocument) );
+        int lineOffset = 0;
+        int wordLength = 0;
+        // for T06 we want to select the entire event
+        // spec, not just the event Mning
+        if ( element.contains("T06") ) {
             Matcher matcher = Pattern.compile( "\\s(.*:" + t + e + ")" ).matcher( testLine );
             if ( matcher.find() ) {
-            	lineOffset = matcher.start( 1 );
-            	wordLength = matcher.group( 1 ).length();
+                lineOffset = matcher.start( 1 );
+                wordLength = matcher.group( 1 ).length();
             }
-    	}
-    	else {
+        }
+        else {
             lineOffset = testLine.indexOf( t + e );
             wordLength = (t + e).length();
-    	}
+        }
         return new Region( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument) + lineOffset, wordLength );
     }
     
     private IRegion getCursorPosition( String element, IRegion region ) {
-    	if ( element.contains("P01") ) {
-    		// set the cursor at the beginning of the word
-    		return new Region( region.getOffset(), 0 );
-    	}
-    	else if ( element.contains("P02") ) {
-    		// set the cursor somewhere in the middle of the word
-    		return new Region( region.getOffset() + 1, 0 );
-    	}
-    	else if ( element.contains("P03") ) {
-    		// set the cursor at the end of the word
-    		return new Region( region.getOffset() + region.getLength(), 0 );
-    	}
-    	else return null;
+        if ( element.contains("P01") ) {
+            // set the cursor at the beginning of the word
+            return new Region( region.getOffset(), 0 );
+        }
+        else if ( element.contains("P02") ) {
+            // set the cursor somewhere in the middle of the word
+            return new Region( region.getOffset() + 1, 0 );
+        }
+        else if ( element.contains("P03") ) {
+            // set the cursor at the end of the word
+            return new Region( region.getOffset() + region.getLength(), 0 );
+        }
+        else return null;
     }
 
     @After
@@ -511,7 +511,7 @@ public class OpenDeclarationsTests extends CanvasTest {
      * @return A model element used in the test as specified by the test matrix
      */
     NonRootModelElement selectTL(String element, Object extraData) {
-    	// get the activity element and body from the L value
+        // get the activity element and body from the L value
         activityElement = getActivityElement( element );
         assertNotNull("Could not locate test body.", activityElement);
         testDocument = new Document(ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(activityElement));
@@ -545,9 +545,9 @@ public class OpenDeclarationsTests extends CanvasTest {
      * @return A model element used in the test as specified by the test matrix
      */
     NonRootModelElement selectEPMC(String element, Object extraData) {
-    	// get the cursor position in the document based on the P value and selected test word
-    	cursorPosition = getCursorPosition( element, wordRegion );
-    	// set up model explorer based on the M value
+        // get the cursor position in the document based on the P value and selected test word
+        cursorPosition = getCursorPosition( element, wordRegion );
+        // set up model explorer based on the M value
         setupModelExplorer( element );
         // set up the canvas based on the C value
         setupCanvas( element );
@@ -565,7 +565,7 @@ public class OpenDeclarationsTests extends CanvasTest {
      *            Model instance from the row
      */
     void TL_EPMC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
-    	// make sure the activity editor is open
+        // make sure the activity editor is open
         CanvasTestUtils.openActivityEditor(activityElement);
         // get editor and set cursor position
         ActivityEditor editor = (ActivityEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -640,7 +640,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         ActivityEditor editor = (ActivityEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
         ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
         if ( testElement instanceof Integer ) {
-        	return ((Integer)testElement).equals(selection.getOffset());
+            return ((Integer)testElement).equals(selection.getOffset());
         }
         else return false;
     }
