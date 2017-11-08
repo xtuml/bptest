@@ -444,7 +444,9 @@ public class OpenDeclarationsTests extends CanvasTest {
         String documentText = testDocument.get();
         String t = element.substring( 3, 6 );
         String e = element.substring( 6, 9 );
-        int commentLine = DocumentUtil.positionToLine( documentText.indexOf( "// " + t + " " + e ), testDocument );
+        Matcher commentMatcher = Pattern.compile( "\\/\\/ (" + t + " " + e + ")" ).matcher( documentText );
+        commentMatcher.find();
+        int commentLine = DocumentUtil.positionToLine( commentMatcher.start( 1 ), testDocument );
         String testLine = documentText.substring( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument),
                                                   DocumentUtil.lineAndColumnToPosition( commentLine + 2, 1, testDocument) );
         int lineOffset = 0;
