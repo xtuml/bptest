@@ -35,45 +35,48 @@ Location(L)
 04. Provided Operation Body
 05. Transition Action Body
 06. State Action Body
-07. Derived Action Body
+07. Derived Attribute Body
 08. Function Body
 09. Operation Body
 10. Bridge Body
 
 #
-# OAL statement where the selection is made
+# OAL statement or expression where the selection is made
 #
-Expression(E)
-01. Assignment Left Hand Side  - T01, T013
-02. Assignment Right Hand Side  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-03. Select From Instances  - T01, T02
-04. Select From Instances Where Clause  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-05. Create Instance  - T01, T02
-06. Select Related  - T01, T02, T12
-07. Select Related Where Clause  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-08. Create No Variable  - T02
-09. Create Event Statement  - T01, T02, T04, T06
-10. Operation Invocation  - T02, T07
-11. Operation Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-12. Generate Statement  - T01, T02, T04, T06, T13
-13. Event Data Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-14. Function Invocation  - T03
-15. Function Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-16. Bridge Invocation  - T04, T08
-17. Bridge Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-18. Interface Operation Invocation  - T05, T09
-19. Interface Operation Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-20. Signal Invocation  - T05, T10
-21. Signal Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-22. Relate  - T01, T12
-23. Unrelate  - T01, T12
-24. Relate Using  - T01, T12
-25. Unrelate Using  - T01, T12
-26. If Condition  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-27. ElseIf Condition  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-28. While Condition  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-29. Return Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
-30. Array Index Value  - T01, T02, T03, T04, T05, T07, T08, T09, T10, T11, T13
+# The notes to the right concisely specify which
+# T values can be possibly found in each "Expression"
+#
+Expression(E)                                                                                                                                        
+01. Assignment Left Hand Side  - T01, T11, T13                                                                                                           
+02. Assignment Right Hand Side  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                              
+03. Select From Instances  - T01, T02                                                                                                                
+04. Select From Instances Where Clause  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                      
+05. Create Instance  - T01, T02                                                                                                                      
+06. Select Related  - T01, T02, T12                                                                                                                  
+07. Select Related Where Clause  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                             
+08. Create No Variable  - T02                                                                                                                        
+09. Create Event Statement  - T01, T02, T06                                                                                                     
+10. Operation Invocation  - T02, T07                                                                                                                 
+11. Operation Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                               
+12. Generate Statement  - T01, T02, T06, T13                                                                                                    
+13. Event Data Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                        
+14. Function Invocation  - T03                                                                                                                       
+15. Function Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                
+16. Bridge Invocation  - T04, T08                                                                                                                    
+17. Bridge Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                  
+18. Interface Operation Invocation  - T05, T09                                                                                                       
+19. Interface Operation Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                     
+20. Signal Invocation  - T05, T10                                                                                                                    
+21. Signal Parameter Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                  
+22. Relate  - T01, T12                                                                                                                               
+23. Unrelate  - T01, T12                                                                                                                             
+24. Relate Using  - T01, T12                                                                                                                         
+25. Unrelate Using  - T01, T12                                                                                                                       
+26. If Condition  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                            
+27. ElseIf Condition  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                        
+28. While Condition  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                         
+29. Return Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13                                                                            
+30. Array Index Value  - T01, T02, T03, T04, T05, T07, T08, T09, T11, T13
 
 #
 # Position of the cursor relative to the selection made
