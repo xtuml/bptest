@@ -92,17 +92,16 @@ import junit.framework.TestCase;
 
 @RunWith(OrderedRunner.class)
 public class OpenDeclarationsTests extends CanvasTest {
-    public static boolean generateResults = false;
-    public static boolean useDrawResults = true;
     
+	// OpenDeclarationAction instance
     private static IEditorActionDelegate openDeclarationAction;
 
     String test_id = "";
-
     protected String getResultName() {
         return getClass().getSimpleName() + "_" + test_id;
     }
 
+    // private testing fields
     private GraphicalEditor fActiveEditor;
     private Body_c testBody;
     private Object testElement;
@@ -110,13 +109,14 @@ public class OpenDeclarationsTests extends CanvasTest {
     private IDocument testDocument;
     private IRegion wordRegion;
     private IRegion cursorPosition;
+    
+    // constructor
+    public OpenDeclarationsTests(String subTypeClassName, String subTypeArg0) {
+        super(null, subTypeArg0);
+    }
 
     protected GraphicalEditor getActiveEditor() {
         return fActiveEditor;
-    }
-
-    public OpenDeclarationsTests(String subTypeClassName, String subTypeArg0) {
-        super(null, subTypeArg0);
     }
 
     protected String getTestId(String src, String dest, String count) {
@@ -481,6 +481,31 @@ public class OpenDeclarationsTests extends CanvasTest {
         else return null;
     }
 
+    private void setupCanvas( String element ) {
+        if (element.contains("C2")) {
+            // open the canvas editor for this test
+            fActiveEditor = CanvasEditorUtils.openEditorWithShapeOf(testBody);
+        } else {
+            // nothing to do as the tear down makes sure
+            // only the editor for the OAL is opened
+        }
+    }
+
+    private void setupModelExplorer( String element ) {
+        if (element.contains("M2")) {
+            // open model explorer view
+            try {
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .showView("org.xtuml.bp.ui.explorer.ExplorerView");
+            } catch (PartInitException e) {
+                TestCase.fail("Unable to open Model Explorer.");
+            }
+        } else {
+            // nothing to do as the tear down makes sure
+            // only the editor for the OAL is opened
+        }
+    }
+
     @After
     public void tearDown() throws Exception {
         // close all editors
@@ -575,30 +600,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         openDeclarationAction.run(null);
     }
 
-    private void setupCanvas( String element ) {
-        if (element.contains("C2")) {
-            // open the canvas editor for this test
-            fActiveEditor = CanvasEditorUtils.openEditorWithShapeOf(testBody);
-        } else {
-            // nothing to do as the tear down makes sure
-            // only the editor for the OAL is opened
-        }
-    }
-
-    private void setupModelExplorer( String element ) {
-        if (element.contains("M2")) {
-            // open model explorer view
-            try {
-                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                        .showView("org.xtuml.bp.ui.explorer.ExplorerView");
-            } catch (PartInitException e) {
-                TestCase.fail("Unable to open Model Explorer.");
-            }
-        } else {
-            // nothing to do as the tear down makes sure
-            // only the editor for the OAL is opened
-        }
-    }
+    
 
     /**
      * This function verifies an expected result.
