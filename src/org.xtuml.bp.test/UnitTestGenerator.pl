@@ -55,6 +55,7 @@ my $createTestSuitePerClass =  0;
 my $passSrcToDest = 0;
 my $generateConditionalTests = 0;
 my $selectRowFirst = 0;
+my $doNotGenResults = 0;
 
 my $usage = <<USAGE;
 #===========================================================================
@@ -88,6 +89,7 @@ my $usage = <<USAGE;
 #                    denoted with "XC"
 #       -selectRowFirst : Select the row object before selecting the column
 #                    object
+#       -noResults : Do not invoke 'validateOrGenerateResults'
 # 
 # Example Usage:
 # --------------
@@ -193,6 +195,7 @@ sub processCommandLine
           elsif ( $k =~ /^(data)$/ ) { $passSrcToDest = 1; }
           elsif ( $k =~ /^(c)$/ ) { $generateConditionalTests = 1; }
           elsif ( $k =~ /^(selectRowFirst)$/ ) { $selectRowFirst = 1; }
+          elsif ( $k =~ /^(noResults)$/ ) { $doNotGenResults = 1; }
           elsif ( $k =~ /^(h)$/ ) { print("$usage$description"); exit; }
           elsif ( $k =~ /^(\?)$/ ) { print("$usage$description"); exit; }
           else { die "Unrecognized argument ($k) to ExtractMetrics.pl\n"; }
@@ -912,10 +915,12 @@ sub createTests() {
                     print $outputFH "        assertTrue(\"$resultDescription\", checkResult_$resultFunction(src,dest));\n";
                 }
                 print $outputFH "        \n";
-                print $outputFH "        IEditorPart editor = getActiveEditor();\n";
-                print $outputFH "        if(editor != null && editor instanceof GraphicalEditor && useDrawResults) {\n";
-                print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
-                print $outputFH "        }\n";
+                if ( 0 == $doNotGenResults ) {
+                    print $outputFH "        IEditorPart editor = getActiveEditor();\n";
+                    print $outputFH "        if(editor != null && editor instanceof GraphicalEditor && useDrawResults) {\n";
+                    print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
+                    print $outputFH "        }\n";
+                }
                 print $outputFH "        tearDown();\n";                
                 print $outputFH "    }\n";
                 print $outputFH "\n";
