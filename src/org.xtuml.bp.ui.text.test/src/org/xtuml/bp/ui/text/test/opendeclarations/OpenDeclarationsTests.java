@@ -143,7 +143,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         assertNotNull( "Open declarations is not implemented for the OAL editor", openDeclarationAction );
     }
 
-    // example of test name: testT01L01_E01P01M01C01
+    // example of test name: testP01M01C01_L01T01E01
     private Object getTestElement( String element ) {
         String t = element.substring( 3, 6 );
         String e = element.substring( 6, 9 );
@@ -329,7 +329,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         return null;
     }
 
-    // example of test name: testT01L01_E01P01M01C01
+    // example of test name: testP01M01C01_L01T01E01
     private NonRootModelElement getActivityElement( String element ) {
         NonRootModelElement activityElement = null;
         final String l = element.substring( 0, 3 );
@@ -489,20 +489,20 @@ public class OpenDeclarationsTests extends CanvasTest {
     }
 
     /**
-     * "TL" is one of the degrees of freedom as specified in this issues test
-     * matrix. This routine gets the "TL" instance from the given name.
+     * "PMC" is one of the degrees of freedom as specified in this issues test
+     * matrix. This routine gets the "PMC" instance from the given name.
      * 
      * @param element
      *            The degree of freedom instance to retrieve
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectTL(String element) {
-        return selectTL(element, null);
+    NonRootModelElement selectPMC(String element) {
+        return selectPMC(element, null);
     }
 
     /**
-     * "TL" is one of the degrees of freedom as specified in this issues test
-     * matrix. This routine gets the "TL" instance from the given name.
+     * "PMC" is one of the degrees of freedom as specified in this issues test
+     * matrix. This routine gets the "PMC" instance from the given name.
      * 
      * @param element
      *            The degree of freedom instance to retrieve
@@ -510,7 +510,39 @@ public class OpenDeclarationsTests extends CanvasTest {
      *            Extra data needed for selection
      * @return A model element used in the test as specified by the test matrix
      */
-    NonRootModelElement selectTL(String element, Object extraData) {
+    NonRootModelElement selectPMC(String element, Object extraData) {
+        // get the cursor position in the document based on the P value and selected test word
+        cursorPosition = getCursorPosition( element, wordRegion );
+        // set up model explorer based on the M value
+        setupModelExplorer( element );
+        // set up the canvas based on the C value
+        setupCanvas( element );
+        return null;
+    }
+
+    /**
+     * "LTE" is one of the degrees of freedom as specified in this issues test
+     * matrix. This routine gets the "LTE" instance from the given name.
+     * 
+     * @param element
+     *            The degree of freedom instance to retrieve
+     * @return A model element used in the test as specified by the test matrix
+     */
+    NonRootModelElement selectLTE(String element) {
+        return selectLTE(element, null);
+    }
+
+    /**
+     * "LTE" is one of the degrees of freedom as specified in this issues test
+     * matrix. This routine gets the "LTE" instance from the given name.
+     * 
+     * @param element
+     *            The degree of freedom instance to retrieve
+     * @param extraData
+     *            Extra data needed for selection
+     * @return A model element used in the test as specified by the test matrix
+     */
+    NonRootModelElement selectLTE(String element, Object extraData) {
         // get the activity element and body from the L value
         activityElement = getActivityElement( element );
         assertNotNull("Could not locate test body.", activityElement);
@@ -519,38 +551,6 @@ public class OpenDeclarationsTests extends CanvasTest {
         // get the test element from the T and E values
         testElement = getTestElement( element );
         assertNotNull("Could not locate test element.", testElement);
-        return null;
-    }
-
-    /**
-     * "EPMC" is one of the degrees of freedom as specified in this issues test
-     * matrix. This routine gets the "EPMC" instance from the given name.
-     * 
-     * @param element
-     *            The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectEPMC(String element) {
-        return selectEPMC(element, null);
-    }
-
-    /**
-     * "EPMC" is one of the degrees of freedom as specified in this issues test
-     * matrix. This routine gets the "EPMC" instance from the given name.
-     * 
-     * @param element
-     *            The degree of freedom instance to retrieve
-     * @param extraData
-     *            Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectEPMC(String element, Object extraData) {
-        // get the cursor position in the document based on the P value and selected test word
-        cursorPosition = getCursorPosition( element, wordRegion );
-        // set up model explorer based on the M value
-        setupModelExplorer( element );
-        // set up the canvas based on the C value
-        setupCanvas( element );
         return null;
     }
 
@@ -564,7 +564,7 @@ public class OpenDeclarationsTests extends CanvasTest {
      * @param rowInstance
      *            Model instance from the row
      */
-    void TL_EPMC_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
+    void PMC_LTE_Action(NonRootModelElement columnInstance, NonRootModelElement rowInstance) {
         // make sure the activity editor is open
         CanvasTestUtils.openActivityEditor(activityElement);
         // get editor and set cursor position
