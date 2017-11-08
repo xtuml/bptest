@@ -9,6 +9,9 @@
 
 package org.xtuml.bp.ui.text.test.opendeclarations;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
@@ -31,6 +34,7 @@ import org.xtuml.bp.core.Body_c;
 import org.xtuml.bp.core.BridgeBody_c;
 import org.xtuml.bp.core.BridgeParameter_c;
 import org.xtuml.bp.core.Bridge_c;
+import org.xtuml.bp.core.Component_c;
 import org.xtuml.bp.core.DerivedAttributeBody_c;
 import org.xtuml.bp.core.DerivedBaseAttribute_c;
 import org.xtuml.bp.core.EventSupplementalData_c;
@@ -100,7 +104,7 @@ public class OpenDeclarationsTests extends CanvasTest {
     }
 
     private GraphicalEditor fActiveEditor;
-    private NonRootModelElement testBody;
+    private Body_c testBody;
     private Object testElement;
     private NonRootModelElement activityElement;
     private IDocument testDocument;
@@ -170,15 +174,18 @@ public class OpenDeclarationsTests extends CanvasTest {
                 }
             });
         case "T05":
-        	// TODO make sure this is in the right component
-            return Port_c.PortInstance(modelRoot, new ClassQueryInterface_c() {
+        	return Port_c.getOneC_POOnR4010( Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
+				@Override
+				public boolean evaluate(Object candidate) {
+					return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
+				}
+        	}), new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
                     return ((Port_c) candidate).getName().equals(t + e);
                 }
             });
         case "T06":
-        	// TODO take another look here
             return StateMachineEvent_c.StateMachineEventInstance(modelRoot, new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
@@ -434,15 +441,28 @@ public class OpenDeclarationsTests extends CanvasTest {
     }
     
     private IRegion getTestWord( String element ) {
-    	// TODO think about T06
     	String documentText = testDocument.get();
     	String t = element.substring( 3, 6 );
     	String e = element.substring( 6, 9 );
     	int commentLine = DocumentUtil.positionToLine( documentText.indexOf( "// " + t + " " + e ), testDocument );
     	String testLine = documentText.substring( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument),
     	                                          DocumentUtil.lineAndColumnToPosition( commentLine + 2, 1, testDocument) );
-    	int lineOffset = testLine.indexOf( t + e );
-    	return new Region( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument) + lineOffset, (t + e).length() );
+    	int lineOffset = 0;
+    	int wordLength = 0;
+    	// for T06 we want to select the entire event
+    	// spec, not just the event Mning
+    	if ( element.contains("T06") ) {
+            Matcher matcher = Pattern.compile( "\\s(.*:" + t + e + ")" ).matcher( testLine );
+            if ( matcher.find() ) {
+            	lineOffset = matcher.start( 1 );
+            	wordLength = matcher.group( 1 ).length();
+            }
+    	}
+    	else {
+            lineOffset = testLine.indexOf( t + e );
+            wordLength = (t + e).length();
+    	}
+        return new Region( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument) + lineOffset, wordLength );
     }
     
     private IRegion getCursorPosition( String element, IRegion region ) {
