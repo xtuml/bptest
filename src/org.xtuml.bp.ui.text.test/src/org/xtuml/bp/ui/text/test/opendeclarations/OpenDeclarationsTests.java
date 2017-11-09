@@ -93,6 +93,7 @@ import junit.framework.TestCase;
 @RunWith(OrderedRunner.class)
 public class OpenDeclarationsTests extends CanvasTest {
     
+    public static boolean generateResults = false;
 	// OpenDeclarationAction instance
     private static IEditorActionDelegate openDeclarationAction;
 
