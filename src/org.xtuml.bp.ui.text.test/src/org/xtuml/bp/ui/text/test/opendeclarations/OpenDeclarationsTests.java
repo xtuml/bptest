@@ -794,7 +794,14 @@ public class OpenDeclarationsTests extends CanvasTest {
             return (NonRootModelElement)((ShapeEditPart)canvasSelection.getFirstElement()).getGraphicalElement().getRepresents();
         }
         else {
-            return (NonRootModelElement)GraphicalElement_c.getOneGD_GEOnR2(((Connector_c)((ConnectorEditPart)canvasSelection.getFirstElement()).getModel())).getRepresents();
+        	NonRootModelElement connectorElement = (NonRootModelElement)GraphicalElement_c.getOneGD_GEOnR2(((Connector_c)((ConnectorEditPart)canvasSelection.getFirstElement()).getModel())).getRepresents();
+        	if ( connectorElement instanceof Provision_c ) {
+        		connectorElement = Port_c.getOneC_POOnR4016(InterfaceReference_c.getOneC_IROnR4009((Provision_c)connectorElement));
+        	}
+        	else if ( connectorElement instanceof Requirement_c ) {
+        		connectorElement = Port_c.getOneC_POOnR4016(InterfaceReference_c.getOneC_IROnR4009((Requirement_c)connectorElement));
+        	}
+        	return connectorElement;
         }
     }
 
