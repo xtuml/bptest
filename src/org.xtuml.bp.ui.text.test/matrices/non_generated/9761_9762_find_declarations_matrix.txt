@@ -1616,7 +1616,7 @@ L01T06E01  R01       R01       R05       R01       R01       R05       R01      
 L01T06E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T06E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T06E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L01T06E05  R05       R01       R05  1       R01       R05       R01       R01       R05       R01       R01       R05
+L01T06E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T06E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L01T06E07  X         X         X         X         X         X         X         X         X         X         X         X
 L01T06E08  X         X         X         X         X         X         X         X         X         X         X         X
@@ -1916,7 +1916,7 @@ L01T07E01  R01       R01       R05       R01       R01       R05       R01      
 L01T07E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T07E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T07E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L01T07E05  R05       R01       R05  1       R01       R05       R01       R01       R05       R01       R01       R05
+L01T07E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T07E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L01T07E07  X         X         X         X         X         X         X         X         X         X         X         X
 L01T07E08  X         X         X         X         X         X         X         X         X         X         X         X
@@ -2186,7 +2186,7 @@ L10T07E01  R01       R01       R05       R01       R01       R05       R01      
 L10T07E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T07E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T07E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L10T07E05  R05       R01       R05       R01              R01       R05       R01       R01       R05       R01       R01       R05
+L10T07E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T07E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L10T07E07  X         X         X         X         X         X         X         X         X         X         X         X
 L10T07E08  X         X         X         X         X         X         X         X         X         X         X         X
@@ -2486,7 +2486,7 @@ L10T08E01  R01       R01       R05       R01       R01       R05       R01      
 L10T08E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T08E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T08E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L10T08E05  R05       R01       R05       R01              R01       R05       R01       R01       R05       R01       R01       R05
+L10T08E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T08E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L10T08E07  X         X         X         X         X         X         X         X         X         X         X         X
 L10T08E08  X         X         X         X         X         X         X         X         X         X         X         X
@@ -2516,7 +2516,7 @@ L01T09E01  R01       R01       R05       R01       R01       R05       R01      
 L01T09E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T09E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T09E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L01T09E05  R05       R01       R05  1       R01       R05       R01       R01       R05       R01       R01       R05
+L01T09E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T09E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L01T09E07  X         X         X         X         X         X         X         X         X         X         X         X
 L01T09E08  X         X         X         X         X         X         X         X         X         X         X         X
@@ -2786,7 +2786,7 @@ L10T09E01  R01       R01       R05       R01       R01       R05       R01      
 L10T09E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T09E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T09E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L10T09E05  R05       R01       R05       R01              R01       R05       R01       R01       R05       R01       R01       R05
+L10T09E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T09E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L10T09E07  X         X         X         X         X         X         X         X         X         X         X         X
 L10T09E08  X         X         X         X         X         X         X         X         X         X         X         X
@@ -3086,7 +3086,7 @@ L10T10E01  R01       R01       R05       R01       R01       R05       R01      
 L10T10E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T10E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T10E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L10T10E05  R05       R01       R05       R01              R01       R05       R01       R01       R05       R01       R01       R05
+L10T10E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L10T10E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L10T10E07  X         X         X         X         X         X         X         X         X         X         X         X
 L10T10E08  X         X         X         X         X         X         X         X         X         X         X         X
@@ -3116,7 +3116,7 @@ L01T11E01  R01       R01       R05       R01       R01       R05       R01      
 L01T11E02  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T11E03  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T11E04  R01       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
-L01T11E05  R05       R01       R05  1       R01       R05       R01       R01       R05       R01       R01       R05
+L01T11E05  R05       R01       R05       R01       R01       R05       R01       R01       R05       R01       R01       R05
 L01T11E06  R01       X         X         X         X         X         X         X         X         X         X         X
 L01T11E07  X         X         X         X         X         X         X         X         X         X         X         X
 L01T11E08  X         X         X         X         X         X         X         X         X         X         X         X
