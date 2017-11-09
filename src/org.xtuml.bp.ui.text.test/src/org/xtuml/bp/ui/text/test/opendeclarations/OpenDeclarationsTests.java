@@ -21,6 +21,7 @@ import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IEditorActionDelegate;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
@@ -76,6 +77,7 @@ import org.xtuml.bp.core.TransitionActionHome_c;
 import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.util.ActionLanguageDescriptionUtil;
 import org.xtuml.bp.core.util.DocumentUtil;
 import org.xtuml.bp.test.common.BaseTest;
@@ -84,9 +86,15 @@ import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.ExplorerUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
+import org.xtuml.bp.ui.canvas.Connector_c;
+import org.xtuml.bp.ui.canvas.GraphicalElement_c;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
+import org.xtuml.bp.ui.graphics.editor.ModelEditor;
+import org.xtuml.bp.ui.graphics.parts.ConnectorEditPart;
+import org.xtuml.bp.ui.graphics.parts.ShapeEditPart;
 import org.xtuml.bp.ui.text.activity.ActivityEditor;
+import org.xtuml.bp.ui.text.activity.ParseAllActivitiesAction;
 
 import junit.framework.TestCase;
 
@@ -130,6 +138,10 @@ public class OpenDeclarationsTests extends CanvasTest {
         loadProject("oal_open_declarations");
         m_sys = getSystemModel("oal_open_declarations");
         modelRoot = Ooaofooa.getInstance("/oal_open_declarations/models/oal_open_declarations/MainPackage/MainPackage.xtuml");
+        // parse all activities
+        Selection.getInstance().clear(); Selection.getInstance().addToSelection(m_sys);
+        ParseAllActivitiesAction action = new ParseAllActivitiesAction();
+        action.run(null);
         // use reflection to get the open declaration action
         Class<?> openDeclarationActionClass = Class.forName( "org.xtuml.bp.ui.text.activity.OpenDeclarationAction" );
         if ( null != openDeclarationActionClass ) {
@@ -383,7 +395,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                     }
                 });
                 activityElement = transition;
-                testBody = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.getManyACT_TABsOnR688(Action_c.getManySM_ACTsOnR514(ActionHome_c.getManySM_AHsOnR513(TransitionActionHome_c.getManySM_TAHsOnR530(transition)))));
+                testBody = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.getOneACT_TABOnR688(Action_c.getOneSM_ACTOnR514(ActionHome_c.getOneSM_AHOnR513(TransitionActionHome_c.getOneSM_TAHOnR530(transition)))));
                 break;
             case "L06":
                 StateMachineState_c state = StateMachineState_c.StateMachineStateInstance( modelRoot, new ClassQueryInterface_c() {
@@ -393,7 +405,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                     }
                 });
                 activityElement = state;
-                testBody = Body_c.getOneACT_ACTOnR698(StateActionBody_c.getManyACT_SABsOnR691(Action_c.getManySM_ACTsOnR514(ActionHome_c.getManySM_AHsOnR513(MooreActionHome_c.getManySM_MOAHsOnR511(state)))));
+                testBody = Body_c.getOneACT_ACTOnR698(StateActionBody_c.getOneACT_SABOnR691(Action_c.getOneSM_ACTOnR514(ActionHome_c.getOneSM_AHOnR513(MooreActionHome_c.getOneSM_MOAHOnR511(state)))));
                 break;
             case "L07":
                 DerivedBaseAttribute_c dba = DerivedBaseAttribute_c.DerivedBaseAttributeInstance( modelRoot, new ClassQueryInterface_c() {
@@ -403,7 +415,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                     }
                 });
                 activityElement = dba;
-                testBody = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.getManyACT_DABsOnR693(dba));
+                testBody = Body_c.getOneACT_ACTOnR698(DerivedAttributeBody_c.getOneACT_DABOnR693(dba));
                 break;
             case "L08":
                 Function_c function = Function_c.FunctionInstance( modelRoot, new ClassQueryInterface_c() {
@@ -413,7 +425,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                     }
                 });
                 activityElement = function;
-                testBody = Body_c.getOneACT_ACTOnR698(FunctionBody_c.getManyACT_FNBsOnR695(function));
+                testBody = Body_c.getOneACT_ACTOnR698(FunctionBody_c.getOneACT_FNBOnR695(function));
                 break;
             case "L09":
                 Operation_c operation = Operation_c.OperationInstance( modelRoot, new ClassQueryInterface_c() {
@@ -423,7 +435,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                     }
                 });
                 activityElement = operation;
-                testBody = Body_c.getOneACT_ACTOnR698(OperationBody_c.getManyACT_OPBsOnR696(operation));
+                testBody = Body_c.getOneACT_ACTOnR698(OperationBody_c.getOneACT_OPBOnR696(operation));
                 break;
             case "L10":
                 Bridge_c bridge = Bridge_c.BridgeInstance( modelRoot, new ClassQueryInterface_c() {
@@ -433,7 +445,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                     }
                 });
                 activityElement = bridge;
-                testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.getManyACT_BRBsOnR697(bridge));
+                testBody = Body_c.getOneACT_ACTOnR698(BridgeBody_c.getOneACT_BRBOnR697(bridge));
                 break;
             default:
                 break;
@@ -619,14 +631,14 @@ public class OpenDeclarationsTests extends CanvasTest {
     boolean checkResult_elementShownInMEandCanvas(NonRootModelElement source, NonRootModelElement destination) {
         BaseTest.dispatchEvents();
         // locate selection in ME, assure diagram is opened
-        boolean diagramOpened = getActiveEditor() != null && getActiveEditor() instanceof GraphicalEditor;
+        IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        boolean diagramOpened = editor != null && ( editor instanceof GraphicalEditor || editor instanceof ModelEditor );
         if(!diagramOpened) {
             return false;
         }
         IStructuredSelection selection = ((StructuredSelection) ExplorerUtil.getTreeViewer().getSelection());
-        IStructuredSelection canvasSelection = ((StructuredSelection) UITestingUtilities.getActiveEditor().getSite()
-                .getSelectionProvider().getSelection());
-        return selection.getFirstElement() == testElement && canvasSelection.getFirstElement() == testElement;
+        IStructuredSelection canvasSelection = ((StructuredSelection) UITestingUtilities.getActiveEditor().getSite().getSelectionProvider().getSelection());
+        return selection.getFirstElement() == testElement && getElementFromCanvasSelection( canvasSelection ) == testElement;
     }
 
     /**
@@ -664,7 +676,8 @@ public class OpenDeclarationsTests extends CanvasTest {
     boolean checkResult_elementShownInMENotCanvas(NonRootModelElement source, NonRootModelElement destination) {
         BaseTest.dispatchEvents();
         // locate selection in ME, assure no diagram is opened
-        boolean diagramOpened = getActiveEditor() != null && (getActiveEditor() instanceof GraphicalEditor);
+        IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        boolean diagramOpened = editor != null && ( editor instanceof GraphicalEditor || editor instanceof ModelEditor );
         if(diagramOpened) {
             return false;
         }
@@ -686,13 +699,14 @@ public class OpenDeclarationsTests extends CanvasTest {
     boolean checkResult_elementShownInCanvasNotME(NonRootModelElement source, NonRootModelElement destination) {
         BaseTest.dispatchEvents();
         // locate selection in ME, assure no diagram is opened
-        boolean diagramOpened = getActiveEditor() != null && getActiveEditor() instanceof GraphicalEditor;
+        IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        boolean diagramOpened = editor != null && ( editor instanceof GraphicalEditor || editor instanceof ModelEditor );
         if (!diagramOpened) {
             return false;
         }
         IStructuredSelection selection = ((StructuredSelection) UITestingUtilities.getActiveEditor().getSite()
                 .getSelectionProvider().getSelection());
-        return selection.getFirstElement() == testElement;
+        return getElementFromCanvasSelection( selection ) == testElement;
     }
 
     /**
@@ -710,13 +724,25 @@ public class OpenDeclarationsTests extends CanvasTest {
         BaseTest.dispatchEvents();
         // no selection should be made in either canvas or ME
         // locate selection in ME, assure no diagram is opened
-        boolean diagramNotOpened = getActiveEditor() == null && !(getActiveEditor() instanceof GraphicalEditor);
-        if(!diagramNotOpened) {
+        IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        boolean diagramOpened = editor != null && ( editor instanceof GraphicalEditor || editor instanceof ModelEditor );
+        if(diagramOpened) {
             return false;
         }
         IStructuredSelection selection = ((StructuredSelection) ExplorerUtil.getTreeViewer().getSelection());
         return selection.getFirstElement() != testElement;
 
+    }
+    
+    private NonRootModelElement getElementFromCanvasSelection( IStructuredSelection canvasSelection ) {
+        assertTrue( "Selected element on canvas is not a shape or connector.", ( canvasSelection.getFirstElement() instanceof ShapeEditPart ||
+        		                                                                 canvasSelection.getFirstElement() instanceof ConnectorEditPart ) );
+    	if ( canvasSelection.getFirstElement() instanceof ShapeEditPart ) {
+            return (NonRootModelElement)((ShapeEditPart)canvasSelection.getFirstElement()).getGraphicalElement().getRepresents();
+    	}
+        else {
+            return (NonRootModelElement)GraphicalElement_c.getOneGD_GEOnR2(((Connector_c)((ConnectorEditPart)canvasSelection.getFirstElement()).getModel())).getRepresents();
+        }
     }
 
 }
