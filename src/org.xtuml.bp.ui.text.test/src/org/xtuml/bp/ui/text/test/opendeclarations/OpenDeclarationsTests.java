@@ -446,7 +446,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         String t = element.substring( 3, 6 );
         String e = element.substring( 6, 9 );
         Matcher commentMatcher = Pattern.compile( "\\/\\/ (" + t + " " + e + ")" ).matcher( documentText );
-        commentMatcher.find();
+        assertTrue( "No test in the model for '" + element + "'", commentMatcher.find() );
         int commentLine = DocumentUtil.positionToLine( commentMatcher.start( 1 ), testDocument );
         String testLine = documentText.substring( DocumentUtil.lineAndColumnToPosition( commentLine + 1, 1, testDocument),
                                                   DocumentUtil.lineAndColumnToPosition( commentLine + 2, 1, testDocument) );
