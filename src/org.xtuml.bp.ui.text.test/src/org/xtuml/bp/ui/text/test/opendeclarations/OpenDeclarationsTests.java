@@ -45,8 +45,7 @@ import org.xtuml.bp.core.ExternalEntity_c;
 import org.xtuml.bp.core.FunctionBody_c;
 import org.xtuml.bp.core.FunctionParameter_c;
 import org.xtuml.bp.core.Function_c;
-import org.xtuml.bp.core.InterfaceOperation_c;
-import org.xtuml.bp.core.InterfaceSignal_c;
+import org.xtuml.bp.core.InterfaceReference_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.MooreActionHome_c;
 import org.xtuml.bp.core.NewStateTransition_c;
@@ -61,11 +60,13 @@ import org.xtuml.bp.core.ProvidedOperationBody_c;
 import org.xtuml.bp.core.ProvidedOperation_c;
 import org.xtuml.bp.core.ProvidedSignalBody_c;
 import org.xtuml.bp.core.ProvidedSignal_c;
+import org.xtuml.bp.core.Provision_c;
 import org.xtuml.bp.core.RequiredExecutableProperty_c;
 import org.xtuml.bp.core.RequiredOperationBody_c;
 import org.xtuml.bp.core.RequiredOperation_c;
 import org.xtuml.bp.core.RequiredSignalBody_c;
 import org.xtuml.bp.core.RequiredSignal_c;
+import org.xtuml.bp.core.Requirement_c;
 import org.xtuml.bp.core.SemEvent_c;
 import org.xtuml.bp.core.StateActionBody_c;
 import org.xtuml.bp.core.StateEventMatrixEntry_c;
@@ -222,17 +223,59 @@ public class OpenDeclarationsTests extends CanvasTest {
                 }
             });
         case "T09":
-            return InterfaceOperation_c.InterfaceOperationInstance(modelRoot, new ClassQueryInterface_c() {
+            ProvidedOperation_c spr_po = ProvidedOperation_c.getOneSPR_POOnR4503(ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(
+                    Provision_c.getOneC_POnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
+                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
-                    return ((InterfaceOperation_c) candidate).getName().equals(t + e);
+                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
+                }
+            }))))), new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate(Object candidate) {
+                    return ((ProvidedOperation_c) candidate).getName().equals(t + e);
+                }
+            });
+            if ( null != spr_po ) return spr_po;
+            else return RequiredOperation_c.getOneSPR_ROOnR4502(RequiredExecutableProperty_c.getManySPR_REPsOnR4500(
+                    Requirement_c.getOneC_ROnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
+                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate(Object candidate) {
+                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
+                }
+            }))))), new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate(Object candidate) {
+                    return ((RequiredOperation_c) candidate).getName().equals(t + e);
                 }
             });
         case "T10":
-            return InterfaceSignal_c.InterfaceSignalInstance(modelRoot, new ClassQueryInterface_c() {
+            ProvidedSignal_c spr_ps = ProvidedSignal_c.getOneSPR_PSOnR4503(ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(
+                    Provision_c.getOneC_POnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
+                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
-                    return ((InterfaceSignal_c) candidate).getName().equals(t + e);
+                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
+                }
+            }))))), new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate(Object candidate) {
+                    return ((ProvidedSignal_c) candidate).getName().equals(t + e);
+                }
+            });
+            if ( null != spr_ps ) return spr_ps;
+            else return RequiredSignal_c.getOneSPR_RSOnR4502(RequiredExecutableProperty_c.getManySPR_REPsOnR4500(
+                    Requirement_c.getOneC_ROnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
+                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate(Object candidate) {
+                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
+                }
+            }))))), new ClassQueryInterface_c() {
+                @Override
+                public boolean evaluate(Object candidate) {
+                    return ((RequiredSignal_c) candidate).getName().equals(t + e);
                 }
             });
         case "T11":
@@ -474,6 +517,13 @@ public class OpenDeclarationsTests extends CanvasTest {
                 lineOffset = matcher.start( 1 );
                 wordLength = matcher.group( 1 ).length();
             }
+        }
+        // for T02E09 and T02E12, the name of the class
+        // is in the event label, so we must grab the last
+        // occurrence of it on the line
+        else if ( element.contains("T02") && ( element.contains("E09") || element.contains("E12") ) ) {
+            lineOffset = testLine.lastIndexOf( t + e );
+            wordLength = (t + e).length();
         }
         else {
             lineOffset = testLine.indexOf( t + e );
