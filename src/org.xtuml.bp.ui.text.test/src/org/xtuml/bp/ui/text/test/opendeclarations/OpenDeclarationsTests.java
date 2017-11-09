@@ -36,6 +36,7 @@ import org.xtuml.bp.core.BridgeBody_c;
 import org.xtuml.bp.core.BridgeParameter_c;
 import org.xtuml.bp.core.Bridge_c;
 import org.xtuml.bp.core.Component_c;
+import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.DerivedAttributeBody_c;
 import org.xtuml.bp.core.DerivedBaseAttribute_c;
 import org.xtuml.bp.core.EventSupplementalData_c;
@@ -75,6 +76,7 @@ import org.xtuml.bp.core.SupplementalDataItems_c;
 import org.xtuml.bp.core.TransitionActionBody_c;
 import org.xtuml.bp.core.TransitionActionHome_c;
 import org.xtuml.bp.core.Transition_c;
+import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
@@ -133,6 +135,8 @@ public class OpenDeclarationsTests extends CanvasTest {
 
     @Override
     protected void initialSetup() throws Exception {
+        // enable parsing invocations in where clauses
+		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.ALLOW_OPERATIONS_IN_WHERE, true);
         // load the test model
         loadProject("oal_open_declarations");
         m_sys = getSystemModel("oal_open_declarations");
