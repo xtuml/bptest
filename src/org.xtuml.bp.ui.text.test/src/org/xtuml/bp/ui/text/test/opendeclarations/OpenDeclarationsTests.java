@@ -103,7 +103,7 @@ import junit.framework.TestCase;
 @RunWith(OrderedRunner.class)
 public class OpenDeclarationsTests extends CanvasTest {
     
-	// OpenDeclarationAction instance
+    // OpenDeclarationAction instance
     private static IEditorActionDelegate openDeclarationAction = null;
 
     String test_id = "";
@@ -136,7 +136,7 @@ public class OpenDeclarationsTests extends CanvasTest {
     @Override
     protected void initialSetup() throws Exception {
         // enable parsing invocations in where clauses
-		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.ALLOW_OPERATIONS_IN_WHERE, true);
+        CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.ALLOW_OPERATIONS_IN_WHERE, true);
         // load the test model
         loadProject("oal_open_declarations");
         m_sys = getSystemModel("oal_open_declarations");
@@ -739,10 +739,10 @@ public class OpenDeclarationsTests extends CanvasTest {
     
     private NonRootModelElement getElementFromCanvasSelection( IStructuredSelection canvasSelection ) {
         assertTrue( "Selected element on canvas is not a shape or connector.", ( canvasSelection.getFirstElement() instanceof ShapeEditPart ||
-        		                                                                 canvasSelection.getFirstElement() instanceof ConnectorEditPart ) );
-    	if ( canvasSelection.getFirstElement() instanceof ShapeEditPart ) {
+                                                                                 canvasSelection.getFirstElement() instanceof ConnectorEditPart ) );
+        if ( canvasSelection.getFirstElement() instanceof ShapeEditPart ) {
             return (NonRootModelElement)((ShapeEditPart)canvasSelection.getFirstElement()).getGraphicalElement().getRepresents();
-    	}
+        }
         else {
             return (NonRootModelElement)GraphicalElement_c.getOneGD_GEOnR2(((Connector_c)((ConnectorEditPart)canvasSelection.getFirstElement()).getModel())).getRepresents();
         }
