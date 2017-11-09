@@ -101,9 +101,8 @@ import junit.framework.TestCase;
 @RunWith(OrderedRunner.class)
 public class OpenDeclarationsTests extends CanvasTest {
     
-    public static boolean generateResults = false;
 	// OpenDeclarationAction instance
-    private static IEditorActionDelegate openDeclarationAction;
+    private static IEditorActionDelegate openDeclarationAction = null;
 
     String test_id = "";
     protected String getResultName() {
@@ -147,7 +146,6 @@ public class OpenDeclarationsTests extends CanvasTest {
         if ( null != openDeclarationActionClass ) {
             openDeclarationAction = (IEditorActionDelegate) openDeclarationActionClass.newInstance();
         }
-        else openDeclarationAction = null;
     };
 
     @Before
@@ -609,6 +607,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         CanvasTestUtils.openActivityEditor(activityElement);
         // get editor and set cursor position
         ActivityEditor editor = (ActivityEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+        assertFalse( "There are error markers in the body", editor.getDocumentProvider().getAnnotationModel(editor.getEditorInput()).getAnnotationIterator().hasNext() );
         editor.getTextViewer().setSelection(new TextSelection(cursorPosition.getOffset(), cursorPosition.getLength()));
         // execute the open declaration action
         openDeclarationAction.setActiveEditor(null, PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor());
