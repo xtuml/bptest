@@ -502,6 +502,15 @@ public class OpenDeclarationsTests extends CanvasTest {
             lineOffset = testLine.lastIndexOf( t + e );
             wordLength = (t + e).length();
         }
+        else if ( element.contains("T12") ) {
+            // in this section, because of the inability to name
+            // relationships freeform, relationships have been
+            // numbered such that in each case, if 'R99' is replaced
+            // by 'T12E', the relationship specification will match
+            // the desired DOF selection
+        	lineOffset = testLine.indexOf( "R99" + e.substring( 1 ) );
+        	wordLength = ( "R99" + e.substring( 1 ) ).length();
+        }
         else {
             lineOffset = testLine.indexOf( t + e );
             wordLength = (t + e).length();
