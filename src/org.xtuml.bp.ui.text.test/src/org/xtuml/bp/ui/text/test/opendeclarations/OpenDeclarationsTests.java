@@ -163,6 +163,12 @@ public class OpenDeclarationsTests extends CanvasTest {
     private Object getTestElement( String element ) {
         String t = element.substring( 3, 6 );
         String e = element.substring( 6, 9 );
+        Component_c containing_component = Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
+              @Override
+              public boolean evaluate(Object candidate) {
+                  return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
+              }
+        });
         switch (t) {
         case "T01":
             // return the first Variable location as offset
@@ -190,12 +196,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                 }
             });
         case "T05":
-            return Port_c.getOneC_POOnR4010( Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
-                @Override
-                public boolean evaluate(Object candidate) {
-                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
-                }
-            }), new ClassQueryInterface_c() {
+            return Port_c.getOneC_POOnR4010( containing_component, new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
                     return ((Port_c) candidate).getName().equals(t + e);
@@ -224,13 +225,7 @@ public class OpenDeclarationsTests extends CanvasTest {
             });
         case "T09":
             ProvidedOperation_c spr_po = ProvidedOperation_c.getOneSPR_POOnR4503(ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(
-                    Provision_c.getOneC_POnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
-                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
-                @Override
-                public boolean evaluate(Object candidate) {
-                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
-                }
-            }))))), new ClassQueryInterface_c() {
+                    Provision_c.getManyC_PsOnR4009(InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(containing_component)))), new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
                     return ((ProvidedOperation_c) candidate).getName().equals(t + e);
@@ -238,13 +233,7 @@ public class OpenDeclarationsTests extends CanvasTest {
             });
             if ( null != spr_po ) return spr_po;
             else return RequiredOperation_c.getOneSPR_ROOnR4502(RequiredExecutableProperty_c.getManySPR_REPsOnR4500(
-                    Requirement_c.getOneC_ROnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
-                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
-                @Override
-                public boolean evaluate(Object candidate) {
-                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
-                }
-            }))))), new ClassQueryInterface_c() {
+                    Requirement_c.getManyC_RsOnR4009(InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(containing_component)))), new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
                     return ((RequiredOperation_c) candidate).getName().equals(t + e);
@@ -252,13 +241,7 @@ public class OpenDeclarationsTests extends CanvasTest {
             });
         case "T10":
             ProvidedSignal_c spr_ps = ProvidedSignal_c.getOneSPR_PSOnR4503(ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(
-                    Provision_c.getOneC_POnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
-                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
-                @Override
-                public boolean evaluate(Object candidate) {
-                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
-                }
-            }))))), new ClassQueryInterface_c() {
+                    Provision_c.getManyC_PsOnR4009(InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(containing_component)))), new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
                     return ((ProvidedSignal_c) candidate).getName().equals(t + e);
@@ -266,13 +249,7 @@ public class OpenDeclarationsTests extends CanvasTest {
             });
             if ( null != spr_ps ) return spr_ps;
             else return RequiredSignal_c.getOneSPR_RSOnR4502(RequiredExecutableProperty_c.getManySPR_REPsOnR4500(
-                    Requirement_c.getOneC_ROnR4009(InterfaceReference_c.getOneC_IROnR4016(Port_c.getOneC_POOnR4010(
-                    Component_c.ComponentInstance( modelRoot, new ClassQueryInterface_c() {
-                @Override
-                public boolean evaluate(Object candidate) {
-                    return ((Component_c)candidate).getId().equals( testBody.Getcontainingcomponentid() );
-                }
-            }))))), new ClassQueryInterface_c() {
+                    Requirement_c.getManyC_RsOnR4009(InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(containing_component)))), new ClassQueryInterface_c() {
                 @Override
                 public boolean evaluate(Object candidate) {
                     return ((RequiredSignal_c) candidate).getName().equals(t + e);
