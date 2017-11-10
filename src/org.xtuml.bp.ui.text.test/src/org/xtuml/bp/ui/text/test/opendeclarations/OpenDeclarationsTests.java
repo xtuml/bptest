@@ -512,7 +512,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         // for T06 we want to select the entire event
         // spec, not just the event Mning
         if ( element.contains("T06") ) {
-            Matcher matcher = Pattern.compile( "\\s(.*:" + t + e + ")" ).matcher( testLine );
+            Matcher matcher = Pattern.compile( "\\s(\\S*:" + t + e + ")" ).matcher( testLine );
             if ( matcher.find() ) {
                 lineOffset = matcher.start( 1 );
                 wordLength = matcher.group( 1 ).length();
