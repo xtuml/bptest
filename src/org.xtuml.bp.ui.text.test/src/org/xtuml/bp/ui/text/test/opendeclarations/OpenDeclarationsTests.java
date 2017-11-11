@@ -37,22 +37,26 @@ import org.xtuml.bp.core.BridgeParameter_c;
 import org.xtuml.bp.core.Bridge_c;
 import org.xtuml.bp.core.Component_c;
 import org.xtuml.bp.core.CorePlugin;
+import org.xtuml.bp.core.CreationTransition_c;
 import org.xtuml.bp.core.DerivedAttributeBody_c;
 import org.xtuml.bp.core.DerivedBaseAttribute_c;
-import org.xtuml.bp.core.EventSupplementalData_c;
 import org.xtuml.bp.core.ExecutableProperty_c;
 import org.xtuml.bp.core.ExternalEntity_c;
 import org.xtuml.bp.core.FunctionBody_c;
 import org.xtuml.bp.core.FunctionParameter_c;
 import org.xtuml.bp.core.Function_c;
+import org.xtuml.bp.core.InstanceStateMachine_c;
 import org.xtuml.bp.core.InterfaceReference_c;
+import org.xtuml.bp.core.LocalEvent_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.MooreActionHome_c;
 import org.xtuml.bp.core.NewStateTransition_c;
+import org.xtuml.bp.core.NonLocalEvent_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.OperationBody_c;
 import org.xtuml.bp.core.OperationParameter_c;
 import org.xtuml.bp.core.Operation_c;
+import org.xtuml.bp.core.PolymorphicEvent_c;
 import org.xtuml.bp.core.Port_c;
 import org.xtuml.bp.core.PropertyParameter_c;
 import org.xtuml.bp.core.ProvidedExecutableProperty_c;
@@ -73,7 +77,7 @@ import org.xtuml.bp.core.StateEventMatrixEntry_c;
 import org.xtuml.bp.core.StateMachineEventDataItem_c;
 import org.xtuml.bp.core.StateMachineEvent_c;
 import org.xtuml.bp.core.StateMachineState_c;
-import org.xtuml.bp.core.SupplementalDataItems_c;
+import org.xtuml.bp.core.StateMachine_c;
 import org.xtuml.bp.core.TransitionActionBody_c;
 import org.xtuml.bp.core.TransitionActionHome_c;
 import org.xtuml.bp.core.Transition_c;
@@ -103,8 +107,8 @@ import junit.framework.TestCase;
 
 @RunWith(OrderedRunner.class)
 public class OpenDeclarationsTests extends CanvasTest {
-	
-	protected static boolean generateResults;
+    
+    protected static boolean generateResults;
     
     // OpenDeclarationAction instance
     private static IEditorActionDelegate openDeclarationAction = null;
@@ -319,11 +323,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                 });
             }
             if (activityElement instanceof Transition_c) {
-                return StateMachineEventDataItem_c.getOneSM_EVTDIOnR522(
-                        SupplementalDataItems_c.getManySM_SDIsOnR522(EventSupplementalData_c.getManySM_SUPDTsOnR520(
-                                StateMachineEvent_c.getManySM_EVTsOnR525(SemEvent_c.getManySM_SEVTsOnR503(
-                                        StateEventMatrixEntry_c.getManySM_SEMEsOnR504(NewStateTransition_c
-                                                .getManySM_NSTXNsOnR507((Transition_c) activityElement)))))), new ClassQueryInterface_c() {
+                return getParameterForTransition( (Transition_c)activityElement, new ClassQueryInterface_c() {
                     @Override
                     public boolean evaluate(Object candidate) {
                         return ((StateMachineEventDataItem_c) candidate).getName().equals(t + e);
@@ -331,10 +331,7 @@ public class OpenDeclarationsTests extends CanvasTest {
                 });
             }
             if (activityElement instanceof StateMachineState_c) {
-                return StateMachineEventDataItem_c.getOneSM_EVTDIOnR522(SupplementalDataItems_c
-                        .getManySM_SDIsOnR522(EventSupplementalData_c.getManySM_SUPDTsOnR520(StateMachineEvent_c
-                                .getManySM_EVTsOnR525(SemEvent_c.getManySM_SEVTsOnR503(StateEventMatrixEntry_c
-                                        .getManySM_SEMEsOnR503((StateMachineState_c) activityElement))))), new ClassQueryInterface_c() {
+                return getParameterForTransition( Transition_c.getOneSM_TXNOnR506((StateMachineState_c)activityElement), new ClassQueryInterface_c() {
                     @Override
                     public boolean evaluate(Object candidate) {
                         return ((StateMachineEventDataItem_c) candidate).getName().equals(t + e);
@@ -412,12 +409,14 @@ public class OpenDeclarationsTests extends CanvasTest {
                 testBody = Body_c.getOneACT_ACTOnR698(ProvidedOperationBody_c.getOneACT_POBOnR687(po));
                 break;
             case "L05":
-                Transition_c transition = Transition_c.TransitionInstance( modelRoot, new ClassQueryInterface_c() {
+                // For transitions, since transitions dont have names, select through the model class name
+                ModelClass_c l05class = ModelClass_c.ModelClassInstance( modelRoot, new ClassQueryInterface_c() {
                     @Override
                     public boolean evaluate(Object candidate) {
-                        return ((Transition_c)candidate).getName().equals( l );
+                        return ((ModelClass_c)candidate).getName().equals( l );
                     }
                 });
+                Transition_c transition = Transition_c.getOneSM_TXNOnR505(StateMachine_c.getOneSM_SMOnR517(InstanceStateMachine_c.getOneSM_ISMOnR518(l05class)));
                 activityElement = transition;
                 testBody = Body_c.getOneACT_ACTOnR698(TransitionActionBody_c.getOneACT_TABOnR688(Action_c.getOneSM_ACTOnR514(ActionHome_c.getOneSM_AHOnR513(TransitionActionHome_c.getOneSM_TAHOnR530(transition)))));
                 break;
@@ -510,8 +509,8 @@ public class OpenDeclarationsTests extends CanvasTest {
             // numbered such that in each case, if 'R99' is replaced
             // by 'T12E', the relationship specification will match
             // the desired DOF selection
-        	lineOffset = testLine.indexOf( "R99" + e.substring( 1 ) );
-        	wordLength = ( "R99" + e.substring( 1 ) ).length();
+            lineOffset = testLine.indexOf( "R99" + e.substring( 1 ) );
+            wordLength = ( "R99" + e.substring( 1 ) ).length();
         }
         else {
             lineOffset = testLine.indexOf( t + e );
@@ -782,15 +781,26 @@ public class OpenDeclarationsTests extends CanvasTest {
             return (NonRootModelElement)((ShapeEditPart)canvasSelection.getFirstElement()).getGraphicalElement().getRepresents();
         }
         else {
-        	NonRootModelElement connectorElement = (NonRootModelElement)GraphicalElement_c.getOneGD_GEOnR2(((Connector_c)((ConnectorEditPart)canvasSelection.getFirstElement()).getModel())).getRepresents();
-        	if ( connectorElement instanceof Provision_c ) {
-        		connectorElement = Port_c.getOneC_POOnR4016(InterfaceReference_c.getOneC_IROnR4009((Provision_c)connectorElement));
-        	}
-        	else if ( connectorElement instanceof Requirement_c ) {
-        		connectorElement = Port_c.getOneC_POOnR4016(InterfaceReference_c.getOneC_IROnR4009((Requirement_c)connectorElement));
-        	}
-        	return connectorElement;
+            NonRootModelElement connectorElement = (NonRootModelElement)GraphicalElement_c.getOneGD_GEOnR2(((Connector_c)((ConnectorEditPart)canvasSelection.getFirstElement()).getModel())).getRepresents();
+            if ( connectorElement instanceof Provision_c ) {
+                connectorElement = Port_c.getOneC_POOnR4016(InterfaceReference_c.getOneC_IROnR4009((Provision_c)connectorElement));
+            }
+            else if ( connectorElement instanceof Requirement_c ) {
+                connectorElement = Port_c.getOneC_POOnR4016(InterfaceReference_c.getOneC_IROnR4009((Requirement_c)connectorElement));
+            }
+            return connectorElement;
         }
+    }
+    
+    private StateMachineEventDataItem_c getParameterForTransition( Transition_c transition, ClassQueryInterface_c where ) {
+        StateMachineEventDataItem_c v_sm_act_param = StateMachineEventDataItem_c.getOneSM_EVTDIOnR532(StateMachineEvent_c.getManySM_EVTsOnR525(SemEvent_c.getManySM_SEVTsOnR526(LocalEvent_c.getManySM_LEVTsOnR509(CreationTransition_c.getManySM_CRTXNsOnR507(transition)))), where );
+        if ( null == v_sm_act_param ) {
+            v_sm_act_param = StateMachineEventDataItem_c.getOneSM_EVTDIOnR532(StateMachineEvent_c.getManySM_EVTsOnR525(SemEvent_c.getManySM_SEVTsOnR503(StateEventMatrixEntry_c.getManySM_SEMEsOnR504(NewStateTransition_c.getManySM_NSTXNsOnR507(transition)))), where );
+                if ( null == v_sm_act_param ) {
+                v_sm_act_param = StateMachineEventDataItem_c.getOneSM_EVTDIOnR532(StateMachineEvent_c.getManySM_EVTsOnR525(PolymorphicEvent_c.getManySM_PEVTsOnR527(NonLocalEvent_c.getManySM_NLEVTsOnR526(SemEvent_c.getManySM_SEVTsOnR503(StateEventMatrixEntry_c.getManySM_SEMEsOnR504(NewStateTransition_c.getManySM_NSTXNsOnR507(transition)))))), where );
+            }
+        }
+        return v_sm_act_param;
     }
 
 }
