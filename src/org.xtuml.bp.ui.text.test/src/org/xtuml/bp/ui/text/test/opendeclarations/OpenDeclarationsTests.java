@@ -56,6 +56,8 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.OperationBody_c;
 import org.xtuml.bp.core.OperationParameter_c;
 import org.xtuml.bp.core.Operation_c;
+import org.xtuml.bp.core.Package_c;
+import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.PolymorphicEvent_c;
 import org.xtuml.bp.core.Port_c;
 import org.xtuml.bp.core.PropertyParameter_c;
@@ -369,7 +371,14 @@ public class OpenDeclarationsTests extends CanvasTest {
         final String l = element.substring( 0, 3 );
         switch ( l ) {
             case "L01":
-                RequiredSignal_c rs = RequiredSignal_c.RequiredSignalInstance( modelRoot, new ClassQueryInterface_c() {
+                RequiredSignal_c rs = RequiredSignal_c.getOneSPR_RSOnR4502(RequiredExecutableProperty_c.getManySPR_REPsOnR4500(Requirement_c.getManyC_RsOnR4009(
+                        InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(Component_c.getOneC_COnR8001(PackageableElement_c.getOnePE_PEOnR8000(
+                        Package_c.getOneEP_PKGOnR1405( m_sys, new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Package_c)candidate).getName().equals( l );
+                    }
+                        }))))))), new ClassQueryInterface_c() {
                     @Override
                     public boolean evaluate(Object candidate) {
                         return ((RequiredSignal_c)candidate).getName().equals( l );
@@ -379,7 +388,14 @@ public class OpenDeclarationsTests extends CanvasTest {
                 testBody = Body_c.getOneACT_ACTOnR698(RequiredSignalBody_c.getOneACT_RSBOnR684(rs));
                 break;
             case "L02":
-                RequiredOperation_c ro = RequiredOperation_c.RequiredOperationInstance( modelRoot, new ClassQueryInterface_c() {
+                RequiredOperation_c ro = RequiredOperation_c.getOneSPR_ROOnR4502(RequiredExecutableProperty_c.getManySPR_REPsOnR4500(Requirement_c.getManyC_RsOnR4009(
+                        InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(Component_c.getOneC_COnR8001(PackageableElement_c.getOnePE_PEOnR8000(
+                        Package_c.getOneEP_PKGOnR1405( m_sys, new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Package_c)candidate).getName().equals( l );
+                    }
+                        }))))))), new ClassQueryInterface_c() {
                     @Override
                     public boolean evaluate(Object candidate) {
                         return ((RequiredOperation_c)candidate).getName().equals( l );
@@ -389,7 +405,14 @@ public class OpenDeclarationsTests extends CanvasTest {
                 testBody = Body_c.getOneACT_ACTOnR698(RequiredOperationBody_c.getOneACT_ROBOnR685(ro));
                 break;
             case "L03":
-                ProvidedSignal_c ps = ProvidedSignal_c.ProvidedSignalInstance( modelRoot, new ClassQueryInterface_c() {
+                ProvidedSignal_c ps = ProvidedSignal_c.getOneSPR_PSOnR4503(ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(Provision_c.getManyC_PsOnR4009(
+                        InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(Component_c.getOneC_COnR8001(PackageableElement_c.getOnePE_PEOnR8000(
+                        Package_c.getOneEP_PKGOnR1405( m_sys, new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Package_c)candidate).getName().equals( l );
+                    }
+                        }))))))), new ClassQueryInterface_c() {
                     @Override
                     public boolean evaluate(Object candidate) {
                         return ((ProvidedSignal_c)candidate).getName().equals( l );
@@ -399,7 +422,14 @@ public class OpenDeclarationsTests extends CanvasTest {
                 testBody = Body_c.getOneACT_ACTOnR698(ProvidedSignalBody_c.getOneACT_PSBOnR686(ps));
                 break;
             case "L04":
-                ProvidedOperation_c po = ProvidedOperation_c.ProvidedOperationInstance( modelRoot, new ClassQueryInterface_c() {
+                ProvidedOperation_c po = ProvidedOperation_c.getOneSPR_POOnR4503(ProvidedExecutableProperty_c.getManySPR_PEPsOnR4501(Provision_c.getManyC_PsOnR4009(
+                        InterfaceReference_c.getManyC_IRsOnR4016(Port_c.getManyC_POsOnR4010(Component_c.getOneC_COnR8001(PackageableElement_c.getOnePE_PEOnR8000(
+                        Package_c.getOneEP_PKGOnR1405( m_sys, new ClassQueryInterface_c() {
+                    @Override
+                    public boolean evaluate(Object candidate) {
+                        return ((Package_c)candidate).getName().equals( l );
+                    }
+                        }))))))), new ClassQueryInterface_c() {
                     @Override
                     public boolean evaluate(Object candidate) {
                         return ((ProvidedOperation_c)candidate).getName().equals( l );
