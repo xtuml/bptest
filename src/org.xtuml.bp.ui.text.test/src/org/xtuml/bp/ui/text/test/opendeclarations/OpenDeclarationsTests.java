@@ -595,6 +595,7 @@ public class OpenDeclarationsTests extends CanvasTest {
     public void tearDown() throws Exception {
         // close all editors
         PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeAllEditors(false);
+        ExplorerUtil.getTreeViewer().setSelection(StructuredSelection.EMPTY);
         super.tearDown();
     }
 
