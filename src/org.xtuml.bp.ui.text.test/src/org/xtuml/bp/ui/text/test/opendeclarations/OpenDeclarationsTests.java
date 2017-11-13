@@ -85,6 +85,7 @@ import org.xtuml.bp.core.TransitionActionHome_c;
 import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.core.common.MultipleOccurrenceElement;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.util.ActionLanguageDescriptionUtil;
@@ -708,7 +709,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         }
         IStructuredSelection selection = ((StructuredSelection) ExplorerUtil.getTreeViewer().getSelection());
         IStructuredSelection canvasSelection = ((StructuredSelection) UITestingUtilities.getActiveEditor().getSite().getSelectionProvider().getSelection());
-        return selection.getFirstElement() == testElement && getElementFromCanvasSelection( canvasSelection ) == testElement;
+        return getElementFromTreeSelection( selection ) == testElement && getElementFromCanvasSelection( canvasSelection ) == testElement;
     }
 
     /**
@@ -752,7 +753,7 @@ public class OpenDeclarationsTests extends CanvasTest {
             return false;
         }
         IStructuredSelection selection = ((StructuredSelection) ExplorerUtil.getTreeViewer().getSelection());
-        return selection.getFirstElement() == testElement;
+        return getElementFromTreeSelection( selection ) == testElement;
     }
 
     /**
@@ -820,6 +821,11 @@ public class OpenDeclarationsTests extends CanvasTest {
             }
             return connectorElement;
         }
+    }
+
+    private NonRootModelElement getElementFromTreeSelection( IStructuredSelection selection ) {
+        if ( selection.getFirstElement() instanceof MultipleOccurrenceElement ) return ((MultipleOccurrenceElement)selection.getFirstElement()).getElement();
+        else return (NonRootModelElement)selection.getFirstElement();
     }
     
     private StateMachineEventDataItem_c getParameterForTransition( Transition_c transition, ClassQueryInterface_c where ) {
