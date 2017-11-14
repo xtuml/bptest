@@ -207,121 +207,121 @@ public class AssociationCardinalityMenuTests extends BaseTest {
 	@Test
 	public void testCardinalityFilteringOneSideSimpleOneUnconditional() {
 		selectElement(getAssociation(12));
-		checkMenuItems(new String[] {"0..1", "1..*", "*"}, "Cardinality::FilterA");
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA", "1");
 	}
 	
 	@Test
 	public void testCardinalityFilteringOneSideSimpleOneConditional() {
 		selectElement(getAssociation(9));
-		checkMenuItems(new String[] {"1", "1..*", "*"}, "Cardinality::FilterA");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA", "0..1");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringOneSideSimpleManyUnconditional() {
 		selectElement(getAssociation(10));
-		checkMenuItems(new String[] {"1", "0..1", "*"}, "Cardinality::FilterA");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA", "1..*");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringOneSideSimpleManyConditional() {
 		selectElement(getAssociation(11));
-		checkMenuItems(new String[] {"1", "0..1", "1..*"}, "Cardinality::FilterA");
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA", "*");
 	}
 
 	@Test
 	public void testCardinalityFilteringOtherSideSimpleOneUnconditional() {
 		selectElement(getAssociation(12));
-		checkMenuItems(new String[] {"0..1", "1..*", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "1");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringOtherSideSimpleOneConditional() {
 		selectElement(getAssociation(9));
-		checkMenuItems(new String[] {"1", "1..*", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "0..1");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringOtherSideSimpleManyUnconditional() {
 		selectElement(getAssociation(10));
-		checkMenuItems(new String[] {"1", "0..1", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "1..*");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringOtherSideSimpleManyConditional() {
 		selectElement(getAssociation(11));
-		checkMenuItems(new String[] {"1", "0..1", "1..*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "*");		
 	}
 
 	@Test
 	public void testCardinalityFilteringFormOneUnconditional() {
 		selectElement(getAssociation(15));
-		checkMenuItems(new String[] {"0..1", "1..*", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "1");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringFormOneConditional() {
 		selectElement(getAssociation(16));
-		checkMenuItems(new String[] {"1", "1..*", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "0..1");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringFormManyUnconditional() {
 		selectElement(getAssociation(17));
-		checkMenuItems(new String[] {"1", "0..1", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "1..*");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringFormManyConditional() {
 		selectElement(getAssociation(18));
-		checkMenuItems(new String[] {"1", "0..1", "1..*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "*");		
 	}
 
 	@Test
 	public void testCardinalityFilteringLinkedOneSideOneUnconditional() {
 		selectElement(getAssociation(14));
-		checkMenuItems(new String[] {"0..1", "1..*", "*"}, "Cardinality::FilterA");
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA", "1");
 	}
 	
 	@Test
 	public void testCardinalityFilteringLinkedOneSideSimpleOneConditional() {
 		selectElement(getAssociation(13));
-		checkMenuItems(new String[] {"1", "1..*", "*"}, "Cardinality::FilterA");
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA", "0..1");
 	}
 	
 	@Test
 	public void testCardinalityFilteringLinkedOneSideSimpleManyUnconditional() {
 		selectElement(getAssociation(20));
-		checkMenuItems(new String[] {"1", "0..1", "*"}, "Cardinality::FilterA.''");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA.''", "1..*");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringLinkedOneSideSimpleManyConditional() {
 		selectElement(getAssociation(19));
-		checkMenuItems(new String[] {"1", "0..1", "1..*"}, "Cardinality::FilterB.''");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB.''", "*");		
 	}
 
 	@Test
 	public void testCardinalityFilteringLinkedOtherSideUnconditional() {
 		selectElement(getAssociation(14));
-		checkMenuItems(new String[] {"0..1", "1..*", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "1");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringLinkedOtherSideSimpleOneConditional() {
 		selectElement(getAssociation(13));
-		checkMenuItems(new String[] {"1", "1..*", "*"}, "Cardinality::FilterB");		
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB", "0..1");		
 	}
 	
 	@Test
 	public void testCardinalityFilteringLinkedOtherSideSimpleManyUnconditional() {
 		selectElement(getAssociation(20));
-		checkMenuItems(new String[] {"1", "0..1", "*"}, "Cardinality::FilterA.''");				
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterA.''", "1..*");				
 	}
 	
 	@Test
 	public void testCardinalityFilteringLinkedOtherSideSimpleManyConditional() {
 		selectElement(getAssociation(19));
-		checkMenuItems(new String[] {"1", "0..1", "1..*"}, "Cardinality::FilterB.''");				
+		checkMenuItems(new String[] {"1", "0..1", "1..*", "*"}, "Cardinality::FilterB.''", "*");				
 	}
 
 	@Test
@@ -329,7 +329,7 @@ public class AssociationCardinalityMenuTests extends BaseTest {
 		Association_c association = getAssociation(13);
 		ClassAsLink_c cas = ClassAsLink_c.getOneR_ASSROnR211(LinkedAssociation_c.getManyR_ASSOCsOnR206(association));
 		selectElement(cas);
-		checkMenuItems(new String[] {"{*}"}, "Cardinality::FilterD");				
+		checkMenuItems(new String[] {" ", "{*}"}, "Cardinality::FilterD", " ");				
 	}
 	
 	@Test
@@ -337,13 +337,20 @@ public class AssociationCardinalityMenuTests extends BaseTest {
 		Association_c association = getAssociation(14);
 		ClassAsLink_c cas = ClassAsLink_c.getOneR_ASSROnR211(LinkedAssociation_c.getManyR_ASSOCsOnR206(association));
 		selectElement(cas);
-		checkMenuItems(new String[] {" "}, "Cardinality::FilterC");						
+		checkMenuItems(new String[] {" ", "{*}"}, "Cardinality::FilterC", "{*}");						
 	}
 	
-	private void checkMenuItems(String[] expected, String menuPath) {
+	private void checkMenuItems(String[] expected, String menuPath, String checkedItem) {
 		MenuItem[] items = UITestingUtilities.getMenuItemsAtPath(editor.getCanvas().getMenu(), menuPath);
 		for(int i = 0; i < expected.length; i++) {
 			assertEquals("", expected[i], items[i].getText());
+			if (items[i].getText().equals(checkedItem)) {
+				assertTrue("Expected \"" + checkedItem + "\" to be checked and it was not.", items[i].getSelection());
+				assertFalse("Expected \"" + checkedItem + "\" to be disabled and it was enabled.", items[i].getEnabled());
+			} else {
+				assertFalse("Expected \"" + items[i].getText() + "\" to be unchecked and it was not.", items[i].getSelection());
+				assertTrue("Expected \"" + items[i].getText() + "\" to be enabled and it was disabled.", items[i].getEnabled());
+			}
 		}
 	}
 	

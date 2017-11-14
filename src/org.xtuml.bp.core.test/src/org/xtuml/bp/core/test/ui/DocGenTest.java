@@ -54,7 +54,6 @@ public class DocGenTest extends BaseTest {
 	}
 
     @Override
-
     @Before
 	public void setUp() throws Exception {
         super.setUp();
@@ -186,4 +185,3 @@ public class DocGenTest extends BaseTest {
     }
 
 }
-

@@ -769,6 +769,22 @@ public class AssociationMove extends CanvasTest {
     *                    taken on a row of the matrix.
     * @return true if the test succeeds, false if it fails
     */
+    boolean checkResult_assocFormal(NonRootModelElement source, NonRootModelElement destination) {
+        boolean assocFormal = false;
+        assocFormal = ( null != testRel && testRel.Isformalized() );
+        return assocFormal;
+    }
+
+
+    /**
+    * This function verifies an expected result.
+    *
+    * @param source A model element instance aquired through a action taken
+    *               on a column of the matrix.
+    * @param destination A model element instance aquired through a action taken
+    *                    taken on a row of the matrix.
+    * @return true if the test succeeds, false if it fails
+    */
     boolean checkResult_rectilinearCheck(NonRootModelElement source, NonRootModelElement destination) {
         boolean rectilinearCheck = true; // start as true. "and" with each following result. if any result is false, the final result will be false
         NonRootModelElement instance = Association_c.getOneR_RELOnR201((ClassInAssociation_c)source);

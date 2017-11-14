@@ -52,7 +52,10 @@ my $priorLine = '';
 my $maxTestsPerClass = 250;
 my $createTestSuite =  0;
 my $createTestSuitePerClass =  0;
-my $passColToRow = 0;
+my $passSrcToDest = 0;
+my $generateConditionalTests = 0;
+my $selectRowFirst = 0;
+my $doNotGenResults = 0;
 
 my $usage = <<USAGE;
 #===========================================================================
@@ -80,8 +83,13 @@ my $usage = <<USAGE;
 #       -suitePerClass : This is used in conjunction with -suite.  When 
 #                     -suitePerClass is used, a separate test suite for each 
 #                     java class file is created.
-#       -data      : Pass the column object as extra data to the selection of
-#                    the row object
+#       -data      : Pass the first selected object as extra data to the
+#                    selection of the second object
+#       -c         : Generate tests marked as conditional. These tests are
+#                    denoted with "XC"
+#       -selectRowFirst : Select the row object before selecting the column
+#                    object
+#       -noResults : Do not invoke 'validateOrGenerateResults'
 # 
 # Example Usage:
 # --------------
@@ -152,6 +160,9 @@ my $description = <<DESCRIPTION;
 # 7. If a result is not possible and therefore you do not wish to 
 #    generate a test for a particular cell(s) in the matrix, an upper-case 
 #    "X" can be placed in that cell and no test will be generated for it.
+# 8. If it is desireable to conditionally disable a test, "XC" can be placed
+#    in that cell and the test will only be generated if -c is passed to the
+#    script
 #===========================================================================
 DESCRIPTION
 
@@ -181,7 +192,10 @@ sub processCommandLine
           elsif ( $k =~ /^(n)$/ ) { $i++; $maxTestsPerClass = $ARGV[$i]; }
           elsif ( $k =~ /^(suite)$/ ) { $createTestSuite = 1; }
           elsif ( $k =~ /^(suitePerClass)$/ ) { $createTestSuitePerClass = 1; }
-          elsif ( $k =~ /^(data)$/ ) { $passColToRow = 1; }
+          elsif ( $k =~ /^(data)$/ ) { $passSrcToDest = 1; }
+          elsif ( $k =~ /^(c)$/ ) { $generateConditionalTests = 1; }
+          elsif ( $k =~ /^(selectRowFirst)$/ ) { $selectRowFirst = 1; }
+          elsif ( $k =~ /^(noResults)$/ ) { $doNotGenResults = 1; }
           elsif ( $k =~ /^(h)$/ ) { print("$usage$description"); exit; }
           elsif ( $k =~ /^(\?)$/ ) { print("$usage$description"); exit; }
           else { die "Unrecognized argument ($k) to ExtractMetrics.pl\n"; }
@@ -812,7 +826,11 @@ sub getNumTests() {
             my $expectedResult = $currentRow[$col];
 
             # If the table has an "X" for the expected result it means don't generate it.
-            if ($expectedResult ne "X") {
+            # If the table contains "XC" for the expected result and -c is not specified,
+            # don't generate it.
+            if ( $expectedResult ne "X" &&
+                 ( ( index($expectedResult, "XC") == -1 ) ||
+                   ( index($expectedResult, "XC") != -1 && 1 == $generateConditionalTests ) ) ) {
                 $numTests = $numTests + 1;
             }
         }
@@ -840,7 +858,11 @@ sub createTests() {
             
             # If the table has an "X" for the expected result it means don't 
             # generate a test for it.
-            if ($expectedResult ne "X") {
+            # If the table contains "XC" for the expected result and -c is
+            # not specified, don't generate a test for it
+            if ( $expectedResult ne "X" &&
+                 ( ( index($expectedResult, "XC") == -1 ) ||
+                   ( index($expectedResult, "XC") != -1 && 1 == $generateConditionalTests ) ) ) {
                 # startCnt and maxTests are used for the case where the suite 
                 # improve JDK performance.
                 if ($startCount > $cellsCounted++) {
@@ -859,15 +881,29 @@ sub createTests() {
                 print $outputFH "        setUp();\n";
                 print $outputFH "        test_id = getTestId(\"$MatrixColNames[$col]\", \"$MatrixRowNames[$row]\", \"$testCnt\");\n";
                 print $outputFH "\n";
-                if ( 1 == $passColToRow ) {
-                    print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
-                    print $outputFH "\n";
-                    print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\", src);\n";
+                if ( 1 == $selectRowFirst ) {
+                    if ( 1 == $passSrcToDest ) {
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\", dest);\n";
+                    }
+                    else {
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                    }
                 }
                 else {
-                    print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
-                    print $outputFH "\n";
-                    print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                    if ( 1 == $passSrcToDest ) {
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\", src);\n";
+                    }
+                    else {
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                    }
                 }
                 print $outputFH "\n";
                 print $outputFH "        $myCol" . "_" . $myRow . "_" . "Action(src, dest);\n";                
@@ -879,10 +915,12 @@ sub createTests() {
                     print $outputFH "        assertTrue(\"$resultDescription\", checkResult_$resultFunction(src,dest));\n";
                 }
                 print $outputFH "        \n";
-                print $outputFH "        GraphicalEditor editor = getActiveEditor();\n";
-                print $outputFH "        if(editor != null && useDrawResults) {\n";
-                print $outputFH "           validateOrGenerateResults(editor, generateResults);\n";
-                print $outputFH "        }\n";
+                if ( 0 == $doNotGenResults ) {
+                    print $outputFH "        IEditorPart editor = getActiveEditor();\n";
+                    print $outputFH "        if(editor != null && editor instanceof GraphicalEditor && useDrawResults) {\n";
+                    print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
+                    print $outputFH "        }\n";
+                }
                 print $outputFH "        tearDown();\n";                
                 print $outputFH "    }\n";
                 print $outputFH "\n";
