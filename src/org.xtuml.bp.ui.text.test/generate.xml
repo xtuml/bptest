@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bp.ui.text.test" default="all" basedir=".">
+
+	<import file="${mcj_path}/common.xml"/>
+
+	<property name="plugins-home" value="${ant.home}/../.."/>
+
+	<target name="all" description="Generate all code for this project" depends="generate_open_declarations_tests" />
+
+	<target name="nb_all" description="Generate all code for this project" depends="generate_open_declarations_tests" />
+
+	<target name="open_declarations.depends">
+		<uptodate property="open_declarations.buildNotNeeded" value="yes" srcfile="matrices/non_generated/9761_9762_find_declarations_matrix.txt" targetfile="src/org/xtuml/bp/ui/text/test/opendeclarations/OpenDeclarationsTests_0.java" />
+	</target>
+
+	<target name="generate_open_declarations_tests" description="Generate code for open declaration support" depends="open_declarations.depends" unless="open_declarations.buildNotNeeded">
+		<exec vmlauncher="false" failonerror="true" executable="perl">
+			<arg line="../org.xtuml.bp.test/UnitTestGenerator.pl matrices/non_generated/9761_9762_find_declarations_matrix.txt src/org/xtuml/bp/ui/text/test/opendeclarations/OpenDeclarationsTests.java
+        -n 250 -p org.xtuml.bp.ui.text.test.opendeclarations -suite -DNO -data -selectRowFirst -noResults" />
+		</exec>
+	</target>
+
+
+	<!-- CLEAN ALL -->
+	<target name="clean_all" depends="clean_generated_matrix_code" />
+
+	<target name="clean_generated_matrix_code" description="Clean generated oal auto-complete code." >
+		<echo>Removing code generated for oal auto-complete</echo>
+		<delete>
+			<fileset dir="src/org/xtuml/bp/ui/text/test/opendeclarations/">
+				<exclude name="OpenDeclarationsTests.java" />
+				<include name="**.java" />
+			</fileset>
+		</delete>
+	</target>
+</project>

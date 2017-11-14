@@ -30,6 +30,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.xtuml.bp.io.core,
  org.xtuml.bp.io.mdl,
  org.xtuml.bp.test,
- org.xtuml.bp.als.oal
+ org.xtuml.bp.als.oal,
+ org.xtuml.bp.ui.graphics,
+ org.xtuml.bp.ui.canvas.test,
+ org.eclipse.gef
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
