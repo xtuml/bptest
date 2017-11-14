@@ -657,7 +657,7 @@ public class OpenDeclarationsTests extends CanvasTest {
         // get the activity element and body from the L value
         activityElement = getActivityElement( element );
         assertNotNull("Could not locate test body.", activityElement);
-        testDocument = new Document(ActionLanguageDescriptionUtil.getActionLanguageAttributeValue(activityElement));
+        testDocument = new Document(getActionLanguageFromElement(activityElement));
         wordRegion = getTestWord( element );
         // get the test element from the T and E values
         testElement = getTestElement( element );
@@ -838,6 +838,17 @@ public class OpenDeclarationsTests extends CanvasTest {
             }
         }
         return v_sm_act_param;
+    }
+    
+    private String getActionLanguageFromElement( NonRootModelElement element ) {
+        NonRootModelElement baseElement = element;
+        if ( element instanceof Transition_c ) {
+            baseElement = Action_c.getOneSM_ACTOnR514(ActionHome_c.getOneSM_AHOnR513(TransitionActionHome_c.getOneSM_TAHOnR530((Transition_c)element)));
+        }
+        else if ( element instanceof StateMachineState_c ) {
+            baseElement = Action_c.getOneSM_ACTOnR514(ActionHome_c.getOneSM_AHOnR513(MooreActionHome_c.getOneSM_MOAHOnR511((StateMachineState_c)element)));
+        }
+        return ActionLanguageDescriptionUtil.getActionLanguageAttributeValue( baseElement );
     }
 
 }
