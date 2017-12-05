@@ -35,9 +35,13 @@ import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Package_c;
+import org.xtuml.bp.core.UserDataType_c;
+import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.CombineWithOnO_ATTRAction;
 import org.xtuml.bp.core.ui.CombineWithOnO_ATTRWizardPage1;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Cl_c;
@@ -101,24 +105,6 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		CanvasTestUtils.openCanvasEditor(uut);
 	}
 	
-//	@Test
-//	public void testCombineSplitReferentialsTest(){
-//		 doTestSelectNonReferentialAttribute();
-//	      doTestClassWithOneReferentialAttribute();
-//	      doTestReferentialAttributesWithDiffBaseTypes();
-//	      doTestTwoReferentialAttributesWithSameBaseTypes();
-//	      doTestSelectCombinedReferentialAttributes();
-//	      doTestTwoReferentialAttributesSameBaseTypesOneDifferent();
-//	      doTestTwoCombinedReferentials();
-//	      doTestThreeReferentials();
-//	      doTestCombineTwoCombinedRefs();
-//	      doTestCombineRefWithIDRef();
-//	      doTestSplitNameLoopGood();
-//	      doTestSplitNameLoopBad();
-//	      doTestSplitPrefixLoopGood();
-//	      doTestSplitPrefixLoopBad();
-//	}
-
 	@Test
 	public void testSelectNonReferentialAttribute() {
 		test_id = "1";
@@ -356,6 +342,161 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		w.performFinish();
 		wd.close();
 		performTest("13");
+	}
+
+	@Test
+	public void testCombineBaseIDWithRef() {
+		// Combine base identifier with referential of same type starting with the base. Verify that
+		// non-identifier base attributes are excluded as well as referentials of differing type.
+	    test_id = "14";
+
+		openTestPKGDiagram("brewing");
+		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
+				new ModelClass_by_name_c("fermentor"));
+		Attribute_c attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("fermentor_id"));
+		assertTrue(attr.Actionfilter("can", "combine"));
+		assertFalse(attr.Actionfilter("can", "split ref"));
+
+		Cl_c.Clearselection();
+		selection.addToSelection(attr);
+
+		Action a = new Action() {
+		};
+		CombineWithOnO_ATTRAction cwooa = new CombineWithOnO_ATTRAction();
+		cwooa.setActivePart(a, PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActivePart());
+		IStructuredSelection structuredSelection = (IStructuredSelection) selection
+				.getSelection();
+		WizardDialog wd = cwooa.O_ATTR_CombineWith(structuredSelection);
+		CombineWithOnO_ATTRWizardPage1 page = (CombineWithOnO_ATTRWizardPage1) wd
+				.getCurrentPage();
+		String[] items = page.Combine_withCombo.getItems();
+		assertEquals(1, items.length);
+		assertEquals("vessel_id", items[0]);
+		page.Combine_withCombo.select(0);
+		IWizard w = page.getWizard();
+		w.performFinish();
+		wd.close();
+		
+		// Now that we've combined:
+		// - make sure vessel_id is gone
+		// - make sure the propagated ID fermentor_id was unaffected 
+		//   by checking it's still valid on the conditioning class
+		attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("vessel_id"));
+		assertTrue("Combination of fermentation_id and vessel_id failed.",
+				attr == null);
+		ModelClass_c mc2 = ModelClass_c.ModelClassInstance(modelRoot,
+				new ModelClass_by_name_c("conditioning"));
+		attr = Attribute_c.getOneO_ATTROnR102(mc2,
+				new Attribute_by_name_c("fermentor_id"));
+		assertTrue("Combination of fermentation_id and vessel_id had undesired fallout.",
+				attr != null);
+		
+		performTest(test_id);
+/* TODO - test that descriptions are concatenated
+*/
+
+		// Undo the combination
+		// undo the paste
+		TransactionManager.getSingleton().getUndoAction().run();
+		BaseTest.dispatchEvents(0);
+		attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("vessel_id"));
+		assertTrue("Undo did not restore original attributes that were combined.",
+				attr != null);
+	}
+
+	@Test
+	public void testCombineRefWithBaseID() {
+		// Combine base identifier with referential of same type starting with the base. Verify that
+		// non-identifier base attributes are excluded as well as referentials of differing type.
+//		2) fermentor.vessel_id - combine with available and fermentor_id only option, after
+//		  combination left with fermentor_id
+	    test_id = "15";
+
+		openTestPKGDiagram("brewing");
+		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
+				new ModelClass_by_name_c("fermentor"));
+		Attribute_c attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("vessel_id"));
+		assertTrue(attr.Actionfilter("can", "combine"));
+		assertFalse(attr.Actionfilter("can", "split ref"));
+
+		Cl_c.Clearselection();
+		selection.addToSelection(attr);
+
+		Action a = new Action() {
+		};
+		CombineWithOnO_ATTRAction cwooa = new CombineWithOnO_ATTRAction();
+		cwooa.setActivePart(a, PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActivePart());
+		IStructuredSelection structuredSelection = (IStructuredSelection) selection
+				.getSelection();
+		WizardDialog wd = cwooa.O_ATTR_CombineWith(structuredSelection);
+		CombineWithOnO_ATTRWizardPage1 page = (CombineWithOnO_ATTRWizardPage1) wd
+				.getCurrentPage();
+		String[] items = page.Combine_withCombo.getItems();
+		assertEquals(1, items.length);
+		assertEquals("fermentor_id", items[0]);
+		page.Combine_withCombo.select(0);
+		IWizard w = page.getWizard();
+		w.performFinish();
+		wd.close();
+		// Now that we've combined:
+		// - make sure vessel_id is gone
+		// - make sure the propagated ID fermentor_id was unaffected 
+		//   by checking it's still valid on the conditioning class
+		attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("vessel_id"));
+		assertTrue("Combination of fermentation_id and vessel_id failed.",
+				attr == null);
+		ModelClass_c mc2 = ModelClass_c.ModelClassInstance(modelRoot,
+				new ModelClass_by_name_c("conditioning"));
+		attr = Attribute_c.getOneO_ATTROnR102(mc2,
+				new Attribute_by_name_c("fermentor_id"));
+		assertTrue("Combination of fermentation_id and vessel_id had undesired fallout.",
+				attr != null);
+		
+		performTest(test_id);
+/* TODO - test that descriptions are concatenated
+*/
+
+		// Undo the combination
+		// undo the paste
+		TransactionManager.getSingleton().getUndoAction().run();
+		BaseTest.dispatchEvents(0);
+		attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("vessel_id"));
+		assertTrue("Undo did not restore original attributes that were combined.",
+				attr != null);
+	}
+
+	@Test
+	public void testRefWithNoCombinationPossibilities() {
+		test_id = "16";
+
+		openTestPKGDiagram("brewing");
+		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
+				new ModelClass_by_name_c("fermentor"));
+		Attribute_c ref_attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("name"));
+		assertFalse(ref_attr.Actionfilter("can", "combine"));
+		assertFalse(ref_attr.Actionfilter("can", "split ref"));
+	}
+
+	@Test
+	public void testBaseWithNoCombinationPossibilities() {
+		test_id = "17";
+
+		openTestPKGDiagram("brewing");
+		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
+				new ModelClass_by_name_c("fermentor"));
+		Attribute_c ref_attr = Attribute_c.getOneO_ATTROnR102(mc,
+				new Attribute_by_name_c("label"));
+		assertFalse(ref_attr.Actionfilter("can", "combine"));
+		assertFalse(ref_attr.Actionfilter("can", "split ref"));
 	}
 
 	private void performTest(String test_num) {
