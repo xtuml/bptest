@@ -1,12 +1,3 @@
-
-//=====================================================================
-//
-//File:      $RCSfile: CoreGlobalsTestSuite2Generics.java,v $
-//Version:   $Revision: 1.5 $
-//Modified:  $Date: 2013/05/10 04:31:11 $
-//
-//(c) Copyright 2007-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -70,15 +61,15 @@ import junit.framework.TestSuite;
 		FormalizeUnformalizeWithPrefixTestGenerics.class,
 		IntegrityIssueTests.class,
 		SequenceTestsGenerics.class,
-		CommunicationMessageTestsGenerics.class,/*3*/
+		CommunicationMessageTestsGenerics.class,
 		CommunicationTestsGenerics.class,
 		CommunicationLinkTestsGenerics.class,
-		ModelTransactionTestGenerics.class,/*2*/
+		ModelTransactionTestGenerics.class,
 		DeleteDatatypesTestGenerics.class,
 		CanRenameCanDeleteTestGenerics.class,
 		CombineSplitReferentialsTestGenerics.class,
 		RenameInvolvingResourceTestGenerics.class,
-		TwoModelsSelectionTestGenerics.class,/*1*/
+		TwoModelsSelectionTestGenerics.class,
 		ModelChangeListenersBatchingTestGenerics.class,
 		WritableContextMenuTestGenerics.class,
 		CreationTransitionEventReassignmentTestGenerics.class,
