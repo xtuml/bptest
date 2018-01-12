@@ -247,6 +247,40 @@ public class OalAutoComplete extends CanvasTest {
             return "create event instance l32_var of L11Class1 to";
         } else if(element.equals("L37")) {
             return "invocation_return = L33::";
+        } else if(element.equals("L38")) {
+            return "bridge";
+        } else if(element.equals("L39")) {
+            return "send L33::signal( sig_parameter:1 )";
+        } else if(element.equals("L40")) {
+            return "create event instance l31_var";
+        } else if(element.equals("L41")) {
+            return "create event instance l32_var of L11Class1:event() ";
+        } else if(element.equals("L42")) {
+            return "create event instance l32_var of L11Class1 ";
+        } else if(element.equals("L43")) {
+            return "create event instance l32_var of L11Class1:event ";
+        } else if(element.equals("L44")) {
+            return "create event instance l32_var of L11Class3* ";
+        } else if(element.equals("L45")) {
+            return "for each l13_var";
+        } else if(element.equals("L46")) {
+            return "relate l19_var";
+        } else if(element.equals("L47")) {
+            return "relate l19_var to l19_var_other";
+        } else if(element.equals("L48")) {
+            return "relate l19_var to l19_var_other across R2";
+        } else if(element.equals("L49")) {
+            return "relate l19_var to l19_var_other across R2.'l19_other_end'";
+        } else if(element.equals("L50")) {
+            return "unrelate l23_var";
+        } else if(element.equals("L51")) {
+            return "unrelate l23_var from l23_other";
+        } else if(element.equals("L52")) {
+            return "unrelate l23_var from l23_other across R2";
+        } else if(element.equals("L53")) {
+            return "unrelate l23_var from l23_other across R2.'l19_other_end'";
+        } else if(element.equals("L54")) {
+            return "transform";
         }
         return " ";
     }
@@ -423,6 +457,18 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] {"bridge( parameter: )"};
         } else if (element.equals("P58")) {
             possibilities = new String[] {"->L8Class[R1.'simple']"};
+        } else if (element.equals("P59")) {
+            possibilities = new String[] {"of"};
+        } else if (element.equals("P60")) {
+            possibilities = new String[] {"in"};
+        } else if (element.equals("P61")) {
+            possibilities = new String[] {"to"};
+        } else if (element.equals("P62")) {
+            possibilities = new String[] {"from"};
+        } else if (element.equals("P63")) {
+            possibilities = new String[] {"across"};
+        } else if (element.equals("P64")) {
+            possibilities = new String[] {"using"};
         }
         if ( visibility.equals("V2") ) {
         	for ( int i = 0; i < possibilities.length; i++ ) {
