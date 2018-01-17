@@ -14380,7 +14380,7 @@ INSERT INTO SM_EVT
 	"f6c0b71e-3f65-5ca2-f972-ba2388f036c7",
 	"00000000-0000-0000-0000-000000000000",
 	0,
-	'NLE Event',
+	'PE Event',
 	0,
 	'',
 	'TC32*',
@@ -14496,7 +14496,7 @@ INSERT INTO GD_GE
 	"f6cdbecd-71ce-3a8a-5c3a-8d00e9f731f8",
 	42,
 	0,
-	'org.xtuml.bp.io.mdl.test::G_ALL_nested_invoke::G_ALL_nested_invoke::Test Class Three Subclass::Instance State Machine::Accept PE::NLE Event::Test Class Three');
+	'org.xtuml.bp.io.mdl.test::G_ALL_nested_invoke::G_ALL_nested_invoke::Test Class Three Subclass::Instance State Machine::Accept PE::PE Event::Test Class Three');
 INSERT INTO GD_CON
 	VALUES ("2c8cb8f3-33f7-b8c9-a554-29244e03bc4d",
 	"00000000-0000-0000-0000-000000000000");
