@@ -33,7 +33,7 @@ import junit.framework.TestSuite;
 @Suite.SuiteClasses({
 		GlobalTestSetupClass.class,
 		SystemLevelGlobalsTest.class,
-		DocGenTest.class,
+		// See 10035 - DocGenTest.class,
 		ComponentContextMenuTests.class, 
 		ComponentContextMenuTests2.class, 
 		UIConfigurationTests.class,
