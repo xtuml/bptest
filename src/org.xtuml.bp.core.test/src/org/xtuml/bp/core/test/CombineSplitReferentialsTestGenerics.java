@@ -35,8 +35,6 @@ import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Package_c;
-import org.xtuml.bp.core.UserDataType_c;
-import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.CombineWithOnO_ATTRAction;
 import org.xtuml.bp.core.ui.CombineWithOnO_ATTRWizardPage1;
@@ -419,7 +417,6 @@ public class CombineSplitReferentialsTestGenerics extends CanvasTest {
 		GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
-		generateResults = true;
 		validateOrGenerateResults(ce, generateResults);
 	}
 	
