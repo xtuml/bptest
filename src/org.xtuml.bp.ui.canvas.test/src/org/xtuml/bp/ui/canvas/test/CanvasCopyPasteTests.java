@@ -29,7 +29,6 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionException;
 import org.xtuml.bp.core.common.TransactionManager;
@@ -40,8 +39,6 @@ import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.GraphicalElement_c;
 import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Shape_c;
-import org.xtuml.bp.ui.graphics.actions.CanvasCopyAction;
-import org.xtuml.bp.ui.graphics.actions.CanvasPasteAction;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.editor.ModelEditor;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
@@ -270,7 +267,7 @@ public class CanvasCopyPasteTests extends CanvasTest {
 		CanvasTestUtilities.doMouseMove(shapeCenter.x, shapeCenter.y);
 		CanvasTestUtilities.doMouseRelease(shapeCenter.x, shapeCenter.y);
 		UITestingUtilities.deactivateTool(tool);
-		// assert that an assocation exists
+		// assert that an association exists
 		Association_c association = Association_c
 				.getOneR_RELOnR8001(PackageableElement_c
 						.getManyPE_PEsOnR8000(pastedPackage));
@@ -279,25 +276,6 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				association);
 	}
 	
-	private void pasteClipboardElements(GraphicalEditor ce) {
-		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
-		canvaspasteaction.run();
-		BaseTest.dispatchEvents(0);
-	}
-
-	private void copySelection(GraphicalEditor ce) {
-		CanvasCopyAction canvascopyaction = new CanvasCopyAction(ce);
-		canvascopyaction.run();
-		waitForTransaction();
-	}
-	
-	private void addElementToSelection(boolean makeLoneSelection, NonRootModelElement element) {
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		if(makeLoneSelection)
-			UITestingUtilities.clearGraphicalSelection();
-		UITestingUtilities.addElementToGraphicalSelection(element);
-	}
-
 	protected String getResultName() {
 		return "CopyPasteTests" + "_"  + test_id;
 	}

@@ -1,12 +1,3 @@
-
-//=====================================================================
-//
-//File:      $RCSfile: GlobalsCanvasSuite2.javav $
-//Version:   $Revision: 1.3 $
-//Modified:  $Date: 2013/05/10 05:47:48 $
-//
-//(c) Copyright 2007-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //=====================================================================
 // Licensed under the Apache License Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -48,9 +39,8 @@ import junit.framework.TestSuite;
     FreeFloatingConnectorTest.class,
     GraphicalToolCreationTests.class,
     I686ClearDatabaseTest.class,
-    // Disabled as per issue 9505
-//    I835OpenDiagramEditorWithSearchView.class,
-//    MultipleSupertypeTest.class,
+    I835OpenDiagramEditorWithSearchView.class,
+    MultipleSupertypeTest.class,
     ClassToStateDiagramNavigationTest.class,
     I2053F2RenameTest.class,
     AutoReconciliationTests.class,

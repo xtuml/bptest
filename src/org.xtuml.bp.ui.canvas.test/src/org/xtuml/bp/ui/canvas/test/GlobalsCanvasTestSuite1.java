@@ -12,7 +12,6 @@ public class GlobalsCanvasTestSuite1 extends GlobalsTestEnabler {
 
 	public GlobalsCanvasTestSuite1() {
 		super(null, null);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Before
