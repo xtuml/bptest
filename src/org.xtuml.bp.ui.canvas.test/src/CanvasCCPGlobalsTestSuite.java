@@ -19,8 +19,6 @@ import org.xtuml.bp.ui.canvas.test.CanvasCCPTestsSuite;
 import org.xtuml.bp.ui.canvas.test.CanvasCopyPasteTests;
 import org.xtuml.bp.ui.canvas.test.CanvasCopyTests;
 import org.xtuml.bp.ui.canvas.test.CanvasCutTests;
-import org.xtuml.bp.ui.canvas.test.CanvasStateMachineCopyPasteTests;
-import org.xtuml.bp.ui.canvas.test.ModelRecreationTests;
 
 import junit.framework.TestSuite;
 
