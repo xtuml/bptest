@@ -87,9 +87,6 @@ public class ImportPasteElementsWithIPRTest extends BaseTest {
 
 		TestingUtilities.allowJobCompletion();
 		
-		// TODO - the m_sys2 here is not the same as the m_sys we got earlier and imported into.
-		// But the data we just imported is now connected to m_sys2 and not m_sys.  Don't know if this
-		// is a testing issue or a real problem.
 		m_sys = getSystemModel(project.getName());
 		
 		Package_c pkg = Package_c.getOneEP_PKGOnR1401(m_sys);

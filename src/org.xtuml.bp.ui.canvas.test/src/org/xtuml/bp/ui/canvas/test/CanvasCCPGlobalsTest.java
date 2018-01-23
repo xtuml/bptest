@@ -9,7 +9,6 @@ public class CanvasCCPGlobalsTest extends GlobalsTestEnabler {
 
 	public CanvasCCPGlobalsTest() {
 		super(null, null);
-		// TODO Auto-generated constructor stub
 	}
 
 }

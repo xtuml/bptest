@@ -1,12 +1,4 @@
 //=====================================================================
-//
-//File:      $RCSfile: CanvasCutTests.java,v $
-//Version:   $Revision: 1.17 $
-//Modified:  $Date: 2013/05/10 05:41:51 $
-//
-//(c) Copyright 2007-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -34,14 +26,13 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.Cl_c;
-import org.xtuml.bp.ui.graphics.actions.CanvasCutAction;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.editor.ModelEditor;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
@@ -73,9 +64,12 @@ public class CanvasCutTests extends CanvasTest {
 		test_id = "1";
 		
 		Package_c rootPkg = CanvasTestUtils.createNewPackageInSystem(m_sys, "CutTestPackage");
+		Package_c rootTgtPkg = CanvasTestUtils.createNewPackageInSystem(m_sys, "PasteTestPackage");
 		Package_c subPkg = CanvasTestUtils.createNewPackageInPackage(rootPkg, "TestSubPkg");        	        
+		Package_c subPkg2 = CanvasTestUtils.createNewPackageInPackage(rootPkg, "TestSubPkg2");        	        
 
 		assertNotNull(subPkg);
+		assertNotNull(subPkg2);
 
 		// Create a class in the nested package
 		boolean originalPersistValue = subPkg.getModelRoot().persistEnabled();
@@ -91,16 +85,32 @@ public class CanvasCutTests extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
 		addElementToSelection(true, subPkg);
+		ce.zoomAll();
+		validateOrGenerateResults(ce, generateResults);
 
-		CanvasCutAction canvascutaction = new CanvasCutAction(ce);
-		canvascutaction.run();
-		waitForTransaction();	
+		// Cut TestSubPkg, then paste into rootTgtPkg
+		cutSelection(ce);
+		CanvasUtilities.openCanvasEditor(rootTgtPkg);
+		GraphicalEditor ceTgt = ((ModelEditor) PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
+				.getGraphicalEditor();
+		pasteClipboardElements(ceTgt);
+		BaseTest.dispatchEvents(0);
+		BaseTest.dispatchEvents(0);
 		
-		// Verifiy that the package was removed
+		// Verify that TestSubPkg was removed from CutTestPackage and that TestSubPkg2 remains
+		test_id = "2";
+		CanvasUtilities.openCanvasEditor(rootPkg);
+		BaseTest.dispatchEvents(0);
+		ce = ((ModelEditor) PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
+				.getGraphicalEditor();
+		ce.zoomAll();
+		BaseTest.dispatchEvents(0);
 		validateOrGenerateResults(ce, generateResults);
 		
 		// Now undo the cut and verify the subpackage is returned
-		test_id = "2";
+		test_id = "3";
 		m_sys.getTransactionManager().getUndoAction().run();
 		waitForTransaction();
 		validateOrGenerateResults(ce, generateResults);
@@ -138,7 +148,7 @@ public class CanvasCutTests extends CanvasTest {
 		Package_c cutTestPkg = null;
 		Package_c subPkg = null;
 		Package_c pkgs[] = Package_c.getManyEP_PKGsOnR1405(m_sys);
-		assertTrue(pkgs.length == 5);
+		assertTrue(pkgs.length == 7);
 		for (int i = 0; i < pkgs.length; i++) {
 			if (pkgs[i].getName().equals("CutTestPackage")) {
 				cutTestPkg = pkgs[i];
@@ -156,12 +166,6 @@ public class CanvasCutTests extends CanvasTest {
 		Selection.getInstance().addToSelection(subPkg);
 
 		assertTrue("Cut was not available after a file reload.", UITestingUtilities.checkItemStatusInContextMenu(ce.getCanvas().getMenu(), "Cut", "", false));
-	}
-
-	private void addElementToSelection(boolean makeLoneSelection, NonRootModelElement element) {
-		if(makeLoneSelection)
-			UITestingUtilities.clearGraphicalSelection();
-		UITestingUtilities.addElementToGraphicalSelection(element);
 	}
 
 	protected String getResultName() {

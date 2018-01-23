@@ -55,7 +55,6 @@ import junit.framework.TestSuite;
 	ShapeResizeTest2.class,
 	CanvasEditorTestSuite.class,
 	CreationTransitionTest.class,
-	//I634OutlineViewEmptySelectionTest.class
 })
 public class GlobalsCanvasSuite1 extends TestSuite {
 
