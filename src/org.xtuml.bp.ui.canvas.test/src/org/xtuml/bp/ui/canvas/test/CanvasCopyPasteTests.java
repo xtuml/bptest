@@ -1,12 +1,4 @@
 //=====================================================================
-//
-//File:      $RCSfile: CanvasCopyPasteTests.java,v $
-//Version:   $Revision: 1.21 $
-//Modified:  $Date: 2013/05/10 05:41:51 $
-//
-//(c) Copyright 2007-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -37,7 +29,6 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionException;
 import org.xtuml.bp.core.common.TransactionManager;
@@ -48,8 +39,6 @@ import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.ui.canvas.GraphicalElement_c;
 import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Shape_c;
-import org.xtuml.bp.ui.graphics.actions.CanvasCopyAction;
-import org.xtuml.bp.ui.graphics.actions.CanvasPasteAction;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.editor.ModelEditor;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
@@ -100,8 +89,7 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
 		UITestingUtilities.pasteClipboardContents(UITestingUtilities.getClearPoint(ce), ce);
-		// disabled according to 9505
-		// validateOrGenerateResults(ce, generateResults);
+		validateOrGenerateResults(ce, generateResults);
 		Package_c newDtPackage = Package_c.getOneEP_PKGOnR1405(m_sys, new ClassQueryInterface_c() {
 		
 			public boolean evaluate(Object candidate) {
@@ -117,13 +105,11 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
 		test_id = "2";
-		// disabled according to 9505
-		// validateOrGenerateResults(ce, generateResults);
+		validateOrGenerateResults(ce, generateResults);
 	}
 	
 	@Test
 	public void testCopySSWithNonSimpleAssociations() {
-// TODO: dts0100656082
 		test_id = "3";
 	    Package_c subsystem = Package_c.PackageInstance(modelRoot, new ClassQueryInterface_c() {
 		
@@ -148,7 +134,6 @@ public class CanvasCopyPasteTests extends CanvasTest {
 	
 	@Test
 	public void testCopyClassesWithoutSelectingAssociationBetween() {
-// TODO: dts0100656082
 		test_id = "4";
 	    Package_c subsystem = Package_c.PackageInstance(modelRoot, new ClassQueryInterface_c() {
 			
@@ -190,42 +175,30 @@ public class CanvasCopyPasteTests extends CanvasTest {
 	
 	@Test
 	public void testUndoRedoRestoresPastedElements() throws CoreException {
-// TODO: dts0100656082
-//		ensureAvailableAndLoaded("Models", "microwave", false, true);
-//		Domain_c domain = Domain_c.DomainInstance(modelRoot, new ClassQueryInterface_c() {
-//		
-//			public boolean evaluate(Object candidate) {
-//				return ((Domain_c)candidate).getName().equals("microwave");
-//			}
-//		
-//		});
-//		assertNotNull(domain);
-//		CanvasTestUtilities.openCanvasEditor(domain);
-//		GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
-//				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
-//				.getGraphicalEditor();
-//		ce.getSelectAllAction().run();
-//		DataTypePackage_c dtPackage = DataTypePackage_c.DataTypePackageInstance(modelRoot, new ClassQueryInterface_c() {
-//		
-//			public boolean evaluate(Object candidate) {
-//				return ((DataTypePackage_c)candidate).getName().equals(Ooaofooa.Getcoredatatypespackagename(modelRoot));
-//			}
-//		
-//		});
-//		assertNotNull(dtPackage);
-//		selection.removeFromSelection(dtPackage);
-//		copySelection(ce);
-//		CanvasTestUtilities.doMouseMove(100, 100);
-//		CanvasTestUtilities.doMousePress(100, 100);
-//		CanvasTestUtilities.doMouseRelease(100, 100);
-//		pasteClipboardElements(ce);
-//		m_sys.getTransactionManager().getUndoAction().run();
-//		m_sys.getTransactionManager().getRedoAction().run();
-//		test_id = "5";
-//      if(BaseTest.testGlobals) {
-//          test_id = "5Globals";
-//	    }
-//		validateOrGenerateResults(ce, generateResults);
+		test_id = "5";
+	    Package_c dtPackage = Package_c.PackageInstance(modelRoot, new ClassQueryInterface_c() {
+		
+			public boolean evaluate(Object candidate) {
+				return ((Package_c)candidate).getName().equals("DT Package");
+			}
+		
+		});
+		assertNotNull(dtPackage);
+		CanvasUtilities.openCanvasEditor(dtPackage);
+		GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
+				.getGraphicalEditor();
+		ce.getSelectAllAction().run();
+		copySelection(ce);
+		CanvasTestUtilities.doMouseMove(600, 100);
+		CanvasTestUtilities.doMousePress(600, 100);
+		CanvasTestUtilities.doMouseRelease(600, 100);
+		pasteClipboardElements(ce);
+		m_sys.getTransactionManager().getUndoAction().run();
+		m_sys.getTransactionManager().getRedoAction().run();
+		validateOrGenerateResults(ce,generateResults);
+		// Undo the paste again to remove the pasted types again
+		m_sys.getTransactionManager().getUndoAction().run();
 	}
 	
 	@Test
@@ -294,7 +267,7 @@ public class CanvasCopyPasteTests extends CanvasTest {
 		CanvasTestUtilities.doMouseMove(shapeCenter.x, shapeCenter.y);
 		CanvasTestUtilities.doMouseRelease(shapeCenter.x, shapeCenter.y);
 		UITestingUtilities.deactivateTool(tool);
-		// assert that an assocation exists
+		// assert that an association exists
 		Association_c association = Association_c
 				.getOneR_RELOnR8001(PackageableElement_c
 						.getManyPE_PEsOnR8000(pastedPackage));
@@ -303,25 +276,6 @@ public class CanvasCopyPasteTests extends CanvasTest {
 				association);
 	}
 	
-	private void pasteClipboardElements(GraphicalEditor ce) {
-		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
-		canvaspasteaction.run();
-		BaseTest.dispatchEvents(0);
-	}
-
-	private void copySelection(GraphicalEditor ce) {
-		CanvasCopyAction canvascopyaction = new CanvasCopyAction(ce);
-		canvascopyaction.run();
-		waitForTransaction();
-	}
-	
-	private void addElementToSelection(boolean makeLoneSelection, NonRootModelElement element) {
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		if(makeLoneSelection)
-			UITestingUtilities.clearGraphicalSelection();
-		UITestingUtilities.addElementToGraphicalSelection(element);
-	}
-
 	protected String getResultName() {
 		return "CopyPasteTests" + "_"  + test_id;
 	}

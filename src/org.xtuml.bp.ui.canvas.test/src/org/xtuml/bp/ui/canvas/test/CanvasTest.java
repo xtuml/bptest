@@ -71,6 +71,9 @@ import org.xtuml.bp.ui.canvas.CanvasPlugin;
 import org.xtuml.bp.ui.canvas.Diagram_c;
 import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
+import org.xtuml.bp.ui.graphics.actions.CanvasCopyAction;
+import org.xtuml.bp.ui.graphics.actions.CanvasCutAction;
+import org.xtuml.bp.ui.graphics.actions.CanvasPasteAction;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
 import org.xtuml.bp.ui.graphics.parts.GraphicsEditPartFactory;
@@ -588,4 +591,30 @@ public void createExpectedResults(boolean zoomGroup, boolean zoomSelected, boole
 		assertEquals(dataTypes.length, 1);
 		return dataTypes[0].getDt_id();
 	}
+	
+	protected void addElementToSelection(boolean makeLoneSelection, NonRootModelElement element) {
+		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		if(makeLoneSelection)
+			UITestingUtilities.clearGraphicalSelection();
+		UITestingUtilities.addElementToGraphicalSelection(element);
+	}
+
+	protected void pasteClipboardElements(GraphicalEditor ce) {
+		CanvasPasteAction canvaspasteaction = new CanvasPasteAction(ce);
+		canvaspasteaction.run();
+		BaseTest.dispatchEvents(0);
+	}
+	
+	protected void copySelection(GraphicalEditor ce) {
+		CanvasCopyAction canvascopyaction = new CanvasCopyAction(ce);
+		canvascopyaction.run();
+		waitForTransaction();
+	}
+
+	protected void cutSelection(GraphicalEditor ce) {
+		CanvasCutAction canvascutaction = new CanvasCutAction(ce);
+		canvascutaction.run();
+		waitForTransaction();
+	}
+
 }
