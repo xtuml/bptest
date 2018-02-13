@@ -24,6 +24,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.console,
  org.xtuml.bp.ui.session,
  org.xtuml.bp.ui.canvas.test,
+ org.xtuml.bp.als.oal,
  org.xtuml.bp.ui.explorer;bundle-version="3.4.9",
  org.xtuml.bp.ui.graphics;bundle-version="6.11.0"
 Eclipse-AutoStart: true

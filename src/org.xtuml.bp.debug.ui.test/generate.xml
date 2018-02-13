@@ -21,11 +21,11 @@
   <target name="generate_set_operations_tests" description="Generate test code set operations" depends="set_operations.depends" unless="set_operations.buildNotNeeded">
     <exec vmlauncher="false" failonerror="true" executable="perl">
       <arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${set_op_simple} src/org/xtuml/bp/debug/ui/test/sets/SetOperationsTests.java
-        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -selectRowFirst -noResults" />
+        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -noResults" />
     </exec>
     <exec vmlauncher="false" failonerror="true" executable="perl">
       <arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${set_op_precedence} src/org/xtuml/bp/debug/ui/test/sets/SetOperationsPrecedenceTests.java
-        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -selectRowFirst -noResults" />
+        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -noResults" />
     </exec>
   </target>
 
