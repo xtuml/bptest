@@ -1,0 +1,34 @@
+#
+# This work is licensed under the Creative Commons CC0 License
+# 
+Degrees of Freedom:
+
+Operation(O)
+1. Union
+2. Intersection
+3. Difference
+4. Symmetric Difference
+
+LeftOperandType(A)
+1. Instance reference
+2. Instance reference set
+
+RightOperandType(B)
+1. Instance reference
+2. Instance reference set
+
+Results:
+1. parseSucceeded  "Set operation failed to parse."
+2. correctValue    "Set operation produced incorrect result set."
+
+# In the matrix below when a cell is marked with an "X", that particular test is
+# not generated.  Those tests are marked invalid as it is not applicable.  An
+# example would be in the case of non-visible tests where the test subject is
+# a keyword.
+
+Matrix:
+      O1    O2    O3    O4
+A1B1  R1R2  R1R2  R1R2  R1R2
+A1B2  R1R2  R1R2  R1R2  R1R2
+A2B1  R1R2  R1R2  R1R2  R1R2
+A2B2  R1R2  R1R2  R1R2  R1R2
