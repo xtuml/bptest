@@ -13,9 +13,12 @@
   <property name="set_op_simple_output" value="src/org/xtuml/bp/debug/ui/test/sets/SetOperationsTests_0.java" />
   <property name="set_op_precedence" value="matrices/set_operations_precedence_matrix.txt" />
   <property name="set_op_precedence_output" value="src/org/xtuml/bp/debug/ui/test/sets/SetOperationsPrecedenceTests_0.java" />
+  <property name="set_op_compare" value="matrices/set_operations_compare_matrix.txt" />
+  <property name="set_op_compare_output" value="src/org/xtuml/bp/debug/ui/test/sets/SetOperationsCompareTests_0.java" />
   <target name="set_operations.depends">
     <uptodate property="set_operations.buildNotNeeded" value="yes" srcfile="${set_op_simple}" targetfile="${set_op_simple_output}" />
     <uptodate property="set_operations.buildNotNeeded" value="yes" srcfile="${set_op_precedence}" targetfile="${set_op_precedence_output}" />
+    <uptodate property="set_operations.buildNotNeeded" value="yes" srcfile="${set_op_compare}" targetfile="${set_op_compare_output}" />
   </target>
 
   <target name="generate_set_operations_tests" description="Generate test code set operations" depends="set_operations.depends" unless="set_operations.buildNotNeeded">
@@ -25,6 +28,10 @@
     </exec>
     <exec vmlauncher="false" failonerror="true" executable="perl">
       <arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${set_op_precedence} src/org/xtuml/bp/debug/ui/test/sets/SetOperationsPrecedenceTests.java
+        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -noResults" />
+    </exec>
+    <exec vmlauncher="false" failonerror="true" executable="perl">
+      <arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${set_op_compare} src/org/xtuml/bp/debug/ui/test/sets/SetOperationsCompareTests.java
         -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -noResults" />
     </exec>
   </target>
@@ -38,6 +45,7 @@
       <fileset dir="src/org/xtuml/bp/debug/ui/test/sets/" >
         <exclude name="SetOperationsTests.java" />
         <exclude name="SetOperationsPrecedenceTests.java" />
+        <exclude name="SetOperationsCompareTests.java" />
         <include name="**.java" />
       </fileset>
     </delete>

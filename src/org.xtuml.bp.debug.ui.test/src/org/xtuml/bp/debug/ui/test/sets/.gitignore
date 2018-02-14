@@ -2,3 +2,5 @@
 /SetOperationsTestsTest*.java
 /SetOperationsPrecedenceTests_*.java
 /SetOperationsPrecedenceTestsTest*.java
+/SetOperationsCompareTests_*.java
+/SetOperationsCompareTestsTest*.java
