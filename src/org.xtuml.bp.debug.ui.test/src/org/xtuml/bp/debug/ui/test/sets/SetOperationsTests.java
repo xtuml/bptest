@@ -1,5 +1,7 @@
 package org.xtuml.bp.debug.ui.test.sets;
 
+import java.lang.reflect.Method;
+
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -48,6 +50,9 @@ public class SetOperationsTests extends CanvasTest {
     private Component_c domain;
     private ComponentInstance_c runningEngine;
     
+    private static int numTests;
+    private static int currentTest;
+    
 
     protected String getResultName() {
         return getClass().getSimpleName() + "_" + test_id;
@@ -66,6 +71,10 @@ public class SetOperationsTests extends CanvasTest {
         super.setUp();
         if ( !initialized ) {
             BaseTest.dispatchEvents(0);
+            // get number of tests
+            currentTest = 0;
+            numTests = 0;
+            for ( Method method : this.getClass().getMethods() ) if ( null != method.getAnnotation( org.junit.Test.class ) ) numTests++;
             // load project
             loadProject( PROJECT_NAME );
             // launch verifier
@@ -74,12 +83,17 @@ public class SetOperationsTests extends CanvasTest {
             createPopulation();
             initialized = true;
         }
+        currentTest++;
         parseSucceeded = false;
     }
 
     @After
     public void tearDown() throws Exception {
         super.tearDown();
+        if ( currentTest >= numTests ) {
+            DebugUITestUtilities.stopSession( m_sys, PROJECT_NAME );
+            initialized = false;
+        }
     }
     
     private void launchVerifier() throws Exception {
