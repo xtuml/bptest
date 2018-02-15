@@ -37,7 +37,7 @@ import org.xtuml.bp.debug.ui.test.execute.RecursionExecutionTest;
 import org.xtuml.bp.debug.ui.test.realizedClasses.VerifierStaticVariablesInRealizedClassesTest;
 import org.xtuml.bp.debug.ui.test.sets.SetOperationsCompareTestsTestSuite;
 import org.xtuml.bp.debug.ui.test.sets.SetOperationsPrecedenceTestsTestSuite;
-import org.xtuml.bp.debug.ui.test.sets.SetOperationsTestsTestSuite;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsSimpleTestsTestSuite;
 
 import junit.framework.TestSuite;
 
@@ -58,8 +58,8 @@ import junit.framework.TestSuite;
 	VariableViewTests.class,
 	InstanceVariableViewTests.class,
 	SetOperationsCompareTestsTestSuite.class,
-	SetOperationsPrecedenceTestsTestSuite.class,
-	SetOperationsTestsTestSuite.class
+	SetOperationsSimpleTestsTestSuite.class,
+	SetOperationsPrecedenceTestsTestSuite.class
 })
 public class VerifierTestSuite2 extends TestSuite {
 

@@ -141,169 +141,7 @@ public class SetOperationsTests extends CanvasTest {
         DebugUITestUtilities.waitForBPThreads( m_sys );
     }
 
-    /**
-     * "O" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "O" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectO( String element ) {
-        return selectO( element, null );
-    }
-
-    /**
-     * "O" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "O" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @param extraData Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectO( String element, Object extraData ) {
-        NonRootModelElement nrme = selectColumn( element, extraData );
-        assertTrue("An instance with degree of freedom type \"O\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
-    }
-
-    /**
-     * "AB" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "AB" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectAB( String element ) {
-        return selectAB( element, null );
-    }
-
-    /**
-     * "AB" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "AB" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @param extraData Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectAB( String element, Object extraData ) {
-        NonRootModelElement nrme = selectRow( element, extraData );
-        assertTrue("An instance with degree of freedom type \"AB\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
-    }
-
-    /**
-     * "G" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "G" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectG( String element ) {
-        return selectG( element, null );
-    }
-
-    /**
-     * "G" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "G" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @param extraData Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectG( String element, Object extraData ) {
-        NonRootModelElement nrme = selectColumn( element, extraData );
-        assertTrue("An instance with degree of freedom type \"G\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
-    }
-
-    /**
-     * "CDEF" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "CDEF" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectCDEF( String element ) {
-        return selectCDEF( element, null );
-    }
-
-    /**
-     * "CDEF" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "CDEF" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @param extraData Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    public NonRootModelElement selectCDEF( String element, Object extraData ) {
-        NonRootModelElement nrme = selectRow( element, extraData );
-        assertTrue("An instance with degree of freedom type \"CDEF\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
-    }
-    
-    /**
-     * "H" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "H" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectH( String element ) {
-        return selectH( element, null );
-    }
-
-    /**
-     * "H" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "H" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @param extraData Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectH( String element, Object extraData ) {
-        NonRootModelElement nrme = selectColumn( element, extraData );
-        assertTrue("An instance with degree of freedom type \"H\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
-    }
-
-    /**
-     * "IJ" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "IJ" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectIJ( String element ) {
-        return selectIJ( element, null );
-    }
-
-    /**
-     * "IJ" is one of the degrees of freedom as specified in this issues
-     * test matrix.
-     * This routine gets the "IJ" instance from the given name.
-     * 
-     * @param element The degree of freedom instance to retrieve
-     * @param extraData Extra data needed for selection
-     * @return A model element used in the test as specified by the test matrix
-     */
-    NonRootModelElement selectIJ( String element, Object extraData ) {
-        NonRootModelElement nrme = selectRow( element, extraData );
-        assertTrue("An instance with degree of freedom type \"IJ\" was not found.  Instance Name: " + element + ".", nrme!=null);
-        return nrme;
-    }
-
-    private NonRootModelElement selectColumn( String element, Object extraData ) {
+    public NonRootModelElement selectColumn( String element, Object extraData ) {
         return Package_c.getOneEP_PKGOnR1405( m_sys, new ClassQueryInterface_c() {
             @Override
             public boolean evaluate(Object candidate) {
@@ -312,7 +150,7 @@ public class SetOperationsTests extends CanvasTest {
         });
     }
 
-    private NonRootModelElement selectRow( String element, Object extraData ) {
+    public NonRootModelElement selectRow( String element, Object extraData ) {
         return Function_c.getOneS_SYNCOnR8001( PackageableElement_c.getManyPE_PEsOnR8000( (Package_c)extraData ), new ClassQueryInterface_c() {
             @Override
             public boolean evaluate(Object candidate) {
@@ -320,44 +158,8 @@ public class SetOperationsTests extends CanvasTest {
             }
         });
     }
-
-    /**
-     * This routine performs the action associated with a matrix cell.
-     * The parameters represent model instances aquired based on the specifed
-     * column instance and row instance.
-     * 
-     * @param columnInstance Model instance from the column
-     * @param rowInstance Model instance from the row
-     */
-    public void O_AB_Action( NonRootModelElement columnInstance, NonRootModelElement rowInstance ) {
-        testAction( columnInstance, rowInstance );
-    }
-
-    /**
-     * This routine performs the action associated with a matrix cell.
-     * The parameters represent model instances aquired based on the specifed
-     * column instance and row instance.
-     * 
-     * @param columnInstance Model instance from the column
-     * @param rowInstance Model instance from the row
-     */
-    public void G_CDEF_Action( NonRootModelElement columnInstance, NonRootModelElement rowInstance ) {
-        testAction( columnInstance, rowInstance );
-    }
-
-    /**
-     * This routine performs the action associated with a matrix cell.
-     * The parameters represent model instances aquired based on the specifed
-     * column instance and row instance.
-     * 
-     * @param columnInstance Model instance from the column
-     * @param rowInstance Model instance from the row
-     */
-    void H_IJ_Action( NonRootModelElement columnInstance, NonRootModelElement rowInstance ) {
-        testAction( columnInstance, rowInstance );
-    }
-    
-    private void testAction( NonRootModelElement columnInstance, NonRootModelElement rowInstance ) {
+   
+    public void testAction( NonRootModelElement columnInstance, NonRootModelElement rowInstance ) {
         parseAction( rowInstance );
         if ( parseSucceeded ) {
             executeAction( rowInstance );
