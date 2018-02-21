@@ -8,7 +8,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
@@ -129,6 +128,7 @@ public class SetOperationsTests extends CanvasTest {
         assertNotNull( domain );
 
         // launch the domain
+        DebugUITestUtilities.stopSession( m_sys, PROJECT_NAME );
         DebugUITestUtilities.launchElement( domain, m_bp_tree.getControl().getMenu());
         DebugUITestUtilities.waitForElementsToStart(1);
 
