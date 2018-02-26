@@ -84,6 +84,7 @@ public class SetOperationsTests extends CanvasTest {
         }
         currentTest++;
         parseSucceeded = false;
+        BaseTest.logFileCheckingEnabled = false;
     }
 
     @After
@@ -93,6 +94,7 @@ public class SetOperationsTests extends CanvasTest {
             DebugUITestUtilities.stopSession( m_sys, PROJECT_NAME );
             initialized = false;
         }
+        BaseTest.logFileCheckingEnabled = true;
     }
     
     private void launchVerifier() throws Exception {

@@ -461,7 +461,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = 1 + 2 - 2.4;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:13-15: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:13-15: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
         assertEquals("line 1:17: unexpected token: null", lines[1]); //$NON-NLS-1$
         assertEquals("line 1:17: expecting Semicolon, found 'null'", lines[2]); //$NON-NLS-1$
     }
@@ -473,7 +473,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = 1 + 2.0 - 3;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:9-11: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:9-11: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
     }
 
     @Test
@@ -483,7 +483,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = .7 + 2 - 3;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:10-10: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:10-10: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
     }
 
     @Test
@@ -493,7 +493,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = 1 + 9.2 - 2.4;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:9-11: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:9-11: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
     }
 
     @Test
@@ -503,7 +503,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = 1.11 + 2 - 3.14;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:12-12: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:12-12: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
     }
 
     @Test
@@ -513,7 +513,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = .99 + 0.01 - 3;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:18-18: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:18-18: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
         assertEquals("line 1:20: unexpected token: null", lines[1]); //$NON-NLS-1$
         assertEquals("line 1:20: expecting Semicolon, found 'null'", lines[2]); //$NON-NLS-1$
     }
@@ -597,7 +597,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = 1 - 2.2;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:9-11: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:9-11: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
         assertEquals("line 1:13: unexpected token: null", lines[1]); //$NON-NLS-1$
         assertEquals("line 1:13: expecting Semicolon, found 'null'", lines[2]); //$NON-NLS-1$
     }
@@ -609,7 +609,7 @@ public class TestBPPrefStrictTyping_Generics extends TestCase {
                 "x = 2.3 + 1;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
         String lines[] = x.split("\n");//$NON-NLS-1$
         assertEquals(
-                ":1:11-11: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+                ":1:11-11: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
         assertEquals("line 1:13: unexpected token: null", lines[1]); //$NON-NLS-1$
         assertEquals("line 1:13: expecting Semicolon, found 'null'", lines[2]); //$NON-NLS-1$
     }
