@@ -35,6 +35,9 @@ import org.xtuml.bp.debug.ui.launch.DLLRelaunchTest;
 import org.xtuml.bp.debug.ui.test.execute.BlockedComponentExecutionTest;
 import org.xtuml.bp.debug.ui.test.execute.RecursionExecutionTest;
 import org.xtuml.bp.debug.ui.test.realizedClasses.VerifierStaticVariablesInRealizedClassesTest;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsCompareTestsTestSuite;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsPrecedenceTestsTestSuite;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsSimpleTestsTestSuite;
 
 import junit.framework.TestSuite;
 
@@ -54,7 +57,9 @@ import junit.framework.TestSuite;
 	BlockedComponentExecutionTest.class,
 	VariableViewTests.class,
 	InstanceVariableViewTests.class,
-	
+	SetOperationsCompareTestsTestSuite.class,
+	SetOperationsSimpleTestsTestSuite.class,
+	SetOperationsPrecedenceTestsTestSuite.class
 })
 public class VerifierTestSuite2 extends TestSuite {
 

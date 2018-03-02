@@ -1517,26 +1517,9 @@ public class TestExpr_Generics extends TestCase {
 				"x = \"a\" - \"b\";", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
 		String lines[] = x.split("\n");//$NON-NLS-1$
 		assertEquals(
-				":1:11-13: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+				":1:11-13: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
 		assertEquals("line 1:15: unexpected token: null", lines[1]); //$NON-NLS-1$
 		noValuesPresent(0);
-	}
-
-	@Test
-	public void testAddExprIROFIRO() throws RecognitionException,
-			TokenStreamException {
-		String x = OalParserTest_Generics.parseAction(
-				"create object instance d1 of D_D; create object instance d2 of D_D; x = d1 + d2;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
-		String lines[] = x.split("\n");//$NON-NLS-1$
-		assertEquals(
-				":1:78-79: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
-		assertEquals("line 1:81: unexpected token: null", lines[1]); //$NON-NLS-1$
-		noValuesPresent(2);
-		Variable_c[] t = Variable_c.VariableInstances(OalParserTest_Generics.modelRoot);
-		assertEquals(3, t.length);
-		assertEquals("d1", t[0].getName());//$NON-NLS-1$
-		assertEquals("d2", t[1].getName());//$NON-NLS-1$
-        assertEquals("x", t[2].getName());//$NON-NLS-1$
 	}
 
 	@Test
@@ -1546,7 +1529,7 @@ public class TestExpr_Generics extends TestCase {
 				"x = false + true;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
 		String lines[] = x.split("\n");//$NON-NLS-1$
 		assertEquals(
-				":1:13-16: Incompatible operands for addition expression", lines[0]); //$NON-NLS-1$
+				":1:13-16: Incompatible operands for additive expression", lines[0]); //$NON-NLS-1$
 		assertEquals("line 1:18: unexpected token: null", lines[1]); //$NON-NLS-1$
 		noValuesPresent(0);
 	}
@@ -1558,7 +1541,7 @@ public class TestExpr_Generics extends TestCase {
 				"x = \"c\" * \"d\";", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
 		String lines[] = x.split("\n");//$NON-NLS-1$
 		assertEquals(
-				":1:11-13: Incompatible operands for multiplication expression", lines[0]); //$NON-NLS-1$
+				":1:11-13: Incompatible operands for multiplicative expression", lines[0]); //$NON-NLS-1$
 		assertEquals("line 1:15: unexpected token: null", lines[1]); //$NON-NLS-1$
 		noValuesPresent(0);
 	}
@@ -1570,7 +1553,7 @@ public class TestExpr_Generics extends TestCase {
 				"create object instance d1 of D_D; create object instance d2 of D_D; x = d1 % d2;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
 		String lines[] = x.split("\n");//$NON-NLS-1$
 		assertEquals(
-				":1:78-79: Incompatible operands for multiplication expression", lines[0]); //$NON-NLS-1$
+				":1:78-79: Incompatible operands for multiplicative expression", lines[0]); //$NON-NLS-1$
 		assertEquals("line 1:81: unexpected token: null", lines[1]); //$NON-NLS-1$
 		noValuesPresent(2);
 		Variable_c[] t = Variable_c.VariableInstances(OalParserTest_Generics.modelRoot);
@@ -1643,7 +1626,7 @@ public class TestExpr_Generics extends TestCase {
 				"x = true / false;", OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM); //$NON-NLS-1$
 		String lines[] = x.split("\n");//$NON-NLS-1$
 		assertEquals(
-				":1:12-16: Incompatible operands for multiplication expression", lines[0]); //$NON-NLS-1$
+				":1:12-16: Incompatible operands for multiplicative expression", lines[0]); //$NON-NLS-1$
 		assertEquals("line 1:18: unexpected token: null", lines[1]); //$NON-NLS-1$
 		Statement_c[] st = Statement_c.StatementInstances(OalParserTest_Generics.modelRoot);
 		assertEquals(0, st.length);
