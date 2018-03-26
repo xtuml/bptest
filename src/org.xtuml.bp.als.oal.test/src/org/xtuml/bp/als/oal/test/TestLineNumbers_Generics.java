@@ -697,7 +697,7 @@ public class TestLineNumbers_Generics extends TestCase {
             { 1, 5, 5 },    // 1
             { 2, 1, 2 },    // yy
 			{ 2, 6, 6 },    // x
-			{ -1, -1, -1 }, // +
+			{ 2, 6, 10 }, // +
             { 2, 10, 10 },  // 1
             { 5, 1, 1 },    // q
 			{ 5, 15, 15 },  // z

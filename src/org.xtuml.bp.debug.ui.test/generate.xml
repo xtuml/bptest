@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bp.debug.ui.test" default="all" basedir=".">
+
+  <import file="${mcj_path}/common.xml"/>
+
+  <property name="plugins-home" value="${ant.home}/../.."/>
+
+  <target name="all" description="Generate all code for this project" depends="generate_set_operations_tests" />
+
+  <target name="nb_all" description="Generate all code for this project" depends="generate_set_operations_tests" />
+
+  <property name="set_op_simple" value="matrices/set_operations_simple_matrix.txt" />
+  <property name="set_op_simple_output" value="src/org/xtuml/bp/debug/ui/test/sets/SetOperationsSimpleTests_0.java" />
+  <property name="set_op_precedence" value="matrices/set_operations_precedence_matrix.txt" />
+  <property name="set_op_precedence_output" value="src/org/xtuml/bp/debug/ui/test/sets/SetOperationsPrecedenceTests_0.java" />
+  <property name="set_op_compare" value="matrices/set_operations_compare_matrix.txt" />
+  <property name="set_op_compare_output" value="src/org/xtuml/bp/debug/ui/test/sets/SetOperationsCompareTests_0.java" />
+  <target name="set_operations.depends">
+    <uptodate property="set_operations.buildNotNeeded" value="yes" srcfile="${set_op_simple}" targetfile="${set_op_simple_output}" />
+    <uptodate property="set_operations.buildNotNeeded" value="yes" srcfile="${set_op_precedence}" targetfile="${set_op_precedence_output}" />
+    <uptodate property="set_operations.buildNotNeeded" value="yes" srcfile="${set_op_compare}" targetfile="${set_op_compare_output}" />
+  </target>
+
+  <target name="generate_set_operations_tests" description="Generate test code set operations" depends="set_operations.depends" unless="set_operations.buildNotNeeded">
+    <exec vmlauncher="false" failonerror="true" executable="perl">
+      <arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${set_op_simple} src/org/xtuml/bp/debug/ui/test/sets/SetOperationsSimpleTests.java
+        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -noResults" />
+    </exec>
+    <exec vmlauncher="false" failonerror="true" executable="perl">
+      <arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${set_op_precedence} src/org/xtuml/bp/debug/ui/test/sets/SetOperationsPrecedenceTests.java
+        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -noResults" />
+    </exec>
+    <exec vmlauncher="false" failonerror="true" executable="perl">
+      <arg line="../org.xtuml.bp.test/UnitTestGenerator.pl ${set_op_compare} src/org/xtuml/bp/debug/ui/test/sets/SetOperationsCompareTests.java
+        -n 250 -p org.xtuml.bp.debug.ui.test.sets -suite -DNO -data -noResults" />
+    </exec>
+  </target>
+
+  <!-- CLEAN ALL -->
+  <target name="clean_all" depends="clean_generated_matrix_code" />
+
+  <target name="clean_generated_matrix_code" description="Clean generated testing code." >
+    <echo>Removing code generated for testing...</echo>
+    <delete>
+      <fileset dir="src/org/xtuml/bp/debug/ui/test/sets/" >
+        <exclude name="SetOperationsTests.java" />
+        <exclude name="SetOperationsSimpleTests.java" />
+        <exclude name="SetOperationsPrecedenceTests.java" />
+        <exclude name="SetOperationsCompareTests.java" />
+        <include name="**.java" />
+      </fileset>
+    </delete>
+  </target>
+</project>
