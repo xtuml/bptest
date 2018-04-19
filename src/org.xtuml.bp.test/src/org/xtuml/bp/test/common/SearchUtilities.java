@@ -31,7 +31,7 @@ public class SearchUtilities {
 	private static boolean complete = false;
 	public static void configureAndRunSearch(final String pattern,
 			final boolean regEx, final boolean caseSensitive,
-			final boolean oal, final boolean descriptions, final int scope,
+			final boolean oal, final boolean descriptions, final boolean names, final int scope,
 			final String workingSet) {
 		// wait for search to complete
 		NewSearchUI.addQueryListener(new IQueryListener() {
@@ -76,6 +76,9 @@ public class SearchUtilities {
 					buttons[i].notifyListeners(SWT.Selection, new Event());
 				} else if (buttons[i].getText().equals("Descriptions")) {
 					buttons[i].setSelection(descriptions);
+					buttons[i].notifyListeners(SWT.Selection, new Event());
+				} else if (buttons[i].getText().equals("Element Names")) {
+					buttons[i].setSelection(names);
 					buttons[i].notifyListeners(SWT.Selection, new Event());
 				}
 			}
@@ -233,7 +236,7 @@ public class SearchUtilities {
 	private static boolean dialogSettingsResult = false;
 	
 	public static boolean checkSearchDialogSettings(final String pattern, final boolean regEx,
-			final boolean caseSensitive, final boolean oal, final boolean descriptions, final int scope,
+			final boolean caseSensitive, final boolean oal, final boolean descriptions, final boolean names, final int scope,
 			final String workingSet) {
 		TestUtil.dismissShell(activeShell -> {
 			dialogSettingsResult = false;
@@ -266,6 +269,11 @@ public class SearchUtilities {
 						}
 					} else if (buttons[i].getText().equals("Descriptions")) {
 						if (buttons[i].getSelection() != descriptions) {
+							cancel.notifyListeners(SWT.Selection, new Event());
+							return true;
+						}
+					} else if (buttons[i].getText().equals("Element Names")) {
+						if (buttons[i].getSelection() != names) {
 							cancel.notifyListeners(SWT.Selection, new Event());
 							return true;
 						}
