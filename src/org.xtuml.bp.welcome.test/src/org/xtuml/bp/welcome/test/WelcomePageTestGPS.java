@@ -41,11 +41,8 @@ import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
-import org.xtuml.bp.test.common.ZipUtil;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.utilities.ui.TreeUtilities;
-import org.xtuml.bp.welcome.WelcomePlugin;
-import org.xtuml.bp.welcome.gettingstarted.IGettingStartedConstants;
 import org.xtuml.bp.welcome.gettingstarted.SampleProjectGettingStartedAction;
 
 import junit.framework.TestCase;
@@ -219,28 +216,6 @@ public class WelcomePageTestGPS extends TestCase {
                 }
             }
         }
-    }
-
-    @Test
-    public void testOALProjectCreationNoImportIntoworkspace() throws Exception {
-    	for ( String projectName : projectNames ) {
-            TestingUtilities.deleteProject(projectName);
-    	}
-
-        String zipFilePath = WelcomePlugin.getPluginPathAbsolute() + IGettingStartedConstants.modelFolder + "/GPS_Watch_OAL.zip";
-        File projectFolder = tempFolder.newFolder("GPS_Watch");
-        ZipUtil.unzipFileContents(zipFilePath, tempFolder.getRoot().getAbsolutePath());
-
-        // The false parameter specifies to NOT import into workspace
-        runGPSOALGettingStartedAction(false, projectFolder.getAbsolutePath());
-
-        verifyProjectCreated();
-
-        checkForErrors();
-
-    	for ( String projectName : projectNames ) {
-            TestingUtilities.deleteProject(projectName);
-    	}
     }
 
     private long getPrebuildOutputTimestamp() throws CoreException {
