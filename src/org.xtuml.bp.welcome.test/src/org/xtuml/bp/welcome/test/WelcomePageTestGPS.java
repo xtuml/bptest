@@ -1,29 +1,11 @@
 package org.xtuml.bp.welcome.test;
 //=====================================================================
 //
-//File:      $RCSfile: WelcomePageTestGPS.java,v $
-//Version:   $Revision: 1.17 $
-//Modified:  $Date: 2013/05/13 19:53:55 $
+// File: WelcomePageTestGPS.java
 //
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not 
-// use this file except in compliance with the License.  You may obtain a copy 
-// of the License at
-//
-//       http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software 
-// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
-// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   See the 
-// License for the specific language governing permissions and limitations under
-// the License.
 //=====================================================================
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IFile;
@@ -36,7 +18,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IViewPart;
@@ -52,7 +33,6 @@ import org.xtuml.bp.core.ExternalEntity_c;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SystemModel_c;
-import org.xtuml.bp.core.XtUMLNature;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.PersistenceManager;
@@ -71,198 +51,121 @@ import junit.framework.TestCase;
 @RunWith(OrderedRunner.class)
 public class WelcomePageTestGPS extends TestCase {
 
-	private static IProject project;
+    private static IProject project;
     private static IViewPart g_view = null;
-    
-	// This test is setup so we can swap-in a different test model
-	// if we choose to do so.  All we should need to do is change the 
-	// name of the mode here.
-	private final String ProjectName = "GPS Watch";
-	
 
-	private String[] expectedXtUMLFiles =  {
-			".externalToolBuilders/Model Compiler.launch" ,
-			"models/" + ProjectName + "/GPS Watch.xtuml", 
-			"models/" + ProjectName + "/Analysis/Analysis.xtuml",
-			"models/" + ProjectName + "/Library/Library.xtuml", 
-			"models/" + ProjectName + "/System/System.xtuml",
-			"models/" + ProjectName + "/UIInterfaces/UI/UI.xtuml"};
+    private final String ProjectName = "GPS Watch";
 
-	private String[] expectedFiles = expectedXtUMLFiles;
+    private String[] expectedXtUMLFiles =  {
+            ".externalToolBuilders/Model Compiler.launch" ,
+            "models/" + ProjectName + "/GPS Watch.xtuml",
+            "models/" + ProjectName + "/Analysis/Analysis.xtuml",
+            "models/" + ProjectName + "/Library/Library.xtuml",
+            "models/" + ProjectName + "/System/System.xtuml",
+            "models/" + ProjectName + "/UIInterfaces/UI/UI.xtuml"};
 
-	private String markingFolder = "gen/";
+    private String markingFolder = "gen/";
 
-	private String[] MC3020Files = {
+    private String[] MC3020Files = {
             markingFolder + "datatype.mark",
             markingFolder + "system.mark",
             markingFolder + "class.mark",
             markingFolder + "domain.mark"
             };
-	
-	@Rule
-    public TemporaryFolder tempFolder= new TemporaryFolder();
 
-	@Override
-	public void setUp() {
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-	}
-	
-	public WelcomePageTestGPS() {
-		super();
-	}
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
 
-	public void runGPSGettingStartedAction() {
-		runGPSGettingStartedAction(true, "");
-	}
-	
-	public void runGPSGettingStartedAction(boolean importIntoWorkspace, String tempFolder) {
-		String singleFileModel = "zip";
-		String model = "GPS Watch";
-		if (!importIntoWorkspace) {
-			singleFileModel = tempFolder;
-		}
-		
-		// create and run new instances of GettingStarted for the GPS Watch model
-		SampleProjectGettingStartedAction action = new SampleProjectGettingStartedAction();
-		Properties props = new Properties();
-		props.put("model", model);
-		props.put("SingleFileModel", singleFileModel);
-		props.put("ImportIntoWorkspace", (importIntoWorkspace ? "true" : "false"));
-		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
-		action.run(null, props);
-		TestingUtilities.allowJobCompletion();
-	}
+    @Override
+    public void setUp() {
+        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+    }
 
-	public boolean projectReady(String projectName) {
-		// Check that project exists in the workspace
-		// and that it is indeed an xtUML project
-		boolean projectExists = false;
-		project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-				projectName);
-		projectExists = project.exists();
-		assertTrue("Project: " + projectName + " does not exist.",
-				projectExists);
-		projectExists = project.isOpen();
-		assertTrue("Project: " + projectName + " is not open.", projectExists);
-		return projectExists;
-	}
+    @Test
+    public void testProjectCreation() {
+        runGPSGettingStartedAction();
 
-	public void isxtUMLProject(IProject project) {
-		assertTrue("Project: " + project.getName()
-				+ " is not an xtUML project.", XtUMLNature.hasNature(project) );
-	}
+        TestUtil.selectButtonInDialog(3000, "Yes");
+        runGPSGettingStartedAction();
 
-	public void containsProjectMembers() {
-		/*
-		 * check the xtUML files/*
-		 */
-		for (int i = 0; i < expectedFiles.length; i++) {
-			IFile file = project.getFile(expectedFiles[i]);
-			assertTrue("Expected file: " + file.getName() + " does not exist.",
-					file.exists());
-		}
-		
-		/*
-		 * check the mc3020 files
-		 */
-		for (int i = 0; i < MC3020Files.length; i++) {
-			IFile file = project.getFile(MC3020Files[i]);
-			assertTrue("Expected file: " + file.getName() + " does not exist.",
-					file.exists());
-		}
-		
-	}
+        verifyProjectCreated();
+    }
 
-	public void verifyProjectCreated() {
-		boolean projectExists = projectReady(ProjectName);
-		if (projectExists)
-			containsProjectMembers();
-	}
-	
-	@Test
-	public void testProjectCreation() {
-		runGPSGettingStartedAction();
-		
-		TestUtil.selectButtonInDialog(3000, "Yes");
-		runGPSGettingStartedAction();
+    @Test
+    public void testNoProjectOverwrite() {
+        IFile dummyFile = project.getFile("dummyFile");
+        IFile readme = project.getFile("README");
+        try {
+            dummyFile.create(readme.getContents(), IResource.REPLACE, null);
+        } catch (CoreException ce) {
+            fail("Failed to create dummy file.");
+        }
+        if (!dummyFile.exists()) {
+            fail("Failed to create the dummy file.");
+        }
+        TestUtil.selectButtonInDialog(2000, "No");
+        runGPSGettingStartedAction();
 
-		verifyProjectCreated();
-	}
-	@Test
-	public void testNoProjectOverwrite() {
-	    IFile dummyFile = project.getFile("dummyFile");
-	    IFile readme = project.getFile("README");
-		try {
-			dummyFile.create(readme.getContents(), IResource.REPLACE, null);
-		} catch (CoreException ce) {
-			fail("Failed to create dummy file.");
-		}
-		if (!dummyFile.exists()) {
-			fail("Failed to create the dummy file.");
-		}
-		TestUtil.selectButtonInDialog(2000, "No");
-		runGPSGettingStartedAction();
-		
-		// We said not to overwrite, so the dummy file should still be there
-		assertTrue("The project was overwritten when it shouldn't have been.",
-				dummyFile.exists());
-	}
+        // We said not to overwrite, so the dummy file should still be there
+        assertTrue("The project was overwritten when it shouldn't have been.", dummyFile.exists());
+    }
 
-	@Test
-	public void testProjectOverwrite() throws Exception {
-	    IFile dummyFile = project.getFile("dummyFile");
-	    
-	    // Make sure the marker file is there.
-		assertTrue("The dummy file for testing doesn't exist.",	dummyFile.exists());
-		
-		TestUtil.selectButtonInDialog(1000, "Yes");
-		runGPSGettingStartedAction();
-				
-		// We said to overwrite, so the dummy file should not be there
-		assertFalse("The project was not overwritten when it should have been.",
-				dummyFile.exists());
-		
-		verifyProjectCreated();
-	}
-	@Test
-	public void testImportLoadPersistAndBuild()  throws Exception {
-		// This test is disabled for command line runs
-		// See https://support.onefact.net/issues/9414
-		if(BaseTest.isCLITestRun()) {
-			return;
-		}
-		int numImports = 3;
-		for (int i = 0; i < numImports; i++) {
-			System.out.println("Import number: " + String.valueOf(i+1));
-			TestUtil.selectButtonInDialog(1000, "Yes");
-			runGPSGettingStartedAction();
-			
-			verifyProjectCreated();
-	
-			final IProject project = getProject(ProjectName);
-			
-			buildProject(project);
-	
-			checkForErrors();
-			
-			// load and persist
-			PersistableModelComponent pmc = PersistenceManager.getRootComponent(project);
-			pmc.loadComponentAndChildren(new NullProgressMonitor());
-			pmc.persistSelfAndChildren();		
-			
-			checkForErrors();
-			        
-	        TestingUtilities.deleteProject(ProjectName);	        
-		}
-		
-	}
-	@Test
+    @Test
+    public void testProjectOverwrite() throws Exception {
+        IFile dummyFile = project.getFile("dummyFile");
+
+        // Make sure the marker file is there.
+        assertTrue("The dummy file for testing doesn't exist.",    dummyFile.exists());
+
+        TestUtil.selectButtonInDialog(1000, "Yes");
+        runGPSGettingStartedAction();
+
+        // We said to overwrite, so the dummy file should not be there
+        assertFalse("The project was not overwritten when it should have been.", dummyFile.exists());
+
+        verifyProjectCreated();
+    }
+
+    @Test
+    public void testImportLoadPersistAndBuild()  throws Exception {
+        // This test is disabled for command line runs
+        // See https://support.onefact.net/issues/9414
+        if(BaseTest.isCLITestRun()) {
+            return;
+        }
+        int numImports = 3;
+        for (int i = 0; i < numImports; i++) {
+            System.out.println("Import number: " + String.valueOf(i+1));
+            TestUtil.selectButtonInDialog(1000, "Yes");
+            runGPSGettingStartedAction();
+
+            verifyProjectCreated();
+
+            final IProject project = getProject(ProjectName);
+
+            buildProject(project);
+
+            checkForErrors();
+
+            // load and persist
+            PersistableModelComponent pmc = PersistenceManager.getRootComponent(project);
+            pmc.loadComponentAndChildren(new NullProgressMonitor());
+            pmc.persistSelfAndChildren();
+
+            checkForErrors();
+
+            TestingUtilities.deleteProject(ProjectName);
+        }
+
+    }
+
+    @Test
     public void testSmartPreBuild() throws Exception {
-		// This test is disabled for command line runs
-		// See https://support.onefact.net/issues/9414
-		if(BaseTest.isCLITestRun()) {
-			return;
-		}
+        // This test is disabled for command line runs
+        // See https://support.onefact.net/issues/9414
+        if(BaseTest.isCLITestRun()) {
+            return;
+        }
         // This test builds the project several times, testing that the exported
         // <project>.sql file from pre-builder is updated when needed and left
         // unmodified by the build (re-export skipped) when an update is not needed.
@@ -277,45 +180,90 @@ public class WelcomePageTestGPS extends TestCase {
         buildProject(project);
         checkForErrors();
         long firstPrebuildOutputTimestamp = getPrebuildOutputTimestamp();
-        
-        // Second build.  Wait a while, then build again without touching the 
+
+        // Second build.  Wait a while, then build again without touching the
         // model data.  The pre-builder should not re-export.
-		TestingUtilities.allowJobCompletion();
+        TestingUtilities.allowJobCompletion();
         buildProject(project);
         checkForErrors();
         long secondPrebuildOutputTimestamp = getPrebuildOutputTimestamp();
-        assertTrue("The pre-build re-exported the model data.  It should not have done this.", 
-                firstPrebuildOutputTimestamp == secondPrebuildOutputTimestamp);            
+        assertTrue("The pre-build re-exported the model data.  It should not have done this.", firstPrebuildOutputTimestamp == secondPrebuildOutputTimestamp);
 
         // Third build.  Wait a while, touch the model data by adding a meaningless
         // attribute to a class, then build again. The pre-builder should re-export.
-		TestingUtilities.allowJobCompletion();
+        TestingUtilities.allowJobCompletion();
         String modelRootId = Ooaofooa.createModelRootId(ProjectName, "Library", true);
         Ooaofooa modelRoot = Ooaofooa.getInstance(modelRootId, true);
-        ModelClass_c obj = ModelClass_c.ModelClassInstance(modelRoot, 
-                new ClassQueryInterface_c() {
+        ModelClass_c obj = ModelClass_c.ModelClassInstance(modelRoot, new ClassQueryInterface_c() {
+        	@Override
             public boolean evaluate(Object candidate) {
                 return ((ModelClass_c) candidate).getName().equals("LapMarker");
             }
-          });
+        });
         assertNotNull(obj);
         obj.Newattribute();
-        Attribute_c attribute = Attribute_c.getOneO_ATTROnR102(obj,
-                new ClassQueryInterface_c() {
-                    public boolean evaluate(Object candidate) {
-                        Attribute_c selected = (Attribute_c) candidate;
-                        return selected.getName().equals("Unnamed Attribute");
-                    }
-                });
+        Attribute_c attribute = Attribute_c.getOneO_ATTROnR102(obj, new ClassQueryInterface_c() {
+        	@Override
+            public boolean evaluate(Object candidate) {
+                Attribute_c selected = (Attribute_c) candidate;
+                return selected.getName().equals("Unnamed Attribute");
+            }
+        });
         assertNotNull(attribute);
         attribute.setName("dummy");
         attribute.getPersistableComponent().persist();
-		TestingUtilities.allowJobCompletion();
+        TestingUtilities.allowJobCompletion();
         buildProject(project);
         checkForErrors();
         long thirdPrebuildOutputTimestamp = getPrebuildOutputTimestamp();
-        assertTrue("The pre-build did not re-export the model data.  It should have done this.", 
-                thirdPrebuildOutputTimestamp > secondPrebuildOutputTimestamp);            
+        assertTrue("The pre-build did not re-export the model data.  It should have done this.", thirdPrebuildOutputTimestamp > secondPrebuildOutputTimestamp);
+    }
+
+    @Test
+    public void testExternalEntityDefaults() {
+        TestUtil.selectButtonInDialog(1000, "Yes");
+        runGPSGettingStartedAction();
+
+        verifyProjectCreated();
+
+        SystemModel_c system = SystemModel_c.SystemModelInstance( Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
+            @Override
+            public boolean evaluate(Object candidate) {
+                return ((SystemModel_c) candidate).getName().equals("GPS Watch");
+            }
+        });
+
+        assertNotNull(system);
+        system.getPersistableComponent().loadComponentAndChildren(
+                new NullProgressMonitor());
+
+        Ooaofooa[] instancesUnderSystem = Ooaofooa.getInstancesUnderSystem("GPS Watch");
+        for (Ooaofooa root : instancesUnderSystem) {
+            ExternalEntity_c[] ees = ExternalEntity_c.ExternalEntityInstances(root);
+            for (ExternalEntity_c ee : ees) {
+                if (!ee.getIsrealized()) {
+                    fail("External Entity: " + ee.getName() + " was not configured with the default isRealized = true");
+                }
+            }
+        }
+    }
+
+    @Test
+    public void testProjectCreationNoImportIntoworkspace() throws Exception {
+        TestingUtilities.deleteProject(ProjectName);
+
+        String zipFilePath = WelcomePlugin.getPluginPathAbsolute() + IGettingStartedConstants.modelFolder + "/GPS Watch.zip";
+        File projectFolder = tempFolder.newFolder("GPS Watch");
+        ZipUtil.unzipFileContents(zipFilePath, tempFolder.getRoot().getAbsolutePath());
+
+        // The false parameter specifies to NOT import into workspace
+        runGPSGettingStartedAction(false, projectFolder.getAbsolutePath());
+
+        verifyProjectCreated();
+
+        checkForErrors();
+
+        TestingUtilities.deleteProject(ProjectName);
     }
 
     private long getPrebuildOutputTimestamp() throws CoreException {
@@ -325,7 +273,7 @@ public class WelcomePageTestGPS extends TestCase {
         genFolder.refreshLocal(IResource.DEPTH_ONE, null);
         if (genFolder.exists() && genFolder.members().length != 0) {
             for (IResource res : genFolder.members()) {
-                if (res.getName().equals( ProjectName + ".sql")) { 
+                if (res.getName().equals( ProjectName + ".sql")) {
                     prebuildOutputTimestamp = res.getLocalTimeStamp();
                 }
             }
@@ -333,155 +281,132 @@ public class WelcomePageTestGPS extends TestCase {
         else {
             fail("The pre-builder did not create the expected output.");
         }
-        
+
         return prebuildOutputTimestamp;
     }
-    
-	private void checkForErrors() {
-		// Check the problems view
+
+    private void checkForErrors() {
+        // Check the problems view
         g_view = selectView(project, "org.eclipse.ui.views.ProblemView");
 
         // Check the explorer view for orphaned elements
         ExplorerView view = null;
-		try {
-			view = (ExplorerView) PlatformUI.getWorkbench()
-			.getActiveWorkbenchWindow().getActivePage().showView(
-					"org.xtuml.bp.ui.explorer.ExplorerView");
-		} catch (PartInitException e) {
-		}
-		view.getTreeViewer().refresh();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		view.getTreeViewer().expandAll();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		TreeItem topItem = view.getTreeViewer().getTree().getTopItem();
-		TreeItem[] orphaned = TreeUtilities.getOrphanedElementsFromTree(topItem);
-		if (orphaned.length > 0) {
-			String elements = TreeUtilities.getTextResultForOrphanedElementList(orphaned);
-	        assertTrue("Orphaned elements are present: " + elements, false);			
-		}		
-		// this is a regression test for issue 9556
-		assertTrue("Expected tree items are missing from the Model Explorer View", topItem.getItemCount()==15);
-	}
-	
-	private void buildProject(final IProject project) throws Exception {
-        g_view = selectView(project, "org.eclipse.ui.views.ResourceNavigator");
-		g_view.getSite().getSelectionProvider().setSelection(
-				new StructuredSelection(project));
-		Runnable r = new Runnable() {
-			public void run() {
-				try {
-			        project.build(IncrementalProjectBuilder.FULL_BUILD, null);		
-				} catch (Exception e) {
-					fail("Failed to build the project. " + e.getMessage()); //$NON-NLS-1$
-				}
-			}
-		};
-		r.run();
-        
-		TestingUtilities.allowJobCompletion();
-	}
-	
-	private IProject getProject(String name) {
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-				name);
-		assertTrue( project.exists() );
-		return project;
-	}
-
-	private IViewPart selectView(final IProject project, final String viewName) {
-		g_view = null;
-		Runnable r = new Runnable() {
-			public void run() {
-				IWorkbenchPage page = PlatformUI.getWorkbench()
-						.getActiveWorkbenchWindow().getActivePage();
-				try {
-					g_view = page.showView(viewName); //$NON-NLS-1$
-
-				} catch (PartInitException e) {
-					fail("Failed to open the " + viewName + " view"); //$NON-NLS-1$
-				}
-			}
-		};
-		r.run();
-		assertTrue("Unable to select view: " + viewName, g_view != null);
-		return g_view;
-	}
-	@Test
-	public void testExternalEntityDefaults() {
-		TestUtil.selectButtonInDialog(1000, "Yes");
-		runGPSGettingStartedAction();
-
-		verifyProjectCreated();
-
-		SystemModel_c system = SystemModel_c.SystemModelInstance(
-				Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
-
-					@Override
-					public boolean evaluate(Object candidate) {
-						return ((SystemModel_c) candidate).getName().equals(
-								"GPS Watch");
-					}
-				});
-
-		assertNotNull(system);
-		system.getPersistableComponent().loadComponentAndChildren(
-				new NullProgressMonitor());
-
-		Ooaofooa[] instancesUnderSystem = Ooaofooa
-				.getInstancesUnderSystem("GPS Watch");
-		for (Ooaofooa root : instancesUnderSystem) {
-			ExternalEntity_c[] ees = ExternalEntity_c
-					.ExternalEntityInstances(root);
-			for (ExternalEntity_c ee : ees) {
-				if (!ee.getIsrealized()) {
-					fail("External Entity: "
-							+ ee.getName()
-							+ " was not configured with the default isRealized = true");
-				}
-			}
-		}
-	}
-	
-	/**
-	 * Get the path to this test plugin
-	 * 
-	 * @param entry
-	 * @return
-	 */
-	public static String getEntryPath(String entry) {
-		URL url = TestPlugin.getDefault().getBundle().getEntry(entry);
-		URL resolvedURL = null;
-		String result = "";
-		try {
-			resolvedURL =  Platform.resolve(url);
-			result = resolvedURL.getPath();
-		} catch (IOException e) {
-			System.err.println("Unable to resolve URL for entry: " + entry + ".  " + e.getLocalizedMessage()); //$NON-NLS-1$
-		}
-		return result;
-	}
-	
-    public static IPath getPluginPathAbsolute() {
-        IPath relPath = new Path( getEntryPath("") ); //$NON-NLS-1$
-        return relPath.makeAbsolute();
+        try {
+            view = (ExplorerView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
+        } catch (PartInitException e) {}
+        view.getTreeViewer().refresh();
+        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        view.getTreeViewer().expandAll();
+        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        TreeItem topItem = view.getTreeViewer().getTree().getTopItem();
+        TreeItem[] orphaned = TreeUtilities.getOrphanedElementsFromTree(topItem);
+        if (orphaned.length > 0) {
+            String elements = TreeUtilities.getTextResultForOrphanedElementList(orphaned);
+            assertTrue("Orphaned elements are present: " + elements, false);
+        }
+        // this is a regression test for issue 9556
+        assertTrue("Expected tree items are missing from the Model Explorer View", topItem.getItemCount()==15);
     }
-    
-	@Test
-	public void testProjectCreationNoImportIntoworkspace() throws Exception {
-        TestingUtilities.deleteProject(ProjectName);	        
 
-        
-        String zipFilePath = WelcomePlugin.getPluginPathAbsolute() + IGettingStartedConstants.modelFolder + "/GPS Watch.zip";
-        File projectFolder = tempFolder.newFolder("GPS Watch");
-        ZipUtil.unzipFileContents(zipFilePath, tempFolder.getRoot().getAbsolutePath());
-        
-        // The false parameter specifies to NOT import into workspace        
-		runGPSGettingStartedAction(false, projectFolder.getAbsolutePath());
-		
-		verifyProjectCreated();
+    private void buildProject(final IProject project) throws Exception {
+        g_view = selectView(project, "org.eclipse.ui.views.ResourceNavigator");
+        g_view.getSite().getSelectionProvider().setSelection(new StructuredSelection(project));
+        Runnable r = new Runnable() {
+            public void run() {
+                try {
+                    project.build(IncrementalProjectBuilder.FULL_BUILD, null);
+                } catch (Exception e) {
+                    fail("Failed to build the project. " + e.getMessage());
+                }
+            }
+        };
+        r.run();
 
-		checkForErrors();
-		
-        TestingUtilities.deleteProject(ProjectName);	        
-	}
+        TestingUtilities.allowJobCompletion();
+    }
+
+    private IProject getProject(String name) {
+        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
+        assertTrue( project.exists() );
+        return project;
+    }
+
+    private IViewPart selectView(final IProject project, final String viewName) {
+        g_view = null;
+        Runnable r = new Runnable() {
+            public void run() {
+                IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                try {
+                    g_view = page.showView(viewName);
+                } catch (PartInitException e) {
+                    fail("Failed to open the " + viewName + " view");
+                }
+            }
+        };
+        r.run();
+        assertTrue("Unable to select view: " + viewName, g_view != null);
+        return g_view;
+    }
+
+    private void runGPSGettingStartedAction() {
+        runGPSGettingStartedAction(true, "");
+    }
+
+    private void runGPSGettingStartedAction(boolean importIntoWorkspace, String tempFolder) {
+        String singleFileModel = "zip";
+        String model = "GPS Watch";
+        if (!importIntoWorkspace) {
+            singleFileModel = tempFolder;
+        }
+
+        // create and run new instances of GettingStarted for the GPS Watch model
+        SampleProjectGettingStartedAction action = new SampleProjectGettingStartedAction();
+        Properties props = new Properties();
+        props.put("model", model);
+        props.put("SingleFileModel", singleFileModel);
+        props.put("ImportIntoWorkspace", (importIntoWorkspace ? "true" : "false"));
+        props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
+        action.run(null, props);
+        TestingUtilities.allowJobCompletion();
+    }
+
+    private boolean projectReady(String projectName) {
+        // Check that project exists in the workspace
+        // and that it is indeed an xtUML project
+        boolean projectExists = false;
+        project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+        projectExists = project.exists();
+        assertTrue("Project: " + projectName + " does not exist.", projectExists);
+        projectExists = project.isOpen();
+        assertTrue("Project: " + projectName + " is not open.", projectExists);
+        return projectExists;
+    }
+
+    private void containsProjectMembers() {
+        /*
+         * check the xtUML files/*
+         */
+        for (int i = 0; i < expectedXtUMLFiles.length; i++) {
+            IFile file = project.getFile(expectedXtUMLFiles[i]);
+            assertTrue("Expected file: " + file.getName() + " does not exist.",
+                    file.exists());
+        }
+
+        /*
+         * check the mc3020 files
+         */
+        for (int i = 0; i < MC3020Files.length; i++) {
+            IFile file = project.getFile(MC3020Files[i]);
+            assertTrue("Expected file: " + file.getName() + " does not exist.",
+                    file.exists());
+        }
+
+    }
+
+    private void verifyProjectCreated() {
+        boolean projectExists = projectReady(ProjectName);
+        if (projectExists)
+            containsProjectMembers();
+    }
+
 }
