@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PlatformUI;
+import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
@@ -28,6 +29,7 @@ import org.xtuml.bp.test.TestUtil;
 @SuppressWarnings("restriction")
 public class SearchUtilities {
 
+	public enum ResultType { NAME, KEYLETTERS };
 	private static boolean complete = false;
 	public static void configureAndRunSearch(final String pattern,
 			final boolean regEx, final boolean caseSensitive,
@@ -221,13 +223,23 @@ public class SearchUtilities {
 	}
 
 	public static Object findResultInView(String itemName) {
+		return findResultInView(itemName, ResultType.NAME);
+	}
+
+	public static Object findResultInView(String itemName, ResultType rt) {
 		SearchResult_c[] searchResults = SearchResult_c
 				.SearchResultInstances(Ooaofooa.getDefaultInstance(), null, false);
 		for (int i = 0; i < searchResults.length; i++) {
 			NonRootModelElement element = (NonRootModelElement) ModelSearchResult
 					.getElementForResult(searchResults[i]);
-			if (element.getName().equals(itemName)) {
-				return element;
+			if (rt == ResultType.KEYLETTERS) {
+				if ((element instanceof ModelClass_c) && ((ModelClass_c)element).getKey_lett().equals(itemName)) {
+					return element;
+				}
+			} else {
+				if (element.getName().equals(itemName)) {
+					return element;
+				}
 			}
 		}
 		return null;

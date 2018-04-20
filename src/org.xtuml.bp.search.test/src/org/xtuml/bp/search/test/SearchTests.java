@@ -24,6 +24,7 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.SearchUtilities;
+import org.xtuml.bp.test.common.SearchUtilities.ResultType;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 
@@ -373,6 +374,27 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("Contained"));
+	}
+
+	@Test
+	public void testFindKeylettersOfClass() throws CoreException {
+		selectPackage("MicrowaveOven");
+		SearchUtilities.configureAndRunSearch("MO_D", false, false, false,
+				false, true, ISearchPageContainer.SELECTION_SCOPE, "");
+		assertEquals("Search did not return expected result count.", 5,
+				SearchResult_c.SearchResultInstances(Ooaofooa
+						.getDefaultInstance(), null, false).length);
+		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("MO_D", ResultType.KEYLETTERS));
+	}
+
+	@Test
+	public void testFindAssociationRolePhrase() throws CoreException {
+		selectPackage("MicrowaveOven");
+		SearchUtilities.configureAndRunSearch("provides", false, false, false,
+				false, true, ISearchPageContainer.SELECTION_SCOPE, "");
+		assertEquals("Search did not return expected result count.", 1,
+				SearchResult_c.SearchResultInstances(Ooaofooa
+						.getDefaultInstance(), null, false).length);
 	}
 
 	@Test
