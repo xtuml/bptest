@@ -6,6 +6,8 @@ package org.xtuml.bp.welcome.test;
 //=====================================================================
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IFile;
@@ -28,10 +30,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
-import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.ExternalEntity_c;
-import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
+import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
@@ -51,27 +52,10 @@ import junit.framework.TestCase;
 @RunWith(OrderedRunner.class)
 public class WelcomePageTestGPS extends TestCase {
 
-    private static IProject project;
+    private static Map<String,IProject> projects;
     private static IViewPart g_view = null;
 
-    private final String ProjectName = "GPS Watch";
-
-    private String[] expectedXtUMLFiles =  {
-            ".externalToolBuilders/Model Compiler.launch" ,
-            "models/" + ProjectName + "/GPS Watch.xtuml",
-            "models/" + ProjectName + "/Analysis/Analysis.xtuml",
-            "models/" + ProjectName + "/Library/Library.xtuml",
-            "models/" + ProjectName + "/System/System.xtuml",
-            "models/" + ProjectName + "/UIInterfaces/UI/UI.xtuml"};
-
-    private String markingFolder = "gen/";
-
-    private String[] MC3020Files = {
-            markingFolder + "datatype.mark",
-            markingFolder + "system.mark",
-            markingFolder + "class.mark",
-            markingFolder + "domain.mark"
-            };
+    private final String[] projectNames = { "GPS_Watch", "Location", "HeartRateMonitor", "Tracking", "UI" };
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
@@ -83,18 +67,18 @@ public class WelcomePageTestGPS extends TestCase {
 
     @Test
     public void testProjectCreation() {
-        runGPSGettingStartedAction();
+        runGPSOALGettingStartedAction();
 
         TestUtil.selectButtonInDialog(3000, "Yes");
-        runGPSGettingStartedAction();
+        runGPSOALGettingStartedAction();
 
         verifyProjectCreated();
     }
 
     @Test
     public void testNoProjectOverwrite() {
-        IFile dummyFile = project.getFile("dummyFile");
-        IFile readme = project.getFile("README");
+        IFile dummyFile = projects.get(projectNames[0]).getFile("dummyFile");
+        IFile readme = projects.get(projectNames[0]).getFile("README.md");
         try {
             dummyFile.create(readme.getContents(), IResource.REPLACE, null);
         } catch (CoreException ce) {
@@ -104,7 +88,7 @@ public class WelcomePageTestGPS extends TestCase {
             fail("Failed to create the dummy file.");
         }
         TestUtil.selectButtonInDialog(2000, "No");
-        runGPSGettingStartedAction();
+        runGPSOALGettingStartedAction();
 
         // We said not to overwrite, so the dummy file should still be there
         assertTrue("The project was overwritten when it shouldn't have been.", dummyFile.exists());
@@ -112,13 +96,13 @@ public class WelcomePageTestGPS extends TestCase {
 
     @Test
     public void testProjectOverwrite() throws Exception {
-        IFile dummyFile = project.getFile("dummyFile");
+        IFile dummyFile = projects.get(projectNames[0]).getFile("dummyFile");
 
         // Make sure the marker file is there.
-        assertTrue("The dummy file for testing doesn't exist.",    dummyFile.exists());
+        assertTrue("The dummy file for testing doesn't exist.", dummyFile.exists());
 
         TestUtil.selectButtonInDialog(1000, "Yes");
-        runGPSGettingStartedAction();
+        runGPSOALGettingStartedAction();
 
         // We said to overwrite, so the dummy file should not be there
         assertFalse("The project was not overwritten when it should have been.", dummyFile.exists());
@@ -137,11 +121,11 @@ public class WelcomePageTestGPS extends TestCase {
         for (int i = 0; i < numImports; i++) {
             System.out.println("Import number: " + String.valueOf(i+1));
             TestUtil.selectButtonInDialog(1000, "Yes");
-            runGPSGettingStartedAction();
+            runGPSOALGettingStartedAction();
 
             verifyProjectCreated();
 
-            final IProject project = getProject(ProjectName);
+            final IProject project = getProject(projectNames[0]);
 
             buildProject(project);
 
@@ -154,7 +138,7 @@ public class WelcomePageTestGPS extends TestCase {
 
             checkForErrors();
 
-            TestingUtilities.deleteProject(ProjectName);
+            TestingUtilities.deleteProject(projectNames[0]);
         }
 
     }
@@ -170,11 +154,11 @@ public class WelcomePageTestGPS extends TestCase {
         // <project>.sql file from pre-builder is updated when needed and left
         // unmodified by the build (re-export skipped) when an update is not needed.
         TestUtil.selectButtonInDialog(1000, "Yes");
-        runGPSGettingStartedAction();
+        runGPSOALGettingStartedAction();
 
         verifyProjectCreated();
 
-        final IProject project = getProject(ProjectName);
+        final IProject project = getProject(projectNames[0]);
 
         // First build
         buildProject(project);
@@ -189,29 +173,19 @@ public class WelcomePageTestGPS extends TestCase {
         long secondPrebuildOutputTimestamp = getPrebuildOutputTimestamp();
         assertTrue("The pre-build re-exported the model data.  It should not have done this.", firstPrebuildOutputTimestamp == secondPrebuildOutputTimestamp);
 
-        // Third build.  Wait a while, touch the model data by adding a meaningless
-        // attribute to a class, then build again. The pre-builder should re-export.
+        // Third build.  Wait a while, touch the model data by adding text to a package
+        // description, then build again. The pre-builder should re-export.
         TestingUtilities.allowJobCompletion();
-        String modelRootId = Ooaofooa.createModelRootId(ProjectName, "Library", true);
-        Ooaofooa modelRoot = Ooaofooa.getInstance(modelRootId, true);
-        ModelClass_c obj = ModelClass_c.ModelClassInstance(modelRoot, new ClassQueryInterface_c() {
-        	@Override
+        SystemModel_c system = SystemModel_c.SystemModelInstance( Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
+            @Override
             public boolean evaluate(Object candidate) {
-                return ((ModelClass_c) candidate).getName().equals("LapMarker");
+                return ((SystemModel_c) candidate).getName().equals(projectNames[0]);
             }
         });
-        assertNotNull(obj);
-        obj.Newattribute();
-        Attribute_c attribute = Attribute_c.getOneO_ATTROnR102(obj, new ClassQueryInterface_c() {
-        	@Override
-            public boolean evaluate(Object candidate) {
-                Attribute_c selected = (Attribute_c) candidate;
-                return selected.getName().equals("Unnamed Attribute");
-            }
-        });
-        assertNotNull(attribute);
-        attribute.setName("dummy");
-        attribute.getPersistableComponent().persist();
+        Package_c pkg = Package_c.getOneEP_PKGOnR1401(system);
+        assertNotNull( pkg );
+        pkg.setDescrip( pkg.getDescrip() + "\nHello, World!" );
+        pkg.getPersistableComponent().persist();
         TestingUtilities.allowJobCompletion();
         buildProject(project);
         checkForErrors();
@@ -222,22 +196,21 @@ public class WelcomePageTestGPS extends TestCase {
     @Test
     public void testExternalEntityDefaults() {
         TestUtil.selectButtonInDialog(1000, "Yes");
-        runGPSGettingStartedAction();
+        runGPSOALGettingStartedAction();
 
         verifyProjectCreated();
 
         SystemModel_c system = SystemModel_c.SystemModelInstance( Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {
             @Override
             public boolean evaluate(Object candidate) {
-                return ((SystemModel_c) candidate).getName().equals("GPS Watch");
+                return ((SystemModel_c) candidate).getName().equals(projectNames[0]);
             }
         });
 
         assertNotNull(system);
-        system.getPersistableComponent().loadComponentAndChildren(
-                new NullProgressMonitor());
+        system.getPersistableComponent().loadComponentAndChildren(new NullProgressMonitor());
 
-        Ooaofooa[] instancesUnderSystem = Ooaofooa.getInstancesUnderSystem("GPS Watch");
+        Ooaofooa[] instancesUnderSystem = Ooaofooa.getInstancesUnderSystem(projectNames[0]);
         for (Ooaofooa root : instancesUnderSystem) {
             ExternalEntity_c[] ees = ExternalEntity_c.ExternalEntityInstances(root);
             for (ExternalEntity_c ee : ees) {
@@ -249,31 +222,35 @@ public class WelcomePageTestGPS extends TestCase {
     }
 
     @Test
-    public void testProjectCreationNoImportIntoworkspace() throws Exception {
-        TestingUtilities.deleteProject(ProjectName);
+    public void testOALProjectCreationNoImportIntoworkspace() throws Exception {
+    	for ( String projectName : projectNames ) {
+            TestingUtilities.deleteProject(projectName);
+    	}
 
-        String zipFilePath = WelcomePlugin.getPluginPathAbsolute() + IGettingStartedConstants.modelFolder + "/GPS Watch.zip";
-        File projectFolder = tempFolder.newFolder("GPS Watch");
+        String zipFilePath = WelcomePlugin.getPluginPathAbsolute() + IGettingStartedConstants.modelFolder + "/GPS_Watch_OAL.zip";
+        File projectFolder = tempFolder.newFolder("GPS_Watch");
         ZipUtil.unzipFileContents(zipFilePath, tempFolder.getRoot().getAbsolutePath());
 
         // The false parameter specifies to NOT import into workspace
-        runGPSGettingStartedAction(false, projectFolder.getAbsolutePath());
+        runGPSOALGettingStartedAction(false, projectFolder.getAbsolutePath());
 
         verifyProjectCreated();
 
         checkForErrors();
 
-        TestingUtilities.deleteProject(ProjectName);
+    	for ( String projectName : projectNames ) {
+            TestingUtilities.deleteProject(projectName);
+    	}
     }
 
     private long getPrebuildOutputTimestamp() throws CoreException {
         long prebuildOutputTimestamp = Long.MAX_VALUE;
         IPath genPath = new Path("gen" + File.separator + "code_generation" + File.separator);
-        IFolder genFolder = project.getFolder(genPath);
+        IFolder genFolder = projects.get(projectNames[0]).getFolder(genPath);
         genFolder.refreshLocal(IResource.DEPTH_ONE, null);
         if (genFolder.exists() && genFolder.members().length != 0) {
             for (IResource res : genFolder.members()) {
-                if (res.getName().equals( ProjectName + ".sql")) {
+                if (res.getName().equals( projectNames[0] + ".sql")) {
                     prebuildOutputTimestamp = res.getLocalTimeStamp();
                 }
             }
@@ -287,7 +264,7 @@ public class WelcomePageTestGPS extends TestCase {
 
     private void checkForErrors() {
         // Check the problems view
-        g_view = selectView(project, "org.eclipse.ui.views.ProblemView");
+        g_view = selectView(projects.get(projectNames[0]), "org.eclipse.ui.views.ProblemView");
 
         // Check the explorer view for orphaned elements
         ExplorerView view = null;
@@ -305,7 +282,7 @@ public class WelcomePageTestGPS extends TestCase {
             assertTrue("Orphaned elements are present: " + elements, false);
         }
         // this is a regression test for issue 9556
-        assertTrue("Expected tree items are missing from the Model Explorer View", topItem.getItemCount()==15);
+        assertTrue("Expected tree items are missing from the Model Explorer View", topItem.getItemCount()==3);
     }
 
     private void buildProject(final IProject project) throws Exception {
@@ -348,17 +325,16 @@ public class WelcomePageTestGPS extends TestCase {
         return g_view;
     }
 
-    private void runGPSGettingStartedAction() {
-        runGPSGettingStartedAction(true, "");
+    private void runGPSOALGettingStartedAction() {
+        runGPSOALGettingStartedAction(true, "");
     }
 
-    private void runGPSGettingStartedAction(boolean importIntoWorkspace, String tempFolder) {
+    private void runGPSOALGettingStartedAction(boolean importIntoWorkspace, String tempFolder) {
         String singleFileModel = "zip";
-        String model = "GPS Watch";
+        String model = "GPS_Watch_OAL,GPS_Watch,HeartRateMonitor,Location,Tracking,UI";
         if (!importIntoWorkspace) {
             singleFileModel = tempFolder;
         }
-
         // create and run new instances of GettingStarted for the GPS Watch model
         SampleProjectGettingStartedAction action = new SampleProjectGettingStartedAction();
         Properties props = new Properties();
@@ -366,6 +342,8 @@ public class WelcomePageTestGPS extends TestCase {
         props.put("SingleFileModel", singleFileModel);
         props.put("ImportIntoWorkspace", (importIntoWorkspace ? "true" : "false"));
         props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
+        props.put("readmePath","GPS_Watch/README.md");
+        props.put("exes","GPS_Watch/Debug_Linux/GPS_Watch,GPS_Watch/Debug_Mac/GPS_Watch,GPS_Watch/Debug_Windows/GPS_Watch.exe");
         action.run(null, props);
         TestingUtilities.allowJobCompletion();
     }
@@ -374,39 +352,21 @@ public class WelcomePageTestGPS extends TestCase {
         // Check that project exists in the workspace
         // and that it is indeed an xtUML project
         boolean projectExists = false;
-        project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
         projectExists = project.exists();
         assertTrue("Project: " + projectName + " does not exist.", projectExists);
         projectExists = project.isOpen();
         assertTrue("Project: " + projectName + " is not open.", projectExists);
+        projects.put( projectName, project );
         return projectExists;
     }
 
-    private void containsProjectMembers() {
-        /*
-         * check the xtUML files/*
-         */
-        for (int i = 0; i < expectedXtUMLFiles.length; i++) {
-            IFile file = project.getFile(expectedXtUMLFiles[i]);
-            assertTrue("Expected file: " + file.getName() + " does not exist.",
-                    file.exists());
-        }
-
-        /*
-         * check the mc3020 files
-         */
-        for (int i = 0; i < MC3020Files.length; i++) {
-            IFile file = project.getFile(MC3020Files[i]);
-            assertTrue("Expected file: " + file.getName() + " does not exist.",
-                    file.exists());
-        }
-
-    }
-
     private void verifyProjectCreated() {
-        boolean projectExists = projectReady(ProjectName);
-        if (projectExists)
-            containsProjectMembers();
+    	projects = new HashMap<>();
+    	boolean projects_ready = true;
+        for ( String projectName : projectNames ) {
+            projects_ready = projects_ready && projectReady(projectName);
+        }
     }
 
 }
