@@ -18,13 +18,17 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.WorkbenchPart;
 import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.util.EditorUtil;
 import org.xtuml.bp.search.results.ModelSearchResult;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.ui.search.pages.ModelSearchResultPage;
 
 @SuppressWarnings("restriction")
 public class SearchUtilities {
@@ -243,6 +247,21 @@ public class SearchUtilities {
 			}
 		}
 		return null;
+	}
+
+	// Opens the first match in the results and returns the title of the opened editor
+	public static WorkbenchPart openFirstMatch() throws PartInitException {
+		NewSearchUI.activateSearchResultView();
+	    ModelSearchResultPage msrp = (ModelSearchResultPage) NewSearchUI.getSearchResultView().getActivePage();	
+	    msrp.setFocus();
+		BaseTest.dispatchEvents(0);
+	    msrp.gotoNextMatch();
+		BaseTest.dispatchEvents(0);
+	    msrp.displayMatch(msrp.getCurrentMatch());
+		BaseTest.dispatchEvents(0);
+		BaseTest.delay(2000);
+        WorkbenchPart editorOpened = (WorkbenchPart) EditorUtil.getCurrentEditor();
+        return editorOpened;
 	}
 
 	private static boolean dialogSettingsResult = false;

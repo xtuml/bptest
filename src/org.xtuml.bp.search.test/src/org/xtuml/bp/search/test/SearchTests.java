@@ -5,9 +5,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.search.ui.ISearchPageContainer;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.WorkbenchPart;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,10 +23,10 @@ import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.core.util.EditorUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.SearchUtilities;
-import org.xtuml.bp.test.common.SearchUtilities.ResultType;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.ui.explorer.ExplorerView;
 
@@ -276,6 +278,17 @@ public class SearchTests extends BaseTest {
 		return pkg;
 	}	
 
+	private void checkCorrectEditorOpens(String expectedTitleText) throws CoreException {
+        WorkbenchPart editor = SearchUtilities.openFirstMatch();
+        if (editor != null) {
+        	String title = editor.getPartName();
+        	assertTrue("Expected diagram " + expectedTitleText + " wasn't opened. Found " + title, title.startsWith(expectedTitleText));
+        	EditorUtil.closeEditor((IEditorPart) editor);
+        } else {
+        	assertNotNull("No editor was opened.", editor );
+        }
+	}
+
 	@Test
 	public void testFindNameOfClass() throws CoreException {
 		selectPackage("MicrowaveOven");
@@ -285,6 +298,7 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("Internal Light"));
+		checkCorrectEditorOpens("Microwave Oven");
 	}
 	
 	@Test
@@ -296,6 +310,7 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("is_secure"));
+		// Don't check editor as attributes don't open on one
 	}
 
 	@Test
@@ -307,6 +322,7 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("MO_D1: release"));
+		checkCorrectEditorOpens("Door");
 	}
 
 	@Test
@@ -318,17 +334,19 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("tube_wattage"));
+		checkCorrectEditorOpens("Datatypes");
 	}
 
 	@Test
 	public void testFindNameOfEE() throws CoreException {
 		selectPackage("MicrowaveOven");
-		SearchUtilities.configureAndRunSearch("Time", false, true, false,
+		SearchUtilities.configureAndRunSearch("Architecture", false, true, false,
 				false, true, ISearchPageContainer.SELECTION_SCOPE, "");
-	assertEquals("Search did not return expected result count.", 1,
+		assertEquals("Search did not return expected result count.", 1,
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
-		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("Time"));
+		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("Architecture"));
+		checkCorrectEditorOpens("External Entities");
 	}
 
 	@Test
@@ -340,6 +358,7 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("setup"));
+		// Functions don't open editor, so don't check
 	}
 
 	@Test
@@ -351,6 +370,7 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("Functions"));
+		checkCorrectEditorOpens("Functions");
 	}
 
 	@Test
@@ -363,6 +383,7 @@ public class SearchTests extends BaseTest {
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("R4"));
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("DoorID (R4.'is accessed via')"));
+		checkCorrectEditorOpens("Microwave Oven");
 	}
 
 	@Test
@@ -374,6 +395,7 @@ public class SearchTests extends BaseTest {
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
 		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("Contained"));
+		checkCorrectEditorOpens("SearchPackage");
 	}
 
 	@Test
@@ -384,7 +406,7 @@ public class SearchTests extends BaseTest {
 		assertEquals("Search did not return expected result count.", 5,
 				SearchResult_c.SearchResultInstances(Ooaofooa
 						.getDefaultInstance(), null, false).length);
-		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("MO_D", ResultType.KEYLETTERS));
+		assertNotNull("Search did not produce expected results.", SearchUtilities.findResultInView("MO_D", SearchUtilities.ResultType.KEYLETTERS));
 	}
 
 	@Test
