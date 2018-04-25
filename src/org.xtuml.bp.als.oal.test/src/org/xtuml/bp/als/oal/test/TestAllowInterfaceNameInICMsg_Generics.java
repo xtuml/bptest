@@ -36,37 +36,35 @@ import antlr.TokenStreamException;
 @RunWith(OrderedRunner.class)
 public class TestAllowInterfaceNameInICMsg_Generics extends BaseTest {
 
-	public static boolean configured = false;
-	
+    public static boolean configured = false;
+
     public TestAllowInterfaceNameInICMsg_Generics() {
-    	super("org.xtuml.bp.als.oal.test", "GPS Watch");
+        super("org.xtuml.bp.als.oal.test", "Tracking");
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see junit.framework.TestCase#setUp()
      */
     @Before
-	public void setUp() throws Exception {
-		if (configured) {
-			return;
-		}
-		configured = true;
-		super.setUp();
-		TestingUtilities.importTestingProjectIntoWorkspace("GPS Watch");
-		OalParserTest_Generics.modelRoot = Ooaofooa.getInstance(Ooaofooa
-				.createModelRootId(getProjectHandle("GPS Watch"),
-						"Library", true));
-		modelRoot = OalParserTest_Generics.modelRoot;
-		populateStateActionInstances();    	
+    public void setUp() throws Exception {
+        if (configured) {
+            return;
+        }
+        configured = true;
+        super.setUp();
+        TestingUtilities.importTestingProjectIntoWorkspace("Tracking");
+        OalParserTest_Generics.modelRoot = Ooaofooa.getInstance(Ooaofooa.createModelRootId(getProjectHandle("Tracking"), "Tracking", true));
+        modelRoot = OalParserTest_Generics.modelRoot;
+        populateStateActionInstance();
     }
 
     /* (non-Javadoc)
      * @see junit.framework.TestCase#tearDown()
      */
     @After
-	public void tearDown() throws Exception {
+    public void tearDown() throws Exception {
       try {
         super.tearDown();
         OalParserTest_Generics.tearDownActionData();
@@ -76,69 +74,52 @@ public class TestAllowInterfaceNameInICMsg_Generics extends BaseTest {
         // do nothing
       }
     }
-    
+
     @Test
-	public void testSendUsingInterfaceNameWhenInterfaceNameDisallowed() throws RecognitionException, TokenStreamException {
+    public void testSendUsingInterfaceNameWhenInterfaceNameDisallowed() throws RecognitionException, TokenStreamException {
         IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
         store.setValue(BridgePointPreferencesStore.ALLOW_INTERFACE_NAME_IN_IC_MESSAGE, false);
 
-        String act = "select any monitor from instances of HeartRateMonitor; send HeartRateProvider::heartRateChanged(heartRate: monitor.recentHeartRate); "; //$NON-NLS-1$
-        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, STATE_ASM_IDLE);
-        String lines[] = x.split("\n");//$NON-NLS-1$
-        assertEquals(":1:80-95: Interface names are not allowed for sending messages.  Use the port name.", lines[0]); //$NON-NLS-1$
+        String act = "send Tracking_HeartRateMonitor::registerListener();";
+        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, 0);
+        String lines[] = x.split("\n");
+        assertEquals(":1:33-48: Interface names are not allowed for sending messages.  Use the port name.", lines[0]);
     }
 
     @Test
-	public void testSendUsingPortNameWhenIntefaceNameDisallowed() throws RecognitionException, TokenStreamException {
-        String act = "select any monitor from instances of HeartRateMonitor; send HR::heartRateChanged(heartRate: monitor.recentHeartRate); "; //$NON-NLS-1$
-        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, STATE_ASM_IDLE);
-        assertEquals("", x); //$NON-NLS-1$
+    public void testSendUsingPortNameWhenIntefaceNameDisallowed() throws RecognitionException, TokenStreamException {
+        String act = "send HR::registerListener();";
+        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, 0);
+        assertEquals("", x);
     }
 
     // Now we test the above sends with the preference set to allow the behavior
     // and expect to not get syntax errors reported
     @Test
-	public void testSendUsingInterfaceNameWhenInterfaceNameAllowed() throws RecognitionException, TokenStreamException {
+    public void testSendUsingInterfaceNameWhenInterfaceNameAllowed() throws RecognitionException, TokenStreamException {
         IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
         store.setValue(BridgePointPreferencesStore.ALLOW_INTERFACE_NAME_IN_IC_MESSAGE, true);
 
-        String act = "select any monitor from instances of HeartRateMonitor; send HeartRateProvider::heartRateChanged(heartRate: monitor.recentHeartRate); "; //$NON-NLS-1$
-        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, STATE_ASM_IDLE);
-        assertEquals("", x); //$NON-NLS-1$
+        String act = "send Tracking_HeartRateMonitor::registerListener();";
+        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, 0);
+        assertEquals("", x);
     }
 
     @Test
-	public void testSendUsingPortNameWhenIntefaceNameAllowed() throws RecognitionException, TokenStreamException {
-        String act = "select any monitor from instances of HeartRateMonitor; send HR::heartRateChanged(heartRate: monitor.recentHeartRate); "; //$NON-NLS-1$
-        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, STATE_ASM_IDLE);
-        assertEquals("", x); //$NON-NLS-1$
+    public void testSendUsingPortNameWhenIntefaceNameAllowed() throws RecognitionException, TokenStreamException {
+        String act = "send HR::registerListener();";
+        String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_STATE, 0);
+        assertEquals("", x);
     }
 
-    // GPS Watch HeartRateMonitor state numbers (minus 1 for zero offset array)
-    static public final int STATE_ASM_IDLE = 0;
-	static public final int STATE_ASM_MONITORING = 1;
-	
-	public static Action_c[] m_testAction = new Action_c[3];
-
-	private void populateStateActionInstances() {
-		StateMachine_c sm = StateMachine_c.StateMachineInstance(modelRoot);
-		assertNotNull("State Machine not found.", sm);
-
-		StateMachineState_c[] states = StateMachineState_c
-				.getManySM_STATEsOnR501(sm);
-		assertTrue("No test states found", states.length != 0);
-		Action_c i_acts[] = Action_c.getManySM_ACTsOnR514(ActionHome_c
-				.getManySM_AHsOnR513(MooreActionHome_c
-						.getManySM_MOAHsOnR511(states)));
-		assertTrue("No test actions found", i_acts.length != 0);
-		for (int i = 0; i < i_acts.length; ++i) {
-			ActionHome_c ah = ActionHome_c.getOneSM_AHOnR514(i_acts[i]);
-			MooreActionHome_c moah = MooreActionHome_c.getOneSM_MOAHOnR513(ah);
-			StateMachineState_c st = StateMachineState_c
-					.getOneSM_STATEOnR511(moah);
-			assertNotNull("State not found.", st);
-			OalParserTest_Generics.m_testAction[st.getNumb() - 1] = i_acts[i];
-		}
-	}
+    private void populateStateActionInstance() {
+        StateMachine_c sm = StateMachine_c.StateMachineInstance(modelRoot);
+        assertNotNull("State Machine not found.", sm);
+        StateMachineState_c state = StateMachineState_c.getOneSM_STATEOnR501(sm);
+        assertTrue("No test states found", null != state);
+        Action_c i_act = Action_c.getOneSM_ACTOnR514(ActionHome_c.getOneSM_AHOnR513(MooreActionHome_c.getOneSM_MOAHOnR511(state)));
+        assertTrue("No test actions found", null != i_act);
+        OalParserTest_Generics.m_testAction[0] = i_act;
+    }
 
 }
