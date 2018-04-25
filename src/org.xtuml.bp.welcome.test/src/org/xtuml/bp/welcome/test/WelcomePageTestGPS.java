@@ -37,6 +37,7 @@ import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.PersistenceManager;
+import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -244,7 +245,7 @@ public class WelcomePageTestGPS extends TestCase {
         // Check the explorer view for orphaned elements
         ExplorerView view = null;
         try {
-            view = (ExplorerView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.xtuml.bp.ui.explorer.ExplorerView");
+            view = (ExplorerView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(BridgePointPerspective.ID_MGC_BP_EXPLORER);
         } catch (PartInitException e) {}
         view.getTreeViewer().refresh();
         while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
