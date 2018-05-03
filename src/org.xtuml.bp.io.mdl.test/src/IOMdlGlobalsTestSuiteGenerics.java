@@ -27,6 +27,7 @@ import org.xtuml.bp.core.test.GlobalTestSetupClass;
 import org.xtuml.bp.io.mdl.test.IOMdlGlobalsTestGenerics;
 import org.xtuml.bp.io.mdl.test.IOMdlPublishReferencesTest;
 import org.xtuml.bp.io.mdl.test.IOMdlUnicodeTestGenerics;
+import org.xtuml.bp.io.mdl.test.ImportExistingTests;
 import org.xtuml.bp.io.mdl.test.ImportPasteElementsWithIPRTest;
 import org.xtuml.bp.io.mdl.test.ImportReferencedIPRModelTest;
 import org.xtuml.bp.io.mdl.test.ProxyTestsGenerics;
@@ -45,6 +46,7 @@ import junit.framework.TestSuite;
    ImportPasteElementsWithIPRTest.class,
    ProxyTestsGenerics.class,
    StaleProxyExportTestGenerics.class,  
+   ImportExistingTests.class
 })
 public class IOMdlGlobalsTestSuiteGenerics extends TestSuite {
 

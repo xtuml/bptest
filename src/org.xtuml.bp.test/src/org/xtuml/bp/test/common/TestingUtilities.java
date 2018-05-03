@@ -821,11 +821,15 @@ public class TestingUtilities {
 	public static void importTestingProjectIntoWorkspace(String testProject) {
 		String testProjectPath = "";
 		String repository_location = BaseTest.getTestModelRespositoryLocation();
-		if (testProject.equals("GPS Watch")) {
+        if ( testProject.equals("GPS_Watch")
+             || testProject.equals("HeartRateMonitor")
+             || testProject.equals("Location")
+             || testProject.equals("Tracking")
+             || testProject.equals("UI") ) {
 			// GPS Watch is special. As of completion of DEI 7986, we have one 
 			// version that is used for testing and for distribution in the tool.
 			// This special case finds it in the proper home.
-			testProjectPath = repository_location + "/../applications/gps/" + testProject;				
+            testProjectPath = repository_location + "/../applications/gps/GPS/" + testProject;
 		} else {
 			testProjectPath = repository_location + "/" + testProject;
 		} 
