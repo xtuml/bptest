@@ -441,6 +441,7 @@ import org.xtuml.bp.ui.properties.EnumPropertyDescriptor;
 import org.xtuml.bp.ui.properties.IntegerPropertyDescriptor;
 import org.xtuml.bp.ui.properties.ConstantValuePropertyDescriptor;
 import org.xtuml.bp.ui.properties.TypeDefinitionPropertyDescriptor;
+import org.xtuml.bp.ui.properties.RangeValuePropertyDescriptor.java;
 
 public class ${class_name}Data
 {
@@ -510,6 +511,8 @@ public class ${class_name}Data
                DimensionsPropertyDescriptor.class.getName(),
               .elif (( attr.Name == "Value" ) and ( node.Key_Lett == "CNST_LSC"))
                ConstantValuePropertyDescriptor.class.getName(),
+              .elif (node.Key_Lett == "S_RANGE")
+               RangeValuePropertyDescriptor.class.getName(),
               .else
                .//
                .// The default datatype package "Datatypes" has a read-only
