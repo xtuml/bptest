@@ -441,7 +441,7 @@ import org.xtuml.bp.ui.properties.EnumPropertyDescriptor;
 import org.xtuml.bp.ui.properties.IntegerPropertyDescriptor;
 import org.xtuml.bp.ui.properties.ConstantValuePropertyDescriptor;
 import org.xtuml.bp.ui.properties.TypeDefinitionPropertyDescriptor;
-import org.xtuml.bp.ui.properties.RangeValuePropertyDescriptor.java;
+import org.xtuml.bp.ui.properties.RangeValuePropertyDescriptor;
 
 public class ${class_name}Data
 {
