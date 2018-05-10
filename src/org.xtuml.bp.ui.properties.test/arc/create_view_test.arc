@@ -511,7 +511,7 @@ public class ${class_name}Data
                DimensionsPropertyDescriptor.class.getName(),
               .elif (( attr.Name == "Value" ) and ( node.Key_Lett == "CNST_LSC"))
                ConstantValuePropertyDescriptor.class.getName(),
-              .elif (node.Key_Lett == "S_RANGE")
+              .elif ((node.Key_Lett == "S_RANGE") and ((attr.Name == "Min") or (attr.Name == "Max")))
                RangeValuePropertyDescriptor.class.getName(),
               .else
                .//
