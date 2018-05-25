@@ -235,6 +235,8 @@ public class ParseAllInDomain_Generics extends BaseTest {
 	public void test_ex3() { parseAllActivities(); }
 	@Test
 	public void test_udt_assignment() { parseAllActivities(); }
+	@Test
+	public void test_scoped_path() { parseAllActivities(); }
 
     private static String workspace_path = ""; //$NON-NLS-1$
     private static String m_logfile_path = "";
