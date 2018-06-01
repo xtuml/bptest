@@ -277,6 +277,9 @@
   .elif(kl == "SM_STATE")
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
+  .elif((kl == "CNST_LSC") and (cmeLabel == "Move Up"))
+    .assign attr_needsQuery = true
+    .assign attr_nameAccessor = "Get_name()"
   .elif((kl == "S_MBR") and (cmeLabel == "Move Up"))
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
@@ -295,6 +298,9 @@
   .elif((kl == "S_ENUM") and (cmeLabel == "Move Up"))
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
+  .elif((kl == "CNST_LSC") and (cmeLabel == "Move Down"))
+    .assign attr_needsQuery = true
+    .assign attr_nameAccessor = "Get_name()"
   .elif((kl == "S_MBR") and (cmeLabel == "Move Down"))
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
@@ -719,7 +725,7 @@ public class ContextMenuTestsGenerics extends BaseTest
     .assign name = name + "for$r{actionName}"
     .if(result.needsQuery == true)
       .if(result.body == "")
-        .if(( obj.Key_Lett  == "S_MBR")or(obj.Key_Lett  == "S_ENUM" ))
+        .if((( obj.Key_Lett  == "S_MBR")or(obj.Key_Lett  == "S_ENUM" )) or (obj.Key_Lett == "CNST_LSC"))
         $r{obj.Name}_c obj = $r{obj.Name}_c.$r{obj.Name}Instance(Package_c.getOneEP_PKGOnR1401(m_sys,new ClassQueryInterface_c() {
 
                 public boolean evaluate(Object candidate) {

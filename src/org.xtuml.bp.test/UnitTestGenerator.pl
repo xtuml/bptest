@@ -52,8 +52,10 @@ my $priorLine = '';
 my $maxTestsPerClass = 250;
 my $createTestSuite =  0;
 my $createTestSuitePerClass =  0;
-my $passColToRow = 0;
+my $passSrcToDest = 0;
 my $generateConditionalTests = 0;
+my $selectRowFirst = 0;
+my $doNotGenResults = 0;
 
 my $usage = <<USAGE;
 #===========================================================================
@@ -81,10 +83,13 @@ my $usage = <<USAGE;
 #       -suitePerClass : This is used in conjunction with -suite.  When 
 #                     -suitePerClass is used, a separate test suite for each 
 #                     java class file is created.
-#       -data      : Pass the column object as extra data to the selection of
-#                    the row object
+#       -data      : Pass the first selected object as extra data to the
+#                    selection of the second object
 #       -c         : Generate tests marked as conditional. These tests are
 #                    denoted with "XC"
+#       -selectRowFirst : Select the row object before selecting the column
+#                    object
+#       -noResults : Do not invoke 'validateOrGenerateResults'
 # 
 # Example Usage:
 # --------------
@@ -187,8 +192,10 @@ sub processCommandLine
           elsif ( $k =~ /^(n)$/ ) { $i++; $maxTestsPerClass = $ARGV[$i]; }
           elsif ( $k =~ /^(suite)$/ ) { $createTestSuite = 1; }
           elsif ( $k =~ /^(suitePerClass)$/ ) { $createTestSuitePerClass = 1; }
-          elsif ( $k =~ /^(data)$/ ) { $passColToRow = 1; }
+          elsif ( $k =~ /^(data)$/ ) { $passSrcToDest = 1; }
           elsif ( $k =~ /^(c)$/ ) { $generateConditionalTests = 1; }
+          elsif ( $k =~ /^(selectRowFirst)$/ ) { $selectRowFirst = 1; }
+          elsif ( $k =~ /^(noResults)$/ ) { $doNotGenResults = 1; }
           elsif ( $k =~ /^(h)$/ ) { print("$usage$description"); exit; }
           elsif ( $k =~ /^(\?)$/ ) { print("$usage$description"); exit; }
           else { die "Unrecognized argument ($k) to ExtractMetrics.pl\n"; }
@@ -871,18 +878,31 @@ sub createTests() {
                 print $outputFH "     * \n";
                 print $outputFH "     */\n";
                 print $outputFH "    \@Test\n    public void test$MatrixColNames[$col]_$MatrixRowNames[$row]() throws Exception {\n";
-                print $outputFH "        setUp();\n";
                 print $outputFH "        test_id = getTestId(\"$MatrixColNames[$col]\", \"$MatrixRowNames[$row]\", \"$testCnt\");\n";
                 print $outputFH "\n";
-                if ( 1 == $passColToRow ) {
-                    print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
-                    print $outputFH "\n";
-                    print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\", src);\n";
+                if ( 1 == $selectRowFirst ) {
+                    if ( 1 == $passSrcToDest ) {
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\", dest);\n";
+                    }
+                    else {
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                    }
                 }
                 else {
-                    print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
-                    print $outputFH "\n";
-                    print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                    if ( 1 == $passSrcToDest ) {
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\", src);\n";
+                    }
+                    else {
+                        print $outputFH "        NonRootModelElement src = select$colType(\"$MatrixColNames[$col]\");\n";
+                        print $outputFH "\n";
+                        print $outputFH "        NonRootModelElement dest = select$rowType(\"$MatrixRowNames[$row]\");\n";
+                    }
                 }
                 print $outputFH "\n";
                 print $outputFH "        $myCol" . "_" . $myRow . "_" . "Action(src, dest);\n";                
@@ -894,11 +914,12 @@ sub createTests() {
                     print $outputFH "        assertTrue(\"$resultDescription\", checkResult_$resultFunction(src,dest));\n";
                 }
                 print $outputFH "        \n";
-                print $outputFH "        IEditorPart editor = getActiveEditor();\n";
-                print $outputFH "        if(editor != null && editor instanceof GraphicalEditor && useDrawResults) {\n";
-                print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
-                print $outputFH "        }\n";
-                print $outputFH "        tearDown();\n";                
+                if ( 0 == $doNotGenResults ) {
+                    print $outputFH "        IEditorPart editor = getActiveEditor();\n";
+                    print $outputFH "        if(editor != null && editor instanceof GraphicalEditor && useDrawResults) {\n";
+                    print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
+                    print $outputFH "        }\n";
+                }
                 print $outputFH "    }\n";
                 print $outputFH "\n";
             }

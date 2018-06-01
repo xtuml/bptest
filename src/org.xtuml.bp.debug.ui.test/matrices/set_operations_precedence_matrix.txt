@@ -1,0 +1,73 @@
+#
+# This work is licensed under the Creative Commons CC0 License
+# 
+Degrees of Freedom:
+
+FirstOperation(C)
+1. Union
+2. Intersection
+3. Difference
+4. Symmetric Difference
+
+SecondOperation(D)
+1. Union
+2. Intersection
+3. Difference
+4. Symmetric Difference
+
+ThirdOperation(E)
+1. Union
+2. Intersection
+3. Difference
+4. Symmetric Difference
+
+FourthOperation(F)
+1. Union
+2. Intersection
+3. Difference
+4. Symmetric Difference
+
+UseParentheses(G)
+1. No
+2. Yes
+
+Results:
+1. parseSucceeded  "Set operation failed to parse."
+2. correctValue    "Set operation produced incorrect result set."
+
+# In the matrix below when a cell is marked with an "X", that particular test is
+# not generated.  Those tests are marked invalid as it is not applicable.  Cn
+# example would be in the case of non-visible tests where the test subject is
+# a keyword.
+
+Matrix:
+          G1    G2
+C1D1E1F1  R1R2  X
+C1D2E3F4  R1R2  X
+C1D2E4F3  R1R2  R1R2
+C1D3E2F4  R1R2  X
+C1D3E4F2  R1R2  X
+C1D4E2F3  R1R2  X
+C1D4E3F2  R1R2  X
+C2D1E3F4  R1R2  X
+C2D1E4F3  R1R2  X
+C2D2E2F2  R1R2  X
+C2D3E1F4  R1R2  X
+C2D3E4F1  R1R2  X
+C2D4E1F3  R1R2  X
+C2D4E3F1  R1R2  X
+C3D1E2F4  R1R2  X
+C3D1E4F2  R1R2  X
+C3D2E1F4  R1R2  R1R2
+C3D2E4F1  R1R2  X
+C3D3E3F3  R1R2  X
+C3D4E1F2  R1R2  X
+C3D4E2F1  R1R2  X
+C4D1E2F3  R1R2  X
+C4D1E3F2  R1R2  X
+C4D2E1F3  R1R2  X
+C4D2E3F1  R1R2  X
+C4D3E1F2  R1R2  X
+C4D3E2F1  R1R2  X
+C4D4E4F4  R1R2  X
+
