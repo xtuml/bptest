@@ -30,11 +30,15 @@ import org.xtuml.bp.debug.test.DateLoggingTests;
 import org.xtuml.bp.debug.test.GlobalTestSetupClass;
 import org.xtuml.bp.debug.test.InstanceVariableViewTests;
 import org.xtuml.bp.debug.test.RealizedClassRelaunchTest;
+import org.xtuml.bp.debug.test.UdtConstantTest;
 import org.xtuml.bp.debug.test.VariableViewTests;
 import org.xtuml.bp.debug.ui.launch.DLLRelaunchTest;
 import org.xtuml.bp.debug.ui.test.execute.BlockedComponentExecutionTest;
 import org.xtuml.bp.debug.ui.test.execute.RecursionExecutionTest;
 import org.xtuml.bp.debug.ui.test.realizedClasses.VerifierStaticVariablesInRealizedClassesTest;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsCompareTestsTestSuite;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsPrecedenceTestsTestSuite;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsSimpleTestsTestSuite;
 
 import junit.framework.TestSuite;
 
@@ -54,7 +58,10 @@ import junit.framework.TestSuite;
 	BlockedComponentExecutionTest.class,
 	VariableViewTests.class,
 	InstanceVariableViewTests.class,
-	
+	SetOperationsCompareTestsTestSuite.class,
+	SetOperationsSimpleTestsTestSuite.class,
+	SetOperationsPrecedenceTestsTestSuite.class,
+	UdtConstantTest.class
 })
 public class VerifierTestSuite2 extends TestSuite {
 

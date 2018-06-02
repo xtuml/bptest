@@ -18,20 +18,26 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.WorkbenchPart;
+import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SearchResult_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.util.EditorUtil;
 import org.xtuml.bp.search.results.ModelSearchResult;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.ui.search.pages.ModelSearchResultPage;
 
 @SuppressWarnings("restriction")
 public class SearchUtilities {
 
+	public enum ResultType { NAME, KEYLETTERS };
 	private static boolean complete = false;
 	public static void configureAndRunSearch(final String pattern,
 			final boolean regEx, final boolean caseSensitive,
-			final boolean oal, final boolean descriptions, final int scope,
+			final boolean oal, final boolean descriptions, final boolean names, final int scope,
 			final String workingSet) {
 		// wait for search to complete
 		NewSearchUI.addQueryListener(new IQueryListener() {
@@ -76,6 +82,9 @@ public class SearchUtilities {
 					buttons[i].notifyListeners(SWT.Selection, new Event());
 				} else if (buttons[i].getText().equals("Descriptions")) {
 					buttons[i].setSelection(descriptions);
+					buttons[i].notifyListeners(SWT.Selection, new Event());
+				} else if (buttons[i].getText().equals("Element Names")) {
+					buttons[i].setSelection(names);
 					buttons[i].notifyListeners(SWT.Selection, new Event());
 				}
 			}
@@ -218,22 +227,47 @@ public class SearchUtilities {
 	}
 
 	public static Object findResultInView(String itemName) {
+		return findResultInView(itemName, ResultType.NAME);
+	}
+
+	public static Object findResultInView(String itemName, ResultType rt) {
 		SearchResult_c[] searchResults = SearchResult_c
 				.SearchResultInstances(Ooaofooa.getDefaultInstance(), null, false);
 		for (int i = 0; i < searchResults.length; i++) {
 			NonRootModelElement element = (NonRootModelElement) ModelSearchResult
 					.getElementForResult(searchResults[i]);
-			if (element.getName().equals(itemName)) {
-				return element;
+			if (rt == ResultType.KEYLETTERS) {
+				if ((element instanceof ModelClass_c) && ((ModelClass_c)element).getKey_lett().equals(itemName)) {
+					return element;
+				}
+			} else {
+				if (element.getName().equals(itemName)) {
+					return element;
+				}
 			}
 		}
 		return null;
 	}
 
+	// Opens the first match in the results and returns the title of the opened editor
+	public static WorkbenchPart openFirstMatch() throws PartInitException {
+		NewSearchUI.activateSearchResultView();
+	    ModelSearchResultPage msrp = (ModelSearchResultPage) NewSearchUI.getSearchResultView().getActivePage();	
+	    msrp.setFocus();
+		BaseTest.dispatchEvents(0);
+	    msrp.gotoNextMatch();
+		BaseTest.dispatchEvents(0);
+	    msrp.displayMatch(msrp.getCurrentMatch());
+		BaseTest.dispatchEvents(0);
+		BaseTest.delay(2000);
+        WorkbenchPart editorOpened = (WorkbenchPart) EditorUtil.getCurrentEditor();
+        return editorOpened;
+	}
+
 	private static boolean dialogSettingsResult = false;
 	
 	public static boolean checkSearchDialogSettings(final String pattern, final boolean regEx,
-			final boolean caseSensitive, final boolean oal, final boolean descriptions, final int scope,
+			final boolean caseSensitive, final boolean oal, final boolean descriptions, final boolean names, final int scope,
 			final String workingSet) {
 		TestUtil.dismissShell(activeShell -> {
 			dialogSettingsResult = false;
@@ -266,6 +300,11 @@ public class SearchUtilities {
 						}
 					} else if (buttons[i].getText().equals("Descriptions")) {
 						if (buttons[i].getSelection() != descriptions) {
+							cancel.notifyListeners(SWT.Selection, new Event());
+							return true;
+						}
+					} else if (buttons[i].getText().equals("Element Names")) {
+						if (buttons[i].getSelection() != names) {
 							cancel.notifyListeners(SWT.Selection, new Event());
 							return true;
 						}
