@@ -1,11 +1,3 @@
-//=====================================================================
-//
-//File:      $RCSfile: TestingUtilities.java,v $
-//Version:   $Revision: 1.41 $
-//Modified:  $Date: 2013/05/10 05:37:52 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -76,7 +68,7 @@ import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.TestCase;
 
 public class TestingUtilities {
