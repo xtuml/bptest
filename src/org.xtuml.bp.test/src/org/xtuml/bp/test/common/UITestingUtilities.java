@@ -1,11 +1,3 @@
-//=====================================================================
-//
-//File:      $RCSfile: UITestingUtilities.java,v $
-//Version:   $Revision: 1.35 $
-//Modified:  $Date: 2013/05/10 13:29:06 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -86,7 +78,7 @@ import org.xtuml.bp.ui.graphics.parts.DiagramEditPart;
 import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class UITestingUtilities {
 	private static Point fDownLocation;

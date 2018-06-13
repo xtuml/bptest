@@ -77,7 +77,7 @@ import org.xtuml.bp.ui.text.description.DescriptionEditorInput;
 import org.xtuml.bp.ui.text.description.DescriptionEditorInputFactory;
 import org.xtuml.bp.ui.text.description.ShowDescriptionAction;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.TestCase;
 
 /**

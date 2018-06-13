@@ -30,16 +30,8 @@ import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
-//========================================================================
-//
-//File:      $RCSfile: MDATest.java,v $
-//Version:   $Revision: 1.5 $
-//Modified:  $Date: 2013/05/10 04:28:39 $
-//
-//(c) Copyright 2011-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
