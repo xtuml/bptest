@@ -1,21 +1,3 @@
-ERROR: Found another constant specification with a matching name.
-
-Element Name: Constant Specification
-Element Path: ModelIntegrityTests::Symbolic Constant Tests::Constant Specification::Constant Specification
-
-
-ERROR: Found another constant specification with a matching name.
-
-Element Name: Constant Specification
-Element Path: ModelIntegrityTests::Symbolic Constant Tests::Constant Specification::Constant Specification
-
-
-ERROR: Found another constant specification with a matching name.
-
-Element Name: Constant Specification
-Element Path: ModelIntegrityTests::Symbolic Constant Tests::Constant Specification::Constant Specification
-
-
 ERROR: Found another constant under the same specification with a matching name.
 
 Element Name: constant
