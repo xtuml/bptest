@@ -32,7 +32,7 @@
       <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
       <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -nopersist
+      <arg line="xtumlmc_gen_erate -qim -nopersist
         -import ${mcj_path}/ooa_schema.sql
         -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
         -arch arc/create_dispose_test.arc" />
@@ -63,7 +63,7 @@
       <env key="mcj_path" value="${mcj_path}" />
       <env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
       <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -nopersist
+      <arg line="xtumlmc_gen_erate -qim -nopersist
         -import ${mcj_path}/ooa_schema.sql
         -d 0 -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
         -import ${mcj_path}/../org.xtuml.bp.core/sql/context_menu_schema.sql
@@ -96,7 +96,7 @@
       <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
       <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -nopersist
+      <arg line="xtumlmc_gen_erate -qim -nopersist
         -import ${mcj_path}/ooa_schema.sql
         -import sql/DeleteTestModel.sql
         -arch arc/gen_delete_test.arc" />
@@ -125,7 +125,7 @@
       <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
       <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -nopersist
+      <arg line="xtumlmc_gen_erate -qim -nopersist
         -import ${mcj_path}/ooa_schema.sql
         -import sql/FormalizeUnformalizeTests.sql
         -arch arc/gen_Formalize_tests.arc" />
@@ -168,7 +168,7 @@
         <env key="CHAIN_UTIL_DIR" value="${chain_util_path}"/>
       	<env key="GEN_FULL_TESTS" value=""/>
     	<env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-    <arg line="xtumlmc_gen_erate -nopersist
+    <arg line="xtumlmc_gen_erate -qim -nopersist
       -import ${mcj_path}/ooa_schema.sql
         -import ${mcj_path}/../org.xtuml.bp.ui.tree/sql/UITree_schema.sql
         -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
@@ -180,7 +180,7 @@
           <env key="CHAIN_UTIL_DIR" value="${chain_util_path}"/>
     	  <env key="GEN_FULL_TESTS" value="true"/>
           <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -nopersist
+      <arg line="xtumlmc_gen_erate -qim -nopersist
         -import ${mcj_path}/ooa_schema.sql
         -import ${mcj_path}/../org.xtuml.bp.ui.tree/sql/UITree_schema.sql
       -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
@@ -222,7 +222,7 @@
         <env key="CHAIN_UTIL_DIR" value="${chain_util_path}"/>
         <env key="GEN_FULL_TESTS" value=""/>
         <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -nopersist
+      <arg line="xtumlmc_gen_erate -qim -nopersist
           -import ${mcj_path}/ooa_schema.sql
           -import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql
           -arch arc/generate_rto_move_matrix.arc" />
@@ -248,7 +248,7 @@
       <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
       <env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
       <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -nopersist
+      <arg line="xtumlmc_gen_erate -qim -nopersist
         -import ${mcj_path}/ooa_schema.sql
         -import ${core_sql_dir}/context_menu_schema.sql
         -import ${core_sql_dir}/context_menu.pei.sql

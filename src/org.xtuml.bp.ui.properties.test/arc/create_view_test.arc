@@ -360,6 +360,11 @@ public class ${class_name} extends BaseTest
     .else
         ${formatted_name.body} inst = ${formatted_name.body}.${gia.body}(modelRoot);
     .end if
+	  .if(node.Key_Lett == "SM_NLEVT")
+	    /* The test data this test relies upon does not get generated properly 
+	     *  with pyrsl 2.  See https://support.onefact.net/issues/10323
+       *
+	  .end if
         $r{node.CategoryName}${meta_model_obj.Key_Lett}PropertySource ps = new $r{node.categoryName}${meta_model_obj.Key_Lett}PropertySource(inst);
         IPropertyDescriptor [] pd_set = ps.getPropertyDescriptors();
         for ( int i = 0; i < ${class_name}Data.$r{meta_model_obj.Name}_$r{node.CategoryName}.length; ++i )
@@ -404,6 +409,10 @@ public class ${class_name} extends BaseTest
             assertEquals( ${class_name}Data.$r{meta_model_obj.Name}_$r{node.CategoryName}[i][3], ps.getPropertyValue(pd_set[i].getId()).toString());
      .end if
         }
+	  .if(node.Key_Lett == "SM_NLEVT")
+	    .// This test does not get generated properly with pyrsl 2.  See https://support.onefact.net/issues/10323
+	    */
+	  .end if
     }
   .end if .// ( node.Key_Lett != "S_EEDI" )
 .end for
@@ -553,12 +562,16 @@ public class ${class_name}Data
           .else
               .if(node.Key_Lett == "SM_NLEVT")
                 .if(attr.Name == "Name")
-        ..select one smpevt related by ${mm_obj_var}->SM_PEVT[R527]
-        ..select any smevt from instances of SM_EVT where ((selected.SMevt_ID == smpevt.SMevt_ID) and (selected.SM_ID == smpevt.SM_ID) and (selected.SMspd_ID == smpevt.SMspd_ID))
-        ..select one polyClass related by smevt->SM_SM[R502]->SM_ISM[R517]->O_OBJ[R518]
-        ..select any smsevt from instances of SM_SEVT where ((selected.SMevt_ID == ${mm_obj_var}.SMevt_ID) and (selected.SM_ID == ${mm_obj_var}.SM_ID) and (selected.SMspd_ID == ${mm_obj_var}.SMspd_ID))
-        ..select any evt from instances of SM_EVT where ((selected.SMevt_ID == smsevt.SMevt_ID) and (selected.SM_ID == smsevt.SM_ID) and (selected.SMspd_ID == smsevt.SMspd_ID))
-				"$${evt.Mning}::$${polyClass.Name}" },
+// The test data does not get generated properly with pyrsl 2 due to the "empty"
+// SMspd_ID value in the test data.  See https://support.onefact.net/issues/10323
+// The next line is a stub rather than doing the traversals that don't actually work with pyrsl2 data
+                ""},
+.//        ..select one smpevt related by ${mm_obj_var}->SM_PEVT[R527]
+.//        ..select any smevt from instances of SM_EVT where ((selected.SMevt_ID == smpevt.SMevt_ID) and (selected.SM_ID == smpevt.SM_ID) and (selected.SMspd_ID == smpevt.SMspd_ID))
+.//        ..select one polyClass related by smevt->SM_SM[R502]->SM_ISM[R517]->O_OBJ[R518]
+.//        ..select any smsevt from instances of SM_SEVT where ((selected.SMevt_ID == ${mm_obj_var}.SMevt_ID) and (selected.SM_ID == ${mm_obj_var}.SM_ID) and (selected.SMspd_ID == ${mm_obj_var}.SMspd_ID))
+.//        ..select any evt from instances of SM_EVT where ((selected.SMevt_ID == smsevt.SMevt_ID) and (selected.SM_ID == smsevt.SM_ID) and (selected.SMspd_ID == smsevt.SMspd_ID))
+.//				"$${evt.Mning}::$${polyClass.Name}" },
                 .end if
               .else
 				"$${${mm_obj_var}.${attr.Name}}" },
