@@ -697,7 +697,7 @@ public class ContextMenuTestsGenerics extends BaseTest
     .end if
     .if ( cme_entry.Specialism != "Specialized Package")
     @Test
-    .if ("${cme.Specialism}" == "--")
+    .if ("${cme_entry.Specialism}" == "--")
 	public void testContextMenu$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
   .else
 	public void testContextMenu$r{cme_entry.Specialism}$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
