@@ -178,6 +178,7 @@ public class CanRenameCanDeleteTestGenerics extends CoreTest {
 
 		//Getting datatype of deleteable current_state
 		DataType_c adt = DataType_c.getOneS_DTOnR114(deleteable);
+		String oldName = adt.getName();
 		adt.setName("state<State_Model>"); //$NON-NLS-1$
 
 		//Now all attributes with current_state are deleteable.
@@ -187,5 +188,8 @@ public class CanRenameCanDeleteTestGenerics extends CoreTest {
 		}
 
 		isDone = true;
+		
+		// reset changed value so as not to affect downstream tests
+		adt.setName(oldName); 
 	}
 }
