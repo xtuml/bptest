@@ -562,7 +562,7 @@ public class CompareTestUtilities {
 			viewer.getRightViewer().refresh();
 			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 				;
-			TestUtil.yesToDialog(200);
+			TestUtil.saveToDialog(200);
 			PlatformUI
 					.getWorkbench()
 					.getActiveWorkbenchWindow()
@@ -659,7 +659,7 @@ public class CompareTestUtilities {
 	}
 
 	public static void closeMergeEditor(boolean save) {
-		TestUtil.noToDialog(200);
+		TestUtil.dontSaveToDialog(200);
 		PlatformUI
 				.getWorkbench()
 				.getActiveWorkbenchWindow()
@@ -689,7 +689,7 @@ public class CompareTestUtilities {
 	}
 
 	public static void openElementInSyncronizeView(String elementName) {
-		TestUtil.yesToDialog(200);
+		TestUtil.saveToDialog(200);
 		IViewPart gitRepositoryView = showTeamSyncView();
 		SynchronizeView view = (SynchronizeView) gitRepositoryView;
 		ModelSynchronizePage page = (ModelSynchronizePage) view.getPage(view.getParticipant());

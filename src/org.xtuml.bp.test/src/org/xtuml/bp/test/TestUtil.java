@@ -115,12 +115,25 @@ public class TestUtil
         dismissDialog(inHowManyMillis, 0, false, "&No", null, true);
     }
 
+    public static void dontSaveToDialog(final long inHowManyMillis)
+    {
+        dismissDialog(inHowManyMillis, 0, false, "Do&n't Save", null, true);
+    }
+
     /**
      * Answers yes (via the Yes button) a dialog after waiting for the given time 
      */
     public static void yesToDialog(final long inHowManyMillis)
     {
         dismissDialog(inHowManyMillis, 0, false, "&Yes", null, true);
+    }
+    
+    /**
+     * Answers save (via the Save button) a dialog after waiting for the given time 
+     */
+    public static void saveToDialog(final long inHowManyMillis)
+    {
+        dismissDialog(inHowManyMillis, 0, false, "&Save", null, true);
     }
     
     /**

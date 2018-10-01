@@ -697,7 +697,11 @@ public class ContextMenuTestsGenerics extends BaseTest
     .end if
     .if ( cme_entry.Specialism != "Specialized Package")
     @Test
+    .if ("${cme_entry.Specialism}" == "--")
+	public void testContextMenu$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
+  .else
 	public void testContextMenu$r{cme_entry.Specialism}$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
+  .end if
    
     .select any obj from instances of O_OBJ where (selected.Key_Lett == cme_entry.Key_Lett)
        .if  (obj.Key_Lett == "S_DOM" ) 
