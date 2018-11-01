@@ -1,12 +1,3 @@
-
-//=====================================================================
-//
-//File:      $RCSfile: VerifierTestSuite2.java,v $
-//Version:   $Revision: 1.3 $
-//Modified:  $Date: 2013/05/10 04:28:44 $
-//
-//(c) Copyright 2006-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -49,7 +40,6 @@ import junit.framework.TestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	GlobalTestSetupClass.class,
-	/* Disabling due to server hangs
 	DateLoggingTests.class,
 	VerifierStaticVariablesInRealizedClassesTest.class,
 	// These are disabled until 8609 is resolved
@@ -62,7 +52,7 @@ import junit.framework.TestSuite;
 	SetOperationsCompareTestsTestSuite.class,
 	SetOperationsSimpleTestsTestSuite.class,
 	SetOperationsPrecedenceTestsTestSuite.class,
-	UdtConstantTest.class*/
+	UdtConstantTest.class
 })
 public class VerifierTestSuite2 extends TestSuite {
 
