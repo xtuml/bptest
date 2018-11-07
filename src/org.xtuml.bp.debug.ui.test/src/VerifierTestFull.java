@@ -1,5 +1,6 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.xtuml.bp.debug.test.GlobalTestSetupClass;
 
 import junit.framework.TestSuite;
 
@@ -9,6 +10,7 @@ import junit.framework.TestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
+	GlobalTestSetupClass.class, // This is only here because the following two are temporarily disabled and maven doesn't like if there are no tests to execute
 	/* Disabling due to server hangs
 	VerifierTestSuite.class, 
 	VerifierTestSuite2.class, */
