@@ -1,12 +1,3 @@
-
-//=====================================================================
-//
-//File:      $RCSfile: VerifierTestSuite.java,v $
-//Version:   $Revision: 1.30 $
-//Modified:  $Date: 2013/03/13 23:45:46 $
-//
-//(c) Copyright 2006-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
