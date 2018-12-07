@@ -689,7 +689,11 @@ public class ContextMenuTestsGenerics extends BaseTest
         .if ((cme_entry.Specialism == "Specialized Package") or (cme_entry.Specialism == "Generic Package"))
            .assign actionName = cme_entry.Label
         .else
-          .assign actionName = cme_entry.Specialism + cme_entry.Label
+          .if ("${cme_entry.Specialism}" == "--")
+            .assign actionName = cme_entry.Label
+          .else
+            .assign actionName = cme_entry.Specialism + cme_entry.Label
+          .end if
         .end if
       .end if
     .else
