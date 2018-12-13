@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.intro,
  org.apache.commons.io;bundle-version="2.2.0"
 Eclipse-AutoStart: true
+Automatic-Module-Name: org.xtuml.bp.welcome.test

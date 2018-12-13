@@ -47,3 +47,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.xtuml.bp.core.editors
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.xtuml.bp.core.test 
