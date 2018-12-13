@@ -1,11 +1,3 @@
-//=====================================================================
-//
-//File:      $RCSfile: BaseTest.java,v $
-//Version:   $Revision: 1.51 $
-//Modified:  $Date: 2013/05/10 05:37:52 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -880,6 +872,7 @@ public class BaseTest extends TestCase {
 							FileInputStream fis = new FileInputStream(dtPkgFiles[j]);
 							fis.read(bytes);
 							fileContents = new String(bytes);
+							fis.close();
 						} catch (FileNotFoundException e) {
 							fail("Unable to read CDT file.");
 						} catch (IOException e) {
