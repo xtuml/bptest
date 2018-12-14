@@ -1307,6 +1307,8 @@ public class BaseTest extends TestCase {
 			buffer.append("\r\n");
 		}
 		
+		expected_br.close();
+		
 		String originalResult = buffer.toString();
 		
 		assertEquals(expectedResult, originalResult);

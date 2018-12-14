@@ -82,14 +82,6 @@ public class OALPersistenceTestsGenerics extends BaseTest {
 		super.tearDown();
 	}
 
-//	// As of Java7 and JUnit 4, the ordering of test functions is not guaranteed to be the order
-//	// in the file.  Thus, we add this public test to enforce ordering
-//	@Test
-//	public void testOALPersistence() throws FileNotFoundException, CoreException {
-//		dotestPersistOAL();
-//		dotestOALInstancesCreatedWhileBuild();
-//		dotestOALInstancesExportedProperly();
-//	}
 	@Test
 	public void testPersistOAL() throws FileNotFoundException, CoreException {
 		try {
