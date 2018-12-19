@@ -43,6 +43,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.jgit.util.StringUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -885,7 +886,7 @@ public class TestUtil
     }
             
     public static FailableRunnable chooseItemInDialog(final int sleep, final String item, final boolean locateOnly, final boolean testNonExistence, Shell[] existingShells) {
-        return chooseItemInDialog(sleep, null, item, locateOnly, testNonExistence, existingShells);
+        return chooseItemInDialog(sleep, null, new String[] {item}, locateOnly, testNonExistence, existingShells);
     }
 
     public static FailableRunnable toggleButtonInElementSelectionDialog(final int sleep, final String buttonName, Shell[] existingShells) {
@@ -960,12 +961,17 @@ public class TestUtil
 
     public static FailableRunnable chooseItemInDialog(
             FailableRunnable runnable, String item, boolean locateOnly, Shell[] existingShells) {
-        return chooseItemInDialog(0, runnable, item, locateOnly, false, existingShells);
+        return chooseItemInDialog(0, runnable, new String[]{item}, locateOnly, false, existingShells);
     }
 
-    static boolean foundItemInDialog = false;
     public static FailableRunnable chooseItemInDialog(final int sleep, final FailableRunnable waitRunnable,
             final String item, final boolean locateOnly, final boolean testNonExistence, Shell[] existingShells) {
+        return chooseItemInDialog(sleep, waitRunnable, item, locateOnly, testNonExistence, existingShells);
+    }
+
+    static int foundItemInDialog = 0;
+    public static FailableRunnable chooseItemInDialog(final int sleep, final FailableRunnable waitRunnable,
+            final String[] targetItems, final boolean locateOnly, final boolean testNonExistence, Shell[] existingShells) {
         FailableRunnable runnable = new FailableRunnable() {    
             @Override
 			public void run() {
@@ -975,6 +981,8 @@ public class TestUtil
 					@Override
 					public void run() {
 						processShell(existingShells, shell -> {
+						    List<String> foundItems = new ArrayList<>();
+						    List<String> notFoundItems = new ArrayList<>(Arrays.asList(targetItems));
 							if (shell != null) {
 								Dialog dialog = (Dialog) shell.getData();
 								Control[] children = dialog.getShell().getChildren();
@@ -991,38 +999,42 @@ public class TestUtil
 												;
 										}
 										TableItem[] items = table.getItems();
-										for (int j = 0; j < items.length; j++) {
-											if (items[j].getText().equals(item)) {
-												// do not select if locateOnly
-												// is
-												// true
-												if (!locateOnly) {
-													table.setSelection(items[j]);
-													Event event = new Event();
-													event.item = items[j];
-													table.notifyListeners(SWT.Selection, event);
-													while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-														;
-												}
-												foundItemInDialog = true;
-												break;
-											}
+										for (String item : targetItems) {
+                                            for (int j = 0; j < items.length; j++) {
+                                              if (items[j].getText().equals(item)) {
+                                                // do not select if locateOnly is true
+                                                if (!locateOnly) {
+                                                    List<TableItem> currentSelection = new ArrayList<>(Arrays.asList(table.getSelection()));
+                                                    currentSelection.add(items[j]);
+                                                  table.setSelection(currentSelection.toArray(new TableItem[0]));
+                                                  Event event = new Event();
+                                                  event.item = items[j];
+                                                  table.notifyListeners(SWT.Selection, event);
+                                                  while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+                                                    ;
+                                                }
+                                                foundItemInDialog++;
+                                                foundItems.add(item);
+                                                notFoundItems.remove(item);
+                                                break;
+                                              }
+                                            }
 										}
 										break;
 									}
 								}
 							}
 							if (testNonExistence) {
-								if (foundItemInDialog) {
-									setFailure("Found the unexpected item in the selection dialog (" + item + ").");
+								if (foundItemInDialog == targetItems.length) {
+									setFailure("Found the unexpected item(s) in the selection dialog (" + StringUtils.join(foundItems, ", ") + ").");
 								}
 							} else {
-								if (!foundItemInDialog) {
-									setFailure("Could not locate the expected item in the selection dialog (" + item
+								if (foundItemInDialog != targetItems.length) {
+									setFailure("Could not locate the expected item(s) in the selection dialog (" + StringUtils.join(notFoundItems, ", ")
 											+ ").");
 								}
 							}
-							foundItemInDialog = false;
+							foundItemInDialog = 0;
 							setComplete();
 							return true;
 						});
