@@ -1,0 +1,205 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("5a74f1b3-2220-47e2-9565-e1f4f95748f9",
+	"00000000-0000-0000-0000-000000000000",
+	"2a8f0b42-d0f7-4ec9-ac6f-3571c4caeba3",
+	'Deployments',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("3c475496-ecce-4ae5-994b-6730eb7f840e",
+	112,
+	"5a74f1b3-2220-47e2-9565-e1f4f95748f9",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'org.xtuml.bp.ui.properties.test::testProp::Deployments');
+INSERT INTO GD_GE
+	VALUES ("70224903-6c9c-4f97-a9a3-643349dce0b3",
+	"3c475496-ecce-4ae5-994b-6730eb7f840e",
+	"0645f6d3-2019-46fa-9e03-757941734f09",
+	209,
+	0,
+	'org.xtuml.bp.ui.properties.test::testProp::Deployments::deployment');
+INSERT INTO GD_SHP
+	VALUES ("70224903-6c9c-4f97-a9a3-643349dce0b3");
+INSERT INTO GD_NCS
+	VALUES ("70224903-6c9c-4f97-a9a3-643349dce0b3");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"70224903-6c9c-4f97-a9a3-643349dce0b3");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"70224903-6c9c-4f97-a9a3-643349dce0b3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("70224903-6c9c-4f97-a9a3-643349dce0b3",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("3c475496-ecce-4ae5-994b-6730eb7f840e",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO D_DEPL
+	VALUES ("0645f6d3-2019-46fa-9e03-757941734f09",
+	'deployment',
+	'');
+INSERT INTO D_TERM
+	VALUES ("dc8ebd2f-6dd5-46d3-b1a8-ec3314306cf8",
+	"0645f6d3-2019-46fa-9e03-757941734f09",
+	'LOG',
+	'',
+	'LOG',
+	'',
+	1);
+INSERT INTO D_TSVC
+	VALUES ("2a9dd7ab-dd0f-4b3a-9314-fc9fe4a8bf6e",
+	"dc8ebd2f-6dd5-46d3-b1a8-ec3314306cf8",
+	'LogSuccess',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	5,
+	0);
+INSERT INTO D_TSPARM
+	VALUES ("6b0b6ba9-7ed9-4a66-8e3a-aff399b329a7",
+	"2a9dd7ab-dd0f-4b3a-9314-fc9fe4a8bf6e",
+	'message',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO D_TSVC
+	VALUES ("f3e2b7f1-ce6c-4238-a153-543ba0d5371f",
+	"dc8ebd2f-6dd5-46d3-b1a8-ec3314306cf8",
+	'LogFailure',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	5,
+	0);
+INSERT INTO D_TSPARM
+	VALUES ("5253361b-5f80-452d-b53b-c7692ec405bd",
+	"f3e2b7f1-ce6c-4238-a153-543ba0d5371f",
+	'message',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO D_TSVC
+	VALUES ("b7425b54-716e-4168-ae62-34f4d0732170",
+	"dc8ebd2f-6dd5-46d3-b1a8-ec3314306cf8",
+	'LogInfo',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	5,
+	0);
+INSERT INTO D_TSPARM
+	VALUES ("d767bcb4-7529-47ed-823f-51ff7459599c",
+	"b7425b54-716e-4168-ae62-34f4d0732170",
+	'message',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO D_TSVC
+	VALUES ("3724fa6f-e98f-4894-a1e3-372ac8707cf3",
+	"dc8ebd2f-6dd5-46d3-b1a8-ec3314306cf8",
+	'LogInteger',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	5,
+	0);
+INSERT INTO D_TSPARM
+	VALUES ("d4edfece-f0ff-48f3-b73d-6f4818fab6de",
+	"3724fa6f-e98f-4894-a1e3-372ac8707cf3",
+	'message',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO D_TSVC
+	VALUES ("25e9c1af-d68d-4180-9eac-1ddd975f0a4e",
+	"dc8ebd2f-6dd5-46d3-b1a8-ec3314306cf8",
+	'LogReal',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	5,
+	0);
+INSERT INTO D_TSPARM
+	VALUES ("91b2c29e-b040-4b74-8a51-b855bc5ab073",
+	"25e9c1af-d68d-4180-9eac-1ddd975f0a4e",
+	'message',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO D_TSPARM
+	VALUES ("f337b0c9-5cfa-415e-922a-4503eff10ca5",
+	"25e9c1af-d68d-4180-9eac-1ddd975f0a4e",
+	'r',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'',
+	"91b2c29e-b040-4b74-8a51-b855bc5ab073",
+	'');
+INSERT INTO PE_PE
+	VALUES ("0645f6d3-2019-46fa-9e03-757941734f09",
+	1,
+	"5a74f1b3-2220-47e2-9565-e1f4f95748f9",
+	"00000000-0000-0000-0000-000000000000",
+	25);
+INSERT INTO PE_PE
+	VALUES ("5a74f1b3-2220-47e2-9565-e1f4f95748f9",
+	1,
+	"e92dcb49-50f9-45ec-bf2f-2a524e6f5b4a",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("e92dcb49-50f9-45ec-bf2f-2a524e6f5b4a",
+	"2a8f0b42-d0f7-4ec9-ac6f-3571c4caeba3",
+	"2a8f0b42-d0f7-4ec9-ac6f-3571c4caeba3",
+	'testProp',
+	'',
+	0,
+	'../testProp.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("2a8f0b42-d0f7-4ec9-ac6f-3571c4caeba3",
+	'org.xtuml.bp.ui.properties.test',
+	1,
+	'../../org.xtuml.bp.ui.properties.test.xtuml');
