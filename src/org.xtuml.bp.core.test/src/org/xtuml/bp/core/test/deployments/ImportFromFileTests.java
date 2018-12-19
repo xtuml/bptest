@@ -15,7 +15,7 @@ import org.xtuml.bp.test.common.OrderedRunner;
 @RunWith(OrderedRunner.class)
 public class ImportFromFileTests extends BaseTest {
 
-    private static final String[] PROJECT_NAMES = { "DeploymentsTests", "DeploymentsDomains" };
+    private static final String[] PROJECT_NAMES = { "DeploymentsTests" };
     private static final String MOD_FILE = "/DeploymentsDomains/masl/DeploymentsDomain1/DeploymentsDomain1.mod";
     private static final String INT_FILE = "/DeploymentsDomains/masl/DeploymentsDomain1/DeploymentsDomain1.int";
 
