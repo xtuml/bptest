@@ -50,9 +50,13 @@ public class DeploymentExportTests extends BaseTest {
         assertNotNull(deployment);
 
         // trigger the import action
-        deployment.Importfromfile(getTestModelRespositoryLocation() + BASE_INT_FILE);
-        // check the resulting instances
+        Selection.getInstance().clear();
+        Selection.getInstance().addToSelection(deployment);
+        ImportTerminatorsFromFileOnD_DEPLAction action = new ImportTerminatorsFromFileOnD_DEPLAction(
+                Arrays.asList(new String[] { getTestModelRespositoryLocation() + BASE_INT_FILE }).iterator());
+        action.run(null);
 
+        // check the resulting instances
         Terminator_c providedTerm = Terminator_c.getOneD_TERMOnR1650(deployment,
                 (selected) -> "DeploymentsDomain1".equals(((Terminator_c) selected).getName()));
         assertTrue("Provided terminator missing.", null != providedTerm && providedTerm.getProvider());
@@ -83,9 +87,9 @@ public class DeploymentExportTests extends BaseTest {
         // trigger the export action
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);
-        ExportProjectAction action = new ExportProjectAction();
-        action.selectionChanged(null, Selection.getInstance().getSelection());
-        action.run(null);
+        ExportProjectAction exportAction = new ExportProjectAction();
+        exportAction.selectionChanged(null, Selection.getInstance().getSelection());
+        exportAction.run(null);
 
         // assert that the output files exist
         assertTrue("'masl' directory does not exist", maslDir.exists());

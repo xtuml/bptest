@@ -1,5 +1,7 @@
 package org.xtuml.bp.core.test.deployments;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.TerminatorServiceParameter_c;
 import org.xtuml.bp.core.TerminatorService_c;
 import org.xtuml.bp.core.Terminator_c;
+import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
@@ -47,7 +50,11 @@ public class ImportFromFileTests extends BaseTest {
         assertNotNull(deployment);
 
         // trigger the import action
-        deployment.Importfromfile(getTestModelRespositoryLocation() + filename);
+        Selection.getInstance().clear();
+        Selection.getInstance().addToSelection(deployment);
+        ImportTerminatorsFromFileOnD_DEPLAction action = new ImportTerminatorsFromFileOnD_DEPLAction(
+                Arrays.asList(new String[] { getTestModelRespositoryLocation() + filename }).iterator());
+        action.run(null);
 
         // check the resulting instances
         Terminator_c providedTerm = Terminator_c.getOneD_TERMOnR1650(deployment,
