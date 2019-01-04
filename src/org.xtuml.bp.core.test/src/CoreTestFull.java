@@ -1,6 +1,7 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.xtuml.bp.core.test.ConsistencyTest;
+import org.xtuml.bp.core.test.deployments.DeploymentTestFull;
 import org.xtuml.bp.core.test.rtomove.RTOMoveTestsTestSuite;
 
 import junit.framework.TestSuite;
@@ -11,7 +12,7 @@ import junit.framework.TestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ CoreGlobalsTestSuiteGenerics.class, TestVisibilityInElementChooserSuite.class, RTOMoveTestsTestSuite.class, SystemLevelGlobalsTestSuite.class,
-		CoreGlobalsTestSuite2Generics.class, ConsistencyTest.class })
+		CoreGlobalsTestSuite2Generics.class, ConsistencyTest.class, DeploymentTestFull.class })
 
 public class CoreTestFull extends TestSuite {
 }
