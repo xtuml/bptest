@@ -1,5 +1,6 @@
 package org.xtuml.bp.core.test.deployments;
 
+import java.io.File;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -49,6 +50,10 @@ public class ImportFromFileTests extends BaseTest {
         Deployment_c deployment = Deployment_c.DeploymentInstance(modelRoot);
         assertNotNull(deployment);
 
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + filename);
+        assertTrue("Cannot access test file.", testFile.exists());
+        
         // trigger the import action
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);

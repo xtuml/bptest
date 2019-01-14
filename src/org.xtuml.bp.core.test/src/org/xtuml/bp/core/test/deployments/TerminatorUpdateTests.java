@@ -1,5 +1,6 @@
 package org.xtuml.bp.core.test.deployments;
 
+import java.io.File;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -42,6 +43,10 @@ public class TerminatorUpdateTests extends BaseTest {
 
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
+
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 1));
+        assertTrue("Cannot access test file.", testFile.exists());
 
         // trigger the import action on updated file
         Selection.getInstance().clear();
@@ -88,6 +93,10 @@ public class TerminatorUpdateTests extends BaseTest {
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
 
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 2));
+        assertTrue("Cannot access test file.", testFile.exists());
+
         // trigger the import action on updated file
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);
@@ -133,6 +142,10 @@ public class TerminatorUpdateTests extends BaseTest {
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
 
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 3));
+        assertTrue("Cannot access test file.", testFile.exists());
+
         // trigger the import action on updated file
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);
@@ -177,6 +190,10 @@ public class TerminatorUpdateTests extends BaseTest {
 
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
+
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 4));
+        assertTrue("Cannot access test file.", testFile.exists());
 
         // trigger the import action on updated file
         Selection.getInstance().clear();
@@ -228,6 +245,10 @@ public class TerminatorUpdateTests extends BaseTest {
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
 
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 5));
+        assertTrue("Cannot access test file.", testFile.exists());
+
         // trigger the import action on updated file
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);
@@ -270,6 +291,10 @@ public class TerminatorUpdateTests extends BaseTest {
 
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
+
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 6));
+        assertTrue("Cannot access test file.", testFile.exists());
 
         // trigger the import action on updated file
         Selection.getInstance().clear();
@@ -332,6 +357,10 @@ public class TerminatorUpdateTests extends BaseTest {
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
 
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 7));
+        assertTrue("Cannot access test file.", testFile.exists());
+
         // trigger the import action on updated file
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);
@@ -387,6 +416,10 @@ public class TerminatorUpdateTests extends BaseTest {
         // import the terminator and do the basic test
         Deployment_c deployment = basicTest();
 
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + String.format(INT_FILE_TEMPLATE, 8));
+        assertTrue("Cannot access test file.", testFile.exists());
+
         // trigger the import action on updated file
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);
@@ -434,6 +467,10 @@ public class TerminatorUpdateTests extends BaseTest {
         // get the deployment
         Deployment_c deployment = Deployment_c.DeploymentInstance(modelRoot);
         assertNotNull(deployment);
+
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + BASE_INT_FILE);
+        assertTrue("Cannot access test file.", testFile.exists());
 
         // trigger the import action
         Selection.getInstance().clear();

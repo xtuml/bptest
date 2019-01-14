@@ -49,6 +49,10 @@ public class DeploymentExportTests extends BaseTest {
         Deployment_c deployment = Deployment_c.DeploymentInstance(modelRoot);
         assertNotNull(deployment);
 
+        // check that the file exists
+        File testFile = new File(getTestModelRespositoryLocation() + BASE_INT_FILE);
+        assertTrue("Cannot access test file.", testFile.exists());
+
         // trigger the import action
         Selection.getInstance().clear();
         Selection.getInstance().addToSelection(deployment);
