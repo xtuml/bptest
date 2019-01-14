@@ -1,6 +1,11 @@
 package org.xtuml.bp.core.test.deployments;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -33,6 +38,7 @@ public class TerminatorUpdateTests extends BaseTest {
         modelRoot = Ooaofooa
                 .getInstance("/DeploymentsTests/models/DeploymentsTests/DeploymentsTests/DeploymentsTests.xtuml");
         m_sys = modelRoot.getRoot();
+        setupExecutables();
     }
     
     /*
@@ -504,6 +510,26 @@ public class TerminatorUpdateTests extends BaseTest {
         assertTrue("Incorrect parameter type.", null != s_dt && "DeploymentsDomain1::MyEnum".equals(s_dt.getName()));
 
         return deployment;
+    }
+
+    private void setupExecutables() throws Exception {
+        final File mcDir = new File(System.getProperty("eclipse.home.location").replaceFirst("file:", "") + "/tools/mc");
+        if (!mcDir.exists()) {
+            assertTrue("Could not create necessary directories.", mcDir.mkdirs());
+        }
+        final File binDir = new File(mcDir, "bin");
+        if (!binDir.exists()) {
+            final String mcRepoPath = System.getenv("XTUML_DEVELOPMENT_REPOSITORY") + File.separator + "../mc";
+            assertTrue("Cannot find mc repository.", !"".equals(mcRepoPath));
+            File mcBinDir = new File(mcRepoPath + File.separator + "bin");
+            assertTrue("Cannot find mc bin directory.", mcBinDir.exists());
+            File antlrJar = new File(mcBinDir, "antlr-3.5.2-complete.jar");
+            URL antlrURL = new URL("http://central.maven.org/maven2/org/antlr/antlr-complete/3.5.2/antlr-complete-3.5.2.jar");
+            ReadableByteChannel rbc = Channels.newChannel(antlrURL.openStream());
+            FileOutputStream fos = new FileOutputStream(antlrJar);
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+            Files.createSymbolicLink(binDir.toPath(), mcBinDir.toPath());
+        }
     }
 
 }
