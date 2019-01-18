@@ -27,6 +27,7 @@ import java.util.List;
 
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.InteractionParticipant_c;
@@ -46,6 +47,11 @@ import org.xtuml.bp.test.common.OrderedRunner;
 public class TestVisibilityInElementChooser extends BaseTest {
 
 	private static final String TEST_PROJECT_NAME = "testVisibilityFilterInElementChooser";
+	
+	@Before
+    public void setUp() throws Exception {
+        super.setUp();
+	}
 
 	@Override
 	protected void initialSetup() throws Exception {
