@@ -113,7 +113,11 @@ public class EnumRangeTest extends BaseTest
     public static final String[] Dialect_vals =
         {
             "OAL",
-            "MASL" };
+            "MASL",
+            "Alf",
+            "Java",
+            "C",
+            "None" };
     public static final String[] By_Ref_vals = { "By Value", "By Reference" };
     public static final String[] Cond_vals = { "Unconditional", "Conditional" };
     public static final String[] Mult_vals = { "One", "Many" };
