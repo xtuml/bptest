@@ -601,7 +601,7 @@ public class ${class_name}Data
   	 .else
 .//
   ..for each ${child_var_name} in ${child_var_name}_set
-     	.if ( (child_node.Key_Lett == "S_DT") and (node.Key_Lett != "S_EDT"))
+     	.if ( (child_node.Key_Lett == "S_DT") and (node.Key_Lett != "S_EDT") and (child.UserModifiable))
             { ChooserPropertyDescriptor.class.getName(),
             "$r{child_node.CategoryName}",
       .else
