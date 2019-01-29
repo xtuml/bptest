@@ -78,6 +78,8 @@ import org.xtuml.bp.ui.graphics.parts.DiagramEditPart;
 import org.xtuml.bp.ui.graphics.parts.GraphicalZoomManager;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
 
+import junit.framework.TestCase;
+
 import org.junit.Assert;
 
 public class UITestingUtilities {
@@ -959,27 +961,38 @@ public class UITestingUtilities {
 		return null;
 	}
 
-	public static void expandTree(TreeItem root) {
-		root.getParent().setRedraw(false);
-		Event evt = new Event();
-		evt.item = root;
-		evt.doit = true;
-		root.getParent().notifyListeners(SWT.Expand, evt);
-		root.setExpanded(true);
-		root.getParent().setRedraw(true);
-		root.getParent().update();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-		TreeItem [] items = root.getItems();
-		for (TreeItem item : items) {
-			expandTree(item);
+	/**
+	 * 
+	 * @param root
+	 * @param levelsToExpand If this is -1 it will expand all the way. Otherwise,
+	 * it will expand "down" to the number of level specified.
+	 */
+	public static void expandTree(TreeItem root, int levelsToExpand) {
+		if (levelsToExpand > 0) {
+			levelsToExpand--;
+		}
+		if (levelsToExpand > 0) {
+			root.getParent().setRedraw(false);
+			Event evt = new Event();
+			evt.item = root;
+			evt.doit = true;
+			root.getParent().notifyListeners(SWT.Expand, evt);
+			root.setExpanded(true);
+			root.getParent().setRedraw(true);
+			root.getParent().update();
+			TreeItem [] items = root.getItems();
+			for (TreeItem item : items) {
+				expandTree(item, levelsToExpand);
+			}
 		}
 	}
 	
-	public static void expandTree(Tree tree) {
+	private static void expandTree(Tree tree) {
 		for(TreeItem item : tree.getItems()) {
-			expandTree(item);
+			expandTree(item, -1);
 		}
 	}
+
 	
 	public static TreeItem findItemInTreeWithExpansion(Tree tree, String childItemName) {
 		expandTree(tree);
@@ -1005,6 +1018,28 @@ public class UITestingUtilities {
 		return null;
 	}
 
+
+	/**
+	 * Find an item under the git working tree
+	 * 
+	 * @param repoItem This is the top-level item in the git view. It corresponds to the root of the git repository
+	 * @param itemToFind Text string of the item to find under the Working Tree
+	 * @return A tree item that matches the given string
+	 */
+	public static TreeItem findItemInWorkingTree(TreeItem repoItem, String itemToFind) {
+		TreeItem workingTree = UITestingUtilities.findItemInTree(repoItem, "Working Tree");
+		TestCase.assertNotNull("Failed to find \"Working Tree\" under the given repoistory in the git view.", workingTree);
+		TreeItem[] children = workingTree.getItems();
+		TreeItem result = null;
+		for(TreeItem child : children) {
+			if (child.getText().startsWith(itemToFind)) {
+				result = child;
+				break;
+			}
+		}
+		return result;
+	}
+	
     public static Tree findTree(Composite parent) {
         Control [] child_set = parent.getChildren();
         for ( int i = 0; i < child_set.length; ++i )
