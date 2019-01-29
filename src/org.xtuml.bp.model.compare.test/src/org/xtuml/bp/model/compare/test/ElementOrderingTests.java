@@ -461,8 +461,25 @@ public class ElementOrderingTests extends BaseTest {
 					UITestingUtilities.checkItemStatusInContextMenu(rightViewer
 							.getTree().getMenu(), "Move Down", "", false));
 		} finally {
-			if (copy != null) {
-				copy.delete(true, new NullProgressMonitor());
+			CompareTestUtilities.closeMergeEditor(false);
+			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
+				// noop
+			}
+			if (copy != null && copy.exists()) {
+				attributes = copy.getResourceAttributes();
+				attributes.setReadOnly(false);
+				copy.setResourceAttributes(attributes);
+				try {
+					copy.delete(true, new NullProgressMonitor());
+				} catch (Throwable t) {
+					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
+						// noop
+					}
+					// noop
+				}
+				while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
+					// noop
+				}
 			}
 		}
 	}
@@ -1125,7 +1142,24 @@ public class ElementOrderingTests extends BaseTest {
 			IFileState state = history[0];
 			InputStream contents = state.getContents();
 			copy = file.getProject().getFile(file.getName());
-			copy.create(contents, true, new NullProgressMonitor());
+			if (copy.exists()) {
+				try {
+					copy.delete(true, new NullProgressMonitor());
+				} catch (Throwable t) {
+					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) ;
+				}
+				while (copy.exists()) {
+					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) ;
+				}
+			}
+			try {
+				copy.create(contents, true, new NullProgressMonitor());				
+			} catch (Throwable t) {
+				boolean debug = true;
+				while (debug) {
+					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) ;
+				}
+			}
 			TreeDifferencer differencer = CompareTestUtilities
 					.compareElementWithLocalHistory(file, copy);
 			assertTrue("A difference was not created to allow testing of position change",
@@ -1147,7 +1181,19 @@ public class ElementOrderingTests extends BaseTest {
 			assertEquals("Model file contents were different after a merge.", fileContents, copyContent);
 		} finally {
 			if(copy != null && copy.exists()) {
-				copy.delete(true, new NullProgressMonitor());
+				int retry = 5;
+				while (retry > 0) {
+					try {
+						copy.delete(true, new NullProgressMonitor());					
+						retry = 0;
+						while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
+							// no work, just letting background processing finish.							
+						}
+					} catch (Throwable t) {
+						copy.setReadOnly(false);
+						retry--;
+					}
+				}
 			}
 		}
 	}
