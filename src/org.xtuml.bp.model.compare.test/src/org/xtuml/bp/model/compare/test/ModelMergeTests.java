@@ -158,9 +158,9 @@ public class ModelMergeTests extends BaseTest {
 	@Override
 	@After
 	public void tearDown() throws Exception {
-		super.tearDown();
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.closeAllEditors(false);
+		super.tearDown();
 	}
 
 	@Test
