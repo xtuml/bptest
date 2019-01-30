@@ -546,8 +546,10 @@ public class CompareTestUtilities {
 
 	public static void copyAllNonConflictingChangesFromRightToLeft() {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer.getInstance(null);
-		viewer.setCopySelection(false);
-		viewer.copy(false);
+		if (viewer != null) {
+			viewer.setCopySelection(false);
+			viewer.copy(false);
+		}
 		BaseTest.dispatchEvents(0);
 	}
 	
@@ -595,16 +597,18 @@ public class CompareTestUtilities {
 	public static List<TreeDifference> getChangesFromLeft(int type, boolean useDirectionMask) {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer
 				.getInstance(null);
-		TreeDifferencer differencer = viewer.getDifferencer();
-		List<TreeDifference> leftDifferences = differencer.getLeftDifferences();
 		List<TreeDifference> differences = new ArrayList<TreeDifference>();
-		for (TreeDifference difference : leftDifferences) {
-			if (useDirectionMask) {
-				if ((difference.getKind() & Differencer.DIRECTION_MASK) == type) {
-					differences.add(difference);
-				} 
-			} else 	if (difference.getKind() == type || type == Differencer.NO_CHANGE) {
-				differences.add(difference);					
+		if (viewer != null) {
+			TreeDifferencer differencer = viewer.getDifferencer();
+			List<TreeDifference> leftDifferences = differencer.getLeftDifferences();
+			for (TreeDifference difference : leftDifferences) {
+				if (useDirectionMask) {
+					if ((difference.getKind() & Differencer.DIRECTION_MASK) == type) {
+						differences.add(difference);
+					} 
+				} else 	if (difference.getKind() == type || type == Differencer.NO_CHANGE) {
+					differences.add(difference);					
+				}
 			}
 		}
 		return differences;
