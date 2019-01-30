@@ -361,6 +361,8 @@ public class BaseTest extends TestCase {
 	
 
 	public static void staticTearDown() throws Exception {
+		BaseTest.dispatchEvents();
+
 		// clear the UI events
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 			
