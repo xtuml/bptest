@@ -971,7 +971,7 @@ public class UITestingUtilities {
 		if (levelsToExpand > 0) {
 			levelsToExpand--;
 		}
-		if (levelsToExpand > 0) {
+		if (levelsToExpand >= 0 || levelsToExpand == -1) {
 			root.getParent().setRedraw(false);
 			Event evt = new Event();
 			evt.item = root;
