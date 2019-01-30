@@ -239,6 +239,7 @@ public class PkgCMDeleteTestGenerics extends DeleteTest {
     /*  STARTS CODE: delete through Resource Navigator */
     @Test
 	public void testDeleteISM_ThruRN_CanvasFocused() throws Exception{
+        reCopy = true;
         performDeleteComponentThruRN("InstanceStateMachine", "A",EditorTestUtilities.EDITOR_TYPE_CANVAS, 2);
     }    
 //    public void testDeleteMclass_ThruRN_CanvasFocused() throws Exception{
