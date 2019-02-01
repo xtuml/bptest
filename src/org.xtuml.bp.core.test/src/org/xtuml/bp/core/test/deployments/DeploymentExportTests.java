@@ -8,7 +8,9 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.util.Arrays;
 
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,9 +24,9 @@ import org.xtuml.bp.core.TerminatorService_c;
 import org.xtuml.bp.core.Terminator_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.mc.masl.MaslExportBuilder;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
-import org.xtuml.bp.x2m.actions.ExportProjectAction;
 
 @RunWith(OrderedRunner.class)
 public class DeploymentExportTests extends BaseTest {
@@ -95,11 +97,7 @@ public class DeploymentExportTests extends BaseTest {
         deleteRecursive(maslDir);
 
         // trigger the export action
-        Selection.getInstance().clear();
-        Selection.getInstance().addToSelection(deployment);
-        ExportProjectAction exportAction = new ExportProjectAction();
-        exportAction.selectionChanged(null, Selection.getInstance().getSelection());
-        exportAction.run(null);
+        project.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, MaslExportBuilder.BUILDER_ID, null, new NullProgressMonitor());
 
         // assert that the output files exist
         assertTrue("'masl' directory does not exist", maslDir.exists());
