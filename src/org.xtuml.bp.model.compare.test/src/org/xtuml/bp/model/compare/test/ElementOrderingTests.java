@@ -1146,19 +1146,16 @@ public class ElementOrderingTests extends BaseTest {
 				try {
 					copy.delete(true, new NullProgressMonitor());
 				} catch (Throwable t) {
-					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) ;
+					BaseTest.dispatchEvents();
 				}
-				while (copy.exists()) {
-					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) ;
+				if (copy.exists()) {
+					BaseTest.dispatchEvents();
 				}
 			}
 			try {
 				copy.create(contents, true, new NullProgressMonitor());				
 			} catch (Throwable t) {
-				boolean debug = true;
-				while (debug) {
-					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) ;
-				}
+				BaseTest.dispatchEvents();
 			}
 			TreeDifferencer differencer = CompareTestUtilities
 					.compareElementWithLocalHistory(file, copy);
