@@ -41,6 +41,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -208,9 +209,31 @@ public class BaseTest extends TestCase {
 
 	protected static boolean logFileCheckingEnabled = true;
 
+	/**
+	 * Timeout rules are introduced to prevent tests from hanging.
+	 * 
+	 * The following has a nice explanation of the difference between @Rule and @ClassRule
+	 * @see <a href="http://google.com">https://examples.javacodegeeks.com/core-java/junit/junit-test-timeout-example/#code</a>
+	 * 
+	 * @Rule is a timeout that is per-operation. While @ClassRule is a static that looks at the time to
+	 * complete all tests in the test class.
+	 * 
+	 * Note that to catch deadlocks there is a nice mechanism defined in the following link. It is outside the
+	 * scope of junit but could be considered for future. "How to detect java deadlocks programmatically":
+	 * @see <a href="http://korhner.github.io/java/multithreading/detect-java-deadlocks-programmatically/</a>
+	 * 
+	 * 
+	 */
+	
 	
 	public BaseTest(){
 		this(null, "");
+		
+		/**
+		 * Check every 10 minutes
+		 */
+		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockConsoleHandler(), 60*10, TimeUnit.SECONDS);
+		deadlockDetector.start();		
 	}
 	public BaseTest(String projectName, String name) {
 		final IIntroManager introManager = PlatformUI.getWorkbench().getIntroManager();
