@@ -20,10 +20,13 @@ import java.util.Set;
 
 public class DeadlockJUnitHandler implements DeadlockHandler {
 	private BaseTest testInstance = null;
+	private Thread testThread = null;
 	
-	public DeadlockJUnitHandler(BaseTest baseTest) {
+	public DeadlockJUnitHandler(BaseTest baseTest, Thread unitTestThread) {
 		testInstance = baseTest;
+		testThread = unitTestThread;
 	}
+
 
 	@Override
 	public void handleDeadlock(ThreadInfo[] deadlockedThreads) {
@@ -57,7 +60,8 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 			for (Thread thread : threadsToInterrupt) {
 				thread.interrupt();
 			}
-
+			// interrupt the test thread
+			testThread.interrupt();
 		}
 	}
 }
