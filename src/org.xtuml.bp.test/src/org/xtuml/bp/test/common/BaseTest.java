@@ -232,7 +232,7 @@ public class BaseTest extends TestCase {
 		/**
 		 * Check every 10 minutes
 		 */
-		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockConsoleHandler(), 60*10, TimeUnit.SECONDS);
+		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(this), 60*10, TimeUnit.SECONDS);
 		deadlockDetector.start();		
 	}
 	public BaseTest(String projectName, String name) {
@@ -376,9 +376,22 @@ public class BaseTest extends TestCase {
 		}
 		assertTrue("Saving threads left hanging", Ooaofooa.threadsSaving < 1);
 	}
+
+	
+	private String mDeadLockMessage = "";
+	
+	public void setDeadLockDetected(String deadlockMessage) {
+		mDeadLockMessage = deadlockMessage;
+	}
+	
 	
 	@After
 	public void tearDown() throws Exception {
+		if (!mDeadLockMessage.isEmpty()) {
+			String tempMsg = mDeadLockMessage;
+			mDeadLockMessage = "";
+			fail(tempMsg);
+		}		
 		BaseTest.staticTearDown();
 	}
 	

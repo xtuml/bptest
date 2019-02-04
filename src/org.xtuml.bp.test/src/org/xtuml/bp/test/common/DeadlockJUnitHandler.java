@@ -14,39 +14,50 @@
 package org.xtuml.bp.test.common;
 
 import java.lang.management.ThreadInfo;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
-public class DeadlockConsoleHandler implements DeadlockHandler {
+public class DeadlockJUnitHandler implements DeadlockHandler {
+	private BaseTest testInstance = null;
+	
+	public DeadlockJUnitHandler(BaseTest baseTest) {
+		testInstance = baseTest;
+	}
 
 	@Override
 	public void handleDeadlock(ThreadInfo[] deadlockedThreads) {
 		if (deadlockedThreads != null) {
-			System.err.println("Deadlock detected!");
-
+			StringBuffer failureMessage = new StringBuffer();			
+			failureMessage.append("Deadlock detected!\n");
+			Set<Thread> threadsToInterrupt = new HashSet<Thread>();
+			
 			Map<Thread, StackTraceElement[]> stackTraceMap = Thread.getAllStackTraces();
 			for (ThreadInfo threadInfo : deadlockedThreads) {
-
 				if (threadInfo != null) {
-
 					for (Thread thread : Thread.getAllStackTraces().keySet()) {
 						
 						if (thread.getId() == threadInfo.getThreadId()) {
-							System.err.println(threadInfo.toString().trim());
+							threadsToInterrupt.add(thread);
+							failureMessage.append(threadInfo.toString().trim() + "\n");
 
 							for (StackTraceElement ste : thread.getStackTrace()) {
-								System.err.println("\t" + ste.toString().trim());
+								failureMessage.append("\t" + ste.toString().trim() + "\n");
 							}
-						}
-						// stop the thread
-						thread.interrupt();
-						try {
-							thread.wait(5000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+						}						
 					}
 				}
 			}
+			
+
+			System.out.println(failureMessage);			
+			testInstance.setDeadLockDetected(failureMessage.toString());
+			
+			// Interrupt the deadlocked threads
+			for (Thread thread : threadsToInterrupt) {
+				thread.interrupt();
+			}
+
 		}
 	}
 }
