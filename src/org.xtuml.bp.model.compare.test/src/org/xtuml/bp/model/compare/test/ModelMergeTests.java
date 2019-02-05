@@ -761,6 +761,7 @@ public class ModelMergeTests extends BaseTest {
 			;
 		assertTrue("Not all differences were removed by the copy all button.",
 				viewer.getDifferencer().getLeftDifferences().size() == 0);
+		clearErrorLogView();
 	}
 
 	@Test

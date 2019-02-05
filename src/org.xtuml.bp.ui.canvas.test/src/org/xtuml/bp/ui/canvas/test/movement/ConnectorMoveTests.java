@@ -134,6 +134,7 @@ public class ConnectorMoveTests extends CanvasTest {
 
 	@After
 	public void tearDown() throws Exception {
+		clearErrorLogView();
 		super.tearDown();
 		testPart = null;
 		diagramZoomed = false;
