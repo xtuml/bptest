@@ -36,8 +36,13 @@ public class DeadlockDetector {
 			if (deadlockedThreadIds != null) {
 				ThreadInfo[] threadInfos = DeadlockDetector.this.mbean.getThreadInfo(deadlockedThreadIds);
 
-				DeadlockDetector.this.deadlockHandler.handleDeadlock(threadInfos);
+				DeadlockDetector.this.deadlockHandler.handleDeadlock(threadInfos);				
 			}
+			
+			ThreadInfo[] allThreadIds = DeadlockDetector.this.mbean.dumpAllThreads(true, true);
+			
+			DeadlockDetector.this.deadlockHandler.handleTimeExceeded(allThreadIds);
+			
 		}
 	};
 

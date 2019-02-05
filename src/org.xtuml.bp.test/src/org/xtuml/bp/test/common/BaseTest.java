@@ -232,7 +232,8 @@ public class BaseTest extends TestCase {
 		/**
 		 * Check every 10 minutes
 		 */
-		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(this, Thread.currentThread()), 60*10, TimeUnit.SECONDS);
+		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(this, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
+
 		deadlockDetector.start();		
 	}
 	public BaseTest(String projectName, String name) {
