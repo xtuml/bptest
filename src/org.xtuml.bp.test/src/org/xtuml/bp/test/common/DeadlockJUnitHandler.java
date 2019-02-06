@@ -128,11 +128,10 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 		// interrupt the test thread
 		threadsToInterrupt.add(testThread);
 		
-		// kill the test thread (hard stop)
+		// interrupt the test thread
 		for (Thread thread : threadsToInterrupt) {
 			if (thread.isAlive()) {
-				RuntimeException re = new RuntimeException(failureMessage.toString());
-				thread.stop(re);
+				thread.interrupt();
 			}
 		}
 	}
