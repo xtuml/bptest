@@ -18,11 +18,14 @@ import org.xtuml.bp.core.Actiondialect_c;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.DataType_c;
 import org.xtuml.bp.core.Deployment_c;
+import org.xtuml.bp.core.Implementationscope_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.TerminatorServiceParameter_c;
 import org.xtuml.bp.core.TerminatorService_c;
 import org.xtuml.bp.core.Terminator_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.core.common.Transaction;
+import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.mc.masl.MaslExportBuilder;
 import org.xtuml.bp.test.common.BaseTest;
@@ -91,6 +94,12 @@ public class DeploymentExportTests extends BaseTest {
         assertNotNull("Required terminator service parameter missing.", reqSvcParam);
         s_dt = DataType_c.getOneS_DTOnR1653(reqSvcParam);
         assertTrue("Incorrect parameter type.", null != s_dt && "DeploymentsDomain1::MyEnum".equals(s_dt.getName()));
+
+        // set the "Implementation_Scope" of reqSvc to "Deployment"
+        TransactionManager tm = TransactionManager.getSingleton();
+        Transaction tr = tm.startTransaction("Property change in test", Ooaofooa.getDefaultInstance());
+        reqSvc.setImplementation_scope(Implementationscope_c.Deployment);
+        tm.endTransaction(tr);
 
         // assure that the "masl" folder is deleted
         File maslDir = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile(), MASL_DIR);
