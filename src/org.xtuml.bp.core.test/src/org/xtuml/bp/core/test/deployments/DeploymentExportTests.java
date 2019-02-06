@@ -8,7 +8,9 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.util.Arrays;
 
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,15 +18,18 @@ import org.xtuml.bp.core.Actiondialect_c;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.DataType_c;
 import org.xtuml.bp.core.Deployment_c;
+import org.xtuml.bp.core.Implementationscope_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.TerminatorServiceParameter_c;
 import org.xtuml.bp.core.TerminatorService_c;
 import org.xtuml.bp.core.Terminator_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.core.common.Transaction;
+import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.mc.masl.MaslExportBuilder;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
-import org.xtuml.bp.x2m.actions.ExportProjectAction;
 
 @RunWith(OrderedRunner.class)
 public class DeploymentExportTests extends BaseTest {
@@ -90,16 +95,18 @@ public class DeploymentExportTests extends BaseTest {
         s_dt = DataType_c.getOneS_DTOnR1653(reqSvcParam);
         assertTrue("Incorrect parameter type.", null != s_dt && "DeploymentsDomain1::MyEnum".equals(s_dt.getName()));
 
+        // set the "Implementation_Scope" of reqSvc to "Deployment"
+        TransactionManager tm = TransactionManager.getSingleton();
+        Transaction tr = tm.startTransaction("Property change in test", Ooaofooa.getDefaultInstance());
+        reqSvc.setImplementation_scope(Implementationscope_c.Deployment);
+        tm.endTransaction(tr);
+
         // assure that the "masl" folder is deleted
         File maslDir = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile(), MASL_DIR);
         deleteRecursive(maslDir);
 
         // trigger the export action
-        Selection.getInstance().clear();
-        Selection.getInstance().addToSelection(deployment);
-        ExportProjectAction exportAction = new ExportProjectAction();
-        exportAction.selectionChanged(null, Selection.getInstance().getSelection());
-        exportAction.run(null);
+        project.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, MaslExportBuilder.BUILDER_ID, null, new NullProgressMonitor());
 
         // assert that the output files exist
         assertTrue("'masl' directory does not exist", maslDir.exists());
