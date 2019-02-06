@@ -30,11 +30,13 @@ import junit.framework.TestCase;
  */
 public class DeadlockJUnitHandler implements DeadlockHandler {
 	private BaseTest testInstance = null;
+	private String testName;
 	private Thread testThread = null;
 	private Instant start = null;
 	public static final long MaxTestTimeAllowedInSeconds = 15 * 60; // 15 minutes
 	
-	public DeadlockJUnitHandler(BaseTest baseTest, Thread unitTestThread) {
+	public DeadlockJUnitHandler(String pTestName, BaseTest baseTest, Thread unitTestThread) {
+		this.testName = pTestName;
 		testInstance = baseTest;
 		testThread = unitTestThread;
 	}
@@ -47,7 +49,7 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 				
 		boolean deadlockDetected = false;
 		if (deadlockedThreads != null) {
-			failureMessage.append("ERROR! Deadlock detected in: " + ((TestCase)testInstance).getName()+ "\n");
+			failureMessage.append("ERROR! Deadlock detected in: " + testName + "\n");
 			failureMessage.append("\tThe test thread is being \"interrupt()\"'ed\n");
 			deadlockDetected = true;
 			dumpThreadInfo(deadlockedThreads, failureMessage, threadsToInterrupt, true, "deadlock");			
@@ -101,7 +103,7 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 				maxTestTimeExceeded = true;
 				long timeoutInMinutes = (MaxTestTimeAllowedInSeconds/60);
 				failureMessage.append("ERROR! Maximum unit test time (" + String.valueOf(timeoutInMinutes)
-						+ "minutes) has been exceeded in: " + ((TestCase) testInstance).getName() + "\n");
+						+ "minutes) has been exceeded in: " + testName + "\n");
 				failureMessage.append("\tThe test thread is being \"interrupt()\"'ed\n");
 				dumpThreadInfo(allThreadIds, failureMessage, threadsToInterrupt, false, "time-exceeded");			
 			}
@@ -119,7 +121,9 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 		System.err.println(failureMessage);			
 		
 		// Set the flag to report the problem in teardown()
-		testInstance.setDeadLockDetected(failureMessage.toString());
+		if (testInstance != null) {
+			testInstance.setDeadLockDetected(failureMessage.toString());
+		}
 		
 		// interrupt the test thread
 		threadsToInterrupt.add(testThread);

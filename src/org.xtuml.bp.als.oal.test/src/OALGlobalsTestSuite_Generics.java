@@ -20,6 +20,8 @@
 // the License.
 //========================================================================
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.xtuml.bp.als.oal.test.ComponentParamTest_Generics;
@@ -74,6 +76,9 @@ import org.xtuml.bp.als.oal.test.TestStructuredDataType_Generics;
 import org.xtuml.bp.als.oal.test.VisibilityParserTest;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.test.common.BaseTest;
+import org.xtuml.bp.test.common.DeadlockDetector;
+import org.xtuml.bp.test.common.DeadlockJUnitHandler;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -133,11 +138,18 @@ import junit.framework.TestSuite;
 	TestScopedConstants.class
 })
 public class OALGlobalsTestSuite_Generics extends TestSuite {
+	
 	/**
 	 * Returns the suite.  This is required to
 	 * use the JUnit Launcher.
 	 */
 	public static Test suite() {
+		/**
+		 * This thread runs to prevent deadlocks 
+		 */
+		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler("OALGlobalsTestSuite_Generics", null, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
+		deadlockDetector.start();		
+		
 		return new OALGlobalsTestSuite_Generics();
 	}
 }
