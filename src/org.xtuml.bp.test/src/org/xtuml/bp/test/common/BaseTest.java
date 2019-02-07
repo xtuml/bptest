@@ -227,22 +227,14 @@ public class BaseTest extends TestCase {
 	
 	
 	public BaseTest() {
-		this(null, "");
-		
-		/**
-		 * This thread runs to prevent deadlocks 
-		 */
-		DeadlockJUnitHandler junitHandler = new DeadlockJUnitHandler(this.getName(), this, Thread.currentThread());
-		long timeBetweenDeadlockChecksInSeconds =  DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds / 2;
-		DeadlockDetector deadlockDetector = new DeadlockDetector(junitHandler, timeBetweenDeadlockChecksInSeconds, TimeUnit.SECONDS);
-		deadlockDetector.start();
+		this(null, "");		
 	}
 	
 	public BaseTest(String projectName, String name) {
 		/**
 		 * This thread runs to prevent deadlocks 
 		 */
-		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(this.getName(), this, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
+		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(projectName, this, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
 		deadlockDetector.start();		
 		
 		final IIntroManager introManager = PlatformUI.getWorkbench().getIntroManager();
