@@ -33,12 +33,13 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 	private String testName;
 	private Thread testThread = null;
 	private Instant start = null;
-	public static final long MaxTestTimeAllowedInSeconds = 15 * 60; // 15 minutes
+	public static final long MaxTestTimeAllowedInSeconds = 20 * 60; // 20 minutes
 	
 	public DeadlockJUnitHandler(String pTestName, BaseTest baseTest, Thread unitTestThread) {
 		this.testName = pTestName;
 		testInstance = baseTest;
 		testThread = unitTestThread;
+		start = Instant.now();
 	}
 
 
@@ -95,18 +96,14 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 		Set<Thread> threadsToInterrupt = new HashSet<Thread>();
 		boolean maxTestTimeExceeded = false;
 		
-		if (start == null) {
-			start = Instant.now();
-		} else {
-			long gap = ChronoUnit.MILLIS.between(start,Instant.now());
-			if (gap >= (MaxTestTimeAllowedInSeconds*1000)) {
-				maxTestTimeExceeded = true;
-				long timeoutInMinutes = (MaxTestTimeAllowedInSeconds/60);
-				failureMessage.append("ERROR! Maximum unit test time (" + String.valueOf(timeoutInMinutes)
-						+ "minutes) has been exceeded in: " + testName + "\n");
-				failureMessage.append("\tThe test thread is being \"interrupt()\"'ed\n");
-				dumpThreadInfo(allThreadIds, failureMessage, threadsToInterrupt, false, "time-exceeded");			
-			}
+		long gap = ChronoUnit.MILLIS.between(start, Instant.now());
+		if (gap >= (MaxTestTimeAllowedInSeconds * 1000)) {
+			maxTestTimeExceeded = true;
+			long timeoutInMinutes = (MaxTestTimeAllowedInSeconds / 60);
+			failureMessage.append("ERROR! Maximum unit test time (" + String.valueOf(timeoutInMinutes)
+					+ "minutes) has been exceeded in: " + testName + "\n");
+			failureMessage.append("\tThe test thread is being \"interrupt()\"'ed\n");
+			dumpThreadInfo(allThreadIds, failureMessage, threadsToInterrupt, false, "time-exceeded");
 		}
 		
 		if (maxTestTimeExceeded) {
@@ -123,15 +120,21 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 		// Set the flag to report the problem in teardown()
 		if (testInstance != null) {
 			testInstance.setDeadLockDetected(failureMessage.toString());
+			TestCase.fail(failureMessage.toString());
 		}
 		
-		// interrupt the test thread
+		// interrupt the test thread too
 		threadsToInterrupt.add(testThread);
 		
 		// interrupt the test thread
 		for (Thread thread : threadsToInterrupt) {
 			if (thread.isAlive()) {
 				thread.interrupt();
+				try {
+					thread.join(1000);
+				} catch (InterruptedException e) {
+					// nothing to do
+				}
 			}
 		}
 	}

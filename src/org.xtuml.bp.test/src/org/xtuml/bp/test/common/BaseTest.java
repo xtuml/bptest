@@ -232,7 +232,9 @@ public class BaseTest extends TestCase {
 		/**
 		 * This thread runs to prevent deadlocks 
 		 */
-		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(this.getName(), this, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
+		DeadlockJUnitHandler junitHandler = new DeadlockJUnitHandler(this.getName(), this, Thread.currentThread());
+		long timeBetweenDeadlockChecksInSeconds =  DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds / 2;
+		DeadlockDetector deadlockDetector = new DeadlockDetector(junitHandler, timeBetweenDeadlockChecksInSeconds, TimeUnit.SECONDS);
 		deadlockDetector.start();
 	}
 	
