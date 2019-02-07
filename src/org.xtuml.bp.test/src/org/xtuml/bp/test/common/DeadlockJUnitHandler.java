@@ -65,7 +65,7 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 
 	private void dumpThreadInfo(ThreadInfo[] threadList, StringBuffer failureMessage,
 			Set<Thread> threadsToInterrupt, boolean addThreadsToInterruptSet, String dumpType) {
-		failureMessage.append("\t=================Start " + dumpType + " thread dump=================\n");				
+		failureMessage.append("\t=================Begin " + dumpType + " thread dump=================\n");				
 		
 		for (ThreadInfo threadInfo : threadList) {
 			if (threadInfo != null) {
@@ -118,9 +118,10 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 		System.err.println(failureMessage);			
 		
 		// Set the flag to report the problem in teardown()
+		// Note that if there is no testInstance then it means the test did not inherit from BaseTest
+		// and therefore the problem caught here will not be reported.
 		if (testInstance != null) {
 			testInstance.setDeadLockDetected(failureMessage.toString());
-			TestCase.fail(failureMessage.toString());
 		}
 		
 		// interrupt the test thread too
