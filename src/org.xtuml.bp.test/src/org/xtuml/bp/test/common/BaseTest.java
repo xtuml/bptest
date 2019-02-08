@@ -209,6 +209,8 @@ public class BaseTest extends TestCase {
 
 	protected static boolean logFileCheckingEnabled = true;
 
+	private static DeadlockDetector deadlockDetector = null;
+	
 	/**
 	 * Timeout rules are introduced to prevent tests from hanging.
 	 * 
@@ -232,9 +234,13 @@ public class BaseTest extends TestCase {
 	
 	public BaseTest(String projectName, String name) {
 		/**
-		 * This thread runs to prevent deadlocks 
+		 * This thread runs to prevent deadlocks. Make sure it is a singleton.
 		 */
-		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(projectName, this, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
+		if (deadlockDetector != null) {
+			deadlockDetector.stop();
+			deadlockDetector = null;
+		}
+		deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(projectName, this, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
 		deadlockDetector.start();		
 		
 		final IIntroManager introManager = PlatformUI.getWorkbench().getIntroManager();

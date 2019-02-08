@@ -55,4 +55,8 @@ public class DeadlockDetector {
 	public void start() {
 		this.scheduler.scheduleAtFixedRate(this.deadlockCheck, this.period, this.period, this.unit);
 	}
+	
+	public void stop() {
+		this.scheduler.shutdownNow();
+	}
 }
