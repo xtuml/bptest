@@ -339,8 +339,7 @@ public class DeleteTestGenerics extends CanvasTest {
 			initialized = true;
 		}
 
-		Display d = Display.getCurrent();
-		while ( d.readAndDispatch() ) ;
+		BaseTest.dispatchEvents();
 	}
 
 	@After

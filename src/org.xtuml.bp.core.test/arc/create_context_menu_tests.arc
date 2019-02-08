@@ -869,7 +869,7 @@ ${result.body}
     	GraphicalElement_c element = GraphicalElement_c.getOneGD_GEOnR2(con);
     	UITestingUtilities.addElementToGraphicalSelection(element.getRepresents());
     	editor.zoomSelected();
-        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        BaseTest.dispatchEvents();
     	Point center = CanvasTestUtils.getConnectorCenter(con);
     	center = CanvasTestUtils.convertToMouseCoor(center, editor.getModel());
     	CanvasTestUtils.doMousePress(center.x, center.y);
@@ -886,6 +886,7 @@ ${result.body}
     	// get the top level menu items
     	Action undo = mc.getTransactionManager().getUndoAction();
     	undo.run();
+    	BaseTest.dispatchEvents();
 
     	// assert that the redo item is available
     	assertTrue(UITestingUtilities.checkItemStatusInContextMenu(menu, "Redo", "", m_readonly));
