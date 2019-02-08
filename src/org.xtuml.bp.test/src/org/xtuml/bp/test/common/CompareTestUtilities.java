@@ -490,7 +490,7 @@ public class CompareTestUtilities {
 		IEditorPart activeEditor = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 		TestCase.assertTrue("Unable to locate compare editor.", activeEditor instanceof CompareEditor);
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 		Set<Object> keySet = TreeDifferencer.instances.keySet();
 		Object key = null;
 		for(Iterator<Object> iterator = keySet.iterator(); iterator.hasNext();) {
@@ -562,7 +562,7 @@ public class CompareTestUtilities {
 			ModelContentMergeViewer viewer = ModelContentMergeViewer.getInstance(null);
 			viewer.getLeftViewer().refresh();
 			viewer.getRightViewer().refresh();
-			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+			BaseTest.dispatchEvents();
 				;
 			TestUtil.saveToDialog(200);
 			PlatformUI
@@ -650,8 +650,7 @@ public class CompareTestUtilities {
 		}
 		tree.setSelection(new StructuredSelection(ComparableProvider
 				.getComparableTreeObject(element)));
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		BaseTest.dispatchEvents();
 	}
 
 	public static void mergeSelection() {
