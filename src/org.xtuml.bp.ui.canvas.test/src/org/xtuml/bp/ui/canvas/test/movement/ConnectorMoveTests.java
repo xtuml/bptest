@@ -293,7 +293,8 @@ public class ConnectorMoveTests extends CanvasTest {
 			}
 		}
 		moveConnector(testPart, segmentOver);
-		BaseTest.dispatchEvents(50);
+		BaseTest.dispatchEvents();
+		BaseTest.dispatchEvents();
 	}
 
 	private void moveConnector(ConnectorEditPart testPart, int segmentOver) {
@@ -420,11 +421,12 @@ public class ConnectorMoveTests extends CanvasTest {
 			ZoomManager zoomManager = (ZoomManager) getActiveEditor()
 					.getAdapter(ZoomManager.class);
 			getActiveEditor().zoomAll();
-			//zoomManager.setZoom(1);
-			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-				;
+			BaseTest.dispatchEvents();
+
 			diagramZoomed = true;
 		}
+		BaseTest.dispatchEvents();
+
 	}
 
 	/**
