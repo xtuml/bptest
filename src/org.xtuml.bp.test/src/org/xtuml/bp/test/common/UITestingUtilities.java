@@ -291,9 +291,9 @@ public class UITestingUtilities {
 			CanvasTestUtils.doMouseMove(location.x, location.y);
 			CanvasTestUtils.doMouseContextPress(location.x, location.y);
 			canvaspasteaction.run();
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			BaseTest.dispatchEvents();
 		});
-		BaseTest.dispatchEvents(0);
+		BaseTest.dispatchEvents();
 	}
 
 	public static GraphicalEditor getGraphicalEditorFor(final NonRootModelElement columnInstance, boolean isRootOf) {
@@ -753,7 +753,7 @@ public class UITestingUtilities {
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		if(obj instanceof GraphicalEditPart) {
 			viewer.appendSelection((EditPart) obj);
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			BaseTest.dispatchEvents();
 			return editor;
 		}
 		Model_c model = (Model_c) viewer.getContents().getModel();
@@ -787,7 +787,7 @@ public class UITestingUtilities {
 			gObject = Connector_c.getOneGD_CONOnR2(element);
 		GraphicalEditPart part = (GraphicalEditPart) viewer.getEditPartRegistry().get(gObject);
 		viewer.appendSelection(part);
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 		return editor;
 	}
 
@@ -795,14 +795,14 @@ public class UITestingUtilities {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		viewer.deselectAll();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 	}
 
 	public static void revealElementInGraphicalEditor(Shape_c shape) {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		viewer.reveal(getEditorPartFor(shape));
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 	}
 
 	public static EditPart getEditorPartFor(Object element) {
@@ -839,7 +839,7 @@ public class UITestingUtilities {
 		GraphicalEditor editor = (GraphicalEditor) getActiveEditor();
 		GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
 		viewer.deselect(part);
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 	}
 
 	public static void pasteClipboardContentsInExplorer(Object destination) {
@@ -1067,7 +1067,7 @@ public class UITestingUtilities {
 				.redraw();
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()
 				.update();
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 	}
 	
 }
