@@ -245,6 +245,7 @@ import org.xtuml.bp.core.ui.UnformalizeOnR_ASSRAction;
 import org.xtuml.bp.core.ui.UnformalizeOnR_RELAction;
 import org.xtuml.bp.core.ui.UnformalizeOnR_SUBAction;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.ExplorerUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
