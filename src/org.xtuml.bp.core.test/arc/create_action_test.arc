@@ -1104,6 +1104,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.TestingUtilities;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
