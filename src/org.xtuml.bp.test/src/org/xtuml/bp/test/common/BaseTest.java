@@ -211,6 +211,8 @@ public class BaseTest extends TestCase {
 
 	private static DeadlockDetector deadlockDetector = null;
 	
+	private static boolean IgnoreLogErrorsAtTearDown = false;
+	
 	/**
 	 * Timeout rules are introduced to prevent tests from hanging.
 	 * 
@@ -416,9 +418,17 @@ public class BaseTest extends TestCase {
 			}
 		});
 		String result = getLogViewResult("");
-		if(!result.equals("")) {
-			fail(result);
-		}		
+		if (IgnoreLogErrorsAtTearDown) {
+			BaseTest.clearErrorLogView();
+			BaseTest.dispatchEvents();
+			
+			// reset the flag
+			BaseTest.IgnoreLogErrorsAtTearDown = false;
+		} else {
+			if(!result.equals("")) {
+				fail(result);
+			}		
+		}
 	} 
 	
 	public static String getLogViewResult(String prepend) {
@@ -535,6 +545,10 @@ public class BaseTest extends TestCase {
 	}
 
 	public static void clearErrorLogView() {
+		BaseTest.clearErrorLogView(false);
+	}
+	
+	public static void clearErrorLogView(boolean alsoIgnoreAllLogErrorsOnTearDown) {
 		// in a few cases with eclipse 4.x we must
 		// close the workbench, example being TigerNatureWorkspaceSetup
 		// in that case the log view is not available so skip
@@ -567,6 +581,7 @@ public class BaseTest extends TestCase {
 			  }
 			}
 		}		
+		BaseTest.IgnoreLogErrorsAtTearDown = alsoIgnoreAllLogErrorsOnTearDown;
 	}
 	
 	public void deleteErrorLogAndLogViewEntries() {

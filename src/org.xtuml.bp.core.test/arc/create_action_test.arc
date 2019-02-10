@@ -139,6 +139,8 @@
     .assign attr_result = true
    .elif(kl == "SQ_PP") 
      .assign attr_result = true
+   .elif(kl == "D_DEPL") 
+     .assign attr_result = true
   .end if
 .end function
 .//
@@ -1053,6 +1055,8 @@ ${cdat.body}\
      .assign attr_result = true
     .elif(kl == "UC_UCC") 
      .assign attr_result = true 
+   .elif(kl == "D_DEPL") 
+     .assign attr_result = true
   .end if
 .end function
 .//

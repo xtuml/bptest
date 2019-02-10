@@ -101,6 +101,7 @@ public class NavigationTest extends BaseTest {
 		assertNotNull(attr1);
 		assertNotNull(attr2);
 		checkForwardNavigation(attr1, attr2, DescriptionEditorInput.EDITOR_ID);
+		BaseTest.clearErrorLogView(true);
 	}
 	
 	@Test

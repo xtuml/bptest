@@ -75,8 +75,10 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 		String result = getLogViewResult("");
 		if(!result.equals("")) {
 			fail(".log file is not empty after import.");
-		}		
-		
+		}				
+		BaseTest.dispatchEvents();
+		BaseTest.dispatchEvents();
+	
 		final IProject projectHandle = ResourcesPlugin.getWorkspace().getRoot().getProject(
 				"watchGenerics");
 		projectHandle.close(new NullProgressMonitor());
@@ -141,6 +143,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
                        
         }
 
+        BaseTest.clearErrorLogView(true);
 	}
 
 }

@@ -89,13 +89,13 @@ public class PkgCMModifyRelationTestGenerics extends ModifyRelationTest {
     @Test
 	public void testModifyDomainPackageWithChildren() throws Exception {    	
         performModifyComponentGenerics("Package", "MultiLevelModel", "Package", false, true, 5, new String[] {"External Entities", "SS1"});
-        clearErrorLogView();
+        clearErrorLogView(true);
     }
 
     @Test
 	public void testModifyDatatypePackageWithChildren() throws Exception {
         performModifyComponentGenerics("Package", "Datatypes", "Package",false,true, 4, new String[] {"SubDataTypes", "SubDataTypes2"});
-        clearErrorLogView();
+        clearErrorLogView(true);
     }
     
 }
