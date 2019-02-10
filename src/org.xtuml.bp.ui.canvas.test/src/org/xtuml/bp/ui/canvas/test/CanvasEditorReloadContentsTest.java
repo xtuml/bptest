@@ -201,6 +201,7 @@ public class CanvasEditorReloadContentsTest extends CanvasTest
     	InstanceStateMachine_c uut = InstanceStateMachine_c.getOneSM_ISMOnR518(mc);
     	TestCase.assertNotNull(uut);
     	CanvasTestUtils.openCanvasEditor(uut);
+    	BaseTest.dispatchEvents(0);
     	GraphicalEditor editor = CanvasTestUtils.getCanvasEditor("Disk");
 
     	BaseTest.dispatchEvents(0);

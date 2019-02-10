@@ -1331,6 +1331,10 @@ public class BaseTest extends TestCase {
 	public static final String CLI_TEST_RUN_KEY = "CLI_TEST_RUN";
 	
 	public static void compareAndOutputResults(String fileName) throws Exception{
+		compareAndOutputResults(fileName, false);
+	}
+
+	public static void compareAndOutputResults(String fileName, boolean compareSizeOnly) throws Exception{
 		if (doCreateResults){
 			writeResults(fileName);
 			resultLogger.clearLog();
@@ -1338,14 +1342,14 @@ public class BaseTest extends TestCase {
 		}
 		String[] log_output = resultLogger.getLogContents();
 		resultLogger.clearLog();
-		compareAndOutputResults(fileName, log_output);
+		compareAndOutputResults(fileName, log_output, compareSizeOnly);
 	}
 	
 	public static void clearResultLogger() {
 		resultLogger.clearLog();
 	}
 	
-	public static void compareAndOutputResults(String fileName, String[] log_output) throws Exception{
+	public static void compareAndOutputResults(String fileName, String[] log_output, boolean sizeOnly) throws Exception{
 		
 		//Here get the contents from the file and compare with the contents of 
 		//resultLogger.getLogContents()
@@ -1376,7 +1380,11 @@ public class BaseTest extends TestCase {
 		
 		String originalResult = buffer.toString();
 		
-		assertEquals(expectedResult, originalResult);
+		if (sizeOnly) {
+			assertEquals(expectedResult.length(), originalResult.length());
+		} else {
+			assertEquals(expectedResult, originalResult);
+		}
 	}
 	
 	private static void writeResults(String fileName) throws Exception{

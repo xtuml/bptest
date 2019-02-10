@@ -68,7 +68,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 		WorkspaceUtil.setAutobuilding(false);
 		
 		// Load from git
-		this.loadProject("watchGenerics");
+		loadProject("watchGenerics");
 		
 		BaseTest.dispatchEvents(0); 
 
@@ -134,6 +134,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 			Platform.getLogFileLocation().toFile().delete();
 		}
 		end see dts0100753682 */
+		BaseTest.dispatchEvents();
 		
         // if this is an actual test run
         if (!generateResults) {
@@ -142,6 +143,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
                 expectedResultsPath, exportPath);
                        
         }
+		BaseTest.dispatchEvents();
 
         BaseTest.clearErrorLogView(true);
 	}
