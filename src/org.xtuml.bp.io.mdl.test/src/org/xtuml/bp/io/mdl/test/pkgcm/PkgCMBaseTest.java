@@ -197,7 +197,6 @@ public class PkgCMBaseTest extends CanvasTest {
         File in_fh = in_path.toFile();
         if ( in_fh.exists() )
         { 
-        	String failure = super.getLogViewResult(getName());
             File newFile = in_path.removeLastSegments(1).append(getName()+".log").toFile();
             in_fh.renameTo(newFile);
         }

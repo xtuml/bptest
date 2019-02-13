@@ -407,33 +407,39 @@ public class BaseTest extends TestCase {
 	}
 	
 
-	public static void staticTearDown() throws Exception {
-		BaseTest.dispatchEvents();
-
-		// clear the UI events
-		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-			
-			@Override
-			public void run() {
-				// nothing to do, just making sure the UI
-				// is clear of events
-			}
-		});
-		String result = getLogViewResult("");
-		if (IgnoreLogErrorsAtTearDown) {
-			BaseTest.clearErrorLogView();
+	public static void staticTearDown() {
+		String failureMessage = "";
+		try {
 			BaseTest.dispatchEvents();
-			
-			// reset the flag
-			BaseTest.IgnoreLogErrorsAtTearDown = false;
-		} else {
-			if(!result.equals("")) {
-				fail(result);
-			}		
+	
+			// clear the UI events
+			PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+				
+				@Override
+				public void run() {
+					// nothing to do, just making sure the UI
+					// is clear of events
+				}
+			});
+			if (IgnoreLogErrorsAtTearDown) {
+				BaseTest.clearErrorLogView();
+				BaseTest.dispatchEvents();
+				
+			} else {
+				failureMessage = getLogViewResult("");
+			}
+		} catch (Throwable thr) {
+			// If anything in this shutdown caused an exception, just ignore it.
+		} finally {
+			// reset the flag for the next run
+			BaseTest.IgnoreLogErrorsAtTearDown = false;			
+		}
+		if (!failureMessage.isEmpty()) {
+			fail(failureMessage);
 		}
 	} 
 	
-	public static String getLogViewResult(String prepend) {
+	private static String getLogViewResult(String prepend) {
 		// verify that the log file is empty
 		// if not fail the current test
 		// in a few cases with eclipse 4.x we must
@@ -442,8 +448,7 @@ public class BaseTest extends TestCase {
 		// checking for it if we get a null pointer due to
 		// the workbench being closed
 		LogView logView = null;
-		try {
-			logView = (LogView) PlatformUI.getWorkbench()
+		logView = (LogView) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().findView(
 						"org.eclipse.pde.runtime.LogView");
 		if(logView == null) {
@@ -456,9 +461,7 @@ public class BaseTest extends TestCase {
 				return e.getMessage();
 			}
 		}
-		} catch (NullPointerException npe) {
-			// no need to log this or fail the test
-		}
+
 		String msg = "";
 		File in_fh = Platform.getLogFileLocation().toFile();
 		if(logView != null) {
