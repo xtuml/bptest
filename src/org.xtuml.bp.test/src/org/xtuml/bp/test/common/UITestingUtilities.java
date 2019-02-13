@@ -628,6 +628,11 @@ public class UITestingUtilities {
 			ce.getCanvas().notifyListeners(SWT.MouseDoubleClick, me);
 		}
 		BaseTest.dispatchEvents();
+		// allow any transaction to complete if started
+		// this will allow graphical symbols to be fully
+		// configured before a test proceeds
+		BaseTest.waitForTransaction();
+		BaseTest.dispatchEvents();
 	}	
 
     /**

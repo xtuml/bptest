@@ -113,11 +113,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
         Selection.getInstance().clear(); 
         Selection.getInstance().addToSelection(cp);
 
-		result = getLogViewResult("");
-		if(!result.equals("")) {
-			fail(".log file is not empty before the model export.");
-		}		
-
+        BaseTest.clearErrorLogView();
 		
 		// export with persisted OAL	        
         TestingUtilities.exportModelUsingWizard(m_workspace_path + (generateResults ? 
