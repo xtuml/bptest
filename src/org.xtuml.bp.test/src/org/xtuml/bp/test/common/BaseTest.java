@@ -35,6 +35,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -135,6 +136,7 @@ import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.ui.explorer.decorators.SynchronizationDecorator;
 import org.xtuml.bp.ui.text.placeholder.PlaceHolderManager;
 
+import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
 
@@ -1733,5 +1735,30 @@ public class BaseTest extends TestCase {
 		while(wait) {
 			PlatformUI.getWorkbench().getDisplay().readAndDispatch();
 		}
+	}
+
+	/**
+	 * See if persisted xtuml matches. This routine sorts the strings if needed
+	 * to account for instances not being persisted in the same order.
+	 * 
+	 * @param errMsg
+	 * @param actualResults
+	 * @param expectedResults
+	 * @throws AssertionFailedError
+	 */
+	public static void compareXTUMLStringsSortedIfNeeded(String errMsg, String actualResults, String expectedResults) throws AssertionFailedError {
+    	boolean resultsMatch = expectedResults.equals(actualResults);
+    	if (!resultsMatch) {
+    		boolean resultsSameLength = (expectedResults.length() == actualResults.length());
+    		if (resultsSameLength) {
+    			char[] exp = expectedResults.toCharArray();
+    			char[] act = actualResults.toCharArray();
+            	Arrays.sort(exp);
+            	Arrays.sort(act);
+            	String sortedExp = new String(exp);
+            	String sortedAct = new String(act);
+    			assertEquals(errMsg, sortedExp, sortedAct);
+    		}
+    	}
 	}
 }
