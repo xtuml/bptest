@@ -1344,14 +1344,14 @@ public class BaseTest extends TestCase {
 		}
 		String[] log_output = resultLogger.getLogContents();
 		resultLogger.clearLog();
-		compareAndOutputResults(fileName, log_output, compareSizeOnly);
+		compareAndOutputResults(fileName, log_output);
 	}
 	
 	public static void clearResultLogger() {
 		resultLogger.clearLog();
 	}
 	
-	public static void compareAndOutputResults(String fileName, String[] log_output, boolean sizeOnly) throws Exception{
+	public static void compareAndOutputResults(String fileName, String[] log_output) throws Exception{
 		
 		//Here get the contents from the file and compare with the contents of 
 		//resultLogger.getLogContents()
@@ -1382,11 +1382,7 @@ public class BaseTest extends TestCase {
 		
 		String originalResult = buffer.toString();
 		
-		if (sizeOnly) {
-			assertEquals(expectedResult.length(), originalResult.length());
-		} else {
-			assertEquals(expectedResult, originalResult);
-		}
+		BaseTest.compareXTUMLStringsSortedIfNeeded("Comparing actual results with expected result found in File name: " + fileName + "\n", originalResult, expectedResult);
 	}
 	
 	private static void writeResults(String fileName) throws Exception{
@@ -1757,7 +1753,15 @@ public class BaseTest extends TestCase {
             	Arrays.sort(act);
             	String sortedExp = new String(exp);
             	String sortedAct = new String(act);
-    			assertEquals(errMsg, sortedExp, sortedAct);
+            	if (sortedExp.equals(sortedAct)) {
+            		System.err.println("Warning! Had to sort files to make them match.");
+            	} else {
+            		// Show the unsorted buffers in the failure message. We still want to 
+            		// store the unsorted version as the expected result.
+            		// Note that we also muse use this assertEquals here because error handling may 
+            		// take advantage of the files to the user see the actual and expected results.
+            		assertEquals(errMsg, expectedResults, actualResults);
+            	}
     		}
     	}
 	}
