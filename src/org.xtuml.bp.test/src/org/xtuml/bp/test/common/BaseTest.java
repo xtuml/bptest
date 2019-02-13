@@ -1756,16 +1756,18 @@ public class BaseTest extends TestCase {
             	Arrays.sort(act);
             	String sortedExp = new String(exp);
             	String sortedAct = new String(act);
-            	if (sortedExp.equals(sortedAct)) {
+            	resultsMatch = sortedExp.equals(sortedAct);
+            	if (resultsMatch) {
             		System.err.println("Warning! Had to sort files to make them match.");
-            	} else {
-            		// Show the unsorted buffers in the failure message. We still want to 
-            		// store the unsorted version as the expected result.
-            		// Note that we also muse use this assertEquals here because error handling may 
-            		// take advantage of the files to the user see the actual and expected results.
-            		assertEquals(errMsg, expectedResults, actualResults);
-            	}
-    		}
+            	} 
+    		}     		
+    	}
+    	if (!resultsMatch) {
+    		// Show the unsorted buffers in the failure message. We still want to 
+    		// store the unsorted version as the expected result.
+    		// Note that we also muse use this assertEquals here because error handling may 
+    		// take advantage of the files to the user see the actual and expected results.
+    		assertEquals(errMsg, expectedResults, actualResults);    		
     	}
 	}
 }
