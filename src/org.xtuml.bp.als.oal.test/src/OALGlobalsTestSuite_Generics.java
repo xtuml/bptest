@@ -147,7 +147,7 @@ public class OALGlobalsTestSuite_Generics extends TestSuite {
 		/**
 		 * This thread runs to prevent deadlocks 
 		 */
-		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler("OALGlobalsTestSuite_Generics", null, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
+		DeadlockDetector deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler("OALGlobalsTestSuite_Generics", null, Thread.currentThread()), DeadlockJUnitHandler.DeadLockTimeout, TimeUnit.SECONDS);
 		deadlockDetector.start();		
 		
 		return new OALGlobalsTestSuite_Generics();

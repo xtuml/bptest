@@ -244,7 +244,7 @@ public class BaseTest extends TestCase {
 			deadlockDetector.stop();
 			deadlockDetector = null;
 		}
-		deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(projectName, this, Thread.currentThread()), DeadlockJUnitHandler.MaxTestTimeAllowedInSeconds, TimeUnit.SECONDS);
+		deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(projectName, this, Thread.currentThread()), DeadlockJUnitHandler.DeadLockTimeout, TimeUnit.SECONDS);
 		deadlockDetector.start();		
 		
 		final IIntroManager introManager = PlatformUI.getWorkbench().getIntroManager();

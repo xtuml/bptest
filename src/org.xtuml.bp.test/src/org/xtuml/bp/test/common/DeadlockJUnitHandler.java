@@ -33,7 +33,7 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 	private String testName;
 	private Thread testThread = null;
 	private Instant start = null;
-	public static final long MaxTestTimeAllowedInSeconds = 20 * 60; // 20 minutes
+	public static final long DeadLockTimeout = 20 * 60; // 20 minutes
 	
 	public DeadlockJUnitHandler(String pTestName, BaseTest baseTest, Thread unitTestThread) {
 		this.testName = pTestName;
@@ -95,6 +95,7 @@ public class DeadlockJUnitHandler implements DeadlockHandler {
 		StringBuffer failureMessage = new StringBuffer();			
 		Set<Thread> threadsToInterrupt = new HashSet<Thread>();
 		boolean maxTestTimeExceeded = false;
+		final long MaxTestTimeAllowedInSeconds = 60 * 60; // 60 minutes
 		
 		long gap = ChronoUnit.MILLIS.between(start, Instant.now());
 		if (gap >= (MaxTestTimeAllowedInSeconds * 1000)) {
