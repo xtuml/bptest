@@ -29,6 +29,7 @@ import junit.framework.TestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ExplorerGlobalsTest.class,
+	BuildProjectMenuTest.class,
 	ExplorerTest.class,
 	ProjectManipulationTests.class,
 	I634ExplorerEmptySelectionTest.class,
