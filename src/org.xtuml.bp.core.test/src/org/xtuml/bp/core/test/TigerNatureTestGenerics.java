@@ -101,7 +101,6 @@ public class TigerNatureTestGenerics extends CanvasTest {
 	public static IProject createXtUMLProject(String name) {
 		NewSystemWizard nsw = new NewSystemWizard();
 		nsw.init(PlatformUI.getWorkbench(), null);
-		nsw.setIsCreatedByUnitTest();
 		WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getShell(), nsw);
 		WizardNewProjectCreationPage wnpcp = (WizardNewProjectCreationPage) nsw
@@ -274,7 +273,6 @@ public class TigerNatureTestGenerics extends CanvasTest {
 		}
 		NewSystemWizard nsw = new NewSystemWizard();
 		nsw.init(PlatformUI.getWorkbench(), null);
-		nsw.setIsCreatedByUnitTest();
 		WizardNewProjectCreationPage wnpcp = (WizardNewProjectCreationPage) nsw
 				.getStartingPage();
 		wnpcp.setInitialProjectName("Test Project Defaults");
