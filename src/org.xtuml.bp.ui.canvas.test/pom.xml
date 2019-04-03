@@ -74,7 +74,9 @@
 				<version>${tycho-version}</version>
 				<configuration>		
 					<includes>
+<!--  										
 						<include>**/CanvasTestFull.java</include>
+-->						
 					</includes>
 				</configuration>
 			</plugin>
