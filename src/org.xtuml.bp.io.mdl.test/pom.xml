@@ -22,9 +22,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<includes>
-<!--  					
 						<include>**/IOTestFull.java</include>
--->						
 					</includes>
 				</configuration>
 			</plugin>
