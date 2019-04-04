@@ -111,7 +111,7 @@ public class GitUtil {
 						+ repoItem + ").", repoString);
 		
 	UITestingUtilities.expandTree(repoItem, 3);
-	PlatformUI.getWorkbench().getDisplay().readAndDispatch();
+	BaseTest.dispatchEvents();
 		
 	TreeItem projectItem = UITestingUtilities.findItemInWorkingTree(repoItem, projectName);				
 
@@ -207,7 +207,7 @@ public class GitUtil {
 		// process any pending events
 		IViewPart gitRepositoryView = showGitRepositoriesView();
 		gitRepositoryView.getViewSite().getShell().update();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		view.getCommonViewer().refresh();
 		BaseTest.dispatchEvents();
@@ -267,7 +267,7 @@ public class GitUtil {
 
 	public static void switchToBranch(String branch, String repositoryName) {
 		IViewPart gitRepositoryView = showGitRepositoriesView();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		Control control = view.getCommonViewer().getControl();
 		Tree gitRepositoryTree = (Tree) control;
@@ -289,7 +289,7 @@ public class GitUtil {
 		// assure that there are no left over threads
 		// waiting to close a dialog
 		while(!TestUtil.shellProcessorThread.isEmpty()) {
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			BaseTest.dispatchEvents();
 		}
 		BaseTest.dispatchEvents();
 	}

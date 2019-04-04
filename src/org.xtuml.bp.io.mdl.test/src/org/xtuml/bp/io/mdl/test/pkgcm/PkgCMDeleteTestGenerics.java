@@ -307,6 +307,7 @@ public class PkgCMDeleteTestGenerics extends DeleteTest {
     
     @Test
 	public void testDeleteISM_ThruRN_NoEditor() throws Exception{
+        reCopy = true;
         performDeleteComponentThruRN("InstanceStateMachine","X",EditorTestUtilities.EDITOR_TYPE_NONE, 2);
     }
     @Test

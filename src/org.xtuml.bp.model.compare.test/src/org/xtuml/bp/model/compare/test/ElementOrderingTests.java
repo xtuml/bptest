@@ -110,9 +110,11 @@ public class ElementOrderingTests extends BaseTest {
 	
 	@Override
 	@After
-	public void tearDown() {
+	public void tearDown() throws Exception {
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.closeAllEditors(false);
+		clearErrorLogView();
+		super.tearDown();
 	}
 	
 	@Test

@@ -245,6 +245,7 @@ import org.xtuml.bp.core.ui.UnformalizeOnR_ASSRAction;
 import org.xtuml.bp.core.ui.UnformalizeOnR_RELAction;
 import org.xtuml.bp.core.ui.UnformalizeOnR_SUBAction;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.ExplorerUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -287,21 +288,22 @@ public class FormalizeUnformalizeTestGenerics extends CanvasTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		Display d = Display.getCurrent();
-		while (d.readAndDispatch());
+		BaseTest.dispatchEvents();
 
 		if (!initialized) {
 			ensureAvailableAndLoaded("org.xtuml.bp.core.test",
 					"FormalizeUnformalizeTests", false, false, "Package");
 			initialized = true;
 			m_bp_tree.expandAll();
+			BaseTest.dispatchEvents();
 		}
-		while (d.readAndDispatch());
+		BaseTest.dispatchEvents();
 	
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		clearErrorLogView();
 		super.tearDown();
 	}
 	public class Package_by_name_c implements ClassQueryInterface_c {
@@ -646,18 +648,18 @@ ${ft.body}\
                 });
         String itemName = attr.getName();
 
-        while (Display.getCurrent().readAndDispatch())
-            ;
+        BaseTest.dispatchEvents();
 
         ExplorerUtil.getTreeViewer().refresh();
+        BaseTest.dispatchEvents();
         TreeItem systemItem = ExplorerUtil.findItem(m_sys.getName());
         ExplorerUtil.getTreeViewer().expandToLevel(5);
 
         TreeItem attrItem = systemItem.getItems()[0].getItems()[2].getItems()[2];
         ExplorerUtil.getTreeViewer().setSelection(
                 new StructuredSelection(new Object[] { attrItem.getData() }));
-        while (Display.getCurrent().readAndDispatch())
-            ;
+        BaseTest.dispatchEvents();
+        
         // Warning message stating that "Operation
         // not allowed. The attribute is being used
         // to formalize one or more associations."
@@ -665,6 +667,7 @@ ${ft.body}\
         TestUtil.okToDialog(300);
         DeleteAction del = new DeleteAction(null);
         del.run();
+        BaseTest.dispatchEvents();
 
         // C2.C1_ID is not disposed
 
@@ -675,13 +678,14 @@ ${ft.body}\
         TreeItem attrItem2 = systemItem.getItems()[0].getItems()[2].getItems()[2];
         ExplorerUtil.getTreeViewer().setSelection(
                 new StructuredSelection(new Object[] { attrItem.getData() }));
-        while (Display.getCurrent().readAndDispatch())
-            ;
+        BaseTest.dispatchEvents();
+        
         assertNotNull(attrItem2);
         assertTrue(((Attribute_c) attrItem2.getData()).getName().equals(
                 attr.getName()));
         try {
             project.delete(true, null);
+            BaseTest.dispatchEvents();
         } catch (Exception e) {
             e.printStackTrace();
         }

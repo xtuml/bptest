@@ -196,6 +196,7 @@ public class ModifyNonFullyLoadedModelTestsGenerics extends CanvasTest
             });
 
         CanvasUtilities.openCanvasEditor(otherSS);
+        BaseTest.dispatchEvents();
         GraphicalEditor ce = ((ModelEditor) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();

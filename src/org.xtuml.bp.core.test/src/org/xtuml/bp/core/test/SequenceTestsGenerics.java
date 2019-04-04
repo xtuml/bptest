@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.AsynchronousMessage_c;
@@ -383,6 +384,7 @@ public class SequenceTestsGenerics extends CanvasTest {
 	/**
 	 * Tests that an imported class can be formalized with a nested class
 	 */
+	@Ignore
 	@Test
 	public void testFormalizeFormalizedImportedClassWithClass() {
 		test_id = "8";
