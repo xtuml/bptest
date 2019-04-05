@@ -27,7 +27,7 @@ import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.Selection;
-import org.xtuml.bp.mc.masl.MaslExportBuilder;
+import org.xtuml.bp.mc.masl.MaslExportNature;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
@@ -106,7 +106,7 @@ public class DeploymentExportTests extends BaseTest {
         deleteRecursive(maslDir);
 
         // trigger the export action
-        project.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, MaslExportBuilder.BUILDER_ID, null, new NullProgressMonitor());
+        project.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, MaslExportNature.BUILDER_ID, null, new NullProgressMonitor());
 
         // assert that the output files exist
         assertTrue("'masl' directory does not exist", maslDir.exists());
