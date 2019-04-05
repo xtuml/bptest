@@ -141,6 +141,7 @@ public class WelcomePageTest extends TestCase {
 		props.put("SingleFileModel", "false");
 		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
+		BaseTest.dispatchEvents();
 		
 		SystemModel_c system = SystemModel_c.SystemModelInstance(
 				Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {

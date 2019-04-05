@@ -149,7 +149,9 @@ public class CanvasEditorReloadContentsTest extends CanvasTest
         // restore from local history
         IFile file = ((NonRootModelElement) Model_c.getOneGD_MDOnR1(element).getRepresents()).getFile();
         IFileState[] history = file.getHistory(new NullProgressMonitor());
-        file.setContents(history[0], IFile.FORCE, new NullProgressMonitor());
+        if (history.length > 0) {
+        	file.setContents(history[0], IFile.FORCE, new NullProgressMonitor());
+        }
         
         // find the same subsystem's shape (once again) that
         // is presumably in the editor's new canvas (as the shape
@@ -199,6 +201,7 @@ public class CanvasEditorReloadContentsTest extends CanvasTest
     	InstanceStateMachine_c uut = InstanceStateMachine_c.getOneSM_ISMOnR518(mc);
     	TestCase.assertNotNull(uut);
     	CanvasTestUtils.openCanvasEditor(uut);
+    	BaseTest.dispatchEvents(0);
     	GraphicalEditor editor = CanvasTestUtils.getCanvasEditor("Disk");
 
     	BaseTest.dispatchEvents(0);
@@ -211,8 +214,7 @@ public class CanvasEditorReloadContentsTest extends CanvasTest
         IFileState[] fh = state.getFile().getHistory(null);
         state.getFile().setContents(fh[0], true, true, null);
 
-        Display d = Display.getDefault();
-        while (d.readAndDispatch()) ;
+    	BaseTest.dispatchEvents(0);
         
         // verify that the canvas editor is still open
     	GraphicalEditor afterEditor = CanvasTestUtils.getCanvasEditor("Disk");
@@ -228,6 +230,8 @@ public class CanvasEditorReloadContentsTest extends CanvasTest
      */
 	private Point moveShapeInEditor(GraphicalEditor editor, NonRootModelElement me) {
 		editor.zoomAll();
+    	BaseTest.dispatchEvents(0);
+
 		Ooaofgraphics graphicsRoot = Ooaofgraphics.getInstance(modelRoot.getId());
         GraphicalElement_c element = 
         	CanvasTestUtils.getGraphicalElement(graphicsRoot, me);
@@ -245,6 +249,8 @@ public class CanvasEditorReloadContentsTest extends CanvasTest
             mouse.x + dx, mouse.y + dy, "MouseMove");
         CanvasTestUtils.createMouseEvent(
             mouse.x + dx, mouse.y + dy, "MouseUp");
+    	BaseTest.dispatchEvents(0);
+
         Point draggedCenter = CanvasTestUtils.getShapeCenter(shape);
         assertTrue("Drag had no effect", !draggedCenter.equals(oldCenter));
         return oldCenter;

@@ -911,7 +911,9 @@ public class TestUtil {
 
     public static FailableRunnable chooseItemInDialog(final int sleep, final FailableRunnable waitRunnable,
             final String item, final boolean locateOnly, final boolean testNonExistence, Shell[] existingShells) {
-        return chooseItemInDialog(sleep, waitRunnable, item, locateOnly, testNonExistence, existingShells);
+    	String[] items = new String[1];
+    	items[0] = item;
+        return chooseItemInDialog(sleep, waitRunnable, items, locateOnly, testNonExistence, existingShells);
     }
 
     static int foundItemInDialog = 0;

@@ -30,6 +30,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Ooaofooa;
@@ -74,6 +75,7 @@ public class DomainDeleteTestI744 extends UITextTest{
     	loadProject(testModelName);
     }
     
+    @Ignore
     @Test
 	public void testPackageDelete() throws Exception {
         Ooaofooa.setInUnitTest(true);

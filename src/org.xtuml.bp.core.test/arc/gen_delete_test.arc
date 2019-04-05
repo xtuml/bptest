@@ -297,6 +297,7 @@ import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.DeleteAction;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Cl_c;
@@ -339,8 +340,7 @@ public class DeleteTestGenerics extends CanvasTest {
 			initialized = true;
 		}
 
-		Display d = Display.getCurrent();
-		while ( d.readAndDispatch() ) ;
+		BaseTest.dispatchEvents();
 	}
 
 	@After

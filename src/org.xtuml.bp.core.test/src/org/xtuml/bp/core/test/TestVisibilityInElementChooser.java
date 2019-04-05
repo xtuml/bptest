@@ -28,6 +28,7 @@ import java.util.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.InteractionParticipant_c;
@@ -53,6 +54,7 @@ public class TestVisibilityInElementChooser extends BaseTest {
         super.setUp();
 	}
 
+	@Ignore
 	@Override
 	protected void initialSetup() throws Exception {
 		// turn off auto build
