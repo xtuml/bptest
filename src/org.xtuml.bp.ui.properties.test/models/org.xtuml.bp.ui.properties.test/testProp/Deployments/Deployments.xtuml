@@ -79,7 +79,8 @@ INSERT INTO D_TSVC
 	3,
 	'',
 	5,
-	0);
+	0,
+  1);
 INSERT INTO D_TSPARM
 	VALUES ("6b0b6ba9-7ed9-4a66-8e3a-aff399b329a7",
 	"2a9dd7ab-dd0f-4b3a-9314-fc9fe4a8bf6e",
@@ -99,7 +100,8 @@ INSERT INTO D_TSVC
 	3,
 	'',
 	5,
-	0);
+	0,
+  1);
 INSERT INTO D_TSPARM
 	VALUES ("5253361b-5f80-452d-b53b-c7692ec405bd",
 	"f3e2b7f1-ce6c-4238-a153-543ba0d5371f",
@@ -119,7 +121,8 @@ INSERT INTO D_TSVC
 	3,
 	'',
 	5,
-	0);
+	0,
+  1);
 INSERT INTO D_TSPARM
 	VALUES ("d767bcb4-7529-47ed-823f-51ff7459599c",
 	"b7425b54-716e-4168-ae62-34f4d0732170",
@@ -139,7 +142,8 @@ INSERT INTO D_TSVC
 	3,
 	'',
 	5,
-	0);
+	0,
+  1);
 INSERT INTO D_TSPARM
 	VALUES ("d4edfece-f0ff-48f3-b73d-6f4818fab6de",
 	"3724fa6f-e98f-4894-a1e3-372ac8707cf3",
@@ -159,7 +163,8 @@ INSERT INTO D_TSVC
 	3,
 	'',
 	5,
-	0);
+	0,
+  1);
 INSERT INTO D_TSPARM
 	VALUES ("91b2c29e-b040-4b74-8a51-b855bc5ab073",
 	"25e9c1af-d68d-4180-9eac-1ddd975f0a4e",

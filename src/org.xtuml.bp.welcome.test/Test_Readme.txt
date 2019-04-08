@@ -25,6 +25,5 @@ To run test:
 - Change workspace data to '${eclipse_home}/bp_tests/welcome'
 - Check 'Clear workspace data before launching'
 - Set VM args to '-DWORKSPACE_PATH=${workspace_loc}/org.xtuml.bp.welcome.test/ -DLOGFILE_PATH=${eclipse_home}/bp_tests/welcome/.metadata/.log'
-- On the Plug-ins tab, make sure the org.xtuml.internal.test plug-in is enabled 
 	
 	

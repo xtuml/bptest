@@ -170,7 +170,7 @@ public class GenericEditorUtil {
 			};
 			try {
 				CorePlugin.getWorkspace().run(r, null);
-                while(Display.getCurrent().readAndDispatch());
+				BaseTest.dispatchEvents();
                 IEditorPart editor= PlatformUI.getWorkbench().getActiveWorkbenchWindow()
                 .getActivePage().getActiveEditor();
                 
@@ -237,7 +237,7 @@ public class GenericEditorUtil {
 			};
 			try {
 				CorePlugin.getWorkspace().run(r, null);
-                while(Display.getCurrent().readAndDispatch());
+				BaseTest.dispatchEvents();
 				IEditorPart editor= PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getActivePage().getActiveEditor();
                 

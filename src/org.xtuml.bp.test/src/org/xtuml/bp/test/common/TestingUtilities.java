@@ -28,6 +28,7 @@ import java.lang.Thread.State;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -891,4 +892,47 @@ public class TestingUtilities {
 		}
 		return g_view;
 	}
-}
+	
+	/**
+	 * Simple deadlock for testing purposes
+	 */
+	public static void intentionalDeadlock() {
+	    final Object lock1 = new Object();
+	    final Object lock2 = new Object();
+	 
+	    Thread thread1 = new Thread(new Runnable() {
+	        @Override public void run() {
+	            synchronized (lock1) {
+	                System.out.println("Thread1 acquired lock1");
+	                try {
+	                    TimeUnit.MILLISECONDS.sleep(50);
+	                } catch (InterruptedException ignore) {}
+	                synchronized (lock2) {
+	                    System.out.println("Thread1 acquired lock2");
+	                }
+	            }
+	        }
+	 
+	    });
+	    thread1.start();
+	 
+	    Thread thread2 = new Thread(new Runnable() {
+	        @Override public void run() {
+	            synchronized (lock2) {
+	                System.out.println("Thread2 acquired lock2");
+	                try {
+	                    TimeUnit.MILLISECONDS.sleep(50);
+	                } catch (InterruptedException ignore) {}
+	                synchronized (lock1) {
+	                    System.out.println("Thread2 acquired lock1");
+	                }
+	            }
+	        }
+	    });
+	    thread2.start();
+
+	    // deadlock here .
+	    try {
+		    thread2.join();
+	    } catch (InterruptedException ignore) {}
+	}}

@@ -32,6 +32,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.Arrays;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -168,8 +169,7 @@ public abstract class CanvasTest extends BaseTest {
 		// check that the actual results match those that are expected
         String actualResults = TestUtil.join(result.transcript);
         try {
-			assertEquals("Actual results differ from those expected, file: \n" + file.getName() + "\n",
-			    expectedResults, actualResults);
+			BaseTest.compareXTUMLStringsSortedIfNeeded("Actual results differ from those expected, file: \n" + file.getName() + "\n", actualResults, expectedResults);
 		} catch (AssertionFailedError e) {
 			writeResults(editor.getModel(), expectedResults, result.transcript, result.image);
 			throw e;

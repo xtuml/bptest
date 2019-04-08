@@ -490,7 +490,7 @@ public class CompareTestUtilities {
 		IEditorPart activeEditor = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 		TestCase.assertTrue("Unable to locate compare editor.", activeEditor instanceof CompareEditor);
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 		Set<Object> keySet = TreeDifferencer.instances.keySet();
 		Object key = null;
 		for(Iterator<Object> iterator = keySet.iterator(); iterator.hasNext();) {
@@ -546,8 +546,10 @@ public class CompareTestUtilities {
 
 	public static void copyAllNonConflictingChangesFromRightToLeft() {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer.getInstance(null);
-		viewer.setCopySelection(false);
-		viewer.copy(false);
+		if (viewer != null) {
+			viewer.setCopySelection(false);
+			viewer.copy(false);
+		}
 		BaseTest.dispatchEvents(0);
 	}
 	
@@ -560,7 +562,7 @@ public class CompareTestUtilities {
 			ModelContentMergeViewer viewer = ModelContentMergeViewer.getInstance(null);
 			viewer.getLeftViewer().refresh();
 			viewer.getRightViewer().refresh();
-			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
+			BaseTest.dispatchEvents();
 				;
 			TestUtil.saveToDialog(200);
 			PlatformUI
@@ -595,16 +597,18 @@ public class CompareTestUtilities {
 	public static List<TreeDifference> getChangesFromLeft(int type, boolean useDirectionMask) {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer
 				.getInstance(null);
-		TreeDifferencer differencer = viewer.getDifferencer();
-		List<TreeDifference> leftDifferences = differencer.getLeftDifferences();
 		List<TreeDifference> differences = new ArrayList<TreeDifference>();
-		for (TreeDifference difference : leftDifferences) {
-			if (useDirectionMask) {
-				if ((difference.getKind() & Differencer.DIRECTION_MASK) == type) {
-					differences.add(difference);
-				} 
-			} else 	if (difference.getKind() == type || type == Differencer.NO_CHANGE) {
-				differences.add(difference);					
+		if (viewer != null) {
+			TreeDifferencer differencer = viewer.getDifferencer();
+			List<TreeDifference> leftDifferences = differencer.getLeftDifferences();
+			for (TreeDifference difference : leftDifferences) {
+				if (useDirectionMask) {
+					if ((difference.getKind() & Differencer.DIRECTION_MASK) == type) {
+						differences.add(difference);
+					} 
+				} else 	if (difference.getKind() == type || type == Differencer.NO_CHANGE) {
+					differences.add(difference);					
+				}
 			}
 		}
 		return differences;
@@ -646,8 +650,7 @@ public class CompareTestUtilities {
 		}
 		tree.setSelection(new StructuredSelection(ComparableProvider
 				.getComparableTreeObject(element)));
-		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-			;
+		BaseTest.dispatchEvents();
 	}
 
 	public static void mergeSelection() {

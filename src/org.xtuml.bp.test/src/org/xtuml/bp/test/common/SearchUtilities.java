@@ -34,7 +34,7 @@ import org.xtuml.bp.ui.search.pages.ModelSearchResultPage;
 public class SearchUtilities {
 
 	public enum ResultType { NAME, KEYLETTERS };
-	private static boolean complete = false;
+	private volatile static boolean complete = false;
 	public static void configureAndRunSearch(final String pattern,
 			final boolean regEx, final boolean caseSensitive,
 			final boolean oal, final boolean descriptions, final boolean names, final int scope,
@@ -98,16 +98,14 @@ public class SearchUtilities {
 						&& scope == ISearchPageContainer.SELECTION_SCOPE) {
 					scopeButtons[i].setSelection(true);
 					scopeButtons[i].notifyListeners(SWT.Selection, new Event());
-					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-						;
+					BaseTest.dispatchEvents();
 					break;
 				}
 				if (scopeButtons[i].getText().equals("Enclosing pro&jects")
 						&& scope == ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
 					scopeButtons[i].setSelection(true);
 					scopeButtons[i].notifyListeners(SWT.Selection, new Event());
-					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-						;
+					BaseTest.dispatchEvents();
 					break;
 				}
 				if (scopeButtons[i].getText().equals("Wor&king set:")
@@ -116,14 +114,12 @@ public class SearchUtilities {
 					scopeButtons[i].notifyListeners(SWT.Selection, new Event());
 					((SearchDialog) data).setSelectedWorkingSets(new IWorkingSet[] {
 							PlatformUI.getWorkbench().getWorkingSetManager().getWorkingSet(workingSet) });
-					while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-						;
+					BaseTest.dispatchEvents();
 					break;
 				}
 			}
 			search.notifyListeners(SWT.Selection, new Event());
-			while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
-				;
+			BaseTest.dispatchEvents();
 			return true;
 		});
 		NewSearchUI.openSearchDialog(PlatformUI.getWorkbench()
@@ -133,12 +129,12 @@ public class SearchUtilities {
 		ISearchQuery[] queries = NewSearchUI.getQueries();
 		for(int i = 0; i < queries.length; i++) {
 			while(NewSearchUI.isQueryRunning(queries[i])) {
-				while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+				BaseTest.dispatchEvents();
 			}
 		}
 		
 		while(!complete)
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			BaseTest.dispatchEvents();
 	}
 
 	protected static Button getButton(Composite composite, String name) {

@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.AsynchronousMessage_c;
@@ -90,6 +91,11 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 /**
  * Contains tests that exercise the functionality of sequence diagrams.
  */
+// NOTE: There is an occasional deadlock in this class. Specifically,
+//       it has been observed in testFormalizeInstanceWithNestedClass,
+//		 but for now we are skipping this test.
+// 		 @see https://support.onefact.net/issues/10345#note-23
+@Ignore
 @RunWith(OrderedRunner.class)
 public class SequenceTestsGenerics extends CanvasTest {
 	private String test_id;

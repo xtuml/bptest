@@ -759,6 +759,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 				nlevt == null);
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -796,6 +798,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -848,6 +852,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -892,6 +898,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -933,6 +941,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 }

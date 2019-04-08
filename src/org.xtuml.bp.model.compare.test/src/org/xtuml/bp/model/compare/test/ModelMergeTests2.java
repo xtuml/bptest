@@ -575,6 +575,7 @@ public class ModelMergeTests2  extends BaseTest {
 					.getOneO_RTIDAOnR111(oref);
 			assertNotNull("Found corruption in the class merge.", rtida);
 		}		
+		BaseTest.dispatchEvents(0);
 	}
 	
 	/**
@@ -604,6 +605,7 @@ public class ModelMergeTests2  extends BaseTest {
 	
 	@Test
 	public void testStateMachineMergeWithPolys() throws Exception {
+		BaseTest.dispatchEvents(0);
 		loadProject("poly");
 		Package_c pkg = Package_c.getOneEP_PKGOnR1405(m_sys, new ClassQueryInterface_c() {
 			
@@ -633,13 +635,18 @@ public class ModelMergeTests2  extends BaseTest {
 				.setValue(
 						BridgePointPreferencesStore.USE_DEFAULT_NAME_FOR_CREATION,
 						true);
+		BaseTest.dispatchEvents(0);
+
 		// create an event on the ism
+		// Note: This looks ood but the following works based on the current selection, and 
+		// since the state machine we want was just selected, it creates the item we need.
 		NewEventOnSM_ISMAction action = new NewEventOnSM_ISMAction();
 		action.run(null);
 		BaseTest.dispatchEvents(0);
 		// compare with local history and merge the removal of the
 		// new event
 		CompareTestUtilities.openCompareEditor(ism.getFile());
+		BaseTest.dispatchEvents(0);
 		CompareTestUtilities.copyAllNonConflictingChangesFromRightToLeft();
 		BaseTest.dispatchEvents(0);
 		List<TreeDifference> incomingChanges = CompareTestUtilities
@@ -662,10 +669,14 @@ public class ModelMergeTests2  extends BaseTest {
 						!poly.isProxy());
 			}
 		}
+		BaseTest.dispatchEvents(0);
+		clearErrorLogView();
 	}
 	
 	@Test
 	public void testTwoWayGraphicalMerginging() throws Exception {
+		BaseTest.clearResultLogger();
+		BaseTest.logFileCheckingEnabled = false;
 		BaseTest.dispatchEvents(0);
 		IProject newProject = TestingUtilities.createProject("TestTwoWayMerge");
 		m_sys = getSystemModel(newProject.getName());

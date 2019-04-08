@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.ModelClass_c;
@@ -36,6 +37,7 @@ import org.xtuml.bp.ui.text.test.UITextTest;
 import org.xtuml.bp.ui.text.test.activity.ActivityEditorInteraction;
 import org.xtuml.bp.ui.text.test.description.DescriptionEditorInteraction;
 
+@Ignore
 @RunWith(OrderedRunner.class)
 public class PlaceholderLifecycleForProjectTest extends UITextTest {
 

@@ -68,15 +68,14 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 		WorkspaceUtil.setAutobuilding(false);
 		
 		// Load from git
-		this.loadProject("watchGenerics");
+		loadProject("watchGenerics");
 		
 		BaseTest.dispatchEvents(0); 
 
-		String result = getLogViewResult("");
-		if(!result.equals("")) {
-			fail(".log file is not empty after import.");
-		}		
-		
+				
+		BaseTest.clearErrorLogView();
+		BaseTest.dispatchEvents();
+	
 		final IProject projectHandle = ResourcesPlugin.getWorkspace().getRoot().getProject(
 				"watchGenerics");
 		projectHandle.close(new NullProgressMonitor());
@@ -111,11 +110,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
         Selection.getInstance().clear(); 
         Selection.getInstance().addToSelection(cp);
 
-		result = getLogViewResult("");
-		if(!result.equals("")) {
-			fail(".log file is not empty before the model export.");
-		}		
-
+        BaseTest.clearErrorLogView();
 		
 		// export with persisted OAL	        
         TestingUtilities.exportModelUsingWizard(m_workspace_path + (generateResults ? 
@@ -132,6 +127,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 			Platform.getLogFileLocation().toFile().delete();
 		}
 		end see dts0100753682 */
+		BaseTest.dispatchEvents();
 		
         // if this is an actual test run
         if (!generateResults) {
@@ -140,7 +136,9 @@ public class StaleProxyExportTestGenerics extends BaseTest {
                 expectedResultsPath, exportPath);
                        
         }
+		BaseTest.dispatchEvents();
 
+        BaseTest.clearErrorLogView(true);
 	}
 
 }

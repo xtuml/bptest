@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.CorePlugin;
@@ -34,6 +35,7 @@ import org.xtuml.bp.ui.text.test.UITextTest;
 import org.xtuml.bp.ui.text.test.activity.ActivityEditorInteraction;
 import org.xtuml.bp.ui.text.test.description.DescriptionEditorInteraction;
 
+@Ignore
 @RunWith(OrderedRunner.class)
 public class PlaceholderLifecyleForDeleteModelElementTest extends UITextTest {
 

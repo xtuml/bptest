@@ -150,9 +150,9 @@ public class ModelMergeTests extends BaseTest {
 	@Override
 	@After
 	public void tearDown() throws Exception {
-		super.tearDown();
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.closeAllEditors(false);
+		super.tearDown();
 	}
 
 	@Test
@@ -420,6 +420,7 @@ public class ModelMergeTests extends BaseTest {
 		// delete test project if no failures/errors
 		// and reset the repository
 		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents(0);
 	}
 
 	@Test
@@ -464,6 +465,7 @@ public class ModelMergeTests extends BaseTest {
 		// delete test project if no failures/errors
 		// and reset the repository
 		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents(0);
 	}
 /**
  * 
@@ -584,13 +586,16 @@ public class ModelMergeTests extends BaseTest {
 		assertTrue(
 				"Did not find a valid number of transitions in the class state machine.",
 				transitions.length == 4);
+		BaseTest.dispatchEvents(0);
 		// delete test project if no failures/errors
 		// and reset the repository
 		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents(0);
 	}
 
 	@Test
 	public void testNoGraphicalDataInCompareEditor() throws CoreException {
+		BaseTest.dispatchEvents(0);		
 		TestingUtilities.createProject("testNoGraphics");
 		m_sys = getSystemModel("testNoGraphics");
 		TestUtil.executeInTransaction(m_sys, "Newpackage", new Object[0]);
@@ -748,6 +753,7 @@ public class ModelMergeTests extends BaseTest {
 			;
 		assertTrue("Not all differences were removed by the copy all button.",
 				viewer.getDifferencer().getLeftDifferences().size() == 0);
+		clearErrorLogView();
 	}
 
 	@Test

@@ -30,6 +30,7 @@ import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.XtUMLNature;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.test.TestUtil;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
 import org.xtuml.bp.welcome.gettingstarted.GettingStartedLiveHelpAction;
@@ -137,6 +138,7 @@ public class WelcomePageTest extends TestCase {
 		props.put("SingleFileModel", "false");
 		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
+		BaseTest.dispatchEvents();
 		
 		SystemModel_c system = SystemModel_c.SystemModelInstance(
 				Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {

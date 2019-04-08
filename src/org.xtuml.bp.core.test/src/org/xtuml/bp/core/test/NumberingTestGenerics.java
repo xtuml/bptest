@@ -17,6 +17,7 @@ package org.xtuml.bp.core.test;
 import java.util.UUID;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Association_c;
@@ -35,6 +36,7 @@ import org.xtuml.bp.test.common.OrderedRunner;
  * Tests the numbering of certain kinds of model elements.
  */
 @RunWith(OrderedRunner.class)
+@Ignore
 public class NumberingTestGenerics extends CoreTest {
 
 	/**

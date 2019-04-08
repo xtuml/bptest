@@ -136,6 +136,7 @@ public class ListenerTest extends CanvasTest {
     validateIgnoreActivityChanges(uut);
     validateIgnoreDataTypePackageChanges(uut);
     validateIgnoreExternalEntityPackageChanges(uut);
+    clearErrorLogView();
   }
   
   @Test
@@ -154,7 +155,7 @@ public class ListenerTest extends CanvasTest {
     validateIgnoreActivityChanges(uut);
     validateIgnoreDataTypePackageChanges(uut);
     validateIgnoreExternalEntityPackageChanges(uut);
-
+    clearErrorLogView();
   }
   
   private void validateIgnoreDataTypePackageChanges( Model_c uut )

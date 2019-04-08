@@ -85,11 +85,6 @@ public class GitUtil {
 	 */
 	public static IProject loadProject(String projectName, String repositoryName) {
 		IProject project = GitUtil.loadProject(projectName, repositoryName, "master");
-		long maxWait = 500;
-		long startTime = System.currentTimeMillis();
-		while(!project.exists() && System.currentTimeMillis() - startTime < maxWait) {
-			BaseTest.dispatchEvents();
-		}
 		return project;
 	}
 
@@ -98,14 +93,28 @@ public class GitUtil {
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		Control control = view.getCommonViewer().getControl();
 		Tree gitRepositoryTree = (Tree) control;
-		String treeItem = repositoryName + " [" + branchName;
-		TreeItem item = UITestingUtilities.findItemInTree(gitRepositoryTree,
-				treeItem);
+		
+		// Note that we are looking in the git view and at the top of the menu is the
+		// repository itself and this is the first thing we find.
+		String repoString = repositoryName + " [" + branchName;
+		TreeItem repoItem = UITestingUtilities.findItemInTree(gitRepositoryTree,
+				repoString);
 		TestCase.assertNotNull(
 				"Could not locate repository in the git repository view ("
-						+ treeItem + ").", item);
+						+ repoItem + ").", repoString);
+		
+	UITestingUtilities.expandTree(repoItem, 3);
+	BaseTest.dispatchEvents();
+		
+	TreeItem projectItem = UITestingUtilities.findItemInWorkingTree(repoItem, projectName);				
+
+		TestCase.assertNotNull(
+				"Could not locate project (" + projectName
+						+ ") under the git repository (" + repoString+ ") in the git repo view.", projectItem);
+		
+				
 		view.getCommonViewer().setSelection(
-				new StructuredSelection(item.getData()));
+				new StructuredSelection(projectItem.getData()));
 		// import projects from repository
 		TestUtil.nextToDialog(200);
 		TestUtil.finishToDialog(1000);
@@ -116,6 +125,13 @@ public class GitUtil {
 		TestCase.assertTrue("Unable to load project from git repository: "
 				+ repositoryName, project.exists());
 		BaseTest.dispatchEvents();
+		
+		long maxWait = 500;
+		long startTime = System.currentTimeMillis();
+		while(!project.exists() && System.currentTimeMillis() - startTime < maxWait) {
+			BaseTest.dispatchEvents();
+		}
+		
 		return project;
 	}
 	
@@ -184,7 +200,7 @@ public class GitUtil {
 		// process any pending events
 		IViewPart gitRepositoryView = showGitRepositoriesView();
 		gitRepositoryView.getViewSite().getShell().update();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		view.getCommonViewer().refresh();
 		BaseTest.dispatchEvents();
@@ -244,7 +260,7 @@ public class GitUtil {
 
 	public static void switchToBranch(String branch, String repositoryName) {
 		IViewPart gitRepositoryView = showGitRepositoriesView();
-		while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+		BaseTest.dispatchEvents();
 		CommonNavigator view = (CommonNavigator) gitRepositoryView;
 		Control control = view.getCommonViewer().getControl();
 		Tree gitRepositoryTree = (Tree) control;
@@ -266,7 +282,7 @@ public class GitUtil {
 		// assure that there are no left over threads
 		// waiting to close a dialog
 		while(!TestUtil.shellProcessorThread.isEmpty()) {
-			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+			BaseTest.dispatchEvents();
 		}
 		BaseTest.dispatchEvents();
 	}
