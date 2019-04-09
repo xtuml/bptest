@@ -672,6 +672,7 @@ public class ModelMergeTests2  extends BaseTest {
 			}
 		}
 		BaseTest.dispatchEvents(0);
+		clearErrorLogView();
 	}
 	
 	@Test

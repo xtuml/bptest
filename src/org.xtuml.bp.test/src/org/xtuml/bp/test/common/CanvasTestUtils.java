@@ -586,7 +586,7 @@ public static void openDiagramEditor(Object uut) {
      */
     public static void matchCanvasSpaceToModelSpace(Model_c canvas)
     {
-    	while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+    	BaseTest.dispatchEvents();
     	GraphicalEditor editor = GraphicalEditor.getEditor(canvas);
     	((FigureCanvas) editor.getCanvas()).getViewport().setVerticalLocation(0);
     	((FigureCanvas) editor.getCanvas()).getViewport().setHorizontalLocation(0);
@@ -595,7 +595,7 @@ public static void openDiagramEditor(Object uut) {
     	diagram.setViewporty(0);
     	ZoomManager zoomManager = (ZoomManager) editor.getAdapter(ZoomManager.class);
     	zoomManager.setZoom(1.0);
-    	while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+    	BaseTest.dispatchEvents();
     }
 
     /**

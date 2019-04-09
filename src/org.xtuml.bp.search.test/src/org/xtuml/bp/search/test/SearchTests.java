@@ -279,6 +279,7 @@ public class SearchTests extends BaseTest {
 	}	
 
 	private void checkCorrectEditorOpens(String expectedTitleText) throws CoreException {
+		BaseTest.dispatchEvents();
         WorkbenchPart editor = SearchUtilities.openFirstMatch();
         if (editor != null) {
         	String title = editor.getPartName();

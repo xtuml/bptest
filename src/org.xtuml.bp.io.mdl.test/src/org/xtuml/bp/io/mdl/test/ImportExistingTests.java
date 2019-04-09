@@ -49,6 +49,7 @@ public class ImportExistingTests extends TestCase {
         verifyProjectCreated( PROJECT_NAME );
         
         ResourcesPlugin.getWorkspace().getRoot().getProject( PROJECT_NAME ).refreshLocal( IResource.DEPTH_INFINITE, null );
+        BaseTest.dispatchEvents();
 
         checkForErrors( PROJECT_NAME );
 
@@ -76,6 +77,7 @@ public class ImportExistingTests extends TestCase {
         ExplorerView view = null;
         try {
             view = (ExplorerView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(BridgePointPerspective.ID_MGC_BP_EXPLORER);
+            BaseTest.dispatchEvents();
         } catch (PartInitException e) {}
         view.getTreeViewer().refresh();
         while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());

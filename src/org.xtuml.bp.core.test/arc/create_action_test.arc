@@ -139,6 +139,8 @@
     .assign attr_result = true
    .elif(kl == "SQ_PP") 
      .assign attr_result = true
+   .elif(kl == "D_DEPL") 
+     .assign attr_result = true
   .end if
 .end function
 .//
@@ -498,7 +500,7 @@
         t2.run();
 
   .if ( action.Key_Lett == "S_SYS" )
-        while (PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        BaseTest.dispatchEvents();
         TestUtil.sleep(500);
         ${ocn.body} [] after = ${ocn.body}.$cr{owner.Name}Instances(mr);
   .else
@@ -1053,6 +1055,8 @@ ${cdat.body}\
      .assign attr_result = true
     .elif(kl == "UC_UCC") 
      .assign attr_result = true 
+   .elif(kl == "D_DEPL") 
+     .assign attr_result = true
   .end if
 .end function
 .//
@@ -1104,6 +1108,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.TestingUtilities;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.core.common.PersistableModelComponent;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
@@ -1157,8 +1162,7 @@ public class ${classname} extends CoreTest
 			initialized = true;
 			m_pmc = m_sys.getPersistableComponent();
 
-			Display d = Display.getDefault();
-			while (d.readAndDispatch());
+            BaseTest.dispatchEvents();
 		}
 
 		m_bp_tree.refresh();
@@ -1182,9 +1186,9 @@ public class ${classname} extends CoreTest
                 m_bp_tree.getTree().setSelection(x_set);
                 RenameAction t2 = (RenameAction)CorePlugin.getRenameAction(m_bp_tree);
                 t2.run();
+                BaseTest.dispatchEvents();
                 t2.getTextEditor().setText(newValue);
                 Event e = new Event();
-                Display d = Display.getDefault();
                 if (useFocusChange) {
                     if (i > 0) {
                       String oldName = x[i-1].getText();
@@ -1202,7 +1206,7 @@ public class ${classname} extends CoreTest
                     e.widget = t2.getTextEditor();
                     t2.getTextEditor().notifyListeners(e.type, e);
                   }
-                while ( d.readAndDispatch() ) ;
+                BaseTest.dispatchEvents();
                 return;
             }
         }
