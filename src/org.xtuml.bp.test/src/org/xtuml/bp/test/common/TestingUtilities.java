@@ -1,11 +1,3 @@
-//=====================================================================
-//
-//File:      $RCSfile: TestingUtilities.java,v $
-//Version:   $Revision: 1.41 $
-//Modified:  $Date: 2013/05/10 05:37:52 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -36,6 +28,7 @@ import java.lang.Thread.State;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -76,7 +69,6 @@ import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class TestingUtilities {
@@ -900,4 +892,47 @@ public class TestingUtilities {
 		}
 		return g_view;
 	}
-}
+	
+	/**
+	 * Simple deadlock for testing purposes
+	 */
+	public static void intentionalDeadlock() {
+	    final Object lock1 = new Object();
+	    final Object lock2 = new Object();
+	 
+	    Thread thread1 = new Thread(new Runnable() {
+	        @Override public void run() {
+	            synchronized (lock1) {
+	                System.out.println("Thread1 acquired lock1");
+	                try {
+	                    TimeUnit.MILLISECONDS.sleep(50);
+	                } catch (InterruptedException ignore) {}
+	                synchronized (lock2) {
+	                    System.out.println("Thread1 acquired lock2");
+	                }
+	            }
+	        }
+	 
+	    });
+	    thread1.start();
+	 
+	    Thread thread2 = new Thread(new Runnable() {
+	        @Override public void run() {
+	            synchronized (lock2) {
+	                System.out.println("Thread2 acquired lock2");
+	                try {
+	                    TimeUnit.MILLISECONDS.sleep(50);
+	                } catch (InterruptedException ignore) {}
+	                synchronized (lock1) {
+	                    System.out.println("Thread2 acquired lock1");
+	                }
+	            }
+	        }
+	    });
+	    thread2.start();
+
+	    // deadlock here .
+	    try {
+		    thread2.join();
+	    } catch (InterruptedException ignore) {}
+	}}

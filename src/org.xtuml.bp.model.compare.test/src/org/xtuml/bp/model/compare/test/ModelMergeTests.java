@@ -28,14 +28,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.navigator.CommonNavigator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -91,15 +86,12 @@ import org.xtuml.bp.test.common.CompareTestUtilities;
 import org.xtuml.bp.test.common.GitUtil;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
-import org.xtuml.bp.test.common.UITestingUtilities;
 import org.xtuml.bp.test.common.ZipUtil;
 import org.xtuml.bp.ui.canvas.Connector_c;
 import org.xtuml.bp.ui.canvas.GraphicalElement_c;
 import org.xtuml.bp.ui.canvas.Model_c;
 import org.xtuml.bp.ui.canvas.Ooaofgraphics;
 import org.xtuml.bp.ui.canvas.Shape_c;
-
-import junit.framework.TestCase;
 
 @RunWith(OrderedRunner.class)
 public class ModelMergeTests extends BaseTest {
@@ -158,9 +150,9 @@ public class ModelMergeTests extends BaseTest {
 	@Override
 	@After
 	public void tearDown() throws Exception {
-		super.tearDown();
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.closeAllEditors(false);
+		super.tearDown();
 	}
 
 	@Test
@@ -428,6 +420,7 @@ public class ModelMergeTests extends BaseTest {
 		// delete test project if no failures/errors
 		// and reset the repository
 		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents(0);
 	}
 
 	@Test
@@ -472,6 +465,7 @@ public class ModelMergeTests extends BaseTest {
 		// delete test project if no failures/errors
 		// and reset the repository
 		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents(0);
 	}
 /**
  * 
@@ -592,13 +586,16 @@ public class ModelMergeTests extends BaseTest {
 		assertTrue(
 				"Did not find a valid number of transitions in the class state machine.",
 				transitions.length == 4);
+		BaseTest.dispatchEvents(0);
 		// delete test project if no failures/errors
 		// and reset the repository
 		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents(0);
 	}
 
 	@Test
 	public void testNoGraphicalDataInCompareEditor() throws CoreException {
+		BaseTest.dispatchEvents(0);		
 		TestingUtilities.createProject("testNoGraphics");
 		m_sys = getSystemModel("testNoGraphics");
 		TestUtil.executeInTransaction(m_sys, "Newpackage", new Object[0]);
@@ -756,6 +753,7 @@ public class ModelMergeTests extends BaseTest {
 			;
 		assertTrue("Not all differences were removed by the copy all button.",
 				viewer.getDifferencer().getLeftDifferences().size() == 0);
+		clearErrorLogView();
 	}
 
 	@Test

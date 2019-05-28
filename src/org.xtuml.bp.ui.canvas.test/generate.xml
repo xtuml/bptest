@@ -29,7 +29,7 @@
 		<delete file="sql/____file.txt" />
 		<exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
 	        <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-			<arg line="xtumlmc_gen_erate -nopersist
+			<arg line="xtumlmc_gen_erate -qim -nopersist
               	-import ../${mcj_path}/ooa_schema.sql
               	-import ../${mcj_path}/../org.xtuml.bp.ui.canvas/sql/ooaofgraphics.sql
               	-arch ../arc/gen_test_matrix.arc"/>
@@ -42,7 +42,7 @@
 		<delete file="sql/____file.txt" />
 		<exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
 			<env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-			<arg line="xtumlmc_gen_erate -nopersist
+			<arg line="xtumlmc_gen_erate -qim -nopersist
 			    -import ../${mcj_path}/ooa_schema.sql
 			    -import ../${mcj_path}/../org.xtuml.bp.ui.canvas/sql/ooaofgraphics.sql
 			    -arch ../arc/gen_test_skel.arc"/>
@@ -76,7 +76,7 @@
 		<exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
 			<env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
 			<env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-			<arg line="xtumlmc_gen_erate -nopersist
+			<arg line="xtumlmc_gen_erate -qim -nopersist
 				-import ${mcj_path}/ooa_schema.sql
 				-import sql/${sql.output}
 				-arch arc/gen_testClearDatabaseClass.arc"/>

@@ -1,12 +1,4 @@
 //=====================================================================
-//
-//File:      $RCSfile: ExplorerUtil.java,v $
-//Version:   $Revision: 1.14 $
-//Modified:  $Date: 2013/01/10 23:21:32 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -22,7 +14,7 @@
 
 package org.xtuml.bp.test.common;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.IPath;
@@ -110,8 +102,7 @@ public class ExplorerUtil {
 		e.detail = SWT.TRAVERSE_RETURN;
 		e.widget = t2.getTextEditor();
 		t2.getTextEditor().notifyListeners(e.type, e);
-		Display d = Display.getCurrent();
-		while ( d.readAndDispatch() ) ;
+		BaseTest.dispatchEvents();
 		
 	}
 	static public void checkTreeItemDeletion(NonRootModelElement modelElement)
@@ -131,8 +122,7 @@ public class ExplorerUtil {
         // since this test is running on the event-dispatch thread, we
         // have to fire the event pump manually to get the 
         // selection event reported, before proceeding
-        Display display = Display.getCurrent();
-        while (display.readAndDispatch());
+        BaseTest.dispatchEvents();
         TestCase.assertTrue("Tree Item still exist after deletion ", tree.getSelectionCount()==0);
     }
 	static public void checkTreeItemExistance(NonRootModelElement modelElement,String name)
@@ -152,8 +142,7 @@ public class ExplorerUtil {
         // since this test is running on the event-dispatch thread, we
         // have to fire the event pump manually to get the 
         // selection event reported, before proceeding
-        Display display = Display.getCurrent();
-        while (display.readAndDispatch());
+        BaseTest.dispatchEvents();
         TestCase.assertTrue("Tree Item with text '"+name+"' dz not exist", 
         			tree.getSelection()[0].getText().equals(name));
     }
@@ -178,8 +167,7 @@ public class ExplorerUtil {
         // since this test is running on the event-dispatch thread, we
         // have to fire the event pump manually to get the 
         // selection event reported, before proceeding
-        Display display = Display.getCurrent();
-        while (display.readAndDispatch());
+        BaseTest.dispatchEvents();
         TestCase.assertTrue("Tree Item not selected ", tree.getSelectionCount()>0);
         return tree.getSelection()[0];
     }
@@ -216,8 +204,7 @@ public class ExplorerUtil {
 
         boolean focused = explorer.getTreeViewer().getTree().setFocus();
 
-        while (Display.getCurrent().readAndDispatch())
-            ;
+        BaseTest.dispatchEvents();
         focused = explorer.getTreeViewer().getTree().setFocus();
         TestCase.assertTrue("Could not focus model explorer tree", focused);
 
@@ -274,14 +261,13 @@ public class ExplorerUtil {
         // since this test is running on the event-dispatch thread, we
         // have to fire the event pump manually to get the 
         // selection event reported, before proceeding
-        Display display = Display.getCurrent();
-        while (display.readAndDispatch());
+        BaseTest.dispatchEvents();
     }
     
     public static TreeItem selectMEInModelExplorer(IPath itemPath) {
     	getTreeViewer().refresh();
-        while (Display.getCurrent().readAndDispatch())
-            ;
+    	BaseTest.dispatchEvents();
+    	
         TreeItem treeItem = findRootTreeItemFor(itemPath);
         Assert.assertNotNull(treeItem);
         selectItem(treeItem.getData());
@@ -394,7 +380,7 @@ public class ExplorerUtil {
     	
         getTreeV().expandToLevel(data, TreeViewer.ALL_LEVELS);
         getTreeV().setSelection(new StructuredSelection(data));
-        while(display.readAndDispatch());
+        BaseTest.dispatchEvents();
         TreeItem[] selectedItems = getTreeV().getTree().getSelection();
 
         return (selectedItems.length > 0) ? selectedItems[0] : null;
@@ -477,8 +463,8 @@ public class ExplorerUtil {
 
         boolean focused = getTreeV().getTree().setFocus();
 
-        while (Display.getCurrent().readAndDispatch())
-            ;
+        BaseTest.dispatchEvents();
+        
         focused = getTreeV().getTree().setFocus();
         Assert.assertTrue("Could not focus model explorer tree", focused);
 

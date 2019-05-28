@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.TestCase;
 
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -44,10 +44,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
-import org.xtuml.bp.core.ClassStateMachine_c;
 import org.xtuml.bp.core.CorePlugin;
-import org.xtuml.bp.core.InstanceStateMachine_c;
-import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.common.IPersistenceHierarchyMetaData;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.PersistableModelComponent;
@@ -173,7 +170,7 @@ public class GenericEditorUtil {
 			};
 			try {
 				CorePlugin.getWorkspace().run(r, null);
-                while(Display.getCurrent().readAndDispatch());
+				BaseTest.dispatchEvents();
                 IEditorPart editor= PlatformUI.getWorkbench().getActiveWorkbenchWindow()
                 .getActivePage().getActiveEditor();
                 
@@ -240,7 +237,7 @@ public class GenericEditorUtil {
 			};
 			try {
 				CorePlugin.getWorkspace().run(r, null);
-                while(Display.getCurrent().readAndDispatch());
+				BaseTest.dispatchEvents();
 				IEditorPart editor= PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getActivePage().getActiveEditor();
                 
@@ -470,8 +467,6 @@ public class GenericEditorUtil {
     public static int getEditorType(IEditorPart editor)
     {
         if (editor instanceof GraphicalEditor){
-            
-            // TODO how to get ME represented by given editor
             return EDITOR_TYPE_CANVAS;
         }
             else if (editor instanceof DescriptionEditor)

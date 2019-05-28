@@ -49,6 +49,7 @@ public class ImportExistingTests extends TestCase {
         verifyProjectCreated( PROJECT_NAME );
         
         ResourcesPlugin.getWorkspace().getRoot().getProject( PROJECT_NAME ).refreshLocal( IResource.DEPTH_INFINITE, null );
+        BaseTest.dispatchEvents();
 
         checkForErrors( PROJECT_NAME );
 
@@ -76,19 +77,27 @@ public class ImportExistingTests extends TestCase {
         ExplorerView view = null;
         try {
             view = (ExplorerView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(BridgePointPerspective.ID_MGC_BP_EXPLORER);
+            BaseTest.dispatchEvents();
         } catch (PartInitException e) {}
         view.getTreeViewer().refresh();
         while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
         view.getTreeViewer().expandAll();
         while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        view.getTreeViewer().refresh();
+        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
         TreeItem topItem = null;
-        for ( TreeItem i : view.getTreeViewer().getTree().getItems() ) if ( PROJECT_NAME.equals( i.getText() ) ) topItem = i;
+        for ( TreeItem i : view.getTreeViewer().getTree().getItems() ) {
+        	if ( PROJECT_NAME.equals( i.getText() ) ) { 
+        		topItem = i;
+        	}
+        }
         assertNotNull( topItem );
         TreeItem[] orphaned = TreeUtilities.getOrphanedElementsFromTree(topItem);
         if (orphaned.length > 0) {
             String elements = TreeUtilities.getTextResultForOrphanedElementList(orphaned);
             assertTrue("Orphaned elements are present: " + elements, false);
         }
+        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
         // this is a regression test for issue 9556
         assertTrue("Expected tree items are missing from the Model Explorer View", topItem.getItemCount()==3);
     }

@@ -1,19 +1,12 @@
 .//====================================================================
 .//
-.// File:      $RCSfile: gen_test_matrix.arc,v $
-.// Version:   $Revision: 1.9 $
-.// Modified:  $Date: 2013/01/10 22:44:11 $
-.//
-.// (c) Copyright 2004-2014 Mentor Graphics Corporation  All rights reserved.
-.//
-.//====================================================================
-.//
 .//  Purpose: This archetype is used to generate the test matrix to be
 .//  performed as Unit Test on any given model.
 .//
 .//=======================================================================
 .//
 .select many sms from instances of SM_SM
+.assign matrix_unique_num = 0
 .for each sm in sms
   .select one class related by sm->SM_ISM[R517]->O_OBJ[R518]
   .if (empty class)
@@ -32,7 +25,8 @@ Tests for class: ${class.Name}
         .if (not_empty nst)
           .select one evt related by seme->SM_SEVT[R503]->SM_EVT[R525]
           .select one new_state related by nst->SM_TXN[R507]->SM_STATE[R506]
-_- (test_${info.unique_num}) In '${state.Name}' generate $U_{class.Key_Lett}${evt.Numb}:${evt.Mning}
+_- (test_${matrix_unique_num}) In '${state.Name}' generate $U_{class.Key_Lett}${evt.Numb}:${evt.Mning}
+            .assign matrix_unique_num = matrix_unique_num + 1
 R- State is changed to '${new_state.Name}'
 
         .end if

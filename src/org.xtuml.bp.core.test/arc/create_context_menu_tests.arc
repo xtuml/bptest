@@ -689,7 +689,11 @@ public class ContextMenuTestsGenerics extends BaseTest
         .if ((cme_entry.Specialism == "Specialized Package") or (cme_entry.Specialism == "Generic Package"))
            .assign actionName = cme_entry.Label
         .else
-          .assign actionName = cme_entry.Specialism + cme_entry.Label
+          .if ("${cme_entry.Specialism}" == "--")
+            .assign actionName = cme_entry.Label
+          .else
+            .assign actionName = cme_entry.Specialism + cme_entry.Label
+          .end if
         .end if
       .end if
     .else
@@ -697,7 +701,11 @@ public class ContextMenuTestsGenerics extends BaseTest
     .end if
     .if ( cme_entry.Specialism != "Specialized Package")
     @Test
+    .if ("${cme_entry.Specialism}" == "--")
+	public void testContextMenu$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
+  .else
 	public void testContextMenu$r{cme_entry.Specialism}$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
+  .end if
    
     .select any obj from instances of O_OBJ where (selected.Key_Lett == cme_entry.Key_Lett)
        .if  (obj.Key_Lett == "S_DOM" ) 
@@ -861,7 +869,7 @@ ${result.body}
     	GraphicalElement_c element = GraphicalElement_c.getOneGD_GEOnR2(con);
     	UITestingUtilities.addElementToGraphicalSelection(element.getRepresents());
     	editor.zoomSelected();
-        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        BaseTest.dispatchEvents();
     	Point center = CanvasTestUtils.getConnectorCenter(con);
     	center = CanvasTestUtils.convertToMouseCoor(center, editor.getModel());
     	CanvasTestUtils.doMousePress(center.x, center.y);
@@ -878,6 +886,7 @@ ${result.body}
     	// get the top level menu items
     	Action undo = mc.getTransactionManager().getUndoAction();
     	undo.run();
+    	BaseTest.dispatchEvents();
 
     	// assert that the redo item is available
     	assertTrue(UITestingUtilities.checkItemStatusInContextMenu(menu, "Redo", "", m_readonly));

@@ -44,7 +44,7 @@ the License.
 			<env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
 			<env key="CHAIN_UTIL_DIR" value="${chain_util_path}" />
 			<env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-			<arg line="xtumlmc_gen_erate -nopersist
+			<arg line="xtumlmc_gen_erate -qim -nopersist
 				-import ${mcj_path}/ooa_schema.sql
 				-import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa_hierarchy_schema.sql
 				-import ${mcj_path}/../org.xtuml.bp.core/sql/ooaofooa.sql

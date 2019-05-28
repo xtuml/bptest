@@ -113,7 +113,11 @@ public class EnumRangeTest extends BaseTest
     public static final String[] Dialect_vals =
         {
             "OAL",
-            "MASL" };
+            "MASL",
+            "Alf",
+            "Java",
+            "C",
+            "None" };
     public static final String[] By_Ref_vals = { "By Value", "By Reference" };
     public static final String[] Cond_vals = { "Unconditional", "Conditional" };
     public static final String[] Mult_vals = { "One", "Many" };
@@ -154,6 +158,7 @@ public class EnumRangeTest extends BaseTest
     public static String[] Gen_Type_vals =
         { "User Defined", "date", "timestamp", "inst_ref<Timer>" };
 
+    public static String[] Implementation_Scope_vals = { "Domain", "Deployment" };
     private void validateEnumVals(String prop, IPropertyDescriptor[] pd_set, String[] vals)
     {
         for ( int i = 0; i < pd_set.length; ++i)
