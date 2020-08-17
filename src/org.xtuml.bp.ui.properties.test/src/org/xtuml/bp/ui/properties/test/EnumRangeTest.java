@@ -177,7 +177,6 @@ public class EnumRangeTest extends BaseTest
                 }
                 return;
             }
-            System.out.println("Descriptor is: " + pd_set[i]);
         }
         fail("Property "+prop+" not found");
     }
