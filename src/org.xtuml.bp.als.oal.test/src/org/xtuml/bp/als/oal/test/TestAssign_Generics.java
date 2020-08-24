@@ -747,14 +747,14 @@ public class TestAssign_Generics extends TestCase {
 	}
 	@Test
 	public void testAssignTime2Date() throws RecognitionException, TokenStreamException {
-		String act = "d = TIM::current_date(); t = TIM::current_clock(); d = t;"; //$NON-NLS-1$
+		String act = "d = TIM::current_date(); t = TIM::current_clock(); nd = t;"; //$NON-NLS-1$
 		String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM);
 		assertEquals("", x);
 		OalParserTest_Generics.validateBlkStmtVal( 1, 3, 6 );
 	}
 	@Test
 	public void testAssignDate2Time() throws RecognitionException, TokenStreamException {
-		String act = "d = TIM::current_date(); t = TIM::current_clock(); t = d;"; //$NON-NLS-1$
+		String act = "d = TIM::current_date(); t = TIM::current_clock(); nt = d;"; //$NON-NLS-1$
 		String x = OalParserTest_Generics.parseAction(act, OalParserTest_Generics.ACTIVITY_TYPE_FUNC, OalParserTest_Generics.TEST_VOID_NO_PARM);
 		assertEquals("", x);
 		OalParserTest_Generics.validateBlkStmtVal( 1, 3, 6 );

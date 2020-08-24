@@ -164,7 +164,11 @@
   .if (action.Key_Lett == "S_SYS")
       .assign root = "Ooaofooa.getDefaultInstance()"
   .end if
-        ${ocn.body} t1 = ${ocn.body}.${oa.body}(${root});
+  .assign criteria = ""
+  .if (action.Key_Lett == "SM_EVT")
+    .assign criteria = ", e -> LocalEvent_c.getOneSM_LEVTOnR526(SemEvent_c.getOneSM_SEVTOnR525((StateMachineEvent_c) e)) != null"
+  .end if
+        ${ocn.body} t1 = ${ocn.body}.${oa.body}(${root}${criteria});
         assertNotNull(t1);
   .assign oldName = "Old_Name";
   .assign newName = "New_Name"+"$r{action.Key_Lett}";
