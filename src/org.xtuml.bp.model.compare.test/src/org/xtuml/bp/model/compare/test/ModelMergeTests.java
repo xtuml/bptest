@@ -157,7 +157,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
-	@Ignore
+	@Ignores
 	public void testAutomaticGraphicalMergeElementDeletion() throws Exception {
 		String projectName = "AutomaticGraphicalMerge";
 		// import git repository from models repo
