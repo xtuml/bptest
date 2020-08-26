@@ -752,7 +752,7 @@ public class TestAssign_Generics extends TestCase {
 		String lines[] = x.split("\n");//$NON-NLS-1$
 		assertEquals(":1:56-56: Variable ->d<- already exists as a different type", lines[0]);
 		assertEquals("line 1:58: expecting Semicolon, found 'null'", lines[1]);
-		OalParserTest_Generics.validateBlkStmtVal( 1, 3, 6 );
+		OalParserTest_Generics.validateBlkStmtVal( 1, 2, 6 );
 	}
 	@Test
 	public void testAssignDate2Time() throws RecognitionException, TokenStreamException {
@@ -761,7 +761,7 @@ public class TestAssign_Generics extends TestCase {
 		String lines[] = x.split("\n");//$NON-NLS-1$
 		assertEquals(":1:56-56: Variable ->t<- already exists as a different type", lines[0]);
 		assertEquals("line 1:58: expecting Semicolon, found 'null'", lines[1]);
-		OalParserTest_Generics.validateBlkStmtVal( 1, 3, 6 );
+		OalParserTest_Generics.validateBlkStmtVal( 1, 2, 6 );
 	}
 	@Test
 	public void testAssignUDT2DiffUDTSameCore() throws RecognitionException, TokenStreamException {
