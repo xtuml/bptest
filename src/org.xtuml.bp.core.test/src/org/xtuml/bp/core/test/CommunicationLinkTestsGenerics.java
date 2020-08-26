@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.CommunicationLink_c;
@@ -87,6 +88,7 @@ public class CommunicationLinkTestsGenerics extends CanvasTest {
 	 * Tests that communications can be drawn in communications
 	 */
 	@Test
+	@Ignore
 	public void testCommunicationInCommunication() {
 		test_id = "1";
 		String diagramName = "Communication in Communication";
