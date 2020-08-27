@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -156,6 +157,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAutomaticGraphicalMergeElementDeletion() throws Exception {
 		String projectName = "AutomaticGraphicalMerge";
 		// import git repository from models repo
@@ -245,6 +247,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAutomaticGraphicalMergeElementAdded() throws Exception {
 		String projectName = "AutomaticGraphicalMergeAddition";
 		// import git repository from models repo
@@ -302,6 +305,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAddStatesAndTransitionsNoExceptions() throws Exception {
 		String projectName = "dts0101009924";
 		// import git repository from models repo
@@ -321,6 +325,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testConnectorTextDoesNotDisappear() throws Exception {
 		String projectName = "dts0101039702";
 		// import git repository from models repo
@@ -499,6 +504,7 @@ public class ModelMergeTests extends BaseTest {
 //	}
 	
 	@Test
+	@Ignore
 	public void testMergeWithStateMachineAddedInSeparateBranches()
 			throws Exception {
 		String projectName = "dts0101009925";
