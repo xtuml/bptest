@@ -1009,6 +1009,9 @@ public class UITestingUtilities {
 	 * that contains the given text.  It does not do an exact match.
 	 */
 	public static TreeItem findItemInTree(TreeItem item, String name) {
+		if(item.isDisposed()) {
+			return null;
+		}
 		if(item.getText().contains(name)) {
 			return item;
 		} else {
