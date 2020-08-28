@@ -429,7 +429,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
-	@Ignored
+	@Ignore
 	public void testNoGraphicalElementCopiedWithoutSemanticCopy()
 			throws Exception {
 		String projectName = "dts0101042915";
