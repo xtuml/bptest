@@ -117,6 +117,7 @@ public class EnumRangeTest extends BaseTest
         {
             "OAL",
             "MASL",
+            "ASL",
             "Alf",
             "Java",
             "C",
