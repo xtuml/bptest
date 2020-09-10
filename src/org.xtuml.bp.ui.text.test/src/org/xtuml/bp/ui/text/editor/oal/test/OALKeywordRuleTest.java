@@ -22,9 +22,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.text.OALEditorPlugin;
-import org.xtuml.bp.ui.text.editor.oal.OALTokenTypes;
 import org.xtuml.bp.ui.text.editor.SyntaxHighlightingPreferences;
 import org.xtuml.bp.ui.text.editor.oal.OALKeywordRule;
+import org.xtuml.bp.ui.text.editor.oal.OALTokenTypes;
 import org.xtuml.bp.ui.text.test.UITextTest;
 
 /**
@@ -60,7 +60,7 @@ public class OALKeywordRuleTest extends UITextTest
         boolean[] isKeyword = {true, true, true, false};
         RuleBasedScanner scanner = new RuleBasedScanner();
         IToken keywordToken = prefs.getDefaultToken(
-        		OALTokenTypes.TOKEN_TYPE_keyword);
+            OALTokenTypes.TOKEN_TYPE_keyword);
         for (int i = 0; i < words.length; i++) {
             // have our document be made up of just this word
             document.set(words[i]);
