@@ -31,9 +31,18 @@
 .function get_ref_value
   .param inst_ref child_node   .// T_TNS
   .param string child_var_name
+  .print "Child Node: ${child_node.Key_Lett}"
   .//
   .if ( child_node.Key_Lett == "R_REL" )
             "R$${${child_var_name}.Numb}" },
+  .elif ( child_node.Key_Lett == "R_SUPER" )
+  ..select one assoc related by R_SUPERclass->R_SUBSUP[R212]->R_REL[R206]
+     ..assign result = assoc.Numb;
+  			"$${result}" },
+  .elif ( child_node.Key_Lett == "R_SUB" )
+  ..select one assoc related by R_SUBclass->R_SUBSUP[R213]->R_REL[R206]
+     ..assign result = assoc.Numb;
+  			"$${result}" },
   .elif ( child_node.Key_Lett == "O_IOBJ" )
     ..select one obj related by O_IOBJclass->O_OBJ[R101]
             "$${obj.Name}" },
@@ -357,9 +366,23 @@ public class ${class_name} extends BaseTest
 				});
     .elif((node.Key_Lett == "S_UDT") or (node.Key_Lett == "S_CDT"))
         ${formatted_name.body} inst = ${formatted_name.body}.${gia.body}(Ooaofooa.getDefaultInstance());
+    .elif(node.Key_Lett == "R_REL")
+    ${formatted_name.body} inst = ${formatted_name.body}.${gia.body}(modelRoot, new ClassQueryInterface_c() {
+					
+					@Override
+					public boolean evaluate(Object candidate) {
+						Association_c assoc = (Association_c) candidate;
+						return assoc.getNumb() != 100;
+					}
+				});
     .else
         ${formatted_name.body} inst = ${formatted_name.body}.${gia.body}(modelRoot);
     .end if
+	  .if(node.Key_Lett == "SM_NLEVT")
+	    /* The test data this test relies upon does not get generated properly 
+	     *  with pyrsl 2.  See https://support.onefact.net/issues/10323
+       *
+	  .end if
         $r{node.CategoryName}${meta_model_obj.Key_Lett}PropertySource ps = new $r{node.categoryName}${meta_model_obj.Key_Lett}PropertySource(inst);
         IPropertyDescriptor [] pd_set = ps.getPropertyDescriptors();
         for ( int i = 0; i < ${class_name}Data.$r{meta_model_obj.Name}_$r{node.CategoryName}.length; ++i )
@@ -404,6 +427,10 @@ public class ${class_name} extends BaseTest
             assertEquals( ${class_name}Data.$r{meta_model_obj.Name}_$r{node.CategoryName}[i][3], ps.getPropertyValue(pd_set[i].getId()).toString());
      .end if
         }
+	  .if(node.Key_Lett == "SM_NLEVT")
+	    .// This test does not get generated properly with pyrsl 2.  See https://support.onefact.net/issues/10323
+	    */
+	  .end if
     }
   .end if .// ( node.Key_Lett != "S_EEDI" )
 .end for
@@ -441,6 +468,7 @@ import org.xtuml.bp.ui.properties.EnumPropertyDescriptor;
 import org.xtuml.bp.ui.properties.IntegerPropertyDescriptor;
 import org.xtuml.bp.ui.properties.ConstantValuePropertyDescriptor;
 import org.xtuml.bp.ui.properties.TypeDefinitionPropertyDescriptor;
+import org.xtuml.bp.ui.properties.RangeValuePropertyDescriptor;
 
 public class ${class_name}Data
 {
@@ -460,6 +488,8 @@ public class ${class_name}Data
   .elif(node.Key_Lett == "SM_STATE")
   ..select any cclass from instances of O_OBJ where (selected.Name == "C class")
   ..select any ${mm_obj_var} related by cclass->SM_ISM[R518]->SM_SM[R517]->SM_STATE[R501]
+  .elif(node.Key_Lett == "R_REL")
+  ..select any ${mm_obj_var} from instances of ${meta_model_obj.Key_Lett} where (selected.Numb != 100)
   .else
   ..select any ${mm_obj_var} from instances of ${meta_model_obj.Key_Lett}
   .end if
@@ -510,6 +540,8 @@ public class ${class_name}Data
                DimensionsPropertyDescriptor.class.getName(),
               .elif (( attr.Name == "Value" ) and ( node.Key_Lett == "CNST_LSC"))
                ConstantValuePropertyDescriptor.class.getName(),
+              .elif ((node.Key_Lett == "S_RANGE") and ((attr.Name == "Min") or (attr.Name == "Max")))
+               RangeValuePropertyDescriptor.class.getName(),
               .else
                .//
                .// The default datatype package "Datatypes" has a read-only
@@ -550,12 +582,16 @@ public class ${class_name}Data
           .else
               .if(node.Key_Lett == "SM_NLEVT")
                 .if(attr.Name == "Name")
-        ..select one smpevt related by ${mm_obj_var}->SM_PEVT[R527]
-        ..select any smevt from instances of SM_EVT where ((selected.SMevt_ID == smpevt.SMevt_ID) and (selected.SM_ID == smpevt.SM_ID) and (selected.SMspd_ID == smpevt.SMspd_ID))
-        ..select one polyClass related by smevt->SM_SM[R502]->SM_ISM[R517]->O_OBJ[R518]
-        ..select any smsevt from instances of SM_SEVT where ((selected.SMevt_ID == ${mm_obj_var}.SMevt_ID) and (selected.SM_ID == ${mm_obj_var}.SM_ID) and (selected.SMspd_ID == ${mm_obj_var}.SMspd_ID))
-        ..select any evt from instances of SM_EVT where ((selected.SMevt_ID == smsevt.SMevt_ID) and (selected.SM_ID == smsevt.SM_ID) and (selected.SMspd_ID == smsevt.SMspd_ID))
-				"$${evt.Mning}::$${polyClass.Name}" },
+// The test data does not get generated properly with pyrsl 2 due to the "empty"
+// SMspd_ID value in the test data.  See https://support.onefact.net/issues/10323
+// The next line is a stub rather than doing the traversals that don't actually work with pyrsl2 data
+                ""},
+.//        ..select one smpevt related by ${mm_obj_var}->SM_PEVT[R527]
+.//        ..select any smevt from instances of SM_EVT where ((selected.SMevt_ID == smpevt.SMevt_ID) and (selected.SM_ID == smpevt.SM_ID) and (selected.SMspd_ID == smpevt.SMspd_ID))
+.//        ..select one polyClass related by smevt->SM_SM[R502]->SM_ISM[R517]->O_OBJ[R518]
+.//        ..select any smsevt from instances of SM_SEVT where ((selected.SMevt_ID == ${mm_obj_var}.SMevt_ID) and (selected.SM_ID == ${mm_obj_var}.SM_ID) and (selected.SMspd_ID == ${mm_obj_var}.SMspd_ID))
+.//        ..select any evt from instances of SM_EVT where ((selected.SMevt_ID == smsevt.SMevt_ID) and (selected.SM_ID == smsevt.SM_ID) and (selected.SMspd_ID == smsevt.SMspd_ID))
+.//				"$${evt.Mning}::$${polyClass.Name}" },
                 .end if
               .else
 				"$${${mm_obj_var}.${attr.Name}}" },
@@ -585,7 +621,7 @@ public class ${class_name}Data
   	 .else
 .//
   ..for each ${child_var_name} in ${child_var_name}_set
-     	.if ( (child_node.Key_Lett == "S_DT") and (node.Key_Lett != "S_EDT"))
+     	.if ( (child_node.Key_Lett == "S_DT") and (node.Key_Lett != "S_EDT") and (child.UserModifiable))
             { ChooserPropertyDescriptor.class.getName(),
             "$r{child_node.CategoryName}",
       .else

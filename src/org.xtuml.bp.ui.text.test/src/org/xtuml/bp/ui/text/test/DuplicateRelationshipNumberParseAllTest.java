@@ -36,6 +36,7 @@ import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.PersistenceManager;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TextEditorUtils;
 import org.xtuml.bp.ui.text.TextPlugin;
@@ -134,5 +135,7 @@ public class DuplicateRelationshipNumberParseAllTest extends UITextTest
         // activity file for which there were problems, above
         assertTrue("Activity file still has problem markers after relationship renumbering",
             TextEditorUtils.getMarkers(file).length == 0);
+        
+        BaseTest.clearErrorLogView(true);
     }
 }

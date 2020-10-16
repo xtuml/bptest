@@ -1,12 +1,3 @@
-
-//=====================================================================
-//
-//File:      $RCSfile: VerifierTestSuite2.java,v $
-//Version:   $Revision: 1.3 $
-//Modified:  $Date: 2013/05/10 04:28:44 $
-//
-//(c) Copyright 2006-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -30,11 +21,15 @@ import org.xtuml.bp.debug.test.DateLoggingTests;
 import org.xtuml.bp.debug.test.GlobalTestSetupClass;
 import org.xtuml.bp.debug.test.InstanceVariableViewTests;
 import org.xtuml.bp.debug.test.RealizedClassRelaunchTest;
+import org.xtuml.bp.debug.test.UdtConstantTest;
 import org.xtuml.bp.debug.test.VariableViewTests;
 import org.xtuml.bp.debug.ui.launch.DLLRelaunchTest;
 import org.xtuml.bp.debug.ui.test.execute.BlockedComponentExecutionTest;
 import org.xtuml.bp.debug.ui.test.execute.RecursionExecutionTest;
 import org.xtuml.bp.debug.ui.test.realizedClasses.VerifierStaticVariablesInRealizedClassesTest;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsCompareTestsTestSuite;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsPrecedenceTestsTestSuite;
+import org.xtuml.bp.debug.ui.test.sets.SetOperationsSimpleTestsTestSuite;
 
 import junit.framework.TestSuite;
 
@@ -54,7 +49,10 @@ import junit.framework.TestSuite;
 	BlockedComponentExecutionTest.class,
 	VariableViewTests.class,
 	InstanceVariableViewTests.class,
-	
+	SetOperationsCompareTestsTestSuite.class,
+	SetOperationsSimpleTestsTestSuite.class,
+	SetOperationsPrecedenceTestsTestSuite.class,
+	UdtConstantTest.class
 })
 public class VerifierTestSuite2 extends TestSuite {
 

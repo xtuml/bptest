@@ -96,8 +96,8 @@ public class UIConfigurationTests extends BaseTest {
     	// The first column is the name of the tool under test in disablement flag form. The
     	// second column is the CME path.
     	String [][] tools = {
-    			{"ExportMASLProject", "Export MASL Project"},
-    			{"ExportMASLDomains", "Export MASL Domains"},
+    			{"MakePrivate", "Make Private"},
+    			{"MakeProtected", "Make Protected"},
     			{"GenerateFunctionsFromList", "BridgePoint Utilities::Generate Functions From List..."},
     			};
     	

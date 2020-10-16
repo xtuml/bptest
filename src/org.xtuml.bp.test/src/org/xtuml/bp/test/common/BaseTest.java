@@ -1,11 +1,3 @@
-//=====================================================================
-//
-//File:      $RCSfile: BaseTest.java,v $
-//Version:   $Revision: 1.51 $
-//Modified:  $Date: 2013/05/10 05:37:52 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -35,12 +27,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -134,6 +128,7 @@ import org.xtuml.bp.ui.explorer.ExplorerView;
 import org.xtuml.bp.ui.explorer.decorators.SynchronizationDecorator;
 import org.xtuml.bp.ui.text.placeholder.PlaceHolderManager;
 
+import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
 
@@ -208,11 +203,42 @@ public class BaseTest extends TestCase {
 
 	protected static boolean logFileCheckingEnabled = true;
 
+	private static DeadlockDetector deadlockDetector = null;
 	
-	public BaseTest(){
-		this(null, "");
+	private static boolean IgnoreLogErrorsAtTearDown = false;
+	
+	/**
+	 * Timeout rules are introduced to prevent tests from hanging.
+	 * 
+	 * The following has a nice explanation of the difference between @Rule and @ClassRule
+	 * @see <a href="http://google.com">https://examples.javacodegeeks.com/core-java/junit/junit-test-timeout-example/#code</a>
+	 * 
+	 * @Rule is a timeout that is per-operation. While @ClassRule is a static that looks at the time to
+	 * complete all tests in the test class.
+	 * 
+	 * Note that to catch deadlocks there is a nice mechanism defined in the following link. It is outside the
+	 * scope of junit but could be considered for future. "How to detect java deadlocks programmatically":
+	 * @see <a href="http://korhner.github.io/java/multithreading/detect-java-deadlocks-programmatically/</a>
+	 * 
+	 * 
+	 */
+	
+	
+	public BaseTest() {
+		this(null, "");		
 	}
+	
 	public BaseTest(String projectName, String name) {
+		/**
+		 * This thread runs to prevent deadlocks. Make sure it is a singleton.
+		 */
+		if (deadlockDetector != null) {
+			deadlockDetector.stop();
+			deadlockDetector = null;
+		}
+		deadlockDetector = new DeadlockDetector(new DeadlockJUnitHandler(projectName, this, Thread.currentThread()), DeadlockJUnitHandler.DeadLockTimeout, TimeUnit.SECONDS);
+		deadlockDetector.start();		
+		
 		final IIntroManager introManager = PlatformUI.getWorkbench().getIntroManager();
 		IIntroPart part = introManager.getIntro();
 		if ( part != null ) {
@@ -353,30 +379,59 @@ public class BaseTest extends TestCase {
 		}
 		assertTrue("Saving threads left hanging", Ooaofooa.threadsSaving < 1);
 	}
+
+	
+	private String mDeadLockMessage = "";
+	
+	public void setDeadLockDetected(String deadlockMessage) {
+		mDeadLockMessage = deadlockMessage;
+	}
+	
 	
 	@After
 	public void tearDown() throws Exception {
+		if (!mDeadLockMessage.isEmpty()) {
+			String tempMsg = mDeadLockMessage;
+			mDeadLockMessage = "";
+			fail(tempMsg);
+		}		
 		BaseTest.staticTearDown();
 	}
 	
 
-	public static void staticTearDown() throws Exception {
-		// clear the UI events
-		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-			
-			@Override
-			public void run() {
-				// nothing to do, just making sure the UI
-				// is clear of events
+	public static void staticTearDown() {
+		String failureMessage = "";
+		try {
+			BaseTest.dispatchEvents();
+	
+			// clear the UI events
+			PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+				
+				@Override
+				public void run() {
+					// nothing to do, just making sure the UI
+					// is clear of events
+				}
+			});
+			if (IgnoreLogErrorsAtTearDown) {
+				BaseTest.clearErrorLogView();
+				BaseTest.dispatchEvents();
+				
+			} else {
+				failureMessage = getLogViewResult("");
 			}
-		});
-		String result = getLogViewResult("");
-		if(!result.equals("")) {
-			fail(result);
-		}		
+		} catch (Throwable thr) {
+			// If anything in this shutdown caused an exception, just ignore it.
+		} finally {
+			// reset the flag for the next run
+			BaseTest.IgnoreLogErrorsAtTearDown = false;			
+		}
+		if (!failureMessage.isEmpty()) {
+			fail(failureMessage);
+		}
 	} 
 	
-	public static String getLogViewResult(String prepend) {
+	private static String getLogViewResult(String prepend) {
 		// verify that the log file is empty
 		// if not fail the current test
 		// in a few cases with eclipse 4.x we must
@@ -385,8 +440,7 @@ public class BaseTest extends TestCase {
 		// checking for it if we get a null pointer due to
 		// the workbench being closed
 		LogView logView = null;
-		try {
-			logView = (LogView) PlatformUI.getWorkbench()
+		logView = (LogView) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().findView(
 						"org.eclipse.pde.runtime.LogView");
 		if(logView == null) {
@@ -399,9 +453,7 @@ public class BaseTest extends TestCase {
 				return e.getMessage();
 			}
 		}
-		} catch (NullPointerException npe) {
-			// no need to log this or fail the test
-		}
+
 		String msg = "";
 		File in_fh = Platform.getLogFileLocation().toFile();
 		if(logView != null) {
@@ -490,6 +542,10 @@ public class BaseTest extends TestCase {
 	}
 
 	public static void clearErrorLogView() {
+		BaseTest.clearErrorLogView(false);
+	}
+	
+	public static void clearErrorLogView(boolean alsoIgnoreAllLogErrorsOnTearDown) {
 		// in a few cases with eclipse 4.x we must
 		// close the workbench, example being TigerNatureWorkspaceSetup
 		// in that case the log view is not available so skip
@@ -522,6 +578,7 @@ public class BaseTest extends TestCase {
 			  }
 			}
 		}		
+		BaseTest.IgnoreLogErrorsAtTearDown = alsoIgnoreAllLogErrorsOnTearDown;
 	}
 	
 	public void deleteErrorLogAndLogViewEntries() {
@@ -880,6 +937,7 @@ public class BaseTest extends TestCase {
 							FileInputStream fis = new FileInputStream(dtPkgFiles[j]);
 							fis.read(bytes);
 							fileContents = new String(bytes);
+							fis.close();
 						} catch (FileNotFoundException e) {
 							fail("Unable to read CDT file.");
 						} catch (IOException e) {
@@ -1271,6 +1329,10 @@ public class BaseTest extends TestCase {
 	public static final String CLI_TEST_RUN_KEY = "CLI_TEST_RUN";
 	
 	public static void compareAndOutputResults(String fileName) throws Exception{
+		compareAndOutputResults(fileName, false);
+	}
+
+	public static void compareAndOutputResults(String fileName, boolean compareSizeOnly) throws Exception{
 		if (doCreateResults){
 			writeResults(fileName);
 			resultLogger.clearLog();
@@ -1314,9 +1376,11 @@ public class BaseTest extends TestCase {
 			buffer.append("\r\n");
 		}
 		
+		expected_br.close();
+		
 		String originalResult = buffer.toString();
 		
-		assertEquals(expectedResult, originalResult);
+		BaseTest.compareXTUMLStringsSortedIfNeeded("Comparing actual results with expected result found in File name: " + fileName + "\n", originalResult, expectedResult);
 	}
 	
 	private static void writeResults(String fileName) throws Exception{
@@ -1665,5 +1729,40 @@ public class BaseTest extends TestCase {
 		while(wait) {
 			PlatformUI.getWorkbench().getDisplay().readAndDispatch();
 		}
+	}
+
+	/**
+	 * See if persisted xtuml matches. This routine sorts the strings if needed
+	 * to account for instances not being persisted in the same order.
+	 * 
+	 * @param errMsg
+	 * @param actualResults
+	 * @param expectedResults
+	 * @throws AssertionFailedError
+	 */
+	public static void compareXTUMLStringsSortedIfNeeded(String errMsg, String actualResults, String expectedResults) throws AssertionFailedError {
+    	boolean resultsMatch = expectedResults.equals(actualResults);
+    	if (!resultsMatch) {
+    		boolean resultsSameLength = (expectedResults.length() == actualResults.length());
+    		if (resultsSameLength) {
+    			char[] exp = expectedResults.toCharArray();
+    			char[] act = actualResults.toCharArray();
+            	Arrays.sort(exp);
+            	Arrays.sort(act);
+            	String sortedExp = new String(exp);
+            	String sortedAct = new String(act);
+            	resultsMatch = sortedExp.equals(sortedAct);
+            	if (resultsMatch) {
+            		System.err.println("Warning! Had to sort files to make them match.");
+            	} 
+    		}     		
+    	}
+    	if (!resultsMatch) {
+    		// Show the unsorted buffers in the failure message. We still want to 
+    		// store the unsorted version as the expected result.
+    		// Note that we also muse use this assertEquals here because error handling may 
+    		// take advantage of the files to the user see the actual and expected results.
+    		assertEquals(errMsg, expectedResults, actualResults);    		
+    	}
 	}
 }

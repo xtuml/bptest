@@ -19,11 +19,8 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -141,6 +138,7 @@ public class WelcomePageTest extends TestCase {
 		props.put("SingleFileModel", "false");
 		props.put("LaunchGettingStartedHelp", "false"); // We do not test this and it just spawns lots of windows we do not use in test
 		action.run(null, props);
+		BaseTest.dispatchEvents();
 		
 		SystemModel_c system = SystemModel_c.SystemModelInstance(
 				Ooaofooa.getDefaultInstance(), new ClassQueryInterface_c() {

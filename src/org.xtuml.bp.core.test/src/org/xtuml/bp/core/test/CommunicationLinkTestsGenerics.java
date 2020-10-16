@@ -1,12 +1,4 @@
 //========================================================================
-//
-//File:      $RCSfile: CommunicationLinkTestsGenerics.java,v $
-//Version:   $Revision: 1.6 $
-//Modified:  $Date: 2013/05/10 04:30:27 $
-//
-//(c) Copyright 2005-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -31,6 +23,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,6 +35,7 @@ import org.xtuml.bp.core.ui.LinkFormalizeOnCOMM_LNKWizardPage2;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.ToggleEndVisibilityOnCOMM_LNKAction;
 import org.xtuml.bp.core.ui.ToggleStartVisibilityOnCOMM_LNKAction;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.canvas.test.CanvasTestUtilities;
@@ -89,19 +83,15 @@ public class CommunicationLinkTestsGenerics extends CanvasTest {
 			initialized = true;
 			workbench = PlatformUI.getWorkbench();
 		}
+		BaseTest.logFileCheckingEnabled = false;
 	}
 	
-//	@Test
-//	public void testCommunicationLinkTest(){
-//		doTestCommunicationInCommunication();
-//	      doTestFormalizeLinkWithSupertypeSubtype();
-//	      doTestFormalizeLinkWithSimpleAssociation();
-//	      doTestFormalizeLinkWithLinkAssociation();
-//	      doTestFormalizeLinkWithReflexiveAssociation();
-//	      doTestFormalizeLinkWithReflexiveLinkedAssociation();
-//	      doTestToggleLinkVisibility();
-//	}
-
+	@After
+	public void tearDown() throws Exception {
+		super.tearDown();
+		logFileCheckingEnabled = true;
+	}
+	
 	/**
 	 * Tests that communications can be drawn in communications
 	 */

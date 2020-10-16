@@ -1,12 +1,4 @@
 //=====================================================================
-//
-//File:      $RCSfile: PolymorphicEventAssignmentTestGenerics.java,v $
-//Version:   $Revision: 1.9 $
-//Modified:  $Date: 2013/05/14 22:26:09 $
-//
-//(c) Copyright 2005-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -111,20 +103,6 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 
 	}
 	
-//	@Test
-//	public void testPolymorphicEvent() throws Exception{
-//		 doTestPolymorphicEventAssignment();
-//	      doTestPolymorphicEventAssignmentNotAllowedOnCreationTransition();
-//	      doTestAssignPolyEventToTransition();
-//	      doTestSubtypeLineRemovalRemovesNonLocalEvent();
-//	      doTestSubtypeLineRemovalRemovesLowerLevelNonLocalEvent();
-//	      doTestSubtypeLineRemovalOnlyRemovesNonLocalEventsDeliveredViaItself();
-//	      doTestRenamingPolymorphicEventRenamesNonLocalEvent();
-//	      doTestPolymorphicEventRemovalRemovesNonLocalEvents();
-//	  
-//		
-//	}
-
 	/**
 	 * See parent class description.
 	 */
@@ -781,6 +759,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 				nlevt == null);
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -818,6 +798,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -870,6 +852,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -914,6 +898,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 	/**
@@ -955,6 +941,8 @@ public class PolymorphicEventAssignmentTestGenerics extends BaseTest {
 		// restore the model
 		loadProject("PolymorphicEventAssignmentTest");
 		initialized = false;
+		BaseTest.dispatchEvents();
+		clearErrorLogView();
 	}
 
 }

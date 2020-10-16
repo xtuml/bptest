@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.xtuml.bp.debug.ui,
  org.xtuml.bp.test,
  org.eclipse.core.resources,
+ org.xtuml.bp.ui.canvas,
  org.xtuml.bp.ui.text,
  org.eclipse.debug.core,
  org.eclipse.debug.ui,
@@ -22,7 +23,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.workbench.texteditor,
  org.eclipse.ui.console,
  org.xtuml.bp.ui.session,
- org.xtuml.bp.ui.explorer;bundle-version="3.4.9"
+ org.xtuml.bp.ui.canvas.test,
+ org.xtuml.bp.als.oal,
+ org.xtuml.bp.ui.explorer;bundle-version="3.4.9",
+ org.xtuml.bp.ui.graphics;bundle-version="6.11.0"
 Eclipse-AutoStart: true
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.xtuml.bp.debug.ui.test

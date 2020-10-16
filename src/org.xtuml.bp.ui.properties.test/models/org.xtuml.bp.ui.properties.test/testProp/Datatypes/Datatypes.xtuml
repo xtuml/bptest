@@ -1,4 +1,4 @@
--- BP 7.1 content: Package syschar: 3 persistence-version: 7.1.6
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO EP_PKG
 	VALUES ("70736af1-c7c7-4d16-98db-43290b9b74e6",
@@ -24,15 +24,15 @@ INSERT INTO GD_MD
 	0,
 	0,
 	0,
-	'3.5.3',
-	'testProp::Datatypes');
+	'4.1.17',
+	'org.xtuml.bp.ui.properties.test::testProp::Datatypes');
 INSERT INTO GD_GE
 	VALUES ("b35f2f9d-6910-486b-9dc4-c1185af44bc8",
 	"0fd6036d-68dd-4e7a-aa7f-f944950a8226",
 	"f1241612-091e-4458-9235-68409fffefaa",
 	51,
 	0,
-	'testProp::Datatypes::test');
+	'org.xtuml.bp.ui.properties.test::testProp::Datatypes::test');
 INSERT INTO GD_SHP
 	VALUES ("b35f2f9d-6910-486b-9dc4-c1185af44bc8");
 INSERT INTO GD_NCS
@@ -56,7 +56,7 @@ INSERT INTO GD_GE
 	"53c33110-0995-4abf-9d8b-98050a19d824",
 	52,
 	0,
-	'testProp::Datatypes::test_enum');
+	'org.xtuml.bp.ui.properties.test::testProp::Datatypes::test_enum');
 INSERT INTO GD_SHP
 	VALUES ("37d0f02f-dd71-4378-97c9-6cd41d48ebbd");
 INSERT INTO GD_NCS
@@ -80,7 +80,7 @@ INSERT INTO GD_GE
 	"d00ab047-e02e-4c82-9863-b2130620966a",
 	101,
 	0,
-	'testProp::Datatypes::testSDT');
+	'org.xtuml.bp.ui.properties.test::testProp::Datatypes::testSDT');
 INSERT INTO GD_SHP
 	VALUES ("2dcbe605-4165-4fa6-8bea-82556df10449");
 INSERT INTO GD_NCS
@@ -104,7 +104,7 @@ INSERT INTO GD_GE
 	"f9d9fec2-001b-4b0a-ad3a-de3e13c8b219",
 	109,
 	0,
-	'testProp::Datatypes::');
+	'org.xtuml.bp.ui.properties.test::testProp::Datatypes::');
 INSERT INTO GD_SHP
 	VALUES ("ae19b908-7e59-490e-9e34-2309f4cfe467");
 INSERT INTO GD_NCS
@@ -138,7 +138,12 @@ INSERT INTO S_DT
 INSERT INTO S_UDT
 	VALUES ("f1241612-091e-4458-9235-68409fffefaa",
 	"ba5eda7a-def5-0000-0000-000000000002",
-	0);
+	0,
+	'');
+INSERT INTO S_RANGE
+	VALUES ("f1241612-091e-4458-9235-68409fffefaa",
+	'0',
+	'9');
 INSERT INTO PE_PE
 	VALUES ("f1241612-091e-4458-9235-68409fffefaa",
 	1,

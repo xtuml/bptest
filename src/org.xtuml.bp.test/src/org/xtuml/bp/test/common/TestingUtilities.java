@@ -1,11 +1,3 @@
-//=====================================================================
-//
-//File:      $RCSfile: TestingUtilities.java,v $
-//Version:   $Revision: 1.41 $
-//Modified:  $Date: 2013/05/10 05:37:52 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
@@ -36,6 +28,7 @@ import java.lang.Thread.State;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -76,7 +69,6 @@ import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.utilities.ui.ProjectUtilities;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class TestingUtilities {
@@ -821,11 +813,15 @@ public class TestingUtilities {
 	public static void importTestingProjectIntoWorkspace(String testProject) {
 		String testProjectPath = "";
 		String repository_location = BaseTest.getTestModelRespositoryLocation();
-		if (testProject.equals("GPS Watch")) {
+        if ( testProject.equals("GPS_Watch")
+             || testProject.equals("HeartRateMonitor")
+             || testProject.equals("Location")
+             || testProject.equals("Tracking")
+             || testProject.equals("UI") ) {
 			// GPS Watch is special. As of completion of DEI 7986, we have one 
 			// version that is used for testing and for distribution in the tool.
 			// This special case finds it in the proper home.
-			testProjectPath = repository_location + "/../applications/gps/" + testProject;				
+            testProjectPath = repository_location + "/../applications/gps/GPS/" + testProject;
 		} else {
 			testProjectPath = repository_location + "/" + testProject;
 		} 
@@ -896,4 +892,47 @@ public class TestingUtilities {
 		}
 		return g_view;
 	}
-}
+	
+	/**
+	 * Simple deadlock for testing purposes
+	 */
+	public static void intentionalDeadlock() {
+	    final Object lock1 = new Object();
+	    final Object lock2 = new Object();
+	 
+	    Thread thread1 = new Thread(new Runnable() {
+	        @Override public void run() {
+	            synchronized (lock1) {
+	                System.out.println("Thread1 acquired lock1");
+	                try {
+	                    TimeUnit.MILLISECONDS.sleep(50);
+	                } catch (InterruptedException ignore) {}
+	                synchronized (lock2) {
+	                    System.out.println("Thread1 acquired lock2");
+	                }
+	            }
+	        }
+	 
+	    });
+	    thread1.start();
+	 
+	    Thread thread2 = new Thread(new Runnable() {
+	        @Override public void run() {
+	            synchronized (lock2) {
+	                System.out.println("Thread2 acquired lock2");
+	                try {
+	                    TimeUnit.MILLISECONDS.sleep(50);
+	                } catch (InterruptedException ignore) {}
+	                synchronized (lock1) {
+	                    System.out.println("Thread2 acquired lock1");
+	                }
+	            }
+	        }
+	    });
+	    thread2.start();
+
+	    // deadlock here .
+	    try {
+		    thread2.join();
+	    } catch (InterruptedException ignore) {}
+	}}

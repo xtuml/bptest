@@ -88,7 +88,9 @@ public class CanvasCopyPasteTests extends CanvasTest {
 		ce = ((ModelEditor) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();
-		UITestingUtilities.pasteClipboardContents(UITestingUtilities.getClearPoint(ce), ce);
+		UITestingUtilities.pasteClipboardContents(new Point(400,100), ce);
+		BaseTest.waitForTransaction();
+		BaseTest.dispatchEvents();
 		validateOrGenerateResults(ce, generateResults);
 		Package_c newDtPackage = Package_c.getOneEP_PKGOnR1405(m_sys, new ClassQueryInterface_c() {
 		
@@ -101,6 +103,7 @@ public class CanvasCopyPasteTests extends CanvasTest {
 		assertNotNull("Package was not created along with paste.", newDtPackage);
 		addElementToSelection(true, newDtPackage);
 		CanvasUtilities.openCanvasEditor(newDtPackage);
+		BaseTest.dispatchEvents();
 		ce = ((ModelEditor) PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor())
 				.getGraphicalEditor();

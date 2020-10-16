@@ -38,9 +38,11 @@ import org.xtuml.bp.core.ClassAsSimpleFormalizer_c;
 import org.xtuml.bp.core.ClassAsSimpleParticipant_c;
 import org.xtuml.bp.core.CommunicationLink_c;
 import org.xtuml.bp.core.CoreDataType_c;
+import org.xtuml.bp.core.Deferral_c;
 import org.xtuml.bp.core.DerivedBaseAttribute_c;
 import org.xtuml.bp.core.FunctionParameter_c;
 import org.xtuml.bp.core.Function_c;
+import org.xtuml.bp.core.ModelClass_c;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.OperationParameter_c;
 import org.xtuml.bp.core.Operation_c;
@@ -63,6 +65,7 @@ import org.xtuml.bp.ui.properties.BridgeParameterS_BPARMPropertySource;
 import org.xtuml.bp.ui.properties.BridgeS_BRGPropertySource;
 import org.xtuml.bp.ui.properties.CommunicationLinksCOMM_LNKPropertySource;
 import org.xtuml.bp.ui.properties.CoreDataTypeS_CDTPropertySource;
+import org.xtuml.bp.ui.properties.DeferredOperationO_DEFPropertySource;
 import org.xtuml.bp.ui.properties.DerivedAttributeO_DBATTRPropertySource;
 import org.xtuml.bp.ui.properties.DerivedOneEndR_CONEPropertySource;
 import org.xtuml.bp.ui.properties.DerivedOtherEndR_COTHPropertySource;
@@ -113,7 +116,11 @@ public class EnumRangeTest extends BaseTest
     public static final String[] Dialect_vals =
         {
             "OAL",
-            "MASL" };
+            "MASL",
+            "Alf",
+            "Java",
+            "C",
+            "None" };
     public static final String[] By_Ref_vals = { "By Value", "By Reference" };
     public static final String[] Cond_vals = { "Unconditional", "Conditional" };
     public static final String[] Mult_vals = { "One", "Many" };
@@ -150,10 +157,12 @@ public class EnumRangeTest extends BaseTest
 };
     public static String[] Full_Der_vals = { "Partially Derived", "Fully Derived" };
     public static String[] Brg_Typ_vals = { "User-Defined", "Built-in" };
+    public static String[] required_vals = { "Required", "Optional" };
     public static String[] Oid_ID_vals = { "*1", "*2", "*3" };
     public static String[] Gen_Type_vals =
         { "User Defined", "date", "timestamp", "inst_ref<Timer>" };
 
+    public static String[] Implementation_Scope_vals = { "Domain", "Deployment" };
     private void validateEnumVals(String prop, IPropertyDescriptor[] pd_set, String[] vals)
     {
         for ( int i = 0; i < pd_set.length; ++i)
@@ -463,5 +472,26 @@ public class EnumRangeTest extends BaseTest
     	CommunicationLinksCOMM_LNKPropertySource ps = new CommunicationLinksCOMM_LNKPropertySource(inst);
     	IPropertyDescriptor[] pd_set = ps.getPropertyDescriptors();
     	validateEnumVals("EndVisibility", pd_set, EndVisibility_vals);
+    }
+    @Test
+    public void testDeferralRequired() throws Exception
+    {
+    	ModelClass_c supertype = ModelClass_c.ModelClassInstance(modelRoot, new ClassQueryInterface_c() {
+			
+			@Override
+			public boolean evaluate(Object candidate) {
+				return ((ModelClass_c) candidate).getName().equals("Superclass");
+			}
+		});
+    	Operation_c op = Operation_c.getOneO_TFROnR115(supertype, new ClassQueryInterface_c() {
+			
+			@Override
+			public boolean evaluate(Object candidate) {
+				return ((Operation_c) candidate).getName().equals("deferral");
+			}
+		});
+    	DeferredOperationO_DEFPropertySource ps = new DeferredOperationO_DEFPropertySource(Deferral_c.getOneO_DEFOnR126(op));
+    	IPropertyDescriptor[] pd_set = ps.getPropertyDescriptors();
+    	validateEnumVals("required", pd_set, required_vals);
     }
 }

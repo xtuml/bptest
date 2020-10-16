@@ -392,6 +392,11 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] {"operation( parameter: )"};
         } else if (element.equals("P31")) {
             possibilities = new String[] {"cb_operation( parameter: )"};
+            if (location.equals("L37")) {
+            	for (int i = 0; i < possibilities.length; i++) {
+            		possibilities[i] = "::" + possibilities[i];
+            	}
+            }
         } else if (element.equals("P32")) {
             possibilities = new String[] {"function( parameter: )", "FunctionOne()", "FunctionOne-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )", "FunctionTwo()", "FunctionTwo-Parameters( ParameterOne:, ParameterTwo:, ParameterThree: )"};
         } else if (element.equals("P33")) {
@@ -437,6 +442,11 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] {"false"};
         } else if (element.equals("P48")) {
             possibilities = new String[] {"operation( op_parameter: )", "signal( sig_parameter: )"};
+            if (location.equals("L37")) {
+            	for (int i = 0; i < possibilities.length; i++) {
+            		possibilities[i] = "::" + possibilities[i];
+            	}
+            }
         } else if (element.equals("P49")) {
             possibilities = new String[] {"comp_ref_var"};
         } else if (element.equals("P50")) {
@@ -449,12 +459,27 @@ public class OalAutoComplete extends CanvasTest {
             possibilities = new String[] {"Class11:event( parameter: )", "Class12:creation()", "Class21:event( parameter: )", "L11Class1:event()", "L11Class_A1:event()"};
         } else if (element.equals("P54")) {
             possibilities = new String[] {"const1", "const2"};
+            if (location.equals("L37")) {
+            	for (int i = 0; i < possibilities.length; i++) {
+            		possibilities[i] = "::" + possibilities[i];
+            	}
+            }
         } else if (element.equals("P55")) {
-            possibilities = new String[] {"enum1", "enum2"};
+            possibilities = new String[] {"enum1", "enum2"};            
+            if (location.equals("L37")) {
+            	for (int i = 0; i < possibilities.length; i++) {
+            		possibilities[i] = "::" + possibilities[i];
+            	}
+            }
         } else if (element.equals("P56")) {
             possibilities = new String[] {"L33::", "EDT2::"};
         } else if (element.equals("P57")) {
             possibilities = new String[] {"bridge( parameter: )"};
+            if (location.equals("L37")) {
+            	for (int i = 0; i < possibilities.length; i++) {
+            		possibilities[i] = "::" + possibilities[i];
+            	}
+            }
         } else if (element.equals("P58")) {
             possibilities = new String[] {"->L8Class[R1.'simple']"};
         } else if (element.equals("P59")) {

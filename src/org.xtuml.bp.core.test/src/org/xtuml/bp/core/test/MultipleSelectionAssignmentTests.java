@@ -38,6 +38,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Attribute_c;
@@ -148,6 +149,7 @@ public class MultipleSelectionAssignmentTests extends BaseTest {
 	 * @throws CoreException
 	 * @throws IOException
 	 */
+	@Ignore
 	@Test
 	public void testMultipleSelectionAssignment() throws CoreException,
 			IOException {

@@ -878,7 +878,6 @@ sub createTests() {
                 print $outputFH "     * \n";
                 print $outputFH "     */\n";
                 print $outputFH "    \@Test\n    public void test$MatrixColNames[$col]_$MatrixRowNames[$row]() throws Exception {\n";
-                print $outputFH "        setUp();\n";
                 print $outputFH "        test_id = getTestId(\"$MatrixColNames[$col]\", \"$MatrixRowNames[$row]\", \"$testCnt\");\n";
                 print $outputFH "\n";
                 if ( 1 == $selectRowFirst ) {
@@ -921,7 +920,6 @@ sub createTests() {
                     print $outputFH "           validateOrGenerateResults((GraphicalEditor) editor, generateResults);\n";
                     print $outputFH "        }\n";
                 }
-                print $outputFH "        tearDown();\n";                
                 print $outputFH "    }\n";
                 print $outputFH "\n";
             }

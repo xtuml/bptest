@@ -238,7 +238,7 @@ package org.xtuml.bp.core.test.cpts;
 .else
 package org.xtuml.bp.core.test.cpts_full;
 .end if
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.xtuml.bp.core.*;
 import org.xtuml.bp.core.test.cpts.CPSDTElementResolver.ParentChildContainer;

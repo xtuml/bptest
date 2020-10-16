@@ -1,12 +1,4 @@
 //=====================================================================
-//
-//File:      $RCSfile: AttributeMenuItemTestGenerics.java,v $
-//Version:   $Revision: 1.5 $
-//Modified:  $Date: 2013/05/10 04:30:24 $
-//
-//(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -36,7 +28,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.ModelClass_c;
-import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.ReferentialAttribute_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
@@ -165,23 +156,6 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 		CanvasTestUtils.openCanvasEditor(uut);
 	}
 
-	
-//	@Test
-//	public void testAttributeMenuItemTestGenerics(){
-//		doTestMoveUpOneAttribute();
-//		doTestMoveWithTwoAttributes();
-//		doTestMoveWithThreeAttributes();
-//		doTestBaseAttributeToDerived();
-//		doTestDerivedAttributeToBase();
-//		doTestAddToIdentifier();
-//		doTestRemoveFromIdentifier();
-//		doTestAddToIdentifierReferencedSimple();
-//		doTestAddToIdentifierReferencedAssoc();
-//		doTestAddToIdentifierReferencedInher();
-//		doTestFormalizeAfterMoveDown();
-//		doTestFormalizeAfterMoveUp();
-//	}
-	
 	@Test
 	public void testMoveUpOneAttribute() {
 		test_id = "1";
@@ -455,7 +429,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdToRefForm"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new"));
-		UUID expectedId = attr.getDt_id();
+		UUID expectedId = getSameAsBaseAttributeUUID();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -498,7 +472,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdToLink"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_one_id"));
-		UUID expectedId = attr.getDt_id();
+		UUID expectedId = getSameAsBaseAttributeUUID();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -533,7 +507,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 		assertTrue(oth_attr.Actionfilter("id", "some"));
 		new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_oth_id"));
-		expectedId = attr.getDt_id();
+		expectedId = getSameAsBaseAttributeUUID();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});
@@ -575,7 +549,7 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				new ModelClass_by_name_c("testAddIdSub"));
 		Attribute_c new_ref_attr = Attribute_c.getOneO_ATTROnR102(ref_class,
 				new Attribute_by_name_c("new_id"));
-		UUID expectedId = attr.getDt_id();
+		UUID expectedId = getSameAsBaseAttributeUUID();
 		assertEquals(expectedId, new_ref_attr.getDt_id());
 
 		removefromId(new String[]{"*1"});

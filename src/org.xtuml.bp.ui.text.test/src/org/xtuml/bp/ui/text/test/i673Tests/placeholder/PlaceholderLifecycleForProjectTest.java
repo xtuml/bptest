@@ -1,11 +1,3 @@
-//=====================================================================
-//
-//	File:      $RCSfile: PlaceholderLifecycleForProjectTest.java,v $
-//	Version:   $Revision: 1.12 $
-//	Modified:  $Date: 2013/05/10 06:03:50 $
-//
-//	(c) Copyright 2005-2014 by Mentor Graphics Corp. All rights reserved.
-//
 //	=====================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not
 // use this file except in compliance with the License.  You may obtain a copy
@@ -28,6 +20,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.ModelClass_c;
@@ -44,21 +37,12 @@ import org.xtuml.bp.ui.text.test.UITextTest;
 import org.xtuml.bp.ui.text.test.activity.ActivityEditorInteraction;
 import org.xtuml.bp.ui.text.test.description.DescriptionEditorInteraction;
 
+@Ignore
 @RunWith(OrderedRunner.class)
 public class PlaceholderLifecycleForProjectTest extends UITextTest {
 
-//	public PlaceholderLifecycleForProjectTest(String projectName, String name) throws CoreException {
-//		super("testOpen", name); //$NON-NLS-1$
-//	}
-//	
-//	public PlaceholderLifecycleForProjectTest(String name) throws CoreException {
-//		super("testOpen", name); //$NON-NLS-1$
-//	}
-	
 	public PlaceholderLifecycleForProjectTest() throws CoreException {
 		super();
-//		super("testOpen", null); //$NON-NLS-1$
-		// TODO Auto-generated constructor stub
 	}
 
 	@Test

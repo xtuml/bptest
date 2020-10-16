@@ -297,6 +297,7 @@ import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.DeleteAction;
 import org.xtuml.bp.core.ui.Selection;
+import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Cl_c;
@@ -339,8 +340,7 @@ public class DeleteTestGenerics extends CanvasTest {
 			initialized = true;
 		}
 
-		Display d = Display.getCurrent();
-		while ( d.readAndDispatch() ) ;
+		BaseTest.dispatchEvents();
 	}
 
 	@After
@@ -434,7 +434,7 @@ public class DeleteTestGenerics extends CanvasTest {
   			this.test$r{class.Name}();
 .end for
 .select any ss from instances of EP_PKG where (selected.Name == "Import Subsystem")
-.select one class related by ss->PE_PE[R8000]->O_OBJ[R8001] where (selected.Name == "Test Import Class")
+.select any class related by ss->PE_PE[R8000]->O_OBJ[R8001] where (selected.Name == "Test Import Class")
 .select one isc related by class->SM_ISM[R518]->SM_SM[R517]
 .select many states related by isc->SM_STATE[R501] where (selected.Name != "Test State OtherSide")
 .for each state in states
@@ -546,7 +546,7 @@ public class DeleteTestGenerics extends CanvasTest {
 .// Create SM_TXN delete tests
 .//
 .select any ss from instances of EP_PKG where (selected.Name == "Import Subsystem")
-.select one class related by ss->PE_PE[R8000]->O_OBJ[R8001] where (selected.Name == "Test Import Class")
+.select any class related by ss->PE_PE[R8000]->O_OBJ[R8001] where (selected.Name == "Test Import Class")
 .select one isc related by class->SM_ISM[R518]->SM_SM[R517]
 .select many states related by isc->SM_STATE[R501] where (selected.Name != "Test State OtherSide")
 .assign test_count = 0

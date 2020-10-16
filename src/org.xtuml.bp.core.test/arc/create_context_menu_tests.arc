@@ -277,6 +277,9 @@
   .elif(kl == "SM_STATE")
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
+  .elif((kl == "CNST_LSC") and (cmeLabel == "Move Up"))
+    .assign attr_needsQuery = true
+    .assign attr_nameAccessor = "Get_name()"
   .elif((kl == "S_MBR") and (cmeLabel == "Move Up"))
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
@@ -295,6 +298,9 @@
   .elif((kl == "S_ENUM") and (cmeLabel == "Move Up"))
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
+  .elif((kl == "CNST_LSC") and (cmeLabel == "Move Down"))
+    .assign attr_needsQuery = true
+    .assign attr_nameAccessor = "Get_name()"
   .elif((kl == "S_MBR") and (cmeLabel == "Move Down"))
     .assign attr_needsQuery = true
     .assign attr_nameAccessor = "getName()"
@@ -683,7 +689,11 @@ public class ContextMenuTestsGenerics extends BaseTest
         .if ((cme_entry.Specialism == "Specialized Package") or (cme_entry.Specialism == "Generic Package"))
            .assign actionName = cme_entry.Label
         .else
-          .assign actionName = cme_entry.Specialism + cme_entry.Label
+          .if ("${cme_entry.Specialism}" == "--")
+            .assign actionName = cme_entry.Label
+          .else
+            .assign actionName = cme_entry.Specialism + cme_entry.Label
+          .end if
         .end if
       .end if
     .else
@@ -691,7 +701,11 @@ public class ContextMenuTestsGenerics extends BaseTest
     .end if
     .if ( cme_entry.Specialism != "Specialized Package")
     @Test
+    .if ("${cme_entry.Specialism}" == "--")
+	public void testContextMenu$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
+  .else
 	public void testContextMenu$r{cme_entry.Specialism}$r{cme_entry.Label}ActionOn${cme_entry.Key_Lett}() {
+  .end if
    
     .select any obj from instances of O_OBJ where (selected.Key_Lett == cme_entry.Key_Lett)
        .if  (obj.Key_Lett == "S_DOM" ) 
@@ -719,7 +733,7 @@ public class ContextMenuTestsGenerics extends BaseTest
     .assign name = name + "for$r{actionName}"
     .if(result.needsQuery == true)
       .if(result.body == "")
-        .if(( obj.Key_Lett  == "S_MBR")or(obj.Key_Lett  == "S_ENUM" ))
+        .if((( obj.Key_Lett  == "S_MBR")or(obj.Key_Lett  == "S_ENUM" )) or (obj.Key_Lett == "CNST_LSC"))
         $r{obj.Name}_c obj = $r{obj.Name}_c.$r{obj.Name}Instance(Package_c.getOneEP_PKGOnR1401(m_sys,new ClassQueryInterface_c() {
 
                 public boolean evaluate(Object candidate) {
@@ -765,7 +779,8 @@ ${result.body}
                 }
 
             }).getModelRoot());
-         
+         .elif(cme_entry.Label == "Make Local")
+		 $r{obj.Name}_c obj = $r{obj.Name}_c.$r{obj.Name}Instance(modelRoot, op -> Deferral_c.getOneO_DEFOnR126((Operation_c) op) != null);
          .else
 		 $r{obj.Name}_c obj = $r{obj.Name}_c.$r{obj.Name}Instance(modelRoot);
 		 .end if
@@ -855,7 +870,7 @@ ${result.body}
     	GraphicalElement_c element = GraphicalElement_c.getOneGD_GEOnR2(con);
     	UITestingUtilities.addElementToGraphicalSelection(element.getRepresents());
     	editor.zoomSelected();
-        while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
+        BaseTest.dispatchEvents();
     	Point center = CanvasTestUtils.getConnectorCenter(con);
     	center = CanvasTestUtils.convertToMouseCoor(center, editor.getModel());
     	CanvasTestUtils.doMousePress(center.x, center.y);
@@ -872,6 +887,7 @@ ${result.body}
     	// get the top level menu items
     	Action undo = mc.getTransactionManager().getUndoAction();
     	undo.run();
+    	BaseTest.dispatchEvents();
 
     	// assert that the redo item is available
     	assertTrue(UITestingUtilities.checkItemStatusInContextMenu(menu, "Redo", "", m_readonly));

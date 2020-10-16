@@ -1,12 +1,4 @@
 //========================================================================
-//
-//File:      $RCSfile: CommunicationMessageTestsGenerics.java,v $
-//Version:   $Revision: 1.9 $
-//Modified:  $Date: 2013/05/10 04:30:28 $
-//
-//(c) Copyright 2005-2014 by Mentor Graphics Corp. All rights reserved.
-//
-//========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
 // use this file except in compliance with the License.  You may obtain a copy 
 // of the License at
@@ -33,6 +25,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.AsynchronousMessage_c;
@@ -75,6 +68,11 @@ import org.xtuml.bp.utilities.ui.CanvasUtilities;
 /**
  * Contains tests that exercise the functionality of communication diagrams.
  */
+//NOTE: There is an occasional deadlock in this class. Specifically,
+//it has been observed in testFormalizeInstanceWithNestedClass,
+//but for now we are skipping this test.
+// @see https://support.onefact.net/issues/10345#note-24
+@Ignore
 @RunWith(OrderedRunner.class)
 public class CommunicationMessageTestsGenerics extends CanvasTest {
 	private String test_id;
@@ -221,16 +219,6 @@ public class CommunicationMessageTestsGenerics extends CanvasTest {
 		}
 	}
 	
-//	@Test
-//	public void testCommunicationMessageTest(){
-//	      doTestFormalizeMessageWithBridgeOperation();
-//	      doTestFormalizeMessageWithFunction();
-//	      doTestFormalizeMessageWithInstanceBasedOperation();
-//	      doTestFormalizeMessageWithClassBasedOperation();
-//	      doTestFormalizeMessageWithClassBasedEvent();
-//	      doTestFormalizeMessageWithInstanceBasedEvent();
-//	}
-
 	/**
 	 * Tests the following: a) a function package participant can be formalized
 	 * against a function package b) a message can be formalized against a
