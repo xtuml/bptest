@@ -523,7 +523,7 @@ public class CompareTestUtilities {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer
 				.getInstance(null);
 		TreeDifferencer differencer = viewer.getDifferencer();
-		List<TreeDifference> leftDifferences = differencer.getLeftDifferences();
+		List<TreeDifference> leftDifferences = differencer.getLeftDifferences(true);
 		List<TreeDifference> differencesToCopy = new ArrayList<TreeDifference>();
 		for (TreeDifference difference : leftDifferences) {
 			if ((difference.getKind() & Differencer.DIRECTION_MASK) == Differencer.CONFLICTING) {
@@ -600,7 +600,7 @@ public class CompareTestUtilities {
 		List<TreeDifference> differences = new ArrayList<TreeDifference>();
 		if (viewer != null) {
 			TreeDifferencer differencer = viewer.getDifferencer();
-			List<TreeDifference> leftDifferences = differencer.getLeftDifferences();
+			List<TreeDifference> leftDifferences = differencer.getLeftDifferences(true);
 			for (TreeDifference difference : leftDifferences) {
 				if (useDirectionMask) {
 					if ((difference.getKind() & Differencer.DIRECTION_MASK) == type) {
@@ -623,7 +623,7 @@ public class CompareTestUtilities {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer
 				.getInstance(null);
 		TreeDifferencer differencer = viewer.getDifferencer();
-		List<TreeDifference> rightDifferences = differencer.getLeftDifferences();
+		List<TreeDifference> rightDifferences = differencer.getLeftDifferences(true);
 		List<TreeDifference> differences = new ArrayList<TreeDifference>();
 		for (TreeDifference difference : rightDifferences) {
 			if (useDirectionMask) {
