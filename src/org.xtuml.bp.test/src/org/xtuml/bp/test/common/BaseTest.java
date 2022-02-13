@@ -255,6 +255,8 @@ public class BaseTest extends TestCase {
 			// tests
 			IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
 			store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, false);
+			// Until tests are adjusted to account for textual persistence, disable
+			store.setValue(BridgePointPreferencesStore.GRAPHICS_TEXTUAL_SERIALIZATION, "never");
 		} catch (CoreException e) {
 			fail("Unable to disable synchronization decorator.");
 		}
