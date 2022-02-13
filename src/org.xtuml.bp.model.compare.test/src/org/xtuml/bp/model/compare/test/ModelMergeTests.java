@@ -33,7 +33,6 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -71,12 +70,14 @@ import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.inspector.ObjectElement;
 import org.xtuml.bp.model.compare.ComparableTreeObject;
+import org.xtuml.bp.model.compare.ComparePlugin;
 import org.xtuml.bp.model.compare.ITreeDifferencerProvider;
 import org.xtuml.bp.model.compare.TreeDifference;
 import org.xtuml.bp.model.compare.TreeDifferencer;
 import org.xtuml.bp.model.compare.contentmergeviewer.ModelContentMergeViewer;
 import org.xtuml.bp.model.compare.contentmergeviewer.SynchronizedTreeViewer;
 import org.xtuml.bp.model.compare.contentmergeviewer.TextualAttributeCompareElementType;
+import org.xtuml.bp.model.compare.preferences.ModelComparePreferenceStore;
 import org.xtuml.bp.model.compare.providers.ModelCompareContentProvider;
 import org.xtuml.bp.model.compare.providers.ObjectElementComparable;
 import org.xtuml.bp.model.compare.providers.custom.AssociationSubtypeComparable;
@@ -157,7 +158,6 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
-	@Ignore
 	public void testAutomaticGraphicalMergeElementDeletion() throws Exception {
 		String projectName = "AutomaticGraphicalMerge";
 		// import git repository from models repo
@@ -247,7 +247,6 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
-	@Ignore
 	public void testAutomaticGraphicalMergeElementAdded() throws Exception {
 		String projectName = "AutomaticGraphicalMergeAddition";
 		// import git repository from models repo
@@ -305,7 +304,6 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
-	@Ignore
 	public void testAddStatesAndTransitionsNoExceptions() throws Exception {
 		String projectName = "dts0101009924";
 		// import git repository from models repo
@@ -325,7 +323,6 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
-	@Ignore
 	public void testConnectorTextDoesNotDisappear() throws Exception {
 		String projectName = "dts0101039702";
 		// import git repository from models repo
@@ -429,9 +426,12 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
-	@Ignore
 	public void testNoGraphicalElementCopiedWithoutSemanticCopy()
 			throws Exception {
+		ComparePlugin.getDefault().getPreferenceStore()
+				.setValue(ModelComparePreferenceStore.ENABLE_GRAPHICAL_AUTO_MERGE, true);
+		ComparePlugin.getDefault().getPreferenceStore()
+		.setValue(ModelComparePreferenceStore.ENABLE_GRAPHICAL_DIFFERENCES, false);
 		String projectName = "dts0101042915";
 		// import git repository from models repo
 		GitUtil.loadRepository(test_repositories
@@ -473,39 +473,29 @@ public class ModelMergeTests extends BaseTest {
 		TestUtil.deleteProject(getProjectHandle(projectName));
 		BaseTest.dispatchEvents(0);
 	}
-/**
- * 
- * Disabled as the existing test infrastructure does not handle situation
- * with the latest egit.  We must access the merge tool through the synchronize
- * view.  See https://support.onefact.net/issues/9402.
- */
-//	@Test
-//	public void testGraphicalElementDifferencesOnlyCausesDirtyEditor() {
-//		String projectName = "dts0101054289";
-//		// import git repository from models repo
-//		GitUtil.loadRepository(test_repositories
-//				+ "/" + projectName);
-//		// import test project
-//		GitUtil.loadProject(projectName, projectName);
-//		int x = 0;
-//		while(x == 0) {
-//			while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
-//		}
-//		// start the merge tool
-//		GitUtil.startMergeTool(projectName);
-//		BaseTest.dispatchEvents(0);
-//		// check that the merge tool is dirty
-//		ModelContentMergeViewer viewer = ModelContentMergeViewer
-//				.getInstance(null);
-//		assertTrue("Graphical changes only did not dirty the editor on open.",
-//				viewer.internalIsLeftDirty());
-//		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-//				.closeAllEditors(false);
-//		TestUtil.deleteProject(getProjectHandle(projectName));
-//	}
+
+	@Test
+	public void testGraphicalElementDifferencesOnlyCausesDirtyEditor() {
+		ComparePlugin.getDefault().getPreferenceStore().setValue(ModelComparePreferenceStore.ENABLE_GRAPHICAL_AUTO_MERGE, true);
+		ComparePlugin.getDefault().getPreferenceStore().setValue(ModelComparePreferenceStore.ENABLE_GRAPHICAL_DIFFERENCES, false);
+		String projectName = "dts0101054289";
+		// import git repository from models repo
+		GitUtil.loadRepository(test_repositories
+				+ "/" + projectName);
+		// import test project
+		GitUtil.loadProject(projectName, projectName);
+		// start the merge tool
+		GitUtil.startMergeTool(projectName);
+		BaseTest.dispatchEvents(0);
+		assertTrue("Graphical changes only did not dirty the editor on open.",
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().isSaveOnCloseNeeded());
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.closeAllEditors(false);
+		TestUtil.deleteProject(getProjectHandle(projectName));
+		BaseTest.dispatchEvents(0);
+	}
 	
 	@Test
-	@Ignore
 	public void testMergeWithStateMachineAddedInSeparateBranches()
 			throws Exception {
 		String projectName = "dts0101009925";
@@ -641,7 +631,7 @@ public class ModelMergeTests extends BaseTest {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer
 				.getInstance(null);
 		List<TreeDifference> leftDifferences = viewer.getDifferencer()
-				.getLeftDifferences();
+				.getLeftDifferences(true);
 		for (TreeDifference difference : leftDifferences) {
 			if (!SynchronizedTreeViewer.differenceIsGraphical(difference)) {
 				fail("Difference found in editor when only graphical differences should be found.");
@@ -746,7 +736,7 @@ public class ModelMergeTests extends BaseTest {
 		ModelContentMergeViewer viewer = ModelContentMergeViewer
 				.getInstance(null);
 		TreeDifferencer differencer = viewer.getDifferencer();
-		List<TreeDifference> leftDifferences = differencer.getLeftDifferences();
+		List<TreeDifference> leftDifferences = differencer.getLeftDifferences(true);
 		assertTrue(
 				"Expected four differences and found " + leftDifferences.size(),
 				leftDifferences.size() == 4);
@@ -759,7 +749,7 @@ public class ModelMergeTests extends BaseTest {
 		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 			;
 		assertTrue("Not all differences were removed by the copy all button.",
-				viewer.getDifferencer().getLeftDifferences().size() == 0);
+				viewer.getDifferencer().getLeftDifferences(true).size() == 0);
 		clearErrorLogView();
 	}
 
@@ -785,13 +775,13 @@ public class ModelMergeTests extends BaseTest {
 				.getInstance(null);
 		TreeDifferencer differencer = viewer.getDifferencer();
 		assertEquals("Incorrect number of differences found", differencer
-				.getLeftDifferences().size(), 1);
+				.getLeftDifferences(true).size(), 1);
 		viewer.setCopySelection(false);
 		viewer.copy(false);
 		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 			;
 		assertTrue("Not all differences were removed by the copy all button",
-				viewer.getDifferencer().getLeftDifferences().size() == 0);
+				viewer.getDifferencer().getLeftDifferences(true).size() == 0);
 		Association_c compareAssoc = Association_c.AssociationInstance(
 				viewer.getLeftCompareRoot(), new ClassQueryInterface_c() {
 
@@ -835,7 +825,7 @@ public class ModelMergeTests extends BaseTest {
 				.getInstance(null);
 		TreeDifferencer differencer = viewer.getDifferencer();
 		assertTrue("No differences created for state addition.", differencer
-				.getLeftDifferences().size() != 0);
+				.getLeftDifferences(true).size() != 0);
 		ism = InstanceStateMachine_c.InstanceStateMachineInstance(viewer
 				.getLeftCompareRoot());
 		StateMachineEvent_c[] events = StateMachineEvent_c
@@ -890,7 +880,7 @@ public class ModelMergeTests extends BaseTest {
 				.getInstance(null);
 		TreeDifferencer differencer = viewer.getDifferencer();
 		assertTrue("No differences created for state addition.", differencer
-				.getLeftDifferences().size() != 0);
+				.getLeftDifferences(true).size() != 0);
 		ism = InstanceStateMachine_c.InstanceStateMachineInstance(viewer
 				.getLeftCompareRoot());
 		StateMachineState_c[] states = StateMachineState_c
@@ -956,14 +946,14 @@ public class ModelMergeTests extends BaseTest {
 				.getInstance(null);
 		TreeDifferencer differencer = viewer.getDifferencer();
 		assertTrue("No differences created for event addition.", differencer
-				.getLeftDifferences().size() != 0);
+				.getLeftDifferences(true).size() != 0);
 		viewer.setCopySelection(false);
 		viewer.copy(false);
 		while (PlatformUI.getWorkbench().getDisplay().readAndDispatch())
 			;
 		assertTrue(
 				"Differences were not removed on copy for unassigning an event from a transition",
-				viewer.getDifferencer().getLeftDifferences().size() == 0);
+				viewer.getDifferencer().getLeftDifferences(true).size() == 0);
 	}
 
 	
