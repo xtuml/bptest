@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Display;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.util.WorkspaceUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -50,7 +51,8 @@ public class CoreTest extends BaseTest
     @Before
 	public void setUp() throws Exception {
 		super.setUp();
-		
+		TransactionManager.getSingleton().disableDialog = true;
+		TransactionManager.getSingleton().clearAffectedModelElements();
 		WorkspaceUtil.setAutobuilding(false);
     }
     

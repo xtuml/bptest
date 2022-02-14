@@ -78,7 +78,7 @@ public class IOMdlTestGenerics extends BaseTest {
 		// Change default for the parse on resource change preference to
 		// "always"
 		IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
-		store.setValue(BridgePointPreferencesStore.EXPORT_GRAPHICS, "always"); //$NON-NLS-1$
+		store.setValue(BridgePointPreferencesStore.SINGLE_FILE_EXPORT_GRAPHICS, "always"); //$NON-NLS-1$
 	}
 	@Before
 	public void setUp() throws Exception {
