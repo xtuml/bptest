@@ -254,6 +254,13 @@
     .assign attr_result = true
   .end if
   // END: (consistent menu entries) dts0100573206 test removal 
+  .if ((kl == "D_TSVC") and (label == "Move Up"))
+    .assign attr_result = true
+  .elif ((kl == "D_TSVC") and (label == "Move Down"))
+    .assign attr_result = true
+  .elif ((kl == "D_DEPL") and (label == "Import scenarios from component"))
+    .assign attr_result = true
+  .end if 
 .end function
 .function needsQueryGenerics
   .param String kl
