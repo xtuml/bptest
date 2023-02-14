@@ -21,7 +21,7 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.egit.core.RepositoryUtil;
-import org.eclipse.egit.ui.Activator;
+import org.eclipse.egit.core.Activator;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Control;
@@ -61,7 +61,7 @@ public class GitUtil {
 	}
 
 	public static void loadRepository(String location, String branch) {
-		RepositoryUtil util = Activator.getDefault().getRepositoryUtil();
+		RepositoryUtil util = RepositoryUtil.INSTANCE;
 		util.addConfiguredRepository(new File(location + "/" + ".git"));
 		// if the repository is not in a clean
 		// state reset it here
