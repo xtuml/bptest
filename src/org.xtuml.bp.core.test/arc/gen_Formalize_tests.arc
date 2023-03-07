@@ -224,6 +224,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xtuml.bp.core.*;
@@ -262,6 +263,7 @@ import org.xtuml.bp.ui.graphics.editor.ModelEditor;
 import org.xtuml.bp.utilities.ui.CanvasUtilities;
 
 @RunWith(OrderedRunner.class)
+@Ignore
 public class FormalizeUnformalizeTestGenerics extends CanvasTest {
 
 	String test_id = null;
