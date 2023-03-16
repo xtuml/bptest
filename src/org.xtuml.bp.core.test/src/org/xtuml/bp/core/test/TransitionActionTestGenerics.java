@@ -25,7 +25,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.ui.PlatformUI;
@@ -275,7 +275,7 @@ public class TransitionActionTestGenerics extends CanvasTest {
     public static Ooaofooa getInitializedTestModelRoot(String p_path) {
 		Ooaofooa result = Ooaofooa.getInstance(p_path, true);
 		while(ResourcesPlugin.getWorkspace().isTreeLocked());
-		while(!Platform.getJobManager().isIdle()) {
+		while(!Job.getJobManager().isIdle()) {
 		  while(PlatformUI.getWorkbench().getDisplay().readAndDispatch());
 		}
 		return result;

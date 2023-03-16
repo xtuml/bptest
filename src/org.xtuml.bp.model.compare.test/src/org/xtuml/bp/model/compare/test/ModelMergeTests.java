@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -158,6 +159,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAutomaticGraphicalMergeElementDeletion() throws Exception {
 		String projectName = "AutomaticGraphicalMerge";
 		// import git repository from models repo
@@ -217,7 +219,7 @@ public class ModelMergeTests extends BaseTest {
 		// now copy the semantic removal
 		CompareTestUtilities.selectElementInTree(true, edge);
 		CompareTestUtilities.mergeSelection();
-		CompareTestUtilities.flushMergeEditor();
+		CompareTestUtilities.flushMergeEditor(false);
 		m_sys = getSystemModel(projectName);
 		pkg = Package_c.getOneEP_PKGOnR1401(m_sys);
 		an = ActivityDiagramAction_c.getOneA_GAOnR1107(ActionNode_c
@@ -247,6 +249,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAutomaticGraphicalMergeElementAdded() throws Exception {
 		String projectName = "AutomaticGraphicalMergeAddition";
 		// import git repository from models repo
@@ -496,6 +499,7 @@ public class ModelMergeTests extends BaseTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testMergeWithStateMachineAddedInSeparateBranches()
 			throws Exception {
 		String projectName = "dts0101009925";

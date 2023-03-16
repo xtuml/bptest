@@ -7,13 +7,13 @@
 	<parent>
 		<groupId>org.xtuml.bp</groupId>
 		<artifactId>org.xtuml.bp.releng.parent.tests.super</artifactId>
-		<version>7.3.0-SNAPSHOT</version>
+		<version>7.4.0-SNAPSHOT</version>
 		<relativePath>../../../bridgepoint/releng/org.xtuml.bp.releng.parent.tests</relativePath>
 	</parent>
 
 	<groupId>org.xtuml.bp</groupId>
 	<artifactId>org.xtuml.bp.releng.parent.tests</artifactId>
-	<version>7.3.0-SNAPSHOT</version>
+	<version>7.4.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -101,11 +101,6 @@
 							<requirement>
 								<type>eclipse-feature</type>
 								<id>org.eclipse.sdk.examples</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.eclipse.xtext.sdk</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
 						</extraRequirements>

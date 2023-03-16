@@ -89,26 +89,26 @@ public class SearchUtilities {
 				}
 			}
 			for (int i = 0; i < scopeButtons.length; i++) {
-				if (scopeButtons[i].getText().equals("&Workspace") && scope == ISearchPageContainer.WORKSPACE_SCOPE) {
+				if (scopeButtons[i].getText().startsWith("&Workspace") && scope == ISearchPageContainer.WORKSPACE_SCOPE) {
 					scopeButtons[i].setSelection(true);
 					scopeButtons[i].notifyListeners(SWT.Selection, new Event());
 					break;
 				}
-				if (scopeButtons[i].getText().equals("Selecte&d resources")
+				if (scopeButtons[i].getText().startsWith("Selecte&d resource")
 						&& scope == ISearchPageContainer.SELECTION_SCOPE) {
 					scopeButtons[i].setSelection(true);
 					scopeButtons[i].notifyListeners(SWT.Selection, new Event());
 					BaseTest.dispatchEvents();
 					break;
 				}
-				if (scopeButtons[i].getText().equals("Enclosing pro&jects")
+				if (scopeButtons[i].getText().startsWith("Enclosing pro&ject")
 						&& scope == ISearchPageContainer.SELECTED_PROJECTS_SCOPE) {
 					scopeButtons[i].setSelection(true);
 					scopeButtons[i].notifyListeners(SWT.Selection, new Event());
 					BaseTest.dispatchEvents();
 					break;
 				}
-				if (scopeButtons[i].getText().equals("Wor&king set:")
+				if (scopeButtons[i].getText().startsWith("Wor&king set:")
 						&& scope == ISearchPageContainer.WORKING_SET_SCOPE) {
 					scopeButtons[i].setSelection(true);
 					scopeButtons[i].notifyListeners(SWT.Selection, new Event());
