@@ -26,9 +26,6 @@ public class GlobalsTestEnabler extends BaseTest {
   public void testGlobally() {
 		CorePlugin.getDefault().getPreferenceStore().setValue(BridgePointPreferencesStore.REQUIRE_MASL_STYLE_IDENTIFIERS,false);
 		testGlobals = true;
-	  if(name != null && name.getMethodName() != null && name.getMethodName().contains("FormalizeUnformalizeTestGenerics")) {
-		  testGlobals = false;
-	  }
   }
 
 }

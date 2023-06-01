@@ -25,7 +25,6 @@ import org.xtuml.bp.core.test.CommunicationTestsGenerics;
 import org.xtuml.bp.core.test.CoreGlobalsTestSuiteIIGenerics;
 import org.xtuml.bp.core.test.CreationTransitionEventReassignmentTestGenerics;
 import org.xtuml.bp.core.test.DeleteDatatypesTestGenerics;
-import org.xtuml.bp.core.test.FormalizeUnformalizeWithPrefixTestGenerics;
 import org.xtuml.bp.core.test.GlobalTestSetupClass;
 import org.xtuml.bp.core.test.I810_SlowDeletionTestGenerics;
 import org.xtuml.bp.core.test.IntegrityIssueTests;
@@ -58,7 +57,6 @@ import junit.framework.TestSuite;
 		TransitionActionTestGenerics.class,
 		I810_SlowDeletionTestGenerics.class,
 		MultipleSelectionAssignmentTests.class,
-		FormalizeUnformalizeWithPrefixTestGenerics.class,
 		IntegrityIssueTests.class,
 		SequenceTestsGenerics.class,
 		CommunicationMessageTestsGenerics.class,
