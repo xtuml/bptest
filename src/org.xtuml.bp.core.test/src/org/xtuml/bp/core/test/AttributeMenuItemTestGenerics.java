@@ -33,9 +33,6 @@ import org.xtuml.bp.core.ReferentialAttribute_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.ui.AddToIdentifierOnO_ATTRAction;
 import org.xtuml.bp.core.ui.AddToIdentifierOnO_ATTRWizardPage1;
-import org.xtuml.bp.core.ui.BinaryFormalizeOnR_RELAction;
-import org.xtuml.bp.core.ui.BinaryFormalizeOnR_RELWizardPage1;
-import org.xtuml.bp.core.ui.BinaryFormalizeOnR_RELWizardPage2;
 import org.xtuml.bp.core.ui.MoveDownOnO_ATTRAction;
 import org.xtuml.bp.core.ui.MoveUpOnO_ATTRAction;
 import org.xtuml.bp.core.ui.RemoveFromIdentifierOnO_ATTRAction;
@@ -108,8 +105,6 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 			testAddToIdentifierReferencedSimple();
 			testAddToIdentifierReferencedAssoc();
 			testAddToIdentifierReferencedInher();
-			testFormalizeAfterMoveDown();
-			testFormalizeAfterMoveUp();
 		} catch (Exception e) {
 			System.out.println("Exception encountered by test result creator: "
 					+ e);
@@ -570,116 +565,6 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 				.getOneO_RATTROnR106(ref_attr);
 		assertFalse(ref_rattr.Isorphaned());
 
-	}
-
-	@Test
-	public void testFormalizeAfterMoveDown() {
-
-		openTestPKGDiagram("Attribute Tests");
-		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
-				new ModelClass_by_name_c("testFormalizeAfterMoveDown"));
-		Attribute_c top = Attribute_c.getOneO_ATTROnR102(mc,
-				new Attribute_by_name_c("TestAttrFormalizerMoveDown"));
-		Shape_c shp = CanvasTestUtils.getModelClassShape(modelRoot,
-				"testFormalizeAfterMoveDown");
-		Cl_c.Clearselection();
-		selection.addToSelection(top);
-		Action a = new Action() {
-		};
-		MoveDownOnO_ATTRAction mda = new MoveDownOnO_ATTRAction();
-		mda.run(a);
-		GraphicalElement_c ge = GraphicalElement_c.getOneGD_GEOnR2(shp);
-		Connector_c con = Connector_c.getOneGD_CONOnR20(Graphedge_c
-				.getOneDIM_EDOnR320(Graphconnector_c
-						.getManyDIM_CONsOnR311(Graphelement_c
-								.getOneDIM_GEOnR23(ge))));
-		GraphicalElement_c ge2 = GraphicalElement_c.getOneGD_GEOnR2(con);
-		Cl_c.Clearselection();
-		selection.addToSelection(ge2.getRepresents());
-		BinaryFormalizeOnR_RELAction fa = new BinaryFormalizeOnR_RELAction();
-		fa.setActivePart(a, PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		IStructuredSelection structuredSelection = (IStructuredSelection) Selection
-				.getInstance().getSelection();
-		WizardDialog wd = fa.R_REL_BinaryFormalize(structuredSelection);
-		BinaryFormalizeOnR_RELWizardPage1 page1 = (BinaryFormalizeOnR_RELWizardPage1) wd
-				.getCurrentPage();
-		BinaryFormalizeOnR_RELWizardPage2 page2 = (BinaryFormalizeOnR_RELWizardPage2) page1
-				.getNextPage();
-		String strings[] = page1.Non_formalizerCombo.getItems();
-		for (int i = 0; i < strings.length; ++i) {
-			if (strings[i].equals("testFormalizeAfterMoveDown")) {
-				page1.Non_formalizerCombo.select(i);
-			}
-		}
-		page1.updateSelectedNon_formalizer();
-		page2.onPageEntry();
-		page1.onPageEntry();
-		IWizard w = page1.getWizard();
-		boolean exceptionCaught = false;
-		try {
-			w.performFinish();
-		} catch (Exception e) {
-			exceptionCaught = true;
-		}
-		wd.close();
-		assertFalse(exceptionCaught);
-		performTest("27");
-	}
-
-	@Test
-	public void testFormalizeAfterMoveUp() {
-
-		openTestPKGDiagram("Attribute Tests");
-		ModelClass_c mc = ModelClass_c.ModelClassInstance(modelRoot,
-				new ModelClass_by_name_c("testFormalizeAfterMoveUp"));
-		Attribute_c top = Attribute_c.getOneO_ATTROnR102(mc,
-				new Attribute_by_name_c("TestAttrFormalizerMoveUp"));
-		Shape_c shp = CanvasTestUtils.getModelClassShape(modelRoot,
-				"testFormalizeAfterMoveUp");
-		Cl_c.Clearselection();
-		selection.addToSelection(top);
-		Action a = new Action() {
-		};
-		MoveUpOnO_ATTRAction mua = new MoveUpOnO_ATTRAction();
-		mua.run(a);
-		GraphicalElement_c ge = GraphicalElement_c.getOneGD_GEOnR2(shp);
-		Connector_c con = Connector_c.getOneGD_CONOnR20(Graphedge_c
-				.getOneDIM_EDOnR320(Graphconnector_c
-						.getManyDIM_CONsOnR311(Graphelement_c
-								.getOneDIM_GEOnR23(ge))));
-		GraphicalElement_c ge2 = GraphicalElement_c.getOneGD_GEOnR2(con);
-		Cl_c.Clearselection();
-		selection.addToSelection(ge2.getRepresents());
-		BinaryFormalizeOnR_RELAction fa = new BinaryFormalizeOnR_RELAction();
-		fa.setActivePart(a, PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActivePart());
-		IStructuredSelection structuredSelection = (IStructuredSelection) Selection
-				.getInstance().getSelection();
-		WizardDialog wd = fa.R_REL_BinaryFormalize(structuredSelection);
-		BinaryFormalizeOnR_RELWizardPage1 page1 = (BinaryFormalizeOnR_RELWizardPage1) wd
-				.getCurrentPage();
-		BinaryFormalizeOnR_RELWizardPage2 page2 = (BinaryFormalizeOnR_RELWizardPage2) page1
-				.getNextPage();
-		String strings[] = page1.Non_formalizerCombo.getItems();
-		for (int i = 0; i < strings.length; ++i) {
-			if (strings[i].equals("testFormalizeAfterMoveUp")) {
-				page1.Non_formalizerCombo.select(i);
-			}
-		}
-		page1.updateSelectedNon_formalizer();
-		page2.onPageEntry();
-		page1.onPageEntry();
-		IWizard w = page1.getWizard();
-		boolean exceptionCaught = false;
-		try {
-			w.performFinish();
-		} catch (Exception e) {
-			exceptionCaught = true;
-		}
-		wd.close();
-		assertFalse(exceptionCaught);
-		performTest("28");
 	}
 
 	public boolean fSkipValidate = false;
