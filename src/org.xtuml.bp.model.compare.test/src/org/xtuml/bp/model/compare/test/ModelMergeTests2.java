@@ -7,6 +7,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
@@ -39,11 +41,12 @@ import org.xtuml.bp.core.StateMachine_c;
 import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.core.ui.BinaryEditAssociationOnR_RELAction;
+import org.xtuml.bp.core.ui.BinaryEditAssociationOnR_RELWizardPage1;
 import org.xtuml.bp.core.ui.DeleteAction;
 import org.xtuml.bp.core.ui.NewAttributeOnO_OBJAction;
 import org.xtuml.bp.core.ui.NewEventOnSM_ISMAction;
 import org.xtuml.bp.core.ui.Selection;
-import org.xtuml.bp.core.ui.UnformalizeOnR_RELAction;
 import org.xtuml.bp.model.compare.TreeDifference;
 import org.xtuml.bp.model.compare.actions.ExpandAllAction;
 import org.xtuml.bp.model.compare.contentmergeviewer.ModelContentMergeViewer;
@@ -467,8 +470,9 @@ public class ModelMergeTests2  extends BaseTest {
 		}
 	}
 	
-	@Ignore
+	
 	@Test
+	@Ignore
 	public void testContainerChangeMerging() throws Exception {
 		loadProject("MicrowaveOven");
 		m_sys = getSystemModel("MicrowaveOven");
@@ -512,8 +516,18 @@ public class ModelMergeTests2  extends BaseTest {
 		// unformalize the association
 		Selection.getInstance().clear();
 		Selection.getInstance().addToSelection(assoc);
-		UnformalizeOnR_RELAction action = new UnformalizeOnR_RELAction();
-		action.run(null);
+		BinaryEditAssociationOnR_RELAction binEdtAssocAction = new BinaryEditAssociationOnR_RELAction();
+		Action a = new Action() {
+		};
+		binEdtAssocAction.setActivePart(a, PlatformUI.getWorkbench()
+		  .getActiveWorkbenchWindow().getActivePage().getActivePart());
+		WizardDialog wizDialog = binEdtAssocAction.R_REL_BinaryEditAssociation(Selection.getInstance()
+		  .getStructuredSelection());
+		BinaryEditAssociationOnR_RELWizardPage1 binEdtAssocPg = (BinaryEditAssociationOnR_RELWizardPage1) wizDialog
+		  .getCurrentPage();
+		TestUtil.finishToDialog(2000);
+		binEdtAssocPg.FormalizeCheck.setSelection(false);
+		binEdtAssocPg.updateSelectedFormalize();
 		BaseTest.dispatchEvents(0);
 		// verify the differences
 		CompareTestUtilities.openCompareEditor(moPkg.getFile());
