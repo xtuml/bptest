@@ -40,7 +40,7 @@ public class ImportExistingTests extends TestCase {
     public void testProjectCreationNoImportIntoworkspace() throws Exception {
         
         String repository_location = BaseTest.getTestModelRespositoryLocation() + "/../";
-        ProjectUtilities.importExistingProject( repository_location + PROJECT_PATH, false );  // Do not copy into workspace
+        ProjectUtilities.importExistingProject( repository_location + PROJECT_PATH );
         BaseTest.dispatchEvents();
 
         ProjectUtilities.openxtUMLPerspective();
