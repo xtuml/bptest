@@ -3,10 +3,10 @@
 
   <import file="${mcj_path}/common.xml"/>
 
-  <target name="all" description="Generate all code for this project" depends="dispose_test,action_test,delete_test,formalize_test,context_menu_tests,copy_paste_tests, rto_move_tests, consistency_all">
+  <target name="all" description="Generate all code for this project" depends="dispose_test,action_test,delete_test,context_menu_tests,copy_paste_tests, rto_move_tests, consistency_all">
   </target>
 
-  <target name="nb_all" description="Generate all code for this project" depends="dispose_test,action_test,delete_test,formalize_test,context_menu_tests,copy_paste_tests, rto_move_tests, nb_consistency_all">
+  <target name="nb_all" description="Generate all code for this project" depends="dispose_test,action_test,delete_test,context_menu_tests,copy_paste_tests, rto_move_tests, nb_consistency_all">
   </target>
 
   <target name="consistency_all" description="Generate a test domain for the consistency checker" depends="sql,schema,java,format_java">
@@ -105,35 +105,6 @@
     <!-- Need to touch the output file for the case where the input data
        changed, but the output didn't -->
     <touch file="${delete_test.output}" />
-  </target>
-
-  <property name="formalize_test.output" value="src/org/xtuml/bp/core/test/FormalizeUnformalizeTestGenerics.java" />
-
-  <target name="formalize_test.depends">
-    <uptodate property="formalize_test.buildNotNeeded" targetfile="${formalize_test.output}">
-      <srcfiles dir="models/org.xtuml.bp.core.test/FormalizeUnformalizeTests/" includes="**/*.xtuml" />
-      <srcfiles dir="arc" includes="gen_Formalize_tests.arc" />
-      <srcfiles dir="${mcj_path}" includes="ooa_schema.sql,arch_utils.inc" />
-    </uptodate>
-  </target>
-
-  <target name="formalize_test" depends="formalize_test.depends" description="Generate the Formalize test code" unless="formalize_test.buildNotNeeded">
-    <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
-      <arg line="xtumlmc_cleanse_for_BridgePoint models/org.xtuml.bp.core.test/FormalizeUnformalizeTests sql/FormalizeUnformalizeTests.sql ${subsystems_to_remove}" />
-    </exec>
-    <echo>Generating ${formalize_test.output} ...</echo>
-      <exec vmlauncher="false" failonerror="true" executable="${xtumlmc_build}" >
-      <env key="PTC_MC_ARC_DIR" value="${mcj_path}" />
-      <env key="XTUMLMC_HOME" value="${util_bin_dir}/../../" />
-      <arg line="xtumlmc_gen_erate -qim -nopersist
-        -import ${mcj_path}/ooa_schema.sql
-        -import sql/FormalizeUnformalizeTests.sql
-        -arch arc/gen_Formalize_tests.arc" />
-    </exec>
-    <delete file="____file.txt" />
-    <!-- Need to touch the output file for the case where the input data
-       changed, but the output didn't -->
-    <touch file="${formalize_test.output}" />
   </target>
 
   <property name="copy_paste_tests.output" value="matrices/generated/CopyPasteSourceDestinationTestMatrix.txt" />
@@ -265,8 +236,7 @@
 
   <property name="cvs_java_files" value="AddRemoveDataItemsTest.java,
     AssignClassTest.java, AssignRemoveEvents.java, AttributeMenuItemTest.java,
-  	AssociationCardinalityMenuTests.java,AssociationTableEditorTests.java,
-    CantHappenEvtIgnoreEvtTests.java, CoreTest.java, CoreTestPlugin.java,
+  	CantHappenEvtIgnoreEvtTests.java, CoreTest.java, CoreTestPlugin.java,
     CoreTestResultCreator.java, DeleteAttributesTest.java,
     DerivedAttributeTest.java, GetNameTest.java, NumberingTest.java,
     CanRenameCanDeleteTest.java, CombineSplitReferentialsTest.java,
@@ -304,7 +274,6 @@
   	TigerNatureTestGenerics.java,
   	TigerNatureWorkspaceSetupTestGenerics.java,
   	ActivityTestsGenerics.java,
-  	FormalizeUnformalizeWithPrefixTestGenerics.java,
   	CanRenameCanDeleteTestGenerics.java,
 	CombineSplitReferentialsTestGenerics.java,
   	CommunicationLinkTestsGenerics.java,

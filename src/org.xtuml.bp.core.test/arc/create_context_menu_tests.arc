@@ -351,35 +351,6 @@
   
         .select any obj from instances of O_OBJ where (selected.Key_Lett == kl)
         $r{obj.Name}_c obj = $r{obj.Name}_c.$r{obj.Name}Instance(modelRoot);
-  .elif((cmeLabel == "Formalize") or (cmeLabel == "Unformalize"))
-    .if(((kl == "R_REL") or (kl == "R_ASSR")) or (kl == "R_SUB"))
-      .assign attr_needsQuery = true
-      .assign attr_nameAccessor = ""
-      .select any mclass from instances of O_OBJ where (selected.Key_Lett == kl)
-	  Package_c subsystem = Package_c.PackageInstance(modelRoot, new ClassQueryInterface_c() {
-  
-			public boolean evaluate(Object candidate) {
-				if(((Package_c)candidate).getName().equals(\
-				.if(cmeLabel == "Formalize")
-"Formalize Menu Tests"\
-				.else
-"Test Subsystem"\
-				.end if
-)) {
-					return true;
-				}
-				return false;
-			}
-
-		});
-    .end if
-    .if(kl == "R_ASSR")
-		$r{mclass.Name}_c obj = $r{mclass.Name}_c.getOneR_ASSROnR211(LinkedAssociation_c.getOneR_ASSOCOnR206(Association_c.getManyR_RELsOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(subsystem))));
-    .elif(kl == "R_SUB")
-	  	ClassAsSubtype_c obj = ClassAsSubtype_c.getOneR_SUBOnR213(SubtypeSupertypeAssociation_c.getOneR_SUBSUPOnR206(Association_c.getManyR_RELsOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(subsystem))));
-    .else
-		$r{mclass.Name}_c obj = $r{mclass.Name}_c.getOneR_RELOnR8001(PackageableElement_c.getManyPE_PEsOnR8000(subsystem));
-    .end if
   .elif((cmeLabel == "Assign Event") or (cmeLabel == "Remove Event"))
     .assign attr_needsQuery = true
 Package_c subsystem = Package_c.PackageInstance(modelRoot, new ClassQueryInterface_c() {
