@@ -21,6 +21,8 @@
 //=====================================================================
 package org.xtuml.bp.core.test;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.junit.After;
@@ -33,6 +35,7 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.test.common.BaseTest;
@@ -57,8 +60,7 @@ public class UniqueNameTestGenerics extends BaseTest {
 			if (!initialized) {
 				loadProject("testTransaction");
 				initialized = true;
-                PersistableModelComponent pmc = m_sys.getPersistableComponent();
-                pmc.loadComponentAndChildren(new NullProgressMonitor());
+                PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
                 
                 Display d = Display.getDefault();
 	            while (d.readAndDispatch());

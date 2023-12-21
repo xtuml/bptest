@@ -13,6 +13,7 @@ package org.xtuml.bp.welcome.test;
 // the License.
 //=====================================================================
 
+import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IFile;
@@ -180,8 +181,8 @@ public class WelcomePageTestMetamodel extends TestCase {
 			checkForErrors();
 			
 			// load and persist
+			PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 			PersistableModelComponent pmc = PersistenceManager.getRootComponent(project);
-			pmc.loadComponentAndChildren(new NullProgressMonitor());
 			pmc.persistSelfAndChildren();		
 			
 			checkForErrors();

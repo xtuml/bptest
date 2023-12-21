@@ -9,6 +9,7 @@
 
 package org.xtuml.bp.ui.canvas.test.assoc;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -16,17 +17,46 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
 import org.junit.Before;
-import org.xtuml.bp.core.*;
+import org.xtuml.bp.core.Association_c;
+import org.xtuml.bp.core.ClassAsAssociatedOneSide_c;
+import org.xtuml.bp.core.ClassAsAssociatedOtherSide_c;
+import org.xtuml.bp.core.ClassAsLink_c;
+import org.xtuml.bp.core.ClassAsSimpleFormalizer_c;
+import org.xtuml.bp.core.ClassAsSimpleParticipant_c;
+import org.xtuml.bp.core.ClassAsSubtype_c;
+import org.xtuml.bp.core.ClassAsSupertype_c;
+import org.xtuml.bp.core.ClassInAssociation_c;
+import org.xtuml.bp.core.CorePlugin;
+import org.xtuml.bp.core.End_c;
+import org.xtuml.bp.core.ImportedClass_c;
+import org.xtuml.bp.core.LinkedAssociation_c;
+import org.xtuml.bp.core.ModelClass_c;
+import org.xtuml.bp.core.Package_c;
+import org.xtuml.bp.core.PackageableElement_c;
+import org.xtuml.bp.core.ReferredToClassInAssoc_c;
+import org.xtuml.bp.core.ReferringClassInAssoc_c;
+import org.xtuml.bp.core.SimpleAssociation_c;
+import org.xtuml.bp.core.SubtypeSupertypeAssociation_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
-import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.util.WorkspaceUtil;
-import org.xtuml.bp.test.common.*;
-import org.xtuml.bp.ui.canvas.*;
-import org.xtuml.bp.ui.graphics.editor.*;
+import org.xtuml.bp.test.common.BaseTest;
+import org.xtuml.bp.test.common.UITestingUtilities;
+import org.xtuml.bp.ui.canvas.CanvasTransactionListener;
+import org.xtuml.bp.ui.canvas.Connector_c;
+import org.xtuml.bp.ui.canvas.Graphconnector_c;
+import org.xtuml.bp.ui.canvas.Graphedge_c;
+import org.xtuml.bp.ui.canvas.Graphelement_c;
+import org.xtuml.bp.ui.canvas.GraphicalElement_c;
+import org.xtuml.bp.ui.canvas.Graphnode_c;
+import org.xtuml.bp.ui.canvas.LineSegment_c;
+import org.xtuml.bp.ui.canvas.Shape_c;
+import org.xtuml.bp.ui.canvas.Waypoint_c;
+import org.xtuml.bp.ui.canvas.test.CanvasTest;
+import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.parts.ConnectorEditPart;
-import org.xtuml.bp.ui.canvas.test.*;
 
 public class AssociationMove extends CanvasTest {
     public static boolean generateResults = false;
@@ -92,9 +122,7 @@ public class AssociationMove extends CanvasTest {
 
             CorePlugin.disableParseAllOnResourceChange();
 
-            PersistableModelComponent sys_comp = m_sys
-                    .getPersistableComponent();
-            sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+            PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
             initialized = true;
         } else {
             // undo the last change

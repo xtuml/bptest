@@ -170,8 +170,7 @@ public class CopyPasteSourceDestinationTests extends CanvasTest {
 				}
 			
 			});
-	    	PersistableModelComponent sys_comp = m_sys.getPersistableComponent();
-	    	sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+	    	PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 	    	CorePlugin.enableParseAllOnResourceChange();
 	    	TestingUtilities.allowJobCompletion();
 	    	while(!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(IProject.DEPTH_INFINITE)) {

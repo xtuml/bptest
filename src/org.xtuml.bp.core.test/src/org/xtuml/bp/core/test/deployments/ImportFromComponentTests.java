@@ -1,9 +1,11 @@
 package org.xtuml.bp.core.test.deployments;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -141,7 +143,8 @@ public class ImportFromComponentTests extends BaseTest {
         FailableRunnable runnable = TestUtil.chooseItemInDialog(300, null,
                 new String[] { "DeploymentsDomain1", "DeploymentsDomain2" }, false, false, existingShells);
         TestUtil.okElementSelectionDialog(runnable, existingShells);
-        PersistenceManager.ensureAllInstancesLoaded(deployment.getModelRoot(), Component_c.class);
+		PersistenceManager.getDefaultInstance().loadProjects(
+				List.of(deployment.getPersistableComponent().getFile().getProject()), new NullProgressMonitor());
         Component_c[] elements = ImportTerminatorsFromComponentOnD_DEPLAction.getElements(deployment);
         ElementSelectionDialog dialog = new ElementSelectionDialog(
                 PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), elements, "component", true, null,

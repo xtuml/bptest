@@ -46,6 +46,7 @@ import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.IntegrityChecker;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
@@ -398,10 +399,10 @@ public class ModelIntegrityTests extends BaseTest {
 	private String runIntegrityReportForElement(final Package_c pkg) {
 		// the integrity checker no longer loads when locating
 		// children, therefore this test must handle the loading
-		pkg.getPersistableComponent().loadComponentAndChildren(
-				new NullProgressMonitor());
 		final List<IntegrityIssue_c> issues = new ArrayList<IntegrityIssue_c>();
 		try {
+			PersistenceManager.getDefaultInstance().loadProjects(
+					List.of(pkg.getPersistableComponent().getFile().getProject()), new NullProgressMonitor());
 			ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
 				
 				@Override

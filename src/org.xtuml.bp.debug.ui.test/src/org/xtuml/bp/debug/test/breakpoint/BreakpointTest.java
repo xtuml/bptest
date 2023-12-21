@@ -1,5 +1,7 @@
 package org.xtuml.bp.debug.test.breakpoint;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -24,7 +26,7 @@ import org.xtuml.bp.core.StateMachineEvent_c;
 import org.xtuml.bp.core.Transition_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
-import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.debug.ui.test.DebugUITestUtilities;
 import org.xtuml.bp.test.common.BaseTest;
@@ -58,9 +60,7 @@ public class BreakpointTest extends BaseTest {
 			DebugUITestUtilities.processDebugEvents();
 
 			loadProject("dts0100655323");
-			PersistableModelComponent sys_comp = m_sys
-					.getPersistableComponent();
-			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+			PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 
 			CorePlugin.enableParseAllOnResourceChange();
 

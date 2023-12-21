@@ -56,6 +56,7 @@ import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.util.WorkspaceUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -120,9 +121,7 @@ public class ConnectorMoveTests extends CanvasTest {
 
 			CorePlugin.disableParseAllOnResourceChange();
 
-			PersistableModelComponent sys_comp = m_sys
-					.getPersistableComponent();
-			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+            PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 			initialized = true;
 		} else {
 			// undo the last change

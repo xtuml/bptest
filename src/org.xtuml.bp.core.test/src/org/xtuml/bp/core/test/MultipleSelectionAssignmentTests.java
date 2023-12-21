@@ -72,6 +72,7 @@ import org.xtuml.bp.core.SymbolicConstant_c;
 import org.xtuml.bp.core.UserDataType_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.actions.GenericPackageAssignComponentOnCL_ICAction;
 import org.xtuml.bp.core.ui.actions.SetReturnTypeOnC_IOAction;
@@ -124,7 +125,7 @@ public class MultipleSelectionAssignmentTests extends BaseTest {
 								"Test Package");
 					}
 				});
-		testPackage.getPersistableComponent().loadComponentAndChildren(new NullProgressMonitor());
+	    PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 		testPackage.getPersistableComponent().persistSelfAndChildren();
 		// process any model change events that may have been
 		// created during the above, there are model reload events

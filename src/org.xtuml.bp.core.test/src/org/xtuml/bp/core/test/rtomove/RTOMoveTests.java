@@ -63,6 +63,7 @@ import org.xtuml.bp.core.Visibility_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.InstanceList;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionManager;
 import org.xtuml.bp.core.ui.CopyCutAction;
@@ -119,7 +120,7 @@ public class RTOMoveTests extends CanvasTest {
 		IProject testProject = getProjectHandle("RTOMoveTests");
 		m_sys = getSystemModel(testProject.getName());
 		m_sys.setUseglobals(true);
-		m_sys.getPersistableComponent().loadComponentAndChildren(new NullProgressMonitor());
+	    PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 
 		IScopeContext projectScope = new ProjectScope(testProject);
 		Preferences projectNode = projectScope

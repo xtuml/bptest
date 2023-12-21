@@ -23,8 +23,10 @@
 package org.xtuml.bp.ui.explorer.test;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -39,6 +41,7 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.DeleteAction;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.util.UIUtil;
@@ -119,7 +122,7 @@ import org.xtuml.bp.ui.explorer.ExplorerView;
                     return false;
             }
         } );
-        mc.ensureLoaded(true);
+        PersistenceManager.getDefaultInstance().loadProjects(List.of(mc.getPersistableComponent().getFile().getProject()), new NullProgressMonitor());
     	InstanceStateMachine_c uut = InstanceStateMachine_c.getOneSM_ISMOnR518(mc);
     	    	
         // open the class diagram editor

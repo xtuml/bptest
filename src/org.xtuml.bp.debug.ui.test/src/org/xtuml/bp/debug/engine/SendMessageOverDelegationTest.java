@@ -21,6 +21,7 @@
 //========================================================================
 package org.xtuml.bp.debug.engine;
 
+import java.util.List;
 import java.util.Vector;
 
 import org.eclipse.core.resources.IProject;
@@ -60,6 +61,7 @@ import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.ModelRoot;
 import org.xtuml.bp.core.common.NonRootModelElement;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.core.ui.tree.ModelCheckedTreeViewer;
@@ -106,7 +108,7 @@ public class SendMessageOverDelegationTest extends BaseTest {
 
 			});
 
-			m_sys.getPersistableComponent().loadComponentAndChildren(new NullProgressMonitor());
+			PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 			
 			dispatchEvents(0);
 			

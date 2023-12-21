@@ -1,5 +1,7 @@
 package org.xtuml.bp.io.mdl.test;
 
+import java.util.List;
+
 //=====================================================================
 //
 //File:      $RCSfile: StaleProxyExportTestGenerics.java,v $
@@ -80,7 +82,7 @@ public class StaleProxyExportTestGenerics extends BaseTest {
 				"watchGenerics");
 		projectHandle.close(new NullProgressMonitor());
 		projectHandle.open(new NullProgressMonitor());
-		PersistenceManager.getRootComponent(projectHandle).loadComponentAndChildren(new NullProgressMonitor());
+        PersistenceManager.getDefaultInstance().loadProjects(List.of(projectHandle), new NullProgressMonitor());
 		assertTrue("Failed to locate the imported project (watchGenerics).", projectHandle != null);
 		
 		String exportFilename = "watch_exportGenerics.xtuml";
