@@ -20,6 +20,7 @@ import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.jgit.util.StringUtils;
@@ -114,7 +115,7 @@ public class TestUtil {
      * Answers OK (via the OK button) a dialog after waiting for the given time
      */
     public static void okToDialog(final long inHowManyMillis) {
-        dismissDialog(inHowManyMillis, 0, false, "OK", null, true);
+        dismissDialog(inHowManyMillis, 0, false, IDialogConstants.OK_LABEL, null, true);
     }
 
     public static void okToDialog(final long inHowManyMillis, boolean throwException) {
