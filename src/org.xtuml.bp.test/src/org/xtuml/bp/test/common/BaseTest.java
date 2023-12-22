@@ -383,6 +383,9 @@ public class BaseTest extends TestCase {
 			}
 		}
 		assertTrue("Saving threads left hanging", Ooaofooa.threadsSaving < 1);
+		
+		// turn off interactive dialog in persistence manager
+		PersistenceManager.getDefaultInstance().setShowErrorDialogEnabled(false);
 	}
 
 	
