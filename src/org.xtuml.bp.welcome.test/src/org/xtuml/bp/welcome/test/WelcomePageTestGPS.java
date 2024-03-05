@@ -7,6 +7,7 @@ package org.xtuml.bp.welcome.test;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -130,8 +131,8 @@ public class WelcomePageTestGPS extends TestCase {
             checkForErrors();
 
             // load and persist
+            PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
             PersistableModelComponent pmc = PersistenceManager.getRootComponent(project);
-            pmc.loadComponentAndChildren(new NullProgressMonitor());
             pmc.persistSelfAndChildren();
 
             checkForErrors();
@@ -192,7 +193,7 @@ public class WelcomePageTestGPS extends TestCase {
     }
 
     @Test
-    public void testExternalEntityDefaults() {
+    public void testExternalEntityDefaults() throws CoreException {
         TestUtil.selectButtonInDialog(1000, "Yes");
         runGPSOALGettingStartedAction();
 
@@ -206,7 +207,7 @@ public class WelcomePageTestGPS extends TestCase {
         });
 
         assertNotNull(system);
-        system.getPersistableComponent().loadComponentAndChildren(new NullProgressMonitor());
+        PersistenceManager.getDefaultInstance().loadProjects(List.of(system.getPersistableComponent().getFile().getProject()), new NullProgressMonitor());
 
         Ooaofooa[] instancesUnderSystem = Ooaofooa.getInstancesUnderSystem(projectNames[0]);
         for (Ooaofooa root : instancesUnderSystem) {

@@ -14,6 +14,8 @@
 
 package org.xtuml.bp.ui.text.test.i372Tests;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
@@ -35,6 +37,7 @@ import org.xtuml.bp.core.Attribute_c;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Operation_c;
 import org.xtuml.bp.core.common.InstanceList;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.text.AbstractModelElementEditorInput;
@@ -59,8 +62,7 @@ public class NavigationTest extends BaseTest {
 		if ( firstSetup ) {
         	loadProject(testModelName);
         	m_sys = getSystemModel(testModelName);
-			m_sys.getPersistableComponent().loadComponentAndChildren(
-					new NullProgressMonitor());
+        	PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
         
         	// make sure the user isn't prompted to do a parse all
         	CorePlugin.disableParseAllOnResourceChange();

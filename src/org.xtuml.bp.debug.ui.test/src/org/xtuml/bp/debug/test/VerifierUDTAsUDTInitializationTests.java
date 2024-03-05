@@ -1,5 +1,7 @@
 package org.xtuml.bp.debug.test;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IVariable;
@@ -16,6 +18,7 @@ import org.xtuml.bp.core.ComponentInstance_c;
 import org.xtuml.bp.core.Function_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.core.util.WorkspaceUtil;
@@ -49,8 +52,7 @@ public class VerifierUDTAsUDTInitializationTests extends BaseTest {
         loadProject("VerifierUDTAsSDTTests");
 
         m_sys = getSystemModel("VerifierUDTAsSDTTests");
-        m_sys.getPersistableComponent().loadComponentAndChildren(
-                new NullProgressMonitor());
+		PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
     }
 
     @Override

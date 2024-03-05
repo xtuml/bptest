@@ -13,6 +13,8 @@
 //	=====================================================================
 package org.xtuml.bp.ui.text.test.i673Tests.placeholder;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
@@ -118,8 +120,7 @@ public class PlaceholderLifecycleForProjectTest extends UITextTest {
 		
 		//we need to load rest of components in the start so that Instance* methods
 		//work correctly.
-		PersistenceManager.getDefaultInstance().
-		getRootComponent(currentProject).loadComponentAndChildren(new NullProgressMonitor());
+        PersistenceManager.getDefaultInstance().loadProjects(List.of(currentProject), new NullProgressMonitor());
 		
 		//We need to reload the model
 		String modelRootId = modelRoot.getId();

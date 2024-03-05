@@ -44,12 +44,6 @@ import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.ui.canvas.Cl_c;
-import org.xtuml.bp.ui.canvas.Connector_c;
-import org.xtuml.bp.ui.canvas.Graphconnector_c;
-import org.xtuml.bp.ui.canvas.Graphedge_c;
-import org.xtuml.bp.ui.canvas.Graphelement_c;
-import org.xtuml.bp.ui.canvas.GraphicalElement_c;
-import org.xtuml.bp.ui.canvas.Shape_c;
 import org.xtuml.bp.ui.canvas.test.CanvasTest;
 import org.xtuml.bp.ui.graphics.editor.GraphicalEditor;
 import org.xtuml.bp.ui.graphics.editor.ModelEditor;
@@ -59,7 +53,6 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 
 	String test_id = null;
 	private static boolean generateResults = false;
-	private boolean reloadModel = false;
 	private static boolean initialized = false;
 	private static Selection selection = Selection.getInstance();
 
@@ -69,10 +62,6 @@ public class AttributeMenuItemTestGenerics extends CanvasTest {
 
 	protected String getResultName() {
 		return "AttributeMenuItem" + "_" + test_id;
-	}
-
-	public void setReloadModel(boolean val) {
-		reloadModel = val;
 	}
 
 	@Before

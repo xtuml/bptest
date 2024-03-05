@@ -1,6 +1,7 @@
 package org.xtuml.bp.core.test;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
@@ -22,6 +23,7 @@ import org.xtuml.bp.core.PackageParticipant_c;
 import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.SystemModel_c;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.core.ui.preferences.BridgePointProjectPreferences;
 import org.xtuml.bp.core.ui.preferences.BridgePointProjectReferencesPreferences;
@@ -53,7 +55,7 @@ public class InteractionResolutionTests extends BaseTest {
 
 		m_sys = getSystemModel(testProject.getName());
 		m_sys.setUseglobals(true);
-		m_sys.getPersistableComponent().loadComponentAndChildren(new NullProgressMonitor());
+		PersistenceManager.getDefaultInstance().loadProjects(List.of(testProject), new NullProgressMonitor());
 
 		IScopeContext projectScope = new ProjectScope(testProject);
 		Preferences projectNode = projectScope

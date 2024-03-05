@@ -21,6 +21,8 @@
 //=====================================================================
 package org.xtuml.bp.debug.ui.launch;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -44,7 +46,7 @@ import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.tree.ModelCheckedTreeViewer;
 import org.xtuml.bp.debug.ui.test.DebugUITestUtilities;
 import org.xtuml.bp.test.common.BaseTest;
@@ -87,8 +89,7 @@ public class VerifierLaunchConfigurationTests extends BaseTest {
 			
 			});
 	    	
-	    	PersistableModelComponent sys_comp = m_sys.getPersistableComponent();
-	    	sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+			PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 	    	
 	    	CorePlugin.enableParseAllOnResourceChange();
 	    	

@@ -184,9 +184,10 @@ public class SetTypeTestGenerics extends CanvasTest {
 				.getActiveWorkbenchWindow().getActivePage().getActivePart());
 		IStructuredSelection structuredSelection = (IStructuredSelection) Selection
 				.getInstance().getSelection();
-		TestUtil.okToDialog(200);
+		Shell[] existingShells = PlatformUI.getWorkbench().getDisplay().getShells();
+		FailableRunnable chooseItemInDialog = TestUtil.chooseItemInDialog(500, "boolean", existingShells);
+		TestUtil.okElementSelectionDialog(chooseItemInDialog, existingShells);
 		SetTypeOnO_ATTRAction.O_ATTR_SetType(structuredSelection);
-
 	}
 
 	@Test

@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import org.junit.After;
 import org.junit.Before;
@@ -50,6 +51,7 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.ModelRoot;
 import org.xtuml.bp.core.common.NonRootModelElement;
 import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.core.common.Transaction;
 import org.xtuml.bp.core.common.TransactionException;
@@ -101,9 +103,7 @@ public class ModelComparisonTests extends BaseTest {
 			}
 
 		});
-		PersistableModelComponent sys_comp = m_sys
-				..getPersistableComponent();
-		sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+    PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 	}
 	
 	@After

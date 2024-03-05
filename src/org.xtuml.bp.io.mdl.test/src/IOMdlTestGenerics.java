@@ -14,6 +14,7 @@
 
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -36,6 +37,7 @@ import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.GeneralPurposeLogger;
 import org.xtuml.bp.core.common.IdAssigner;
 import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.Selection;
 import org.xtuml.bp.io.mdl.ExportModel;
 import org.xtuml.bp.io.mdl.ImportModel;
@@ -78,7 +80,7 @@ public class IOMdlTestGenerics extends BaseTest {
 		// Change default for the parse on resource change preference to
 		// "always"
 		IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
-		store.setValue(BridgePointPreferencesStore.SINGLE_FILE_EXPORT_GRAPHICS, "always"); //$NON-NLS-1$
+		store.setValue(BridgePointPreferencesStore.EXPORT_GRAPHICS, "always"); //$NON-NLS-1$
 	}
 	@Before
 	public void setUp() throws Exception {
@@ -115,7 +117,7 @@ public class IOMdlTestGenerics extends BaseTest {
 	}
   
     @Test
-    public void testExportOdmsWithGraphics()
+    public void testExportOdmsWithGraphics() throws CoreException
     {
         m_domain_name = "odmsGenerics";
         importModel( Ooaofooa.MODELS_DIRNAME + "/");
@@ -136,7 +138,7 @@ public class IOMdlTestGenerics extends BaseTest {
 		
 		PersistableModelComponent pmc = pkg.getPersistableComponent();
 		pmc.deleteSelfAndChildren();
-		pmc.loadComponentAndChildren(new NullProgressMonitor());
+        PersistenceManager.getDefaultInstance().loadProjects(List.of(pmc.getFile().getProject()), new NullProgressMonitor());
 
 		BaseTest.dispatchEvents(0);
 		

@@ -49,7 +49,7 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
 import org.xtuml.bp.core.common.NonRootModelElement;
-import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.util.WorkspaceUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.CanvasTestUtils;
@@ -132,9 +132,7 @@ public class GraphicalAnchorTests extends CanvasTest {
 			WorkspaceUtil.setAutobuilding(false);
 
 			loadProject("GraphicalAnchorTests");
-			PersistableModelComponent sys_comp = m_sys
-					.getPersistableComponent();
-			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+            PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 			initialized = true;
 		} else {
 			BaseTest.dispatchEvents();

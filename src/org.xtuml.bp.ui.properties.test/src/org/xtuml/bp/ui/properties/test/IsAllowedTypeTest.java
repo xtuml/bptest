@@ -132,7 +132,7 @@ public class IsAllowedTypeTest extends BaseTest
 	private DataType_c[] getDataTypes(PackageableElement_c pe) {
 		Package_c pkg = Package_c.getOneEP_PKGOnR8000(pe);
 		pkg.Clearscope();
-		pkg.Collectvisibleelementsforname(true, Gd_c.Null_unique_id(), false,
+		pkg.Collectvisibleelementsforname(true, Gd_c.Null_unique_id(), false, 0,
 				"", pkg.getPackage_id(), Elementtypeconstants_c.DATATYPE);
 		class PETest implements ClassQueryInterface_c {
 			public boolean evaluate(Object candidate) {

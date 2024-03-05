@@ -13,13 +13,20 @@
 //======================================================================== 
 package org.xtuml.bp.core.test;
 
+import java.util.List;
+
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.ModelClass_c;
+import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.Package_c;
-import org.xtuml.bp.core.common.ComponentResourceListener;
 import org.xtuml.bp.core.common.InstanceList;
 import org.xtuml.bp.core.common.ModelRoot;
 import org.xtuml.bp.core.common.NonRootModelElement;
@@ -103,7 +110,7 @@ public class MultipleReloadGenerics extends BaseTest {
 
 		// simulate the subsystem folder being restored from local history
 		for (int i = 0; i < resource_set.length; ++i) {
-			ComponentResourceListener.addComponentResource(resource_set[i]);
+			addComponentResource(resource_set[i]);
 		}
 
 		endGraphicsModelInstanceCount = countGraphicsInstances();
@@ -151,5 +158,50 @@ public class MultipleReloadGenerics extends BaseTest {
 		PersistableModelComponent pmc = PersistenceManager
 				.getComponent(element);
 		pmc.deleteSelf();
+	}
+	
+	static private void addComponentResource(IResource resource) {
+		IPath resourcePath = resource.getFullPath();
+
+		// project roots being added are handled differently
+		if (resourcePath.segmentCount() == 4) {
+			// a project root was added
+			PersistableModelComponent newComponent = PersistenceManager.findComponent(resourcePath);
+			if (newComponent == null || !newComponent.isPersisting())
+				addRootComponent(resource);
+		} else {
+			PersistableModelComponent newComponent = PersistenceManager.findOrCreateComponent(resourcePath);
+
+			// if this resource change is not due to
+			// the component being created in the BridgePoint perspective
+			if (!newComponent.isPersisting()) {
+				try {
+					// don't do the parse now, we'll get a resource conflict
+					PersistenceManager.getDefaultInstance().loadProjects(List.of(resource.getProject()),
+							new NullProgressMonitor());
+
+					final NonRootModelElement rootME = newComponent.getRootModelElement();
+					Ooaofooa.getDefaultInstance().fireModelElementLoaded(rootME);
+
+				} catch (CoreException e) {
+					CorePlugin.logError("Could not load component data", e);
+				}
+			}
+		}
+	}
+
+	static private PersistableModelComponent addRootComponent(IResource resource) {
+		PersistableModelComponent newComponent = null;
+		try {
+			IProject project = resource.getProject();
+			PersistenceManager.getDefaultInstance().traverseProject(project);
+			newComponent = PersistenceManager.getRootComponent(project);
+			if (newComponent == null) {// in case when project resource is added from Resource Navigator
+				return null;
+			}
+		} catch (CoreException e) {
+			CorePlugin.logError("Could not load component", e);
+		}
+		return newComponent;
 	}
 }

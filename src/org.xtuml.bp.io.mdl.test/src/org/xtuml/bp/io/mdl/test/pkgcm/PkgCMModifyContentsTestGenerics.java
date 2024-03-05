@@ -23,6 +23,7 @@
 package org.xtuml.bp.io.mdl.test.pkgcm;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -38,6 +39,7 @@ import org.junit.runner.RunWith;
 import org.xtuml.bp.core.CorePlugin;
 import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.common.BridgePointPreferencesStore;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 
@@ -106,7 +108,7 @@ public class PkgCMModifyContentsTestGenerics extends ModifyContentsTest {
             //ensureAvailableAndLoaded(domainName, false);
             loadProject(projectName);
             m_sys= getSystemModel(projectName);
-            m_sys.getPersistableComponent().loadComponentAndChildren(new NullProgressMonitor());
+        	PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
             modelRoot = Ooaofooa.getInstance(Ooaofooa.createModelRootId(getProjectHandle(projectName), "MultiLevelModel", true));
             // IO_MDL tests set this false we need it true
             Ooaofooa.setPersistEnabled(true);

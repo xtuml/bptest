@@ -22,6 +22,8 @@
 
 package org.xtuml.bp.io.mdl.test.pkgcm;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFileState;
 import org.eclipse.core.runtime.CoreException;
@@ -124,7 +126,7 @@ abstract class ModifyContentsTest extends PkgCMBaseTest{
         BaseTest.dispatchEvents(0);
         //get reloaded model element
         pmcBeingTested=PersistenceManager.findComponent(oldFile.getFullPath());
-        pmcBeingTested.load(new NullProgressMonitor());
+        PersistenceManager.getDefaultInstance().loadProjects(List.of(pmcBeingTested.getFile().getProject()), new NullProgressMonitor());
         meBeingTested=pmcBeingTested.getRootModelElement();
         performModifyChecks();
 

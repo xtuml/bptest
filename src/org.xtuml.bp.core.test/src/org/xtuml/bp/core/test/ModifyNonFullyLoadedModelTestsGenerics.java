@@ -22,6 +22,8 @@ package org.xtuml.bp.core.test;
 //======================================================================== 
 //
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.PlatformUI;
@@ -155,7 +157,8 @@ public class ModifyNonFullyLoadedModelTestsGenerics extends CanvasTest
         // load the UML 2.0 Diagram Interchange subsystem
         PersistableModelComponent ssComp = domainComp.getChild(testSSCompName);
         try {
-            ssComp.load(new NullProgressMonitor());
+			PersistenceManager.getDefaultInstance().loadProjects(
+					List.of(ssComp.getFile().getProject()), new NullProgressMonitor());
         } catch (CoreException e) {
             fail("Unable to load test component: " + testSSCompName);
         }

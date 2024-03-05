@@ -14,6 +14,8 @@
 
 package org.xtuml.bp.io.mdl.test.pkgcm;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -77,8 +79,9 @@ public abstract class RenameTest extends PkgCMBaseTest {
         assertNotNull("Could not find component; " + compType1 + ":" + compName,
                 component);
         compType = compType1;
-        if (!component.isLoaded())
-        	component.load(new NullProgressMonitor());
+        if (!component.isLoaded()) {
+        	PersistenceManager.getDefaultInstance().loadProjects(List.of(component.getFile().getProject()), new NullProgressMonitor());
+        }
         meBeingTested = component.getRootModelElement();
         pmcBeingTested = component;
         newName = component.getName() + "_n";

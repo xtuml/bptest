@@ -13,12 +13,14 @@ package org.xtuml.bp.welcome.test;
 // the License.
 //=====================================================================
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.PlatformUI;
@@ -29,6 +31,7 @@ import org.xtuml.bp.core.Ooaofooa;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.XtUMLNature;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
@@ -130,7 +133,7 @@ public class WelcomePageTest extends TestCase {
 		verifyProjectCreated();
 	}
 	@Test
-	public void testExternalEntityDefaultsTemplateProject() {
+	public void testExternalEntityDefaultsTemplateProject() throws CoreException {
 		// get handle to help shell in order to display after completing below actions
 		SampleProjectGettingStartedAction action = new SampleProjectGettingStartedAction();
 		Properties props = new Properties();
@@ -151,8 +154,7 @@ public class WelcomePageTest extends TestCase {
 				});
 
 		assertNotNull(system);
-		system.getPersistableComponent().loadComponentAndChildren(
-				new NullProgressMonitor());
+        PersistenceManager.getDefaultInstance().loadProjects(List.of(system.getPersistableComponent().getFile().getProject()), new NullProgressMonitor());
 
 		Ooaofooa[] instancesUnderSystem = Ooaofooa
 				.getInstancesUnderSystem("TemplateProject");

@@ -91,7 +91,6 @@ public class IntegrityIssueTests extends BaseTest {
 		assocs[0].getFile().setContents(history[0], IFile.FORCE,
 				new NullProgressMonitor());
 		BaseTest.dispatchEvents(0);
-		CorePlugin.getDefault().getIntegrityScheduler().join();
 		// verify that the association markers have been removed
 		markers = assocs[0].getFile().findMarkers(IMarker.PROBLEM, true,
 				IFile.DEPTH_INFINITE);

@@ -1,6 +1,7 @@
 package org.xtuml.bp.debug.engine;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -9,6 +10,7 @@ import org.eclipse.debug.internal.ui.DebugUIPlugin;
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.ui.PlatformUI;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +23,7 @@ import org.xtuml.bp.core.Package_c;
 import org.xtuml.bp.core.PackageableElement_c;
 import org.xtuml.bp.core.SystemModel_c;
 import org.xtuml.bp.core.common.ClassQueryInterface_c;
-import org.xtuml.bp.core.common.PersistableModelComponent;
+import org.xtuml.bp.core.common.PersistenceManager;
 import org.xtuml.bp.core.ui.perspective.BridgePointPerspective;
 import org.xtuml.bp.debug.ui.launch.BPDebugUtils;
 import org.xtuml.bp.debug.ui.test.DebugUITestUtilities;
@@ -29,8 +31,6 @@ import org.xtuml.bp.test.TestUtil;
 import org.xtuml.bp.test.common.BaseTest;
 import org.xtuml.bp.test.common.OrderedRunner;
 import org.xtuml.bp.test.common.TestingUtilities;
-
-import org.junit.Assert;
 
 //========================================================================
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not 
@@ -83,9 +83,7 @@ public class MDATest extends BaseTest {
 
 			});
 
-			PersistableModelComponent sys_comp = m_sys
-					.getPersistableComponent();
-			sys_comp.loadComponentAndChildren(new NullProgressMonitor());
+			PersistenceManager.getDefaultInstance().loadProjects(List.of(project), new NullProgressMonitor());
 
 			TestingUtilities.allowJobCompletion();
 			while (!ResourcesPlugin.getWorkspace().getRoot().isSynchronized(

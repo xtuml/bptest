@@ -255,8 +255,6 @@ public class BaseTest extends TestCase {
 			// tests
 			IPreferenceStore store = CorePlugin.getDefault().getPreferenceStore();
 			store.setValue(BridgePointPreferencesStore.ENABLE_MODEL_INTEGRITY_CHECK, false);
-			// Until tests are adjusted to account for textual persistence, disable
-			store.setValue(BridgePointPreferencesStore.GRAPHICS_TEXTUAL_SERIALIZATION, "never");
 		} catch (CoreException e) {
 			fail("Unable to disable synchronization decorator.");
 		}
@@ -385,6 +383,9 @@ public class BaseTest extends TestCase {
 			}
 		}
 		assertTrue("Saving threads left hanging", Ooaofooa.threadsSaving < 1);
+		
+		// turn off interactive dialog in persistence manager
+		PersistenceManager.getDefaultInstance().setShowErrorDialogEnabled(false);
 	}
 
 	
@@ -786,7 +787,7 @@ public class BaseTest extends TestCase {
 		}
 		
 		if(!rootComponent.isLoaded()){
-			rootComponent.load(new NullProgressMonitor());
+			PersistenceManager.getDefaultInstance().loadProjects(List.of(targetProject), new NullProgressMonitor());
 		}
 		
 		IPath domPath = rootComponent.getContainingDirectoryPath().append(componentName+"/"+componentName+"."+Ooaofooa.MODELS_EXT);
@@ -797,14 +798,6 @@ public class BaseTest extends TestCase {
 			{
 				ModelRoot mr = component.getRootModelElement().getModelRoot();
 				ModelRoot.disableChangeNotification();
-				try {
-					unloadComponentAndChildren(component);
-					component.loadComponentAndChildren(new NullProgressMonitor());
-					component.deleteSelfAndChildren();
-				}
-				finally {
-					ModelRoot.enableChangeNotification();
-				}
 				
 				// TODO: figure out why these are needed
 				((Ooaofooa)mr).clearDatabase(new NullProgressMonitor());
@@ -850,14 +843,6 @@ public class BaseTest extends TestCase {
 		removeSystemProxyEntries(component);	
 		ComponentResourceListener.setIgnoreResourceChangesMarker(false);
 
-		if(!component.isLoaded() || component.isOrphaned()){
-			if(loadComponentOnly){
-				component.load(new NullProgressMonitor());
-			}else{
-				component.loadComponentAndChildren(new NullProgressMonitor());
-			}
-		}
-		
 		// set the model-roots interesting to the current test
 		modelRoot = (Ooaofooa)component.getRootModelElement().getModelRoot();
 		graphicsModelRoot = Ooaofgraphics.getInstance(modelRoot.getId());
